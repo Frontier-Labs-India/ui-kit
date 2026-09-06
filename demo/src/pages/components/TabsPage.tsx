@@ -739,9 +739,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Tabs } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Tabs, TabPanel } from '@annondeveloper/ui-kit'",
-  premium: "import { Tabs, TabPanel } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Tabs } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Tabs, TabPanel } from '@frontier-labs/ui-kit'",
+  premium: "import { Tabs, TabPanel } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -888,7 +888,7 @@ const tabs = [
 </Tabs>`
   }
 
-  const iconImport = showIcons ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcons ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
   const tabDefs = showIcons
     ? `const tabs = [
   { id: 'tab1', label: 'Dashboard', icon: <Icon name="activity" size="sm" /> },
@@ -939,11 +939,11 @@ function generateHtmlCode(
   const className = tier === 'lite' ? 'ui-lite-tabs' : 'ui-tabs'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/tabs.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/tabs.css';`
 
-  return `<!-- Tabs — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/tabs.css'}">
+  return `<!-- Tabs — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/tabs.css'}">
 
 <div class="${className}" data-variant="${variant}" data-size="${size}"${orientation !== 'horizontal' ? ` data-orientation="${orientation}"` : ''}>
   <div class="${className}__list" role="tablist">
@@ -989,11 +989,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   attrs.push('  :tabs="tabs"')
   attrs.push('  :active-tab="activeTab"')
@@ -1042,10 +1042,10 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the React wrapper or CSS-only approach -->
 <div
@@ -1101,11 +1101,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { Tabs, TabPanel } from '${importPath}';
   let activeTab = 'tab1';
@@ -1859,7 +1859,7 @@ export default function TabsPage() {
               No icons, no sizes, no motion, no lazy render.
             </p>
             <div className="tabs-page__tier-import">
-              import {'{'} Tabs {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Tabs {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="tabs-page__tier-preview">
               <LiteTabs
@@ -1897,7 +1897,7 @@ export default function TabsPage() {
               lazy rendering, motion levels, and keyboard navigation.
             </p>
             <div className="tabs-page__tier-import">
-              import {'{'} Tabs, TabPanel {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Tabs, TabPanel {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="tabs-page__tier-preview">
               <Tabs
@@ -1939,7 +1939,7 @@ export default function TabsPage() {
               panel crossfade animation, and staggered content entry.
             </p>
             <div className="tabs-page__tier-import">
-              import {'{'} Tabs, TabPanel {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Tabs, TabPanel {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="tabs-page__tier-preview">
               <PremiumTabs
@@ -2094,7 +2094,7 @@ export default function TabsPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/tabs.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/tabs.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="tabs-page__source-link"
@@ -2103,7 +2103,7 @@ export default function TabsPage() {
             src/components/tabs.tsx — Standard
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tabs.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tabs.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="tabs-page__source-link"
@@ -2112,7 +2112,7 @@ export default function TabsPage() {
             src/lite/tabs.tsx — Lite
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/tabs.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/tabs.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="tabs-page__source-link"

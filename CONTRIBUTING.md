@@ -1,4 +1,4 @@
-# Contributing to @annondeveloper/ui-kit
+# Contributing to @frontier-labs/ui-kit
 
 Thank you for your interest in contributing! This guide covers setup, development workflow, and guidelines for submitting pull requests.
 
@@ -13,7 +13,7 @@ Thank you for your interest in contributing! This guide covers setup, developmen
 ### Setup
 
 ```bash
-git clone https://github.com/annondeveloper/ui-kit.git
+git clone https://github.com/Frontier-Labs-India/ui-kit.git
 cd ui-kit
 npm install
 ```

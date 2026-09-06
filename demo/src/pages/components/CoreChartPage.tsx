@@ -620,9 +620,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CoreChart } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CoreChart } from '@annondeveloper/ui-kit'",
-  premium: "import { CoreChart } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CoreChart } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CoreChart } from '@frontier-labs/ui-kit'",
+  premium: "import { CoreChart } from '@frontier-labs/ui-kit/premium'",
 }
 
 function generateCores(count: number): { id: number; usage: number }[] {
@@ -751,7 +751,7 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, coreCount: number, colorScale: ColorScale, size: Size): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
-  return `<!-- CoreChart -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- CoreChart -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <!-- CoreChart is a React component; for HTML-only use, render the grid manually -->
 <div class="ui-core-chart" data-size="${size}" role="img" aria-label="CPU core utilization: ${coreCount} cores">
   <div class="ui-core-chart__grid" style="display: grid; grid-template-columns: repeat(${Math.ceil(Math.sqrt(coreCount))}, var(--cell-size, 24px)); gap: 2px;">
@@ -762,7 +762,7 @@ function generateHtmlCode(tier: Tier, coreCount: number, colorScale: ColorScale,
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/core-chart.css';
+@import '@frontier-labs/ui-kit/css/components/core-chart.css';
 </style>`
 }
 
@@ -782,7 +782,7 @@ const columns = ${columns ?? Math.ceil(Math.sqrt(coreCount))}
 </script>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :cores="cores"']
   if (columns) attrs.push(`  :columns="${columns}"`)
   if (colorScale !== 'green-red') attrs.push(`  color-scale="${colorScale}"`)
@@ -815,10 +815,10 @@ function generateAngularCode(tier: Tier, coreCount: number, colorScale: ColorSca
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the CSS-only approach for Angular -->
 <div class="ui-core-chart" data-size="${size}" role="img"
@@ -852,11 +852,11 @@ function generateSvelteCode(tier: Tier, coreCount: number, columns: number | und
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  cores={cores}']
   if (columns) attrs.push(`  columns={${columns}}`)
   if (colorScale !== 'green-red') attrs.push(`  colorScale="${colorScale}"`)
@@ -1233,7 +1233,7 @@ export default function CoreChartPage() {
               Minimal footprint for simple visualizations.
             </p>
             <div className="core-chart-page__tier-import">
-              import {'{'} CoreChart {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CoreChart {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="core-chart-page__tier-preview">
               <LiteCoreChart cores={demoData8} />
@@ -1264,7 +1264,7 @@ export default function CoreChartPage() {
               motion levels, and scoped CSS injection.
             </p>
             <div className="core-chart-page__tier-import">
-              import {'{'} CoreChart {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CoreChart {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="core-chart-page__tier-preview">
               <CoreChart cores={demoData8} colorScale="green-red" showLabels size="md" />
@@ -1295,7 +1295,7 @@ export default function CoreChartPage() {
               hover glow effects, and reduced-motion respecting transitions.
             </p>
             <div className="core-chart-page__tier-import">
-              import {'{'} CoreChart {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CoreChart {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="core-chart-page__tier-preview">
               <PremiumCoreChart cores={demoData8} colorScale="brand" showLabels size="md" />
@@ -1385,7 +1385,7 @@ export default function CoreChartPage() {
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/core-chart.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/core-chart.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="core-chart-page__source-link"

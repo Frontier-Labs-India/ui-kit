@@ -60,6 +60,8 @@ for (const rel of files) {
       claims++
       if (m[1]) { exempt++; continue }              // "~20 components" is a hypothetical
       if (RELEASE.test(line)) { exempt++; continue } // tied to a named past release
+      // "React 19 components" is a framework version, not a count of ours.
+      if (/\b(React|Vue|Angular|Svelte|Node)\s+$/i.test(line.slice(0, m.index))) { exempt++; continue }
       if (allowed.has(m[2])) continue
       console.error(`[check-counts] ${rel}:${i + 1}: "${m[0].trim()}" is not a derived count`)
       bad++

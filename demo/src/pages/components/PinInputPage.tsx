@@ -452,9 +452,9 @@ const pageStyles = css`
 // ─── Import Strings ─────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { PinInput } from '@annondeveloper/ui-kit'",
-  lite: "import { PinInput } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { PinInput } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { PinInput } from '@frontier-labs/ui-kit'",
+  lite: "import { PinInput } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { PinInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -550,8 +550,8 @@ function generateHtmlCode(length: number, size: PinSize, disabled: boolean): str
     `  <input class="ui-pin-input__digit" type="text" inputmode="numeric" maxlength="1" aria-label="PIN digit ${i + 1} of ${length}"${disabled ? ' disabled' : ''} />`
   ).join('\n')
 
-  return `<!-- PinInput — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/pin-input.css">
+  return `<!-- PinInput — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/pin-input.css">
 
 <div class="ui-pin-input" data-size="${size}" role="group" aria-label="PIN input">
   <div class="ui-pin-input__digits">
@@ -575,10 +575,10 @@ function generateVueCode(tier: Tier, length: number, size: PinSize, type: PinTyp
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/pin-input.css';
+@import '@frontier-labs/ui-kit/css/components/pin-input.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (length !== 4) attrs.push(`  :length="${length}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -614,9 +614,9 @@ function generateAngularCode(tier: Tier, length: number, size: PinSize, disabled
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/pin-input.css';`
+@import '@frontier-labs/ui-kit/css/components/pin-input.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-pin-input" data-size="${size}" role="group" aria-label="PIN input">
   <div class="ui-pin-input__digits">
@@ -645,10 +645,10 @@ function generateSvelteCode(tier: Tier, length: number, size: PinSize, disabled:
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/pin-input.css';
+  @import '@frontier-labs/ui-kit/css/components/pin-input.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { PinInput } from '${importPath}';
 
@@ -1094,7 +1094,7 @@ export default function PinInputPage() {
             variant="secondary"
             size="sm"
             icon={<Icon name="github" size="sm" />}
-            onClick={() => window.open('https://github.com/annondeveloper/ui-kit/blob/main/src/components/pin-input.tsx', '_blank')}
+            onClick={() => window.open('https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/pin-input.tsx', '_blank')}
           >
             Source on GitHub
           </Button>

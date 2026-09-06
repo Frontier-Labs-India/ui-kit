@@ -437,9 +437,9 @@ const MAX_WIDTHS: MaxWidth[] = ['sm', 'md', 'lg', 'xl', 'full']
 const PADDINGS: Padding[] = ['none', 'sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PageShell } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PageShell } from '@annondeveloper/ui-kit'",
-  premium: "import { PageShell } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PageShell } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PageShell } from '@frontier-labs/ui-kit'",
+  premium: "import { PageShell } from '@frontier-labs/ui-kit/premium'",
 }
 
 const TIERS: { id: Tier; label: string }[] = [
@@ -487,8 +487,8 @@ function generateReactCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): st
 
 function generateHtmlCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): string {
   const cls = tier === 'lite' ? 'ui-lite-page-shell' : 'ui-page-shell'
-  return `<!-- PageShell — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/page-shell.css">
+  return `<!-- PageShell — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/page-shell.css">
 
 <div class="${cls}" data-max-width="${maxWidth}" data-padding="${padding}">
   <h1>My Page</h1>
@@ -498,9 +498,9 @@ function generateHtmlCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): str
 
 function generateVueCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-page-shell" data-max-width="${maxWidth}" data-padding="${padding}">\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-page-shell" data-max-width="${maxWidth}" data-padding="${padding}">\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (maxWidth !== 'lg') attrs.push(`  maxWidth="${maxWidth}"`)
   if (padding !== 'md') attrs.push(`  padding="${padding}"`)
@@ -512,17 +512,17 @@ function generateVueCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): stri
 
 function generateAngularCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-page-shell" data-max-width="${maxWidth}" data-padding="${padding}">\n  <ng-content></ng-content>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-page-shell" data-max-width="${maxWidth}" data-padding="${padding}">\n  <ng-content></ng-content>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<div\n  class="ui-page-shell"\n  data-max-width="${maxWidth}"\n  data-padding="${padding}"\n>\n  <ng-content></ng-content>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/page-shell.css';`
 }
 
 function generateSvelteCode(tier: Tier, maxWidth: MaxWidth, padding: Padding): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-page-shell"\n  data-max-width="${maxWidth}"\n  data-padding="${padding}"\n>\n  <slot />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-page-shell"\n  data-max-width="${maxWidth}"\n  data-padding="${padding}"\n>\n  <slot />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { PageShell } from '${importPath}';\n</script>\n\n<PageShell\n  maxWidth="${maxWidth}"\n  padding="${padding}"\n>\n  <slot />\n</PageShell>`
 }
 
@@ -833,7 +833,7 @@ export default function PageShellPage() {
         <h2 className="page-shell-page__section-title">Source</h2>
         <a
           className="page-shell-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/page-shell.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/page-shell.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

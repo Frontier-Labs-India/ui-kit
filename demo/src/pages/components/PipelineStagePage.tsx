@@ -639,9 +639,9 @@ type Orientation = 'horizontal' | 'vertical'
 const ORIENTATIONS: Orientation[] = ['horizontal', 'vertical']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PipelineStage } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PipelineStage } from '@annondeveloper/ui-kit'",
-  premium: "import { PipelineStage } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PipelineStage } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PipelineStage } from '@frontier-labs/ui-kit'",
+  premium: "import { PipelineStage } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -726,13 +726,13 @@ function generateReactCode(tier: Tier, orientation: Orientation, clickable: bool
   if (clickable && tier !== 'lite') props.push('  onStageClick={(id) => console.log(id)}')
   if (motion !== 3 && tier !== 'lite') props.push(`  motion={${motion}}`)
 
-  return `${importStr}\nimport type { Stage } from '@annondeveloper/ui-kit'\n\nconst stages: Stage[] = [\n  { id: 'lint', label: 'Lint', status: 'success', duration: 12 },\n  { id: 'test', label: 'Test', status: 'running', duration: 45 },\n  { id: 'build', label: 'Build', status: 'pending' },\n]\n\n<PipelineStage\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { Stage } from '@frontier-labs/ui-kit'\n\nconst stages: Stage[] = [\n  { id: 'lint', label: 'Lint', status: 'success', duration: 12 },\n  { id: 'test', label: 'Test', status: 'running', duration: 45 },\n  { id: 'build', label: 'Build', status: 'pending' },\n]\n\n<PipelineStage\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier, orientation: Orientation): string {
   const cls = tier === 'lite' ? 'ui-lite-pipeline-stage' : 'ui-pipeline-stage'
-  return `<!-- PipelineStage — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/pipeline-stage.css'}">
+  return `<!-- PipelineStage — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/pipeline-stage.css'}">
 
 <div class="${cls}" data-orientation="${orientation}">
   <ol class="${cls}__list">
@@ -751,18 +751,18 @@ function generateHtmlCode(tier: Tier, orientation: Orientation): string {
 }
 
 function generateVueCode(tier: Tier, orientation: Orientation, clickable: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const clickProp = clickable && tier !== 'lite' ? `\n    @stage-click="handleClick"` : ''
   return `<template>\n  <PipelineStage\n    :stages="stages"\n    orientation="${orientation}"${clickProp}\n  />\n</template>\n\n<script setup>\nimport { PipelineStage } from '${importPath}'\nimport { ref } from 'vue'\n\nconst stages = ref([\n  { id: 'lint', label: 'Lint', status: 'success', duration: 12 },\n  { id: 'test', label: 'Test', status: 'running' },\n])\n</script>`
 }
 
 function generateAngularCode(tier: Tier, orientation: Orientation): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->\n<ui-pipeline-stage\n  [stages]="stages"\n  orientation="${orientation}"\n></ui-pipeline-stage>\n\n/* Import CSS */\n@import '${importPath}/css/components/pipeline-stage.css';`
 }
 
 function generateSvelteCode(tier: Tier, orientation: Orientation, clickable: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const clickProp = clickable && tier !== 'lite' ? `\n  onStageClick={(id) => console.log(id)}` : ''
   return `<script>\n  import { PipelineStage } from '${importPath}';\n\n  const stages = [\n    { id: 'lint', label: 'Lint', status: 'success', duration: 12 },\n    { id: 'test', label: 'Test', status: 'running' },\n  ];\n</script>\n\n<PipelineStage\n  {stages}\n  orientation="${orientation}"${clickProp}\n/>`
 }
@@ -1114,7 +1114,7 @@ export default function PipelineStagePage() {
               No click handlers, no pulse animation, no duration display.
             </p>
             <div className="pipeline-stage-page__tier-import">
-              import {'{'} PipelineStage {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} PipelineStage {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="pipeline-stage-page__tier-preview">
               <LitePipelineStage stages={CI_PIPELINE.slice(0, 3)} />
@@ -1145,7 +1145,7 @@ export default function PipelineStagePage() {
               clickable labels, duration formatting, and motion-level support.
             </p>
             <div className="pipeline-stage-page__tier-import">
-              import {'{'} PipelineStage {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} PipelineStage {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="pipeline-stage-page__tier-preview">
               <PipelineStage stages={CI_PIPELINE.slice(0, 3)} />
@@ -1176,7 +1176,7 @@ export default function PipelineStagePage() {
               spring-physics connector flow, and ambient status glow effects.
             </p>
             <div className="pipeline-stage-page__tier-import">
-              import {'{'} PipelineStage {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} PipelineStage {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="pipeline-stage-page__tier-preview">
               <PremiumPipelineStage stages={CI_PIPELINE.slice(0, 3)} />
@@ -1311,13 +1311,13 @@ export default function PipelineStagePage() {
         <h2 className="pipeline-stage-page__section-title"><a href="#source">Source</a></h2>
         <p className="pipeline-stage-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="pipeline-stage-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-stage-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/pipeline-stage.tsx (Standard)
           </a>
-          <a className="pipeline-stage-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-stage-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/pipeline-stage.tsx (Lite)
           </a>
-          <a className="pipeline-stage-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-stage-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/pipeline-stage.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/pipeline-stage.tsx (Premium)
           </a>
         </div>

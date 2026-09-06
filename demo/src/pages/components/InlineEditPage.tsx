@@ -444,9 +444,9 @@ type EditTrigger = 'click' | 'dblclick'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { InlineEdit } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { InlineEdit } from '@annondeveloper/ui-kit'",
-  premium: "import { InlineEdit } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { InlineEdit } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { InlineEdit } from '@frontier-labs/ui-kit'",
+  premium: "import { InlineEdit } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -512,11 +512,11 @@ function generateHtmlCode(tier: Tier, placeholder: string): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<!-- InlineEdit — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/inline-edit.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/inline-edit.css">
 
 <div class="ui-inline-edit" data-size="md">
   <div class="ui-inline-edit__display" role="button" tabindex="0">
@@ -540,7 +540,7 @@ const text = ref('Click to edit')
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -554,7 +554,7 @@ const text = ref('Click to edit')
 
 <script setup>
 import { ref } from 'vue'
-import { InlineEdit } from '@annondeveloper/ui-kit'
+import { InlineEdit } from '@frontier-labs/ui-kit'
 const text = ref('Click to edit')
 const onSave = (val) => console.log('Saved:', val)
 </script>`
@@ -575,7 +575,7 @@ function generateAngularCode(tier: Tier, placeholder: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier (CSS approach) -->
 <div class="ui-inline-edit" data-size="md">
@@ -589,24 +589,24 @@ function generateAngularCode(tier: Tier, placeholder: string): string {
 </div>
 
 /* Import CSS */
-@import '@annondeveloper/ui-kit/css/components/inline-edit.css';`
+@import '@frontier-labs/ui-kit/css/components/inline-edit.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, placeholder: string): string {
   if (tier === 'lite') {
     return `<script>
-  import { InlineEdit } from '@annondeveloper/ui-kit/lite';
+  import { InlineEdit } from '@frontier-labs/ui-kit/lite';
   let text = 'Click to edit';
 </script>
 
 <InlineEdit value={text} placeholder="${placeholder || 'Click to edit'}" on:change={(e) => text = e.detail} />
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { InlineEdit } from '@annondeveloper/ui-kit';
+  import { InlineEdit } from '@frontier-labs/ui-kit';
   let text = 'Click to edit';
 </script>
 
@@ -1008,7 +1008,7 @@ export default function InlineEditPage() {
               No sizes, no multiline, no edit icon, no edit trigger config.
             </p>
             <div className="inline-edit-page__tier-import">
-              import {'{'} InlineEdit {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} InlineEdit {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="inline-edit-page__tier-preview">
               <LiteInlineEdit value="Lite edit" onChange={() => {}} />
@@ -1035,7 +1035,7 @@ export default function InlineEditPage() {
               pencil icon hover, save/cancel callbacks, motion entry animation.
             </p>
             <div className="inline-edit-page__tier-import">
-              import {'{'} InlineEdit {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} InlineEdit {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="inline-edit-page__tier-preview">
               <InlineEdit value="Standard edit" onChange={() => {}} size="sm" />
@@ -1062,7 +1062,7 @@ export default function InlineEditPage() {
               Spring-scale on edit mode enter, aurora glow border on the edit field, and shimmer sweep on save.
             </p>
             <div className="inline-edit-page__tier-import">
-              import {'{'} InlineEdit {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} InlineEdit {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="inline-edit-page__tier-preview">
               <PremiumInlineEdit value="Premium edit" onChange={() => {}} size="sm" />
@@ -1094,13 +1094,13 @@ export default function InlineEditPage() {
         <h2 className="inline-edit-page__section-title"><a href="#source">Source</a></h2>
         <p className="inline-edit-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="inline-edit-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="inline-edit-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
             src/components/inline-edit.tsx (Standard)
           </a>
-          <a className="inline-edit-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="inline-edit-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/inline-edit.tsx (Lite)
           </a>
-          <a className="inline-edit-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="inline-edit-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/inline-edit.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/inline-edit.tsx (Premium)
           </a>
         </div>

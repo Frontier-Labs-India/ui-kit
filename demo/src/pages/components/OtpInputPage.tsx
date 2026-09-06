@@ -501,9 +501,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const LENGTHS = [4, 5, 6, 8] as const
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { OtpInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { OtpInput } from '@annondeveloper/ui-kit'",
-  premium: "import { OtpInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { OtpInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { OtpInput } from '@frontier-labs/ui-kit'",
+  premium: "import { OtpInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -573,11 +573,11 @@ ${inputs}
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<!-- OtpInput — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/otp-input.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/otp-input.css">
 
 <div class="ui-otp-input" data-size="md" role="group" aria-label="Verification code">
   <div class="ui-otp-input__digits">
@@ -599,7 +599,7 @@ const verify = (code) => console.log('Verify:', code)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -612,7 +612,7 @@ const verify = (code) => console.log('Verify:', code)
 
 <script setup>
 import { ref } from 'vue'
-import { OtpInput } from '@annondeveloper/ui-kit'
+import { OtpInput } from '@frontier-labs/ui-kit'
 const otp = ref('')
 const verify = (code) => console.log('Verify:', code)
 </script>`
@@ -626,7 +626,7 @@ function generateAngularCode(tier: Tier, length: number): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier (CSS approach) -->
 <div class="ui-otp-input" data-size="md" role="group" aria-label="Verification code">
@@ -636,24 +636,24 @@ function generateAngularCode(tier: Tier, length: number): string {
 </div>
 
 /* Import CSS */
-@import '@annondeveloper/ui-kit/css/components/otp-input.css';`
+@import '@frontier-labs/ui-kit/css/components/otp-input.css';`
 }
 
 function generateSvelteCode(tier: Tier, length: number): string {
   if (tier === 'lite') {
     return `<script>
-  import { OtpInput } from '@annondeveloper/ui-kit/lite';
+  import { OtpInput } from '@frontier-labs/ui-kit/lite';
   let otp = '';
 </script>
 
 <OtpInput length={${length}} bind:value={otp} on:complete={(e) => verify(e.detail)} />
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { OtpInput } from '@annondeveloper/ui-kit';
+  import { OtpInput } from '@frontier-labs/ui-kit';
   let otp = '';
 </script>
 
@@ -1114,7 +1114,7 @@ export default function OtpInputPage() {
               No sizes, no shake animation, no type filtering.
             </p>
             <div className="otp-input-page__tier-import">
-              import {'{'} OtpInput {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} OtpInput {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="otp-input-page__tier-preview">
               <LiteOtpInput length={4} />
@@ -1141,7 +1141,7 @@ export default function OtpInputPage() {
               auto-complete callback, type filtering, and motion levels.
             </p>
             <div className="otp-input-page__tier-import">
-              import {'{'} OtpInput {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} OtpInput {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="otp-input-page__tier-preview">
               <OtpInput length={4} size="sm" value="42" aria-label="Standard preview" />
@@ -1168,7 +1168,7 @@ export default function OtpInputPage() {
               Aurora glow focus ring, spring-scale pop on digit entry, and celebration burst on completion.
             </p>
             <div className="otp-input-page__tier-import">
-              import {'{'} OtpInput {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} OtpInput {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="otp-input-page__tier-preview">
               <PremiumOtpInput length={4} size="sm" value="42" aria-label="Premium preview" />
@@ -1244,13 +1244,13 @@ export default function OtpInputPage() {
         <h2 className="otp-input-page__section-title"><a href="#source">Source</a></h2>
         <p className="otp-input-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="otp-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/otp-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="otp-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/otp-input.tsx" target="_blank" rel="noopener noreferrer">
             src/components/otp-input.tsx (Standard)
           </a>
-          <a className="otp-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/otp-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="otp-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/otp-input.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/otp-input.tsx (Lite)
           </a>
-          <a className="otp-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/otp-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="otp-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/otp-input.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/otp-input.tsx (Premium)
           </a>
         </div>

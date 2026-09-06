@@ -751,9 +751,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Navbar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Navbar } from '@annondeveloper/ui-kit'",
-  premium: "import { Navbar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Navbar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Navbar } from '@frontier-labs/ui-kit'",
+  premium: "import { Navbar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -894,8 +894,8 @@ function generateHtmlCode(tier: Tier, sticky: boolean, bordered: boolean, transp
   if (bordered) attrs.push('data-bordered="true"')
   if (transparent) attrs.push('data-transparent="true"')
 
-  return `<!-- Navbar -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/navbar.css">
+  return `<!-- Navbar -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/navbar.css">
 
 <header ${attrs.join(' ')}>
   <div class="ui-navbar__logo">
@@ -925,7 +925,7 @@ function generateVueCode(tier: Tier, sticky: boolean, bordered: boolean, transpa
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -945,7 +945,7 @@ function generateVueCode(tier: Tier, sticky: boolean, bordered: boolean, transpa
 </template>
 
 <script setup>
-import { Navbar } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'
+import { Navbar } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'
 </script>`
 }
 
@@ -970,7 +970,7 @@ function generateAngularCode(tier: Tier, sticky: boolean, bordered: boolean, tra
 </header>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/navbar.css';`
+@import '@frontier-labs/ui-kit/css/components/navbar.css';`
 }
 
 function generateSvelteCode(tier: Tier, sticky: boolean, bordered: boolean, transparent: boolean): string {
@@ -985,7 +985,7 @@ function generateSvelteCode(tier: Tier, sticky: boolean, bordered: boolean, tran
 </header>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -995,7 +995,7 @@ function generateSvelteCode(tier: Tier, sticky: boolean, bordered: boolean, tran
   if (transparent) props.push('  transparent')
 
   return `<script>
-  import { Navbar } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}';
+  import { Navbar } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}';
 </script>
 
 <Navbar
@@ -1457,7 +1457,7 @@ export default function NavbarPage() {
               where you handle responsive nav yourself.
             </p>
             <div className="navbar-page__tier-import">
-              import {'{'} Navbar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Navbar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="navbar-page__tier-preview">
               <LiteNavbar
@@ -1495,7 +1495,7 @@ export default function NavbarPage() {
               backdrop blur, and accessible toggle button with aria-expanded.
             </p>
             <div className="navbar-page__tier-import">
-              import {'{'} Navbar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Navbar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="navbar-page__tier-preview">
               <Navbar
@@ -1532,7 +1532,7 @@ export default function NavbarPage() {
               Glass morphism surface, aurora glow on active items, spring hover transitions, and slide entrance animation.
             </p>
             <div className="navbar-page__tier-import">
-              import {'{'} Navbar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Navbar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="navbar-page__tier-preview">
               <PremiumNavbar
@@ -1679,7 +1679,7 @@ export default function NavbarPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/navbar.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/navbar.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-page__source-link"
@@ -1688,7 +1688,7 @@ export default function NavbarPage() {
             src/components/navbar.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/navbar.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/navbar.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-page__source-link"
@@ -1697,7 +1697,7 @@ export default function NavbarPage() {
             src/lite/navbar.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/navbar.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/navbar.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="navbar-page__source-link"

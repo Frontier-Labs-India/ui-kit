@@ -16,9 +16,9 @@ export type LayoutTemplate = 'dashboard' | 'form' | 'marketing' | 'data-table' |
 // ─── Import Path Helpers ────────────────────────────────────────────────────
 
 function importPath(tier: string): string {
-  if (tier === 'lite') return '@annondeveloper/ui-kit/lite'
-  if (tier === 'premium') return '@annondeveloper/ui-kit/premium'
-  return '@annondeveloper/ui-kit'
+  if (tier === 'lite') return '@frontier-labs/ui-kit/lite'
+  if (tier === 'premium') return '@frontier-labs/ui-kit/premium'
+  return '@frontier-labs/ui-kit'
 }
 
 function litePrefix(name: string): string {
@@ -302,7 +302,7 @@ function reactToVue(react: string): string {
   // Extract import names and build Vue script setup
   const importMatch = react.match(/import \{([^}]+)\} from '([^']+)'/)
   const components = importMatch ? importMatch[1].trim() : ''
-  const pkg = importMatch ? importMatch[2] : '@annondeveloper/ui-kit'
+  const pkg = importMatch ? importMatch[2] : '@frontier-labs/ui-kit'
 
   // Simple JSX to Vue template transform
   let template = react
@@ -343,7 +343,7 @@ function reactToAngular(react: string): string {
   const components = importMatch ? importMatch[1].trim() : ''
 
   return `// ${components.split(',').map((c: string) => c.trim()).join(', ')} Component
-// Angular adapter — install: npm i @annondeveloper/ui-kit
+// Angular adapter — install: npm i @frontier-labs/ui-kit
 
 import { Component } from '@angular/core';
 
@@ -379,7 +379,7 @@ ${react.split('\n').map(l => '  ' + l).join('\n')}
 function reactToSvelte(react: string): string {
   const importMatch = react.match(/import \{([^}]+)\} from '([^']+)'/)
   const components = importMatch ? importMatch[1].trim() : ''
-  const pkg = importMatch ? importMatch[2] : '@annondeveloper/ui-kit'
+  const pkg = importMatch ? importMatch[2] : '@frontier-labs/ui-kit'
 
   return `<script lang="ts">
   import { ${components} } from '${pkg}'
@@ -412,7 +412,7 @@ ${react.split('\n').map(l => '  ' + l).join('\n')}
 function reactToHtml(react: string): string {
   // Extract a simple static HTML version
   const importMatch = react.match(/import \{([^}]+)\} from '([^']+)'/)
-  const pkg = importMatch ? importMatch[2] : '@annondeveloper/ui-kit'
+  const pkg = importMatch ? importMatch[2] : '@frontier-labs/ui-kit'
 
   return `<!DOCTYPE html>
 <html lang="en">

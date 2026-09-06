@@ -678,9 +678,9 @@ const STATUSES: Status[] = ['ok', 'warning', 'critical', 'info']
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StatusPulse } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StatusPulse } from '@annondeveloper/ui-kit'",
-  premium: "import { StatusPulse } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StatusPulse } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StatusPulse } from '@frontier-labs/ui-kit'",
+  premium: "import { StatusPulse } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -760,8 +760,8 @@ function generateReactCode(tier: Tier, status: Status, size: Size, label: string
 
 function generateHtmlCode(tier: Tier, status: Status, size: Size, label: string): string {
   const cls = tier === 'lite' ? 'ui-lite-status-pulse' : 'ui-status-pulse'
-  return `<!-- StatusPulse -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/status-pulse.css">
+  return `<!-- StatusPulse -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/status-pulse.css">
 
 <span class="${cls}" data-status="${status}" data-size="${size}" role="img"${label ? ` aria-label="${label}"` : ''}>
   <span class="${cls}__dot"></span>
@@ -778,7 +778,7 @@ function generateVueCode(tier: Tier, status: Status, size: Size, label: string):
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const props = [`status="${status}"`]
@@ -789,7 +789,7 @@ function generateVueCode(tier: Tier, status: Status, size: Size, label: string):
 </template>
 
 <script setup>
-import { StatusPulse } from '@annondeveloper/ui-kit'
+import { StatusPulse } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -800,7 +800,7 @@ function generateAngularCode(tier: Tier, status: Status, size: Size, label: stri
 </span>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular -- Standard tier -->
 <span
@@ -817,7 +817,7 @@ function generateAngularCode(tier: Tier, status: Status, size: Size, label: stri
 </span>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/status-pulse.css';`
+@import '@frontier-labs/ui-kit/css/components/status-pulse.css';`
 }
 
 function generateSvelteCode(tier: Tier, status: Status, size: Size, label: string): string {
@@ -827,14 +827,14 @@ function generateSvelteCode(tier: Tier, status: Status, size: Size, label: strin
 </span>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const props = [`status="${status}"`]
   if (size !== 'md') props.push(`size="${size}"`)
   if (label) props.push(`label="${label}"`)
   return `<script>
-  import { StatusPulse } from '@annondeveloper/ui-kit';
+  import { StatusPulse } from '@frontier-labs/ui-kit';
 </script>
 
 <StatusPulse ${props.join(' ')} />`
@@ -1212,7 +1212,7 @@ export default function StatusPulsePage() {
               No radiating rings, no motion control. Static colored indicator.
             </p>
             <div className="status-pulse-page__tier-import">
-              import {'{'} StatusPulse {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StatusPulse {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="status-pulse-page__tier-preview">
               <LiteStatusPulse status="ok" label="Lite OK" />
@@ -1244,7 +1244,7 @@ export default function StatusPulsePage() {
               ARIA role="img" with label, and reduced-motion support.
             </p>
             <div className="status-pulse-page__tier-import">
-              import {'{'} StatusPulse {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StatusPulse {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="status-pulse-page__tier-preview">
               <StatusPulse status="ok" label="OK" />
@@ -1276,7 +1276,7 @@ export default function StatusPulsePage() {
               Spring-scale entrance, ambient aurora glow behind the dot, multi-ring pulse, and glow breathing effect.
             </p>
             <div className="status-pulse-page__tier-import">
-              import {'{'} StatusPulse {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StatusPulse {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="status-pulse-page__tier-preview">
               <PremiumStatusPulse status="ok" label="OK" size="lg" />
@@ -1400,13 +1400,13 @@ export default function StatusPulsePage() {
         <h2 className="status-pulse-page__section-title"><a href="#source">Source</a></h2>
         <p className="status-pulse-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="status-pulse-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-pulse-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/status-pulse.tsx (Standard)
           </a>
-          <a className="status-pulse-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-pulse-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/status-pulse.tsx (Lite)
           </a>
-          <a className="status-pulse-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-pulse-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/status-pulse.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/status-pulse.tsx (Premium)
           </a>
         </div>

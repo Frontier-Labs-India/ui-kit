@@ -489,9 +489,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ConnectionTestPanel } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ConnectionTestPanel } from '@annondeveloper/ui-kit'",
-  premium: "import { ConnectionTestPanel } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ConnectionTestPanel } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ConnectionTestPanel } from '@frontier-labs/ui-kit'",
+  premium: "import { ConnectionTestPanel } from '@frontier-labs/ui-kit/premium'",
 }
 
 const scenarioSteps: Record<Scenario, TestStep[]> = {
@@ -580,22 +580,22 @@ ${props.join('\n')}
 }
 
 function generateVueCode(tier: Tier, title: string): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>\n  <ConnectionTestPanel :steps="steps" title="${title}" @retry="handleRetry" />\n</template>\n\n<script setup>\nimport { ConnectionTestPanel } from '${importPath}'\nconst steps = [\n  { id: 'dns', label: 'DNS Resolution', status: 'passed', duration: 12 },\n]\nfunction handleRetry() { console.log('retry') }\n</script>`
 }
 
 function generateAngularCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- CSS-only approach -->\n<div class="ui-connection-test-panel">\n  <div class="ui-connection-test-panel__header">\n    <span>Connection Test</span>\n  </div>\n  <div class="ui-connection-test-panel__steps">\n    <div class="ui-connection-test-panel__step" data-status="passed">DNS Resolution</div>\n    <div class="ui-connection-test-panel__step" data-status="pending">TCP Handshake</div>\n  </div>\n</div>\n\n@import '${importPath}/css/components/connection-test-panel.css';`
 }
 
 function generateSvelteCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { ConnectionTestPanel } from '${importPath}';\n  const steps = [{ id: 'dns', label: 'DNS Resolution', status: 'passed', duration: 12 }];\n</script>\n\n<ConnectionTestPanel {steps} title="Connection Test" on:retry={() => console.log('retry')} />`
 }
 
 function generateHtmlCode(): string {
-  return `<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/connection-test-panel.css">\n\n<div class="ui-connection-test-panel">\n  <div class="ui-connection-test-panel__header">\n    <span class="ui-connection-test-panel__title">Connection Test</span>\n  </div>\n  <div class="ui-connection-test-panel__steps">\n    <div class="ui-connection-test-panel__step" data-status="passed">\n      <span>DNS Resolution</span>\n      <span>12ms</span>\n    </div>\n    <div class="ui-connection-test-panel__step" data-status="pending">\n      <span>TCP Handshake</span>\n    </div>\n  </div>\n</div>`
+  return `<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/connection-test-panel.css">\n\n<div class="ui-connection-test-panel">\n  <div class="ui-connection-test-panel__header">\n    <span class="ui-connection-test-panel__title">Connection Test</span>\n  </div>\n  <div class="ui-connection-test-panel__steps">\n    <div class="ui-connection-test-panel__step" data-status="passed">\n      <span>DNS Resolution</span>\n      <span>12ms</span>\n    </div>\n    <div class="ui-connection-test-panel__step" data-status="pending">\n      <span>TCP Handshake</span>\n    </div>\n  </div>\n</div>`
 }
 
 // ─── Playground ──────────────────────────────────────────────────────────────
@@ -898,7 +898,7 @@ export default function ConnectionTestPanelPage() {
       {/* Source */}
       <section className="connection-test-panel-page__section" id="source">
         <h2 className="connection-test-panel-page__section-title"><a href="#source">Source</a></h2>
-        <a className="connection-test-panel-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/connection-test-panel.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="connection-test-panel-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/connection-test-panel.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

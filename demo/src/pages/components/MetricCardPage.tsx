@@ -660,9 +660,9 @@ type Trend = 'up' | 'down' | 'flat'
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { MetricCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { MetricCard } from '@annondeveloper/ui-kit'",
-  premium: "import { MetricCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { MetricCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { MetricCard } from '@frontier-labs/ui-kit'",
+  premium: "import { MetricCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_SPARKLINE = [12, 18, 14, 22, 19, 25, 28, 24, 30, 27, 35, 32]
@@ -793,7 +793,7 @@ function generateReactCode(
   motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = showIcon ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = [`  title="${title}"`, `  value="${value}"`]
   if (trend !== 'none') props.push(`  trend="${trend}"`)
@@ -819,8 +819,8 @@ function generateHtmlCode(
     ? `\n    <span class="ui-metric-card__trend" data-trend="${trend}">${trend === 'up' ? '\u2191' : trend === 'down' ? '\u2193' : '\u2192'}</span>`
     : ''
 
-  return `<!-- MetricCard \u2014 @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/metric-card.css">
+  return `<!-- MetricCard \u2014 @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/metric-card.css">
 
 <div class="ui-metric-card" role="group" aria-label="${title}"${statusAttr}>
   <div class="ui-metric-card__header">
@@ -850,11 +850,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/metric-card.css';
+@import '@frontier-labs/ui-kit/css/components/metric-card.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  title="${title}"`, `  value="${value}"`]
   if (trend !== 'none') attrs.push(`  trend="${trend}"`)
   if (status !== 'none') attrs.push(`  status="${status}"`)
@@ -872,15 +872,15 @@ import { MetricCard } from '${importPath}'
 
 function generateAngularCode(tier: Tier, title: string, value: string, status: Status | 'none'): string {
   const statusAttr = status !== 'none' && tier !== 'lite' ? ` data-status="${status}"` : ''
-  const cssPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const cssPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular \u2014 ${tier} tier -->\n<div class="ui-metric-card" role="group" aria-label="${title}"${statusAttr}>\n  <div class="ui-metric-card__header">\n    <h3 class="ui-metric-card__title">${title}</h3>\n  </div>\n  <div class="ui-metric-card__value">${value}</div>\n</div>\n\n/* styles.css */\n@import '${cssPath}/css/components/metric-card.css';`
 }
 
 function generateSvelteCode(tier: Tier, title: string, value: string, trend: Trend | 'none', status: Status | 'none'): string {
   if (tier === 'lite') {
-    return `<div class="ui-metric-card" role="group" aria-label="${title}">\n  <div class="ui-metric-card__header">\n    <h3 class="ui-metric-card__title">${title}</h3>\n  </div>\n  <div class="ui-metric-card__value">${value}</div>\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/css/components/metric-card.css';\n</style>`
+    return `<div class="ui-metric-card" role="group" aria-label="${title}">\n  <div class="ui-metric-card__header">\n    <h3 class="ui-metric-card__title">${title}</h3>\n  </div>\n  <div class="ui-metric-card__value">${value}</div>\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/css/components/metric-card.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  title="${title}"`, `  value="${value}"`]
   if (trend !== 'none') attrs.push(`  trend="${trend}"`)
   if (status !== 'none') attrs.push(`  status="${status}"`)
@@ -1660,13 +1660,13 @@ export default function MetricCardPage() {
         <h2 className="mc-page__section-title"><a href="#source">Source</a></h2>
         <p className="mc-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="mc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/metric-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="mc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/metric-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/metric-card.tsx (Standard)
           </a>
-          <a className="mc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/metric-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="mc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/metric-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/metric-card.tsx (Lite)
           </a>
-          <a className="mc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/metric-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="mc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/metric-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/metric-card.tsx (Premium)
           </a>
         </div>

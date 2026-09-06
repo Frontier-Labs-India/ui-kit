@@ -701,9 +701,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CommandBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CommandBar } from '@annondeveloper/ui-kit'",
-  premium: "import { CommandBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CommandBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CommandBar } from '@frontier-labs/ui-kit'",
+  premium: "import { CommandBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const DEMO_ITEMS: CommandItem[] = [
@@ -825,7 +825,7 @@ function generateReactCode(
     ? `const items: CommandItem[] = [\n  {\n    id: 'new-file',\n    label: 'New File',\n    description: 'Create a new file',\n    icon: <FileIcon />,\n    shortcut: ['Cmd', 'N'],\n    section: 'File',\n    onSelect: () => createFile(),\n  },\n  {\n    id: 'search',\n    label: 'Search',\n    icon: <SearchIcon />,\n    shortcut: ['Cmd', 'F'],\n    section: 'Edit',\n    onSelect: () => openSearch(),\n  },\n]`
     : `const items: CommandItem[] = [\n  { id: 'save', label: 'Save', onSelect: () => save() },\n  { id: 'open', label: 'Open', onSelect: () => open() },\n]`
 
-  return `${importStr}\nimport type { CommandItem } from '@annondeveloper/ui-kit'\n\n${itemsCode}\n\n<CommandBar\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { CommandItem } from '@frontier-labs/ui-kit'\n\n${itemsCode}\n\n<CommandBar\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier, placeholder: string): string {
@@ -837,23 +837,23 @@ function generateHtmlCode(tier: Tier, placeholder: string): string {
 
 function generateVueCode(tier: Tier, placeholder: string): string {
   if (tier === 'lite') {
-    return `<template>\n  <CommandBar\n    :open="open"\n    @close="open = false"\n    :items="items"\n    placeholder="${placeholder}"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { CommandBar } from '@annondeveloper/ui-kit/lite'\n\nconst open = ref(false)\nconst items = [\n  { id: 'save', label: 'Save', onSelect: () => {} },\n]\n</script>`
+    return `<template>\n  <CommandBar\n    :open="open"\n    @close="open = false"\n    :items="items"\n    placeholder="${placeholder}"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { CommandBar } from '@frontier-labs/ui-kit/lite'\n\nconst open = ref(false)\nconst items = [\n  { id: 'save', label: 'Save', onSelect: () => {} },\n]\n</script>`
   }
-  return `<template>\n  <CommandBar\n    :items="items"\n    :open="open"\n    @openChange="open = $event"\n    placeholder="${placeholder}"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { CommandBar } from '@annondeveloper/ui-kit'\n\nconst open = ref(false)\nconst items = [\n  { id: 'save', label: 'Save', onSelect: () => {} },\n]\n</script>`
+  return `<template>\n  <CommandBar\n    :items="items"\n    :open="open"\n    @openChange="open = $event"\n    placeholder="${placeholder}"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { CommandBar } from '@frontier-labs/ui-kit'\n\nconst open = ref(false)\nconst items = [\n  { id: 'save', label: 'Save', onSelect: () => {} },\n]\n</script>`
 }
 
 function generateAngularCode(tier: Tier, placeholder: string): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier -->\n<dialog class="ui-lite-command-bar" #dialog>\n  <input type="search" placeholder="${placeholder}" />\n  <ul role="listbox">\n    <li *ngFor="let item of items" role="option"\n      (click)="item.onSelect?.()">\n      {{ item.label }}\n    </li>\n  </ul>\n</dialog>\n\n/* styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier -->\n<dialog class="ui-lite-command-bar" #dialog>\n  <input type="search" placeholder="${placeholder}" />\n  <ul role="listbox">\n    <li *ngFor="let item of items" role="option"\n      (click)="item.onSelect?.()">\n      {{ item.label }}\n    </li>\n  </ul>\n</dialog>\n\n/* styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  return `<!-- Angular — use CSS class approach -->\n<div class="ui-command-bar">\n  <dialog #commandDialog>\n    <div class="ui-command-bar__search">\n      <input class="ui-command-bar__input"\n        type="text" role="combobox"\n        placeholder="${placeholder}" />\n    </div>\n    <div class="ui-command-bar__list" role="listbox">\n      <div *ngFor="let item of items"\n        class="ui-command-bar__item" role="option"\n        (click)="selectItem(item)">\n        {{ item.label }}\n      </div>\n    </div>\n  </dialog>\n</div>\n\n@import '@annondeveloper/ui-kit/css/components/command-bar.css';`
+  return `<!-- Angular — use CSS class approach -->\n<div class="ui-command-bar">\n  <dialog #commandDialog>\n    <div class="ui-command-bar__search">\n      <input class="ui-command-bar__input"\n        type="text" role="combobox"\n        placeholder="${placeholder}" />\n    </div>\n    <div class="ui-command-bar__list" role="listbox">\n      <div *ngFor="let item of items"\n        class="ui-command-bar__item" role="option"\n        (click)="selectItem(item)">\n        {{ item.label }}\n      </div>\n    </div>\n  </dialog>\n</div>\n\n@import '@frontier-labs/ui-kit/css/components/command-bar.css';`
 }
 
 function generateSvelteCode(tier: Tier, placeholder: string): string {
   if (tier === 'lite') {
-    return `<script>\n  import { CommandBar } from '@annondeveloper/ui-kit/lite';\n  let open = false;\n  const items = [\n    { id: 'save', label: 'Save', onSelect: () => {} },\n  ];\n</script>\n\n<CommandBar\n  {open}\n  onClose={() => open = false}\n  {items}\n  placeholder="${placeholder}"\n/>`
+    return `<script>\n  import { CommandBar } from '@frontier-labs/ui-kit/lite';\n  let open = false;\n  const items = [\n    { id: 'save', label: 'Save', onSelect: () => {} },\n  ];\n</script>\n\n<CommandBar\n  {open}\n  onClose={() => open = false}\n  {items}\n  placeholder="${placeholder}"\n/>`
   }
-  return `<script>\n  import { CommandBar } from '@annondeveloper/ui-kit';\n  let open = false;\n  const items = [\n    { id: 'save', label: 'Save', onSelect: () => {} },\n  ];\n</script>\n\n<CommandBar\n  {items}\n  {open}\n  onOpenChange={(v) => open = v}\n  placeholder="${placeholder}"\n/>`
+  return `<script>\n  import { CommandBar } from '@frontier-labs/ui-kit';\n  let open = false;\n  const items = [\n    { id: 'save', label: 'Save', onSelect: () => {} },\n  ];\n</script>\n\n<CommandBar\n  {items}\n  {open}\n  onOpenChange={(v) => open = v}\n  placeholder="${placeholder}"\n/>`
 }
 
 // ─── Playground Section ───────────────────────────────────────────────────────
@@ -1281,7 +1281,7 @@ export default function CommandBarPage() {
               No fuzzy search, no sections, no keyboard navigation, no recent items.
             </p>
             <div className="command-bar-page__tier-import">
-              import {'{'} CommandBar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CommandBar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="command-bar-page__size-breakdown">
               <div className="command-bar-page__size-row">
@@ -1307,7 +1307,7 @@ export default function CommandBarPage() {
               recent items, motion, ARIA combobox pattern, and shortcut badges.
             </p>
             <div className="command-bar-page__tier-import">
-              import {'{'} CommandBar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CommandBar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="command-bar-page__size-breakdown">
               <div className="command-bar-page__size-row">
@@ -1333,7 +1333,7 @@ export default function CommandBarPage() {
               Glass morphism container, aurora glow on active item, spring entrance animation, and hover glow.
             </p>
             <div className="command-bar-page__tier-import">
-              import {'{'} CommandBar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CommandBar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="command-bar-page__size-breakdown">
               <div className="command-bar-page__size-row">
@@ -1476,13 +1476,13 @@ export default function CommandBarPage() {
         <h2 className="command-bar-page__section-title"><a href="#source">Source</a></h2>
         <p className="command-bar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="command-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/command-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="command-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/command-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/command-bar.tsx (Standard)
           </a>
-          <a className="command-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/command-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="command-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/command-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/command-bar.tsx (Lite)
           </a>
-          <a className="command-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/command-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="command-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/command-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/command-bar.tsx (Premium)
           </a>
         </div>

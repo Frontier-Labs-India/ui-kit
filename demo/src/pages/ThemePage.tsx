@@ -322,7 +322,7 @@ export default function ThemePage() {
   const lightCSS = themeToCSS(lightTokens, ':root[data-mode="light"]')
   const fullCSS = `/* Dark mode (default) */\n${darkCSS}\n\n/* Light mode */\n${lightCSS}`
 
-  const codeExample = `import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+  const codeExample = `import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 
 // Generate theme from your brand color
 const theme = generateTheme('${brandColor}', '${mode}')
@@ -331,7 +331,7 @@ const theme = generateTheme('${brandColor}', '${mode}')
 applyTheme(theme)
 
 // Or generate CSS string for static usage
-import { themeToCSS } from '@annondeveloper/ui-kit/theme'
+import { themeToCSS } from '@frontier-labs/ui-kit/theme'
 const css = themeToCSS(theme)
 `
 

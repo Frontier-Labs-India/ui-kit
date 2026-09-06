@@ -679,9 +679,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { AppShell } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { AppShell } from '@annondeveloper/ui-kit'",
-  premium: "import { AppShell } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { AppShell } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { AppShell } from '@frontier-labs/ui-kit'",
+  premium: "import { AppShell } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -861,9 +861,9 @@ function generateVueCode(
   sidebarPosition: SidebarPos,
 ): string {
   if (tier === 'lite') {
-    return generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition) + `\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition) + `\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const props: string[] = []
   if (showNavbar) props.push('    <template #navbar><nav>Navbar</nav></template>')
   if (showSidebar) props.push('    <template #sidebar><aside>Sidebar</aside></template>')
@@ -881,9 +881,9 @@ function generateAngularCode(
   sidebarPosition: SidebarPos,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n/* styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n/* styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  return `<!-- Angular — use CSS class approach -->\n${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/app-shell.css';`
+  return `<!-- Angular — use CSS class approach -->\n${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/app-shell.css';`
 }
 
 function generateSvelteCode(
@@ -894,9 +894,9 @@ function generateSvelteCode(
   sidebarPosition: SidebarPos,
 ): string {
   if (tier === 'lite') {
-    return `${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `${generateHtmlCode(tier, showNavbar, showSidebar, showFooter, sidebarPosition)}\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const props: string[] = []
   if (showNavbar) props.push('  navbar={MyNavbar}')
   if (showSidebar) props.push('  sidebar={MySidebar}')
@@ -1349,7 +1349,7 @@ export default function AppShellPage() {
               Just navbar, sidebar, main, footer slots.
             </p>
             <div className="app-shell-page__tier-import">
-              import {'{'} AppShell {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} AppShell {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="app-shell-page__size-breakdown">
               <div className="app-shell-page__size-row">
@@ -1376,7 +1376,7 @@ export default function AppShellPage() {
               container queries, responsive collapse, print and forced-colors support.
             </p>
             <div className="app-shell-page__tier-import">
-              import {'{'} AppShell {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} AppShell {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="app-shell-page__size-breakdown">
               <div className="app-shell-page__size-row">
@@ -1402,7 +1402,7 @@ export default function AppShellPage() {
               Glass morphism sidebar, aurora glow on active nav items, spring sidebar collapse, and content entrance animation.
             </p>
             <div className="app-shell-page__tier-import">
-              import {'{'} AppShell {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} AppShell {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="app-shell-page__size-breakdown">
               <div className="app-shell-page__size-row">
@@ -1499,13 +1499,13 @@ export default function AppShellPage() {
         <h2 className="app-shell-page__section-title"><a href="#source">Source</a></h2>
         <p className="app-shell-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="app-shell-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/app-shell.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="app-shell-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/app-shell.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/app-shell.tsx (Standard)
           </a>
-          <a className="app-shell-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/app-shell.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="app-shell-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/app-shell.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/app-shell.tsx (Lite)
           </a>
-          <a className="app-shell-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/app-shell.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="app-shell-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/app-shell.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/app-shell.tsx (Premium)
           </a>
         </div>

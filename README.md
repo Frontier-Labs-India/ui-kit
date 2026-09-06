@@ -1,28 +1,30 @@
 [![Made for AI Assistants](https://img.shields.io/badge/Made_for-AI_Assistants-blueviolet?style=flat-square&logo=anthropic&logoColor=white)](https://modelcontextprotocol.io)
-[![npm version](https://img.shields.io/npm/v/@annondeveloper/ui-kit)](https://www.npmjs.com/package/@annondeveloper/ui-kit)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@annondeveloper/ui-kit)](https://bundlephobia.com/package/@annondeveloper/ui-kit)
-[![license](https://img.shields.io/npm/l/@annondeveloper/ui-kit)](https://github.com/annondeveloper/ui-kit/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@frontier-labs/ui-kit)](https://www.npmjs.com/package/@frontier-labs/ui-kit)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@frontier-labs/ui-kit)](https://bundlephobia.com/package/@frontier-labs/ui-kit)
+[![license](https://img.shields.io/npm/l/@frontier-labs/ui-kit)](https://github.com/Frontier-Labs-India/ui-kit/blob/main/LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)](https://www.typescriptlang.org/)
-[![JSR](https://jsr.io/badges/@annondeveloper/ui-kit)](https://jsr.io/@annondeveloper/ui-kit)
+[![JSR](https://jsr.io/badges/@frontier-labs/ui-kit)](https://jsr.io/@frontier-labs/ui-kit)
 
-# @annondeveloper/ui-kit v2
+# @frontier-labs/ui-kit v3
 
-> The first React component library built for AI agents. 159 zero-dependency components that AI assistants can discover, understand, and use via MCP.
+> A React component library built for AI agents. **162 zero-dependency components** (the Standard tier; 159 each in Lite and Premium) that an AI assistant can discover, understand and use over MCP.
+>
+> Every count on this page is derived from build output by `npm run test:counts`, which fails the build if a number here stops matching the code.
 
 ## How It Works
 
 **Step 1.** Install the library
 
 ```bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 ```
 
 **Step 2.** Import CSS (required!)
 
 ```tsx
 // Add to your root layout (app/layout.tsx, src/main.tsx, etc.)
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 ```
 
 > **Without these imports, components render correct HTML but have no visual styling.**
@@ -31,10 +33,10 @@ import '@annondeveloper/ui-kit/css/all.css'
 
 ```bash
 # Zero setup — hosted MCP (works instantly, no install needed)
-# Add to your MCP config: { "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse" }
+# Add to your MCP config: { "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse" }
 
 # Or run locally
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 **Step 4.** Ask your AI to build
@@ -44,12 +46,12 @@ npx @annondeveloper/ui-kit mcp
 Your AI generates production code directly:
 
 ```tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import {
   UIProvider, PageShell, PageHeader, StatsGrid, MetricCard,
   SectionHeader, CardGrid, Card, Toolbar, SearchInput, Button
-} from '@annondeveloper/ui-kit'
+} from '@frontier-labs/ui-kit'
 
 function Dashboard() {
   return (
@@ -100,7 +102,7 @@ No install needed. Connect any MCP client to the hosted server:
 {
   "mcpServers": {
     "ui-kit": {
-      "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
     }
   }
 }
@@ -109,7 +111,7 @@ No install needed. Connect any MCP client to the hosted server:
 ### Local (for offline use)
 
 ```bash
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 Or add to your MCP config (`claude_desktop_config.json`, `.cursor/mcp.json`):
@@ -119,7 +121,7 @@ Or add to your MCP config (`claude_desktop_config.json`, `.cursor/mcp.json`):
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["@annondeveloper/ui-kit", "mcp"]
+      "args": ["@frontier-labs/ui-kit", "mcp"]
     }
   }
 }
@@ -146,7 +148,7 @@ Works with every major AI coding assistant. One URL, zero install:
 | **Codex CLI** | Add to `~/.codex/config.json` | [plugins/codex](plugins/codex/README.md) |
 
 **Claude Code plugin features:**
-- `/ui-kit:component-finder` — search 147 components by name or use case
+- `/ui-kit:component-finder` — search 162 components by name or use case
 - `/ui-kit:generate-component` — produce working TSX with correct imports
 - `/ui-kit:design-system` — learn Aurora Fluid, OKLCH, motion levels
 - `/ui-kit:tier-guide` — choose the right weight tier
@@ -159,11 +161,11 @@ Works with every major AI coding assistant. One URL, zero install:
 For manual usage without an AI assistant:
 
 ```bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 ```
 
 ```tsx
-import { UIProvider, Button, Card, MetricCard } from '@annondeveloper/ui-kit'
+import { UIProvider, Button, Card, MetricCard } from '@frontier-labs/ui-kit'
 
 function App() {
   return (
@@ -180,7 +182,7 @@ function App() {
 ## Features
 
 - **Zero dependencies** — only `react` and `react-dom` peer deps
-- **147 components** — 73 general-purpose + 74 domain-specific across 3 weight tiers
+- **162 components** — 73 general-purpose + 74 domain-specific across 3 weight tiers
 - **3 weight tiers** — Lite (144), Standard (147), Premium (14) — optimize your bundle
 - **AI-native** — Claude Code plugin, Cursor/VS Code/Windsurf/Codex integrations, hosted MCP server
 - **MCP server** — 6 tools for component discovery, API reference, code generation, theme tokens
@@ -249,13 +251,13 @@ function App() {
 ## CLI Commands
 
 ```bash
-npx @annondeveloper/ui-kit init                                    # Copy theme + setup
-npx @annondeveloper/ui-kit add <component> [--tier] [--out-dir]    # Copy component source
-npx @annondeveloper/ui-kit create <name> --template <template>     # Scaffold project
-npx @annondeveloper/ui-kit list                                    # List all 147 components
-npx @annondeveloper/ui-kit theme <color>                           # Generate theme CSS
-npx @annondeveloper/ui-kit figma-export --theme <name> --output <file>  # Export Figma tokens
-npx @annondeveloper/ui-kit mcp                                     # Start MCP server for AI assistants
+npx @frontier-labs/ui-kit init                                    # Copy theme + setup
+npx @frontier-labs/ui-kit add <component> [--tier] [--out-dir]    # Copy component source
+npx @frontier-labs/ui-kit create <name> --template <template>     # Scaffold project
+npx @frontier-labs/ui-kit list                                    # List all 162 components
+npx @frontier-labs/ui-kit theme <color>                           # Generate theme CSS
+npx @frontier-labs/ui-kit figma-export --theme <name> --output <file>  # Export Figma tokens
+npx @frontier-labs/ui-kit mcp                                     # Start MCP server for AI assistants
 ```
 
 ## Component List
@@ -446,12 +448,12 @@ The following components were added in the v2.4 release:
 ## Entry Points
 
 ```typescript
-import { Button, Dialog, DataTable } from '@annondeveloper/ui-kit'
-import { Button as LiteButton } from '@annondeveloper/ui-kit/lite'
-import { Button as PremiumButton } from '@annondeveloper/ui-kit/premium'
-import { createForm, useForm, v } from '@annondeveloper/ui-kit/form'
-import { generateTheme, themeToCSS } from '@annondeveloper/ui-kit/theme'
-import '@annondeveloper/ui-kit/css/theme.css'  // Standalone CSS (optional)
+import { Button, Dialog, DataTable } from '@frontier-labs/ui-kit'
+import { Button as LiteButton } from '@frontier-labs/ui-kit/lite'
+import { Button as PremiumButton } from '@frontier-labs/ui-kit/premium'
+import { createForm, useForm, v } from '@frontier-labs/ui-kit/form'
+import { generateTheme, themeToCSS } from '@frontier-labs/ui-kit/theme'
+import '@frontier-labs/ui-kit/css/theme.css'  // Standalone CSS (optional)
 ```
 
 ## Weight Tiers
@@ -484,15 +486,15 @@ Typical app importing ~20 components: **~15-25 KB gzipped** after tree-shaking.
 
 > The React component library for monitoring dashboards, infrastructure tools, and professional applications.
 
-53 components &bull; Dark/Light theme &bull; Accessible &bull; AI-ready &bull; Real-time primitives &bull; Tree-shakeable
+162 components &bull; Dark/Light theme &bull; Accessible &bull; AI-ready &bull; Real-time primitives &bull; Tree-shakeable
 
-[![npm](https://img.shields.io/npm/v/@annondeveloper/ui-kit)](https://www.npmjs.com/package/@annondeveloper/ui-kit)
+[![npm](https://img.shields.io/npm/v/@frontier-labs/ui-kit)](https://www.npmjs.com/package/@frontier-labs/ui-kit)
 &nbsp;
-[GitHub](https://github.com/annondeveloper/ui-kit)
+[GitHub](https://github.com/Frontier-Labs-India/ui-kit)
 &nbsp;&bull;&nbsp;
-[JSR](https://jsr.io/@annondeveloper/ui-kit)
+[JSR](https://jsr.io/@frontier-labs/ui-kit)
 &nbsp;&bull;&nbsp;
-[Demo](https://annondeveloper.github.io/ui-kit)
+[Demo](https://frontier-labs-india.github.io/ui-kit)
 
 ---
 
@@ -502,19 +504,19 @@ Typical app importing ~20 components: **~15-25 KB gzipped** after tree-shaking.
 
 ```bash
 # npm
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 
 # pnpm
-pnpm add @annondeveloper/ui-kit
+pnpm add @frontier-labs/ui-kit
 
 # yarn
-yarn add @annondeveloper/ui-kit
+yarn add @frontier-labs/ui-kit
 
 # bun
-bun add @annondeveloper/ui-kit
+bun add @frontier-labs/ui-kit
 
 # jsr
-npx jsr add @annondeveloper/ui-kit
+npx jsr add @frontier-labs/ui-kit
 ```
 
 ### Peer Dependencies
@@ -530,7 +532,7 @@ v2 has zero external dependencies -- only `react` ^19 and `react-dom` ^19 are re
 Import the theme CSS once in your app's root layout:
 
 ```tsx
-import '@annondeveloper/ui-kit/theme.css'
+import '@frontier-labs/ui-kit/theme.css'
 ```
 
 Or copy the CSS custom properties into your own stylesheet. See [Theme System](#theme-system) below.
@@ -538,7 +540,7 @@ Or copy the CSS custom properties into your own stylesheet. See [Theme System](#
 ### Minimal Example
 
 ```tsx
-import { Button, MetricCard, StatusBadge, ToastProvider, useToast } from '@annondeveloper/ui-kit'
+import { Button, MetricCard, StatusBadge, ToastProvider, useToast } from '@frontier-labs/ui-kit'
 
 function App() {
   return (
@@ -567,7 +569,7 @@ Most component libraries are built for CRUD apps. This one is built for **ops da
 - **Real-Time** -- RealtimeValue tracks data freshness with connection state indicators and stale-data dimming. LiveFeed auto-scrolls with pause controls. NotificationStack supports auto-dismiss with progress bars.
 - **Monitoring** -- MetricCard with trend arrows and sparklines. ThresholdGauge with color-coded zones. UtilizationBar, UptimeTracker, PortStatusGrid, and PipelineStage for infrastructure dashboards.
 - **Data-Dense** -- DataTable with 10+ features in one import (search, column filters, sort, pagination, density control, column picker, CSV export, row animations). HeatmapCalendar, SeverityTimeline, LogViewer for high-density displays.
-- **Developer Experience** -- CLI for scaffolding (`npx @annondeveloper/ui-kit add button`). react-hook-form adapters. Zero config theming. Full TypeScript coverage with exported types.
+- **Developer Experience** -- CLI for scaffolding (`npx @frontier-labs/ui-kit add button`). react-hook-form adapters. Zero config theming. Full TypeScript coverage with exported types.
 
 ---
 
@@ -580,7 +582,7 @@ Most component libraries are built for CRUD apps. This one is built for **ops da
 A themed button with variant, size, and loading support.
 
 ```tsx
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 <Button variant="primary" size="md" loading={isPending}>Save</Button>
 ```
@@ -600,7 +602,7 @@ Extends all native `<button>` attributes. Supports `ref` forwarding.
 A pill-shaped label with 10 color presets and optional icon.
 
 ```tsx
-import { Badge, createBadgeVariant } from '@annondeveloper/ui-kit'
+import { Badge, createBadgeVariant } from '@frontier-labs/ui-kit'
 import { Shield } from 'lucide-react'
 
 <Badge color="green" icon={Shield} size="sm">Secure</Badge>
@@ -633,7 +635,7 @@ const SeverityBadge = createBadgeVariant({
 A styled card container with semantic structure via children.
 
 ```tsx
-import { Card } from '@annondeveloper/ui-kit'
+import { Card } from '@frontier-labs/ui-kit'
 
 <Card variant="interactive" padding="lg">
   <h2>Server Health</h2>
@@ -655,7 +657,7 @@ Supports `ref` forwarding and all native HTML attributes.
 Accessible tabbed interface with three visual variants and animated indicator.
 
 ```tsx
-import { Tabs } from '@annondeveloper/ui-kit'
+import { Tabs } from '@frontier-labs/ui-kit'
 
 <Tabs tabs={[{ value: 'metrics', label: 'Metrics' }, { value: 'logs', label: 'Logs' }]}
       value={tab} onChange={setTab} variant="pills" />
@@ -678,7 +680,7 @@ Supports keyboard navigation (arrow keys, Home, End) and ARIA roles. Animated in
 A slide-over drawer panel from any screen edge.
 
 ```tsx
-import { Sheet } from '@annondeveloper/ui-kit'
+import { Sheet } from '@frontier-labs/ui-kit'
 
 <Sheet open={isOpen} onClose={() => setOpen(false)} title="Settings" side="right" width="max-w-lg">
   {children}
@@ -703,7 +705,7 @@ Features: backdrop blur, spring animation, Escape to close, body scroll lock, au
 Simple tooltip wrapper built on Radix UI with theme-styled content and arrow pointer.
 
 ```tsx
-import { Tooltip } from '@annondeveloper/ui-kit'
+import { Tooltip } from '@frontier-labs/ui-kit'
 
 <Tooltip content="Copy to clipboard" side="top"><button>...</button></Tooltip>
 ```
@@ -722,7 +724,7 @@ import { Tooltip } from '@annondeveloper/ui-kit'
 Popover wrapper built on Radix Popover with Framer Motion entry animation.
 
 ```tsx
-import { Popover } from '@annondeveloper/ui-kit'
+import { Popover } from '@frontier-labs/ui-kit'
 
 <Popover trigger={<button>Options</button>} side="bottom" align="end">
   <p>Popover content</p>
@@ -743,7 +745,7 @@ import { Popover } from '@annondeveloper/ui-kit'
 Action/context dropdown menu built on Radix DropdownMenu with danger variant support.
 
 ```tsx
-import { DropdownMenu } from '@annondeveloper/ui-kit'
+import { DropdownMenu } from '@frontier-labs/ui-kit'
 import { Edit, Trash2 } from 'lucide-react'
 
 <DropdownMenu
@@ -768,7 +770,7 @@ import { Edit, Trash2 } from 'lucide-react'
 Confirmation modal built on Radix AlertDialog with animated enter/exit.
 
 ```tsx
-import { ConfirmDialog } from '@annondeveloper/ui-kit'
+import { ConfirmDialog } from '@frontier-labs/ui-kit'
 
 <ConfirmDialog
   open={showDelete} onOpenChange={setShowDelete}
@@ -799,7 +801,7 @@ import { ConfirmDialog } from '@annondeveloper/ui-kit'
 Themed form input with label, required indicator, and optional hint text.
 
 ```tsx
-import { FormInput } from '@annondeveloper/ui-kit'
+import { FormInput } from '@frontier-labs/ui-kit'
 
 <FormInput label="Hostname" value={host} onChange={setHost} placeholder="10.0.0.1" required hint="IPv4 or FQDN" />
 ```
@@ -825,7 +827,7 @@ Supports `ref` forwarding and all native input attributes.
 Themed dropdown built on Radix UI Select.
 
 ```tsx
-import { Select } from '@annondeveloper/ui-kit'
+import { Select } from '@frontier-labs/ui-kit'
 
 <Select value={protocol} onValueChange={setProtocol}
         options={[{ value: 'snmp', label: 'SNMP' }, { value: 'ssh', label: 'SSH' }]}
@@ -847,7 +849,7 @@ import { Select } from '@annondeveloper/ui-kit'
 Themed checkbox with indeterminate state support. Forwards ref.
 
 ```tsx
-import { Checkbox } from '@annondeveloper/ui-kit'
+import { Checkbox } from '@frontier-labs/ui-kit'
 
 <Checkbox checked={selected} onChange={handleChange} indeterminate={isPartial} size="sm" />
 ```
@@ -866,7 +868,7 @@ Extends native `<input>` attributes (except `type` and `size`).
 Icon-based boolean toggle using lucide icons.
 
 ```tsx
-import { ToggleSwitch } from '@annondeveloper/ui-kit'
+import { ToggleSwitch } from '@frontier-labs/ui-kit'
 
 <ToggleSwitch enabled={isActive} onChange={setIsActive} label="Auto-refresh" />
 ```
@@ -886,7 +888,7 @@ import { ToggleSwitch } from '@annondeveloper/ui-kit'
 Custom-styled radio button group with animated selection indicator.
 
 ```tsx
-import { RadioGroup } from '@annondeveloper/ui-kit'
+import { RadioGroup } from '@frontier-labs/ui-kit'
 
 <RadioGroup
   options={[
@@ -913,7 +915,7 @@ Supports keyboard navigation (arrow keys, Home, End) and ARIA roles.
 Custom range slider with keyboard accessibility and hover tooltip.
 
 ```tsx
-import { Slider } from '@annondeveloper/ui-kit'
+import { Slider } from '@frontier-labs/ui-kit'
 
 <Slider value={threshold} onChange={setThreshold} min={0} max={100} step={5} label="Alert threshold" showValue />
 ```
@@ -937,7 +939,7 @@ Supports keyboard (arrow keys, Home, End), mouse drag, and touch.
 Compact color picker with expandable panel, hue/saturation area, format switching, and presets.
 
 ```tsx
-import { ColorInput } from '@annondeveloper/ui-kit'
+import { ColorInput } from '@frontier-labs/ui-kit'
 
 <ColorInput value={color} onChange={setColor} label="Accent" format="hex"
             presets={['#3b82f6', '#10b981', '#f59e0b', '#ef4444']} />
@@ -961,7 +963,7 @@ Features: HSL picker area, hue slider, format switching, clipboard copy, recent 
 Multi-step form wizard with animated slide transitions and per-step validation.
 
 ```tsx
-import { StepWizard } from '@annondeveloper/ui-kit'
+import { StepWizard } from '@frontier-labs/ui-kit'
 
 <StepWizard
   steps={[
@@ -991,7 +993,7 @@ Features: animated step transitions, progress bar, keyboard navigation (Enter to
 Rounded pill-style filter toggle with optional count.
 
 ```tsx
-import { FilterPill } from '@annondeveloper/ui-kit'
+import { FilterPill } from '@frontier-labs/ui-kit'
 
 <FilterPill label="Critical" count={12} active={filter === 'critical'} onClick={() => setFilter('critical')} />
 ```
@@ -1012,7 +1014,7 @@ import { FilterPill } from '@annondeveloper/ui-kit'
 Full-featured data grid built on TanStack Table v8.
 
 ```tsx
-import { DataTable } from '@annondeveloper/ui-kit'
+import { DataTable } from '@frontier-labs/ui-kit'
 
 <DataTable
   columns={columns} data={devices} isLoading={isLoading}
@@ -1046,7 +1048,7 @@ Built-in features: global search, auto-detected column filters (text/enum/number
 Enhanced DataTable that auto-generates filter suggestions by analyzing column data.
 
 ```tsx
-import { SmartTable } from '@annondeveloper/ui-kit'
+import { SmartTable } from '@frontier-labs/ui-kit'
 
 <SmartTable columns={columns} data={data} maxSuggestions={4} onFilterSuggestion={console.log} />
 ```
@@ -1066,7 +1068,7 @@ Auto-detects: statistical outliers (>2 std dev), top-N frequent values, dominant
 Smooth number animation using requestAnimationFrame with cubic easing.
 
 ```tsx
-import { AnimatedCounter } from '@annondeveloper/ui-kit'
+import { AnimatedCounter } from '@frontier-labs/ui-kit'
 
 <AnimatedCounter value={deviceCount} duration={400} format={n => n.toLocaleString()} />
 ```
@@ -1084,7 +1086,7 @@ import { AnimatedCounter } from '@annondeveloper/ui-kit'
 Tiny inline SVG sparkline chart with gradient fill.
 
 ```tsx
-import { Sparkline } from '@annondeveloper/ui-kit'
+import { Sparkline } from '@frontier-labs/ui-kit'
 
 <Sparkline data={[10, 25, 18, 30, 22]} width={80} height={24} showDots />
 ```
@@ -1105,7 +1107,7 @@ import { Sparkline } from '@annondeveloper/ui-kit'
 Auto-truncating text with tooltip and copy-to-clipboard on hover.
 
 ```tsx
-import { TruncatedText } from '@annondeveloper/ui-kit'
+import { TruncatedText } from '@frontier-labs/ui-kit'
 
 <TruncatedText text="very-long-hostname-that-overflows.example.com" maxWidth={200} />
 ```
@@ -1122,7 +1124,7 @@ import { TruncatedText } from '@annondeveloper/ui-kit'
 Monospace code/text display with one-click copy and collapsible overflow.
 
 ```tsx
-import { CopyBlock } from '@annondeveloper/ui-kit'
+import { CopyBlock } from '@frontier-labs/ui-kit'
 
 <CopyBlock content="curl -X GET https://api.example.com/health" language="bash" label="Health check" />
 ```
@@ -1142,7 +1144,7 @@ import { CopyBlock } from '@annondeveloper/ui-kit'
 Line-by-line diff viewer using LCS algorithm with collapsible unchanged sections.
 
 ```tsx
-import { DiffViewer } from '@annondeveloper/ui-kit'
+import { DiffViewer } from '@frontier-labs/ui-kit'
 
 <DiffViewer oldValue={previousConfig} newValue={currentConfig} mode="side-by-side" showLineNumbers />
 ```
@@ -1164,7 +1166,7 @@ import { DiffViewer } from '@annondeveloper/ui-kit'
 Configurable status indicator with colored dot and label.
 
 ```tsx
-import { StatusBadge, defaultStatusMap } from '@annondeveloper/ui-kit'
+import { StatusBadge, defaultStatusMap } from '@frontier-labs/ui-kit'
 
 <StatusBadge status="active" pulse />
 <StatusBadge status="healthy" statusMap={myCustomStatuses} />
@@ -1187,7 +1189,7 @@ Built-in statuses: `ok`, `active`, `warning`, `critical`, `unknown`, `maintenanc
 Animated status dot with optional pulse ring and label.
 
 ```tsx
-import { StatusPulse } from '@annondeveloper/ui-kit'
+import { StatusPulse } from '@frontier-labs/ui-kit'
 
 <StatusPulse status="online" />
 <StatusPulse status="degraded" label={false} />
@@ -1208,7 +1210,7 @@ Built-in statuses: `online` (green pulse), `degraded` (yellow fast pulse), `offl
 Dashboard stat tile with animated counter, trend indicator, and optional sparkline.
 
 ```tsx
-import { MetricCard } from '@annondeveloper/ui-kit'
+import { MetricCard } from '@frontier-labs/ui-kit'
 import { HardDrive } from 'lucide-react'
 
 <MetricCard
@@ -1237,7 +1239,7 @@ import { HardDrive } from 'lucide-react'
 Semicircular SVG gauge with color-coded threshold zones.
 
 ```tsx
-import { ThresholdGauge } from '@annondeveloper/ui-kit'
+import { ThresholdGauge } from '@frontier-labs/ui-kit'
 
 <ThresholdGauge value={85} label="CPU" thresholds={{ warning: 70, critical: 90 }} size={120} />
 ```
@@ -1258,7 +1260,7 @@ import { ThresholdGauge } from '@annondeveloper/ui-kit'
 Horizontal bar with color-coded thresholds. Animates fill on mount.
 
 ```tsx
-import { UtilizationBar } from '@annondeveloper/ui-kit'
+import { UtilizationBar } from '@frontier-labs/ui-kit'
 
 <UtilizationBar value={92} label="Memory" thresholds={{ warning: 70, critical: 90 }} size="md" />
 ```
@@ -1279,7 +1281,7 @@ import { UtilizationBar } from '@annondeveloper/ui-kit'
 GitHub/Statuspage-style daily uptime bar strip.
 
 ```tsx
-import { UptimeTracker } from '@annondeveloper/ui-kit'
+import { UptimeTracker } from '@frontier-labs/ui-kit'
 
 <UptimeTracker
   days={last90Days} label="API Server" showPercentage
@@ -1301,7 +1303,7 @@ import { UptimeTracker } from '@annondeveloper/ui-kit'
 Grid of colored indicators for network ports/interfaces.
 
 ```tsx
-import { PortStatusGrid } from '@annondeveloper/ui-kit'
+import { PortStatusGrid } from '@frontier-labs/ui-kit'
 
 <PortStatusGrid
   ports={switchPorts} columns={24} size="md"
@@ -1323,7 +1325,7 @@ import { PortStatusGrid } from '@annondeveloper/ui-kit'
 Horizontal data pipeline visualization with status dots and chevron connectors.
 
 ```tsx
-import { PipelineStage } from '@annondeveloper/ui-kit'
+import { PipelineStage } from '@frontier-labs/ui-kit'
 
 <PipelineStage
   stages={[
@@ -1347,7 +1349,7 @@ import { PipelineStage } from '@annondeveloper/ui-kit'
 Horizontal scrollable event timeline with severity-colored dots.
 
 ```tsx
-import { SeverityTimeline } from '@annondeveloper/ui-kit'
+import { SeverityTimeline } from '@frontier-labs/ui-kit'
 
 <SeverityTimeline events={recentAlerts} maxVisible={20} onEventClick={showAlertDetail} />
 ```
@@ -1365,7 +1367,7 @@ import { SeverityTimeline } from '@annondeveloper/ui-kit'
 Compact horizontal pill-group time range selector.
 
 ```tsx
-import { TimeRangeSelector } from '@annondeveloper/ui-kit'
+import { TimeRangeSelector } from '@frontier-labs/ui-kit'
 
 <TimeRangeSelector value={range} onChange={(v, r) => setRange(v)} />
 ```
@@ -1383,7 +1385,7 @@ import { TimeRangeSelector } from '@annondeveloper/ui-kit'
 Real-time log stream viewer with severity-colored borders and auto-scroll.
 
 ```tsx
-import { LogViewer } from '@annondeveloper/ui-kit'
+import { LogViewer } from '@frontier-labs/ui-kit'
 
 <LogViewer entries={logs} maxHeight={400} autoScroll showTimestamps onEntryClick={showDetail} />
 ```
@@ -1408,8 +1410,8 @@ Features: search filtering, "N new entries" floating badge when scrolled up.
 Live data display with freshness tracking, connection state, and delta arrows.
 
 ```tsx
-import { RealtimeValue } from '@annondeveloper/ui-kit'
-import { fmtBps } from '@annondeveloper/ui-kit'
+import { RealtimeValue } from '@frontier-labs/ui-kit'
+import { fmtBps } from '@frontier-labs/ui-kit'
 
 <RealtimeValue
   value={throughput} format={fmtBps}
@@ -1439,7 +1441,7 @@ Features: animated number transitions, freshness dot (green/yellow/red), ping an
 AI/LLM streaming text display with blinking cursor and inline markdown formatting.
 
 ```tsx
-import { StreamingText } from '@annondeveloper/ui-kit'
+import { StreamingText } from '@frontier-labs/ui-kit'
 
 <StreamingText text={response} isStreaming={isGenerating} onComplete={() => logCompletion()} />
 ```
@@ -1461,7 +1463,7 @@ Features: auto-scroll during streaming, inline `**bold**` and `` `code` `` forma
 "Someone is typing" indicator with three animation variants.
 
 ```tsx
-import { TypingIndicator } from '@annondeveloper/ui-kit'
+import { TypingIndicator } from '@frontier-labs/ui-kit'
 
 <TypingIndicator variant="dots" label="AI is thinking" size="md" />
 ```
@@ -1479,7 +1481,7 @@ import { TypingIndicator } from '@annondeveloper/ui-kit'
 Horizontal probability bar with color-coded threshold zones.
 
 ```tsx
-import { ConfidenceBar } from '@annondeveloper/ui-kit'
+import { ConfidenceBar } from '@frontier-labs/ui-kit'
 
 <ConfidenceBar value={0.87} label="Match confidence" thresholds={{ low: 0.3, medium: 0.7 }} />
 ```
@@ -1499,7 +1501,7 @@ import { ConfidenceBar } from '@annondeveloper/ui-kit'
 Universal command palette activated by Cmd+K / Ctrl+K.
 
 ```tsx
-import { CommandBar } from '@annondeveloper/ui-kit'
+import { CommandBar } from '@frontier-labs/ui-kit'
 
 <CommandBar
   items={[
@@ -1529,7 +1531,7 @@ Features: fuzzy search scoring, grouped sections, recent selections (localStorag
 Real-time event feed with animated entry, pause/resume, and type-colored borders.
 
 ```tsx
-import { LiveFeed } from '@annondeveloper/ui-kit'
+import { LiveFeed } from '@frontier-labs/ui-kit'
 
 <LiveFeed
   items={events} maxVisible={50} showTimestamps autoScroll
@@ -1556,7 +1558,7 @@ Features: pause/resume button, "N new items" floating badge when scrolled, auto-
 Fixed-position notification cards with auto-dismiss progress bars.
 
 ```tsx
-import { NotificationStack } from '@annondeveloper/ui-kit'
+import { NotificationStack } from '@frontier-labs/ui-kit'
 
 <NotificationStack
   notifications={notifications}
@@ -1583,7 +1585,7 @@ Features: type-specific icons and colors, action buttons, auto-dismiss with prog
 Decorative placeholder with icon, title, description, and optional actions.
 
 ```tsx
-import { EmptyState, Button } from '@annondeveloper/ui-kit'
+import { EmptyState, Button } from '@frontier-labs/ui-kit'
 import { Inbox } from 'lucide-react'
 
 <EmptyState icon={Inbox} title="No alerts" description="Your infrastructure is healthy."
@@ -1604,7 +1606,7 @@ import { Inbox } from 'lucide-react'
 Shimmer loading placeholder.
 
 ```tsx
-import { Skeleton } from '@annondeveloper/ui-kit'
+import { Skeleton } from '@frontier-labs/ui-kit'
 
 <Skeleton width={128} height={32} />
 <Skeleton width="100%" height={16} />
@@ -1624,7 +1626,7 @@ import { Skeleton } from '@annondeveloper/ui-kit'
 Progress bar with optional label, animated fill, and indeterminate mode.
 
 ```tsx
-import { Progress } from '@annondeveloper/ui-kit'
+import { Progress } from '@frontier-labs/ui-kit'
 
 <Progress value={65} max={100} label="Upload" showValue variant="success" />
 <Progress indeterminate label="Processing..." />
@@ -1648,7 +1650,7 @@ import { Progress } from '@annondeveloper/ui-kit'
 User/entity avatar with image support, initials fallback, and status dot.
 
 ```tsx
-import { Avatar } from '@annondeveloper/ui-kit'
+import { Avatar } from '@frontier-labs/ui-kit'
 
 <Avatar src="/avatar.jpg" alt="Jane Doe" size="md" status="online" />
 <Avatar alt="John Smith" size="sm" />  {/* Shows "JS" initials */}
@@ -1668,7 +1670,7 @@ import { Avatar } from '@annondeveloper/ui-kit'
 
 Virtualized infinite-scroll list using IntersectionObserver.
 ```tsx
-import { InfiniteScroll } from '@annondeveloper/ui-kit'
+import { InfiniteScroll } from '@frontier-labs/ui-kit'
 
 <InfiniteScroll
   items={logs} hasMore={hasNextPage} isLoading={isFetching}
@@ -1697,7 +1699,7 @@ Features: optional height-based virtualization, scroll-to-top button, skeleton p
 Drag-and-drop reorderable list with smooth layout animations.
 
 ```tsx
-import { SortableList } from '@annondeveloper/ui-kit'
+import { SortableList } from '@frontier-labs/ui-kit'
 
 <SortableList
   items={[
@@ -1724,7 +1726,7 @@ Features: pointer-based drag (no external DnD library), keyboard reordering (Spa
 Kanban board column with title, count badge, and scrollable card list.
 
 ```tsx
-import { KanbanColumn } from '@annondeveloper/ui-kit'
+import { KanbanColumn } from '@frontier-labs/ui-kit'
 
 <KanbanColumn
   title="In Progress" color="hsl(var(--status-warning))"
@@ -1748,7 +1750,7 @@ import { KanbanColumn } from '@annondeveloper/ui-kit'
 GitHub-style contribution heatmap calendar with configurable color scale.
 
 ```tsx
-import { HeatmapCalendar } from '@annondeveloper/ui-kit'
+import { HeatmapCalendar } from '@frontier-labs/ui-kit'
 
 <HeatmapCalendar data={dailyMetrics} onDayClick={(d) => showDayDetail(d.date)} showMonthLabels showDayLabels />
 ```
@@ -1771,7 +1773,7 @@ import { HeatmapCalendar } from '@annondeveloper/ui-kit'
 Toast notification system using `ToastProvider` and the `useToast` hook.
 
 ```tsx
-import { ToastProvider, useToast, Button } from '@annondeveloper/ui-kit'
+import { ToastProvider, useToast, Button } from '@frontier-labs/ui-kit'
 
 function App() {
   return (
@@ -1804,7 +1806,7 @@ function Content() {
 Animated SVG checkmark with circle and path draw animations.
 
 ```tsx
-import { SuccessCheckmark } from '@annondeveloper/ui-kit'
+import { SuccessCheckmark } from '@frontier-labs/ui-kit'
 
 <SuccessCheckmark size={24} />
 ```
@@ -1820,7 +1822,7 @@ import { SuccessCheckmark } from '@annondeveloper/ui-kit'
 ### Class Merging
 
 ```tsx
-import { cn } from '@annondeveloper/ui-kit'
+import { cn } from '@frontier-labs/ui-kit'
 
 cn('px-4 py-2', isActive && 'bg-blue-500', className)
 ```
@@ -1907,7 +1909,7 @@ Scaffold components directly into your project -- shadcn/ui-style.
 ### Initialize
 
 ```bash
-npx @annondeveloper/ui-kit init
+npx @frontier-labs/ui-kit init
 ```
 
 Copies `theme.css` and `utils.ts` into your target directory (default `./components/ui`).
@@ -1915,9 +1917,9 @@ Copies `theme.css` and `utils.ts` into your target directory (default `./compone
 ### Add a Component
 
 ```bash
-npx @annondeveloper/ui-kit add button
-npx @annondeveloper/ui-kit add data-table
-npx @annondeveloper/ui-kit add metric-card
+npx @frontier-labs/ui-kit add button
+npx @frontier-labs/ui-kit add data-table
+npx @frontier-labs/ui-kit add metric-card
 ```
 
 Copies the component source file and resolves internal dependencies automatically.
@@ -1925,7 +1927,7 @@ Copies the component source file and resolves internal dependencies automaticall
 ### List Available Components
 
 ```bash
-npx @annondeveloper/ui-kit list
+npx @frontier-labs/ui-kit list
 ```
 
 ### Options
@@ -1942,14 +1944,14 @@ npx @annondeveloper/ui-kit list
 The built-in form engine requires no external dependencies. Import from the dedicated entry point:
 
 ```tsx
-import { createForm, useForm, Form, v } from '@annondeveloper/ui-kit/form'
+import { createForm, useForm, Form, v } from '@frontier-labs/ui-kit/form'
 ```
 
 ### Example with Validation
 
 ```tsx
-import { createForm, useForm, Form } from '@annondeveloper/ui-kit/form'
-import { Button } from '@annondeveloper/ui-kit'
+import { createForm, useForm, Form } from '@frontier-labs/ui-kit/form'
+import { Button } from '@frontier-labs/ui-kit'
 
 const credentialForm = createForm({
   hostname: { initial: '', validator: v.required('Hostname is required') },
@@ -1981,7 +1983,7 @@ The form engine includes `createForm`, `useForm`, `Form`, `FieldArray`, and vali
 ### Development Setup
 
 ```bash
-git clone https://github.com/annondeveloper/ui-kit.git
+git clone https://github.com/Frontier-Labs-India/ui-kit.git
 cd ui-kit
 npm install
 npm run storybook     # Component explorer at localhost:6006

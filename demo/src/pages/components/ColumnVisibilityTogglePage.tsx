@@ -647,9 +647,9 @@ const columnVisibilityProps: PropDef[] = [
 type ColumnDef = { id: string; label: string; visible: boolean }
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ColumnVisibilityToggle } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ColumnVisibilityToggle } from '@annondeveloper/ui-kit'",
-  premium: "import { ColumnVisibilityToggle } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ColumnVisibilityToggle } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ColumnVisibilityToggle } from '@frontier-labs/ui-kit'",
+  premium: "import { ColumnVisibilityToggle } from '@frontier-labs/ui-kit/premium'",
 }
 
 const DEFAULT_COLUMNS: ColumnDef[] = [
@@ -778,7 +778,7 @@ function generateHtmlCssCode(tier: Tier): string {
   const className = tier === 'lite' ? 'ui-lite-column-visibility' : 'ui-column-visibility'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
 
-  return `<!-- ColumnVisibilityToggle -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- ColumnVisibilityToggle -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <div class="${className}">
   <button type="button" class="${className}__trigger" aria-expanded="false" aria-haspopup="listbox">
     Columns (4/6)
@@ -808,7 +808,7 @@ function generateHtmlCssCode(tier: Tier): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/column-visibility-toggle.css'}';
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/column-visibility-toggle.css'}';
 </style>`
 }
 
@@ -847,11 +847,11 @@ function reset() {
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <ColumnVisibilityToggle
     :columns="columns"
@@ -895,10 +895,10 @@ function generateAngularCode(tier: Tier): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS-only approach) -->
 <div class="ui-column-visibility">
   <button type="button" [attr.aria-expanded]="open" (click)="open = !open"
@@ -951,11 +951,11 @@ function generateSvelteCode(tier: Tier, columns: ColumnDef[]): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { ColumnVisibilityToggle } from '${importPath}';
 
@@ -1344,7 +1344,7 @@ export default function ColumnVisibilityTogglePage() {
               Minimal implementation. Conditional render for dropdown, no animations, no styled checkboxes.
             </p>
             <div className="column-visibility-toggle-page__tier-import">
-              import {'{'} ColumnVisibilityToggle {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ColumnVisibilityToggle {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="column-visibility-toggle-page__tier-preview">
               <LiteColumnVisibilityToggle columns={DEFAULT_COLUMNS.map(c => ({ ...c }))} onChange={() => {}} />
@@ -1375,7 +1375,7 @@ export default function ColumnVisibilityTogglePage() {
               outside click/escape handling, and motion levels.
             </p>
             <div className="column-visibility-toggle-page__tier-import">
-              import {'{'} ColumnVisibilityToggle {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ColumnVisibilityToggle {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="column-visibility-toggle-page__tier-preview">
               <ColumnVisibilityToggle columns={DEFAULT_COLUMNS.map(c => ({ ...c }))} onChange={() => {}} />
@@ -1406,7 +1406,7 @@ export default function ColumnVisibilityTogglePage() {
               checkbox toggle flash effect, and fade-up entrance.
             </p>
             <div className="column-visibility-toggle-page__tier-import">
-              import {'{'} ColumnVisibilityToggle {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ColumnVisibilityToggle {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="column-visibility-toggle-page__tier-preview">
               <PremiumColumnVisibilityToggle columns={DEFAULT_COLUMNS.map(c => ({ ...c }))} onChange={() => {}} />
@@ -1520,7 +1520,7 @@ export default function ColumnVisibilityTogglePage() {
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/column-visibility-toggle.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/column-visibility-toggle.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="column-visibility-toggle-page__source-link"

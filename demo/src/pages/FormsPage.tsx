@@ -166,8 +166,8 @@ const datePickerProps: PropDef[] = [
 
 // ─── Full Form Example Code ──────────────────────────────────────────────────
 
-const formEngineCode = `import { createForm, useForm, Form, v } from '@annondeveloper/ui-kit/form'
-import { FormInput } from '@annondeveloper/ui-kit'
+const formEngineCode = `import { createForm, useForm, Form, v } from '@frontier-labs/ui-kit/form'
+import { FormInput } from '@frontier-labs/ui-kit'
 
 const registrationForm = createForm({
   fields: {

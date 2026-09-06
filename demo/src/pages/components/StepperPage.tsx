@@ -503,9 +503,9 @@ const STEPS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Stepper } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Stepper } from '@annondeveloper/ui-kit'",
-  premium: "import { Stepper } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Stepper } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Stepper } from '@frontier-labs/ui-kit'",
+  premium: "import { Stepper } from '@frontier-labs/ui-kit/premium'",
 }
 
 type Orientation = 'horizontal' | 'vertical'
@@ -658,8 +658,8 @@ function generateHtmlCode(
   </div>`
   }).join('\n')
 
-  return `<!-- Stepper — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cssFile}">
+  return `<!-- Stepper — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cssFile}">
 
 <div class="ui-stepper"
   data-orientation="${orientation}"
@@ -678,10 +678,10 @@ function generateVueCode(
   clickable: boolean,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = [
     '    :steps="steps"',
@@ -722,10 +722,10 @@ function generateAngularCode(
   size: Size,
 ): string {
   const importPath = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
   const cssImport = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
     : `${importPath}/css/components/stepper.css`
 
   const stepHtml = STEPS.map((step, i) => {
@@ -773,13 +773,13 @@ ${stepHtml}
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   const importPath = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const attrs: string[] = [
     '  steps={steps}',
@@ -1118,7 +1118,7 @@ export default function StepperPage() {
               Zero-motion wrapper. Same API minus motion prop. Minimal footprint.
             </p>
             <div className="stepper-page__tier-import">
-              import {'{'} Stepper {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Stepper {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="stepper-page__tier-preview">
               <LiteStepper steps={STEPS.slice(0, 3)} activeStep={1} size="sm" />
@@ -1148,7 +1148,7 @@ export default function StepperPage() {
               Full-featured stepper with motion levels, clickable steps, and accessibility.
             </p>
             <div className="stepper-page__tier-import">
-              import {'{'} Stepper {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Stepper {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="stepper-page__tier-preview">
               <Stepper steps={STEPS.slice(0, 3)} activeStep={1} size="sm" />
@@ -1178,7 +1178,7 @@ export default function StepperPage() {
               Aurora glow on active indicators, staggered entrance, connector shimmer, and spring hover.
             </p>
             <div className="stepper-page__tier-import">
-              import {'{'} Stepper {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Stepper {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="stepper-page__tier-preview">
               <PremiumStepper steps={STEPS.slice(0, 3)} activeStep={1} size="sm" />
@@ -1298,13 +1298,13 @@ export default function StepperPage() {
         <h2 className="stepper-page__section-title"><a href="#source">Source</a></h2>
         <p className="stepper-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="stepper-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/stepper.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stepper-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/stepper.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/stepper.tsx (Standard)
           </a>
-          <a className="stepper-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/stepper.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stepper-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/stepper.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/stepper.tsx (Lite)
           </a>
-          <a className="stepper-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/stepper.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stepper-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/stepper.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/stepper.tsx (Premium)
           </a>
         </div>

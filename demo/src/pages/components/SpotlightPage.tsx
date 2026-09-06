@@ -578,9 +578,9 @@ const SPOTLIGHT_PROPS: PropDef[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Spotlight } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Spotlight } from '@annondeveloper/ui-kit'",
-  premium: "import { Spotlight } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Spotlight } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Spotlight } from '@frontier-labs/ui-kit'",
+  premium: "import { Spotlight } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -677,7 +677,7 @@ function generateReactCode(
   if (motion !== 3 && tier !== 'lite') props.push(`  motion={${motion}}`)
 
   return `${importStr}
-import type { SpotlightAction } from '@annondeveloper/ui-kit'
+import type { SpotlightAction } from '@frontier-labs/ui-kit'
 
 const actions: SpotlightAction[] = [
   { id: 'home', title: 'Home', description: 'Go to home page', group: 'Navigation', onClick: () => navigate('/') },
@@ -700,10 +700,10 @@ function generateHtmlCode(
   placeholder: string,
 ): string {
   const cssPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/spotlight.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/spotlight.css'
 
-  return `<!-- Spotlight — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Spotlight — @frontier-labs/ui-kit ${tier} tier -->
 <link rel="stylesheet" href="https://unpkg.com/${cssPath}">
 
 <!-- Spotlight is a React component; for non-React use the CSS classes: -->
@@ -741,10 +741,10 @@ function generateVueCode(
   limit: number,
 ): string {
   const importPath = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
+    ? '@frontier-labs/ui-kit/premium'
     : tier === 'lite'
-      ? '@annondeveloper/ui-kit/lite'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/lite'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = [
     '    :actions="actions"',
@@ -777,8 +777,8 @@ function generateAngularCode(
   placeholder: string,
 ): string {
   const cssPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/spotlight.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/spotlight.css'
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : tier === 'lite' ? 'Lite' : 'Standard'} tier -->
 <!-- Use the CSS-only approach with Angular template -->
@@ -827,10 +827,10 @@ function generateSvelteCode(
   limit: number,
 ): string {
   const importPath = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
+    ? '@frontier-labs/ui-kit/premium'
     : tier === 'lite'
-      ? '@annondeveloper/ui-kit/lite'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/lite'
+      : '@frontier-labs/ui-kit'
 
   const props: string[] = [
     '  actions={actions}',
@@ -1305,7 +1305,7 @@ export default function SpotlightPage() {
               Minimal wrapper. Zero motion, no animations. Same fuzzy search and keyboard navigation.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Spotlight {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Spotlight {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__size-breakdown`}>
               <div className={`${PAGE}__size-row`}>
@@ -1332,7 +1332,7 @@ export default function SpotlightPage() {
               Full-featured with motion, theming, focus trap, and accessibility.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Spotlight {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Spotlight {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__size-breakdown`}>
               <div className={`${PAGE}__size-row`}>
@@ -1359,7 +1359,7 @@ export default function SpotlightPage() {
               Aurora glow on input focus, spring entrance animation, hover lift on actions.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Spotlight {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Spotlight {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__size-breakdown`}>
               <div className={`${PAGE}__size-row`}>
@@ -1476,7 +1476,7 @@ export default function SpotlightPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
             className={`${PAGE}__source-link`}
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/spotlight.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/spotlight.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1485,7 +1485,7 @@ export default function SpotlightPage() {
           </a>
           <a
             className={`${PAGE}__source-link`}
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/spotlight.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/spotlight.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1494,7 +1494,7 @@ export default function SpotlightPage() {
           </a>
           <a
             className={`${PAGE}__source-link`}
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/spotlight.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/spotlight.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -10,7 +10,7 @@ The `useViewTransition()` hook wraps the browser's `document.startViewTransition
 
 ```tsx
 import { useState } from 'react'
-import { useViewTransition } from '@annondeveloper/ui-kit'
+import { useViewTransition } from '@frontier-labs/ui-kit'
 
 function TabSwitcher() {
   const [tab, setTab] = useState('home')
@@ -88,7 +88,7 @@ const { startTransition, assignTransitionName } = useViewTransition({ preset: 'm
 ### Router integration
 
 ```tsx
-import { useViewTransition } from '@annondeveloper/ui-kit'
+import { useViewTransition } from '@frontier-labs/ui-kit'
 
 function AppRouter() {
   const [route, setRoute] = useState('/')

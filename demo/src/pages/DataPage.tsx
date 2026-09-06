@@ -92,9 +92,9 @@ const treeNodes: TreeNode[] = [
   },
 ]
 
-const codeExample = `import { Button } from '@annondeveloper/ui-kit'
-import { useForm, createForm, v } from '@annondeveloper/ui-kit/form'
-import { generateTheme } from '@annondeveloper/ui-kit/theme'
+const codeExample = `import { Button } from '@frontier-labs/ui-kit'
+import { useForm, createForm, v } from '@frontier-labs/ui-kit/form'
+import { generateTheme } from '@frontier-labs/ui-kit/theme'
 
 const myForm = createForm({
   fields: {

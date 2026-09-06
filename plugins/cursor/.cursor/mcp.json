@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "ui-kit": {
-      "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
     }
   }
 }

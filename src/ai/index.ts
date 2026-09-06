@@ -1,5 +1,5 @@
 // ─── AI Component Generator ─────────────────────────────────────────────────
-// Tree-shakeable subpath entry: `@annondeveloper/ui-kit/ai`.
+// Tree-shakeable subpath entry: `@frontier-labs/ui-kit/ai`.
 // Discover components from an in-bundle database and generate multi-framework
 // code compositions from templates or custom selections.
 

@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker — hosted MCP server for @annondeveloper/ui-kit
+ * Cloudflare Worker — hosted MCP server for @frontier-labs/ui-kit
  *
  * Provides the same 9 MCP tools as the local server but accessible via
  * HTTP SSE transport from anywhere. No Node.js required on the client.
@@ -61,8 +61,8 @@ function findSimilarNames(name: string, allNames: string[], limit = 5): string[]
 const CSS_SETUP_NOTE = `
 > **Required CSS Setup** — Add these imports to your root layout (e.g. \`app/layout.tsx\` or \`main.tsx\`):
 > \`\`\`tsx
-> import '@annondeveloper/ui-kit/css/theme.css'
-> import '@annondeveloper/ui-kit/css/all.css'
+> import '@frontier-labs/ui-kit/css/theme.css'
+> import '@frontier-labs/ui-kit/css/all.css'
 > \`\`\`
 > Without these imports, components will render with correct HTML/ARIA but no visual styling.`
 
@@ -141,7 +141,7 @@ function searchComponents(query: string, limit: number = 10) {
 
 function createMcpServer(): McpServer {
   const server = new McpServer({
-    name: '@annondeveloper/ui-kit',
+    name: '@frontier-labs/ui-kit',
     version: reg.version,
   })
 
@@ -221,10 +221,10 @@ ${DESIGN_GUIDE}`
     if (comps.length === 0) return { content: [{ type: 'text' as const, text: 'No valid components found.' }] }
     const imports = [...new Set(comps.map(c => c.importStatement))].join('\n')
     const jsx = comps.map(c => c.examples[0]?.code.split('\n').filter(l => !l.startsWith('import ')).join('\n').trim() || `<${c.name} />`).join('\n        ')
-    const code = `// Required CSS imports — add to your root layout:\n// import '@annondeveloper/ui-kit/css/theme.css'\n// import '@annondeveloper/ui-kit/css/all.css'\n\n${imports}\nimport { UIProvider } from '@annondeveloper/ui-kit'\n\nexport function ${(scenario || 'Example').replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) || 'Example'}() {\n  return (\n    <UIProvider>\n      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>\n        ${jsx}\n      </div>\n    </UIProvider>\n  )\n}`
+    const code = `// Required CSS imports — add to your root layout:\n// import '@frontier-labs/ui-kit/css/theme.css'\n// import '@frontier-labs/ui-kit/css/all.css'\n\n${imports}\nimport { UIProvider } from '@frontier-labs/ui-kit'\n\nexport function ${(scenario || 'Example').replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) || 'Example'}() {\n  return (\n    <UIProvider>\n      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>\n        ${jsx}\n      </div>\n    </UIProvider>\n  )\n}`
     const notes = [
       `Components used: ${comps.map(c => c.name).join(', ')}`,
-      comps.some(c => c.tier.includes('premium')) ? 'Tip: Import from "@annondeveloper/ui-kit/premium" for enhanced animations' : '',
+      comps.some(c => c.tier.includes('premium')) ? 'Tip: Import from "@frontier-labs/ui-kit/premium" for enhanced animations' : '',
       'Output is wrapped in <UIProvider> for theme and motion support',
     ].filter(Boolean).join('\n')
     return { content: [{ type: 'text' as const, text: `# Generated Snippet${scenario ? `: ${scenario}` : ''}\n\n\`\`\`tsx\n${code}\n\`\`\`\n\n## Notes\n${notes}` }] }
@@ -266,20 +266,20 @@ ${DESIGN_GUIDE}`
 
 ## Step 1: Install
 \`\`\`bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 \`\`\`
 
 ## Step 2: Import CSS (⚠️ Required!)
 Add these to \`${file}\`:
 \`\`\`tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 \`\`\`
 > Without CSS imports, components render correct HTML but have **no visual styling**.
 
 ## Step 3: Wrap with UIProvider
 \`\`\`tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }) {
   return (
@@ -292,7 +292,7 @@ export default function RootLayout({ children }) {
 
 ## Step 4: Use Components
 \`\`\`tsx
-import { Button, Card, Badge } from '@annondeveloper/ui-kit'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit'
 
 function MyPage() {
   return (
@@ -307,13 +307,13 @@ function MyPage() {
 
 ## Weight Tiers
 Each component comes in 3 tiers:
-- **Lite** (\`@annondeveloper/ui-kit/lite\`) — minimal CSS-only, ~0.3KB
-- **Standard** (\`@annondeveloper/ui-kit\`) — full features, ~2KB
-- **Premium** (\`@annondeveloper/ui-kit/premium\`) — spring animations + aurora glow, ~3KB
+- **Lite** (\`@frontier-labs/ui-kit/lite\`) — minimal CSS-only, ~0.3KB
+- **Standard** (\`@frontier-labs/ui-kit\`) — full features, ~2KB
+- **Premium** (\`@frontier-labs/ui-kit/premium\`) — spring animations + aurora glow, ~3KB
 
 ## Theming
 \`\`\`tsx
-import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 const theme = generateTheme('#6366f1', 'dark')
 applyTheme(theme)
 \`\`\`
@@ -335,15 +335,15 @@ applyTheme(theme)
     tier: z.enum(['standard', 'lite', 'premium']).optional().default('standard').describe('Component tier'),
   }, async ({ template, tier }) => {
     const importPath = tier === 'lite'
-      ? '@annondeveloper/ui-kit/lite'
+      ? '@frontier-labs/ui-kit/lite'
       : tier === 'premium'
-        ? '@annondeveloper/ui-kit/premium'
-        : '@annondeveloper/ui-kit'
+        ? '@frontier-labs/ui-kit/premium'
+        : '@frontier-labs/ui-kit'
 
     const templates: Record<string, string> = {
       dashboard: `// Dashboard Page — stats overview + content sections
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import {
   PageShell, PageHeader, StatsGrid, SectionHeader,
   CardGrid, Card, Toolbar, ListLayout
@@ -352,7 +352,7 @@ import { MetricCard } from '${importPath}'
 import { Button } from '${importPath}'
 import { SearchInput } from '${importPath}'
 import { Badge } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function DashboardPage() {
   return (
@@ -398,13 +398,13 @@ export default function DashboardPage() {
 }`,
 
       settings: `// Settings Page — form sections with save actions
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, SectionHeader, Card, ListLayout } from '${importPath}'
 import { FormInput } from '${importPath}'
 import { Button } from '${importPath}'
 import { ToggleSwitch } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function SettingsPage() {
   return (
@@ -440,14 +440,14 @@ export default function SettingsPage() {
 }`,
 
       list: `// List Page — searchable, filterable list of items
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, Toolbar, ListLayout, Card } from '${importPath}'
 import { SearchInput } from '${importPath}'
 import { Button } from '${importPath}'
 import { Badge } from '${importPath}'
 import { Pagination } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function ListPage() {
   return (
@@ -482,13 +482,13 @@ export default function ListPage() {
 }`,
 
       detail: `// Detail Page — single item view with metadata
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, SectionHeader, Card, CardGrid } from '${importPath}'
 import { Button } from '${importPath}'
 import { Badge } from '${importPath}'
 import { PropertyList } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function DetailPage() {
   return (
@@ -531,12 +531,12 @@ export default function DetailPage() {
 }`,
 
       empty: `// Empty State Page — when no data exists yet
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader } from '${importPath}'
 import { EmptyState } from '${importPath}'
 import { Button } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function EmptyPage() {
   return (
@@ -555,12 +555,12 @@ export default function EmptyPage() {
 }`,
 
       auth: `// Auth Page — centered login/signup form
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, Card } from '${importPath}'
 import { FormInput } from '${importPath}'
 import { Button } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function AuthPage() {
   return (
@@ -583,12 +583,12 @@ export default function AuthPage() {
 }`,
 
       landing: `// Landing Page — hero + features + CTA
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, CardGrid, Card, SectionHeader } from '${importPath}'
 import { Button } from '${importPath}'
-import { Icon } from '@annondeveloper/ui-kit'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { Icon } from '@frontier-labs/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function LandingPage() {
   return (
@@ -789,7 +789,7 @@ The adaptive system detects DevTools throttling via the async latency probe:
 ## Dev Overlay
 Import the dev overlay to see real-time adaptive info:
 \`\`\`tsx
-import { AdaptiveDevOverlay } from '@annondeveloper/ui-kit'
+import { AdaptiveDevOverlay } from '@frontier-labs/ui-kit'
 
 // Shows: tier, motion level, confidence, detection reason
 <AdaptiveDevOverlay />
@@ -797,7 +797,7 @@ import { AdaptiveDevOverlay } from '@annondeveloper/ui-kit'
 
 ## Reading the Current Tier in Components
 \`\`\`tsx
-import { useAdaptiveContext } from '@annondeveloper/ui-kit'
+import { useAdaptiveContext } from '@frontier-labs/ui-kit'
 
 function MyComponent() {
   const { tier, motion, confidence, reason } = useAdaptiveContext()
@@ -820,7 +820,7 @@ In development mode, the adaptive system logs detection results:
 
 ### useAdaptiveTier(override?)
 \`\`\`tsx
-import { useAdaptiveTier } from '@annondeveloper/ui-kit'
+import { useAdaptiveTier } from '@frontier-labs/ui-kit'
 
 const { tier, motion, confidence, reason } = useAdaptiveTier()
 // override?: 'lite' | 'standard' | 'premium' — bypasses detection
@@ -828,7 +828,7 @@ const { tier, motion, confidence, reason } = useAdaptiveTier()
 
 ### useAdaptiveContext()
 \`\`\`tsx
-import { useAdaptiveContext } from '@annondeveloper/ui-kit'
+import { useAdaptiveContext } from '@frontier-labs/ui-kit'
 
 const { tier, motion, confidence, reason, isAdaptive } = useAdaptiveContext()
 // isAdaptive: boolean — whether auto-detection is enabled
@@ -838,7 +838,7 @@ const { tier, motion, confidence, reason, isAdaptive } = useAdaptiveContext()
 
 ### detectAdaptiveTier()
 \`\`\`tsx
-import { detectAdaptiveTier } from '@annondeveloper/ui-kit'
+import { detectAdaptiveTier } from '@frontier-labs/ui-kit'
 
 const result = detectAdaptiveTier()
 // Runs synchronously — no async, no delays
@@ -865,7 +865,7 @@ interface AdaptiveContextValue extends AdaptiveResult {
 
 ### AdaptiveProvider
 \`\`\`tsx
-import { AdaptiveProvider } from '@annondeveloper/ui-kit'
+import { AdaptiveProvider } from '@frontier-labs/ui-kit'
 
 <AdaptiveProvider value={{ tier, motion, confidence, reason, isAdaptive }}>
   {children}
@@ -972,13 +972,13 @@ code{font-family:'SF Mono','Fira Code','JetBrains Mono',monospace}
     <span class="step-num">3</span>
     <h2>Install the library</h2>
     <p>When you're ready to use the generated code:</p>
-    <pre><code>npm install @annondeveloper/ui-kit</code></pre>
+    <pre><code>npm install @frontier-labs/ui-kit</code></pre>
   </div>
 
   <div class="step">
     <h2 style="margin-left:0">Available Tools</h2>
     <div class="tools">
-      <div class="tool"><strong>list_components</strong><span>Browse all 147 components by category or tier</span></div>
+      <div class="tool"><strong>list_components</strong><span>Browse all 162 components by category or tier</span></div>
       <div class="tool"><strong>get_component</strong><span>Full API reference — props, types, examples</span></div>
       <div class="tool"><strong>search_components</strong><span>Find components by use case</span></div>
       <div class="tool"><strong>generate_snippet</strong><span>Working TSX with correct imports</span></div>
@@ -991,10 +991,10 @@ code{font-family:'SF Mono','Fira Code','JetBrains Mono',monospace}
   </div>
 
   <div class="links">
-    <a href="https://github.com/annondeveloper/ui-kit">GitHub</a>
-    <a href="https://www.npmjs.com/package/@annondeveloper/ui-kit">npm</a>
-    <a href="https://jsr.io/@annondeveloper/ui-kit">JSR</a>
-    <a href="https://annondeveloper.github.io/ui-kit/">Demo</a>
+    <a href="https://github.com/Frontier-Labs-India/ui-kit">GitHub</a>
+    <a href="https://www.npmjs.com/package/@frontier-labs/ui-kit">npm</a>
+    <a href="https://jsr.io/@frontier-labs/ui-kit">JSR</a>
+    <a href="https://frontier-labs-india.github.io/ui-kit/">Demo</a>
     <a href="WORKER_URL/health">Health</a>
   </div>
 </div>

@@ -663,9 +663,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "/* CSS-only: @import '@annondeveloper/ui-kit/css/components/wavy-background.css' */",
-  standard: "import { WavyBackground } from '@annondeveloper/ui-kit'",
-  premium: "import { WavyBackground } from '@annondeveloper/ui-kit/premium'",
+  lite: "/* CSS-only: @import '@frontier-labs/ui-kit/css/components/wavy-background.css' */",
+  standard: "import { WavyBackground } from '@frontier-labs/ui-kit'",
+  premium: "import { WavyBackground } from '@frontier-labs/ui-kit/premium'",
 }
 
 const BRAND_COLOR_PRESETS = [
@@ -736,7 +736,7 @@ function OptionGroup<T extends string>({
 function generateReactCode(tier: Tier, waveCount: number, speed: number, color: string, motion: MotionLevel): string {
   if (tier === 'lite') {
     return `/* Lite tier — CSS-only wavy background */
-@import '@annondeveloper/ui-kit/css/components/wavy-background.css';
+@import '@frontier-labs/ui-kit/css/components/wavy-background.css';
 
 <div class="ui-wavy-background" data-motion="${motion}">
   <!-- SVG waves must be manually added in lite tier -->
@@ -767,8 +767,8 @@ function generateReactCode(tier: Tier, waveCount: number, speed: number, color: 
 }
 
 function generateHtmlCode(tier: Tier, waveCount: number, speed: number, color: string, motion: MotionLevel): string {
-  return `<!-- WavyBackground — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/wavy-background.css">
+  return `<!-- WavyBackground — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/wavy-background.css">
 
 <div class="ui-wavy-background" data-motion="${motion}">
   <!-- SVG waves are auto-generated in the React component -->
@@ -808,7 +808,7 @@ function generateVueCode(tier: Tier, waveCount: number, speed: number, color: st
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/wavy-background.css';
+@import '@frontier-labs/ui-kit/css/components/wavy-background.css';
 </style>`
   }
 
@@ -829,7 +829,7 @@ function generateVueCode(tier: Tier, waveCount: number, speed: number, color: st
 </template>
 
 <script setup>
-import { WavyBackground } from '@annondeveloper/ui-kit'
+import { WavyBackground } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -843,7 +843,7 @@ function generateAngularCode(tier: Tier, waveCount: number, speed: number, color
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/wavy-background.css';`
+@import '@frontier-labs/ui-kit/css/components/wavy-background.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -861,7 +861,7 @@ function generateAngularCode(tier: Tier, waveCount: number, speed: number, color
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/wavy-background.css';`
+@import '@frontier-labs/ui-kit/css/components/wavy-background.css';`
 }
 
 function generateSvelteCode(tier: Tier, waveCount: number, speed: number, color: string, motion: MotionLevel): string {
@@ -874,7 +874,7 @@ function generateSvelteCode(tier: Tier, waveCount: number, speed: number, color:
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/wavy-background.css';
+  @import '@frontier-labs/ui-kit/css/components/wavy-background.css';
 </style>`
   }
 
@@ -886,7 +886,7 @@ function generateSvelteCode(tier: Tier, waveCount: number, speed: number, color:
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
 
   return `<script>
-  import { WavyBackground } from '@annondeveloper/ui-kit';
+  import { WavyBackground } from '@frontier-labs/ui-kit';
 </script>
 
 <WavyBackground${propsStr}>
@@ -1373,7 +1373,7 @@ export default function WavyBackgroundPage() {
               Requires manual SVG path creation for each wave layer.
             </p>
             <div className="wavy-page__tier-import">
-              @import '@annondeveloper/ui-kit/css/components/wavy-background.css'
+              @import '@frontier-labs/ui-kit/css/components/wavy-background.css'
             </div>
             <div className="wavy-page__tier-preview">
               <div style={{
@@ -1414,7 +1414,7 @@ export default function WavyBackgroundPage() {
               and automatic content overlay.
             </p>
             <div className="wavy-page__tier-import">
-              import {'{'} WavyBackground {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} WavyBackground {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="wavy-page__tier-preview">
               <div style={{
@@ -1455,7 +1455,7 @@ export default function WavyBackgroundPage() {
               depth-of-field blur on distant waves, and entrance stagger animation.
             </p>
             <div className="wavy-page__tier-import">
-              import {'{'} WavyBackground {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} WavyBackground {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="wavy-page__tier-preview">
               <div style={{
@@ -1593,13 +1593,13 @@ export default function WavyBackgroundPage() {
         <h2 className="wavy-page__section-title"><a href="#source">Source</a></h2>
         <p className="wavy-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="wavy-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="wavy-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/wavy-background.tsx (Standard)
           </a>
-          <a className="wavy-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="wavy-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/wavy-background.tsx (Lite)
           </a>
-          <a className="wavy-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="wavy-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/wavy-background.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/wavy-background.tsx (Premium)
           </a>
         </div>

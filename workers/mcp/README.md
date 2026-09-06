@@ -1,6 +1,6 @@
 # ui-kit MCP Server — Cloudflare Worker
 
-Hosted MCP server for `@annondeveloper/ui-kit`. Provides the same 6 tools as the local MCP server but accessible via HTTP SSE transport from anywhere.
+Hosted MCP server for `@frontier-labs/ui-kit`. Provides the same 6 tools as the local MCP server but accessible via HTTP SSE transport from anywhere.
 
 ## Setup
 

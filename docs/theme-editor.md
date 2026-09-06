@@ -9,9 +9,9 @@ The Theme Editor utilities extend the existing theme system with a color harmony
 ## Quick Start
 
 ```tsx
-import { generateTheme, themeToCSS, validateContrast } from '@annondeveloper/ui-kit/theme'
-import { generateHarmony, suggestHarmonies } from '@annondeveloper/ui-kit'
-import { exportTheme, encodeThemeToHash, decodeThemeFromHash } from '@annondeveloper/ui-kit'
+import { generateTheme, themeToCSS, validateContrast } from '@frontier-labs/ui-kit/theme'
+import { generateHarmony, suggestHarmonies } from '@frontier-labs/ui-kit'
+import { exportTheme, encodeThemeToHash, decodeThemeFromHash } from '@frontier-labs/ui-kit'
 
 // Generate theme from brand color
 const tokens = generateTheme('#6366f1', 'dark')
@@ -40,7 +40,7 @@ window.location.hash = hash
 Generates a color harmony palette from a brand color using OKLCH hue rotation.
 
 ```ts
-import { generateHarmony } from '@annondeveloper/ui-kit'
+import { generateHarmony } from '@frontier-labs/ui-kit'
 
 const palette = generateHarmony('#6366f1', 'triadic')
 // { type: 'triadic', colors: ['#6366f1', ...], description: '...' }
@@ -66,7 +66,7 @@ const all = suggestHarmonies('#6366f1')
 ### WCAG Contrast Audit
 
 ```ts
-import { validateContrast } from '@annondeveloper/ui-kit/theme'
+import { validateContrast } from '@frontier-labs/ui-kit/theme'
 
 const tokens = generateTheme('#6366f1', 'dark')
 const result = validateContrast(tokens)
@@ -132,8 +132,8 @@ const params = decodeThemeFromHash('IzYzNjZmMTpkYXJr')
 
 ```tsx
 import { useState } from 'react'
-import { generateTheme, validateContrast } from '@annondeveloper/ui-kit/theme'
-import { suggestHarmonies, exportTheme, encodeThemeToHash } from '@annondeveloper/ui-kit'
+import { generateTheme, validateContrast } from '@frontier-labs/ui-kit/theme'
+import { suggestHarmonies, exportTheme, encodeThemeToHash } from '@frontier-labs/ui-kit'
 
 function ThemeEditor() {
   const [brand, setBrand] = useState('#6366f1')
@@ -164,8 +164,8 @@ function ThemeEditor() {
 ### Load theme from shared URL
 
 ```tsx
-import { decodeThemeFromHash } from '@annondeveloper/ui-kit'
-import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { decodeThemeFromHash } from '@frontier-labs/ui-kit'
+import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 
 const params = decodeThemeFromHash(window.location.hash)
 if (params) {

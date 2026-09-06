@@ -695,9 +695,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Pagination } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Pagination } from '@annondeveloper/ui-kit'",
-  premium: "import { Pagination } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Pagination } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Pagination } from '@frontier-labs/ui-kit'",
+  premium: "import { Pagination } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text, prefix }: { text: string; prefix: string }) {
@@ -816,7 +816,7 @@ function generateHtmlCode(tier: Tier, totalPages: number, size: Size): string {
   const pages = Array.from({ length: Math.min(totalPages, 7) }, (_, i) => i + 1)
   const className = tier === 'lite' ? 'ui-lite-pagination' : 'ui-pagination'
 
-  return `<!-- Pagination — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Pagination — @frontier-labs/ui-kit ${tier} tier -->
 <nav class="${className}" aria-label="Pagination"${tier !== 'lite' ? ` data-size="${size}"` : ''}>
   <button type="button" aria-label="Previous page" disabled>&laquo;</button>
 ${pages.map(p => `  <button type="button"${p === 1 ? ' aria-current="page"' : ''} aria-label="Page ${p}">${p}</button>`).join('\n')}
@@ -845,10 +845,10 @@ const page = ref(1)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   return `<template>
   <Pagination
     :page="page"
@@ -882,7 +882,7 @@ page = 1;
 pages = Array.from({length: ${totalPages}}, (_, i) => i + 1);
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the CSS-only approach -->
@@ -901,7 +901,7 @@ pages = Array.from({length: ${totalPages}}, (_, i) => i + 1);
 </nav>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/pagination.css';`
+@import '@frontier-labs/ui-kit/css/components/pagination.css';`
 }
 
 function generateSvelteCode(tier: Tier, totalPages: number, size: Size): string {
@@ -924,11 +924,11 @@ function generateSvelteCode(tier: Tier, totalPages: number, size: Size): string 
 </nav>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { Pagination } from '@annondeveloper/ui-kit'
+  import { Pagination } from '@frontier-labs/ui-kit'
   let page = 1
 </script>
 
@@ -1198,7 +1198,7 @@ export default function PaginationPage() {
     return () => observer.disconnect()
   }, [])
 
-  // Premium tier now available at @annondeveloper/ui-kit/premium
+  // Premium tier now available at @frontier-labs/ui-kit/premium
   const PaginationComponent = tier === 'lite' ? LitePagination : Pagination
 
   return (
@@ -1341,7 +1341,7 @@ export default function PaginationPage() {
               CSS-only pagination. Simple prev/next with numbered pages. No truncation, no sibling control, no size variants.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Pagination {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Pagination {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${P}tier-preview`}>
               <LitePagination page={1} totalPages={5} onChange={() => {}} />
@@ -1371,7 +1371,7 @@ export default function PaginationPage() {
               Full-featured pagination with smart truncation, sibling count, first/last buttons, five sizes, motion levels, and accessibility.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Pagination {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Pagination {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${P}tier-preview`}>
               <Pagination page={3} totalPages={10} onChange={() => {}} showFirst />
@@ -1401,7 +1401,7 @@ export default function PaginationPage() {
               Aurora glow on current page, spring-scale page pop animation, shimmer on page change, and hover glow.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Pagination {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Pagination {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${P}tier-preview`}>
               <PremiumPagination page={3} totalPages={10} onChange={() => {}} showFirst />
@@ -1503,7 +1503,7 @@ export default function PaginationPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/pagination.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/pagination.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className={`${P}source-link`}
@@ -1512,7 +1512,7 @@ export default function PaginationPage() {
             src/components/pagination.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/pagination.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/pagination.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className={`${P}source-link`}
@@ -1521,7 +1521,7 @@ export default function PaginationPage() {
             src/lite/pagination.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/pagination.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/pagination.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className={`${P}source-link`}

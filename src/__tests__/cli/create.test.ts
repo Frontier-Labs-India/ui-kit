@@ -55,7 +55,7 @@ describe('createCommand', () => {
       const pkg = JSON.parse(files['package.json'])
       expect(pkg.dependencies['react']).toBeDefined()
       expect(pkg.dependencies['react-dom']).toBeDefined()
-      expect(pkg.dependencies['@annondeveloper/ui-kit']).toBeDefined()
+      expect(pkg.dependencies['@frontier-labs/ui-kit']).toBeDefined()
       expect(pkg.devDependencies['vite']).toBeDefined()
     })
 

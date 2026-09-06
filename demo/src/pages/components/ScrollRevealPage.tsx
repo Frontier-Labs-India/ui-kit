@@ -430,9 +430,9 @@ type Animation = typeof ANIMATIONS[number]
 type MotionLevel = 0 | 1 | 2 | 3
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ScrollReveal } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ScrollReveal } from '@annondeveloper/ui-kit'",
-  premium: "import { ScrollReveal } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ScrollReveal } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ScrollReveal } from '@frontier-labs/ui-kit'",
+  premium: "import { ScrollReveal } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ────────────────────────────────────────────────────────
@@ -487,7 +487,7 @@ function generateVueCode(
   once: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-scroll-reveal">\n    <p>Your content here</p>\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-scroll-reveal">\n    <p>Your content here</p>\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
   const props: string[] = []
   if (animation !== 'fade-up') props.push(`  animation="${animation}"`)
@@ -495,7 +495,7 @@ function generateVueCode(
   if (stagger > 0) props.push(`  :stagger="${stagger}"`)
   if (threshold !== 0.1) props.push(`  :threshold="${threshold}"`)
   if (!once) props.push('  :once="false"')
-  return `<template>\n  <ScrollReveal${props.length ? '\n' + props.join('\n') + '\n  ' : ''}>\n    <p>Your content here</p>\n  </ScrollReveal>\n</template>\n\n<script setup>\nimport { ScrollReveal } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n  <ScrollReveal${props.length ? '\n' + props.join('\n') + '\n  ' : ''}>\n    <p>Your content here</p>\n  </ScrollReveal>\n</template>\n\n<script setup>\nimport { ScrollReveal } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(
@@ -506,13 +506,13 @@ function generateAngularCode(
   once: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-scroll-reveal">\n  <p>Your content here</p>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-scroll-reveal">\n  <p>Your content here</p>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   const attrs = [`class="ui-scroll-reveal"`, `data-animation="${animation}"`]
   if (delay > 0) attrs.push(`[attr.data-delay]="'${delay}'"`)
   if (threshold !== 0.1) attrs.push(`[attr.data-threshold]="'${threshold}'"`)
   if (!once) attrs.push('[attr.data-once]="\'false\'"')
-  return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<div\n  ${attrs.join('\n  ')}\n>\n  <p>Your content here</p>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/css/components/scroll-reveal.css';`
+  return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<div\n  ${attrs.join('\n  ')}\n>\n  <p>Your content here</p>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/css/components/scroll-reveal.css';`
 }
 
 function generateSvelteCode(
@@ -524,7 +524,7 @@ function generateSvelteCode(
   once: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<div class="ui-lite-scroll-reveal">\n  <p>Your content here</p>\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<div class="ui-lite-scroll-reveal">\n  <p>Your content here</p>\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
   const props: string[] = []
   if (animation !== 'fade-up') props.push(`  animation="${animation}"`)
@@ -532,7 +532,7 @@ function generateSvelteCode(
   if (stagger > 0) props.push(`  stagger={${stagger}}`)
   if (threshold !== 0.1) props.push(`  threshold={${threshold}}`)
   if (!once) props.push('  once={false}')
-  return `<script>\n  import { ScrollReveal } from '@annondeveloper/ui-kit'\n</script>\n\n<ScrollReveal${props.length ? '\n' + props.join('\n') + '\n' : ''}>\n  <p>Your content here</p>\n</ScrollReveal>`
+  return `<script>\n  import { ScrollReveal } from '@frontier-labs/ui-kit'\n</script>\n\n<ScrollReveal${props.length ? '\n' + props.join('\n') + '\n' : ''}>\n  <p>Your content here</p>\n</ScrollReveal>`
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -670,7 +670,7 @@ export default function ScrollRevealPage() {
               wrapper — perfect for SSR, prefers-reduced-motion contexts, or when animation is unwanted.
             </p>
             <div className="scroll-reveal-page__tier-import">
-              import {'{'} ScrollReveal {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ScrollReveal {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="scroll-reveal-page__tier-preview">
               <LiteScrollReveal>
@@ -693,7 +693,7 @@ export default function ScrollRevealPage() {
               stagger for child elements, configurable delay, threshold, and once behaviour.
             </p>
             <div className="scroll-reveal-page__tier-import">
-              import {'{'} ScrollReveal {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ScrollReveal {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="scroll-reveal-page__tier-preview">
               <ScrollReveal animation="fade-up" once>
@@ -716,7 +716,7 @@ export default function ScrollRevealPage() {
               revealed elements, enhanced stagger with spring easing, and motion-level-aware degradation.
             </p>
             <div className="scroll-reveal-page__tier-import">
-              import {'{'} ScrollReveal {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ScrollReveal {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="scroll-reveal-page__tier-preview">
               <PremiumScrollReveal animation="scale" once>
@@ -748,10 +748,10 @@ export default function ScrollRevealPage() {
           View the source on GitHub to understand the implementation details.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/scroll-reveal" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand, oklch(65% 0.2 270))' }}>
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/scroll-reveal" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand, oklch(65% 0.2 270))' }}>
             Source — domain/scroll-reveal (GitHub)
           </a>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/scroll-reveal" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand, oklch(65% 0.2 270))' }}>
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/scroll-reveal" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand, oklch(65% 0.2 270))' }}>
             Source — premium/scroll-reveal (GitHub)
           </a>
         </div>

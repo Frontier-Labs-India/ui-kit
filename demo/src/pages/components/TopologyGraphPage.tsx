@@ -520,9 +520,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TopologyGraph } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TopologyGraph } from '@annondeveloper/ui-kit'",
-  premium: "import { TopologyGraph } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TopologyGraph } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TopologyGraph } from '@frontier-labs/ui-kit'",
+  premium: "import { TopologyGraph } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -646,7 +646,7 @@ function generateReactCode(
 
 function generateHtmlCode(layout: Layout, showMinimap: boolean, showControls: boolean, showLegend: boolean): string {
   return `<!-- TopologyGraph requires JS — use the React/Vue/Angular/Svelte integration -->
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/topology-graph.css" />
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/topology-graph.css" />
 <div class="ui-topology-graph"
   data-layout="${layout}"${showMinimap ? '\n  data-minimap' : ''}${showLegend ? '\n  data-legend' : ''}${!showControls ? '\n  data-controls="false"' : ''}
   style="height: 450px">
@@ -655,7 +655,7 @@ function generateHtmlCode(layout: Layout, showMinimap: boolean, showControls: bo
 }
 
 function generateVueCode(tier: Tier, layout: Layout, showMinimap: boolean, showControls: boolean, showLegend: boolean, motion: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [':nodes="nodes"', ':edges="edges"']
   if (layout !== 'force') props.push(`layout="${layout}"`)
   if (showMinimap) props.push('show-minimap')
@@ -667,7 +667,7 @@ function generateVueCode(tier: Tier, layout: Layout, showMinimap: boolean, showC
 }
 
 function generateAngularCode(tier: Tier, layout: Layout, showMinimap: boolean, showControls: boolean, showLegend: boolean, motion: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['[nodes]="nodes"', '[edges]="edges"']
   if (layout !== 'force') attrs.push(`layout="${layout}"`)
   if (showMinimap) attrs.push('[showMinimap]="true"')
@@ -679,7 +679,7 @@ function generateAngularCode(tier: Tier, layout: Layout, showMinimap: boolean, s
 }
 
 function generateSvelteCode(tier: Tier, layout: Layout, showMinimap: boolean, showControls: boolean, showLegend: boolean, motion: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = ['{nodes}', '{edges}']
   if (layout !== 'force') props.push(`layout="${layout}"`)
   if (showMinimap) props.push('showMinimap')
@@ -1054,13 +1054,13 @@ export default function TopologyGraphPage() {
         <h2 className="topology-graph-page__section-title"><a href="#source">Source</a></h2>
         <p className="topology-graph-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="topology-graph-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="topology-graph-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/topology-graph.tsx (Standard)
           </a>
-          <a className="topology-graph-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="topology-graph-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/topology-graph.tsx (Lite)
           </a>
-          <a className="topology-graph-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="topology-graph-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/topology-graph.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/topology-graph.tsx (Premium)
           </a>
         </div>

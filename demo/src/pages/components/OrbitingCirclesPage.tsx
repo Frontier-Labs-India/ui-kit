@@ -696,9 +696,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { OrbitingCircles } from '@annondeveloper/ui-kit/domain'",
-  standard: "import { OrbitingCircles } from '@annondeveloper/ui-kit'",
-  premium: "import { OrbitingCircles } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { OrbitingCircles } from '@frontier-labs/ui-kit/domain'",
+  standard: "import { OrbitingCircles } from '@frontier-labs/ui-kit'",
+  premium: "import { OrbitingCircles } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -795,15 +795,15 @@ function generateReactCode(
   const children = icons.map(name => `  <Icon name="${name}" />`).join('\n')
 
   if (props.length === 0) {
-    return `${importStr}\nimport { Icon } from '@annondeveloper/ui-kit'\n\n<OrbitingCircles>\n${children}\n</OrbitingCircles>`
+    return `${importStr}\nimport { Icon } from '@frontier-labs/ui-kit'\n\n<OrbitingCircles>\n${children}\n</OrbitingCircles>`
   }
 
-  return `${importStr}\nimport { Icon } from '@annondeveloper/ui-kit'\n\n<OrbitingCircles\n${props.join('\n')}\n>\n${children}\n</OrbitingCircles>`
+  return `${importStr}\nimport { Icon } from '@frontier-labs/ui-kit'\n\n<OrbitingCircles\n${props.join('\n')}\n>\n${children}\n</OrbitingCircles>`
 }
 
 function generateHtmlCode(radius: number, duration: number, itemCount: number): string {
-  return `<!-- OrbitingCircles — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/orbiting-circles.css">
+  return `<!-- OrbitingCircles — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/orbiting-circles.css">
 
 <div class="ui-orbiting-circles"
   style="--orbit-radius: ${radius}px; --orbit-duration: ${duration}s;"
@@ -819,7 +819,7 @@ function generateHtmlCode(radius: number, duration: number, itemCount: number): 
 }
 
 function generateVueCode(tier: Tier, radius: number, duration: number, reverse: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (radius !== 100) props.push(`  :radius="${radius}"`)
   if (duration !== 15) props.push(`  :duration="${duration}"`)
@@ -856,11 +856,11 @@ function generateAngularCode(radius: number, duration: number, itemCount: number
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/orbiting-circles.css';`
+@import '@frontier-labs/ui-kit/css/components/orbiting-circles.css';`
 }
 
 function generateSvelteCode(tier: Tier, radius: number, duration: number, reverse: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (radius !== 100) props.push(`  radius={${radius}}`)
   if (duration !== 15) props.push(`  duration={${duration}}`)
@@ -1306,7 +1306,7 @@ export default function OrbitingCirclesPage() {
               Items are evenly distributed via CSS custom properties.
             </p>
             <div className="orbiting-circles-page__tier-import">
-              import {'{'} OrbitingCircles {'}'} from '@annondeveloper/ui-kit/domain'
+              import {'{'} OrbitingCircles {'}'} from '@frontier-labs/ui-kit/domain'
             </div>
             <div className="orbiting-circles-page__tier-preview">
               <LiteOrbitingCircles radius={40}>
@@ -1341,7 +1341,7 @@ export default function OrbitingCirclesPage() {
               children upright, and dynamic angle distribution.
             </p>
             <div className="orbiting-circles-page__tier-import">
-              import {'{'} OrbitingCircles {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} OrbitingCircles {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="orbiting-circles-page__tier-preview">
               <OrbitingCircles radius={40} duration={10}>
@@ -1376,7 +1376,7 @@ export default function OrbitingCirclesPage() {
               shimmer, and smooth entrance animations for each item.
             </p>
             <div className="orbiting-circles-page__tier-import">
-              import {'{'} OrbitingCircles {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} OrbitingCircles {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="orbiting-circles-page__tier-preview">
               <PremiumOrbitingCircles radius={40} duration={10}>
@@ -1497,13 +1497,13 @@ export default function OrbitingCirclesPage() {
         <h2 className="orbiting-circles-page__section-title"><a href="#source">Source</a></h2>
         <p className="orbiting-circles-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="orbiting-circles-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="orbiting-circles-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/orbiting-circles.tsx (Standard)
           </a>
-          <a className="orbiting-circles-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="orbiting-circles-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/orbiting-circles.tsx (Lite)
           </a>
-          <a className="orbiting-circles-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="orbiting-circles-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/orbiting-circles.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/orbiting-circles.tsx (Premium)
           </a>
         </div>

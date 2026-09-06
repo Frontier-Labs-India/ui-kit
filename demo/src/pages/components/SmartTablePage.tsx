@@ -619,9 +619,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SmartTable } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SmartTable } from '@annondeveloper/ui-kit'",
-  premium: "import { SmartTable } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SmartTable } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SmartTable } from '@frontier-labs/ui-kit'",
+  premium: "import { SmartTable } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -703,11 +703,11 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, searchable: boolean, paginated: boolean): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/smart-table.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/smart-table.css';`
 
-  return `<!-- SmartTable — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/smart-table.css">
+  return `<!-- SmartTable — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/smart-table.css">
 
 <div class="ui-smart-table"${searchable ? ' data-searchable' : ''}${paginated ? ' data-paginated' : ''}>
   <table>
@@ -748,11 +748,11 @@ function generateVueCode(tier: Tier, searchable: boolean, paginated: boolean): s
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :data="users"', '  :columns="columns"']
   if (searchable) attrs.push('  searchable')
   if (paginated) attrs.push('  paginated')
@@ -769,7 +769,7 @@ import { SmartTable } from '${importPath}'
 }
 
 function generateAngularCode(tier: Tier, searchable: boolean, paginated: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <div class="ui-data-table"${searchable ? ' data-searchable' : ''}${paginated ? ' data-paginated' : ''}>
   <table>
@@ -815,11 +815,11 @@ function generateSvelteCode(tier: Tier, searchable: boolean, paginated: boolean)
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  data={users}', '  columns={columns}']
   if (searchable) attrs.push('  searchable')
   if (paginated) attrs.push('  paginated')
@@ -1171,7 +1171,7 @@ export default function SmartTablePage() {
               CSS-only table with basic sort indicators. No search bar, no pagination controls, no JS interactivity beyond the wrapper.
             </p>
             <div className="smart-table-page__tier-import">
-              import {'{'} SmartTable {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} SmartTable {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="smart-table-page__tier-preview" style={{ overflow: 'hidden', maxBlockSize: 120, borderRadius: 'var(--radius-sm)' }}>
               <LiteSmartTable
@@ -1208,7 +1208,7 @@ export default function SmartTablePage() {
               Full-featured table with search, sort, pagination, column toggle, and loading states. Accessible keyboard navigation included.
             </p>
             <div className="smart-table-page__tier-import">
-              import {'{'} SmartTable {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} SmartTable {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="smart-table-page__tier-preview" style={{ overflow: 'hidden', maxBlockSize: 120, borderRadius: 'var(--radius-sm)' }}>
               <SmartTable
@@ -1243,7 +1243,7 @@ export default function SmartTablePage() {
               virtual scroll, export to CSV/JSON, and animated row transitions.
             </p>
             <div className="smart-table-page__tier-import">
-              import {'{'} SmartTable {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} SmartTable {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="smart-table-page__tier-preview" style={{ overflow: 'hidden', maxBlockSize: 120, borderRadius: 'var(--radius-sm)' }}>
               <PremiumSmartTable
@@ -1377,13 +1377,13 @@ export default function SmartTablePage() {
         <h2 className="smart-table-page__section-title"><a href="#source">Source</a></h2>
         <p className="smart-table-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="smart-table-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/smart-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="smart-table-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/smart-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/smart-table.tsx (Standard)
           </a>
-          <a className="smart-table-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/smart-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="smart-table-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/smart-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/smart-table.tsx (Lite)
           </a>
-          <a className="smart-table-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/smart-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="smart-table-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/smart-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/smart-table.tsx (Premium)
           </a>
         </div>

@@ -11,18 +11,18 @@ UI Kit v2 supports React Server Components with a dedicated `./rsc` entry point 
 
 ## What requires 'use client'
 
-All interactive components use hooks (`useState`, `useEffect`, `useRef`) and must be imported in Client Components. The main `@annondeveloper/ui-kit` entry already adds `"use client"` banner to the build output.
+All interactive components use hooks (`useState`, `useEffect`, `useRef`) and must be imported in Client Components. The main `@frontier-labs/ui-kit` entry already adds `"use client"` banner to the build output.
 
 ## Import strategy
 
 ```tsx
 // Server Component — safe imports
-import { generateTheme, themeToCSS, ServerStyleSheet } from '@annondeveloper/ui-kit/rsc'
-import type { ThemeTokens, ThemeMode } from '@annondeveloper/ui-kit/rsc'
+import { generateTheme, themeToCSS, ServerStyleSheet } from '@frontier-labs/ui-kit/rsc'
+import type { ThemeTokens, ThemeMode } from '@frontier-labs/ui-kit/rsc'
 
 // Client Component — interactive imports
 'use client'
-import { Button, Card, Dialog } from '@annondeveloper/ui-kit'
+import { Button, Card, Dialog } from '@frontier-labs/ui-kit'
 ```
 
 ## ServerStyleSheet
@@ -30,7 +30,7 @@ import { Button, Card, Dialog } from '@annondeveloper/ui-kit'
 `ServerStyleSheet` collects CSS emitted by components during server rendering, then outputs it as HTML `<style>` tags or a React element for streaming.
 
 ```tsx
-import { ServerStyleSheet } from '@annondeveloper/ui-kit/rsc'
+import { ServerStyleSheet } from '@frontier-labs/ui-kit/rsc'
 
 const sheet = new ServerStyleSheet()
 
@@ -64,8 +64,8 @@ sheet.seal()
 
 ```tsx
 // app/layout.tsx (Server Component)
-import { generateTheme, themeToCSS } from '@annondeveloper/ui-kit/rsc'
-import type { ThemeMode } from '@annondeveloper/ui-kit/rsc'
+import { generateTheme, themeToCSS } from '@frontier-labs/ui-kit/rsc'
+import type { ThemeMode } from '@frontier-labs/ui-kit/rsc'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const theme = generateTheme('#6366f1', 'dark')
@@ -88,7 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 // components/interactive-card.tsx
 'use client'
 
-import { Card, Button } from '@annondeveloper/ui-kit'
+import { Card, Button } from '@frontier-labs/ui-kit'
 import { useState } from 'react'
 
 export function InteractiveCard() {
@@ -109,7 +109,7 @@ export function InteractiveCard() {
 
 ```tsx
 // app/dashboard/page.tsx (Server Component)
-import { generateTheme } from '@annondeveloper/ui-kit/rsc'
+import { generateTheme } from '@frontier-labs/ui-kit/rsc'
 import { InteractiveCard } from '@/components/interactive-card'
 
 // This runs on the server — data fetching, no client JS
@@ -138,7 +138,7 @@ export default async function DashboardPage() {
 
 ```tsx
 // app/root.tsx
-import { generateTheme, themeToCSS } from '@annondeveloper/ui-kit/rsc'
+import { generateTheme, themeToCSS } from '@frontier-labs/ui-kit/rsc'
 
 export default function Root() {
   const theme = generateTheme('#6366f1', 'dark')
@@ -159,7 +159,7 @@ export default function Root() {
 
 ```tsx
 // app/routes/dashboard.tsx
-import { Button, Card } from '@annondeveloper/ui-kit'
+import { Button, Card } from '@frontier-labs/ui-kit'
 
 export default function Dashboard() {
   return (
@@ -176,8 +176,8 @@ For frameworks without built-in RSC support, use `ServerStyleSheet` with `render
 
 ```tsx
 import { renderToString } from 'react-dom/server'
-import { ServerStyleSheet } from '@annondeveloper/ui-kit/rsc'
-import { StyleProvider } from '@annondeveloper/ui-kit'
+import { ServerStyleSheet } from '@frontier-labs/ui-kit/rsc'
+import { StyleProvider } from '@frontier-labs/ui-kit'
 import App from './App'
 
 const sheet = new ServerStyleSheet()
@@ -202,10 +202,10 @@ Both `./rsc` and the main entry support tree-shaking. Import only what you need:
 
 ```tsx
 // Only pulls in generateTheme + its deps (~1.5KB)
-import { generateTheme } from '@annondeveloper/ui-kit/rsc'
+import { generateTheme } from '@frontier-labs/ui-kit/rsc'
 
 // Only pulls in Button + its styles (~2KB)
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 ```
 
 ## Static CSS alternative
@@ -214,9 +214,9 @@ If you prefer zero-JS theme injection, use the pre-built CSS:
 
 ```tsx
 // app/layout.tsx
-import '@annondeveloper/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/theme.css'
 // or per-component:
-// import '@annondeveloper/ui-kit/css/components/button.css'
+// import '@frontier-labs/ui-kit/css/components/button.css'
 ```
 
 This avoids the need for `ServerStyleSheet` entirely — the theme CSS is a static file that can be served from CDN.

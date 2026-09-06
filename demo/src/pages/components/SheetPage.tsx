@@ -625,9 +625,9 @@ const SIDES: Side[] = ['left', 'right', 'bottom']
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Sheet } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Sheet } from '@annondeveloper/ui-kit'",
-  premium: "import { Sheet } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Sheet } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Sheet } from '@frontier-labs/ui-kit'",
+  premium: "import { Sheet } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -818,12 +818,12 @@ function generateHtmlCode(tier: Tier, side: Side, size: Size): string {
 </dialog>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<!-- Sheet — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/sheet.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/sheet.css">
 
 <div class="ui-sheet">
   <dialog data-side="${side}" data-size="${size}">
@@ -859,7 +859,7 @@ function generateVueCode(tier: Tier, side: Side, size: Size): string {
 
 <script setup>
 import { ref } from 'vue'
-import { Sheet } from '@annondeveloper/ui-kit/lite'
+import { Sheet } from '@frontier-labs/ui-kit/lite'
 const isOpen = ref(false)
 </script>`
   }
@@ -882,8 +882,8 @@ ${attrs.join('\n')}
 
 <script setup>
 import { ref } from 'vue'
-import { Sheet } from '@annondeveloper/ui-kit'
-import { Button } from '@annondeveloper/ui-kit'
+import { Sheet } from '@frontier-labs/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 const isOpen = ref(false)
 </script>`
 }
@@ -907,7 +907,7 @@ function generateAngularCode(tier: Tier, side: Side, size: Size): string {
 </dialog>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -930,13 +930,13 @@ function generateAngularCode(tier: Tier, side: Side, size: Size): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/sheet.css';`
+@import '@frontier-labs/ui-kit/css/components/sheet.css';`
 }
 
 function generateSvelteCode(tier: Tier, side: Side, size: Size): string {
   if (tier === 'lite') {
     return `<script>
-  import { Sheet } from '@annondeveloper/ui-kit/lite';
+  import { Sheet } from '@frontier-labs/ui-kit/lite';
   let isOpen = false;
 </script>
 
@@ -953,8 +953,8 @@ function generateSvelteCode(tier: Tier, side: Side, size: Size): string {
   }
 
   return `<script>
-  import { Sheet } from '@annondeveloper/ui-kit';
-  import { Button } from '@annondeveloper/ui-kit';
+  import { Sheet } from '@frontier-labs/ui-kit';
+  import { Button } from '@frontier-labs/ui-kit';
   let isOpen = false;
 </script>
 
@@ -1421,7 +1421,7 @@ export default function SheetPage() {
               no swipe gestures, no bottom sheet variant.
             </p>
             <div className="sheet-page__tier-import">
-              import {'{'} Sheet {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Sheet {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="sheet-page__tier-preview">
               <Button variant="secondary" size="sm">Lite Sheet</Button>
@@ -1452,7 +1452,7 @@ export default function SheetPage() {
               swipe-to-dismiss, backdrop blur, and ARIA labeling.
             </p>
             <div className="sheet-page__tier-import">
-              import {'{'} Sheet {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Sheet {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="sheet-page__tier-preview">
               <Button variant="primary" size="sm">Standard Sheet</Button>
@@ -1482,7 +1482,7 @@ export default function SheetPage() {
               Spring-slide entrance with overshoot, aurora glow edge on open, and glass morphism backdrop blur.
             </p>
             <div className="sheet-page__tier-import">
-              import {'{'} Sheet {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Sheet {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="sheet-page__tier-preview">
               <PremiumSheet open={false} onClose={() => {}} side="right" motion={3}>
@@ -1613,13 +1613,13 @@ export default function SheetPage() {
         <h2 className="sheet-page__section-title"><a href="#source">Source</a></h2>
         <p className="sheet-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="sheet-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/sheet.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sheet-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/sheet.tsx" target="_blank" rel="noopener noreferrer">
             src/components/sheet.tsx (Standard)
           </a>
-          <a className="sheet-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/sheet.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sheet-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/sheet.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/sheet.tsx (Lite)
           </a>
-          <a className="sheet-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/sheet.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sheet-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/sheet.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/sheet.tsx (Premium)
           </a>
         </div>

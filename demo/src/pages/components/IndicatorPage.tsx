@@ -506,7 +506,7 @@ export default function IndicatorPage() {
               </Indicator>
             </div>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>~1.8 KB gzip (JS) + ~0.4 KB gzip (CSS)</p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@frontier-labs/ui-kit'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'lite' ? 'var(--brand)' : undefined }}>
             <strong>Lite</strong>
@@ -519,7 +519,7 @@ export default function IndicatorPage() {
               </LiteIndicator>
             </div>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>~0.5 KB gzip (JS) + ~0.3 KB gzip (CSS)</p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@frontier-labs/ui-kit/lite'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'premium' ? 'var(--brand)' : undefined }}>
             <strong>Premium</strong>
@@ -532,7 +532,7 @@ export default function IndicatorPage() {
               </PremiumIndicator>
             </div>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>~2.1 KB gzip (JS) + ~0.5 KB gzip (CSS)</p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Indicator {'}'} from '@frontier-labs/ui-kit/premium'</code>
           </Card>
         </div>
       </section>
@@ -571,13 +571,13 @@ export default function IndicatorPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/components/indicator.tsx (Standard)
           </a>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/indicator.tsx (Lite)
           </a>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/indicator.tsx (Premium)
           </a>
         </div>
@@ -603,10 +603,10 @@ function generateReactCode(
   motion: number,
 ): string {
   const importPath = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : tier === 'premium'
-      ? "@annondeveloper/ui-kit/premium"
-      : "@annondeveloper/ui-kit"
+      ? "@frontier-labs/ui-kit/premium"
+      : "@frontier-labs/ui-kit"
   const importLine = `import { Indicator } from '${importPath}'`
 
   const props: string[] = []
@@ -634,11 +634,11 @@ function generateHtmlExport(
   label: string,
 ): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/indicator.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/indicator.css';`
 
-  return `<!-- Indicator — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/indicator.css">
+  return `<!-- Indicator — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/indicator.css">
 
 <div class="ui-indicator" data-color="${color}" data-position="${position}"${processing ? ' data-processing="true"' : ''}>
   <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>
@@ -661,10 +661,10 @@ function generateVueCode(
     const attrs = [`class="ui-indicator"`, `data-color="${color}"`, `data-position="${position}"`]
     if (processing) attrs.push('data-processing="true"')
     if (disabled) attrs.push('data-disabled="true"')
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (color !== 'primary') attrs.push(`  color="${color}"`)
   if (position !== 'top-end') attrs.push(`  position="${position}"`)
@@ -718,17 +718,17 @@ function PlaygroundSection({ tier: tierProp }: { tier: Tier }) {
       const attrs = [`class="ui-indicator"`, `data-color="${color}"`, `data-position="${position}"`]
       if (processing) attrs.push('data-processing="true"')
       if (disabled) attrs.push('[attr.data-disabled]="\'true\'"')
-      return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n  <ng-content />\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+      return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n  <ng-content />\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
     }
-    const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+    const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
     return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<div\n  class="ui-indicator"\n  data-color="${color}"\n  data-position="${position}"\n  ${processing ? 'data-processing="true"' : ''}\n  ${disabled ? 'data-disabled="true"' : ''}\n>\n  <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n  <ng-content />\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/indicator.css';`
   }, [color, position, processing, disabled, label, tier])
 
   const svelteCode = useMemo(() => {
     if (tier === 'lite') {
-      return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-indicator"\n  data-color="${color}"\n  data-position="${position}"\n  ${processing ? 'data-processing="true"' : ''}\n  ${disabled ? 'data-disabled="true"' : ''}\n>\n  <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n  <slot />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+      return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-indicator"\n  data-color="${color}"\n  data-position="${position}"\n  ${processing ? 'data-processing="true"' : ''}\n  ${disabled ? 'data-disabled="true"' : ''}\n>\n  <span class="ui-indicator__dot"${label ? ` data-has-label="true"` : ''}>${label || ''}</span>\n  <slot />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
     }
-    const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+    const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
     return `<script>\n  import { Indicator } from '${importPath}';\n</script>\n\n<Indicator\n  color="${color}"\n  position="${position}"\n  ${processing ? 'processing' : ''}\n  ${disabled ? 'disabled' : ''}\n  ${label ? `label="${label}"` : ''}\n>\n  <slot />\n</Indicator>`
   }, [color, position, processing, disabled, label, tier])
 

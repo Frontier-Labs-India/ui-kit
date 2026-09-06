@@ -24,9 +24,9 @@ const SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 type Size = (typeof SIZES)[number]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { NumberInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { NumberInput } from '@annondeveloper/ui-kit'",
-  premium: "import { NumberInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { NumberInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { NumberInput } from '@frontier-labs/ui-kit'",
+  premium: "import { NumberInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -608,7 +608,7 @@ function generateHtmlCode(
 </div>
 
 <style>
-@import '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}/css/components/number-input.css';
+@import '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}/css/components/number-input.css';
 :root { --brand: ${brandColor}; }
 </style>`
 }
@@ -625,10 +625,10 @@ function generateVueCode(
   label: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  v-model="value"']
   if (label) attrs.push(`  label="${label}"`)
@@ -666,10 +666,10 @@ function generateAngularCode(
   label: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = [`class="ui-number-input"`, `data-size="${size}"`]
   if (min) attrs.push(`min="${min}"`)
@@ -702,10 +702,10 @@ function generateSvelteCode(
   label: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  bind:value']
   if (label) attrs.push(`  label="${label}"`)
@@ -1127,7 +1127,7 @@ export default function NumberInputPage() {
               No motion or animations.
             </p>
             <div className="ni-page__tier-import">
-              import {'{'} NumberInput {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} NumberInput {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="ni-page__tier-preview">
               <LiteNumberInput label="Lite" defaultValue={42} />
@@ -1158,7 +1158,7 @@ export default function NumberInputPage() {
               and stepper buttons.
             </p>
             <div className="ni-page__tier-import">
-              import {'{'} NumberInput {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} NumberInput {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="ni-page__tier-preview">
               <NumberInput label="Standard" defaultValue={42} />
@@ -1189,7 +1189,7 @@ export default function NumberInputPage() {
               spring animations, and shimmer effects.
             </p>
             <div className="ni-page__tier-import">
-              import {'{'} NumberInput {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} NumberInput {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="ni-page__tier-preview">
               <PremiumNumberInput label="Premium" defaultValue={42} />
@@ -1324,13 +1324,13 @@ export default function NumberInputPage() {
         <h2 className="ni-page__section-title"><a href="#source">Source</a></h2>
         <p className="ni-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="ni-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/number-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ni-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/number-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/number-input.tsx (Standard)
           </a>
-          <a className="ni-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/number-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ni-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/number-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/number-input.tsx (Lite)
           </a>
-          <a className="ni-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/number-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ni-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/number-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/number-input.tsx (Premium)
           </a>
         </div>

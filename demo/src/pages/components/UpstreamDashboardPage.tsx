@@ -85,9 +85,9 @@ const UPSTREAM_LINK_PROPS: PropDef[] = [
 // ─── Constants ──────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { UpstreamDashboard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { UpstreamDashboard } from '@annondeveloper/ui-kit'",
-  premium: "import { UpstreamDashboard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { UpstreamDashboard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { UpstreamDashboard } from '@frontier-labs/ui-kit'",
+  premium: "import { UpstreamDashboard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const BRAND_COLOR_PRESETS = [
@@ -840,7 +840,7 @@ function generateReactCode(
   }
   props.push('  onLinkClick={(link) => console.log(link)}')
 
-  return `${importStr}\nimport type { UpstreamLink } from '@annondeveloper/ui-kit'\n\nconst links: UpstreamLink[] = [\n  { id: '1', vendor: 'Telia', location: 'Frankfurt',\n    inbound: 12.5e9, outbound: 8.3e9,\n    capacity: 100e9, status: 'ok', trend: [10, 11, 12] },\n  // ... more links\n]\n\n<UpstreamDashboard\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { UpstreamLink } from '@frontier-labs/ui-kit'\n\nconst links: UpstreamLink[] = [\n  { id: '1', vendor: 'Telia', location: 'Frankfurt',\n    inbound: 12.5e9, outbound: 8.3e9,\n    capacity: 100e9, status: 'ok', trend: [10, 11, 12] },\n  // ... more links\n]\n\n<UpstreamDashboard\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(
@@ -850,10 +850,10 @@ function generateHtmlCode(
 ): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/upstream-dashboard.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/upstream-dashboard.css'
 
-  return `<!-- UpstreamDashboard \u2014 @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- UpstreamDashboard \u2014 @frontier-labs/ui-kit ${tierLabel} tier -->
 <link rel="stylesheet" href="https://unpkg.com/${cssPath}">
 
 <div class="ui-upstream-dashboard" data-mode="${mode}" data-group-by="${groupBy}">
@@ -893,11 +893,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [':links="links"']
   if (mode !== 'hero') props.push(`:mode="'${mode}'"`)
   if (groupBy !== 'none') props.push(`:group-by="'${groupBy}'"`)
@@ -939,10 +939,10 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular \u2014 ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use React wrapper or CSS-only approach -->
 <div
@@ -978,11 +978,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = ['{links}']
   if (mode !== 'hero') props.push(`mode="${mode}"`)
   if (groupBy !== 'none') props.push(`groupBy="${groupBy}"`)
@@ -1707,13 +1707,13 @@ export default function UpstreamDashboardPage() {
         <h2 className="ud-page__section-title"><a href="#source">Source</a></h2>
         <p className="ud-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="ud-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ud-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/upstream-dashboard.tsx (Standard)
           </a>
-          <a className="ud-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ud-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/upstream-dashboard.tsx (Lite)
           </a>
-          <a className="ud-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ud-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/upstream-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/upstream-dashboard.tsx (Premium)
           </a>
         </div>

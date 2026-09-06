@@ -804,13 +804,13 @@ export default function FigmaPage() {
                 <div style={{ marginBlockStart: '0.5rem' }}>
                   <CopyBlock
                     code={`# Export Figma Variables JSON
-npx @annondeveloper/ui-kit figma-export --format figma --theme aurora
+npx @frontier-labs/ui-kit figma-export --format figma --theme aurora
 
 # Export Style Dictionary format
-npx @annondeveloper/ui-kit figma-export --format style-dictionary --theme sunset
+npx @frontier-labs/ui-kit figma-export --format style-dictionary --theme sunset
 
 # Export all formats at once
-npx @annondeveloper/ui-kit figma-export --all --theme ocean --mode light`}
+npx @frontier-labs/ui-kit figma-export --all --theme ocean --mode light`}
                     language="bash"
                   />
                 </div>

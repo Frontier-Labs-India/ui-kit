@@ -434,9 +434,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const LITE_SIZES: ('sm' | 'md' | 'lg')[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Rating } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Rating } from '@annondeveloper/ui-kit'",
-  premium: "import { Rating } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Rating } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Rating } from '@frontier-labs/ui-kit'",
+  premium: "import { Rating } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -510,7 +510,7 @@ function generateReactCode(tier: Tier, size: Size, max: number, readOnly: boolea
 
 function generateHtmlCode(tier: Tier, size: Size, max: number, readOnly: boolean, ratingValue: number): string {
   const stars = Array.from({ length: max }, (_, i) => i < ratingValue ? '\u2605' : '\u2606').join(' ')
-  return `<!-- Rating — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Rating — @frontier-labs/ui-kit ${tier} tier -->
 <div class="${tier === 'lite' ? 'ui-lite-rating' : 'ui-rating'}" data-size="${size}" role="slider"
   aria-valuenow="${ratingValue}" aria-valuemin="0" aria-valuemax="${max}"${readOnly ? ' aria-readonly="true"' : ''}>
   ${stars}
@@ -535,7 +535,7 @@ const value = ref(3)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const attrs: string[] = [`v-model="value"`, `:max="${max}"`, `size="${size}"`]
@@ -547,7 +547,7 @@ const value = ref(3)
 
 <script setup>
 import { ref } from 'vue'
-import { Rating } from '@annondeveloper/ui-kit'
+import { Rating } from '@frontier-labs/ui-kit'
 const value = ref(3)
 </script>`
 }
@@ -563,7 +563,7 @@ function generateAngularCode(tier: Tier, size: Size, max: number, readOnly: bool
   >{{ i <= value ? '\u2605' : '\u2606' }}</button>
 </div>
 
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier -->
 <div class="ui-rating" data-size="${size}" role="slider"
@@ -574,7 +574,7 @@ function generateAngularCode(tier: Tier, size: Size, max: number, readOnly: bool
   </span>
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/rating.css';`
+@import '@frontier-labs/ui-kit/css/components/rating.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, max: number, readOnly: boolean, allowHalf: boolean): string {
@@ -594,14 +594,14 @@ function generateSvelteCode(tier: Tier, size: Size, max: number, readOnly: boole
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const attrs: string[] = [`bind:value`, `max={${max}}`, `size="${size}"`]
   if (readOnly) attrs.push('readOnly')
   if (allowHalf) attrs.push('allowHalf')
   return `<script>
-  import { Rating } from '@annondeveloper/ui-kit';
+  import { Rating } from '@frontier-labs/ui-kit';
   let value = 3;
 </script>
 
@@ -898,7 +898,7 @@ export default function RatingPage() {
             <p className="rating-page__tier-desc">
               Unicode star characters with button elements. 3 sizes, no half stars, no hover preview.
             </p>
-            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="rating-page__tier-preview">
               <LiteRating defaultValue={4} />
             </div>
@@ -925,7 +925,7 @@ export default function RatingPage() {
               SVG star icons with half-star clip path, hover preview,
               5 sizes, keyboard navigation, and motion levels.
             </p>
-            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="rating-page__tier-preview">
               <Rating defaultValue={3.5} allowHalf size="lg" />
             </div>
@@ -951,7 +951,7 @@ export default function RatingPage() {
             <p className="rating-page__tier-desc">
               Spring-scale on star hover, aurora glow trail on filled stars, and radial burst on max rating.
             </p>
-            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="rating-page__tier-import">import {'{'} Rating {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="rating-page__tier-preview">
               <PremiumRating defaultValue={4} size="xl" />
             </div>
@@ -1054,10 +1054,10 @@ export default function RatingPage() {
         <h2 className="rating-page__section-title"><a href="#source">Source</a></h2>
         <p className="rating-page__section-desc">View the component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="rating-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/rating.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="rating-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/rating.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/rating.tsx — Standard tier
           </a>
-          <a className="rating-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/rating.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="rating-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/rating.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/rating.tsx — Lite tier
           </a>
         </div>

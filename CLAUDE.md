@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-`@annondeveloper/ui-kit` — A zero-dependency React component library with 147 components across 3 weight tiers (Lite/Standard/Premium), physics-based animations, OKLCH color system, and Aurora Fluid design identity.
+`@frontier-labs/ui-kit` — A zero-dependency React component library with 162 components across 3 weight tiers (Lite/Standard/Premium), physics-based animations, OKLCH color system, and Aurora Fluid design identity.
 
-**Repository:** https://github.com/annondeveloper/ui-kit
+**Repository:** https://github.com/Frontier-Labs-India/ui-kit
 **Current:** v2.8.1 on `main` branch
 **Legacy:** v0.4.1 on `v1` branch (archived)
 
@@ -103,14 +103,14 @@ src/premium/       # Premium tier (145): aurora glow, spring animations, shimmer
 ## CLI Tool
 
 ```bash
-npx @annondeveloper/ui-kit init                                    # Copy theme + utils
-npx @annondeveloper/ui-kit add <name> [--tier] [--out-dir]         # Copy component source
-npx @annondeveloper/ui-kit create <name> --template <template>     # Scaffold project
-npx @annondeveloper/ui-kit list                                    # List components
-npx @annondeveloper/ui-kit theme <color>                           # Generate theme from brand color
-npx @annondeveloper/ui-kit figma-export --theme <name> --output <file>  # Export Figma tokens
-npx @annondeveloper/ui-kit mcp                                     # Set up MCP server for Claude/Cursor
-npx @annondeveloper/ui-kit stats                                   # Show MCP usage statistics
+npx @frontier-labs/ui-kit init                                    # Copy theme + utils
+npx @frontier-labs/ui-kit add <name> [--tier] [--out-dir]         # Copy component source
+npx @frontier-labs/ui-kit create <name> --template <template>     # Scaffold project
+npx @frontier-labs/ui-kit list                                    # List components
+npx @frontier-labs/ui-kit theme <color>                           # Generate theme from brand color
+npx @frontier-labs/ui-kit figma-export --theme <name> --output <file>  # Export Figma tokens
+npx @frontier-labs/ui-kit mcp                                     # Set up MCP server for Claude/Cursor
+npx @frontier-labs/ui-kit stats                                   # Show MCP usage statistics
 ```
 
 ## MCP Server
@@ -118,7 +118,7 @@ npx @annondeveloper/ui-kit stats                                   # Show MCP us
 The MCP server enables AI assistants to discover and use components programmatically.
 
 ```bash
-npx @annondeveloper/ui-kit mcp    # Auto-configure Claude/Cursor MCP settings
+npx @frontier-labs/ui-kit mcp    # Auto-configure Claude/Cursor MCP settings
 ```
 
 **6 tools:** list_components, get_component, search_components, generate_snippet, get_theme, get_icons

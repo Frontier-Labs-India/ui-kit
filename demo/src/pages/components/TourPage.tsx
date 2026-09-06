@@ -46,9 +46,9 @@ const PLACEMENTS: readonly Placement[] = ['top', 'bottom', 'left', 'right'] as c
 // ─── Import strings per tier ─────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Tour, type TourStep } from '@annondeveloper/ui-kit'",
-  lite: "import { Tour } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Tour } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Tour, type TourStep } from '@frontier-labs/ui-kit'",
+  lite: "import { Tour } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Tour } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Page Styles ─────────────────────────────────────────────────────────────
@@ -456,7 +456,7 @@ function generateReactCode(
   motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const typeImport = tier === 'standard' ? '' : "\nimport type { TourStep } from '@annondeveloper/ui-kit'"
+  const typeImport = tier === 'standard' ? '' : "\nimport type { TourStep } from '@frontier-labs/ui-kit'"
 
   const steps = Array.from({ length: stepCount }, (_, i) => {
     const pl = PLACEMENTS[i % PLACEMENTS.length]
@@ -504,7 +504,7 @@ function generateHtmlCode(
   if (!showSkip) attrs.push('data-no-skip')
 
   return `<!-- HTML + CSS approach -->
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/tour.css" />
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/tour.css" />
 
 ${targets}
 
@@ -529,7 +529,7 @@ function generateVueCode(
   showSkip: boolean,
   motion: number,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
 
   const steps = Array.from({ length: stepCount }, (_, i) => {
     const pl = PLACEMENTS[i % PLACEMENTS.length]
@@ -565,7 +565,7 @@ function generateAngularCode(
   showProgress: boolean,
   showSkip: boolean,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
 
   const attrs: string[] = [
     '[steps]="steps"',
@@ -603,7 +603,7 @@ function generateSvelteCode(
   showSkip: boolean,
   motion: number,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
 
   const steps = Array.from({ length: stepCount }, (_, i) => {
     const pl = PLACEMENTS[i % PLACEMENTS.length]
@@ -946,7 +946,7 @@ export default function TourPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Full-featured with motion, theming, and accessibility.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@frontier-labs/ui-kit'</code>
             <div className="tour-page__size-row">
               <span className="tour-page__size-label">JS</span>
               <span className="tour-page__size-value">~4.2 KB gzip</span>
@@ -961,7 +961,7 @@ export default function TourPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Minimal footprint, no motion or advanced theming.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@frontier-labs/ui-kit/lite'</code>
             <div className="tour-page__size-row">
               <span className="tour-page__size-label">JS</span>
               <span className="tour-page__size-value">~1.8 KB gzip</span>
@@ -976,7 +976,7 @@ export default function TourPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Aurora glow, spring animations, and shimmer effects.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Tour {'}'} from '@frontier-labs/ui-kit/premium'</code>
             <div className="tour-page__size-row">
               <span className="tour-page__size-label">JS</span>
               <span className="tour-page__size-value">~5.8 KB gzip</span>
@@ -1031,7 +1031,7 @@ export default function TourPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/tour.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/tour.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: '0.875rem', color: 'var(--brand)' }}
@@ -1039,7 +1039,7 @@ export default function TourPage() {
             Source: src/domain/tour.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tour.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tour.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: '0.875rem', color: 'var(--brand)' }}
@@ -1047,7 +1047,7 @@ export default function TourPage() {
             Source: src/lite/tour.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/tour.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/tour.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: '0.875rem', color: 'var(--brand)' }}

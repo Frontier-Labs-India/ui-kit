@@ -649,9 +649,9 @@ type Size = 'sm' | 'md'
 const SIZES: Size[] = ['sm', 'md']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TypingIndicator } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TypingIndicator } from '@annondeveloper/ui-kit'",
-  premium: "import { TypingIndicator } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TypingIndicator } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TypingIndicator } from '@frontier-labs/ui-kit'",
+  premium: "import { TypingIndicator } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -772,14 +772,14 @@ function generateHtmlCode(size: Size): string {
   <span class="sr-only">Someone is typing...</span>
 </div>
 
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/typing-indicator.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/typing-indicator.css">`
 }
 
 function generateVueCode(tier: Tier, size: Size, showAvatar: boolean): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-typing-indicator" aria-label="Typing">\n    ${showAvatar ? '<span class="ui-lite-typing-indicator__avatar">AI</span>\n    ' : ''}<span class="ui-lite-typing-indicator__dots">\n      <span /><span /><span />\n    </span>\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-typing-indicator" aria-label="Typing">\n    ${showAvatar ? '<span class="ui-lite-typing-indicator__avatar">AI</span>\n    ' : ''}<span class="ui-lite-typing-indicator__dots">\n      <span /><span /><span />\n    </span>\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (showAvatar) attrs.push(':avatar="avatarEl"')
@@ -789,16 +789,16 @@ function generateVueCode(tier: Tier, size: Size, showAvatar: boolean): string {
 
 function generateAngularCode(tier: Tier, size: Size): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-typing-indicator" aria-label="Typing">\n  <span class="ui-lite-typing-indicator__dots">\n    <span></span><span></span><span></span>\n  </span>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-typing-indicator" aria-label="Typing">\n  <span class="ui-lite-typing-indicator__dots">\n    <span></span><span></span><span></span>\n  </span>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  return `<!-- Angular — Use CSS-only approach -->\n<div\n  class="ui-typing-indicator"\n  data-size="${size}"\n  role="status"\n  aria-live="polite"\n>\n  <span class="ui-typing-indicator__dots" aria-hidden="true">\n    <span class="ui-typing-indicator__dot"></span>\n    <span class="ui-typing-indicator__dot"></span>\n    <span class="ui-typing-indicator__dot"></span>\n  </span>\n</div>\n\n@import '@annondeveloper/ui-kit/css/components/typing-indicator.css';`
+  return `<!-- Angular — Use CSS-only approach -->\n<div\n  class="ui-typing-indicator"\n  data-size="${size}"\n  role="status"\n  aria-live="polite"\n>\n  <span class="ui-typing-indicator__dots" aria-hidden="true">\n    <span class="ui-typing-indicator__dot"></span>\n    <span class="ui-typing-indicator__dot"></span>\n    <span class="ui-typing-indicator__dot"></span>\n  </span>\n</div>\n\n@import '@frontier-labs/ui-kit/css/components/typing-indicator.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-typing-indicator" aria-label="Typing">\n  <span class="ui-lite-typing-indicator__dots">\n    <span/><span/><span/>\n  </span>\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-typing-indicator" aria-label="Typing">\n  <span class="ui-lite-typing-indicator__dots">\n    <span/><span/><span/>\n  </span>\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { TypingIndicator } from '${importPath}';\n</script>\n\n<TypingIndicator${size !== 'md' ? ` size="${size}"` : ''} />`
 }
 
@@ -1165,7 +1165,7 @@ export default function TypingIndicatorPage() {
               No motion levels, no size prop. Basic avatar support.
             </p>
             <div className="typing-indicator-page__tier-import">
-              import {'{'} TypingIndicator {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TypingIndicator {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="typing-indicator-page__tier-preview">
               <LiteTypingIndicator />
@@ -1196,7 +1196,7 @@ export default function TypingIndicatorPage() {
               custom label, spring physics animation, and forced-colors support.
             </p>
             <div className="typing-indicator-page__tier-import">
-              import {'{'} TypingIndicator {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TypingIndicator {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="typing-indicator-page__tier-preview">
               <TypingIndicator />
@@ -1227,7 +1227,7 @@ export default function TypingIndicatorPage() {
               color-shifting dots, and entrance/exit transitions.
             </p>
             <div className="typing-indicator-page__tier-import">
-              import {'{'} TypingIndicator {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TypingIndicator {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="typing-indicator-page__tier-preview">
               <PremiumTypingIndicator />
@@ -1348,13 +1348,13 @@ export default function TypingIndicatorPage() {
         <h2 className="typing-indicator-page__section-title"><a href="#source">Source</a></h2>
         <p className="typing-indicator-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="typing-indicator-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="typing-indicator-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/typing-indicator.tsx (Standard)
           </a>
-          <a className="typing-indicator-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="typing-indicator-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/typing-indicator.tsx (Lite)
           </a>
-          <a className="typing-indicator-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="typing-indicator-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/typing-indicator.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/typing-indicator.tsx (Premium)
           </a>
         </div>

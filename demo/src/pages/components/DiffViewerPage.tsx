@@ -583,7 +583,7 @@ const CONFIG_NEW = `{
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@annondeveloper/ui-kit": "^2.0.0"
+    "@frontier-labs/ui-kit": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^5.4.0"
@@ -620,9 +620,9 @@ const DIFF_SAMPLES: Record<DiffSample, { old: string; new: string; oldTitle: str
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DiffViewer } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DiffViewer } from '@annondeveloper/ui-kit'",
-  premium: "import { DiffViewer } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DiffViewer } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DiffViewer } from '@frontier-labs/ui-kit'",
+  premium: "import { DiffViewer } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -717,8 +717,8 @@ function generateReactCode(tier: Tier, mode: DiffMode, showLineNumbers: boolean,
 
 function generateHtmlCode(tier: Tier): string {
   const cls = tier === 'lite' ? 'ui-lite-diff-viewer' : 'ui-diff-viewer'
-  return `<!-- DiffViewer — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/diff-viewer.css">
+  return `<!-- DiffViewer — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/diff-viewer.css">
 
 <div class="${cls}" data-mode="unified">
   <div class="${cls}__titles">
@@ -750,7 +750,7 @@ function generateVueCode(tier: Tier, mode: DiffMode): string {
 </template>
 
 <script setup>
-import { DiffViewer } from '@annondeveloper/ui-kit/lite'
+import { DiffViewer } from '@frontier-labs/ui-kit/lite'
 const oldCode = 'function greet(name) { ... }'
 const newCode = 'function greet(name: string) { ... }'
 </script>`
@@ -766,7 +766,7 @@ const newCode = 'function greet(name: string) { ... }'
 </template>
 
 <script setup>
-import { DiffViewer } from '@annondeveloper/ui-kit'
+import { DiffViewer } from '@frontier-labs/ui-kit'
 const oldCode = 'function greet(name) { ... }'
 const newCode = 'function greet(name: string) { ... }'
 </script>`
@@ -788,20 +788,20 @@ function generateAngularCode(tier: Tier): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — use CSS-only approach -->
 <div class="ui-diff-viewer" data-mode="unified">
   <!-- Render diff lines from your diff algorithm -->
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/diff-viewer.css';`
+@import '@frontier-labs/ui-kit/css/components/diff-viewer.css';`
 }
 
 function generateSvelteCode(tier: Tier, mode: DiffMode): string {
   if (tier === 'lite') {
     return `<script>
-  import { DiffViewer } from '@annondeveloper/ui-kit/lite';
+  import { DiffViewer } from '@frontier-labs/ui-kit/lite';
   const oldCode = 'function greet(name) { ... }';
   const newCode = 'function greet(name: string) { ... }';
 </script>
@@ -809,7 +809,7 @@ function generateSvelteCode(tier: Tier, mode: DiffMode): string {
 <DiffViewer oldValue={oldCode} newValue={newCode} oldTitle="before" newTitle="after" />`
   }
   return `<script>
-  import { DiffViewer } from '@annondeveloper/ui-kit';
+  import { DiffViewer } from '@frontier-labs/ui-kit';
   const oldCode = 'function greet(name) { ... }';
   const newCode = 'function greet(name: string) { ... }';
 </script>
@@ -1192,7 +1192,7 @@ export default function DiffViewerPage() {
               Just a two-column table highlighting changed rows.
             </p>
             <div className="diff-viewer-page__tier-import">
-              import {'{'} DiffViewer {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DiffViewer {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="diff-viewer-page__tier-preview" style={{ maxHeight: '120px', overflow: 'hidden' }}>
               <LiteDiffViewer oldValue="old line" newValue="new line" oldTitle="Old" newTitle="New" />
@@ -1223,7 +1223,7 @@ export default function DiffViewerPage() {
               expandable fold regions, and motion support.
             </p>
             <div className="diff-viewer-page__tier-import">
-              import {'{'} DiffViewer {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DiffViewer {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="diff-viewer-page__tier-preview" style={{ maxHeight: '120px', overflow: 'hidden' }}>
               <DiffViewer oldValue="const x = 1;" newValue="const x: number = 1;" oldTitle="Old" newTitle="New" />
@@ -1253,7 +1253,7 @@ export default function DiffViewerPage() {
               Aurora glow on changed lines, shimmer on additions, spring-slide staggered line entrance, and fold toggle hover glow.
             </p>
             <div className="diff-viewer-page__tier-import">
-              import {'{'} DiffViewer {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DiffViewer {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="diff-viewer-page__tier-preview" style={{ maxHeight: '120px', overflow: 'hidden' }}>
               <PremiumDiffViewer oldValue="const x = 1;" newValue="const x: number = 1;" oldTitle="Old" newTitle="New" />
@@ -1338,13 +1338,13 @@ export default function DiffViewerPage() {
         <h2 className="diff-viewer-page__section-title"><a href="#source">Source</a></h2>
         <p className="diff-viewer-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="diff-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="diff-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/diff-viewer.tsx (Standard)
           </a>
-          <a className="diff-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="diff-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/diff-viewer.tsx (Lite)
           </a>
-          <a className="diff-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="diff-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/diff-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/diff-viewer.tsx (Premium)
           </a>
         </div>

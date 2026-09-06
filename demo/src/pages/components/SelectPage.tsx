@@ -912,9 +912,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const LITE_SIZES: LiteSize[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<string, string> = {
-  lite: "import { Select } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Select } from '@annondeveloper/ui-kit'",
-  premium: "import { Select } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Select } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Select } from '@frontier-labs/ui-kit'",
+  premium: "import { Select } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -1081,8 +1081,8 @@ function generateHtmlCode(
 ): string {
   if (tier === 'lite') {
     const disabledAttr = disabled ? ' disabled' : ''
-    return `<!-- Select — @annondeveloper/ui-kit lite tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">
+    return `<!-- Select — @frontier-labs/ui-kit lite tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">
 
 <div class="ui-lite-select" data-size="${size}">
   ${label ? `<label for="country-select">${label}</label>` : ''}
@@ -1096,14 +1096,14 @@ function generateHtmlCode(
 </div>`
   }
 
-  return `<!-- Select — @annondeveloper/ui-kit standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/select.css">
+  return `<!-- Select — @frontier-labs/ui-kit standard tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/select.css">
 
 <!-- Standard Select requires JavaScript — use the React component -->
 <!-- For non-React projects, use the CSS-only Lite tier -->
 
 <!-- Or import in your CSS: -->
-<!-- @import '@annondeveloper/ui-kit/css/components/select.css'; -->`
+<!-- @import '@frontier-labs/ui-kit/css/components/select.css'; -->`
 }
 
 function generateVueCode(
@@ -1136,7 +1136,7 @@ const selected = ref('')
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -1158,7 +1158,7 @@ ${attrs.join('\n')}
 
 <script setup>
 import { ref } from 'vue'
-import { Select } from '@annondeveloper/ui-kit'
+import { Select } from '@frontier-labs/ui-kit'
 
 const options = [
   { value: 'us', label: 'United States' },
@@ -1190,7 +1190,7 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -1206,7 +1206,7 @@ function generateAngularCode(
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/select.css';`
+@import '@frontier-labs/ui-kit/css/components/select.css';`
 }
 
 function generateSvelteCode(
@@ -1236,7 +1236,7 @@ function generateSvelteCode(
 </script>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -1251,7 +1251,7 @@ function generateSvelteCode(
   if (disabled) attrs.push('  disabled')
 
   return `<script>
-  import { Select } from '@annondeveloper/ui-kit';
+  import { Select } from '@frontier-labs/ui-kit';
 
   const options = [
     { value: 'us', label: 'United States' },
@@ -1948,7 +1948,7 @@ export default function SelectPage() {
               Supports grouping via {'<optgroup>'}. No search, no multi-select, no icons.
             </p>
             <div className="select-page__tier-import">
-              import {'{'} Select {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Select {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="select-page__tier-preview">
               <LiteSelect
@@ -1983,7 +1983,7 @@ export default function SelectPage() {
               multi-select with tags, grouped options, icon support, and keyboard navigation.
             </p>
             <div className="select-page__tier-import">
-              import {'{'} Select {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Select {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="select-page__tier-preview">
               <Select
@@ -2019,7 +2019,7 @@ export default function SelectPage() {
               and shimmer highlight on selected option. Wraps Standard with premium CSS layer.
             </p>
             <div className="select-page__tier-import">
-              import {'{'} Select {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Select {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="select-page__tier-preview">
               <PremiumSelect
@@ -2195,7 +2195,7 @@ export default function SelectPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/select.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/select.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="select-page__source-link"
@@ -2204,7 +2204,7 @@ export default function SelectPage() {
             src/components/select.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/select.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/select.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="select-page__source-link"

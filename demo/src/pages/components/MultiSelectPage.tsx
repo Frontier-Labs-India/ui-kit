@@ -579,10 +579,10 @@ function generateReactCode(
   motion: 0 | 1 | 2 | 3,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const props: string[] = []
   props.push(`label="${labelText}"`)
@@ -623,7 +623,7 @@ function generateHtmlCode(
   placeholder: string,
 ): string {
   return `<!-- MultiSelect — HTML+CSS standalone -->
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/multi-select.css" />
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/multi-select.css" />
 
 <div class="ui-multi-select" data-size="${size}">
   <label class="ui-multi-select__label">${labelText}</label>
@@ -656,10 +656,10 @@ function generateVueCode(
   labelText: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = []
   attrs.push(`label="${labelText}"`)
@@ -697,10 +697,10 @@ function generateAngularCode(
   labelText: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   return `<!-- Angular — ${tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the React wrapper or CSS-only approach -->
@@ -733,10 +733,10 @@ function generateSvelteCode(
   labelText: string,
 ): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium'
-      : '@annondeveloper/ui-kit'
+      ? '@frontier-labs/ui-kit/premium'
+      : '@frontier-labs/ui-kit'
 
   const attrs: string[] = []
   attrs.push(`label="${labelText}"`)
@@ -983,9 +983,9 @@ function PlaygroundSection({ tier: tierProp }: { tier: Tier }) {
 // ─── Import String ──────────────────────────────────────────────────────────
 
 function getImportStr(tier: Tier): string {
-  if (tier === 'lite') return "import { MultiSelect } from '@annondeveloper/ui-kit/lite'"
-  if (tier === 'premium') return "import { MultiSelect } from '@annondeveloper/ui-kit/premium'"
-  return "import { MultiSelect } from '@annondeveloper/ui-kit'"
+  if (tier === 'lite') return "import { MultiSelect } from '@frontier-labs/ui-kit/lite'"
+  if (tier === 'premium') return "import { MultiSelect } from '@frontier-labs/ui-kit/premium'"
+  return "import { MultiSelect } from '@frontier-labs/ui-kit'"
 }
 
 // ─── Page ───────────────────────────────────────────────────────────────────
@@ -1113,7 +1113,7 @@ export default function MultiSelectPage() {
               size="sm"
             />
             <code style={{ fontSize: '0.625rem', display: 'block', marginBlockStart: '0.5rem' }}>
-              import {'{'} MultiSelect {'}'} from &apos;@annondeveloper/ui-kit&apos;
+              import {'{'} MultiSelect {'}'} from &apos;@frontier-labs/ui-kit&apos;
             </code>
             <div className="ms-page__size-breakdown">
               <div className="ms-page__size-row">
@@ -1136,7 +1136,7 @@ export default function MultiSelectPage() {
               size="sm"
             />
             <code style={{ fontSize: '0.625rem', display: 'block', marginBlockStart: '0.5rem' }}>
-              import {'{'} MultiSelect {'}'} from &apos;@annondeveloper/ui-kit/lite&apos;
+              import {'{'} MultiSelect {'}'} from &apos;@frontier-labs/ui-kit/lite&apos;
             </code>
             <div className="ms-page__size-breakdown">
               <div className="ms-page__size-row">
@@ -1159,7 +1159,7 @@ export default function MultiSelectPage() {
               size="sm"
             />
             <code style={{ fontSize: '0.625rem', display: 'block', marginBlockStart: '0.5rem' }}>
-              import {'{'} MultiSelect {'}'} from &apos;@annondeveloper/ui-kit/premium&apos;
+              import {'{'} MultiSelect {'}'} from &apos;@frontier-labs/ui-kit/premium&apos;
             </code>
             <div className="ms-page__size-breakdown">
               <div className="ms-page__size-row">
@@ -1271,13 +1271,13 @@ export default function MultiSelectPage() {
         <h2 className="ms-page__section-title"><a href="#source">Source</a></h2>
         <p className="ms-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="ms-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/multi-select.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ms-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/multi-select.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/multi-select.tsx (Standard)
           </a>
-          <a className="ms-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/multi-select.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ms-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/multi-select.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/multi-select.tsx (Lite)
           </a>
-          <a className="ms-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/multi-select.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ms-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/multi-select.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/multi-select.tsx (Premium)
           </a>
         </div>

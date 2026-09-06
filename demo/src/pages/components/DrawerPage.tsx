@@ -732,9 +732,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Drawer } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Drawer } from '@annondeveloper/ui-kit'",
-  premium: "import { Drawer } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Drawer } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Drawer } from '@frontier-labs/ui-kit'",
+  premium: "import { Drawer } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -854,8 +854,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCssCode(side: Side, size: DrawerSize): string {
-  return `<!-- Drawer — @annondeveloper/ui-kit standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/drawer.css">
+  return `<!-- Drawer — @frontier-labs/ui-kit standard tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/drawer.css">
 
 <div class="ui-drawer" id="my-drawer">
   <div class="ui-drawer__overlay" onclick="closeDrawer()"></div>
@@ -894,7 +894,7 @@ function generateVueCode(side: Side, size: DrawerSize): string {
 
 <script setup>
 import { ref } from 'vue'
-import { Drawer } from '@annondeveloper/ui-kit'
+import { Drawer } from '@frontier-labs/ui-kit'
 
 const open = ref(false)
 </script>`
@@ -918,14 +918,14 @@ function generateAngularCode(side: Side, size: DrawerSize): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/drawer.css';`
+@import '@frontier-labs/ui-kit/css/components/drawer.css';`
 }
 
 function generateSvelteCode(side: Side, size: DrawerSize): string {
   const sideAttr = side !== 'left' ? `\n  side="${side}"` : ''
   const sizeAttr = size !== 'md' ? `\n  size="${size}"` : ''
   return `<script>
-  import { Drawer } from '@annondeveloper/ui-kit';
+  import { Drawer } from '@frontier-labs/ui-kit';
   let open = false;
 </script>
 
@@ -1367,7 +1367,7 @@ export default function DrawerPage() {
               so no CSS-only lite variant exists.
             </p>
             <div className="drawer-page__tier-import">
-              import {'{'} Drawer {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Drawer {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="drawer-page__size-breakdown">
               <div className="drawer-page__size-row">
@@ -1395,7 +1395,7 @@ export default function DrawerPage() {
               Escape key dismiss, and four size presets.
             </p>
             <div className="drawer-page__tier-import">
-              import {'{'} Drawer {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Drawer {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="drawer-page__size-breakdown">
               <div className="drawer-page__size-row">
@@ -1423,7 +1423,7 @@ export default function DrawerPage() {
               layered box-shadows, and floating backdrop particles at motion level 3.
             </p>
             <div className="drawer-page__tier-import">
-              import {'{'} Drawer {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Drawer {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="drawer-page__size-breakdown">
               <div className="drawer-page__size-row">
@@ -1554,7 +1554,7 @@ export default function DrawerPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/drawer.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/drawer.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="drawer-page__source-link"
@@ -1563,7 +1563,7 @@ export default function DrawerPage() {
             src/components/drawer.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/drawer.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/drawer.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="drawer-page__source-link"

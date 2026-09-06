@@ -687,9 +687,9 @@ type FormatStyle = 'default' | 'currency' | 'percent' | 'compact' | 'bytes' | 'd
 const FORMAT_STYLES: FormatStyle[] = ['default', 'currency', 'percent', 'compact', 'bytes', 'duration', 'temperature', 'ordinal', 'fileSize']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { AnimatedCounter } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { AnimatedCounter } from '@annondeveloper/ui-kit'",
-  premium: "import { AnimatedCounter } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { AnimatedCounter } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { AnimatedCounter } from '@frontier-labs/ui-kit'",
+  premium: "import { AnimatedCounter } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -844,7 +844,7 @@ const formatted = computed(() => new Intl.NumberFormat().format(value))
 </template>
 
 <script setup>
-import { AnimatedCounter } from '@annondeveloper/ui-kit'
+import { AnimatedCounter } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -865,7 +865,7 @@ function generateAngularCode(tier: Tier, value: number): string {
 </span>
 
 /* Implement animation in component TypeScript */
-@import '@annondeveloper/ui-kit/css/components/animated-counter.css';`
+@import '@frontier-labs/ui-kit/css/components/animated-counter.css';`
 }
 
 function generateSvelteCode(tier: Tier, value: number): string {
@@ -876,7 +876,7 @@ function generateSvelteCode(tier: Tier, value: number): string {
 </span>`
   }
   return `<script>
-  import { AnimatedCounter } from '@annondeveloper/ui-kit';
+  import { AnimatedCounter } from '@frontier-labs/ui-kit';
   let value = ${value};
 </script>
 
@@ -1301,7 +1301,7 @@ export default function AnimatedCounterPage() {
               Supports custom format function but no transitions.
             </p>
             <div className="animated-counter-page__tier-import">
-              import {'{'} AnimatedCounter {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} AnimatedCounter {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="animated-counter-page__tier-preview">
               <LiteAnimatedCounter value={42195} />
@@ -1332,7 +1332,7 @@ export default function AnimatedCounterPage() {
               motion levels, direct DOM updates for 60fps, and ARIA live region.
             </p>
             <div className="animated-counter-page__tier-import">
-              import {'{'} AnimatedCounter {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} AnimatedCounter {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="animated-counter-page__tier-preview">
               <AnimatedCounter value={42195} />
@@ -1362,7 +1362,7 @@ export default function AnimatedCounterPage() {
               Spring-scale entrance, aurora glow on value change, and shimmer sweep across digits.
             </p>
             <div className="animated-counter-page__tier-import">
-              import {'{'} AnimatedCounter {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} AnimatedCounter {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="animated-counter-page__tier-preview">
               <PremiumAnimatedCounter value={99942} format={currencyFormat} />
@@ -1484,13 +1484,13 @@ export default function AnimatedCounterPage() {
         <h2 className="animated-counter-page__section-title"><a href="#source">Source</a></h2>
         <p className="animated-counter-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="animated-counter-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="animated-counter-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
             src/components/animated-counter.tsx (Standard)
           </a>
-          <a className="animated-counter-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="animated-counter-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/animated-counter.tsx (Lite)
           </a>
-          <a className="animated-counter-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="animated-counter-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/animated-counter.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/animated-counter.tsx (Premium)
           </a>
         </div>

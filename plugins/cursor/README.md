@@ -1,4 +1,4 @@
-# @annondeveloper/ui-kit — Cursor Integration
+# @frontier-labs/ui-kit — Cursor Integration
 
 Connect Cursor to the ui-kit MCP server for component discovery, API reference, and code generation.
 
@@ -16,13 +16,13 @@ Or manually create `.cursor/mcp.json` in your project:
 {
   "mcpServers": {
     "ui-kit": {
-      "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
     }
   }
 }
 ```
 
-Restart Cursor. The MCP server gives Cursor access to all 147 components, theme tokens, and code generation.
+Restart Cursor. The MCP server gives Cursor access to all 162 components, theme tokens, and code generation.
 
 ## Try It
 

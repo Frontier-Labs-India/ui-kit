@@ -11,8 +11,8 @@ The Performance Dashboard provides real-time visibility into your UI Kit bundle.
 Access the Performance Dashboard from the demo app's navigation, or use the underlying hooks in your own development tooling:
 
 ```tsx
-import { useRenderTime } from '@annondeveloper/ui-kit'
-import { useWebVitals } from '@annondeveloper/ui-kit'
+import { useRenderTime } from '@frontier-labs/ui-kit'
+import { useWebVitals } from '@frontier-labs/ui-kit'
 ```
 
 ## Features
@@ -49,7 +49,7 @@ interface BundleFile {
 The `useRenderTime(componentName)` hook samples a component's render timing:
 
 ```tsx
-import { useRenderTime } from '@annondeveloper/ui-kit'
+import { useRenderTime } from '@frontier-labs/ui-kit'
 
 function MyComponent() {
   const timing = useRenderTime('MyComponent')
@@ -74,7 +74,7 @@ dashboard uses this to display render times for key components, with color-coded
 The `useWebVitals()` hook collects Core Web Vitals:
 
 ```tsx
-import { useWebVitals } from '@annondeveloper/ui-kit'
+import { useWebVitals } from '@frontier-labs/ui-kit'
 
 function VitalsDisplay() {
   const vitals = useWebVitals()

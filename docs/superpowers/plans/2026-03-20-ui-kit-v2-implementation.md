@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Rebuild @annondeveloper/ui-kit from scratch as a zero-dependency React component library with 62 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity.
+**Goal:** Rebuild @frontier-labs/ui-kit from scratch as a zero-dependency React component library with 62 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity.
 
 **Architecture:** Embedded scoped CSS via `useStyles()` + `adoptedStyleSheets`, real spring solver for physics animations, OKLCH tokens with relative color syntax, native HTML elements (`<dialog>`, `popover`, anchor positioning) replacing Radix UI, built-in form engine, unified input system supporting every form factor from smartwatch to video wall.
 
@@ -86,7 +86,7 @@ Remove all dependencies except devDependencies needed for build/test. Set peer d
 
 ```json
 {
-  "name": "@annondeveloper/ui-kit",
+  "name": "@frontier-labs/ui-kit",
   "version": "2.0.0-alpha.0",
   "type": "module",
   "sideEffects": false,
@@ -161,7 +161,7 @@ Reads version from package.json, writes to jsr.json. Simple Node script.
 
 ```json
 {
-  "name": "@annondeveloper/ui-kit",
+  "name": "@frontier-labs/ui-kit",
   "version": "2.0.0-alpha.0",
   "exports": {
     ".": "./src/index.ts",

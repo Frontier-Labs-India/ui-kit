@@ -462,9 +462,9 @@ const pageStyles = css`
 const IMPORT_STR = "import { Cropper, type CropResult } from '@ui/domain/cropper'"
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Cropper } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Cropper, type CropResult } from '@annondeveloper/ui-kit'",
-  premium: "import { Cropper, type CropResult } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Cropper } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Cropper, type CropResult } from '@frontier-labs/ui-kit'",
+  premium: "import { Cropper, type CropResult } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helper Components ──────────────────────────────────────────────────────
@@ -570,8 +570,8 @@ function generateHtmlCode(
   const className = tier === 'lite' ? 'ui-lite-cropper' : 'ui-cropper'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
 
-  return `<!-- Cropper — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/cropper.css'}">
+  return `<!-- Cropper — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/cropper.css'}">
 
 <div class="${className}"${aspectRatio ? ` data-aspect-ratio="${aspectRatio}"` : ''}${rounded ? ' data-rounded' : ''}>
   <img src="your-image.jpg" alt="Image to crop" />
@@ -592,7 +592,7 @@ function generateVueCode(
 </template>
 
 <script setup>
-import { Cropper } from '@annondeveloper/ui-kit/lite'
+import { Cropper } from '@frontier-labs/ui-kit/lite'
 </script>`
   }
 
@@ -611,7 +611,7 @@ ${attrs.join('\n')}
 </template>
 
 <script setup>
-import { Cropper } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'
+import { Cropper } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'
 
 function onCrop(result) {
   console.log(result)
@@ -638,7 +638,7 @@ function generateAngularCode(
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
 
   return `<!-- Angular — ${tierLabel} tier -->
-@import '@annondeveloper/ui-kit/css/components/cropper.css';
+@import '@frontier-labs/ui-kit/css/components/cropper.css';
 
 <ui-cropper
 ${attrs.join('\n')}
@@ -655,7 +655,7 @@ function generateSvelteCode(
 ): string {
   if (tier === 'lite') {
     return `<script>
-  import { Cropper } from '@annondeveloper/ui-kit/lite'
+  import { Cropper } from '@frontier-labs/ui-kit/lite'
 </script>
 
 <Cropper src="/image.jpg"${aspectRatio ? ` aspectRatio={${aspectRatio}}` : ''}${rounded ? ' rounded' : ''} />`
@@ -670,7 +670,7 @@ function generateSvelteCode(
   attrs.push('  on:crop={handleCrop}')
 
   return `<script>
-  import { Cropper } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'
+  import { Cropper } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'
 
   function handleCrop(e) {
     console.log(e.detail)
@@ -1024,7 +1024,7 @@ export default function CropperPage() {
               src, aspectRatio, and rounded only. No interactivity, no sliders, no onCrop callback.
             </p>
             <div className="cropper-page__tier-import">
-              import {'{'} Cropper {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Cropper {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="cropper-page__tier-preview">
               <LiteCropper src={SAMPLE_IMAGE} aspectRatio={16 / 9} />
@@ -1042,7 +1042,7 @@ export default function CropperPage() {
               optional rule-of-thirds grid, aspect ratio locking, and onCrop callback.
             </p>
             <div className="cropper-page__tier-import">
-              import {'{'} Cropper {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Cropper {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="cropper-page__tier-preview">
               <Cropper src={SAMPLE_IMAGE} aspectRatio={16 / 9} showGrid showZoom />
@@ -1061,7 +1061,7 @@ export default function CropperPage() {
               motion-level-aware degradation.
             </p>
             <div className="cropper-page__tier-import">
-              import {'{'} Cropper {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Cropper {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="cropper-page__tier-preview">
               <PremiumCropper src={SAMPLE_IMAGE} aspectRatio={16 / 9} showGrid showZoom />
@@ -1153,7 +1153,7 @@ export default function CropperPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/cropper.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/cropper.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--text-sm)', color: 'var(--brand)', textDecoration: 'none' }}
@@ -1162,7 +1162,7 @@ export default function CropperPage() {
             src/domain/cropper.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/cropper.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/cropper.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--text-sm)', color: 'var(--brand)', textDecoration: 'none' }}
@@ -1171,7 +1171,7 @@ export default function CropperPage() {
             src/lite/cropper.tsx (Lite)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/cropper.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/cropper.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--text-sm)', color: 'var(--brand)', textDecoration: 'none' }}

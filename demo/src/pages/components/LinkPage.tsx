@@ -701,9 +701,9 @@ const UNDERLINES: Underline[] = ['always', 'hover', 'none']
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Link } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Link } from '@annondeveloper/ui-kit'",
-  premium: "import { Link } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Link } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Link } from '@frontier-labs/ui-kit'",
+  premium: "import { Link } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -806,11 +806,11 @@ function generateHtmlCode(tier: Tier, variant: LinkVariant, underline: Underline
     attrs.push('data-external="true"', 'target="_blank"', 'rel="noopener noreferrer"')
   }
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/link.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/link.css';`
 
-  return `<!-- Link -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/link.css'}">
+  return `<!-- Link -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/link.css'}">
 
 <a ${attrs.join(' ')}>
   ${label}
@@ -824,9 +824,9 @@ function generateVueCode(tier: Tier, variant: LinkVariant, underline: Underline,
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-link"`, `href="https://example.com"`, `data-variant="${variant}"`, `data-underline="${underline}"`, `data-size="${size}"`]
     if (external) attrs.push('data-external="true"', 'target="_blank"', 'rel="noopener noreferrer"')
-    return `<template>\n  <a ${attrs.join(' ')}>\n    ${label}\n  </a>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <a ${attrs.join(' ')}>\n    ${label}\n  </a>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = ['  href="https://example.com"']
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
   if (underline !== 'hover') attrs.push(`  underline="${underline}"`)
@@ -840,7 +840,7 @@ function generateAngularCode(tier: Tier, variant: LinkVariant, underline: Underl
   const className = tier === 'lite' ? 'ui-lite-link' : 'ui-link'
   const attrs = [`class="${className}"`, `href="https://example.com"`, `data-variant="${variant}"`, `data-underline="${underline}"`, `data-size="${size}"`]
   if (external) attrs.push('data-external="true"', 'target="_blank"', 'rel="noopener noreferrer"')
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css' : '@annondeveloper/ui-kit/css/components/link.css'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css' : '@frontier-labs/ui-kit/css/components/link.css'
 
   return `<!-- Angular -- ${tier} tier -->\n<a ${attrs.join(' ')}>\n  ${label}\n</a>\n\n/* In styles.css */\n@import '${importPath}';`
 }
@@ -849,7 +849,7 @@ function generateSvelteCode(tier: Tier, variant: LinkVariant, underline: Underli
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-link"`, `href="https://example.com"`, `data-variant="${variant}"`, `data-underline="${underline}"`, `data-size="${size}"`]
     if (external) attrs.push('data-external="true"', 'target="_blank"', 'rel="noopener noreferrer"')
-    return `<a ${attrs.join(' ')}>\n  ${label}\n</a>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<a ${attrs.join(' ')}>\n  ${label}\n</a>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
   const attrs: string[] = ['  href="https://example.com"']
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
@@ -857,7 +857,7 @@ function generateSvelteCode(tier: Tier, variant: LinkVariant, underline: Underli
   if (external) attrs.push('  external')
   if (size !== 'md') attrs.push(`  size="${size}"`)
 
-  return `<script>\n  import { Link } from '@annondeveloper/ui-kit';\n</script>\n\n<Link\n${attrs.join('\n')}\n>\n  ${label}\n</Link>`
+  return `<script>\n  import { Link } from '@frontier-labs/ui-kit';\n</script>\n\n<Link\n${attrs.join('\n')}\n>\n  ${label}\n</Link>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1233,7 +1233,7 @@ export default function LinkPage() {
               No motion or animated underline.
             </p>
             <div className="link-page__tier-import">
-              import {'{'} Link {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Link {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="link-page__tier-preview">
               <LiteLink href="#" onClick={e => e.preventDefault()}>Lite Link</LiteLink>
@@ -1265,7 +1265,7 @@ export default function LinkPage() {
               brand glow, and embedded scoped CSS.
             </p>
             <div className="link-page__tier-import">
-              import {'{'} Link {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Link {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="link-page__tier-preview">
               <Link href="#" onClick={e => e.preventDefault()}>Standard</Link>
@@ -1296,7 +1296,7 @@ export default function LinkPage() {
               Aurora underline glow on hover, spring-slide underline animation, and shimmer text effect.
             </p>
             <div className="link-page__tier-import">
-              import {'{'} Link {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Link {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="link-page__tier-preview">
               <PremiumLink href="#" variant="brand" onClick={e => e.preventDefault()}>Premium</PremiumLink>
@@ -1387,13 +1387,13 @@ export default function LinkPage() {
         <h2 className="link-page__section-title"><a href="#source">Source</a></h2>
         <p className="link-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/link.tsx (Standard)
           </a>
-          <a className="link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/link.tsx (Lite)
           </a>
-          <a className="link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/link.tsx (Premium)
           </a>
         </div>

@@ -710,9 +710,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { EncryptedText } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { EncryptedText } from '@annondeveloper/ui-kit'",
-  premium: "import { EncryptedText } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { EncryptedText } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { EncryptedText } from '@frontier-labs/ui-kit'",
+  premium: "import { EncryptedText } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -811,11 +811,11 @@ function generateHtmlCode(text: string): string {
 </span>
 
 <!-- Import component CSS -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/encrypted-text.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/encrypted-text.css">`
 }
 
 function generateVueCode(tier: Tier, text: string, trigger: TriggerType, speed: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text}"`]
   if (trigger !== 'mount') attrs.push(`  trigger="${trigger}"`)
   if (speed !== 2) attrs.push(`  :speed="${speed}"`)
@@ -824,7 +824,7 @@ function generateVueCode(tier: Tier, text: string, trigger: TriggerType, speed: 
 }
 
 function generateAngularCode(tier: Tier, text: string, trigger: TriggerType, speed: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — Use the CSS-only approach or React wrapper -->
 <span
   class="ui-encrypted-text"
@@ -839,7 +839,7 @@ function generateAngularCode(tier: Tier, text: string, trigger: TriggerType, spe
 }
 
 function generateSvelteCode(tier: Tier, text: string, trigger: TriggerType, speed: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text}"`]
   if (trigger !== 'mount') attrs.push(`  trigger="${trigger}"`)
   if (speed !== 2) attrs.push(`  speed={${speed}}`)
@@ -1238,7 +1238,7 @@ export default function EncryptedTextPage() {
               with aria-label for accessibility. Zero JavaScript animation overhead.
             </p>
             <div className="encrypted-text-page__tier-import">
-              import {'{'} EncryptedText {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} EncryptedText {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="encrypted-text-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>
@@ -1271,7 +1271,7 @@ export default function EncryptedTextPage() {
               Configurable speed and custom character sets. Respects motion preferences.
             </p>
             <div className="encrypted-text-page__tier-import">
-              import {'{'} EncryptedText {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} EncryptedText {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="encrypted-text-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1304,7 +1304,7 @@ export default function EncryptedTextPage() {
               scramble effect, and enhanced OKLCH color transitions during the animation.
             </p>
             <div className="encrypted-text-page__tier-import">
-              import {'{'} EncryptedText {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} EncryptedText {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="encrypted-text-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1464,7 +1464,7 @@ export default function EncryptedTextPage() {
         </p>
         <a
           className="encrypted-text-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/encrypted-text.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/encrypted-text.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

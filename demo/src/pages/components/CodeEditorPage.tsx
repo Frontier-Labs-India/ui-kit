@@ -432,10 +432,10 @@ type EditorConfig = {
 
 function generateReactCode(cfg: EditorConfig): string {
   const importPath = cfg.tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : cfg.tier === 'premium'
-      ? "@annondeveloper/ui-kit/premium"
-      : "@annondeveloper/ui-kit"
+      ? "@frontier-labs/ui-kit/premium"
+      : "@frontier-labs/ui-kit"
 
   const props: string[] = []
   props.push(`  language="${cfg.language}"`)
@@ -457,11 +457,11 @@ ${props.join('\n')}
 
 function generateHtmlExport(cfg: EditorConfig): string {
   const cssImport = cfg.tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/code-editor.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/code-editor.css';`
 
-  return `<!-- CodeEditor — @annondeveloper/ui-kit ${cfg.tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cfg.tier === 'lite' ? 'lite/styles.css' : 'css/components/code-editor.css'}">
+  return `<!-- CodeEditor — @frontier-labs/ui-kit ${cfg.tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cfg.tier === 'lite' ? 'lite/styles.css' : 'css/components/code-editor.css'}">
 
 <div class="ui-code-editor" data-language="${cfg.language}"${cfg.readOnly ? ' data-readonly' : ''}>
   <textarea
@@ -483,11 +483,11 @@ function generateVueCode(cfg: EditorConfig): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = cfg.tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = cfg.tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   attrs.push(`  :value="code"`)
   attrs.push(`  @change="code = $event"`)
@@ -512,10 +512,10 @@ const code = ref('')
 
 function generateAngularCode(cfg: EditorConfig): string {
   const cssImport = cfg.tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
     : cfg.tier === 'premium'
-      ? `@import '@annondeveloper/ui-kit/premium/css/components/code-editor.css';`
-      : `@import '@annondeveloper/ui-kit/css/components/code-editor.css';`
+      ? `@import '@frontier-labs/ui-kit/premium/css/components/code-editor.css';`
+      : `@import '@frontier-labs/ui-kit/css/components/code-editor.css';`
 
   const attrs = [`class="ui-code-editor"`, `data-language="${cfg.language}"`]
   if (cfg.readOnly) attrs.push('[attr.data-readonly]="true"')
@@ -541,11 +541,11 @@ function generateSvelteCode(cfg: EditorConfig): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = cfg.tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = cfg.tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   attrs.push(`  value={code}`)
   attrs.push(`  on:change={(e) => code = e.detail}`)
@@ -867,7 +867,7 @@ export default function CodeEditorPage() {
               No syntax highlighting, no active line, no maxHeight or wordWrap props.
             </p>
             <div className="code-editor-page__tier-import">
-              import {'{'} CodeEditor {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CodeEditor {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="code-editor-page__tier-preview">
               <LiteCodeEditor defaultValue={'const x = 1\nconst y = 2'} showLineNumbers minHeight="80px" />
@@ -885,7 +885,7 @@ export default function CodeEditorPage() {
               Bash, and SQL. Active line, word wrap, configurable tab size, and placeholder text.
             </p>
             <div className="code-editor-page__tier-import">
-              import {'{'} CodeEditor {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CodeEditor {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="code-editor-page__tier-preview">
               <CodeEditor defaultValue={'const x = 1\nconst y = 2'} language="typescript" showLineNumbers highlightActiveLine maxHeight="100px" />
@@ -903,7 +903,7 @@ export default function CodeEditorPage() {
               keyword text-shadow shimmer, and motion-level-aware degradation.
             </p>
             <div className="code-editor-page__tier-import">
-              import {'{'} CodeEditor {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CodeEditor {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="code-editor-page__tier-preview">
               <PremiumCodeEditor defaultValue={'const x = 1\nconst y = 2'} language="typescript" showLineNumbers highlightActiveLine maxHeight="100px" />
@@ -981,13 +981,13 @@ export default function CodeEditorPage() {
         <h2 className="code-editor-page__section-title"><a href="#source">Source</a></h2>
         <p className="code-editor-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/code-editor.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/code-editor.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/code-editor.tsx (Standard)
           </a>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/code-editor.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/code-editor.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/code-editor.tsx (Lite)
           </a>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/code-editor.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/code-editor.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/code-editor.tsx (Premium)
           </a>
         </div>

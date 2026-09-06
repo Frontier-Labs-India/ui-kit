@@ -551,9 +551,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SectionHeader } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SectionHeader } from '@annondeveloper/ui-kit'",
-  premium: "import { SectionHeader } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SectionHeader } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SectionHeader } from '@frontier-labs/ui-kit'",
+  premium: "import { SectionHeader } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -654,7 +654,7 @@ function generateHtmlCode(tier: Tier, size: Size, titleText: string, description
 }
 
 function generateVueCode(tier: Tier, size: Size, titleText: string, description: string, showAction: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   if (tier === 'lite') {
     return `<template>\n  <header class="ui-lite-section-header" data-size="${size}">\n    <div class="ui-lite-section-header__left">\n      <h2 class="ui-lite-section-header__title">${titleText}</h2>${description ? `\n      <p class="ui-lite-section-header__description">${description}</p>` : ''}\n    </div>\n  </header>\n</template>\n\n<style>\n@import '${importPath}/styles.css';\n</style>`
   }
@@ -666,12 +666,12 @@ function generateVueCode(tier: Tier, size: Size, titleText: string, description:
 
 function generateAngularCode(tier: Tier, size: Size, titleText: string, description: string): string {
   const className = tier === 'lite' ? 'ui-lite-section-header' : 'ui-section-header'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier (CSS-only approach) -->\n<header class="${className}" data-size="${size}">\n  <div class="${className}__left">\n    <h2 class="${className}__title">${titleText}</h2>${description ? `\n    <p class="${className}__description">${description}</p>` : ''}\n  </div>\n</header>\n\n/* In styles.css */\n@import '${importPath}/css/components/section-header.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, titleText: string, description: string, showAction: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   if (tier === 'lite') {
     return `<!-- Svelte — Lite tier -->\n<header class="ui-lite-section-header" data-size="${size}">\n  <div class="ui-lite-section-header__left">\n    <h2 class="ui-lite-section-header__title">${titleText}</h2>${description ? `\n    <p class="ui-lite-section-header__description">${description}</p>` : ''}\n  </div>\n</header>\n\n<style>\n  @import '${importPath}/styles.css';\n</style>`
   }
@@ -978,7 +978,7 @@ export default function SectionHeaderPage() {
               <span className="sectionheader-page__tier-size">~0.3 KB</span>
             </div>
             <p className="sectionheader-page__tier-desc">CSS-only variant. Zero JavaScript beyond forwardRef wrapper. No motion, no style engine.</p>
-            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="sectionheader-page__size-breakdown">
               <div className="sectionheader-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.3 KB</strong></span>
@@ -1001,7 +1001,7 @@ export default function SectionHeaderPage() {
               <span className="sectionheader-page__tier-size">~1.1 KB</span>
             </div>
             <p className="sectionheader-page__tier-desc">Full-featured with useStyles, scoped CSS, forced colors support, and print media query.</p>
-            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="sectionheader-page__size-breakdown">
               <div className="sectionheader-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.1 KB</strong></span>
@@ -1024,7 +1024,7 @@ export default function SectionHeaderPage() {
               <span className="sectionheader-page__tier-size">~1.2 KB</span>
             </div>
             <p className="sectionheader-page__tier-desc">Everything in Standard plus entrance animation, aurora glow border, and shimmer effect.</p>
-            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="sectionheader-page__tier-import">import {'{'} SectionHeader {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="sectionheader-page__size-breakdown">
               <div className="sectionheader-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.2 KB</strong></span>
@@ -1123,13 +1123,13 @@ export default function SectionHeaderPage() {
         <h2 className="sectionheader-page__section-title"><a href="#source">Source</a></h2>
         <p className="sectionheader-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="sectionheader-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/section-header.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sectionheader-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/section-header.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/section-header.tsx (Standard)
           </a>
-          <a className="sectionheader-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/section-header.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sectionheader-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/section-header.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/section-header.tsx (Lite)
           </a>
-          <a className="sectionheader-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/section-header.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sectionheader-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/section-header.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/section-header.tsx (Premium)
           </a>
         </div>

@@ -483,9 +483,9 @@ const PROPS: PropDef[] = [
 const IMPORT = "import { TransferList } from '@ui/components/transfer-list'"
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TransferList } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TransferList } from '@annondeveloper/ui-kit'",
-  premium: "import { TransferList } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TransferList } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TransferList } from '@frontier-labs/ui-kit'",
+  premium: "import { TransferList } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ────────────────────────────────────────────────────────
@@ -525,11 +525,11 @@ function generateHtmlExport(
   size: 'sm' | 'md' | 'lg',
 ): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/transfer-list.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/transfer-list.css';`
 
-  return `<!-- TransferList — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/transfer-list.css'}">
+  return `<!-- TransferList — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/transfer-list.css'}">
 
 <div class="ui-transfer-list" data-size="${size}">
   <div class="ui-transfer-list__panel">
@@ -579,7 +579,7 @@ function generateVueCode(
 
 <script setup>
 import { ref } from 'vue'
-import { TransferList } from '@annondeveloper/ui-kit/lite'
+import { TransferList } from '@frontier-labs/ui-kit/lite'
 
 const value = ref([
   [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }],
@@ -588,11 +588,11 @@ const value = ref([
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <TransferList
     :value="value"
@@ -618,9 +618,9 @@ function generateAngularCode(
   size: 'sm' | 'md' | 'lg',
   searchable: boolean,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
     : `@import '${importPath}/css/components/transfer-list.css';`
 
   return `<!-- Angular — ${tier.charAt(0).toUpperCase() + tier.slice(1)} tier -->
@@ -660,7 +660,7 @@ function generateSvelteCode(
   if (tier === 'lite') {
     return `<!-- Svelte — Lite tier -->
 <script>
-  import { TransferList } from '@annondeveloper/ui-kit/lite';
+  import { TransferList } from '@frontier-labs/ui-kit/lite';
 
   let value = [
     [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }],
@@ -676,11 +676,11 @@ function generateSvelteCode(
 />
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { TransferList } from '${importPath}';
 
@@ -906,7 +906,7 @@ export default function TransferListPage() {
             {copied ? 'Copied' : 'Copy'}
           </Button>
           {/* Source href to GitHub */}
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/transfer-list" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/transfer-list" target="_blank" rel="noopener noreferrer">
             <Button size="sm" variant="ghost" icon={<Icon name="external-link" size="sm" />}>Source</Button>
           </a>
         </div>
@@ -1036,7 +1036,7 @@ export default function TransferListPage() {
               Full transfer functionality: search, groups, transfer-all, and keyboard support.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} TransferList {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TransferList {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteTransferList
@@ -1062,7 +1062,7 @@ export default function TransferListPage() {
               keyboard-driven selection, configurable sizes, and 4 motion levels.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} TransferList {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TransferList {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <TransferList
@@ -1088,7 +1088,7 @@ export default function TransferListPage() {
               focused control buttons, hover-lift on list items, and spring-scale on button hover.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} TransferList {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TransferList {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumTransferList

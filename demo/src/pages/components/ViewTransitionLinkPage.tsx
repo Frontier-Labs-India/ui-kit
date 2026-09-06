@@ -647,9 +647,9 @@ const viewTransitionLinkProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ViewTransitionLink } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ViewTransitionLink } from '@annondeveloper/ui-kit'",
-  premium: "import { ViewTransitionLink } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ViewTransitionLink } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ViewTransitionLink } from '@frontier-labs/ui-kit'",
+  premium: "import { ViewTransitionLink } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -716,8 +716,8 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, transitionName: string, linkText: string, href: string): string {
   const vtStyle = transitionName ? ` style="view-transition-name: ${transitionName}"` : ''
-  return `<!-- ViewTransitionLink — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/view-transition-link.css">
+  return `<!-- ViewTransitionLink — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/view-transition-link.css">
 
 <a
   href="${href}"
@@ -738,7 +738,7 @@ function handleViewTransition(e) {
 }
 </script>
 
-<!-- @import '@annondeveloper/ui-kit/css/components/view-transition-link.css'; -->`
+<!-- @import '@frontier-labs/ui-kit/css/components/view-transition-link.css'; -->`
 }
 
 function generateVueCode(tier: Tier, transitionName: string, linkText: string, href: string): string {
@@ -766,11 +766,11 @@ function handleClick(e) {
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  href="${href}"`]
   if (transitionName) attrs.push(`  transition-name="${transitionName}"`)
 
@@ -788,7 +788,7 @@ import { ViewTransitionLink } from '${importPath}'
 }
 
 function generateAngularCode(tier: Tier, transitionName: string, linkText: string, href: string): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const vtStyle = transitionName ? ` [style.viewTransitionName]="'${transitionName}'"` : ''
   return `<!-- Angular — ${tier} tier -->
 <a
@@ -837,11 +837,11 @@ function generateSvelteCode(tier: Tier, transitionName: string, linkText: string
 </script>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  href="${href}"`]
   if (transitionName) attrs.push(`  transitionName="${transitionName}"`)
 
@@ -1235,7 +1235,7 @@ export default function ViewTransitionLinkPage() {
               CSS-only anchor styling. No automatic View Transitions API call. You wire up document.startViewTransition() yourself.
             </p>
             <div className="view-transition-link-page__tier-import">
-              import {'{'} ViewTransitionLink {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ViewTransitionLink {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="view-transition-link-page__tier-preview">
               <LiteViewTransitionLink href="#tiers" onClick={(e: any) => e.preventDefault()} style={{ color: 'var(--brand)', fontWeight: 600 }}>
@@ -1268,7 +1268,7 @@ export default function ViewTransitionLinkPage() {
               applies transitionName style, and falls back to native anchor navigation.
             </p>
             <div className="view-transition-link-page__tier-import">
-              import {'{'} ViewTransitionLink {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ViewTransitionLink {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="view-transition-link-page__tier-preview">
               <ViewTransitionLink href="#tiers" onClick={(e) => e.preventDefault()} className="view-transition-link-page__demo-link">
@@ -1301,7 +1301,7 @@ export default function ViewTransitionLinkPage() {
               morph animations between matched elements, and route-aware transition types.
             </p>
             <div className="view-transition-link-page__tier-import">
-              import {'{'} ViewTransitionLink {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ViewTransitionLink {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="view-transition-link-page__tier-preview">
               <PremiumViewTransitionLink href="#tiers" onClick={(e) => e.preventDefault()} className="view-transition-link-page__demo-link">
@@ -1388,13 +1388,13 @@ export default function ViewTransitionLinkPage() {
         <h2 className="view-transition-link-page__section-title"><a href="#source">Source</a></h2>
         <p className="view-transition-link-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="view-transition-link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="view-transition-link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/view-transition-link.tsx (Standard)
           </a>
-          <a className="view-transition-link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="view-transition-link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/view-transition-link.tsx (Lite)
           </a>
-          <a className="view-transition-link-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="view-transition-link-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/view-transition-link.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/view-transition-link.tsx (Premium)
           </a>
         </div>

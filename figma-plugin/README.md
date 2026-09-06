@@ -14,13 +14,13 @@ Import UI Kit theme tokens as Figma Variables so designs and code stay in sync.
 
 ```bash
 # Named theme
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
 
 # Custom brand color
-npx @annondeveloper/ui-kit figma-export --theme "#6366f1" --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme "#6366f1" --output tokens.json
 
 # Light mode
-npx @annondeveloper/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
+npx @frontier-labs/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
 ```
 
 ### 2. Import into Figma

@@ -689,9 +689,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StatusBadge } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StatusBadge } from '@annondeveloper/ui-kit'",
-  premium: "import { StatusBadge } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StatusBadge } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StatusBadge } from '@frontier-labs/ui-kit'",
+  premium: "import { StatusBadge } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -791,7 +791,7 @@ function generateReactCode(
   motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = showIcon ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = [`  status="${status}"`]
   if (label) props.push(`  label="${label}"`)
@@ -805,8 +805,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, status: Status, size: Size, label: string, pulse: boolean): string {
   const className = tier === 'lite' ? 'ui-lite-status-badge' : 'ui-status-badge'
-  return `<!-- StatusBadge -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/status-badge.css">
+  return `<!-- StatusBadge -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/status-badge.css">
 
 <span class="${className}" data-status="${status}" data-size="${size}" role="status">
   <span class="${className}__dot"${pulse ? ' data-pulse="true"' : ''}></span>
@@ -824,7 +824,7 @@ function generateVueCode(tier: Tier, status: Status, size: Size, label: string):
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -832,7 +832,7 @@ function generateVueCode(tier: Tier, status: Status, size: Size, label: string):
 </template>
 
 <script setup>
-import { StatusBadge } from '@annondeveloper/ui-kit'
+import { StatusBadge } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -845,7 +845,7 @@ function generateAngularCode(tier: Tier, status: Status, size: Size, label: stri
 </span>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <span
@@ -859,7 +859,7 @@ function generateAngularCode(tier: Tier, status: Status, size: Size, label: stri
 </span>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/status-badge.css';`
+@import '@frontier-labs/ui-kit/css/components/status-badge.css';`
 }
 
 function generateSvelteCode(tier: Tier, status: Status, size: Size, label: string): string {
@@ -871,11 +871,11 @@ function generateSvelteCode(tier: Tier, status: Status, size: Size, label: strin
 </span>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { StatusBadge } from '@annondeveloper/ui-kit';
+  import { StatusBadge } from '@frontier-labs/ui-kit';
 </script>
 
 <StatusBadge status="${status}"${size !== 'sm' ? ` size="${size}"` : ''}${label ? ` label="${label}"` : ''} />`
@@ -1257,7 +1257,7 @@ export default function StatusBadgePage() {
               No pulse, no icons, no motion control. Supports 3 sizes (sm/md/lg).
             </p>
             <div className="status-badge-page__tier-import">
-              import {'{'} StatusBadge {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StatusBadge {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="status-badge-page__tier-preview">
               <LiteStatusBadge status="ok" label="Lite" />
@@ -1288,7 +1288,7 @@ export default function StatusBadgePage() {
               motion levels, 5 sizes, and ARIA role="status".
             </p>
             <div className="status-badge-page__tier-import">
-              import {'{'} StatusBadge {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StatusBadge {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="status-badge-page__tier-preview">
               <StatusBadge status="ok" label="Standard" pulse />
@@ -1318,7 +1318,7 @@ export default function StatusBadgePage() {
               Spring-scale entrance animation, aurora glow per status color, and pulsing glow on the status dot.
             </p>
             <div className="status-badge-page__tier-import">
-              import {'{'} StatusBadge {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StatusBadge {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="status-badge-page__tier-preview">
               <PremiumStatusBadge status="critical" label="Premium" pulse icon={<Icon name="alert-circle" size="sm" />} />
@@ -1441,13 +1441,13 @@ export default function StatusBadgePage() {
         <h2 className="status-badge-page__section-title"><a href="#source">Source</a></h2>
         <p className="status-badge-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="status-badge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/status-badge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-badge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/status-badge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/status-badge.tsx (Standard)
           </a>
-          <a className="status-badge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/status-badge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-badge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/status-badge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/status-badge.tsx (Lite)
           </a>
-          <a className="status-badge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/status-badge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="status-badge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/status-badge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/status-badge.tsx (Premium)
           </a>
         </div>

@@ -561,9 +561,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PipelineDAG } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PipelineDAG } from '@annondeveloper/ui-kit'",
-  premium: "import { PipelineDAG } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PipelineDAG } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PipelineDAG } from '@frontier-labs/ui-kit'",
+  premium: "import { PipelineDAG } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -673,11 +673,11 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, direction: string, showMetrics: boolean, showThroughput: boolean): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/pipeline-dag.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/pipeline-dag.css';`
 
-  return `<!-- PipelineDAG — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/pipeline-dag.css">
+  return `<!-- PipelineDAG — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/pipeline-dag.css">
 
 <div class="ui-pipeline-dag" data-direction="${direction}"${showMetrics ? ' data-show-metrics="true"' : ''}${showThroughput ? ' data-show-throughput="true"' : ''}>
   <!-- SVG rendered by the component engine -->
@@ -692,10 +692,10 @@ function generateHtmlCode(tier: Tier, direction: string, showMetrics: boolean, s
 
 function generateVueCode(tier: Tier, direction: string, showMetrics: boolean, showThroughput: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  :nodes="nodes"', '  :edges="edges"']
   if (direction !== 'LR') attrs.push(`  direction="${direction}"`)
@@ -732,10 +732,10 @@ function onNodeClick(node) {
 
 function generateAngularCode(tier: Tier, direction: string, showMetrics: boolean, showThroughput: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const cssImport = `@import '${importPath}/css/components/pipeline-dag.css';`
   const attrs: string[] = ['  class="ui-pipeline-dag"', `  data-direction="${direction}"`]
@@ -773,10 +773,10 @@ export class PipelineComponent {
 
 function generateSvelteCode(tier: Tier, direction: string, showMetrics: boolean, showThroughput: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  {nodes}', '  {edges}']
   if (direction !== 'LR') attrs.push(`  direction="${direction}"`)
@@ -1059,7 +1059,7 @@ export default function PipelineDagPage() {
               Static SVG rendering. No animations, no metrics, no interactivity. Basic DAG layout with status colors.
             </p>
             <div className="pipeline-dag-page__tier-import">
-              import {'{'} PipelineDAG {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} PipelineDAG {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="pipeline-dag-page__tier-preview">
               <LitePipelineDAG
@@ -1093,7 +1093,7 @@ export default function PipelineDagPage() {
               Full-featured with animated edge flow, metrics display, throughput scaling, interactive node selection, and motion levels.
             </p>
             <div className="pipeline-dag-page__tier-import">
-              import {'{'} PipelineDAG {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} PipelineDAG {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="pipeline-dag-page__tier-preview">
               <PipelineDAG
@@ -1129,7 +1129,7 @@ export default function PipelineDagPage() {
               breathing effects for failed nodes, and particle flow on edges.
             </p>
             <div className="pipeline-dag-page__tier-import">
-              import {'{'} PipelineDAG {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} PipelineDAG {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="pipeline-dag-page__tier-preview">
               <PremiumPipelineDAG
@@ -1233,13 +1233,13 @@ export default function PipelineDagPage() {
         <h2 className="pipeline-dag-page__section-title"><a href="#source">Source</a></h2>
         <p className="pipeline-dag-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="pipeline-dag-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-dag-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/pipeline-dag.tsx (Standard)
           </a>
-          <a className="pipeline-dag-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-dag-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/pipeline-dag.tsx (Lite)
           </a>
-          <a className="pipeline-dag-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="pipeline-dag-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/pipeline-dag.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/pipeline-dag.tsx (Premium)
           </a>
         </div>

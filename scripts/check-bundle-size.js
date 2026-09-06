@@ -15,7 +15,7 @@ const DIST = 'dist/esm'
 // budget is baselined at 440KB (was 400KB when lite shipped CSS-only).
 const BUDGET_TOTAL = 440 * 1024
 
-// The `ai` subpath (@annondeveloper/ui-kit/ai) is a dev-time code-generation utility,
+// The `ai` subpath (@frontier-labs/ui-kit/ai) is a dev-time code-generation utility,
 // not runtime UI a consumer ships in their app, so it is reported separately and
 // excluded from the runtime budget.
 const isDevToolingEntry = (file) => file.startsWith('ai.') || file.startsWith('ai-')

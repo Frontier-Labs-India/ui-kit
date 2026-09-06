@@ -734,9 +734,9 @@ type Variant = 'info' | 'success' | 'warning' | 'error'
 const VARIANTS: Variant[] = ['info', 'success', 'warning', 'error']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Alert } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Alert } from '@annondeveloper/ui-kit'",
-  premium: "import { Alert } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Alert } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Alert } from '@frontier-labs/ui-kit'",
+  premium: "import { Alert } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -830,15 +830,15 @@ function generateHtmlExport(tier: Tier, variant: Variant, message: string, showT
   const className = tier === 'lite' ? 'ui-lite-alert' : 'ui-alert'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
     : tier === 'premium'
-    ? `@import '@annondeveloper/ui-kit/css/components/alert.css';\n@import '@annondeveloper/ui-kit/css/premium/alert.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/alert.css';`
+    ? `@import '@frontier-labs/ui-kit/css/components/alert.css';\n@import '@frontier-labs/ui-kit/css/premium/alert.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/alert.css';`
 
   const titleHtml = showTitle ? `\n  <div class="${className}__title">${title}</div>` : ''
 
-  return `<!-- Alert — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/alert.css'}">
+  return `<!-- Alert — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/alert.css'}">
 
 <div class="${className}" data-variant="${variant}" role="${variant === 'warning' || variant === 'error' ? 'alert' : 'status'}">
   <div class="${className}__content">${titleHtml}
@@ -894,7 +894,7 @@ function generateVueCode(tier: Tier, variant: Variant, message: string, showTitl
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -910,7 +910,7 @@ function generateVueCode(tier: Tier, variant: Variant, message: string, showTitl
 </template>
 
 <script setup>
-import { Alert } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'
+import { Alert } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'
 </script>`
 }
 
@@ -922,7 +922,7 @@ function generateAngularCode(tier: Tier, variant: Variant, message: string, show
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   const titleAttr = showTitle ? `\n  data-title="${title}"` : ''
@@ -938,7 +938,7 @@ function generateAngularCode(tier: Tier, variant: Variant, message: string, show
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/alert.css';${tier === 'premium' ? `\n@import '@annondeveloper/ui-kit/css/premium/alert.css';` : ''}`
+@import '@frontier-labs/ui-kit/css/components/alert.css';${tier === 'premium' ? `\n@import '@frontier-labs/ui-kit/css/premium/alert.css';` : ''}`
 }
 
 function generateSvelteCode(tier: Tier, variant: Variant, message: string, showTitle: boolean, title: string): string {
@@ -953,7 +953,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, message: string, showT
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -961,7 +961,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, message: string, showT
   if (showTitle) attrs.push(`  title="${title}"`)
 
   return `<script>
-  import { Alert } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}';
+  import { Alert } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}';
 </script>
 
 <Alert
@@ -1471,7 +1471,7 @@ export default function AlertPage() {
               No dismissible, no title, no icon slots, no actions.
             </p>
             <div className="alert-page__tier-import">
-              import {'{'} Alert {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Alert {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="alert-page__tier-preview">
               <LiteAlert variant="info" style={{ fontSize: '0.75rem' }}>Lite Alert</LiteAlert>
@@ -1502,7 +1502,7 @@ export default function AlertPage() {
               action links, size scale, motion levels, and ARIA roles.
             </p>
             <div className="alert-page__tier-import">
-              import {'{'} Alert {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Alert {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="alert-page__tier-preview">
               <Alert variant="success" title="Saved" style={{ fontSize: '0.75rem' }}>Changes saved.</Alert>
@@ -1533,7 +1533,7 @@ export default function AlertPage() {
               per-variant ambient glow, and smooth dismiss animation. Four motion levels.
             </p>
             <div className="alert-page__tier-import">
-              import {'{'} Alert {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Alert {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="alert-page__tier-preview">
               <PremiumAlert variant="info" title="Premium" style={{ fontSize: '0.75rem' }}>Spring entrance + ambient glow</PremiumAlert>
@@ -1669,7 +1669,7 @@ export default function AlertPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/alert.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/alert.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="alert-page__source-link"
@@ -1678,7 +1678,7 @@ export default function AlertPage() {
             src/components/alert.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/alert.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/alert.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="alert-page__source-link"
@@ -1687,7 +1687,7 @@ export default function AlertPage() {
             src/lite/alert.tsx (Lite)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/alert.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/alert.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="alert-page__source-link"

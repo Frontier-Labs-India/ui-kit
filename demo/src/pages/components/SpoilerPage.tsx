@@ -496,9 +496,9 @@ const pageStyles = css`
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Spoiler } from '@annondeveloper/ui-kit'",
-  lite: "import { Spoiler } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Spoiler } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Spoiler } from '@frontier-labs/ui-kit'",
+  lite: "import { Spoiler } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Spoiler } from '@frontier-labs/ui-kit/premium'",
 }
 
 const LONG_TEXT = `Aurora Fluid is a design language that draws inspiration from the natural phenomenon of the aurora borealis. It uses deep atmospheric surfaces, ambient glows, and ethereal color washes to create interfaces that feel alive and immersive. The OKLCH color system ensures perceptually uniform color distribution, while physics-based animations powered by a real spring solver provide motion that feels natural and responsive. Every component in the library is designed with progressive enhancement in mind, using modern CSS features like @scope, @layer, container queries, and scroll-driven animations, with graceful fallbacks for older browsers. The zero-dependency architecture means the entire library ships with only React as a peer dependency, keeping bundle sizes minimal while delivering a premium experience.`
@@ -616,10 +616,10 @@ function generateHtmlCode(
   hideLabel: string,
 ): string {
   const cssImport = tier === 'premium'
-    ? "@import '@annondeveloper/ui-kit/premium/css/components/spoiler.css';"
+    ? "@import '@frontier-labs/ui-kit/premium/css/components/spoiler.css';"
     : tier === 'lite'
-    ? "@import '@annondeveloper/ui-kit/lite/styles.css';"
-    : "@import '@annondeveloper/ui-kit/css/components/spoiler.css';"
+    ? "@import '@frontier-labs/ui-kit/lite/styles.css';"
+    : "@import '@frontier-labs/ui-kit/css/components/spoiler.css';"
 
   return `<!-- HTML + CSS — ${tier} tier -->
 <div class="ui-spoiler" data-state="hidden">
@@ -689,11 +689,11 @@ const expanded = ref(false)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`  :max-height="${maxHeight}"`]
   if (showLabel !== 'Show more') props.push(`  show-label="${showLabel}"`)
   if (hideLabel !== 'Show less') props.push(`  hide-label="${hideLabel}"`)
@@ -719,10 +719,10 @@ function generateAngularCode(
   hideLabel: string,
 ): string {
   const cssImport = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium/css/components/spoiler.css'
+    ? '@frontier-labs/ui-kit/premium/css/components/spoiler.css'
     : tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/spoiler.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/spoiler.css'
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : tier === 'lite' ? 'Lite' : 'Standard'} tier (CSS-only) -->
 <div class="ui-spoiler" [attr.data-state]="expanded ? 'visible' : 'hidden'">
@@ -771,11 +771,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`  maxHeight={${maxHeight}}`]
   if (showLabel !== 'Show more') props.push(`  showLabel="${showLabel}"`)
   if (hideLabel !== 'Show less') props.push(`  hideLabel="${hideLabel}"`)
@@ -1132,7 +1132,7 @@ export default function SpoilerPage() {
             <span className="spoiler-page__tier-desc">
               Minimal footprint, no motion or spring animations. CSS transitions only.
             </span>
-            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@frontier-labs/ui-kit/lite'</code>
             <span className="spoiler-page__size-row">~0.3 KB gzip JS</span>
           </div>
           <div
@@ -1143,7 +1143,7 @@ export default function SpoilerPage() {
             <span className="spoiler-page__tier-desc">
               Full-featured with CSS transitions, gradient fade, and motion levels.
             </span>
-            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@annondeveloper/ui-kit'</code>
+            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@frontier-labs/ui-kit'</code>
             <span className="spoiler-page__size-row">~1.8 KB gzip JS</span>
           </div>
           <div
@@ -1154,7 +1154,7 @@ export default function SpoilerPage() {
             <span className="spoiler-page__tier-desc">
               Aurora glow effects, spring physics for expand/collapse, and shimmer toggle.
             </span>
-            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code className="spoiler-page__tier-import">import {'{'} Spoiler {'}'} from '@frontier-labs/ui-kit/premium'</code>
             <span className="spoiler-page__size-row">~2.2 KB gzip JS</span>
           </div>
         </div>
@@ -1227,13 +1227,13 @@ export default function SpoilerPage() {
         <h2 className="spoiler-page__section-title"><a href="#source">Source</a></h2>
         <p className="spoiler-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="spoiler-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/spoiler.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spoiler-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/spoiler.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/spoiler.tsx (Standard)
           </a>
-          <a className="spoiler-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/spoiler.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spoiler-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/spoiler.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/spoiler.tsx (Lite)
           </a>
-          <a className="spoiler-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/spoiler.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spoiler-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/spoiler.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/spoiler.tsx (Premium)
           </a>
         </div>

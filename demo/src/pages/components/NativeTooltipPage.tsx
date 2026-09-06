@@ -451,9 +451,9 @@ const pageStyles = css`
 // ─── Import strings ─────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { NativeTooltip } from '@annondeveloper/ui-kit'",
-  lite: "import { NativeTooltip } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { NativeTooltip } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { NativeTooltip } from '@frontier-labs/ui-kit'",
+  lite: "import { NativeTooltip } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { NativeTooltip } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -517,7 +517,7 @@ function generateVueCode(tier: Tier, content: string, childTag: string): string 
   </${childTag}>
 </template>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <NativeTooltip content="${content}">
     <${childTag}>Hover me</${childTag}>
@@ -552,7 +552,7 @@ function generateSvelteCode(tier: Tier, content: string, childTag: string): stri
   Hover me
 </${childTag}>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { NativeTooltip } from '${importPath}';
 </script>
@@ -948,7 +948,7 @@ export default function NativeTooltipPage() {
             variant="secondary"
             size="sm"
             icon={<Icon name="github" size="sm" />}
-            onClick={() => window.open('https://github.com/annondeveloper/ui-kit/blob/main/src/components/native-tooltip.tsx', '_blank')}
+            onClick={() => window.open('https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/native-tooltip.tsx', '_blank')}
           >
             Source on GitHub
           </Button>

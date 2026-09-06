@@ -782,9 +782,9 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Checkbox } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Checkbox } from '@annondeveloper/ui-kit'",
-  premium: "import { Checkbox } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Checkbox } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Checkbox } from '@frontier-labs/ui-kit'",
+  premium: "import { Checkbox } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -909,7 +909,7 @@ function generateHtmlExport(tier: Tier, size: Size, label: string, checked: bool
   const checkedAttr = checked ? ' checked' : ''
   const indeterminateNote = indeterminate ? '\n<!-- Set indeterminate via JS: el.indeterminate = true -->' : ''
 
-  return `<!-- Checkbox — @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- Checkbox — @frontier-labs/ui-kit ${tierLabel} tier -->
 <label class="${className}" data-size="${size}">
   <input type="checkbox"${checkedAttr} />
   <span>${label}</span>
@@ -959,7 +959,7 @@ function generateVueCode(tier: Tier, size: Size, label: string, checked: boolean
     const attrs: string[] = ['class="ui-lite-checkbox"']
     if (checked) attrs.push(':checked="true"')
     if (disabled) attrs.push(':disabled="true"')
-    return `<template>\n  <label ${attrs.join(' ')}>\n    <input type="checkbox" />\n    <span>${label}</span>\n  </label>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <label ${attrs.join(' ')}>\n    <input type="checkbox" />\n    <span>${label}</span>\n  </label>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
   const attrs: string[] = []
@@ -972,7 +972,7 @@ function generateVueCode(tier: Tier, size: Size, label: string, checked: boolean
     ? '  <Checkbox />'
     : `  <Checkbox\n  ${attrs.join('\n  ')}\n  />`
 
-  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Checkbox } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Checkbox } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(tier: Tier, size: Size, label: string, checked: boolean, disabled: boolean): string {
@@ -981,20 +981,20 @@ function generateAngularCode(tier: Tier, size: Size, label: string, checked: boo
   if (tier === 'lite') {
     const attrs = ['class="ui-lite-checkbox"', `data-size="${size}"`]
     if (disabled) attrs.push('[disabled]="true"')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<label ${attrs.join(' ')}>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' [disabled]="true"' : ''} />\n  <span>${label}</span>\n</label>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<label ${attrs.join(' ')}>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' [disabled]="true"' : ''} />\n  <span>${label}</span>\n</label>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  return `<!-- Angular — Standard tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<label\n  class="ui-checkbox"\n  data-size="${size}"\n>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' [disabled]="true"' : ''} />\n  <span>${label}</span>\n</label>\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/checkbox.css';`
+  return `<!-- Angular — Standard tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<label\n  class="ui-checkbox"\n  data-size="${size}"\n>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' [disabled]="true"' : ''} />\n  <span>${label}</span>\n</label>\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/checkbox.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, label: string, checked: boolean, disabled: boolean): string {
 
 
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<label\n  class="ui-lite-checkbox"\n  data-size="${size}"\n>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' disabled' : ''} />\n  <span>${label}</span>\n</label>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<label\n  class="ui-lite-checkbox"\n  data-size="${size}"\n>\n  <input type="checkbox"${checked ? ' checked' : ''}${disabled ? ' disabled' : ''} />\n  <span>${label}</span>\n</label>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  return `<script>\n  import { Checkbox } from '@annondeveloper/ui-kit';\n</script>\n\n<Checkbox\n  size="${size}"\n  label="${label}"${checked ? '\n  checked' : ''}${disabled ? '\n  disabled' : ''}\n/>`
+  return `<script>\n  import { Checkbox } from '@frontier-labs/ui-kit';\n</script>\n\n<Checkbox\n  size="${size}"\n  label="${label}"${checked ? '\n  checked' : ''}${disabled ? '\n  disabled' : ''}\n/>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1431,7 +1431,7 @@ export default function CheckboxPage() {
               No indeterminate, no animated checkmark, no error display.
             </p>
             <div className="checkbox-page__tier-import">
-              import {'{'} Checkbox {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Checkbox {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="checkbox-page__tier-preview">
               <LiteCheckbox label="Lite Checkbox" defaultChecked />
@@ -1463,7 +1463,7 @@ export default function CheckboxPage() {
               and accessibility.
             </p>
             <div className="checkbox-page__tier-import">
-              import {'{'} Checkbox {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Checkbox {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="checkbox-page__tier-preview">
               <Checkbox label="Standard Checkbox" defaultChecked />
@@ -1494,7 +1494,7 @@ export default function CheckboxPage() {
               and motion-level-aware degradation. Wraps Standard with premium CSS layer.
             </p>
             <div className="checkbox-page__tier-import">
-              import {'{'} Checkbox {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Checkbox {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="checkbox-page__tier-preview">
               <PremiumCheckbox label="Premium" defaultChecked />
@@ -1633,7 +1633,7 @@ export default function CheckboxPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/checkbox.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/checkbox.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="checkbox-page__source-link"
@@ -1642,7 +1642,7 @@ export default function CheckboxPage() {
             src/components/checkbox.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/checkbox.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/checkbox.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="checkbox-page__source-link"

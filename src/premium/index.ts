@@ -1,5 +1,5 @@
 /**
- * @module @annondeveloper/ui-kit/premium
+ * @module @frontier-labs/ui-kit/premium
  *
  * Premium component variants with enhanced visual effects: spring-scale
  * entrance animations, aurora glow, shimmer accents, floating particles,

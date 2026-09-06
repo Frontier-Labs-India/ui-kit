@@ -400,9 +400,9 @@ const pageStyles = css`
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Carousel } from '@annondeveloper/ui-kit'",
-  lite: "import { Carousel } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Carousel } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Carousel } from '@frontier-labs/ui-kit'",
+  lite: "import { Carousel } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Carousel } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SLIDE_COLORS = [
@@ -535,7 +535,7 @@ function generateHtmlCode(
   </div>
 </div>
 
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/carousel.css" />`
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/carousel.css" />`
 }
 
 function generateVueCode(
@@ -554,10 +554,10 @@ function generateVueCode(
     if (loop) attrs.push(':loop="true"')
     if (!showDots) attrs.push(':show-dots="false"')
     if (!showArrows) attrs.push(':show-arrows="false"')
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <div class="ui-carousel__track">\n      <div class="ui-carousel__slide">Slide 1</div>\n      <div class="ui-carousel__slide">Slide 2</div>\n      <div class="ui-carousel__slide">Slide 3</div>\n    </div>\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/css/components/carousel.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <div class="ui-carousel__track">\n      <div class="ui-carousel__slide">Slide 1</div>\n      <div class="ui-carousel__slide">Slide 2</div>\n      <div class="ui-carousel__slide">Slide 3</div>\n    </div>\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/css/components/carousel.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (autoPlay) attrs.push('  auto-play')
   if (autoPlay && interval !== 5000) attrs.push(`  :auto-play-interval="${interval}"`)
@@ -592,7 +592,7 @@ function generateAngularCode(
   if (gap !== '0') attrs.push(`data-gap="${gap}"`)
 
   const tierLabel = tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
 
   return `<!-- Angular ${tierLabel} tier (CSS-only approach) -->
 <div ${attrs.join('\n     ')}>
@@ -628,11 +628,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/carousel.css';
+  @import '@frontier-labs/ui-kit/css/components/carousel.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (autoPlay) attrs.push('  autoPlay')
   if (autoPlay && interval !== 5000) attrs.push(`  autoPlayInterval={${interval}}`)
@@ -1029,21 +1029,21 @@ export default function CarouselPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Full-featured with smooth scrolling, theming, and accessibility. ~3.2KB gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@frontier-labs/ui-kit'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'lite' ? 'var(--brand)' : undefined }}>
             <strong>Lite</strong>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Minimal wrapper, no motion. Instant scroll behavior. ~1.2KB gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@frontier-labs/ui-kit/lite'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'premium' ? 'var(--brand)' : undefined }}>
             <strong>Premium</strong>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Aurora glow on arrows, spring scale, active dot glow, dot morphing. ~4.5KB gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Carousel {'}'} from '@frontier-labs/ui-kit/premium'</code>
           </Card>
         </div>
       </section>
@@ -1074,13 +1074,13 @@ export default function CarouselPage() {
         <h2 className="carousel-page__section-title"><a href="#source">Source</a></h2>
         <p className="carousel-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/carousel.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/carousel.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/carousel.tsx (Standard)
           </a>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/carousel.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/carousel.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/carousel.tsx (Lite)
           </a>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/carousel.tsx" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/carousel.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/carousel.tsx (Premium)
           </a>
         </div>

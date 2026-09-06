@@ -298,7 +298,7 @@ function ComponentPreviewSwitch({ name }: { name: string }) {
           type="single"
           items={[
             { id: '1', trigger: 'What is UI Kit?', content: 'A zero-dependency React component library with physics-based animations.' },
-            { id: '2', trigger: 'How many components?', content: '147 components across 3 weight tiers.' },
+            { id: '2', trigger: 'How many components?', content: '162 components across 3 weight tiers.' },
             { id: '3', trigger: 'What design system?', content: 'Aurora Fluid design with OKLCH color system.' },
           ]}
         />
@@ -414,7 +414,7 @@ function ComponentPreviewSwitch({ name }: { name: string }) {
         />
       )
     case 'CopyBlock':
-      return <CopyBlock code="npm install @annondeveloper/ui-kit" language="bash" />
+      return <CopyBlock code="npm install @frontier-labs/ui-kit" language="bash" />
 
     // ── Primitives (additional) ──
     case 'ActionIcon':
@@ -458,7 +458,7 @@ function ComponentPreviewSwitch({ name }: { name: string }) {
     case 'CopyButton':
       // CopyButton renders its own <button>, so children are the label (not a nested Button).
       return (
-        <CopyButtonComp value="npm install @annondeveloper/ui-kit">
+        <CopyButtonComp value="npm install @frontier-labs/ui-kit">
           {({ copied }) => (copied ? 'Copied!' : 'Copy install command')}
         </CopyButtonComp>
       )
@@ -480,7 +480,7 @@ function ComponentPreviewSwitch({ name }: { name: string }) {
       return <SuccessCheckmark />
     case 'Highlight':
     case 'TextHighlight':
-      return <TextHighlight highlight="component">A component library with 147 components.</TextHighlight>
+      return <TextHighlight highlight="component">A component library with 162 components.</TextHighlight>
 
     // ── Forms (additional) ──
     case 'Combobox':

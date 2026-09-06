@@ -562,9 +562,9 @@ const timeRangePresetProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TimeRangeSelector } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TimeRangeSelector } from '@annondeveloper/ui-kit'",
-  premium: "import { TimeRangeSelector } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TimeRangeSelector } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TimeRangeSelector } from '@frontier-labs/ui-kit'",
+  premium: "import { TimeRangeSelector } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -674,11 +674,11 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, showCustom: boolean): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/time-range-selector.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/time-range-selector.css';`
 
-  return `<!-- TimeRangeSelector — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/time-range-selector.css">
+  return `<!-- TimeRangeSelector — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/time-range-selector.css">
 
 <div class="ui-time-range-selector" role="group" aria-label="Time range">
   <div class="ui-time-range-selector__presets" role="group" aria-label="Preset ranges">
@@ -716,11 +716,11 @@ function generateVueCode(tier: Tier, showCustom: boolean): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  v-model="range"', '  @change="onRangeChange"']
   if (showCustom) attrs.push('  show-custom')
 
@@ -740,7 +740,7 @@ const onRangeChange = (newRange) => { range.value = newRange }
 }
 
 function generateAngularCode(tier: Tier, showCustom: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <div class="ui-time-range-selector" role="group" aria-label="Time range">
   <div class="ui-time-range-selector__presets">
@@ -785,11 +785,11 @@ function generateSvelteCode(tier: Tier, showCustom: boolean): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  value={range}', '  onChange={handleChange}']
   if (showCustom) attrs.push('  showCustom')
 
@@ -1115,7 +1115,7 @@ export default function TimeRangeSelectorPage() {
               CSS-only preset buttons. No motion transitions, no custom date inputs, no JavaScript interactivity beyond click handlers.
             </p>
             <div className="time-range-selector-page__tier-import">
-              import {'{'} TimeRangeSelector {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TimeRangeSelector {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="time-range-selector-page__tier-preview">
               <LiteTimeRangeSelector />
@@ -1145,7 +1145,7 @@ export default function TimeRangeSelectorPage() {
               Full-featured selector with presets, custom datetime inputs, motion levels, error boundary wrapping, and full ARIA support.
             </p>
             <div className="time-range-selector-page__tier-import">
-              import {'{'} TimeRangeSelector {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TimeRangeSelector {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="time-range-selector-page__tier-preview">
               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>Presets + Custom inputs</span>
@@ -1176,7 +1176,7 @@ export default function TimeRangeSelectorPage() {
               relative time labels, and spring-based hover effects.
             </p>
             <div className="time-range-selector-page__tier-import">
-              import {'{'} TimeRangeSelector {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TimeRangeSelector {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="time-range-selector-page__tier-preview">
               <PremiumTimeRangeSelector />
@@ -1274,13 +1274,13 @@ export default function TimeRangeSelectorPage() {
         <h2 className="time-range-selector-page__section-title"><a href="#source">Source</a></h2>
         <p className="time-range-selector-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="time-range-selector-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-range-selector-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/time-range-selector.tsx (Standard)
           </a>
-          <a className="time-range-selector-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-range-selector-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/time-range-selector.tsx (Lite)
           </a>
-          <a className="time-range-selector-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-range-selector-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/time-range-selector.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/time-range-selector.tsx (Premium)
           </a>
         </div>

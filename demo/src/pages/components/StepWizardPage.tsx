@@ -638,9 +638,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StepWizard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StepWizard } from '@annondeveloper/ui-kit'",
-  premium: "import { StepWizard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StepWizard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StepWizard } from '@frontier-labs/ui-kit'",
+  premium: "import { StepWizard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const DEMO_STEPS = [
@@ -732,7 +732,7 @@ function generateReactCode(
   stepCount: number,
 ): string {
   if (tier === 'lite') {
-    return `import { StepWizard } from '@annondeveloper/ui-kit/lite'
+    return `import { StepWizard } from '@frontier-labs/ui-kit/lite'
 
 const steps = [
   { id: 'account', label: 'Account' },
@@ -818,11 +818,11 @@ function generateVueCode(tier: Tier, orientation: Orientation, allowSkip: boolea
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <StepWizard
     :steps="steps"
@@ -868,7 +868,7 @@ function generateAngularCode(tier: Tier, orientation: Orientation): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier (CSS approach) -->
@@ -891,7 +891,7 @@ function generateAngularCode(tier: Tier, orientation: Orientation): string {
   </ol>
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/step-wizard.css';`
+@import '@frontier-labs/ui-kit/css/components/step-wizard.css';`
 }
 
 function generateSvelteCode(tier: Tier, orientation: Orientation, allowSkip: boolean): string {
@@ -914,11 +914,11 @@ function generateSvelteCode(tier: Tier, orientation: Orientation, allowSkip: boo
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { StepWizard } from '${importPath}';
 
@@ -1296,7 +1296,7 @@ export default function StepWizardPage() {
               no controlled step management. Ideal for static progress displays.
             </p>
             <div className="step-wizard-page__tier-import">
-              import {'{'} StepWizard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StepWizard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="step-wizard-page__tier-preview">
               <LiteStepWizard steps={[{ id: 's1', label: 'Start' }, { id: 's2', label: 'Review' }, { id: 's3', label: 'Done' }]} activeStep={1} />
@@ -1327,7 +1327,7 @@ export default function StepWizardPage() {
               connector lines, content transitions, and accessibility.
             </p>
             <div className="step-wizard-page__tier-import">
-              import {'{'} StepWizard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StepWizard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="step-wizard-page__tier-preview">
               <Button size="sm" variant="primary" onClick={() => setTier('standard')}>Select Standard</Button>
@@ -1358,7 +1358,7 @@ export default function StepWizardPage() {
               progress indicator glow, completion confetti effect, and stagger animations.
             </p>
             <div className="step-wizard-page__tier-import">
-              import {'{'} StepWizard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StepWizard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="step-wizard-page__tier-preview">
               <PremiumStepWizard steps={[{ id: 'p1', label: 'Start' }, { id: 'p2', label: 'Review' }, { id: 'p3', label: 'Done' }]} activeStep={1} onChange={() => {}} />
@@ -1461,13 +1461,13 @@ export default function StepWizardPage() {
         <h2 className="step-wizard-page__section-title"><a href="#source">Source</a></h2>
         <p className="step-wizard-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="step-wizard-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="step-wizard-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/step-wizard.tsx (Standard)
           </a>
-          <a className="step-wizard-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="step-wizard-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/step-wizard.tsx (Lite)
           </a>
-          <a className="step-wizard-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="step-wizard-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/step-wizard.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/step-wizard.tsx (Premium)
           </a>
         </div>

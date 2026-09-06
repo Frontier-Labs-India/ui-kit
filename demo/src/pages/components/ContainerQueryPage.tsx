@@ -719,9 +719,9 @@ const breakpointDefs: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ContainerQuery } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ContainerQuery } from '@annondeveloper/ui-kit'",
-  premium: "import { ContainerQuery } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ContainerQuery } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ContainerQuery } from '@frontier-labs/ui-kit'",
+  premium: "import { ContainerQuery } from '@frontier-labs/ui-kit/premium'",
 }
 
 const BREAKPOINTS = [
@@ -836,7 +836,7 @@ function generateHtmlExport(tier: Tier): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/container-query.css';
+@import '@frontier-labs/ui-kit/css/components/container-query.css';
 
 @container (min-width: 480px) {
   .my-card { flex-direction: row; }
@@ -844,8 +844,8 @@ function generateHtmlExport(tier: Tier): string {
 </style>`
   }
   const cssPath = tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium/css/container-query.css'
-    : '@annondeveloper/ui-kit/css/components/container-query.css'
+    ? '@frontier-labs/ui-kit/premium/css/container-query.css'
+    : '@frontier-labs/ui-kit/css/components/container-query.css'
   return `<!-- HTML/CSS — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-container-query">
   <div class="my-card">...</div>
@@ -869,14 +869,14 @@ function generateVueCode(tier: Tier, motion: number): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 
 @container (min-width: 480px) {
   .my-card { flex-direction: row; }
 }
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const motionAttr = motion !== 3 ? `\n    :motion="${motion}"` : ''
   return `<template>
   <ContainerQuery${motionAttr}>
@@ -901,13 +901,13 @@ function generateAngularCode(tier: Tier, motion: number): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 
 @container (min-width: 480px) {
   .my-card { flex-direction: row; }
 }`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const motionAttr = motion !== 3 ? `\n  data-motion="${motion}"` : ''
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
@@ -933,14 +933,14 @@ function generateSvelteCode(tier: Tier, motion: number): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 
   @container (min-width: 480px) {
     .my-card { flex-direction: row; }
   }
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const motionProp = motion !== 3 ? `\n  motion={${motion}}` : ''
   return `<script>
   import { ContainerQuery } from '${importPath}';
@@ -1233,7 +1233,7 @@ export default function ContainerQueryPage() {
         </p>
         <CopyBlock
           code={`import { useRef } from 'react'
-import { useContainerSize } from '@annondeveloper/ui-kit'
+import { useContainerSize } from '@frontier-labs/ui-kit'
 
 function MyComponent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -1264,7 +1264,7 @@ function MyComponent() {
           Pass a static value or a breakpoint map, and it cascades down to find the closest match.
         </p>
         <CopyBlock
-          code={`import { resolveResponsive, type ResponsiveValue } from '@annondeveloper/ui-kit'
+          code={`import { resolveResponsive, type ResponsiveValue } from '@frontier-labs/ui-kit'
 
 // Static value — returns directly
 resolveResponsive('md', 'lg', 'sm') // => 'md'
@@ -1493,7 +1493,7 @@ resolveResponsive(columns, 'xl', 1) // => 4  (cascades from lg)`}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/container-query.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/container-query.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="container-query-page__source-link"
@@ -1502,7 +1502,7 @@ resolveResponsive(columns, 'xl', 1) // => 4  (cascades from lg)`}
             src/components/container-query.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/container-query.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/container-query.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="container-query-page__source-link"
@@ -1511,7 +1511,7 @@ resolveResponsive(columns, 'xl', 1) // => 4  (cascades from lg)`}
             src/lite/container-query.tsx (Lite)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/container-query.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/container-query.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="container-query-page__source-link"
@@ -1520,7 +1520,7 @@ resolveResponsive(columns, 'xl', 1) // => 4  (cascades from lg)`}
             src/premium/container-query.tsx (Premium)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/core/utils/use-container-size.ts"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/core/utils/use-container-size.ts"
             target="_blank"
             rel="noopener noreferrer"
             className="container-query-page__source-link"
@@ -1529,7 +1529,7 @@ resolveResponsive(columns, 'xl', 1) // => 4  (cascades from lg)`}
             src/core/utils/use-container-size.ts (Hook)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/core/utils/responsive-props.ts"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/core/utils/responsive-props.ts"
             target="_blank"
             rel="noopener noreferrer"
             className="container-query-page__source-link"

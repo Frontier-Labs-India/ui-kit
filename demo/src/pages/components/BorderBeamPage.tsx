@@ -670,9 +670,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "/* CSS-only: @import '@annondeveloper/ui-kit/css/components/border-beam.css' */",
-  standard: "import { BorderBeam } from '@annondeveloper/ui-kit'",
-  premium: "import { BorderBeam } from '@annondeveloper/ui-kit/premium'",
+  lite: "/* CSS-only: @import '@frontier-labs/ui-kit/css/components/border-beam.css' */",
+  standard: "import { BorderBeam } from '@frontier-labs/ui-kit'",
+  premium: "import { BorderBeam } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -731,7 +731,7 @@ function generateReactCode(tier: Tier, duration: number, size: number, color: st
   if (tier === 'lite') {
     const colorVar = color ? ` style="--border-beam-color: ${color}; --border-beam-duration: ${duration}s; --border-beam-size: ${size}px"` : ` style="--border-beam-duration: ${duration}s; --border-beam-size: ${size}px"`
     return `/* Lite tier — CSS-only border beam */
-@import '@annondeveloper/ui-kit/css/components/border-beam.css';
+@import '@frontier-labs/ui-kit/css/components/border-beam.css';
 
 <div class="ui-border-beam" data-motion="${motion}"${colorVar}>
   <div class="ui-border-beam--content">
@@ -762,8 +762,8 @@ function generateReactCode(tier: Tier, duration: number, size: number, color: st
 
 function generateHtmlCode(tier: Tier, duration: number, size: number, color: string, motion: MotionLevel): string {
   const colorVar = color ? `--border-beam-color: ${color}; ` : ''
-  return `<!-- BorderBeam — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/border-beam.css">
+  return `<!-- BorderBeam — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/border-beam.css">
 
 <div
   class="ui-border-beam"
@@ -800,7 +800,7 @@ function generateVueCode(tier: Tier, duration: number, size: number, color: stri
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/border-beam.css';
+@import '@frontier-labs/ui-kit/css/components/border-beam.css';
 </style>`
   }
 
@@ -821,7 +821,7 @@ function generateVueCode(tier: Tier, duration: number, size: number, color: stri
 </template>
 
 <script setup>
-import { BorderBeam } from '@annondeveloper/ui-kit'
+import { BorderBeam } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -841,7 +841,7 @@ function generateAngularCode(tier: Tier, duration: number, size: number, color: 
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/border-beam.css';`
+@import '@frontier-labs/ui-kit/css/components/border-beam.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -857,7 +857,7 @@ function generateAngularCode(tier: Tier, duration: number, size: number, color: 
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/border-beam.css';`
+@import '@frontier-labs/ui-kit/css/components/border-beam.css';`
 }
 
 function generateSvelteCode(tier: Tier, duration: number, size: number, color: string, motion: MotionLevel): string {
@@ -876,7 +876,7 @@ function generateSvelteCode(tier: Tier, duration: number, size: number, color: s
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/border-beam.css';
+  @import '@frontier-labs/ui-kit/css/components/border-beam.css';
 </style>`
   }
 
@@ -888,7 +888,7 @@ function generateSvelteCode(tier: Tier, duration: number, size: number, color: s
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
 
   return `<script>
-  import { BorderBeam } from '@annondeveloper/ui-kit';
+  import { BorderBeam } from '@frontier-labs/ui-kit';
 </script>
 
 <BorderBeam${propsStr}>
@@ -1300,7 +1300,7 @@ export default function BorderBeamPage() {
               Duration, color, and size all controllable through --border-beam-* variables.
             </p>
             <div className="borderbeam-page__tier-import">
-              @import '@annondeveloper/ui-kit/css/components/border-beam.css'
+              @import '@frontier-labs/ui-kit/css/components/border-beam.css'
             </div>
             <div className="borderbeam-page__tier-preview">
               <LiteBorderBeam duration={5} size={60}>
@@ -1336,7 +1336,7 @@ export default function BorderBeamPage() {
               and content wrapper with proper z-indexing.
             </p>
             <div className="borderbeam-page__tier-import">
-              import {'{'} BorderBeam {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BorderBeam {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="borderbeam-page__tier-preview">
               <BorderBeam duration={5} size={80}>
@@ -1372,7 +1372,7 @@ export default function BorderBeamPage() {
               entrance fade-in animation, and customizable beam width.
             </p>
             <div className="borderbeam-page__tier-import">
-              import {'{'} BorderBeam {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BorderBeam {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="borderbeam-page__tier-preview">
               <PremiumBorderBeam duration={4} size={100} color="oklch(70% 0.2 280)">
@@ -1499,13 +1499,13 @@ export default function BorderBeamPage() {
         <h2 className="borderbeam-page__section-title"><a href="#source">Source</a></h2>
         <p className="borderbeam-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="borderbeam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/border-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="borderbeam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/border-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/border-beam.tsx (Standard)
           </a>
-          <a className="borderbeam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/border-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="borderbeam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/border-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/border-beam.tsx (Lite)
           </a>
-          <a className="borderbeam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/border-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="borderbeam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/border-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/border-beam.tsx (Premium)
           </a>
         </div>

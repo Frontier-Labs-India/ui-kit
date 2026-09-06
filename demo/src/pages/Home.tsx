@@ -1108,7 +1108,7 @@ const features: Feature[] = [
 
 // ─── Code Example ───────────────────────────────────────────────────────────
 
-const codeExample = `import { UIProvider, Button, MetricCard } from '@annondeveloper/ui-kit'
+const codeExample = `import { UIProvider, Button, MetricCard } from '@frontier-labs/ui-kit'
 
 function App() {
   return (
@@ -1194,7 +1194,7 @@ export default function Home() {
   )
 
   const handleClearFilter = useCallback(() => setGalleryFilter(null), [])
-  const handleGitHubClick = useCallback(() => window.open('https://github.com/annondeveloper/ui-kit', '_blank'), [])
+  const handleGitHubClick = useCallback(() => window.open('https://github.com/Frontier-Labs-India/ui-kit', '_blank'), [])
 
   return (
     <div className="home">
@@ -1238,7 +1238,7 @@ export default function Home() {
 
         <div className="home-hero-entrance">
           <div className="home-hero-actions">
-            <a href="https://ui-kit-mcp.annondeveloper.workers.dev" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <a href="https://ui-kit-mcp.frontier-labs.workers.dev" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
               <ShimmerButton size="lg" shimmerColor="oklch(70% 0.2 270)">
                 <Icon name="zap" size="sm" />
                 Try MCP Server
@@ -1278,7 +1278,7 @@ export default function Home() {
               lineHeight: 1.5,
               whiteSpace: 'pre',
               overflowX: 'auto',
-            }}>{'{ "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse" }'}</code>
+            }}>{'{ "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse" }'}</code>
             <p style={{ margin: '0.5rem 0 0', fontSize: '0.75rem', color: 'oklch(55% 0 0)' }}>
               Add to Claude, Cursor, or any MCP client config. No npm install needed for AI access.
             </p>
@@ -1497,7 +1497,7 @@ export default function Home() {
                     Smallest bundle size
                   </span>
                 </div>
-                <CopyBlock code="import { Button } from '@annondeveloper/ui-kit/lite'" language="typescript" />
+                <CopyBlock code="import { Button } from '@frontier-labs/ui-kit/lite'" language="typescript" />
               </div>
             </Card>
           </StaggerItem>
@@ -1524,7 +1524,7 @@ export default function Home() {
                     Physics-based animations
                   </span>
                 </div>
-                <CopyBlock code="import { Button } from '@annondeveloper/ui-kit'" language="typescript" />
+                <CopyBlock code="import { Button } from '@frontier-labs/ui-kit'" language="typescript" />
               </div>
             </Card>
           </StaggerItem>
@@ -1551,7 +1551,7 @@ export default function Home() {
                     Cinematic spring physics
                   </span>
                 </div>
-                <CopyBlock code="import { Button } from '@annondeveloper/ui-kit/premium'" language="typescript" />
+                <CopyBlock code="import { Button } from '@frontier-labs/ui-kit/premium'" language="typescript" />
               </div>
             </BorderBeam>
           </StaggerItem>
@@ -1643,15 +1643,15 @@ export default function Home() {
       {/* ── Footer ── */}
       <Divider spacing="lg" />
       <footer className="home-footer">
-        <a href="https://github.com/annondeveloper/ui-kit" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/Frontier-Labs-India/ui-kit" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
         <Divider orientation="vertical" />
-        <a href="https://www.npmjs.com/package/@annondeveloper/ui-kit" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.npmjs.com/package/@frontier-labs/ui-kit" target="_blank" rel="noopener noreferrer">
           npm
         </a>
         <Divider orientation="vertical" />
-        <a href="https://jsr.io/@annondeveloper/ui-kit" target="_blank" rel="noopener noreferrer">
+        <a href="https://jsr.io/@frontier-labs/ui-kit" target="_blank" rel="noopener noreferrer">
           JSR
         </a>
         <Divider orientation="vertical" />

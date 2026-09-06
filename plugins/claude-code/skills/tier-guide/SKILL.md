@@ -23,13 +23,13 @@ Help choose the right tier for: $ARGUMENTS
 
 ```tsx
 // Lite — CSS-only wrappers, ~0.3-1.2 KB each
-import { Button, Card, Badge } from '@annondeveloper/ui-kit/lite'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit/lite'
 
 // Standard — full features, ~2-5 KB each (DEFAULT)
-import { Button, Card, Badge } from '@annondeveloper/ui-kit'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit'
 
 // Premium — aurora effects, ~3-6 KB each
-import { Button, Card, Badge } from '@annondeveloper/ui-kit/premium'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit/premium'
 ```
 
 ## Mixing Tiers
@@ -37,9 +37,9 @@ import { Button, Card, Badge } from '@annondeveloper/ui-kit/premium'
 You can mix tiers in the same app:
 
 ```tsx
-import { Button } from '@annondeveloper/ui-kit/premium'    // Hero CTA — premium
-import { Card } from '@annondeveloper/ui-kit'               // Cards — standard
-import { Badge } from '@annondeveloper/ui-kit/lite'         // Badges — lite (many on page)
+import { Button } from '@frontier-labs/ui-kit/premium'    // Hero CTA — premium
+import { Card } from '@frontier-labs/ui-kit'               // Cards — standard
+import { Badge } from '@frontier-labs/ui-kit/lite'         // Badges — lite (many on page)
 ```
 
 ## Bundle Impact

@@ -539,9 +539,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Toolbar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Toolbar } from '@annondeveloper/ui-kit'",
-  premium: "import { Toolbar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Toolbar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Toolbar } from '@frontier-labs/ui-kit'",
+  premium: "import { Toolbar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -648,7 +648,7 @@ function generateHtmlCode(tier: Tier, gap: Gap, justify: Justify, wrap: boolean,
 }
 
 function generateVueCode(tier: Tier, gap: Gap, justify: Justify, wrap: boolean, sticky: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-toolbar"`, `role="toolbar"`, `data-gap="${gap}"`, `data-justify="${justify}"`]
     if (wrap) attrs.push('data-wrap="true"')
@@ -665,7 +665,7 @@ function generateVueCode(tier: Tier, gap: Gap, justify: Justify, wrap: boolean, 
 
 function generateAngularCode(tier: Tier, gap: Gap, justify: Justify, wrap: boolean, sticky: boolean): string {
   const className = tier === 'lite' ? 'ui-lite-toolbar' : 'ui-toolbar'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [`class="${className}"`, `role="toolbar"`, `data-gap="${gap}"`, `data-justify="${justify}"`]
   if (wrap) attrs.push('data-wrap="true"')
   if (sticky) attrs.push('data-sticky="true"')
@@ -673,7 +673,7 @@ function generateAngularCode(tier: Tier, gap: Gap, justify: Justify, wrap: boole
 }
 
 function generateSvelteCode(tier: Tier, gap: Gap, justify: Justify, wrap: boolean, sticky: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-toolbar"`, `role="toolbar"`, `data-gap="${gap}"`, `data-justify="${justify}"`]
     if (wrap) attrs.push('data-wrap="true"')
@@ -1000,7 +1000,7 @@ export default function ToolbarPage() {
               <span className="toolbar-page__tier-size">~0.3 KB</span>
             </div>
             <p className="toolbar-page__tier-desc">CSS-only wrapper with role="toolbar". No style engine, no backdrop blur effects.</p>
-            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="toolbar-page__size-breakdown">
               <div className="toolbar-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.3 KB</strong></span>
@@ -1023,7 +1023,7 @@ export default function ToolbarPage() {
               <span className="toolbar-page__tier-size">~1.2 KB</span>
             </div>
             <p className="toolbar-page__tier-desc">Full-featured with sticky backdrop blur, container queries for mobile, and forced colors support.</p>
-            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="toolbar-page__size-breakdown">
               <div className="toolbar-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.2 KB</strong></span>
@@ -1046,7 +1046,7 @@ export default function ToolbarPage() {
               <span className="toolbar-page__tier-size">~1.3 KB</span>
             </div>
             <p className="toolbar-page__tier-desc">Everything in Standard plus entrance animation, aurora glow backdrop, and shimmer effects.</p>
-            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="toolbar-page__tier-import">import {'{'} Toolbar {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="toolbar-page__size-breakdown">
               <div className="toolbar-page__size-row">
                 <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.3 KB</strong></span>
@@ -1145,13 +1145,13 @@ export default function ToolbarPage() {
         <h2 className="toolbar-page__section-title"><a href="#source">Source</a></h2>
         <p className="toolbar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="toolbar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/toolbar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="toolbar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/toolbar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/toolbar.tsx (Standard)
           </a>
-          <a className="toolbar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/toolbar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="toolbar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/toolbar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/toolbar.tsx (Lite)
           </a>
-          <a className="toolbar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/toolbar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="toolbar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/toolbar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/toolbar.tsx (Premium)
           </a>
         </div>

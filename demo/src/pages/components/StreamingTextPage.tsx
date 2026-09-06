@@ -648,9 +648,9 @@ const streamingTextProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StreamingText } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StreamingText } from '@annondeveloper/ui-kit'",
-  premium: "import { StreamingText } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StreamingText } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StreamingText } from '@frontier-labs/ui-kit'",
+  premium: "import { StreamingText } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -771,14 +771,14 @@ function generateHtmlCode(): string {
   </div>
 </div>
 
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/streaming-text.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/streaming-text.css">`
 }
 
 function generateVueCode(tier: Tier, streaming: boolean, speed: number | undefined): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-streaming-text">{{ text }}</div>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nconst text = ref('Hello, world!')\n</script>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-streaming-text">{{ text }}</div>\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nconst text = ref('Hello, world!')\n</script>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':text="text"']
   if (streaming) attrs.push(':streaming="true"')
   if (speed) attrs.push(`:speed="${speed}"`)
@@ -787,16 +787,16 @@ function generateVueCode(tier: Tier, streaming: boolean, speed: number | undefin
 
 function generateAngularCode(tier: Tier): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-streaming-text">{{ text }}</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-lite-streaming-text">{{ text }}</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  return `<!-- Angular — Use CSS-only approach or React wrapper -->\n<div\n  class="ui-streaming-text"\n  [attr.aria-live]="'polite'"\n  [attr.aria-busy]="streaming"\n>\n  <div class="ui-streaming-text__content">{{ text }}</div>\n</div>\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/streaming-text.css';`
+  return `<!-- Angular — Use CSS-only approach or React wrapper -->\n<div\n  class="ui-streaming-text"\n  [attr.aria-live]="'polite'"\n  [attr.aria-busy]="streaming"\n>\n  <div class="ui-streaming-text__content">{{ text }}</div>\n</div>\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/streaming-text.css';`
 }
 
 function generateSvelteCode(tier: Tier, streaming: boolean): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-streaming-text">{text}</div>\n\n<script>\n  let text = 'Hello, world!'\n</script>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-streaming-text">{text}</div>\n\n<script>\n  let text = 'Hello, world!'\n</script>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { StreamingText } from '${importPath}';\n  let text = 'Hello, world!'\n</script>\n\n<StreamingText\n  {text}\n  ${streaming ? 'streaming' : ''}\n/>`
 }
 
@@ -1207,7 +1207,7 @@ export default function StreamingTextPage() {
               no code block parsing. Pure CSS className wrapper.
             </p>
             <div className="streaming-text-page__tier-import">
-              import {'{'} StreamingText {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StreamingText {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="streaming-text-page__tier-preview">
               <LiteStreamingText text="Static display only" style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }} />
@@ -1238,7 +1238,7 @@ export default function StreamingTextPage() {
               onComplete callback, and motion levels.
             </p>
             <div className="streaming-text-page__tier-import">
-              import {'{'} StreamingText {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StreamingText {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="streaming-text-page__tier-preview">
               <StreamingText text="Streaming with cursor..." streaming showCursor style={{ fontSize: '0.875rem' }} />
@@ -1269,7 +1269,7 @@ export default function StreamingTextPage() {
               scroll-to-bottom auto-follow, and glow cursor effects.
             </p>
             <div className="streaming-text-page__tier-import">
-              import {'{'} StreamingText {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StreamingText {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="streaming-text-page__tier-preview">
               <PremiumStreamingText text="Premium streaming..." streaming showCursor style={{ fontSize: '0.875rem' }} />
@@ -1390,13 +1390,13 @@ export default function StreamingTextPage() {
         <h2 className="streaming-text-page__section-title"><a href="#source">Source</a></h2>
         <p className="streaming-text-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="streaming-text-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="streaming-text-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/streaming-text.tsx (Standard)
           </a>
-          <a className="streaming-text-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="streaming-text-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/streaming-text.tsx (Lite)
           </a>
-          <a className="streaming-text-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="streaming-text-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/streaming-text.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/streaming-text.tsx (Premium)
           </a>
         </div>

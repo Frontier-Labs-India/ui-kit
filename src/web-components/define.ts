@@ -60,7 +60,7 @@ const elements: ElementDef[] = [
  *
  * @example
  * ```ts
- * import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+ * import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
  * defineCustomElements()
  * // Now use <ui-button variant="primary">Click me</ui-button> in HTML
  * ```

@@ -1,5 +1,5 @@
 /**
- * @module @annondeveloper/ui-kit/lite
+ * @module @frontier-labs/ui-kit/lite
  *
  * Lightweight component variants (~0.3-1.2 KB each). Minimal JavaScript
  * wrappers with no motion engine, ideal for performance-critical or

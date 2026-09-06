@@ -703,9 +703,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ConfidenceBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ConfidenceBar } from '@annondeveloper/ui-kit'",
-  premium: "import { ConfidenceBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ConfidenceBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ConfidenceBar } from '@frontier-labs/ui-kit'",
+  premium: "import { ConfidenceBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -826,8 +826,8 @@ function generateHtmlCssCode(tier: Tier, value: number, size: Size, labelText: s
   const percentage = Math.round(value * 100)
   const color = value >= 0.7 ? 'oklch(72% 0.19 155)' : value >= 0.3 ? 'oklch(80% 0.18 85)' : 'oklch(62% 0.22 25)'
 
-  return `<!-- ConfidenceBar — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/confidence-bar.css">
+  return `<!-- ConfidenceBar — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/confidence-bar.css">
 
 <div class="ui-confidence-bar" data-size="${size}" role="meter"
      aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="1"
@@ -880,11 +880,11 @@ function generateVueCode(tier: Tier, value: number, size: Size, motion: MotionLe
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`:value="${value}"`]
   if (labelText) attrs.push(`label="${labelText}"`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -915,9 +915,9 @@ function generateAngularCode(tier: Tier, value: number, size: Size, labelText: s
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-confidence-bar" data-size="${size}" role="meter"
      [attr.aria-valuenow]="${value}" aria-valuemin="0" aria-valuemax="1"
@@ -950,10 +950,10 @@ function generateSvelteCode(tier: Tier, value: number, size: Size, motion: Motio
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`value={${value}}`]
   if (labelText) attrs.push(`label="${labelText}"`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -1395,7 +1395,7 @@ export default function ConfidenceBarPage() {
               no Aurora glow. Simple inline color based on value ranges.
             </p>
             <div className="confidence-bar-page__tier-import">
-              import {'{'} ConfidenceBar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ConfidenceBar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="confidence-bar-page__tier-preview">
               <LiteConfidenceBar value={85} label="Lite" showValue size="sm" />
@@ -1426,7 +1426,7 @@ export default function ConfidenceBarPage() {
               motion levels, Aurora glow gradient, ARIA meter role, and error boundary.
             </p>
             <div className="confidence-bar-page__tier-import">
-              import {'{'} ConfidenceBar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ConfidenceBar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="confidence-bar-page__tier-preview">
               <ConfidenceBar value={0.85} label="Standard" size="sm" />
@@ -1457,7 +1457,7 @@ export default function ConfidenceBarPage() {
               on threshold crossing, spring-based entrance animation, and pulse glow.
             </p>
             <div className="confidence-bar-page__tier-import">
-              import {'{'} ConfidenceBar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ConfidenceBar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="confidence-bar-page__tier-preview">
               <PremiumConfidenceBar value={0.85} label="Premium" size="sm" />
@@ -1581,13 +1581,13 @@ export default function ConfidenceBarPage() {
         <h2 className="confidence-bar-page__section-title"><a href="#source">Source</a></h2>
         <p className="confidence-bar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="confidence-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confidence-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/confidence-bar.tsx (Standard)
           </a>
-          <a className="confidence-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confidence-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/confidence-bar.tsx (Lite)
           </a>
-          <a className="confidence-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confidence-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/confidence-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/confidence-bar.tsx (Premium)
           </a>
         </div>

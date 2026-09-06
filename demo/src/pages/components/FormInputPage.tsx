@@ -705,9 +705,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const VARIANTS: Variant[] = ['default', 'filled']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { FormInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { FormInput } from '@annondeveloper/ui-kit'",
-  premium: "import { FormInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { FormInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { FormInput } from '@frontier-labs/ui-kit'",
+  premium: "import { FormInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -811,7 +811,7 @@ function generateReactCode(
   showIconEnd: boolean,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = (showIcon || showIconEnd) && tier !== 'lite' ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = (showIcon || showIconEnd) && tier !== 'lite' ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = ['  name="my-field"']
   if (label) props.push(`  label="${label}"`)
@@ -832,7 +832,7 @@ function generateReactCode(
 function generateHtmlCode(tier: Tier, inputType: InputType, size: Size, label: string, placeholder: string, error: string): string {
   const className = tier === 'lite' ? 'ui-lite-form-input' : 'ui-form-input'
   const tierLabel = tier === 'lite' ? 'lite' : 'standard'
-  return `<!-- FormInput -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- FormInput -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <div class="${className}" data-size="${size}">
   ${label ? `<label for="my-field">${label}</label>` : ''}
   <input
@@ -856,11 +856,11 @@ function generateVueCode(tier: Tier, inputType: InputType, size: Size, label: st
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = ['  name="my-field"']
   if (label) attrs.push(`  label="${label}"`)
   if (inputType !== 'text') attrs.push(`  type="${inputType}"`)
@@ -888,7 +888,7 @@ function generateAngularCode(tier: Tier, inputType: InputType, size: Size, label
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -905,7 +905,7 @@ function generateAngularCode(tier: Tier, inputType: InputType, size: Size, label
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/form-input.css';`
+@import '@frontier-labs/ui-kit/css/components/form-input.css';`
 }
 
 function generateSvelteCode(tier: Tier, inputType: InputType, size: Size, label: string, placeholder: string, disabled: boolean): string {
@@ -917,12 +917,12 @@ function generateSvelteCode(tier: Tier, inputType: InputType, size: Size, label:
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<script>
-  import { FormInput } from '@annondeveloper/ui-kit';
+  import { FormInput } from '@frontier-labs/ui-kit';
 </script>
 
 <FormInput
@@ -1456,7 +1456,7 @@ export default function FormInputPage() {
               Zero JS beyond the forwardRef wrapper.
             </p>
             <div className="form-input-page__tier-import">
-              import {'{'} FormInput {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} FormInput {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="form-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1489,7 +1489,7 @@ export default function FormInputPage() {
               error animation, form context, and motion levels.
             </p>
             <div className="form-input-page__tier-import">
-              import {'{'} FormInput {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} FormInput {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="form-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1521,7 +1521,7 @@ export default function FormInputPage() {
               Aurora glow focus ring, spring-shake on validation error, and shimmer sweep on valid focus.
             </p>
             <div className="form-input-page__tier-import">
-              import {'{'} FormInput {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} FormInput {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="form-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1651,13 +1651,13 @@ export default function FormInputPage() {
         <h2 className="form-input-page__section-title"><a href="#source">Source</a></h2>
         <p className="form-input-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="form-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/form-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="form-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/form-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/form-input.tsx (Standard)
           </a>
-          <a className="form-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/form-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="form-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/form-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/form-input.tsx (Lite)
           </a>
-          <a className="form-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/form-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="form-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/form-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/form-input.tsx (Premium)
           </a>
         </div>

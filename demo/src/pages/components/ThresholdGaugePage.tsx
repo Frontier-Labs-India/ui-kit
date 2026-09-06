@@ -590,9 +590,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ThresholdGauge } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ThresholdGauge } from '@annondeveloper/ui-kit'",
-  premium: "import { ThresholdGauge } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ThresholdGauge } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ThresholdGauge } from '@frontier-labs/ui-kit'",
+  premium: "import { ThresholdGauge } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -693,8 +693,8 @@ function generateReactCode(
 }
 
 function generateHtmlCode(tier: Tier, value: number, size: Size, showValue: boolean, label: string): string {
-  return `<!-- ThresholdGauge — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/threshold-gauge.css'}">
+  return `<!-- ThresholdGauge — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/threshold-gauge.css'}">
 
 <div class="${tier === 'lite' ? 'ui-lite-threshold-gauge' : 'ui-threshold-gauge'}"
   data-size="${size}"
@@ -712,19 +712,19 @@ function generateHtmlCode(tier: Tier, value: number, size: Size, showValue: bool
 
 function generateVueCode(tier: Tier, value: number, size: Size, showValue: boolean, label: string, useThresholds: boolean, warningThreshold: number, criticalThreshold: number): string {
   if (tier === 'lite') {
-    return `<template>\n  <ThresholdGauge :value="${value}" size="${size}"${showValue ? ' showValue' : ''}${label ? ` label="${label}"` : ''} />\n</template>\n\n<script setup>\nimport { ThresholdGauge } from '@annondeveloper/ui-kit/lite'\n</script>`
+    return `<template>\n  <ThresholdGauge :value="${value}" size="${size}"${showValue ? ' showValue' : ''}${label ? ` label="${label}"` : ''} />\n</template>\n\n<script setup>\nimport { ThresholdGauge } from '@frontier-labs/ui-kit/lite'\n</script>`
   }
   const thresholdProp = useThresholds ? `\n    :thresholds="{ warning: ${warningThreshold}, critical: ${criticalThreshold} }"` : ''
-  return `<template>\n  <ThresholdGauge\n    :value="${value}"\n    size="${size}"${showValue ? '\n    showValue' : ''}${label ? `\n    label="${label}"` : ''}${thresholdProp}\n  />\n</template>\n\n<script setup>\nimport { ThresholdGauge } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'\n</script>`
+  return `<template>\n  <ThresholdGauge\n    :value="${value}"\n    size="${size}"${showValue ? '\n    showValue' : ''}${label ? `\n    label="${label}"` : ''}${thresholdProp}\n  />\n</template>\n\n<script setup>\nimport { ThresholdGauge } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'\n</script>`
 }
 
 function generateAngularCode(tier: Tier, value: number, size: Size, label: string): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->\n<ui-threshold-gauge\n  [value]="${value}"\n  size="${size}"\n  ${label ? `label="${label}"` : ''}\n></ui-threshold-gauge>\n\n/* Import CSS */\n@import '${importPath}/css/components/threshold-gauge.css';`
 }
 
 function generateSvelteCode(tier: Tier, value: number, size: Size, showValue: boolean, label: string, useThresholds: boolean, warningThreshold: number, criticalThreshold: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const thresholdProp = useThresholds ? `\n  thresholds={{ warning: ${warningThreshold}, critical: ${criticalThreshold} }}` : ''
   return `<script>\n  import { ThresholdGauge } from '${importPath}';\n</script>\n\n<ThresholdGauge\n  value={${value}}\n  size="${size}"${showValue ? '\n  showValue' : ''}${label ? `\n  label="${label}"` : ''}${thresholdProp}\n/>`
 }
@@ -1096,7 +1096,7 @@ export default function ThresholdGaugePage() {
               No SVG arc, no animation, minimal JavaScript.
             </p>
             <div className="threshold-gauge-page__tier-import">
-              import {'{'} ThresholdGauge {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ThresholdGauge {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="threshold-gauge-page__tier-preview">
               <LiteThresholdGauge value={72} thresholds={{ warning: 60, critical: 80 }} label="CPU" showValue />
@@ -1127,7 +1127,7 @@ export default function ThresholdGaugePage() {
               threshold-based status colors, and motion-level support.
             </p>
             <div className="threshold-gauge-page__tier-import">
-              import {'{'} ThresholdGauge {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ThresholdGauge {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="threshold-gauge-page__tier-preview">
               <ThresholdGauge value={72} thresholds={{ warning: 60, critical: 80 }} showValue label="CPU" />
@@ -1158,7 +1158,7 @@ export default function ThresholdGaugePage() {
               ambient glow on critical status, and entrance reveal animation.
             </p>
             <div className="threshold-gauge-page__tier-import">
-              import {'{'} ThresholdGauge {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ThresholdGauge {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="threshold-gauge-page__tier-preview">
               <PremiumThresholdGauge value={72} thresholds={{ warning: 60, critical: 80 }} showValue label="CPU" />
@@ -1243,13 +1243,13 @@ export default function ThresholdGaugePage() {
         <h2 className="threshold-gauge-page__section-title"><a href="#source">Source</a></h2>
         <p className="threshold-gauge-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="threshold-gauge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="threshold-gauge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/threshold-gauge.tsx (Standard)
           </a>
-          <a className="threshold-gauge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="threshold-gauge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/threshold-gauge.tsx (Lite)
           </a>
-          <a className="threshold-gauge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="threshold-gauge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/threshold-gauge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/threshold-gauge.tsx (Premium)
           </a>
         </div>

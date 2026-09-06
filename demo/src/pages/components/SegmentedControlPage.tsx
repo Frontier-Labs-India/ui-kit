@@ -535,9 +535,9 @@ type Size = typeof SIZES[number]
 type Orientation = 'horizontal' | 'vertical'
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SegmentedControl } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SegmentedControl } from '@annondeveloper/ui-kit'",
-  premium: "import { SegmentedControl } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SegmentedControl } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SegmentedControl } from '@frontier-labs/ui-kit'",
+  premium: "import { SegmentedControl } from '@frontier-labs/ui-kit/premium'",
 }
 
 const BRAND_ONLY_KEYS: (keyof ThemeTokens)[] = [
@@ -642,14 +642,14 @@ function generateHtmlCode(
   const attrs = [`class="${cls}"`, `data-size="${size}"`]
   if (orientation === 'vertical') attrs.push('data-orientation="vertical"')
   const buttons = data.map((d, i) => `  <button class="${cls}__option"${i === 0 ? ' aria-pressed="true"' : ''}>${d}</button>`).join('\n')
-  return `<!-- SegmentedControl — @annondeveloper/ui-kit ${tier} tier -->\n<div ${attrs.join(' ')} role="radiogroup">\n${buttons}\n</div>\n\n<style>\n@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/segmented-control.css'}';\n</style>`
+  return `<!-- SegmentedControl — @frontier-labs/ui-kit ${tier} tier -->\n<div ${attrs.join(' ')} role="radiogroup">\n${buttons}\n</div>\n\n<style>\n@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/segmented-control.css'}';\n</style>`
 }
 
 function generateVueCode(tier: Tier, data: string[], size: Size, disabled: boolean): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-segmented" data-size="${size}" role="radiogroup">\n${data.map((d, i) => `    <button class="ui-lite-segmented__option"${i === 0 ? ' aria-pressed="true"' : ''}>${d}</button>`).join('\n')}\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-segmented" data-size="${size}" role="radiogroup">\n${data.map((d, i) => `    <button class="ui-lite-segmented__option"${i === 0 ? ' aria-pressed="true"' : ''}>${d}</button>`).join('\n')}\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  :data='${JSON.stringify(data)}'`, `  v-model="selected"`]
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (disabled) attrs.push('  disabled')
@@ -661,15 +661,15 @@ function generateAngularCode(tier: Tier, data: string[], size: Size, disabled: b
   const attrs = [`class="${cls}"`, `data-size="${size}"`, 'role="radiogroup"']
   if (disabled) attrs.push('[attr.aria-disabled]="true"')
   const buttons = data.map((d, i) => `  <button class="${cls}__option"${i === 0 ? ' aria-pressed="true"' : ''} (click)="select('${d}')">${d}</button>`).join('\n')
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier.charAt(0).toUpperCase() + tier.slice(1)} tier CSS -->\n<div ${attrs.join(' ')}>\n${buttons}\n</div>\n\n/* In styles.css */\n@import '${importPath}/css/components/segmented-control.css';`
 }
 
 function generateSvelteCode(tier: Tier, data: string[], size: Size, disabled: boolean): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-segmented" data-size="${size}" role="radiogroup">\n${data.map((d, i) => `  <button class="ui-lite-segmented__option"${i === 0 ? ' aria-pressed="true"' : ''} on:click={() => selected = '${d}'}>${d}</button>`).join('\n')}\n</div>\n\n<script>\n  let selected = '${data[0]}';\n</script>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-segmented" data-size="${size}" role="radiogroup">\n${data.map((d, i) => `  <button class="ui-lite-segmented__option"${i === 0 ? ' aria-pressed="true"' : ''} on:click={() => selected = '${d}'}>${d}</button>`).join('\n')}\n</div>\n\n<script>\n  let selected = '${data[0]}';\n</script>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { SegmentedControl } from '${importPath}';\n  let selected = '${data[0]}';\n</script>\n\n<SegmentedControl\n  data={${JSON.stringify(data)}}\n  bind:value={selected}\n  size="${size}"\n  ${disabled ? 'disabled' : ''}\n/>`
 }
 
@@ -944,7 +944,7 @@ export default function SegmentedControlPage() {
               <span className={`${PAGE}__tier-size`}>~0.3 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>CSS-only, zero motion. Minimal wrapper around Standard with motion=0.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteSegmentedControl data={['A', 'B', 'C']} defaultValue="A" />
             </div>
@@ -967,7 +967,7 @@ export default function SegmentedControlPage() {
               <span className={`${PAGE}__tier-size`}>~2 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>Full-featured with sliding indicator, motion levels, and accessibility.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@frontier-labs/ui-kit'</div>
             <div className={`${PAGE}__tier-preview`}>
               <SegmentedControl data={['A', 'B', 'C']} defaultValue="A" />
             </div>
@@ -990,7 +990,7 @@ export default function SegmentedControlPage() {
               <span className={`${PAGE}__tier-size`}>~3 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>Everything in Standard plus spring animations, glow indicator, and hover scale.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} SegmentedControl {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumSegmentedControl data={['A', 'B', 'C']} defaultValue="A" />
             </div>
@@ -1092,13 +1092,13 @@ export default function SegmentedControlPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/segmented-control.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/segmented-control.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/segmented-control.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/segmented-control.tsx (Premium)
           </a>
         </div>

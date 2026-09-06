@@ -322,9 +322,9 @@ const pwProps: PropDef[] = [
 // ─── Import Strings ────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { PasswordInput } from '@annondeveloper/ui-kit'",
-  lite: "import { PasswordInput } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { PasswordInput } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { PasswordInput } from '@frontier-labs/ui-kit'",
+  lite: "import { PasswordInput } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { PasswordInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ───────────────────────────────────────────────────────
@@ -367,7 +367,7 @@ function generateHtmlCode(
     ? `\n  <div class="ui-password-input__strength">\n    <div class="ui-password-input__strength-bar" data-level="0"></div>\n  </div>`
     : ''
   return `<!-- HTML + CSS approach -->
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/password-input.css" />
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/password-input.css" />
 
 <div ${attrs.join(' ')}>
   <label class="ui-password-input__label">Password</label>
@@ -406,10 +406,10 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  label="Password"']
   if (placeholder !== 'Enter password') attrs.push(`  placeholder="${placeholder}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -446,9 +446,9 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
   class="ui-password-input"
@@ -494,10 +494,10 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  label="Password"']
   if (placeholder !== 'Enter password') attrs.push(`  placeholder="${placeholder}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -832,21 +832,21 @@ export default function PasswordInputPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Full-featured with motion, theming, and accessibility. ~2.4KB JS gzip, ~0.8KB CSS gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@frontier-labs/ui-kit'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: effectiveTier === 'lite' ? 'var(--brand)' : undefined }}>
             <strong>Lite</strong>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Minimal footprint, no motion or advanced theming. ~1.2KB JS gzip, ~0.5KB CSS gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@frontier-labs/ui-kit/lite'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: effectiveTier === 'premium' ? 'var(--brand)' : undefined }}>
             <strong>Premium</strong>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Aurora glow, spring animations, and shimmer effects. ~3.8KB JS gzip, ~1.2KB CSS gzip.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} PasswordInput {'}'} from '@frontier-labs/ui-kit/premium'</code>
           </Card>
         </div>
 
@@ -892,7 +892,7 @@ export default function PasswordInputPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/password-input.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/password-input.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: 'var(--text-sm)', color: 'var(--brand, oklch(65% 0.2 270))' }}
@@ -900,7 +900,7 @@ export default function PasswordInputPage() {
             Source: components/password-input.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/password-input.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/password-input.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: 'var(--text-sm)', color: 'var(--brand, oklch(65% 0.2 270))' }}
@@ -908,7 +908,7 @@ export default function PasswordInputPage() {
             Source: lite/password-input.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/password-input.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/password-input.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontSize: 'var(--text-sm)', color: 'var(--brand, oklch(65% 0.2 270))' }}

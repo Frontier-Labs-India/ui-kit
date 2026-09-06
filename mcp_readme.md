@@ -1,6 +1,6 @@
 # UI Kit MCP Server
 
-Model Context Protocol server for `@annondeveloper/ui-kit` — gives AI assistants (Claude, Cursor, Windsurf, Copilot) full knowledge of all 154 components, 15 themes, and 50 icons so they generate correct, working code using your library.
+Model Context Protocol server for `@frontier-labs/ui-kit` — gives AI assistants (Claude, Cursor, Windsurf, Copilot) full knowledge of all 185 components, 15 themes, and 50 icons so they generate correct, working code using your library.
 
 **No other React UI library ships an MCP server.** This is a first-mover differentiator.
 
@@ -10,7 +10,7 @@ Model Context Protocol server for `@annondeveloper/ui-kit` — gives AI assistan
 
 When an AI assistant connects to this MCP server, it can:
 
-- **Browse** all 154 components with descriptions and categories
+- **Browse** all 185 components with descriptions and categories
 - **Get full API docs** for any component — every prop, type, default, example
 - **Search by use-case** — "I need a date picker with range" returns ranked results
 - **Generate working code** — correct imports, correct props, ready to paste
@@ -80,7 +80,7 @@ Example response for `get_component({ name: "Button" })`:
 Interactive action trigger
 
 ## Import
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 ## Props
 | Prop | Type | Required | Default | Description |
@@ -237,7 +237,7 @@ Args:    /path/to/ui-kit/dist/mcp/index.js
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["@annondeveloper/ui-kit-mcp"]
+      "args": ["@frontier-labs/ui-kit-mcp"]
     }
   }
 }
@@ -304,10 +304,10 @@ Once the package is published to npm, anyone can run the MCP server without clon
 
 ```bash
 # stdio mode (local)
-npx @annondeveloper/ui-kit-mcp
+npx @frontier-labs/ui-kit-mcp
 
 # SSE mode (remote)
-npx @annondeveloper/ui-kit-mcp --sse --port 3100
+npx @frontier-labs/ui-kit-mcp --sse --port 3100
 ```
 
 The binary is registered in `package.json`:
@@ -348,7 +348,7 @@ npm run build:mcp
 node dist/mcp/scripts/build-registry.js
 ```
 
-Output: `dist/mcp/registry.json` with 154 components, 15 themes, 50 icons.
+Output: `dist/mcp/registry.json` with 185 components, 15 themes, 50 icons.
 
 The registry is generated at build time by scanning actual source files. It extracts:
 - Component names from `src/components/index.ts` and `src/domain/index.ts`
@@ -376,8 +376,8 @@ The registry is a single JSON file (`dist/mcp/registry.json`):
       "description": "Button component — interactive action trigger",
       "category": "actions",
       "tier": ["standard", "lite", "premium"],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Button } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Button } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/button.tsx",
       "props": [
         {
@@ -429,11 +429,11 @@ The registry is a single JSON file (`dist/mcp/registry.json`):
 
 ### Option A: Bundled with ui-kit (recommended)
 
-The MCP server ships inside `@annondeveloper/ui-kit`. No separate package needed.
+The MCP server ships inside `@frontier-labs/ui-kit`. No separate package needed.
 
 1. Run `npm run build` (includes MCP build + registry generation)
 2. Run `npm publish`
-3. Users configure `npx @annondeveloper/ui-kit-mcp` in their AI tool
+3. Users configure `npx @frontier-labs/ui-kit-mcp` in their AI tool
 
 The `dist/mcp/` directory is included in the published package via the `"files": ["dist"]` field in package.json.
 
@@ -441,7 +441,7 @@ The `dist/mcp/` directory is included in the published package via the `"files":
 
 If you want to keep the MCP server separate:
 
-1. Create a new package `@annondeveloper/ui-kit-mcp`
+1. Create a new package `@frontier-labs/ui-kit-mcp`
 2. Copy `dist/mcp/` as the package contents
 3. Add `"bin": { "ui-kit-mcp": "index.js" }` to its package.json
 4. Publish separately
@@ -524,10 +524,10 @@ The SSE transport uses Node.js built-in `http` module — no Express or other HT
 | File | Size | Description |
 |------|------|-------------|
 | `dist/mcp/index.js` | 565 KB | Server + MCP SDK bundled |
-| `dist/mcp/registry.json` | ~200 KB | Component metadata (154 components) |
+| `dist/mcp/registry.json` | ~200 KB | Component metadata (185 components) |
 | `dist/mcp/scripts/build-registry.js` | 27 KB | Registry generator (build-time only) |
 
-These are NOT included in the main library bundle. They are separate entry points that only load when the MCP server is started. Users who `import { Button } from '@annondeveloper/ui-kit'` never download or execute the MCP code.
+These are NOT included in the main library bundle. They are separate entry points that only load when the MCP server is started. Users who `import { Button } from '@frontier-labs/ui-kit'` never download or execute the MCP code.
 
 ---
 

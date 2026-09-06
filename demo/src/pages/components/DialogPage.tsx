@@ -792,9 +792,9 @@ const SIZES_LITE: LiteSize[] = ['sm', 'md', 'lg']
 
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Dialog } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Dialog } from '@annondeveloper/ui-kit'",
-  premium: "import { Dialog } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Dialog } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Dialog } from '@frontier-labs/ui-kit'",
+  premium: "import { Dialog } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -936,7 +936,7 @@ function generateHtmlCode(
     const headerHtml = showTitle
       ? `\n  <div class="ui-lite-dialog__header">\n    <h2>${titleText}</h2>\n    <button class="ui-lite-dialog__close" aria-label="Close">&times;</button>\n  </div>`
       : ''
-    return `<dialog class="ui-lite-dialog" data-size="${size}">${headerHtml}\n  <div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">`
+    return `<dialog class="ui-lite-dialog" data-size="${size}">${headerHtml}\n  <div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">`
   }
 
   const headerParts: string[] = []
@@ -950,7 +950,7 @@ function generateHtmlCode(
     headerParts.push('  </div>')
   }
 
-  return `<div class="ui-dialog">\n  <dialog data-size="${size}">\n${headerParts.join('\n')}\n    <div class="ui-dialog__body">\n      <p>Your content here.</p>\n    </div>\n  </dialog>\n</div>\n\n<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/dialog.css">`
+  return `<div class="ui-dialog">\n  <dialog data-size="${size}">\n${headerParts.join('\n')}\n    <div class="ui-dialog__body">\n      <p>Your content here.</p>\n    </div>\n  </dialog>\n</div>\n\n<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/dialog.css">`
 }
 
 function generateVueCode(
@@ -963,10 +963,10 @@ function generateVueCode(
 ): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-dialog"`, `data-size="${size}"`]
-    return `<template>\n  <dialog ${attrs.join(' ')}>\n    ${showTitle ? `<div class="ui-lite-dialog__header">\n      <h2>${titleText}</h2>\n      <button class="ui-lite-dialog__close">&times;</button>\n    </div>\n    ` : ''}<div class="ui-lite-dialog__body">\n      <p>Your content here.</p>\n    </div>\n  </dialog>\n</template>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <dialog ${attrs.join(' ')}>\n    ${showTitle ? `<div class="ui-lite-dialog__header">\n      <h2>${titleText}</h2>\n      <button class="ui-lite-dialog__close">&times;</button>\n    </div>\n    ` : ''}<div class="ui-lite-dialog__body">\n      <p>Your content here.</p>\n    </div>\n  </dialog>\n</template>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     '  :open="isOpen"',
     '  @close="isOpen = false"',
@@ -985,9 +985,9 @@ function generateAngularCode(
   titleText: string,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<dialog class="ui-lite-dialog" data-size="${size}">\n  ${showTitle ? `<div class="ui-lite-dialog__header">\n    <h2>${titleText}</h2>\n    <button class="ui-lite-dialog__close">&times;</button>\n  </div>\n  ` : ''}<div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<dialog class="ui-lite-dialog" data-size="${size}">\n  ${showTitle ? `<div class="ui-lite-dialog__header">\n    <h2>${titleText}</h2>\n    <button class="ui-lite-dialog__close">&times;</button>\n  </div>\n  ` : ''}<div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<div class="ui-dialog">\n  <dialog\n    data-size="${size}"\n    [open]="isOpen"\n  >\n    <div class="ui-dialog__header">\n      <div class="ui-dialog__header-text">\n        ${showTitle ? `<h2 class="ui-dialog__title">${titleText}</h2>` : ''}\n      </div>\n      <button class="ui-dialog__close" (click)="close()">&times;</button>\n    </div>\n    <div class="ui-dialog__body">\n      <p>Your content here.</p>\n    </div>\n  </dialog>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/dialog.css';`
 }
 
@@ -1000,9 +1000,9 @@ function generateSvelteCode(
   descriptionText: string,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<dialog\n  class="ui-lite-dialog"\n  data-size="${size}"\n>\n  ${showTitle ? `<div class="ui-lite-dialog__header">\n    <h2>${titleText}</h2>\n    <button class="ui-lite-dialog__close" on:click={() => open = false}>&times;</button>\n  </div>\n  ` : ''}<div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<dialog\n  class="ui-lite-dialog"\n  data-size="${size}"\n>\n  ${showTitle ? `<div class="ui-lite-dialog__header">\n    <h2>${titleText}</h2>\n    <button class="ui-lite-dialog__close" on:click={() => open = false}>&times;</button>\n  </div>\n  ` : ''}<div class="ui-lite-dialog__body">\n    <p>Your content here.</p>\n  </div>\n</dialog>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     `  open={isOpen}`,
     `  onClose={() => isOpen = false}`,
@@ -1722,7 +1722,7 @@ export default function DialogPage() {
 
           <div style={{ marginBlockStart: '1.25rem' }}>
             <CopyBlock
-              code={`import { ConfirmDialog } from '@annondeveloper/ui-kit'\n\n<ConfirmDialog\n  open={open}\n  onConfirm={() => handleDelete()}\n  onCancel={() => setOpen(false)}\n  title="Delete Item"\n  description="This action cannot be undone."\n  variant="danger"\n  confirmLabel="Delete"\n/>`}
+              code={`import { ConfirmDialog } from '@frontier-labs/ui-kit'\n\n<ConfirmDialog\n  open={open}\n  onConfirm={() => handleDelete()}\n  onCancel={() => setOpen(false)}\n  title="Delete Item"\n  description="This action cannot be undone."\n  variant="danger"\n  confirmLabel="Delete"\n/>`}
               language="typescript"
               showLineNumbers
             />
@@ -1758,7 +1758,7 @@ export default function DialogPage() {
               No description, close behavior controls, or motion.
             </p>
             <div className="dialog-page__tier-import">
-              import {'{'} Dialog {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Dialog {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="dialog-page__size-breakdown">
               <div className="dialog-page__size-row">
@@ -1786,7 +1786,7 @@ export default function DialogPage() {
               motion levels, backdrop blur, and aurora glow.
             </p>
             <div className="dialog-page__tier-import">
-              import {'{'} Dialog {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Dialog {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="dialog-page__size-breakdown">
               <div className="dialog-page__size-row">
@@ -1814,7 +1814,7 @@ export default function DialogPage() {
               and floating backdrop particles at motion level 3.
             </p>
             <div className="dialog-page__tier-import">
-              import {'{'} Dialog {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Dialog {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="dialog-page__size-breakdown">
               <div className="dialog-page__size-row">
@@ -1962,7 +1962,7 @@ export default function DialogPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/dialog.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/dialog.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="dialog-page__source-link"
@@ -1971,7 +1971,7 @@ export default function DialogPage() {
             src/components/dialog.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/dialog.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/dialog.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="dialog-page__source-link"
@@ -1980,7 +1980,7 @@ export default function DialogPage() {
             src/lite/dialog.tsx (Lite)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/dialog.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/dialog.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="dialog-page__source-link"
@@ -1989,7 +1989,7 @@ export default function DialogPage() {
             src/premium/dialog.tsx (Premium)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/confirm-dialog.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/confirm-dialog.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="dialog-page__source-link"

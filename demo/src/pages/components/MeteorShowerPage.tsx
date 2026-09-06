@@ -602,9 +602,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "/* CSS-only: @import '@annondeveloper/ui-kit/css/components/meteor-shower.css' */",
-  standard: "import { MeteorShower } from '@annondeveloper/ui-kit'",
-  premium: "import { MeteorShower } from '@annondeveloper/ui-kit/premium'",
+  lite: "/* CSS-only: @import '@frontier-labs/ui-kit/css/components/meteor-shower.css' */",
+  standard: "import { MeteorShower } from '@frontier-labs/ui-kit'",
+  premium: "import { MeteorShower } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -662,7 +662,7 @@ function OptionGroup<T extends string>({
 function generateReactCode(tier: Tier, count: number, motion: MotionLevel): string {
   if (tier === 'lite') {
     return `/* Lite tier — CSS-only meteor shower */
-@import '@annondeveloper/ui-kit/css/components/meteor-shower.css';
+@import '@frontier-labs/ui-kit/css/components/meteor-shower.css';
 
 <div class="ui-meteor-shower" data-motion="${motion}">
   <div class="ui-meteor-shower--content">
@@ -689,8 +689,8 @@ function generateReactCode(tier: Tier, count: number, motion: MotionLevel): stri
 }
 
 function generateHtmlCode(tier: Tier, count: number, motion: MotionLevel): string {
-  return `<!-- MeteorShower — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/meteor-shower.css">
+  return `<!-- MeteorShower — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/meteor-shower.css">
 
 <div class="ui-meteor-shower" data-motion="${motion}" aria-hidden="true">
   <!-- Meteors are rendered via CSS animations -->
@@ -721,7 +721,7 @@ function generateVueCode(tier: Tier, count: number, motion: MotionLevel): string
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/meteor-shower.css';
+@import '@frontier-labs/ui-kit/css/components/meteor-shower.css';
 </style>`
   }
 
@@ -739,7 +739,7 @@ function generateVueCode(tier: Tier, count: number, motion: MotionLevel): string
 </template>
 
 <script setup>
-import { MeteorShower } from '@annondeveloper/ui-kit'
+import { MeteorShower } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -753,7 +753,7 @@ function generateAngularCode(tier: Tier, count: number, motion: MotionLevel): st
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/meteor-shower.css';`
+@import '@frontier-labs/ui-kit/css/components/meteor-shower.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -769,7 +769,7 @@ function generateAngularCode(tier: Tier, count: number, motion: MotionLevel): st
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/meteor-shower.css';`
+@import '@frontier-labs/ui-kit/css/components/meteor-shower.css';`
 }
 
 function generateSvelteCode(tier: Tier, count: number, motion: MotionLevel): string {
@@ -782,7 +782,7 @@ function generateSvelteCode(tier: Tier, count: number, motion: MotionLevel): str
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/meteor-shower.css';
+  @import '@frontier-labs/ui-kit/css/components/meteor-shower.css';
 </style>`
   }
 
@@ -792,7 +792,7 @@ function generateSvelteCode(tier: Tier, count: number, motion: MotionLevel): str
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
 
   return `<script>
-  import { MeteorShower } from '@annondeveloper/ui-kit';
+  import { MeteorShower } from '@frontier-labs/ui-kit';
 </script>
 
 <MeteorShower${propsStr}>
@@ -1161,7 +1161,7 @@ export default function MeteorShowerPage() {
           renders children above them.
         </p>
         <CopyBlock
-          code={`import { MeteorShower } from '@annondeveloper/ui-kit'
+          code={`import { MeteorShower } from '@frontier-labs/ui-kit'
 
 function HeroSection() {
   return (
@@ -1211,7 +1211,7 @@ function HeroSection() {
               Limited customization through CSS custom properties.
             </p>
             <div className="meteor-page__tier-import">
-              @import '@annondeveloper/ui-kit/css/components/meteor-shower.css'
+              @import '@frontier-labs/ui-kit/css/components/meteor-shower.css'
             </div>
             <div className="meteor-page__tier-preview">
               <div style={{
@@ -1252,7 +1252,7 @@ function HeroSection() {
               Auto-injects CSS via adoptedStyleSheets.
             </p>
             <div className="meteor-page__tier-import">
-              import {'{'} MeteorShower {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} MeteorShower {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="meteor-page__tier-preview">
               <div style={{
@@ -1293,7 +1293,7 @@ function HeroSection() {
               impact flash effects, and viewport-aware culling for performance.
             </p>
             <div className="meteor-page__tier-import">
-              import {'{'} MeteorShower {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} MeteorShower {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="meteor-page__tier-preview">
               <div style={{
@@ -1421,13 +1421,13 @@ function HeroSection() {
         <h2 className="meteor-page__section-title"><a href="#source">Source</a></h2>
         <p className="meteor-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="meteor-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="meteor-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/meteor-shower.tsx (Standard)
           </a>
-          <a className="meteor-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="meteor-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/meteor-shower.tsx (Lite)
           </a>
-          <a className="meteor-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="meteor-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/meteor-shower.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/meteor-shower.tsx (Premium)
           </a>
         </div>

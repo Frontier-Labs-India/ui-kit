@@ -1,4 +1,4 @@
-# @annondeveloper/ui-kit — VS Code / Copilot Integration
+# @frontier-labs/ui-kit — VS Code / Copilot Integration
 
 Connect VS Code with GitHub Copilot or any MCP-compatible extension to the ui-kit component library.
 
@@ -11,7 +11,7 @@ Add to `.vscode/mcp.json` in your project:
   "servers": {
     "ui-kit": {
       "type": "sse",
-      "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
     }
   }
 }
@@ -28,7 +28,7 @@ Add to `~/.continue/config.json`:
       "name": "ui-kit",
       "transport": {
         "type": "sse",
-        "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+        "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
       }
     }
   ]
@@ -38,6 +38,6 @@ Add to `~/.continue/config.json`:
 ## Local Server (alternative)
 
 ```bash
-npm install @annondeveloper/ui-kit
-npx @annondeveloper/ui-kit mcp
+npm install @frontier-labs/ui-kit
+npx @frontier-labs/ui-kit mcp
 ```

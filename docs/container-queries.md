@@ -9,7 +9,7 @@ The Container Query system provides a `useContainerSize()` hook, a `<ContainerQu
 ## Quick Start
 
 ```tsx
-import { ContainerQuery } from '@annondeveloper/ui-kit'
+import { ContainerQuery } from '@frontier-labs/ui-kit'
 
 function Dashboard() {
   return (
@@ -34,7 +34,7 @@ Tracks the dimensions of a container element via `ResizeObserver`. Returns `{ wi
 
 ```tsx
 import { useRef } from 'react'
-import { useContainerSize } from '@annondeveloper/ui-kit'
+import { useContainerSize } from '@frontier-labs/ui-kit'
 
 function MyComponent() {
   const ref = useRef<HTMLDivElement>(null)
@@ -91,7 +91,7 @@ Named breakpoint thresholds (mobile-first, smallest wins):
 | `xl` | 960px |
 
 ```ts
-import { CONTAINER_BREAKPOINTS } from '@annondeveloper/ui-kit'
+import { CONTAINER_BREAKPOINTS } from '@frontier-labs/ui-kit'
 // { xs: 200, sm: 320, md: 480, lg: 640, xl: 960 }
 ```
 
@@ -100,7 +100,7 @@ import { CONTAINER_BREAKPOINTS } from '@annondeveloper/ui-kit'
 Resolves a static or responsive prop value for a given breakpoint. Uses mobile-first cascade -- tries the current breakpoint, then falls down to smaller ones.
 
 ```ts
-import { resolveResponsive } from '@annondeveloper/ui-kit'
+import { resolveResponsive } from '@frontier-labs/ui-kit'
 
 // Static value -- returns as-is
 resolveResponsive('lg', 'md', 'md')  // 'lg'
@@ -123,7 +123,7 @@ type ResponsiveValue<T> = T | Partial<Record<ContainerBreakpoint, T>>
 ### Responsive card layout
 
 ```tsx
-import { ContainerQuery, Card, MetricCard } from '@annondeveloper/ui-kit'
+import { ContainerQuery, Card, MetricCard } from '@frontier-labs/ui-kit'
 
 function DashboardPanel() {
   return (
@@ -148,7 +148,7 @@ function DashboardPanel() {
 
 ```tsx
 import { useRef } from 'react'
-import { useContainerSize, resolveResponsive, type ResponsiveValue } from '@annondeveloper/ui-kit'
+import { useContainerSize, resolveResponsive, type ResponsiveValue } from '@frontier-labs/ui-kit'
 
 interface GridProps {
   columns: ResponsiveValue<number>

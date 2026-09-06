@@ -458,9 +458,9 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SearchInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SearchInput } from '@annondeveloper/ui-kit'",
-  premium: "import { SearchInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SearchInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SearchInput } from '@frontier-labs/ui-kit'",
+  premium: "import { SearchInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -542,7 +542,7 @@ function generateReactCode(tier: Tier, size: Size, placeholder: string, loading:
 
 function generateHtmlCode(tier: Tier, size: Size, placeholder: string): string {
   const className = tier === 'lite' ? 'ui-lite-search-input' : 'ui-search-input'
-  return `<!-- SearchInput -- @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- SearchInput -- @frontier-labs/ui-kit ${tier} tier -->
 <div class="${className}" data-size="${size}">
   <span class="${className}__icon" aria-hidden="true">
     <!-- Search icon SVG -->
@@ -561,7 +561,7 @@ function generateVueCode(tier: Tier, size: Size, placeholder: string, disabled: 
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -576,7 +576,7 @@ function generateVueCode(tier: Tier, size: Size, placeholder: string, disabled: 
 </template>
 
 <script setup>
-import { SearchInput } from '@annondeveloper/ui-kit'
+import { SearchInput } from '@frontier-labs/ui-kit'
 
 const onSearch = (val) => console.log(val)
 const onSubmit = (val) => console.log('Search:', val)
@@ -592,7 +592,7 @@ function generateAngularCode(tier: Tier, size: Size, placeholder: string, disabl
   <input type="search" ${placeholder ? `placeholder="${placeholder}"` : ''} ${disabled ? '[disabled]="true"' : ''} />
 </div>
 
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular -- Standard tier -->
 <div class="ui-search-input" data-size="${size}">
@@ -602,7 +602,7 @@ function generateAngularCode(tier: Tier, size: Size, placeholder: string, disabl
   <input type="search" class="ui-search-input__field" ${placeholder ? `placeholder="${placeholder}"` : ''} ${disabled ? '[disabled]="true"' : ''} />
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/search-input.css';`
+@import '@frontier-labs/ui-kit/css/components/search-input.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, placeholder: string, disabled: boolean): string {
@@ -614,11 +614,11 @@ function generateSvelteCode(tier: Tier, size: Size, placeholder: string, disable
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { SearchInput } from '@annondeveloper/ui-kit';
+  import { SearchInput } from '@frontier-labs/ui-kit';
 </script>
 
 <SearchInput
@@ -1001,7 +1001,7 @@ export default function SearchInputPage() {
               <span className="search-input-page__tier-size">~0.2 KB</span>
             </div>
             <p className="search-input-page__tier-desc">Minimal search input with icon. No debounce, no clear button, no loading state.</p>
-            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="search-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <LiteSearchInput placeholder="Lite search..." />
@@ -1025,7 +1025,7 @@ export default function SearchInputPage() {
               <span className="search-input-page__tier-size">~1.5 KB</span>
             </div>
             <p className="search-input-page__tier-desc">Full-featured with debounce, loading spinner, clear button, Enter-to-search, and 5 size variants.</p>
-            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="search-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <SearchInput placeholder="Standard search..." />
@@ -1049,7 +1049,7 @@ export default function SearchInputPage() {
               <span className="search-input-page__tier-size">~3-5 KB</span>
             </div>
             <p className="search-input-page__tier-desc">Aurora glow focus ring, spring-bounce clear button, and shimmer loading state.</p>
-            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="search-input-page__tier-import">import {'{'} SearchInput {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="search-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <PremiumSearchInput placeholder="Premium search..." />
@@ -1247,13 +1247,13 @@ export default function SearchInputPage() {
         <h2 className="search-input-page__section-title"><a href="#source">Source</a></h2>
         <p className="search-input-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="search-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/search-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="search-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/search-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/search-input.tsx (Standard)
           </a>
-          <a className="search-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/search-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="search-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/search-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/search-input.tsx (Lite)
           </a>
-          <a className="search-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/search-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="search-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/search-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/search-input.tsx (Premium)
           </a>
         </div>

@@ -662,9 +662,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { NetworkTrafficCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { NetworkTrafficCard } from '@annondeveloper/ui-kit'",
-  premium: "import { NetworkTrafficCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { NetworkTrafficCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { NetworkTrafficCard } from '@frontier-labs/ui-kit'",
+  premium: "import { NetworkTrafficCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -774,8 +774,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(title: string, status: Status): string {
-  return `<!-- NetworkTrafficCard — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/network-traffic-card.css">
+  return `<!-- NetworkTrafficCard — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/network-traffic-card.css">
 
 <div class="ui-network-traffic-card" data-status="${status}">
   <div class="ui-network-traffic-card__header">
@@ -801,7 +801,7 @@ function generateHtmlCode(title: string, status: Status): string {
 }
 
 function generateVueCode(tier: Tier, title: string, status: Status, compact: boolean, showTrend: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     `  title="${title}"`,
     '  vendor="Cisco"',
@@ -828,7 +828,7 @@ ${showTrend ? 'const trend = ref([120, 150, 130, 180, 200, 190, 220, 250])' : ''
 }
 
 function generateAngularCode(tier: Tier, title: string, status: Status): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <ui-network-traffic-card
   title="${title}"
@@ -848,7 +848,7 @@ trend = [120, 150, 130, 180, 200, 190, 220, 250];`
 }
 
 function generateSvelteCode(tier: Tier, title: string, status: Status, compact: boolean, showTrend: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     `  title="${title}"`,
     '  vendor="Cisco"',
@@ -1321,7 +1321,7 @@ export default function NetworkTrafficCardPage() {
         </div>
         <div style={{ marginBlockStart: '1rem' }}>
           <CopyBlock
-            code={`import { formatBitRate } from '@annondeveloper/ui-kit'
+            code={`import { formatBitRate } from '@frontier-labs/ui-kit'
 
 formatBitRate(125000000) // "1.00 Gbps"
 formatBitRate(125000)    // "1.00 Mbps"
@@ -1359,7 +1359,7 @@ formatBitRate(100)       // "800 bps"`}
               No sparkline, no status dot animation, no hover lift, no entrance effects.
             </p>
             <div className="ntc-page__tier-import">
-              import {'{'} NetworkTrafficCard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} NetworkTrafficCard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="ntc-page__tier-preview">
               <LiteNetworkTrafficCard
@@ -1394,7 +1394,7 @@ formatBitRate(100)       // "800 bps"`}
               hover lift, entrance fade-up, vendor/location display, and compact mode.
             </p>
             <div className="ntc-page__tier-import">
-              import {'{'} NetworkTrafficCard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} NetworkTrafficCard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="ntc-page__tier-preview">
               <NetworkTrafficCard
@@ -1431,7 +1431,7 @@ formatBitRate(100)       // "800 bps"`}
               with spring physics, shimmer effect on status transitions, and ambient glow pulsing.
             </p>
             <div className="ntc-page__tier-import">
-              import {'{'} NetworkTrafficCard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} NetworkTrafficCard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="ntc-page__tier-preview">
               <PremiumNetworkTrafficCard
@@ -1587,13 +1587,13 @@ formatBitRate(100)       // "800 bps"`}
         <h2 className="ntc-page__section-title"><a href="#source">Source</a></h2>
         <p className="ntc-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="ntc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ntc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/network-traffic-card.tsx (Standard)
           </a>
-          <a className="ntc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ntc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/network-traffic-card.tsx (Lite)
           </a>
-          <a className="ntc-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ntc-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/network-traffic-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/network-traffic-card.tsx (Premium)
           </a>
         </div>

@@ -522,9 +522,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const STATUSES: Status[] = ['online', 'offline', 'away', 'busy']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Avatar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Avatar } from '@annondeveloper/ui-kit'",
-  premium: "import { Avatar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Avatar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Avatar } from '@frontier-labs/ui-kit'",
+  premium: "import { Avatar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -602,7 +602,7 @@ function generateReactCode(tier: Tier, size: Size, name: string, src: string, st
 function generateHtmlCode(tier: Tier, size: Size, name: string, src: string): string {
   const className = tier === 'lite' ? 'ui-lite-avatar' : 'ui-avatar'
   const initials = name ? name.split(' ').map(p => p[0]).join('').toUpperCase() : '?'
-  return `<!-- Avatar — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Avatar — @frontier-labs/ui-kit ${tier} tier -->
 <div class="${className}" data-size="${size}">
   ${src ? `<img src="${src}" alt="${name || 'Avatar'}" />` : `<span>${initials}</span>`}
 </div>`
@@ -617,7 +617,7 @@ function generateVueCode(tier: Tier, size: Size, name: string, src: string, stat
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const attrs: string[] = []
@@ -630,7 +630,7 @@ function generateVueCode(tier: Tier, size: Size, name: string, src: string, stat
 </template>
 
 <script setup>
-import { Avatar } from '@annondeveloper/ui-kit'
+import { Avatar } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -642,7 +642,7 @@ function generateAngularCode(tier: Tier, size: Size, name: string, src: string):
   ${src ? `<img [src]="'${src}'" alt="${name || 'Avatar'}" />` : `<span>${initials}</span>`}
 </div>
 
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/avatar.css'}';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/avatar.css'}';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, name: string, src: string, status: string): string {
@@ -653,7 +653,7 @@ function generateSvelteCode(tier: Tier, size: Size, name: string, src: string, s
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   const attrs: string[] = [`size="${size}"`]
@@ -661,7 +661,7 @@ function generateSvelteCode(tier: Tier, size: Size, name: string, src: string, s
   if (name) attrs.push(`name="${name}"`)
   if (status && status !== 'none') attrs.push(`status="${status}"`)
   return `<script>
-  import { Avatar } from '@annondeveloper/ui-kit';
+  import { Avatar } from '@frontier-labs/ui-kit';
 </script>
 
 <Avatar ${attrs.join(' ')} />`
@@ -969,7 +969,7 @@ export default function AvatarPage() {
             <p className="avatar-page__tier-desc">
               Minimal wrapper with image and custom fallback. No status, no initials, no group.
             </p>
-            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="avatar-page__tier-preview">
               <LiteAvatar size="lg" src="https://i.pravatar.cc/150?u=lite-tier" alt="Lite" />
             </div>
@@ -989,7 +989,7 @@ export default function AvatarPage() {
               Full-featured avatar with initials, status indicators, icon fallback,
               error handling, and AvatarGroup.
             </p>
-            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="avatar-page__tier-preview">
               <Avatar size="lg" src="https://i.pravatar.cc/150?u=std-tier" alt="Standard" status="online" />
             </div>
@@ -1008,7 +1008,7 @@ export default function AvatarPage() {
             <p className="avatar-page__tier-desc">
               Ambient aurora glow ring, spring-scale on hover, shimmer on loading state, and status dot glow.
             </p>
-            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="avatar-page__tier-preview">
               <PremiumAvatar size="xl" name="Premium User" status="away" />
             </div>
@@ -1099,13 +1099,13 @@ export default function AvatarPage() {
         <h2 className="avatar-page__section-title"><a href="#source">Source</a></h2>
         <p className="avatar-page__section-desc">View the component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="avatar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/avatar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/avatar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/avatar.tsx — Standard tier
           </a>
-          <a className="avatar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/avatar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/avatar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/avatar.tsx — Lite tier
           </a>
-          <a className="avatar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/avatar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/avatar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/avatar.tsx — Premium tier
           </a>
         </div>

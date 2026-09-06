@@ -5,7 +5,7 @@ import { createInterface } from 'readline'
 
 const SERVER_ENTRY = {
   command: 'npx',
-  args: ['-y', '@annondeveloper/ui-kit-mcp'],
+  args: ['-y', '@frontier-labs/ui-kit-mcp'],
 }
 
 const SERVER_NAME = 'ui-kit'

@@ -72,7 +72,7 @@ function init(flags: string[]) {
     copyFileSync(themeSrc, join(target, 'theme.css'))
     console.log(`\u2713 Copied theme.css to ${target}/theme.css`)
   } else {
-    console.log('Theme CSS not found in dist. Import from @annondeveloper/ui-kit/css/theme.css instead.')
+    console.log('Theme CSS not found in dist. Import from @frontier-labs/ui-kit/css/theme.css instead.')
   }
 
   // Try to auto-detect and patch root layout file
@@ -87,14 +87,14 @@ function init(flags: string[]) {
     join(target, 'src', 'index.jsx'),
   ]
 
-  const cssImportLine = "import '@annondeveloper/ui-kit/css/all.css'"
-  const themeImportLine = "import '@annondeveloper/ui-kit/css/theme.css'"
+  const cssImportLine = "import '@frontier-labs/ui-kit/css/all.css'"
+  const themeImportLine = "import '@frontier-labs/ui-kit/css/theme.css'"
 
   let patched = false
   for (const candidate of layoutCandidates) {
     if (existsSync(candidate)) {
       const content = readFileSync(candidate, 'utf-8')
-      if (!content.includes('@annondeveloper/ui-kit/css')) {
+      if (!content.includes('@frontier-labs/ui-kit/css')) {
         const lines = content.split('\n')
         // Find last import line to insert after
         let lastImportIdx = -1
@@ -125,11 +125,11 @@ function init(flags: string[]) {
   console.log(`     ${cssImportLine}`)
   console.log('')
   console.log('  2. Wrap your app with UIProvider:')
-  console.log('     import { UIProvider } from "@annondeveloper/ui-kit"')
+  console.log('     import { UIProvider } from "@frontier-labs/ui-kit"')
   console.log('     <UIProvider><App /></UIProvider>')
   console.log('')
   console.log('  3. Start using components:')
-  console.log('     import { Button, Card } from "@annondeveloper/ui-kit"')
+  console.log('     import { Button, Card } from "@frontier-labs/ui-kit"')
   console.log('')
 }
 
@@ -184,7 +184,7 @@ function runStats() {
         console.log('Analytics are stored locally in ~/.ui-kit/analytics.jsonl\n')
         return
       }
-      console.log(`\n@annondeveloper/ui-kit — MCP Usage Stats\n`)
+      console.log(`\n@frontier-labs/ui-kit — MCP Usage Stats\n`)
       console.log(`Total tool calls: ${stats.total}\n`)
       console.log('By tool:')
       for (const [tool, count] of Object.entries(stats.byTool)) {
@@ -216,7 +216,7 @@ function runFigmaExport(argv: string[]) {
 
 function list() {
   const total = componentRegistry.components.length + componentRegistry.domain.length
-  console.log(`\n@annondeveloper/ui-kit \u2014 ${total} Components\n`)
+  console.log(`\n@frontier-labs/ui-kit \u2014 ${total} Components\n`)
   console.log('General Purpose:')
   componentRegistry.components.forEach(c => console.log(`  \u2022 ${c}`))
   console.log('\nDomain (Monitoring, AI, Data):')
@@ -232,14 +232,14 @@ function theme(hex: string | undefined) {
   }
   console.log(`Generating theme from ${hex}...`)
   console.log('Use the theme entry point:')
-  console.log('  import { generateTheme, themeToCSS } from "@annondeveloper/ui-kit/theme"')
+  console.log('  import { generateTheme, themeToCSS } from "@frontier-labs/ui-kit/theme"')
   console.log(`  const theme = generateTheme("${hex}")`)
   console.log('  const css = themeToCSS(theme)')
 }
 
 function help() {
   console.log(`
-@annondeveloper/ui-kit CLI
+@frontier-labs/ui-kit CLI
 
 Commands:
   init [dir]                       Copy theme.css to your project

@@ -629,9 +629,9 @@ const emptyStateProps: PropDef[] = [
 type Size = 'sm' | 'md' | 'lg'
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { EmptyState } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { EmptyState } from '@annondeveloper/ui-kit'",
-  premium: "import { EmptyState } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { EmptyState } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { EmptyState } from '@frontier-labs/ui-kit'",
+  premium: "import { EmptyState } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -719,8 +719,8 @@ function generateReactCode(
   titleText: string,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = showIcon ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
-  const btnImport = showAction ? "\nimport { Button } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
+  const btnImport = showAction ? "\nimport { Button } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = []
   if (showIcon) props.push(`  icon={<Icon name="inbox" size="lg" />}`)
@@ -736,8 +736,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, showIcon: boolean, showDescription: boolean, titleText: string): string {
   const cls = tier === 'lite' ? 'ui-lite-empty-state' : 'ui-empty-state'
-  return `<!-- EmptyState — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/empty-state.css">
+  return `<!-- EmptyState — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/empty-state.css">
 
 <div class="${cls}" data-size="md">
   ${showIcon ? `<div class="${cls}__icon" aria-hidden="true">\n    <svg><!-- your icon --></svg>\n  </div>` : ''}
@@ -761,7 +761,7 @@ function generateVueCode(tier: Tier, size: Size, showIcon: boolean, showAction: 
 </template>
 
 <script setup>
-import { EmptyState } from '@annondeveloper/ui-kit/lite'
+import { EmptyState } from '@frontier-labs/ui-kit/lite'
 </script>`
   }
   return `<template>
@@ -775,7 +775,7 @@ import { EmptyState } from '@annondeveloper/ui-kit/lite'
 </template>
 
 <script setup>
-import { EmptyState } from '@annondeveloper/ui-kit'
+import { EmptyState } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -794,14 +794,14 @@ function generateAngularCode(tier: Tier): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/empty-state.css'}';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/empty-state.css'}';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size): string {
   if (tier === 'lite') {
     return `<script>
-  import { EmptyState } from '@annondeveloper/ui-kit/lite';
-  import { Button } from '@annondeveloper/ui-kit/lite';
+  import { EmptyState } from '@frontier-labs/ui-kit/lite';
+  import { Button } from '@frontier-labs/ui-kit/lite';
 </script>
 
 <EmptyState
@@ -811,9 +811,9 @@ function generateSvelteCode(tier: Tier, size: Size): string {
 />`
   }
   return `<script>
-  import { EmptyState } from '@annondeveloper/ui-kit';
-  import { Button } from '@annondeveloper/ui-kit';
-  import { Icon } from '@annondeveloper/ui-kit';
+  import { EmptyState } from '@frontier-labs/ui-kit';
+  import { Button } from '@frontier-labs/ui-kit';
+  import { Icon } from '@frontier-labs/ui-kit';
 </script>
 
 <EmptyState
@@ -1211,7 +1211,7 @@ export default function EmptyStatePage() {
               No size variants, no motion, no aurora glow.
             </p>
             <div className="empty-state-page__tier-import">
-              import {'{'} EmptyState {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} EmptyState {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="empty-state-page__tier-preview">
               <LiteEmptyState icon={<Icon name="inbox" size="sm" />} title="Empty" description="Nothing here" />
@@ -1242,7 +1242,7 @@ export default function EmptyStatePage() {
               secondary action, container-query responsive, and motion levels.
             </p>
             <div className="empty-state-page__tier-import">
-              import {'{'} EmptyState {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} EmptyState {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="empty-state-page__tier-preview">
               <EmptyState icon={<Icon name="inbox" size="sm" />} title="Empty" description="Nothing here" size="sm" />
@@ -1272,7 +1272,7 @@ export default function EmptyStatePage() {
               Spring-bounce icon entrance, aurora glow on CTA button, and floating ambient particle dots.
             </p>
             <div className="empty-state-page__tier-import">
-              import {'{'} EmptyState {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} EmptyState {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="empty-state-page__tier-preview">
               <PremiumEmptyState icon={<Icon name="inbox" size="sm" />} title="Empty" description="Nothing here" size="sm" />
@@ -1375,13 +1375,13 @@ export default function EmptyStatePage() {
         <h2 className="empty-state-page__section-title"><a href="#source">Source</a></h2>
         <p className="empty-state-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="empty-state-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/empty-state.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="empty-state-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/empty-state.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/empty-state.tsx (Standard)
           </a>
-          <a className="empty-state-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/empty-state.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="empty-state-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/empty-state.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/empty-state.tsx (Lite)
           </a>
-          <a className="empty-state-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/empty-state.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="empty-state-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/empty-state.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/empty-state.tsx (Premium)
           </a>
         </div>

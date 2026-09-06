@@ -697,9 +697,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { BackgroundBoxes } from '@annondeveloper/ui-kit/domain'",
-  standard: "import { BackgroundBoxes } from '@annondeveloper/ui-kit'",
-  premium: "import { BackgroundBoxes } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { BackgroundBoxes } from '@frontier-labs/ui-kit/domain'",
+  standard: "import { BackgroundBoxes } from '@frontier-labs/ui-kit'",
+  premium: "import { BackgroundBoxes } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -796,8 +796,8 @@ function generateReactCode(
 }
 
 function generateHtmlCode(rows: number, cols: number): string {
-  return `<!-- BackgroundBoxes — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/background-boxes.css">
+  return `<!-- BackgroundBoxes — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/background-boxes.css">
 
 <div class="ui-background-boxes" style="--boxes-rows: repeat(${rows}, 1fr); --boxes-cols: repeat(${cols}, 1fr); min-height: 300px;">
   <div class="ui-background-boxes--grid" aria-hidden="true">
@@ -810,7 +810,7 @@ function generateHtmlCode(rows: number, cols: number): string {
 }
 
 function generateVueCode(tier: Tier, rows: number, cols: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (rows !== 15) props.push(`  :rows="${rows}"`)
   if (cols !== 15) props.push(`  :cols="${cols}"`)
@@ -848,11 +848,11 @@ function generateAngularCode(rows: number, cols: number): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/background-boxes.css';`
+@import '@frontier-labs/ui-kit/css/components/background-boxes.css';`
 }
 
 function generateSvelteCode(tier: Tier, rows: number, cols: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (rows !== 15) props.push(`  rows={${rows}}`)
   if (cols !== 15) props.push(`  cols={${cols}}`)
@@ -1219,7 +1219,7 @@ export default function BackgroundBoxesPage() {
               Pure CSS keyframes for the box pulse effect.
             </p>
             <div className="background-boxes-page__tier-import">
-              import {'{'} BackgroundBoxes {'}'} from '@annondeveloper/ui-kit/domain'
+              import {'{'} BackgroundBoxes {'}'} from '@frontier-labs/ui-kit/domain'
             </div>
             <div className="background-boxes-page__tier-preview">
               <LiteBackgroundBoxes rows={6} cols={6} style={{ width: '100%', height: '100%', minHeight: 80 }} />
@@ -1250,7 +1250,7 @@ export default function BackgroundBoxesPage() {
               motion level support, and content overlay z-indexing.
             </p>
             <div className="background-boxes-page__tier-import">
-              import {'{'} BackgroundBoxes {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BackgroundBoxes {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="background-boxes-page__tier-preview">
               <BackgroundBoxes rows={6} cols={6} style={{ width: '100%', height: '100%', minHeight: 80 }} />
@@ -1281,7 +1281,7 @@ export default function BackgroundBoxesPage() {
               mouse-proximity glow, and intensity variance per cell.
             </p>
             <div className="background-boxes-page__tier-import">
-              import {'{'} BackgroundBoxes {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} BackgroundBoxes {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="background-boxes-page__tier-preview">
               <PremiumBackgroundBoxes rows={6} cols={6} style={{ width: '100%', height: '100%', minHeight: 80 }} />
@@ -1409,7 +1409,7 @@ export default function BackgroundBoxesPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/background-boxes.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/background-boxes.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="background-boxes-page__source-link"
@@ -1418,7 +1418,7 @@ export default function BackgroundBoxesPage() {
             src/domain/background-boxes.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/background-boxes.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/background-boxes.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="background-boxes-page__source-link"
@@ -1427,7 +1427,7 @@ export default function BackgroundBoxesPage() {
             src/lite/background-boxes.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/background-boxes.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/background-boxes.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="background-boxes-page__source-link"

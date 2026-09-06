@@ -8,7 +8,7 @@
 
 ## 1. Vision
 
-Rebuild `@annondeveloper/ui-kit` from scratch as a **zero-external-dependency** React component library with 62 components, a physics-based animation engine, OKLCH color system, and the "Aurora Fluid" design identity. The result should be something that does not exist today — a library that is self-sustaining, cinematic, accessible, and works flawlessly from smartwatches to video walls.
+Rebuild `@frontier-labs/ui-kit` from scratch as a **zero-external-dependency** React component library with 62 components, a physics-based animation engine, OKLCH color system, and the "Aurora Fluid" design identity. The result should be something that does not exist today — a library that is self-sustaining, cinematic, accessible, and works flawlessly from smartwatches to video walls.
 
 ## 2. Decisions
 
@@ -31,7 +31,7 @@ Rebuild `@annondeveloper/ui-kit` from scratch as a **zero-external-dependency** 
 ### 3.1 Package Structure
 
 ```
-@annondeveloper/ui-kit v2.0.0
+@frontier-labs/ui-kit v2.0.0
 ├── src/
 │   ├── core/
 │   │   ├── styles/        # useStyles(), css tag, adoptedStyleSheets, SSR collector
@@ -478,7 +478,7 @@ For anchor positioning (the biggest fallback), `useAnchorPosition()` is a ~0.8KB
 ### 14.1 StyleCollector Architecture
 
 ```typescript
-import { StyleCollector, renderWithStyles } from '@annondeveloper/ui-kit'
+import { StyleCollector, renderWithStyles } from '@frontier-labs/ui-kit'
 
 // Option A: Wrapper function
 const { html, css } = renderWithStyles(<App />)
@@ -504,7 +504,7 @@ const stream = renderToReadableStream(<StyleProvider collector={collector}><App 
 
 ```tsx
 // app/layout.tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }) {
   return (
@@ -752,7 +752,7 @@ chevron-down, chevron-up, chevron-left, chevron-right, check, x, plus, minus, se
 ### 21.2 Icon Component API
 
 ```typescript
-import { Icon, icons } from '@annondeveloper/ui-kit'
+import { Icon, icons } from '@frontier-labs/ui-kit'
 
 <Icon name="check" size="md" />           // Built-in icon
 <Button icon={<Icon name="plus" />}>Add</Button>  // Default slot usage
@@ -766,10 +766,10 @@ import { Icon, icons } from '@annondeveloper/ui-kit'
 ### 22.1 Commands
 
 ```bash
-npx @annondeveloper/ui-kit init          # Copy theme.css + utils to project
-npx @annondeveloper/ui-kit add button    # Copy Button source to project
-npx @annondeveloper/ui-kit list          # List available components
-npx @annondeveloper/ui-kit theme         # Generate theme from brand color
+npx @frontier-labs/ui-kit init          # Copy theme.css + utils to project
+npx @frontier-labs/ui-kit add button    # Copy Button source to project
+npx @frontier-labs/ui-kit list          # List available components
+npx @frontier-labs/ui-kit theme         # Generate theme from brand color
 ```
 
 ### 22.2 Scaffold Mode
@@ -781,7 +781,7 @@ For consumers who prefer the shadcn/ui "own your components" pattern, the CLI co
 ### 23.1 Timeline — Sequencing & Orchestration
 
 ```typescript
-import { timeline, spring, animate, stagger } from '@annondeveloper/ui-kit'
+import { timeline, spring, animate, stagger } from '@frontier-labs/ui-kit'
 
 const tl = timeline()
   .add(animate(heading, { opacity: [0, 1], y: [20, 0] }, { duration: 400 }))
@@ -967,10 +967,10 @@ Every component declares interactions once via the unified pointer/gesture/keybo
 
 ## 25. Migration Path from v1
 
-- v2 ships as the same package (`@annondeveloper/ui-kit`) with a major version bump
+- v2 ships as the same package (`@frontier-labs/ui-kit`) with a major version bump
 - Component API remains as similar as possible (same prop names, same behavior)
 - Breaking changes documented in migration guide:
   - Remove all peer deps except react/react-dom
-  - Replace `import '@annondeveloper/ui-kit/theme.css'` with auto-injected styles (or `import '@annondeveloper/ui-kit/css/theme.css'` for explicit)
+  - Replace `import '@frontier-labs/ui-kit/theme.css'` with auto-injected styles (or `import '@frontier-labs/ui-kit/css/theme.css'` for explicit)
   - Replace RHF wrappers with built-in form engine (or use escape hatch)
   - Theme tokens renamed from HSL to OKLCH values

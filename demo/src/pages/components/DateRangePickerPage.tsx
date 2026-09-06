@@ -532,9 +532,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { DateRangePicker } from '@annondeveloper/ui-kit'",
-  lite: "import { DateRangePicker } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { DateRangePicker } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { DateRangePicker } from '@frontier-labs/ui-kit'",
+  lite: "import { DateRangePicker } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { DateRangePicker } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -655,8 +655,8 @@ function generateHtmlCode(tier: Tier, size: Size, label: string): string {
     ? 'lite/styles.css'
     : 'css/components/date-range-picker.css'
 
-  return `<!-- DateRangePicker -- @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cssFile}">
+  return `<!-- DateRangePicker -- @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cssFile}">
 
 <div class="ui-date-range-picker" data-size="${size}">
   <label class="ui-date-range-picker__label">${label}</label>
@@ -668,7 +668,7 @@ function generateHtmlCode(tier: Tier, size: Size, label: string): string {
 <!-- Note: Full calendar popover requires JavaScript.
      For a CSS-only approach, use a native <input type="date"> pair. -->
 <style>
-  @import '@annondeveloper/ui-kit/${cssFile}';
+  @import '@frontier-labs/ui-kit/${cssFile}';
 </style>`
 }
 
@@ -685,11 +685,11 @@ function generateVueCode(tier: Tier, size: Size, label: string, disabled: boolea
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  v-model="range"`, `  label="${label}"`]
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (disabled) attrs.push('  disabled')
@@ -711,10 +711,10 @@ const range = ref([null, null])${showPresets ? `\nconst presets = [\n  { label: 
 
 function generateAngularCode(tier: Tier, size: Size, label: string, disabled: boolean): string {
   const cssImport = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
     : tier === 'premium'
-      ? '@annondeveloper/ui-kit/premium/css/components/date-range-picker.css'
-      : '@annondeveloper/ui-kit/css/components/date-range-picker.css'
+      ? '@frontier-labs/ui-kit/premium/css/components/date-range-picker.css'
+      : '@frontier-labs/ui-kit/css/components/date-range-picker.css'
 
   return `<!-- Angular -- ${tier.charAt(0).toUpperCase() + tier.slice(1)} tier (CSS-only approach) -->
 <div
@@ -752,11 +752,11 @@ function generateSvelteCode(tier: Tier, size: Size, label: string, disabled: boo
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  label="${label}"`]
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (disabled) attrs.push('  disabled')
@@ -1158,7 +1158,7 @@ export default function DateRangePickerPage() {
               Minimal wrapper with motion forced to 0. No spring animations.
             </p>
             <div className="drp-page__tier-import">
-              import {'{'} DateRangePicker {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DateRangePicker {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="drp-page__tier-preview">
               <LiteDateRangePicker label="Lite" placeholder="Pick range" />
@@ -1189,7 +1189,7 @@ export default function DateRangePickerPage() {
               motion levels, and form integration.
             </p>
             <div className="drp-page__tier-import">
-              import {'{'} DateRangePicker {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DateRangePicker {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="drp-page__tier-preview">
               <DateRangePicker label="Standard" placeholder="Pick range" />
@@ -1220,7 +1220,7 @@ export default function DateRangePickerPage() {
               spring popover entrance, and shimmer effects.
             </p>
             <div className="drp-page__tier-import">
-              import {'{'} DateRangePicker {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DateRangePicker {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="drp-page__tier-preview">
               <PremiumDateRangePicker label="Premium" placeholder="Pick range" />
@@ -1357,13 +1357,13 @@ export default function DateRangePickerPage() {
         <h2 className="drp-page__section-title"><a href="#source">Source</a></h2>
         <p className="drp-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="drp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="drp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/date-range-picker.tsx (Standard)
           </a>
-          <a className="drp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="drp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/date-range-picker.tsx (Lite)
           </a>
-          <a className="drp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="drp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/date-range-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/date-range-picker.tsx (Premium)
           </a>
         </div>

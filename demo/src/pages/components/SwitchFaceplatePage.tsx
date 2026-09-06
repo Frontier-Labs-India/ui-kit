@@ -608,9 +608,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SwitchFaceplate } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SwitchFaceplate } from '@annondeveloper/ui-kit'",
-  premium: "import { SwitchFaceplate } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SwitchFaceplate } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SwitchFaceplate } from '@frontier-labs/ui-kit'",
+  premium: "import { SwitchFaceplate } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -714,8 +714,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, size: Size): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
-  return `<!-- SwitchFaceplate — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/switch-faceplate.css">
+  return `<!-- SwitchFaceplate — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/switch-faceplate.css">
 
 <div class="ui-switch-faceplate" data-size="${size}" role="group"
      aria-label="Network switch faceplate">
@@ -731,7 +731,7 @@ function generateHtmlCode(tier: Tier, size: Size): string {
 }
 
 function generateVueCode(tier: Tier, rows: number, size: Size, showLabels: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':ports="ports"', 'label="TOR-SW-01"']
   if (rows !== 2) attrs.push(`:rows="${rows}"`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -755,7 +755,7 @@ const ports = [
 }
 
 function generateAngularCode(tier: Tier, size: Size): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <div class="ui-switch-faceplate" data-size="${size}" role="group"
      aria-label="Network switch faceplate">
@@ -777,7 +777,7 @@ function generateAngularCode(tier: Tier, size: Size): string {
 }
 
 function generateSvelteCode(tier: Tier, rows: number, size: Size, showLabels: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = ['{ports}', 'label="TOR-SW-01"']
   if (rows !== 2) attrs.push(`rows={${rows}}`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -1134,7 +1134,7 @@ export default function SwitchFaceplatePage() {
               Inline-style rendering. No animation, no tooltips, no hover effects. Static port grid with status colors.
             </p>
             <div className="switch-faceplate-page__tier-import">
-              import {'{'} SwitchFaceplate {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} SwitchFaceplate {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="switch-faceplate-page__tier-preview">
               <LiteSwitchFaceplate
@@ -1167,7 +1167,7 @@ export default function SwitchFaceplatePage() {
               motion levels, and clickable port buttons.
             </p>
             <div className="switch-faceplate-page__tier-import">
-              import {'{'} SwitchFaceplate {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} SwitchFaceplate {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="switch-faceplate-page__tier-preview">
               <SwitchFaceplate
@@ -1201,7 +1201,7 @@ export default function SwitchFaceplatePage() {
               breathing effect for down ports, enhanced LED glow, and frosted tooltip.
             </p>
             <div className="switch-faceplate-page__tier-import">
-              import {'{'} SwitchFaceplate {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} SwitchFaceplate {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="switch-faceplate-page__tier-preview">
               <PremiumSwitchFaceplate
@@ -1302,13 +1302,13 @@ export default function SwitchFaceplatePage() {
         <h2 className="switch-faceplate-page__section-title"><a href="#source">Source</a></h2>
         <p className="switch-faceplate-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="switch-faceplate-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="switch-faceplate-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/switch-faceplate.tsx (Standard)
           </a>
-          <a className="switch-faceplate-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="switch-faceplate-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/switch-faceplate.tsx (Lite)
           </a>
-          <a className="switch-faceplate-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="switch-faceplate-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/switch-faceplate.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/switch-faceplate.tsx (Premium)
           </a>
         </div>

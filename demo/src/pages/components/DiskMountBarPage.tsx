@@ -469,9 +469,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DiskMountBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DiskMountBar } from '@annondeveloper/ui-kit'",
-  premium: "import { DiskMountBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DiskMountBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DiskMountBar } from '@frontier-labs/ui-kit'",
+  premium: "import { DiskMountBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 const GB = 1024 ** 3
@@ -538,22 +538,22 @@ ${props.join('\n')}
 }
 
 function generateVueCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>\n  <DiskMountBar :mounts="mounts" show-free />\n</template>\n\n<script setup>\nimport { DiskMountBar } from '${importPath}'\nconst mounts = [\n  { mount: '/', totalBytes: 107374182400, usedBytes: 45097156608, freeBytes: 62277025792, utilPct: 42 },\n]\n</script>`
 }
 
 function generateAngularCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- CSS-only approach -->\n<div class="ui-disk-mount-bar">\n  <div class="ui-disk-mount-bar__entry">\n    <div class="ui-disk-mount-bar__header">\n      <span class="ui-disk-mount-bar__mount">/</span>\n      <span>42%</span>\n    </div>\n    <div class="ui-disk-mount-bar__track">\n      <div class="ui-disk-mount-bar__fill" style="width: 42%"></div>\n    </div>\n  </div>\n</div>\n\n@import '${importPath}/css/components/disk-mount-bar.css';`
 }
 
 function generateSvelteCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { DiskMountBar } from '${importPath}';\n  const mounts = [{ mount: '/', totalBytes: 107374182400, usedBytes: 45097156608, freeBytes: 62277025792, utilPct: 42 }];\n</script>\n\n<DiskMountBar {mounts} showFree />`
 }
 
 function generateHtmlCode(): string {
-  return `<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/disk-mount-bar.css">\n\n<div class="ui-disk-mount-bar">\n  <div class="ui-disk-mount-bar__entry">\n    <div class="ui-disk-mount-bar__header">\n      <span class="ui-disk-mount-bar__mount">/</span>\n      <span class="ui-disk-mount-bar__pct">42%</span>\n    </div>\n    <div class="ui-disk-mount-bar__track">\n      <div class="ui-disk-mount-bar__fill" style="width: 42%"></div>\n    </div>\n  </div>\n</div>`
+  return `<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/disk-mount-bar.css">\n\n<div class="ui-disk-mount-bar">\n  <div class="ui-disk-mount-bar__entry">\n    <div class="ui-disk-mount-bar__header">\n      <span class="ui-disk-mount-bar__mount">/</span>\n      <span class="ui-disk-mount-bar__pct">42%</span>\n    </div>\n    <div class="ui-disk-mount-bar__track">\n      <div class="ui-disk-mount-bar__fill" style="width: 42%"></div>\n    </div>\n  </div>\n</div>`
 }
 
 // ─── Playground ──────────────────────────────────────────────────────────────
@@ -866,7 +866,7 @@ export default function DiskMountBarPage() {
       {/* Source */}
       <section className="disk-mount-bar-page__section" id="source">
         <h2 className="disk-mount-bar-page__section-title"><a href="#source">Source</a></h2>
-        <a className="disk-mount-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/disk-mount-bar.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="disk-mount-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/disk-mount-bar.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

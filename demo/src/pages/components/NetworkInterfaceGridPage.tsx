@@ -619,9 +619,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { NetworkInterfaceGrid } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { NetworkInterfaceGrid } from '@annondeveloper/ui-kit'",
-  premium: "import { NetworkInterfaceGrid } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { NetworkInterfaceGrid } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { NetworkInterfaceGrid } from '@frontier-labs/ui-kit'",
+  premium: "import { NetworkInterfaceGrid } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -736,7 +736,7 @@ function generateHtmlCode(
   columns: string,
 ): string {
   const cls = tier === 'lite' ? 'ui-lite-network-interface-grid' : tier === 'premium' ? 'ui-premium-network-interface-grid' : 'ui-network-interface-grid'
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css' : tier === 'premium' ? '@annondeveloper/ui-kit/premium/css/components/network-interface-grid.css' : '@annondeveloper/ui-kit/css/components/network-interface-grid.css'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css' : tier === 'premium' ? '@frontier-labs/ui-kit/premium/css/components/network-interface-grid.css' : '@frontier-labs/ui-kit/css/components/network-interface-grid.css'
 
   const attrs: string[] = [`class="${cls}"`]
   if (size !== 'md') attrs.push(`data-size="${size}"`)
@@ -760,10 +760,10 @@ function generateVueCode(
     const attrs: string[] = []
     if (size !== 'md') attrs.push(`  data-size="${size}"`)
     if (compact) attrs.push('  data-compact')
-    return `<template>\n  <div class="ui-lite-network-interface-grid"${attrs.join('')}>\n    <div class="ui-lite-network-interface-grid__card"\n      v-for="iface in interfaces" :key="iface.name"\n      :data-status="iface.status"\n    >\n      {{ iface.name }} - {{ iface.speed }}\n    </div>\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-network-interface-grid"${attrs.join('')}>\n    <div class="ui-lite-network-interface-grid__card"\n      v-for="iface in interfaces" :key="iface.name"\n      :data-status="iface.status"\n    >\n      {{ iface.name }} - {{ iface.speed }}\n    </div>\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = ['  :interfaces="interfaces"']
   if (size !== 'md') props.push(`  size="${size}"`)
   if (columns !== 'auto') props.push(`  :columns="${columns}"`)
@@ -786,10 +786,10 @@ function generateAngularCode(
     const attrs: string[] = ['class="ui-lite-network-interface-grid"']
     if (size !== 'md') attrs.push(`data-size="${size}"`)
     if (compact) attrs.push('data-compact')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <div *ngFor="let iface of interfaces"\n    class="ui-lite-network-interface-grid__card"\n    [attr.data-status]="iface.status"\n  >\n    {{ iface.name }} - {{ iface.speed }}\n  </div>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <div *ngFor="let iface of interfaces"\n    class="ui-lite-network-interface-grid__card"\n    [attr.data-status]="iface.status"\n  >\n    {{ iface.name }} - {{ iface.speed }}\n  </div>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const cls = tier === 'premium' ? 'ui-premium-network-interface-grid' : 'ui-network-interface-grid'
   const attrs: string[] = [`class="${cls}"`]
   if (size !== 'md') attrs.push(`data-size="${size}"`)
@@ -813,10 +813,10 @@ function generateSvelteCode(
     const attrs: string[] = []
     if (size !== 'md') attrs.push(`  data-size="${size}"`)
     if (compact) attrs.push('  data-compact')
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-network-interface-grid"${attrs.join('')}>\n  {#each interfaces as iface}\n    <div class="ui-lite-network-interface-grid__card" data-status={iface.status}>\n      {iface.name} - {iface.speed}\n    </div>\n  {/each}\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-network-interface-grid"${attrs.join('')}>\n  {#each interfaces as iface}\n    <div class="ui-lite-network-interface-grid__card" data-status={iface.status}>\n      {iface.name} - {iface.speed}\n    </div>\n  {/each}\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = ['  interfaces={interfaces}']
   if (size !== 'md') props.push(`  size="${size}"`)
   if (columns !== 'auto') props.push(`  columns={${columns}}`)
@@ -1143,7 +1143,7 @@ export default function NetworkInterfaceGridPage() {
               Inline-style rendering. No animation, no hover effects. Static grid with status colors and traffic display.
             </p>
             <div className="nig-page__tier-import">
-              import {'{'} NetworkInterfaceGrid {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} NetworkInterfaceGrid {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="nig-page__tier-preview">
               <LiteNetworkInterfaceGrid
@@ -1177,7 +1177,7 @@ export default function NetworkInterfaceGridPage() {
               motion levels, and clickable cards.
             </p>
             <div className="nig-page__tier-import">
-              import {'{'} NetworkInterfaceGrid {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} NetworkInterfaceGrid {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="nig-page__tier-preview">
               <NetworkInterfaceGrid
@@ -1213,7 +1213,7 @@ export default function NetworkInterfaceGridPage() {
               breathing effect for down interfaces, and enhanced LED glow.
             </p>
             <div className="nig-page__tier-import">
-              import {'{'} NetworkInterfaceGrid {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} NetworkInterfaceGrid {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="nig-page__tier-preview">
               <PremiumNetworkInterfaceGrid
@@ -1341,13 +1341,13 @@ export default function NetworkInterfaceGridPage() {
         <h2 className="nig-page__section-title"><a href="#source">Source</a></h2>
         <p className="nig-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="nig-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="nig-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/network-interface-grid.tsx (Standard)
           </a>
-          <a className="nig-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="nig-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/network-interface-grid.tsx (Lite)
           </a>
-          <a className="nig-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="nig-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/network-interface-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/network-interface-grid.tsx (Premium)
           </a>
         </div>

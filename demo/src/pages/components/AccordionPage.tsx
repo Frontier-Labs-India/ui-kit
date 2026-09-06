@@ -684,9 +684,9 @@ const accordionItemPropsData: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Accordion } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Accordion } from '@annondeveloper/ui-kit'",
-  premium: "import { Accordion } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Accordion } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Accordion } from '@frontier-labs/ui-kit'",
+  premium: "import { Accordion } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -706,7 +706,7 @@ const FAQ_ITEMS = [
   {
     id: 'what-is',
     trigger: 'What is ui-kit?',
-    content: 'A zero-dependency React component library with 62 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity. Ships in three weight tiers from ultra-light CSS-only to premium with cinematic effects.',
+    content: 'A zero-dependency React component library with 162 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity. Ships in three weight tiers from ultra-light CSS-only to premium with cinematic effects.',
   },
   {
     id: 'bundle-size',
@@ -734,7 +734,7 @@ const NESTED_OUTER_ITEMS = [
   {
     id: 'getting-started',
     trigger: 'Getting Started',
-    content: 'Install the package with npm install @annondeveloper/ui-kit, import the components you need, and wrap your app in UIProvider. Zero configuration required.',
+    content: 'Install the package with npm install @frontier-labs/ui-kit, import the components you need, and wrap your app in UIProvider. Zero configuration required.',
   },
   {
     id: 'advanced-topics',
@@ -843,12 +843,12 @@ function generateReactCode(
   showIcons: boolean,
 ): string {
   const importPath = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : tier === 'premium'
-    ? "@annondeveloper/ui-kit/premium"
-    : "@annondeveloper/ui-kit"
+    ? "@frontier-labs/ui-kit/premium"
+    : "@frontier-labs/ui-kit"
   const imports = [`import { Accordion } from '${importPath}'`]
-  if (showIcons && tier !== 'lite') imports.push(`import { Icon } from '${importPath === "@annondeveloper/ui-kit/lite" ? "@annondeveloper/ui-kit" : importPath}'`)
+  if (showIcons && tier !== 'lite') imports.push(`import { Icon } from '${importPath === "@frontier-labs/ui-kit/lite" ? "@frontier-labs/ui-kit" : importPath}'`)
 
   const itemsStr = showIcons && tier !== 'lite'
     ? `const items = [
@@ -876,8 +876,8 @@ function generateHtmlCode(tier: Tier, type: 'single' | 'multiple', defaultOpen: 
   const openAttr = (id: string) => defaultOpen.includes(id) ? ' open' : ''
 
   if (tier === 'lite') {
-    return `<!-- Accordion — @annondeveloper/ui-kit lite tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">
+    return `<!-- Accordion — @frontier-labs/ui-kit lite tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">
 
 <div class="ui-lite-accordion">
   <details class="ui-lite-accordion__item"${openAttr('item-1')}>
@@ -895,8 +895,8 @@ function generateHtmlCode(tier: Tier, type: 'single' | 'multiple', defaultOpen: 
 </div>`
   }
 
-  return `<!-- Accordion — @annondeveloper/ui-kit standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/accordion.css">
+  return `<!-- Accordion — @frontier-labs/ui-kit standard tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/accordion.css">
 
 <div class="ui-accordion"${type === 'single' ? ' data-type="single"' : ''}>
   <details${openAttr('item-1')}>
@@ -934,7 +934,7 @@ function generateVueCode(tier: Tier, type: 'single' | 'multiple'): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -947,7 +947,7 @@ function generateVueCode(tier: Tier, type: 'single' | 'multiple'): string {
 </template>
 
 <script setup>
-import { Accordion } from '@annondeveloper/ui-kit'
+import { Accordion } from '@frontier-labs/ui-kit'
 
 const items = [
   { id: 'item-1', trigger: 'What is ui-kit?', content: 'A zero-dependency React component library...' },
@@ -971,7 +971,7 @@ function generateAngularCode(tier: Tier, type: 'single' | 'multiple'): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -990,7 +990,7 @@ function generateAngularCode(tier: Tier, type: 'single' | 'multiple'): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/accordion.css';`
+@import '@frontier-labs/ui-kit/css/components/accordion.css';`
 }
 
 function generateSvelteCode(tier: Tier, type: 'single' | 'multiple'): string {
@@ -1004,13 +1004,13 @@ function generateSvelteCode(tier: Tier, type: 'single' | 'multiple'): string {
 {/each}
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   const typeAttr = type !== 'multiple' ? `\n  type="${type}"` : ''
   return `<script>
-  import { Accordion } from '@annondeveloper/ui-kit';
+  import { Accordion } from '@frontier-labs/ui-kit';
 
   const items = [
     { id: 'item-1', trigger: 'What is ui-kit?', content: 'A zero-dependency React component library...' },
@@ -1031,7 +1031,7 @@ const ICON_ITEMS = [
     id: 'what-is',
     icon: 'info' as const,
     trigger: 'What is ui-kit?',
-    content: 'A zero-dependency React component library with 62 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity. Ships in three weight tiers from ultra-light CSS-only to premium with cinematic effects.',
+    content: 'A zero-dependency React component library with 162 components, physics-based animations, OKLCH color system, and Aurora Fluid design identity. Ships in three weight tiers from ultra-light CSS-only to premium with cinematic effects.',
   },
   {
     id: 'bundle-size',
@@ -1768,7 +1768,7 @@ export default function AccordionPage() {
               No JavaScript state management, no animation, no single mode.
             </p>
             <div className="accordion-page__tier-import">
-              import {'{'} Accordion {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Accordion {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="accordion-page__tier-preview">
               <LiteAccordion
@@ -1804,7 +1804,7 @@ export default function AccordionPage() {
               controlled state, smooth height animation, and motion levels.
             </p>
             <div className="accordion-page__tier-import">
-              import {'{'} Accordion {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Accordion {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="accordion-page__tier-preview">
               <Accordion
@@ -1840,7 +1840,7 @@ export default function AccordionPage() {
               and shimmer dividers. Wraps Standard with premium CSS layer.
             </p>
             <div className="accordion-page__tier-import">
-              import {'{'} Accordion {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Accordion {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="accordion-page__tier-preview">
               <PremiumAccordion
@@ -1991,7 +1991,7 @@ export default function AccordionPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/accordion.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/accordion.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="accordion-page__source-link"
@@ -2000,7 +2000,7 @@ export default function AccordionPage() {
             src/components/accordion.tsx — Standard tier
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/accordion.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/accordion.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="accordion-page__source-link"

@@ -1,4 +1,4 @@
-# @annondeveloper/ui-kit — OpenAI Codex CLI Integration
+# @frontier-labs/ui-kit — OpenAI Codex CLI Integration
 
 Connect the OpenAI Codex CLI to the ui-kit MCP server.
 
@@ -11,7 +11,7 @@ Add to your Codex MCP configuration (`~/.codex/config.json` or project-level):
   "mcpServers": {
     "ui-kit": {
       "type": "sse",
-      "url": "https://ui-kit-mcp.annondeveloper.workers.dev/sse"
+      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
     }
   }
 }
@@ -24,7 +24,7 @@ Add to your Codex MCP configuration (`~/.codex/config.json` or project-level):
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["@annondeveloper/ui-kit", "mcp"]
+      "args": ["@frontier-labs/ui-kit", "mcp"]
     }
   }
 }

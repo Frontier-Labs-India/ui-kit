@@ -5,14 +5,14 @@
 ## Plugin Details
 
 - **Name:** ui-kit
-- **Source:** https://github.com/annondeveloper/ui-kit.git
+- **Source:** https://github.com/Frontier-Labs-India/ui-kit.git
 - **Directory:** plugins/claude-code
 - **Version:** 1.0.0
-- **Author:** annondeveloper
+- **Author:** Frontier Labs
 
 ## Description
 
-Native Claude Code integration for @annondeveloper/ui-kit — a zero-dependency React component library with 147 components, 3 weight tiers, physics-based animations, and OKLCH color system. Gives Claude deep awareness of the library's components, design patterns, and conventions.
+Native Claude Code integration for @frontier-labs/ui-kit — a zero-dependency React component library with 162 components, 3 weight tiers, physics-based animations, and OKLCH color system. Gives Claude deep awareness of the library's components, design patterns, and conventions.
 
 Includes 5 skills for component discovery, code generation, design system reference, tier selection, and accessibility auditing. 2 custom agents for architecture design and accessibility review. Auto-connects to a hosted MCP server with 6 tools.
 
@@ -26,7 +26,7 @@ Includes 5 skills for component discovery, code generation, design system refere
 **User says:** "Build me a monitoring dashboard with CPU, memory, and network metrics"
 **What happens:** Claude loads `generate-component` skill, uses the MCP `generate_snippet` tool, and produces working TSX:
 ```tsx
-import { UIProvider, MetricCard, TimeSeriesChart, ThresholdGauge } from '@annondeveloper/ui-kit'
+import { UIProvider, MetricCard, TimeSeriesChart, ThresholdGauge } from '@frontier-labs/ui-kit'
 
 function Dashboard() {
   return (
@@ -44,7 +44,7 @@ function Dashboard() {
 
 ### 3. Choosing the right weight tier
 **User says:** "My app needs to be under 50KB, which tier should I use?"
-**What happens:** Claude loads `tier-guide` skill and recommends Lite tier (0.3-1.2 KB per component, CSS-only) with import path `@annondeveloper/ui-kit/lite`.
+**What happens:** Claude loads `tier-guide` skill and recommends Lite tier (0.3-1.2 KB per component, CSS-only) with import path `@frontier-labs/ui-kit/lite`.
 
 ### 4. Accessibility auditing
 **User says:** "Check if my form is accessible"

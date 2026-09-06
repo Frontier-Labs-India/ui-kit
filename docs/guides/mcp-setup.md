@@ -3,7 +3,7 @@
 ## Quick Setup (30 seconds)
 
 ```bash
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 This auto-detects your AI assistant (Claude Desktop, Claude Code, or Cursor) and configures the MCP server. You'll see a confirmation prompt showing exactly what will be written.
@@ -14,7 +14,7 @@ After setup, your AI assistant has access to 6 tools:
 
 | Tool | What it does |
 |------|-------------|
-| `list_components` | Browse all 147 components, filter by category or tier |
+| `list_components` | Browse all 162 components, filter by category or tier |
 | `get_component` | Get full API docs, props, examples for any component |
 | `search_components` | Natural language search ("date picker with range selection") |
 | `generate_snippet` | Generate working TSX code with correct imports |
@@ -54,7 +54,7 @@ If you prefer to configure manually, add this to your MCP config file:
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit-mcp"]
+      "args": ["-y", "@frontier-labs/ui-kit-mcp"]
     }
   }
 }
@@ -79,8 +79,8 @@ Same JSON format as above.
 ## Troubleshooting
 
 **"MCP server not found"**
-- The MCP server binary is `@annondeveloper/ui-kit-mcp` (separate from the main library)
-- The config uses `npx -y @annondeveloper/ui-kit-mcp` which auto-installs on first use
+- The MCP server binary is `@frontier-labs/ui-kit-mcp` (separate from the main library)
+- The config uses `npx -y @frontier-labs/ui-kit-mcp` which auto-installs on first use
 - No global install needed — npx handles everything
 
 **"Connection refused"**
@@ -91,5 +91,5 @@ Same JSON format as above.
 Enable local usage tracking to see which components your AI uses most:
 ```bash
 export UI_KIT_TELEMETRY=1
-npx @annondeveloper/ui-kit stats
+npx @frontier-labs/ui-kit stats
 ```

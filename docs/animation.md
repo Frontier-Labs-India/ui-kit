@@ -63,7 +63,7 @@ Full physics simulation with overshoot, bouncy springs, scroll-driven parallax, 
 ### Using in components
 
 ```tsx
-import { useMotionLevel } from '@annondeveloper/ui-kit'
+import { useMotionLevel } from '@frontier-labs/ui-kit'
 
 function MyComponent({ motion }: { motion?: number }) {
   const level = useMotionLevel(motion)
@@ -111,7 +111,7 @@ The spring solver uses 4th-order Runge-Kutta (RK4) integration to solve the damp
 Animate an element with spring physics:
 
 ```tsx
-import { spring } from '@annondeveloper/ui-kit'
+import { spring } from '@frontier-labs/ui-kit'
 
 // Animate to target values
 const result = spring(element, { opacity: 1, transform: 'scale(1)' }, {
@@ -131,7 +131,7 @@ result.cancel()
 Get the raw spring curve as an array of values (0 to ~1):
 
 ```tsx
-import { solveSpring } from '@annondeveloper/ui-kit'
+import { solveSpring } from '@frontier-labs/ui-kit'
 
 const values = solveSpring({ stiffness: 200, damping: 15 })
 // [0, 0.023, 0.089, 0.192, ..., 1.042, 1.018, 1.003, 1.0]
@@ -143,7 +143,7 @@ const values = solveSpring({ stiffness: 200, damping: 15 })
 Convert a spring curve to a CSS `linear()` easing function (max 40 control points):
 
 ```tsx
-import { springToLinearEasing, springDuration } from '@annondeveloper/ui-kit'
+import { springToLinearEasing, springDuration } from '@frontier-labs/ui-kit'
 
 const easing = springToLinearEasing({ stiffness: 200, damping: 15 })
 const duration = springDuration({ stiffness: 200, damping: 15 })
@@ -156,7 +156,7 @@ element.style.transition = `transform ${duration}ms ${easing}`
 Low-level WAAPI wrapper with sensible defaults:
 
 ```tsx
-import { animate } from '@annondeveloper/ui-kit'
+import { animate } from '@frontier-labs/ui-kit'
 
 const result = animate(element, [
   { opacity: 0, transform: 'translateY(20px)' },
@@ -186,7 +186,7 @@ Returns an `AnimationResult`:
 Sequence multiple animations with precise timing control:
 
 ```tsx
-import { timeline, animate, spring } from '@annondeveloper/ui-kit'
+import { timeline, animate, spring } from '@frontier-labs/ui-kit'
 
 const tl = timeline()
   .add(() => animate(header, [
@@ -243,7 +243,7 @@ tl.playbackRate = 2    // fast forward
 Calculate delay values for staggered list and grid animations:
 
 ```tsx
-import { computeStaggerDelays } from '@annondeveloper/ui-kit'
+import { computeStaggerDelays } from '@frontier-labs/ui-kit'
 
 // Simple list stagger: 50ms between each item
 const delays = computeStaggerDelays(10, { each: 50, from: 'start' })
@@ -295,7 +295,7 @@ React hook that triggers when an element enters the viewport. Uses `Intersection
 
 ```tsx
 import { useRef } from 'react'
-import { useScrollReveal } from '@annondeveloper/ui-kit'
+import { useScrollReveal } from '@frontier-labs/ui-kit'
 
 function RevealSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -318,7 +318,7 @@ function RevealSection() {
 A pre-built component that wraps `useScrollReveal()` with configurable animations:
 
 ```tsx
-import { ScrollReveal } from '@annondeveloper/ui-kit'
+import { ScrollReveal } from '@frontier-labs/ui-kit'
 
 <ScrollReveal>
   <Card>This card fades in when scrolled into view</Card>
@@ -330,7 +330,7 @@ import { ScrollReveal } from '@annondeveloper/ui-kit'
 When the browser supports `animation-timeline: view()`, the CSS-native approach is used automatically. No JavaScript IntersectionObserver is needed in that case.
 
 ```tsx
-import { supportsScrollDrivenAnimations } from '@annondeveloper/ui-kit'
+import { supportsScrollDrivenAnimations } from '@frontier-labs/ui-kit'
 
 if (supportsScrollDrivenAnimations()) {
   // Browser handles scroll animations natively via CSS
@@ -342,7 +342,7 @@ if (supportsScrollDrivenAnimations()) {
 FLIP (First, Last, Invert, Play) animates elements between layout positions. Useful for reordering lists, expanding/collapsing cards, and layout changes.
 
 ```tsx
-import { flip } from '@annondeveloper/ui-kit'
+import { flip } from '@frontier-labs/ui-kit'
 
 // 1. Capture current positions
 const state = flip.capture('.card')
@@ -386,7 +386,7 @@ The animation automatically handles position changes (translate) and size change
 Split text into individually animatable `<span>` elements:
 
 ```tsx
-import { TextSplitter } from '@annondeveloper/ui-kit'
+import { TextSplitter } from '@frontier-labs/ui-kit'
 
 <TextSplitter
   text="Hello World"
@@ -487,7 +487,7 @@ All animations respect the user's OS preference:
 For complex orchestration, use the `MotionContext` to coordinate animations across component trees:
 
 ```tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 function App() {
   const [motionLevel, setMotionLevel] = useState(3)

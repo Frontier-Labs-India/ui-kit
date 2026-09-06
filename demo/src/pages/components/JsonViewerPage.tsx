@@ -444,9 +444,9 @@ const pageStyles = css`
 const IMPORT_STR = "import { JsonViewer } from '@ui/domain/json-viewer'"
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { JsonViewer } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { JsonViewer } from '@annondeveloper/ui-kit'",
-  premium: "import { JsonViewer } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { JsonViewer } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { JsonViewer } from '@frontier-labs/ui-kit'",
+  premium: "import { JsonViewer } from '@frontier-labs/ui-kit/premium'",
 }
 
 const PLAYGROUND_DATA = {
@@ -485,8 +485,8 @@ function generateHtmlCode(
   tier: Tier,
   rootName: string,
 ): string {
-  return `<!-- JsonViewer \u2014 @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/json-viewer.css">
+  return `<!-- JsonViewer \u2014 @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/json-viewer.css">
 
 <div class="ui-json-viewer" role="tree" aria-label="${rootName || 'JSON data'}">
   <div class="ui-json-viewer__node">
@@ -512,11 +512,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/json-viewer.css';
+@import '@frontier-labs/ui-kit/css/components/json-viewer.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :data="apiResponse"']
   if (rootName) attrs.push(`  root-name="${rootName}"`)
   if (expandDepth !== 1) attrs.push(`  :initial-expand-depth="${expandDepth}"`)
@@ -535,7 +535,7 @@ import { JsonViewer } from '${importPath}'
 }
 
 function generateAngularCode(tier: Tier, rootName: string): string {
-  const cssPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const cssPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular \u2014 ${tier} tier -->
 <div class="ui-json-viewer" role="tree" [attr.aria-label]="'${rootName || 'JSON data'}'">
   <pre>{{ data | json }}</pre>
@@ -552,10 +552,10 @@ function generateSvelteCode(tier: Tier, rootName: string, expandDepth: number): 
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/json-viewer.css';
+  @import '@frontier-labs/ui-kit/css/components/json-viewer.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  data={apiResponse}']
   if (rootName) attrs.push(`  rootName="${rootName}"`)
   if (expandDepth !== 1) attrs.push(`  initialExpandDepth={${expandDepth}}`)
@@ -617,7 +617,7 @@ export default function JsonViewerPage() {
           <CopyBlock code={IMPORT_STR} language="typescript" />
         </div>
         <div style={{ marginBlockStart: '0.75rem', position: 'relative' }}>
-          <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/json-viewer" target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm, 0.875rem)', color: 'var(--text-tertiary)' }}>
+          <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/json-viewer" target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm, 0.875rem)', color: 'var(--text-tertiary)' }}>
             Source on GitHub &rarr;
           </a>
         </div>
@@ -698,7 +698,7 @@ export default function JsonViewerPage() {
               data as indented text. Supports data, initialExpandDepth, collapsed, and rootName only.
             </p>
             <div className="json-viewer-page__tier-import">
-              import {'{'} JsonViewer {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} JsonViewer {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="json-viewer-page__tier-preview">
               <LiteJsonViewer data={{ name: 'Lite', tags: ['fast', 'tiny'] }} rootName="pkg" initialExpandDepth={2} />
@@ -716,7 +716,7 @@ export default function JsonViewerPage() {
               type annotations, object size badges, key sorting, and safe circular reference handling.
             </p>
             <div className="json-viewer-page__tier-import">
-              import {'{'} JsonViewer {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} JsonViewer {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="json-viewer-page__tier-preview">
               <JsonViewer data={{ name: 'Standard', tags: ['interactive', 'full'] }} rootName="pkg" initialExpandDepth={2} enableClipboard displayDataTypes />
@@ -734,7 +734,7 @@ export default function JsonViewerPage() {
               row hover background, and copy-pulse animation. Motion-level-aware.
             </p>
             <div className="json-viewer-page__tier-import">
-              import {'{'} JsonViewer {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} JsonViewer {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="json-viewer-page__tier-preview">
               <PremiumJsonViewer data={{ name: 'Premium', tags: ['aurora', 'spring'] }} rootName="pkg" initialExpandDepth={2} enableClipboard />

@@ -418,9 +418,9 @@ const cardGridProps: PropDef[] = [
 // ─── Import Strings ───────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CardGrid } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CardGrid } from '@annondeveloper/ui-kit'",
-  premium: "import { CardGrid } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CardGrid } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CardGrid } from '@frontier-labs/ui-kit'",
+  premium: "import { CardGrid } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ──────────────────────────────────────────────────────────
@@ -443,15 +443,15 @@ function generateReactCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: s
 function generateHtmlCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: string): string {
   const cls = tier === 'lite' ? 'ui-lite-card-grid' : 'ui-card-grid'
   const style = minChildWidth ? ` style="--card-grid-min-child-width: ${minChildWidth}"` : ''
-  return `<div class="${cls}" data-columns="${columns}" data-gap="${gap}"${style}>\n  <div class="ui-card">...</div>\n  <div class="ui-card">...</div>\n</div>\n\n<style>\n@import '@annondeveloper/ui-kit/css/components/card-grid.css';\n</style>`
+  return `<div class="${cls}" data-columns="${columns}" data-gap="${gap}"${style}>\n  <div class="ui-card">...</div>\n  <div class="ui-card">...</div>\n</div>\n\n<style>\n@import '@frontier-labs/ui-kit/css/components/card-grid.css';\n</style>`
 }
 
 function generateVueCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: string): string {
   if (tier === 'lite') {
     const style = minChildWidth ? ` :style="{ '--card-grid-min-child-width': '${minChildWidth}' }"` : ''
-    return `<template>\n  <div class="ui-lite-card-grid" data-columns="${columns}" data-gap="${gap}"${style}>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-card-grid" data-columns="${columns}" data-gap="${gap}"${style}>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (columns !== 3) attrs.push(`:columns="${columns}"`)
   if (gap !== 'md') attrs.push(`gap="${gap}"`)
@@ -461,7 +461,7 @@ function generateVueCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: str
 
 function generateAngularCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: string): string {
   const cls = tier === 'lite' ? 'ui-lite-card-grid' : 'ui-card-grid'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const style = minChildWidth ? ` [style.--card-grid-min-child-width]="'${minChildWidth}'"` : ''
   return `<!-- Angular — ${tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS-only) -->\n<div class="${cls}" data-columns="${columns}" data-gap="${gap}"${style}>\n  <ng-content></ng-content>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/card-grid.css';`
 }
@@ -469,9 +469,9 @@ function generateAngularCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth:
 function generateSvelteCode(tier: Tier, columns: Cols, gap: Gap, minChildWidth: string): string {
   if (tier === 'lite') {
     const style = minChildWidth ? ` style="--card-grid-min-child-width: ${minChildWidth}"` : ''
-    return `<div class="ui-lite-card-grid" data-columns="${columns}" data-gap="${gap}"${style}>\n  <slot />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<div class="ui-lite-card-grid" data-columns="${columns}" data-gap="${gap}"${style}>\n  <slot />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`columns={${columns}}`, `gap="${gap}"`]
   if (minChildWidth) attrs.push(`minChildWidth="${minChildWidth}"`)
   return `<script>\n  import { CardGrid } from '${importPath}';\n</script>\n\n<CardGrid ${attrs.join(' ')}>\n  <slot />\n</CardGrid>`
@@ -706,7 +706,7 @@ export default function CardGridPage() {
               CSS-only grid wrapper. Zero JavaScript beyond forwardRef. No motion.
             </p>
             <div className="card-grid-page__tier-import">
-              import {'{'} CardGrid {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CardGrid {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="card-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.3 KB</strong></span>
@@ -729,7 +729,7 @@ export default function CardGridPage() {
               Full scoped CSS with auto-fill mode, forced-colors, and print support.
             </p>
             <div className="card-grid-page__tier-import">
-              import {'{'} CardGrid {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CardGrid {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="card-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.0 KB</strong></span>
@@ -752,7 +752,7 @@ export default function CardGridPage() {
               Everything in Standard plus staggered entrance animations, glass morphism, and aurora glow.
             </p>
             <div className="card-grid-page__tier-import">
-              import {'{'} CardGrid {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CardGrid {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="card-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.8 KB</strong></span>
@@ -835,13 +835,13 @@ export default function CardGridPage() {
         <h2 className="card-grid-page__section-title"><a href="#source">Source</a></h2>
         <p className="card-grid-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="card-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/card-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/card-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/components/card-grid.tsx (Standard)
           </a>
-          <a className="card-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/card-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/card-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/lite/card-grid.tsx (Lite)
           </a>
-          <a className="card-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/card-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/card-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/premium/card-grid.tsx (Premium)
           </a>
         </div>

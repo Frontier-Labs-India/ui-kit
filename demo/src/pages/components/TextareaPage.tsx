@@ -408,10 +408,10 @@ function generateReactCode(
   resize: Resize, motion: 0 | 1 | 2 | 3,
 ): string {
   const importPath = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : tier === 'premium'
-      ? "@annondeveloper/ui-kit/premium"
-      : "@annondeveloper/ui-kit"
+      ? "@frontier-labs/ui-kit/premium"
+      : "@frontier-labs/ui-kit"
   const props: string[] = []
   props.push(`  label="Message"`)
   if (placeholder) props.push(`  placeholder="${placeholder}"`)
@@ -438,8 +438,8 @@ function generateHtmlCode(
   if (rows !== 3) attrs.push(`rows="${rows}"`)
   if (maxLength > 0) attrs.push(`maxlength="${maxLength}"`)
   const cssImport = tier === 'lite'
-    ? "@import '@annondeveloper/ui-kit/css/lite/textarea.css';"
-    : "@import '@annondeveloper/ui-kit/css/components/textarea.css';"
+    ? "@import '@frontier-labs/ui-kit/css/lite/textarea.css';"
+    : "@import '@frontier-labs/ui-kit/css/components/textarea.css';"
   const style = resize !== 'vertical' ? `\n\n<style>\n  .${cls} textarea { resize: ${resize}; }\n</style>` : ''
   return `<div ${attrs.join(' ')}>\n  <label>Message</label>\n  <textarea ${attrs.filter(a => a !== `class="${cls}"` && a !== `data-size="${size}"`).join(' ')}></textarea>\n</div>${style}\n\n<style>\n  ${cssImport}\n</style>`
 }
@@ -449,10 +449,10 @@ function generateVueCode(
   rows: number, maxLength: number,
 ): string {
   const importPath = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : tier === 'premium'
-      ? "@annondeveloper/ui-kit/premium"
-      : "@annondeveloper/ui-kit"
+      ? "@frontier-labs/ui-kit/premium"
+      : "@frontier-labs/ui-kit"
   const props: string[] = [`  label="Message"`]
   if (placeholder) props.push(`  placeholder="${placeholder}"`)
   if (size !== 'md') props.push(`  size="${size}"`)
@@ -470,9 +470,9 @@ function generateAngularCode(
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-textarea"`, `data-size="${size}"`]
     if (disabled) attrs.push('[disabled]="true"')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <label>Message</label>\n  <textarea\n    ${placeholder ? `placeholder="${placeholder}"` : ''}\n    ${rows !== 3 ? `rows="${rows}"` : ''}\n    ${maxLength > 0 ? `maxlength="${maxLength}"` : ''}\n  ></textarea>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/css/lite/textarea.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <label>Message</label>\n  <textarea\n    ${placeholder ? `placeholder="${placeholder}"` : ''}\n    ${rows !== 3 ? `rows="${rows}"` : ''}\n    ${maxLength > 0 ? `maxlength="${maxLength}"` : ''}\n  ></textarea>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/css/lite/textarea.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<div\n  class="ui-textarea"\n  data-size="${size}"\n  ${disabled ? '[attr.data-disabled]="true"' : ''}\n>\n  <label>Message</label>\n  <textarea\n    ${placeholder ? `placeholder="${placeholder}"` : ''}\n    ${rows !== 3 ? `rows="${rows}"` : ''}\n    ${maxLength > 0 ? `maxlength="${maxLength}"` : ''}\n    [(ngModel)]="text"\n  ></textarea>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/textarea.css';`
 }
 
@@ -481,9 +481,9 @@ function generateSvelteCode(
   rows: number, maxLength: number,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-textarea" data-size="${size}">\n  <label>Message</label>\n  <textarea\n    bind:value={text}\n    ${placeholder ? `placeholder="${placeholder}"` : ''}\n    ${disabled ? 'disabled' : ''}\n    ${rows !== 3 ? `rows="${rows}"` : ''}\n    ${maxLength > 0 ? `maxlength="${maxLength}"` : ''}\n  ></textarea>\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/css/lite/textarea.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-lite-textarea" data-size="${size}">\n  <label>Message</label>\n  <textarea\n    bind:value={text}\n    ${placeholder ? `placeholder="${placeholder}"` : ''}\n    ${disabled ? 'disabled' : ''}\n    ${rows !== 3 ? `rows="${rows}"` : ''}\n    ${maxLength > 0 ? `maxlength="${maxLength}"` : ''}\n  ></textarea>\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/css/lite/textarea.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`  label="Message"`]
   if (placeholder) props.push(`  placeholder="${placeholder}"`)
   if (size !== 'md') props.push(`  size="${size}"`)
@@ -786,7 +786,7 @@ export default function TextareaPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Full-featured with motion, theming, and accessibility.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@frontier-labs/ui-kit'</code>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>
               ~3.1 KB gzip (JS) + ~0.9 KB gzip (CSS)
             </p>
@@ -796,7 +796,7 @@ export default function TextareaPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Minimal footprint, no motion or advanced theming.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@frontier-labs/ui-kit/lite'</code>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>
               ~0.8 KB gzip (JS) + ~0.4 KB gzip (CSS)
             </p>
@@ -806,7 +806,7 @@ export default function TextareaPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Aurora glow, spring animations, and shimmer effects.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Textarea {'}'} from '@frontier-labs/ui-kit/premium'</code>
             <p className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0 0' }}>
               ~4.2 KB gzip (JS) + ~1.2 KB gzip (CSS)
             </p>
@@ -823,7 +823,7 @@ export default function TextareaPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <a
-              href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/textarea.tsx"
+              href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/textarea.tsx"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontSize: '0.875rem', color: 'var(--brand, oklch(65% 0.2 270))' }}
@@ -831,7 +831,7 @@ export default function TextareaPage() {
               Source on GitHub
             </a>
             <a
-              href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/textarea.tsx"
+              href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/textarea.tsx"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontSize: '0.875rem', color: 'var(--brand, oklch(65% 0.2 270))' }}
@@ -839,7 +839,7 @@ export default function TextareaPage() {
               Lite Source
             </a>
             <a
-              href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/textarea.tsx"
+              href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/textarea.tsx"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontSize: '0.875rem', color: 'var(--brand, oklch(65% 0.2 270))' }}

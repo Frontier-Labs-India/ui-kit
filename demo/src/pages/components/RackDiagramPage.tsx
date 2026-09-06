@@ -576,9 +576,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { RackDiagram } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { RackDiagram } from '@annondeveloper/ui-kit'",
-  premium: "import { RackDiagram } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { RackDiagram } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { RackDiagram } from '@frontier-labs/ui-kit'",
+  premium: "import { RackDiagram } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_DEVICES: RackDevice[] = [
@@ -698,8 +698,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, units: number, size: Size): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
-  return `<!-- RackDiagram — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/rack-diagram.css">
+  return `<!-- RackDiagram — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/rack-diagram.css">
 
 <!-- RackDiagram is a complex interactive component. -->
 <!-- For HTML-only usage, import the CSS and render server-side. -->
@@ -719,7 +719,7 @@ function generateVueCode(tier: Tier, units: number, orientation: Orientation, sh
 </template>
 
 <script setup>
-import { RackDiagram } from '@annondeveloper/ui-kit/lite'
+import { RackDiagram } from '@frontier-labs/ui-kit/lite'
 
 const devices = [
   { startU: 1, heightU: 1, label: 'Patch Panel', status: 'ok' },
@@ -727,7 +727,7 @@ const devices = [
 ]
 </script>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`:units="${units}"`, ':devices="devices"']
   if (orientation !== 'front') attrs.push(`orientation="${orientation}"`)
   if (!showUnitNumbers) attrs.push(':show-unit-numbers="false"')
@@ -750,7 +750,7 @@ const devices = [
 }
 
 function generateAngularCode(tier: Tier, units: number, size: Size): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <!-- Use the React wrapper or render server-side with CSS -->
 <div class="ui-rack-diagram" data-size="${size}" role="img"
@@ -765,7 +765,7 @@ function generateAngularCode(tier: Tier, units: number, size: Size): string {
 function generateSvelteCode(tier: Tier, units: number, orientation: Orientation, showUnitNumbers: boolean, size: Size): string {
   if (tier === 'lite') {
     return `<script>
-  import { RackDiagram } from '@annondeveloper/ui-kit/lite';
+  import { RackDiagram } from '@frontier-labs/ui-kit/lite';
 
   const devices = [
     { startU: 1, heightU: 1, label: 'Patch Panel', status: 'ok' },
@@ -775,7 +775,7 @@ function generateSvelteCode(tier: Tier, units: number, orientation: Orientation,
 
 <RackDiagram units={${units}} {devices} ${!showUnitNumbers ? 'showUnitNumbers={false} ' : ''}/>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [`units={${units}}`, '{devices}']
   if (orientation !== 'front') attrs.push(`orientation="${orientation}"`)
   if (!showUnitNumbers) attrs.push('showUnitNumbers={false}')
@@ -1123,7 +1123,7 @@ export default function RackDiagramPage() {
               Inline-style rendering. No animation, no tooltips, no hover effects. Static rack visualization.
             </p>
             <div className="rack-diagram-page__tier-import">
-              import {'{'} RackDiagram {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} RackDiagram {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="rack-diagram-page__tier-preview">
               <LiteRackDiagram
@@ -1159,7 +1159,7 @@ export default function RackDiagramPage() {
               Full-featured with hover tooltips, status colors, motion levels, and device brightness hover.
             </p>
             <div className="rack-diagram-page__tier-import">
-              import {'{'} RackDiagram {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} RackDiagram {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="rack-diagram-page__tier-preview">
               <RackDiagram
@@ -1197,7 +1197,7 @@ export default function RackDiagramPage() {
               staggered slide-in entrance, and frame glow.
             </p>
             <div className="rack-diagram-page__tier-import">
-              import {'{'} RackDiagram {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} RackDiagram {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="rack-diagram-page__tier-preview">
               <PremiumRackDiagram
@@ -1296,13 +1296,13 @@ export default function RackDiagramPage() {
         <h2 className="rack-diagram-page__section-title"><a href="#source">Source</a></h2>
         <p className="rack-diagram-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="rack-diagram-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="rack-diagram-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/rack-diagram.tsx (Standard)
           </a>
-          <a className="rack-diagram-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="rack-diagram-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/rack-diagram.tsx (Lite)
           </a>
-          <a className="rack-diagram-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="rack-diagram-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/rack-diagram.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/rack-diagram.tsx (Premium)
           </a>
         </div>

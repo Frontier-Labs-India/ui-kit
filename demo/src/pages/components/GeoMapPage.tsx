@@ -646,9 +646,9 @@ const STATUS_POINTS: GeoPoint[] = [
 type Projection = 'mercator' | 'equirectangular'
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { GeoMap } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { GeoMap } from '@annondeveloper/ui-kit'",
-  premium: "import { GeoMap } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { GeoMap } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { GeoMap } from '@frontier-labs/ui-kit'",
+  premium: "import { GeoMap } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -748,7 +748,7 @@ function generateReactCode(
   if (height !== '300') props.push(`  height={${height}}`)
 
   return `${importStr}
-import type { GeoPoint, GeoConnection } from '@annondeveloper/ui-kit'
+import type { GeoPoint, GeoConnection } from '@frontier-labs/ui-kit'
 
 const points: GeoPoint[] = [
   { id: 'nyc', lat: 40.71, lng: -74.01, label: 'New York', status: 'ok', value: 95 },
@@ -767,8 +767,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(projection: Projection, showLabels: boolean, height: string): string {
-  return `<!-- GeoMap — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/geo-map.css">
+  return `<!-- GeoMap — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/geo-map.css">
 
 <div class="ui-geo-map" style="height: ${height}px">
   <!-- SVG map is rendered by the component -->
@@ -777,13 +777,13 @@ function generateHtmlCode(projection: Projection, showLabels: boolean, height: s
 </div>
 
 <script type="module">
-  import { GeoMap } from '@annondeveloper/ui-kit'
+  import { GeoMap } from '@frontier-labs/ui-kit'
   // Mount with your framework or use CSS-only approach
 </script>`
 }
 
 function generateVueCode(tier: Tier, projection: Projection, showLabels: boolean, interactive: boolean, showConnections: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :points="points"']
   if (showConnections) attrs.push('  :connections="connections"')
   if (projection !== 'equirectangular') attrs.push(`  projection="${projection}"`)
@@ -817,7 +817,7 @@ const handlePointClick = (point) => {
 }
 
 function generateAngularCode(tier: Tier, projection: Projection, showLabels: boolean, interactive: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <ui-geo-map
   [points]="points"
@@ -833,7 +833,7 @@ function generateAngularCode(tier: Tier, projection: Projection, showLabels: boo
 }
 
 function generateSvelteCode(tier: Tier, projection: Projection, showLabels: boolean, interactive: boolean, showConnections: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['{points}']
   if (showConnections) attrs.push('{connections}')
   if (projection !== 'equirectangular') attrs.push(`projection="${projection}"`)
@@ -1273,7 +1273,7 @@ export default function GeoMapPage() {
               no connection arcs. Points rendered as static circles with status colors.
             </p>
             <div className="geo-map-page__tier-import">
-              import {'{'} GeoMap {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} GeoMap {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="geo-map-page__tier-preview">
               <LiteGeoMap
@@ -1308,7 +1308,7 @@ export default function GeoMapPage() {
               animated dashes, critical pulse, and value-based point sizing.
             </p>
             <div className="geo-map-page__tier-import">
-              import {'{'} GeoMap {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} GeoMap {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="geo-map-page__tier-preview">
               <GeoMap
@@ -1345,7 +1345,7 @@ export default function GeoMapPage() {
               smooth point transitions, and enhanced connection trail effects.
             </p>
             <div className="geo-map-page__tier-import">
-              import {'{'} GeoMap {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} GeoMap {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="geo-map-page__tier-preview">
               <PremiumGeoMap
@@ -1466,13 +1466,13 @@ export default function GeoMapPage() {
         <h2 className="geo-map-page__section-title"><a href="#source">Source</a></h2>
         <p className="geo-map-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="geo-map-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/geo-map.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="geo-map-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/geo-map.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/geo-map.tsx (Standard)
           </a>
-          <a className="geo-map-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/geo-map.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="geo-map-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/geo-map.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/geo-map.tsx (Lite)
           </a>
-          <a className="geo-map-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/geo-map.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="geo-map-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/geo-map.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/geo-map.tsx (Premium)
           </a>
         </div>

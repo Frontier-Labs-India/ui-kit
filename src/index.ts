@@ -1,14 +1,14 @@
 /**
- * @module @annondeveloper/ui-kit
+ * @module @frontier-labs/ui-kit
  *
- * Zero-dependency React component library with 147 components across 3 weight
+ * Zero-dependency React component library with 162 components across 3 weight
  * tiers (Lite/Standard/Premium). Features physics-based animations, OKLCH color
  * system, Aurora Fluid design identity, built-in form engine, and MCP server
  * for AI-assisted development.
  *
  * @example
  * ```tsx
- * import { UIProvider, Button, Card, MetricCard } from '@annondeveloper/ui-kit'
+ * import { UIProvider, Button, Card, MetricCard } from '@frontier-labs/ui-kit'
  *
  * function App() {
  *   return (

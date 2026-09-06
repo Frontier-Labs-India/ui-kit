@@ -621,9 +621,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Sparkline } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Sparkline } from '@annondeveloper/ui-kit'",
-  premium: "import { Sparkline } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Sparkline } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Sparkline } from '@frontier-labs/ui-kit'",
+  premium: "import { Sparkline } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_DATA = [4, 8, 15, 16, 23, 42, 38, 35, 30, 25, 28, 33, 40, 45, 50, 48, 42, 38, 35, 40]
@@ -741,8 +741,8 @@ function generateReactCode(
 }
 
 function generateHtmlCode(tier: Tier, height: number, color: string): string {
-  return `<!-- Sparkline — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/sparkline.css">
+  return `<!-- Sparkline — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/sparkline.css">
 
 <div class="${tier === 'lite' ? 'ui-lite-sparkline' : 'ui-sparkline'}">
   <svg viewBox="0 0 100 ${height}" preserveAspectRatio="none"
@@ -785,7 +785,7 @@ const points = computed(() => /* map data to SVG points */)
 </template>
 
 <script setup>
-import { Sparkline } from '@annondeveloper/ui-kit'
+import { Sparkline } from '@frontier-labs/ui-kit'
 const data = [4, 8, 15, 16, 23, 42, 38, 35, 30, 25]
 </script>`
 }
@@ -802,7 +802,7 @@ function generateAngularCode(tier: Tier, height: number): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — use the CSS-only approach or React wrapper -->
 <div class="ui-sparkline">
@@ -813,7 +813,7 @@ function generateAngularCode(tier: Tier, height: number): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/sparkline.css';`
+@import '@frontier-labs/ui-kit/css/components/sparkline.css';`
 }
 
 function generateSvelteCode(tier: Tier, height: number, showTooltip: boolean): string {
@@ -827,11 +827,11 @@ function generateSvelteCode(tier: Tier, height: number, showTooltip: boolean): s
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { Sparkline } from '@annondeveloper/ui-kit';
+  import { Sparkline } from '@frontier-labs/ui-kit';
   const data = [4, 8, 15, 16, 23, 42, 38, 35, 30, 25];
 </script>
 
@@ -1210,7 +1210,7 @@ export default function SparklinePage() {
               No gradient, no tooltip, no animation. Pure data visualization.
             </p>
             <div className="sparkline-page__tier-import">
-              import {'{'} Sparkline {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Sparkline {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="sparkline-page__tier-preview">
               <LiteSparkline data={SAMPLE_DATA} height={32} width={160} />
@@ -1241,7 +1241,7 @@ export default function SparklinePage() {
               hover tooltip with crosshair, animation support, and motion levels.
             </p>
             <div className="sparkline-page__tier-import">
-              import {'{'} Sparkline {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Sparkline {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="sparkline-page__tier-preview">
               <Sparkline data={SAMPLE_DATA} height={32} width={160} showTooltip gradient />
@@ -1271,7 +1271,7 @@ export default function SparklinePage() {
               Aurora glow on hover point, animated line trace entrance, and shimmer sweep overlay.
             </p>
             <div className="sparkline-page__tier-import">
-              import {'{'} Sparkline {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Sparkline {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="sparkline-page__tier-preview">
               <PremiumSparkline data={SAMPLE_DATA} height={32} width={160} showTooltip gradient />
@@ -1375,13 +1375,13 @@ export default function SparklinePage() {
         <h2 className="sparkline-page__section-title"><a href="#source">Source</a></h2>
         <p className="sparkline-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="sparkline-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/sparkline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sparkline-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/sparkline.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/sparkline.tsx (Standard)
           </a>
-          <a className="sparkline-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/sparkline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sparkline-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/sparkline.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/sparkline.tsx (Lite)
           </a>
-          <a className="sparkline-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/sparkline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sparkline-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/sparkline.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/sparkline.tsx (Premium)
           </a>
         </div>

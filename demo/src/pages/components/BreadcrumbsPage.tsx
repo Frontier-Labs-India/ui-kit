@@ -693,9 +693,9 @@ const SEPARATOR_MAP: Record<SeparatorType, string> = {
 }
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Breadcrumbs } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Breadcrumbs } from '@annondeveloper/ui-kit'",
-  premium: "import { Breadcrumbs } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Breadcrumbs } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Breadcrumbs } from '@frontier-labs/ui-kit'",
+  premium: "import { Breadcrumbs } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_ITEMS_SHORT = [
@@ -827,7 +827,7 @@ function generateHtmlCode(tier: Tier, itemCount: number, separator: SeparatorTyp
   const className = tier === 'lite' ? 'ui-lite-breadcrumbs' : 'ui-breadcrumbs'
   const sep = SEPARATOR_MAP[separator] === 'default' ? '/' : SEPARATOR_MAP[separator]
 
-  return `<!-- Breadcrumbs — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Breadcrumbs — @frontier-labs/ui-kit ${tier} tier -->
 <nav class="${className}" aria-label="Breadcrumb">
   <ol>
 ${items.map((it, i) => {
@@ -864,7 +864,7 @@ const items = ${itemsStr}
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -876,7 +876,7 @@ const items = ${itemsStr}
 </template>
 
 <script setup>
-import { Breadcrumbs } from '@annondeveloper/ui-kit'
+import { Breadcrumbs } from '@frontier-labs/ui-kit'
 const items = ${itemsStr}
 </script>`
 }
@@ -898,7 +898,7 @@ function generateAngularCode(tier: Tier, itemCount: number, separator: Separator
 </nav>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -913,7 +913,7 @@ function generateAngularCode(tier: Tier, itemCount: number, separator: Separator
 </nav>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/breadcrumbs.css';`
+@import '@frontier-labs/ui-kit/css/components/breadcrumbs.css';`
 }
 
 function generateSvelteCode(tier: Tier, itemCount: number, separator: SeparatorType): string {
@@ -945,7 +945,7 @@ function generateSvelteCode(tier: Tier, itemCount: number, separator: SeparatorT
 </nav>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -953,7 +953,7 @@ function generateSvelteCode(tier: Tier, itemCount: number, separator: SeparatorT
   if (separator !== 'chevron') props.push(`separator="${SEPARATOR_MAP[separator]}"`)
 
   return `<script>
-  import { Breadcrumbs } from '@annondeveloper/ui-kit'
+  import { Breadcrumbs } from '@frontier-labs/ui-kit'
   const items = ${itemsStr}
 </script>
 
@@ -1326,7 +1326,7 @@ export default function BreadcrumbsPage() {
           <div style={{ marginBlockStart: '0.5rem' }}>
             <CopyBlock
               code={`import { useNavigate } from 'react-router-dom'
-import { Breadcrumbs } from '@annondeveloper/ui-kit'
+import { Breadcrumbs } from '@frontier-labs/ui-kit'
 
 function MyPage() {
   const navigate = useNavigate()
@@ -1376,7 +1376,7 @@ function MyPage() {
               CSS-only breadcrumbs. Simple list with separator. No collapse, no onNavigate, no icons.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Breadcrumbs {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Breadcrumbs {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${P}tier-preview`}>
               <LiteBreadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Page' }]} />
@@ -1406,7 +1406,7 @@ function MyPage() {
               Full-featured breadcrumbs with collapsible paths, custom separators, icon support, SPA routing, and full accessibility.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Breadcrumbs {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Breadcrumbs {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${P}tier-preview`}>
               <Breadcrumbs items={SAMPLE_ITEMS_SHORT} />
@@ -1436,7 +1436,7 @@ function MyPage() {
               Aurora glow on current item, spring-slide staggered entrance, and hover glow on links.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Breadcrumbs {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Breadcrumbs {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${P}tier-preview`}>
               <PremiumBreadcrumbs items={SAMPLE_ITEMS_SHORT} />
@@ -1531,13 +1531,13 @@ function MyPage() {
         <h2 className={`${P}section-title`}><a href="#source">Source</a></h2>
         <p className={`${P}section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="breadcrumbs-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="breadcrumbs-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/breadcrumbs.tsx (Standard)
           </a>
-          <a className="breadcrumbs-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="breadcrumbs-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/breadcrumbs.tsx (Lite)
           </a>
-          <a className="breadcrumbs-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="breadcrumbs-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/breadcrumbs.tsx (Premium)
           </a>
         </div>

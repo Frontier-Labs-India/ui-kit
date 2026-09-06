@@ -76,8 +76,8 @@ function makeComponent(overrides: Partial<ComponentEntry>): ComponentEntry {
     description: 'A component',
     category: 'general',
     tier: ['standard'],
-    importPath: '@annondeveloper/ui-kit',
-    importStatement: "import { Unknown } from '@annondeveloper/ui-kit'",
+    importPath: '@frontier-labs/ui-kit',
+    importStatement: "import { Unknown } from '@frontier-labs/ui-kit'",
     sourceFile: 'src/components/Unknown.tsx',
     props: [],
     examples: [],
@@ -94,7 +94,7 @@ const FIXTURE_COMPONENTS: Record<string, ComponentEntry> = {
     description: 'Interactive button with multiple variants and sizes',
     category: 'actions',
     tier: ['standard', 'lite', 'premium'],
-    importStatement: "import { Button } from '@annondeveloper/ui-kit'",
+    importStatement: "import { Button } from '@frontier-labs/ui-kit'",
     sourceFile: 'src/components/Button.tsx',
     props: [
       { name: 'variant', type: "'solid' | 'outline' | 'ghost'", required: false, default: "'solid'", description: 'Visual style' },
@@ -114,7 +114,7 @@ const FIXTURE_COMPONENTS: Record<string, ComponentEntry> = {
     description: 'Surface container with optional header and footer',
     category: 'layout',
     tier: ['standard', 'premium'],
-    importStatement: "import { Card } from '@annondeveloper/ui-kit'",
+    importStatement: "import { Card } from '@frontier-labs/ui-kit'",
     sourceFile: 'src/components/Card.tsx',
     props: [
       { name: 'children', type: 'ReactNode', required: true, description: 'Card content' },
@@ -131,7 +131,7 @@ const FIXTURE_COMPONENTS: Record<string, ComponentEntry> = {
     description: 'Date picker with range selection support',
     category: 'inputs',
     tier: ['standard'],
-    importStatement: "import { Calendar } from '@annondeveloper/ui-kit'",
+    importStatement: "import { Calendar } from '@frontier-labs/ui-kit'",
     sourceFile: 'src/components/Calendar.tsx',
     props: [
       { name: 'value', type: 'Date', required: false, description: 'Selected date' },
@@ -149,7 +149,7 @@ const FIXTURE_COMPONENTS: Record<string, ComponentEntry> = {
     description: 'Dashboard metric display with trend indicator',
     category: 'domain',
     tier: ['premium'],
-    importStatement: "import { MetricCard } from '@annondeveloper/ui-kit/premium'",
+    importStatement: "import { MetricCard } from '@frontier-labs/ui-kit/premium'",
     sourceFile: 'src/domain/MetricCard.tsx',
     props: [
       { name: 'label', type: 'string', required: true, description: 'Metric label' },
@@ -164,7 +164,7 @@ const FIXTURE_COMPONENTS: Record<string, ComponentEntry> = {
     description: 'Modal dialog with focus trap and backdrop',
     category: 'overlays',
     tier: ['standard', 'lite'],
-    importStatement: "import { Dialog } from '@annondeveloper/ui-kit'",
+    importStatement: "import { Dialog } from '@frontier-labs/ui-kit'",
     sourceFile: 'src/components/Dialog.tsx',
     props: [
       { name: 'open', type: 'boolean', required: true, description: 'Whether the dialog is open' },
@@ -392,7 +392,7 @@ describe('MCP Server integration', () => {
 
     it('includes import statements in output', async () => {
       const text = await callTool(server, 'list_components', { category: 'actions' })
-      expect(text).toContain("import { Button } from '@annondeveloper/ui-kit'")
+      expect(text).toContain("import { Button } from '@frontier-labs/ui-kit'")
     })
   })
 
@@ -492,7 +492,7 @@ describe('MCP Server integration', () => {
 
     it('includes import statements in results', async () => {
       const text = await callTool(server, 'search_components', { query: 'metric' })
-      expect(text).toContain("import { MetricCard } from '@annondeveloper/ui-kit/premium'")
+      expect(text).toContain("import { MetricCard } from '@frontier-labs/ui-kit/premium'")
     })
 
     it('ranks exact name match higher than keyword match', async () => {
@@ -513,12 +513,12 @@ describe('MCP Server integration', () => {
       const text = await callTool(server, 'generate_snippet', { components: ['Button'] })
       expect(text).toContain('Generated Snippet')
       expect(text).toContain('<Button variant="solid">Click me</Button>')
-      expect(text).toContain("import { Button } from '@annondeveloper/ui-kit'")
+      expect(text).toContain("import { Button } from '@frontier-labs/ui-kit'")
     })
 
     it('deduplicates imports from the same package', async () => {
       const text = await callTool(server, 'generate_snippet', { components: ['Button', 'Card'] })
-      // Both import from @annondeveloper/ui-kit but with different named imports
+      // Both import from @frontier-labs/ui-kit but with different named imports
       // They have different importStatements so both should appear, but only once each
       const importLines = text.split('\n').filter(line => line.startsWith('import'))
       const unique = new Set(importLines)
@@ -647,7 +647,7 @@ describe('MCP Server integration', () => {
 
     it('includes Icon component import instruction', async () => {
       const text = await callTool(server, 'get_icons', {})
-      expect(text).toContain("import { Icon } from '@annondeveloper/ui-kit'")
+      expect(text).toContain("import { Icon } from '@frontier-labs/ui-kit'")
     })
 
     it('includes usage syntax for each icon', async () => {

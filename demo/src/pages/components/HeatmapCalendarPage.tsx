@@ -505,9 +505,9 @@ const COLOR_THEMES: Record<ColorTheme, [string, string]> = {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { HeatmapCalendar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { HeatmapCalendar } from '@annondeveloper/ui-kit'",
-  premium: "import { HeatmapCalendar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { HeatmapCalendar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { HeatmapCalendar } from '@frontier-labs/ui-kit'",
+  premium: "import { HeatmapCalendar } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -572,8 +572,8 @@ function generateReactCode(tier: Tier, colorTheme: ColorTheme, showTooltip: bool
 
 function generateHtmlCode(tier: Tier): string {
   const cls = tier === 'lite' ? 'ui-lite-heatmap-calendar' : 'ui-heatmap-calendar'
-  return `<!-- HeatmapCalendar — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/heatmap-calendar.css">
+  return `<!-- HeatmapCalendar — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/heatmap-calendar.css">
 
 <div class="${cls}">
   <div class="${cls}__wrapper">
@@ -597,7 +597,7 @@ function generateVueCode(tier: Tier, showTooltip: boolean): string {
 </template>
 
 <script setup>
-import { HeatmapCalendar } from '@annondeveloper/ui-kit/lite'
+import { HeatmapCalendar } from '@frontier-labs/ui-kit/lite'
 const data = [
   { date: '2026-01-01', value: 5 },
   { date: '2026-01-02', value: 12 },
@@ -613,7 +613,7 @@ const data = [
 </template>
 
 <script setup>
-import { HeatmapCalendar } from '@annondeveloper/ui-kit'
+import { HeatmapCalendar } from '@frontier-labs/ui-kit'
 const data = [{ date: '2026-01-01', value: 5 }]
 const handleClick = (date) => console.log(date)
 </script>`
@@ -633,20 +633,20 @@ function generateAngularCode(tier: Tier): string {
   </div>
 </div>
 
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/heatmap-calendar'}.css';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/heatmap-calendar'}.css';`
 }
 
 function generateSvelteCode(tier: Tier, showTooltip: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { HeatmapCalendar } from '@annondeveloper/ui-kit/lite';
+  import { HeatmapCalendar } from '@frontier-labs/ui-kit/lite';
   const data = [{ date: '2026-01-01', value: 5 }, { date: '2026-01-02', value: 12 }];
 </script>
 
 <HeatmapCalendar {data} />`
   }
   return `<script>
-  import { HeatmapCalendar } from '@annondeveloper/ui-kit';
+  import { HeatmapCalendar } from '@frontier-labs/ui-kit';
   const data = [{ date: '2026-01-01', value: 5 }];
 </script>
 
@@ -975,7 +975,7 @@ export default function HeatmapCalendarPage() {
               no tooltips, no date range. Uses native title attribute.
             </p>
             <div className="heatmap-calendar-page__tier-import">
-              import {'{'} HeatmapCalendar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} HeatmapCalendar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="heatmap-calendar-page__tier-preview">
               <LiteHeatmapCalendar data={quarterData.slice(0, 30)} />
@@ -1005,7 +1005,7 @@ export default function HeatmapCalendarPage() {
               OKLCH color mixing, tooltips, click handlers, and date range control.
             </p>
             <div className="heatmap-calendar-page__tier-import">
-              import {'{'} HeatmapCalendar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} HeatmapCalendar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="heatmap-calendar-page__tier-preview">
               <HeatmapCalendar data={quarterData.slice(0, 60)} showTooltip />
@@ -1034,7 +1034,7 @@ export default function HeatmapCalendarPage() {
               Aurora glow on hover, shimmer fill on data cells, spring-scale tooltip entrance, and staggered cell entrance.
             </p>
             <div className="heatmap-calendar-page__tier-import">
-              import {'{'} HeatmapCalendar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} HeatmapCalendar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="heatmap-calendar-page__tier-preview">
               <PremiumHeatmapCalendar data={quarterData.slice(0, 60)} showTooltip />
@@ -1114,13 +1114,13 @@ export default function HeatmapCalendarPage() {
         <h2 className="heatmap-calendar-page__section-title"><a href="#source">Source</a></h2>
         <p className="heatmap-calendar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="heatmap-calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="heatmap-calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/heatmap-calendar.tsx (Standard)
           </a>
-          <a className="heatmap-calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="heatmap-calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/heatmap-calendar.tsx (Lite)
           </a>
-          <a className="heatmap-calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="heatmap-calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/heatmap-calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/heatmap-calendar.tsx (Premium)
           </a>
         </div>

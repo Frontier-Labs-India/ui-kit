@@ -14,7 +14,7 @@ function dashboardTemplate(name: string, theme: string, tier: string): FileTree 
       dependencies: {
         'react': '^19.0.0',
         'react-dom': '^19.0.0',
-        '@annondeveloper/ui-kit': '^2.0.0',
+        '@frontier-labs/ui-kit': '^2.0.0',
       },
       devDependencies: {
         'vite': '^6.0.0',
@@ -44,7 +44,7 @@ export default defineConfig({
 `,
     'src/main.tsx': `import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -55,7 +55,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>
 )
 `,
-    'src/App.tsx': `import { MetricCard, DataTable } from '@annondeveloper/ui-kit'
+    'src/App.tsx': `import { MetricCard, DataTable } from '@frontier-labs/ui-kit'
 
 export default function App() {
   return (
@@ -87,7 +87,7 @@ export default function App() {
 function formTemplate(name: string, theme: string, tier: string): FileTree {
   return {
     ...baseFiles(name, theme),
-    'src/App.tsx': `import { Card, FormInput, Select, Button } from '@annondeveloper/ui-kit'
+    'src/App.tsx': `import { Card, FormInput, Select, Button } from '@frontier-labs/ui-kit'
 
 export default function App() {
   return (
@@ -112,7 +112,7 @@ export default function App() {
 function marketingTemplate(name: string, theme: string, tier: string): FileTree {
   return {
     ...baseFiles(name, theme),
-    'src/App.tsx': `import { Button, Badge, Card } from '@annondeveloper/ui-kit'
+    'src/App.tsx': `import { Button, Badge, Card } from '@frontier-labs/ui-kit'
 
 export default function App() {
   return (
@@ -138,7 +138,7 @@ export default function App() {
 function saasTemplate(name: string, theme: string, tier: string): FileTree {
   return {
     ...baseFiles(name, theme),
-    'src/App.tsx': `import { Tabs, DataTable } from '@annondeveloper/ui-kit'
+    'src/App.tsx': `import { Tabs, DataTable } from '@frontier-labs/ui-kit'
 
 export default function App() {
   return (
@@ -182,7 +182,7 @@ export default function App() {
 function docsTemplate(name: string, theme: string, tier: string): FileTree {
   return {
     ...baseFiles(name, theme),
-    'src/App.tsx': `import { CopyBlock } from '@annondeveloper/ui-kit'
+    'src/App.tsx': `import { CopyBlock } from '@frontier-labs/ui-kit'
 
 export default function App() {
   return (
@@ -199,10 +199,10 @@ export default function App() {
       <main style={{ padding: '2rem', maxWidth: '800px' }}>
         <h1>Getting Started</h1>
         <p>Install the package:</p>
-        <CopyBlock code="npm install @annondeveloper/ui-kit" language="bash" />
+        <CopyBlock code="npm install @frontier-labs/ui-kit" language="bash" />
         <h2 style={{ marginTop: '2rem' }}>Quick Example</h2>
         <CopyBlock
-          code={\`import { Button } from '@annondeveloper/ui-kit'
+          code={\`import { Button } from '@frontier-labs/ui-kit'
 
 function App() {
   return <Button>Click me</Button>
@@ -227,7 +227,7 @@ function baseFiles(name: string, theme: string): FileTree {
       dependencies: {
         'react': '^19.0.0',
         'react-dom': '^19.0.0',
-        '@annondeveloper/ui-kit': '^2.0.0',
+        '@frontier-labs/ui-kit': '^2.0.0',
       },
       devDependencies: {
         'vite': '^6.0.0',
@@ -257,7 +257,7 @@ export default defineConfig({
 `,
     'src/main.tsx': `import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

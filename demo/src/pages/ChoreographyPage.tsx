@@ -419,7 +419,7 @@ function CustomBuilder({
 
   // Generate code output
   useEffect(() => {
-    const code = `import { choreography } from '@annondeveloper/ui-kit'
+    const code = `import { choreography } from '@frontier-labs/ui-kit'
 
 const ch = choreography({
   sequence: [{
@@ -621,7 +621,7 @@ function CodeOutput({ code }: { code: string }) {
 /* ─── Scroll Choreography Code ────────────────────────────────────────────── */
 
 const SCROLL_CODE = `import { useRef } from 'react'
-import { useScrollChoreography } from '@annondeveloper/ui-kit'
+import { useScrollChoreography } from '@frontier-labs/ui-kit'
 
 function MyComponent() {
   const triggerRef = useRef<HTMLDivElement>(null)

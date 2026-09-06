@@ -457,9 +457,9 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TagInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TagInput } from '@annondeveloper/ui-kit'",
-  premium: "import { TagInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TagInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TagInput } from '@frontier-labs/ui-kit'",
+  premium: "import { TagInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -533,7 +533,7 @@ function generateReactCode(tier: Tier, size: Size, placeholder: string, maxTags:
 
 function generateHtmlCode(tier: Tier, placeholder: string): string {
   const className = tier === 'lite' ? 'ui-lite-tag-input' : 'ui-tag-input'
-  return `<!-- TagInput -- @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- TagInput -- @frontier-labs/ui-kit ${tier} tier -->
 <div class="${className}">
   <div class="${className}__tags">
     <span class="${className}__tag">
@@ -562,7 +562,7 @@ function generateVueCode(tier: Tier, size: Size, placeholder: string, disabled: 
 
 <script setup>
 import { ref } from 'vue'
-import { TagInput } from '@annondeveloper/ui-kit/lite'
+import { TagInput } from '@frontier-labs/ui-kit/lite'
 
 const tags = ref(['React', 'TypeScript'])
 </script>`
@@ -579,7 +579,7 @@ const tags = ref(['React', 'TypeScript'])
 
 <script setup>
 import { ref } from 'vue'
-import { TagInput } from '@annondeveloper/ui-kit'
+import { TagInput } from '@frontier-labs/ui-kit'
 
 const tags = ref(['React', 'TypeScript'])
 </script>`
@@ -598,13 +598,13 @@ function generateAngularCode(tier: Tier, size: Size, placeholder: string, disabl
   </div>
 </div>
 
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/tag-input'}.css';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/tag-input'}.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, placeholder: string, disabled: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { TagInput } from '@annondeveloper/ui-kit/lite';
+  import { TagInput } from '@frontier-labs/ui-kit/lite';
   let tags = ['React', 'TypeScript'];
 </script>
 
@@ -616,7 +616,7 @@ function generateSvelteCode(tier: Tier, size: Size, placeholder: string, disable
 />`
   }
   return `<script>
-  import { TagInput } from '@annondeveloper/ui-kit';
+  import { TagInput } from '@frontier-labs/ui-kit';
   let tags = ['React', 'TypeScript'];
 </script>
 
@@ -1002,7 +1002,7 @@ export default function TagInputPage() {
               <span className="tag-input-page__tier-size">~0.5 KB</span>
             </div>
             <p className="tag-input-page__tier-desc">Basic tag input with add/remove. No sizes, motion, or custom validation.</p>
-            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="tag-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <StatefulTagInput tier="lite" size="md" placeholder="Add tag..." maxTags={0} error="" disabled={false} allowDuplicates={false} hasValidation={false} initialTags={['Lite']} />
@@ -1026,7 +1026,7 @@ export default function TagInputPage() {
               <span className="tag-input-page__tier-size">~2 KB</span>
             </div>
             <p className="tag-input-page__tier-desc">Full-featured with 5 sizes, validation, duplicate control, animated tag pills, and error states.</p>
-            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="tag-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <StatefulTagInput tier="standard" size="md" placeholder="Add..." maxTags={0} error="" disabled={false} allowDuplicates={false} hasValidation={false} initialTags={['Standard']} />
@@ -1050,7 +1050,7 @@ export default function TagInputPage() {
               <span className="tag-input-page__tier-size">~3-5 KB</span>
             </div>
             <p className="tag-input-page__tier-desc">Aurora glow on tag pills, spring-scale on tag add, and shimmer sweep on newest tag.</p>
-            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="tag-input-page__tier-import">import {'{'} TagInput {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="tag-input-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
                 <StatefulTagInput tier="premium" size="md" placeholder="Add..." maxTags={0} error="" disabled={false} allowDuplicates={false} hasValidation={false} initialTags={['Premium']} />
@@ -1241,13 +1241,13 @@ export default function TagInputPage() {
         <h2 className="tag-input-page__section-title"><a href="#source">Source</a></h2>
         <p className="tag-input-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="tag-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/tag-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tag-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/tag-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/tag-input.tsx (Standard)
           </a>
-          <a className="tag-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tag-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tag-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tag-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/tag-input.tsx (Lite)
           </a>
-          <a className="tag-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/tag-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tag-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/tag-input.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/tag-input.tsx (Premium)
           </a>
         </div>

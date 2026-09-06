@@ -711,9 +711,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Card3D } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Card3D } from '@annondeveloper/ui-kit'",
-  premium: "import { Card3D } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Card3D } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Card3D } from '@frontier-labs/ui-kit'",
+  premium: "import { Card3D } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -844,12 +844,12 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, perspective: number, glare: boolean): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/card-3d.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/card-3d.css';`
   const perspectiveStyle = perspective !== 1000 ? ` style="--card-3d-perspective: ${perspective}px"` : ''
 
-  return `<!-- Card3D — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/card-3d.css">
+  return `<!-- Card3D — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/card-3d.css">
 
 <div class="ui-card-3d"${perspectiveStyle}>
   <div class="ui-card-3d--inner">
@@ -880,11 +880,11 @@ function generateVueCode(tier: Tier, perspective: number, maxTilt: number, glare
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (perspective !== 1000) attrs.push(`  :perspective="${perspective}"`)
   if (maxTilt !== 10) attrs.push(`  :max-tilt="${maxTilt}"`)
@@ -910,9 +910,9 @@ function generateAngularCode(tier: Tier, perspective: number, glare: boolean): s
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const perspectiveAttr = perspective !== 1000 ? `\n  [style]="'--card-3d-perspective: ${perspective}px'"` : ''
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
@@ -943,10 +943,10 @@ function generateSvelteCode(tier: Tier, perspective: number, maxTilt: number, gl
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (perspective !== 1000) attrs.push(`perspective={${perspective}}`)
   if (maxTilt !== 10) attrs.push(`maxTilt={${maxTilt}}`)
@@ -1371,7 +1371,7 @@ export default function Card3dPage() {
               No JavaScript cursor tracking. Fixed tilt angle on hover.
             </p>
             <div className="card-3d-page__tier-import">
-              import {'{'} Card3D {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Card3D {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="card-3d-page__tier-preview">
               <LiteCard3D>
@@ -1407,7 +1407,7 @@ export default function Card3dPage() {
               Dynamic glare overlay with angle and opacity following the cursor.
             </p>
             <div className="card-3d-page__tier-import">
-              import {'{'} Card3D {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Card3D {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="card-3d-page__tier-preview">
               <Card3D maxTilt={12}>
@@ -1443,7 +1443,7 @@ export default function Card3dPage() {
               parallax content layers, depth-of-field blur on edges, and gyroscope support on mobile.
             </p>
             <div className="card-3d-page__tier-import">
-              import {'{'} Card3D {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Card3D {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="card-3d-page__tier-preview">
               <PremiumCard3D maxTilt={15} perspective={800}>
@@ -1576,7 +1576,7 @@ export default function Card3dPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/card-3d.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/card-3d.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="card-3d-page__source-link"
@@ -1585,7 +1585,7 @@ export default function Card3dPage() {
             src/domain/card-3d.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/card-3d.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/card-3d.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="card-3d-page__source-link"
@@ -1594,7 +1594,7 @@ export default function Card3dPage() {
             src/lite/card-3d.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/card-3d.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/card-3d.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="card-3d-page__source-link"

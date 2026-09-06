@@ -683,9 +683,9 @@ const DEFAULT_COLORS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StorageBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StorageBar } from '@annondeveloper/ui-kit'",
-  premium: "import { StorageBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StorageBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StorageBar } from '@frontier-labs/ui-kit'",
+  premium: "import { StorageBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 interface SegmentData {
@@ -828,7 +828,7 @@ function generateHtmlCode(tier: Tier, segments: SegmentData[], total: number, si
     return `    <div style="width: ${pct}%; height: 100%; background: ${color};" title="${s.label}: ${s.value}"></div>`
   }).join('\n')
 
-  return `<!-- StorageBar -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- StorageBar -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <div class="ui-storage-bar" data-size="${size}" role="img"
   aria-label="Storage usage">
   <div style="display: flex; height: ${height}; border-radius: 6px; overflow: hidden; background: oklch(100% 0 0 / 0.06);">
@@ -837,7 +837,7 @@ ${segDivs}
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/storage-bar.css';
+@import '@frontier-labs/ui-kit/css/components/storage-bar.css';
 </style>`
 }
 
@@ -848,13 +848,13 @@ function generateVueCode(tier: Tier, segments: SegmentData[], total: number, siz
 </template>
 
 <script setup>
-import { StorageBar } from '@annondeveloper/ui-kit/lite'
+import { StorageBar } from '@frontier-labs/ui-kit/lite'
 
 const segments = ${segmentsToCode(segments)}
 </script>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':segments="segments"', `:total="${total}"`]
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (showLabels) attrs.push('show-labels')
@@ -888,10 +888,10 @@ function generateAngularCode(tier: Tier, segments: SegmentData[], total: number,
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-storage-bar" data-size="${size}" role="img"
   [attr.aria-label]="'Storage usage'">
@@ -911,7 +911,7 @@ function generateSvelteCode(tier: Tier, segments: SegmentData[], total: number, 
   if (tier === 'lite') {
     return `<!-- Svelte -- Lite tier -->
 <script>
-  import { StorageBar } from '@annondeveloper/ui-kit/lite';
+  import { StorageBar } from '@frontier-labs/ui-kit/lite';
 
   const segments = ${segmentsToCode(segments)};
 </script>
@@ -919,7 +919,7 @@ function generateSvelteCode(tier: Tier, segments: SegmentData[], total: number, 
 <StorageBar segments={segments} total={${total}} ${showLegend ? 'showLegend ' : ''}/>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['segments={segments}', `total={${total}}`]
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (showLabels) attrs.push('showLabels')
@@ -1317,7 +1317,7 @@ export default function StorageBarPage() {
               no labels, basic legend option.
             </p>
             <div className="storage-bar-page__tier-import">
-              import {'{'} StorageBar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StorageBar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="storage-bar-page__tier-preview">
               <LiteStorageBar segments={DEMO_SEGMENTS_SERVER} total={1024} showLegend />
@@ -1348,7 +1348,7 @@ export default function StorageBarPage() {
               legend, three sizes, motion control, and error boundary.
             </p>
             <div className="storage-bar-page__tier-import">
-              import {'{'} StorageBar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StorageBar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="storage-bar-page__tier-preview">
               <StorageBar segments={DEMO_SEGMENTS_SERVER} total={1024} showLegend size="md" />
@@ -1379,7 +1379,7 @@ export default function StorageBarPage() {
               hover brightness glow, and shimmer sweep animation.
             </p>
             <div className="storage-bar-page__tier-import">
-              import {'{'} StorageBar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StorageBar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="storage-bar-page__tier-preview">
               <PremiumStorageBar segments={DEMO_SEGMENTS_SERVER} total={1024} showLegend size="md" />
@@ -1475,7 +1475,7 @@ export default function StorageBarPage() {
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/storage-bar.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/storage-bar.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="storage-bar-page__source-link"

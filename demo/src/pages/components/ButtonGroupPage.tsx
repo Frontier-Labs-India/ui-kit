@@ -624,9 +624,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const ORIENTATIONS: Orientation[] = ['horizontal', 'vertical']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ButtonGroup } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ButtonGroup } from '@annondeveloper/ui-kit'",
-  premium: "import { ButtonGroup } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ButtonGroup } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ButtonGroup } from '@frontier-labs/ui-kit'",
+  premium: "import { ButtonGroup } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -729,10 +729,10 @@ function generateReactCode(
 ): string {
   const importStr = IMPORT_STRINGS[tier]
   const buttonImport = tier === 'lite'
-    ? "import { Button } from '@annondeveloper/ui-kit/lite'"
+    ? "import { Button } from '@frontier-labs/ui-kit/lite'"
     : tier === 'premium'
-    ? "import { Button } from '@annondeveloper/ui-kit/premium'"
-    : "import { Button } from '@annondeveloper/ui-kit'"
+    ? "import { Button } from '@frontier-labs/ui-kit/premium'"
+    : "import { Button } from '@frontier-labs/ui-kit'"
 
   const props: string[] = []
   if (variant !== 'primary') props.push(`  variant="${variant}"`)
@@ -777,8 +777,8 @@ function generateHtmlExport(
     `  <button class="${btnClass}" data-variant="${variant}" data-size="${size}">Option ${i + 1}</button>`
   ).join('\n')
 
-  return `<!-- ButtonGroup — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cssFile}">
+  return `<!-- ButtonGroup — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cssFile}">
 
 <div ${attrs.join(' ')} role="group">
 ${buttons}
@@ -799,10 +799,10 @@ function generateVueCode(
     const buttons = Array.from({ length: buttonCount }, (_, i) =>
       `    <button class="ui-lite-button" data-variant="${variant}" data-size="${size}">Option ${i + 1}</button>`
     ).join('\n')
-    return `<template>\n  <div ${attrs.join(' ')} role="group">\n${buttons}\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')} role="group">\n${buttons}\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (variant !== 'primary') props.push(`    variant="${variant}"`)
   if (size !== 'md') props.push(`    size="${size}"`)
@@ -829,7 +829,7 @@ function generateAngularCode(
   buttonCount: number,
 ): string {
   const tierLabel = tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const btnClass = tier === 'lite' ? 'ui-lite-button' : 'ui-button'
 
   const attrs = [
@@ -868,10 +868,10 @@ function generateSvelteCode(
     const buttons = Array.from({ length: buttonCount }, (_, i) =>
       `    <button class="ui-lite-button" data-variant="${variant}" data-size="${size}">Option ${i + 1}</button>`
     ).join('\n')
-    return `<div ${attrs.join(' ')}>\n${buttons}\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<div ${attrs.join(' ')}>\n${buttons}\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (variant !== 'primary') props.push(`  variant="${variant}"`)
   if (size !== 'md') props.push(`  size="${size}"`)
@@ -1263,7 +1263,7 @@ export default function ButtonGroupPage() {
               to the standard component with motion=0.
             </p>
             <div className="button-group-page__tier-import">
-              import {'{'} ButtonGroup {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ButtonGroup {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="button-group-page__tier-preview">
               <LiteButtonGroup attached>
@@ -1298,7 +1298,7 @@ export default function ButtonGroupPage() {
               propagation, and forced-colors support.
             </p>
             <div className="button-group-page__tier-import">
-              import {'{'} ButtonGroup {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ButtonGroup {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="button-group-page__tier-preview">
               <ButtonGroup attached>
@@ -1333,7 +1333,7 @@ export default function ButtonGroupPage() {
               stagger entrance animations, and hover glow effects.
             </p>
             <div className="button-group-page__tier-import">
-              import {'{'} ButtonGroup {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ButtonGroup {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="button-group-page__tier-preview">
               <PremiumButtonGroup attached>
@@ -1464,13 +1464,13 @@ export default function ButtonGroupPage() {
         <h2 className="button-group-page__section-title"><a href="#source">Source</a></h2>
         <p className="button-group-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="button-group-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/button-group.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-group-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/button-group.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/button-group.tsx (Standard)
           </a>
-          <a className="button-group-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/button-group.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-group-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/button-group.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/button-group.tsx (Lite)
           </a>
-          <a className="button-group-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/button-group.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-group-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/button-group.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/button-group.tsx (Premium)
           </a>
         </div>

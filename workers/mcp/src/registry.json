@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "generatedAt": "2026-09-06T14:34:59.455Z",
+  "generatedAt": "2026-09-06T14:42:10.787Z",
   "componentCount": 185,
   "components": {
     "Button": {
@@ -12,8 +12,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Button } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Button } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/button.tsx",
       "props": [
         {
@@ -95,7 +95,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Button } from '@annondeveloper/ui-kit'\n\n<Button>Click me</Button>"
+          "code": "import { Button } from '@frontier-labs/ui-kit'\n\n<Button>Click me</Button>"
         },
         {
           "title": "With secondary variant",
@@ -133,8 +133,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ButtonGroup } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ButtonGroup } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/button-group.tsx",
       "props": [
         {
@@ -175,7 +175,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ButtonGroup } from '@annondeveloper/ui-kit'\n\n<ButtonGroup>Content</ButtonGroup>"
+          "code": "import { ButtonGroup } from '@frontier-labs/ui-kit'\n\n<ButtonGroup>Content</ButtonGroup>"
         },
         {
           "title": "With secondary variant",
@@ -212,8 +212,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Badge } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Badge } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/badge.tsx",
       "props": [
         {
@@ -293,7 +293,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Badge } from '@annondeveloper/ui-kit'\n\n<Badge />"
+          "code": "import { Badge } from '@frontier-labs/ui-kit'\n\n<Badge />"
         },
         {
           "title": "With primary variant",
@@ -332,8 +332,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Avatar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Avatar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/avatar.tsx",
       "props": [
         {
@@ -377,7 +377,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Avatar } from '@annondeveloper/ui-kit'\n\n<Avatar />"
+          "code": "import { Avatar } from '@frontier-labs/ui-kit'\n\n<Avatar />"
         },
         {
           "title": "Large size",
@@ -406,8 +406,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { AvatarGroup } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { AvatarGroup } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/avatar.tsx",
       "props": [
         {
@@ -427,7 +427,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { AvatarGroup } from '@annondeveloper/ui-kit'\n\n<AvatarGroup />"
+          "code": "import { AvatarGroup } from '@frontier-labs/ui-kit'\n\n<AvatarGroup />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -451,8 +451,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Card } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Card } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/card.tsx",
       "props": [
         {
@@ -555,7 +555,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Card } from '@annondeveloper/ui-kit'\n\n<Card>Card content goes here.</Card>"
+          "code": "import { Card } from '@frontier-labs/ui-kit'\n\n<Card>Card content goes here.</Card>"
         },
         {
           "title": "With elevated variant",
@@ -584,8 +584,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Skeleton } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Skeleton } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/skeleton.tsx",
       "props": [
         {
@@ -675,7 +675,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Skeleton } from '@annondeveloper/ui-kit'\n\n<Skeleton />"
+          "code": "import { Skeleton } from '@frontier-labs/ui-kit'\n\n<Skeleton />"
         },
         {
           "title": "With circular variant",
@@ -704,8 +704,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Progress } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Progress } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/progress.tsx",
       "props": [
         {
@@ -758,7 +758,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Progress } from '@annondeveloper/ui-kit'\n\n<Progress />"
+          "code": "import { Progress } from '@frontier-labs/ui-kit'\n\n<Progress />"
         },
         {
           "title": "With success variant",
@@ -792,8 +792,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Checkbox } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Checkbox } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/checkbox.tsx",
       "props": [
         {
@@ -832,7 +832,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Checkbox } from '@annondeveloper/ui-kit'\n\n<Checkbox />"
+          "code": "import { Checkbox } from '@frontier-labs/ui-kit'\n\n<Checkbox />"
         },
         {
           "title": "Large size",
@@ -863,8 +863,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { RadioGroup } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { RadioGroup } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/radio-group.tsx",
       "props": [
         {
@@ -933,7 +933,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { RadioGroup } from '@annondeveloper/ui-kit'\n\n<RadioGroup name=\"field-name\" options={[]}/>"
+          "code": "import { RadioGroup } from '@frontier-labs/ui-kit'\n\n<RadioGroup name=\"field-name\" options={[]}/>"
         },
         {
           "title": "Large size",
@@ -965,8 +965,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ToggleSwitch } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ToggleSwitch } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/toggle-switch.tsx",
       "props": [
         {
@@ -998,7 +998,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ToggleSwitch } from '@annondeveloper/ui-kit'\n\n<ToggleSwitch />"
+          "code": "import { ToggleSwitch } from '@frontier-labs/ui-kit'\n\n<ToggleSwitch />"
         },
         {
           "title": "Large size",
@@ -1030,8 +1030,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Slider } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Slider } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/slider.tsx",
       "props": [
         {
@@ -1117,7 +1117,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Slider } from '@annondeveloper/ui-kit'\n\n<Slider />"
+          "code": "import { Slider } from '@frontier-labs/ui-kit'\n\n<Slider />"
         },
         {
           "title": "Large size",
@@ -1145,8 +1145,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StatusBadge } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StatusBadge } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/status-badge.tsx",
       "props": [
         {
@@ -1191,7 +1191,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StatusBadge } from '@annondeveloper/ui-kit'\n\n<StatusBadge status={value}/>"
+          "code": "import { StatusBadge } from '@frontier-labs/ui-kit'\n\n<StatusBadge status={value}/>"
         },
         {
           "title": "Large size",
@@ -1225,8 +1225,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StatusPulse } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StatusPulse } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/status-pulse.tsx",
       "props": [
         {
@@ -1258,7 +1258,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StatusPulse } from '@annondeveloper/ui-kit'\n\n<StatusPulse status={value}/>"
+          "code": "import { StatusPulse } from '@frontier-labs/ui-kit'\n\n<StatusPulse status={value}/>"
         },
         {
           "title": "Large size",
@@ -1290,8 +1290,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SuccessCheckmark } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SuccessCheckmark } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/success-checkmark.tsx",
       "props": [
         {
@@ -1325,7 +1325,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SuccessCheckmark } from '@annondeveloper/ui-kit'\n\n<SuccessCheckmark />"
+          "code": "import { SuccessCheckmark } from '@frontier-labs/ui-kit'\n\n<SuccessCheckmark />"
         },
         {
           "title": "Large size",
@@ -1352,8 +1352,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { AnimatedCounter } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { AnimatedCounter } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/animated-counter.tsx",
       "props": [
         {
@@ -1385,7 +1385,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { AnimatedCounter } from '@annondeveloper/ui-kit'\n\n<AnimatedCounter value={0}/>"
+          "code": "import { AnimatedCounter } from '@frontier-labs/ui-kit'\n\n<AnimatedCounter value={0}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -1405,8 +1405,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { FormInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { FormInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/form-input.tsx",
       "props": [
         {
@@ -1505,7 +1505,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { FormInput } from '@annondeveloper/ui-kit'\n\n<FormInput name=\"field-name\"/>"
+          "code": "import { FormInput } from '@frontier-labs/ui-kit'\n\n<FormInput name=\"field-name\"/>"
         },
         {
           "title": "With filled variant",
@@ -1541,8 +1541,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Select } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Select } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/select.tsx",
       "props": [
         {
@@ -1635,7 +1635,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Select } from '@annondeveloper/ui-kit'\n\n<Select name=\"field-name\" options={[]}/>"
+          "code": "import { Select } from '@frontier-labs/ui-kit'\n\n<Select name=\"field-name\" options={[]}/>"
         },
         {
           "title": "Large size",
@@ -1666,8 +1666,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Combobox } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Combobox } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/combobox.tsx",
       "props": [
         {
@@ -1773,7 +1773,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Combobox } from '@annondeveloper/ui-kit'\n\n<Combobox name=\"field-name\" options={[]}/>"
+          "code": "import { Combobox } from '@frontier-labs/ui-kit'\n\n<Combobox name=\"field-name\" options={[]}/>"
         },
         {
           "title": "Large size",
@@ -1802,8 +1802,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ColorInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ColorInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/color-input.tsx",
       "props": [
         {
@@ -1879,7 +1879,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ColorInput } from '@annondeveloper/ui-kit'\n\n<ColorInput name=\"field-name\"/>"
+          "code": "import { ColorInput } from '@frontier-labs/ui-kit'\n\n<ColorInput name=\"field-name\"/>"
         },
         {
           "title": "Large size",
@@ -1907,8 +1907,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { FileUpload } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { FileUpload } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/file-upload.tsx",
       "props": [
         {
@@ -1996,7 +1996,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { FileUpload } from '@annondeveloper/ui-kit'\n\n<FileUpload name=\"field-name\"/>"
+          "code": "import { FileUpload } from '@frontier-labs/ui-kit'\n\n<FileUpload name=\"field-name\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -2016,8 +2016,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { InlineEdit } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { InlineEdit } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/inline-edit.tsx",
       "props": [
         {
@@ -2088,7 +2088,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { InlineEdit } from '@annondeveloper/ui-kit'\n\n<InlineEdit value=\"value\" onChange={(value) => setValue(value)}/>"
+          "code": "import { InlineEdit } from '@frontier-labs/ui-kit'\n\n<InlineEdit value=\"value\" onChange={(value) => setValue(value)}/>"
         },
         {
           "title": "Large size",
@@ -2115,8 +2115,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { FilterPill } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { FilterPill } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/filter-pill.tsx",
       "props": [
         {
@@ -2167,7 +2167,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { FilterPill } from '@annondeveloper/ui-kit'\n\n<FilterPill label=\"Example\"/>"
+          "code": "import { FilterPill } from '@frontier-labs/ui-kit'\n\n<FilterPill label=\"Example\"/>"
         },
         {
           "title": "Large size",
@@ -2194,8 +2194,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { FilterPillGroup } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { FilterPillGroup } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/filter-pill.tsx",
       "props": [
         {
@@ -2215,7 +2215,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { FilterPillGroup } from '@annondeveloper/ui-kit'\n\n<FilterPillGroup />"
+          "code": "import { FilterPillGroup } from '@frontier-labs/ui-kit'\n\n<FilterPillGroup />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -2239,8 +2239,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Tooltip } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Tooltip } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tooltip.tsx",
       "props": [
         {
@@ -2306,7 +2306,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Tooltip } from '@annondeveloper/ui-kit'\n\n<Tooltip content=\"value\" children={value}>Hover target</Tooltip>"
+          "code": "import { Tooltip } from '@frontier-labs/ui-kit'\n\n<Tooltip content=\"value\" children={value}>Hover target</Tooltip>"
         },
         {
           "title": "Bottom placement",
@@ -2332,8 +2332,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NativeTooltip } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NativeTooltip } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/native-tooltip.tsx",
       "props": [
         {
@@ -2346,7 +2346,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NativeTooltip } from '@annondeveloper/ui-kit'\n\n<NativeTooltip content=\"value\"/>"
+          "code": "import { NativeTooltip } from '@frontier-labs/ui-kit'\n\n<NativeTooltip content=\"value\"/>"
         }
       ],
       "accessibility": "Tooltip linked via aria-describedby. Shows on focus and hover. Popover uses native popover API when available.",
@@ -2369,8 +2369,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Popover } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Popover } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/popover.tsx",
       "props": [
         {
@@ -2442,7 +2442,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Popover } from '@annondeveloper/ui-kit'\n\n<Popover content=\"value\">Content</Popover>"
+          "code": "import { Popover } from '@frontier-labs/ui-kit'\n\n<Popover content=\"value\">Content</Popover>"
         },
         {
           "title": "Bottom placement",
@@ -2468,8 +2468,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Dialog } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Dialog } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dialog.tsx",
       "props": [
         {
@@ -2559,7 +2559,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Dialog } from '@annondeveloper/ui-kit'\n\n<Dialog open onClose={() => setOpen(false)} children=\"value\"><p>Dialog body content.</p></Dialog>"
+          "code": "import { Dialog } from '@frontier-labs/ui-kit'\n\n<Dialog open onClose={() => setOpen(false)} children=\"value\"><p>Dialog body content.</p></Dialog>"
         },
         {
           "title": "Large size",
@@ -2591,8 +2591,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ConfirmDialog } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ConfirmDialog } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/confirm-dialog.tsx",
       "props": [
         {
@@ -2663,7 +2663,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ConfirmDialog } from '@annondeveloper/ui-kit'\n\n<ConfirmDialog open onConfirm={() => handleConfirm()} onCancel={() => setOpen(false)} title=\"Example\">Are you sure?</ConfirmDialog>"
+          "code": "import { ConfirmDialog } from '@frontier-labs/ui-kit'\n\n<ConfirmDialog open onConfirm={() => handleConfirm()} onCancel={() => setOpen(false)} title=\"Example\">Are you sure?</ConfirmDialog>"
         },
         {
           "title": "With danger variant",
@@ -2694,8 +2694,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Sheet } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Sheet } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sheet.tsx",
       "props": [
         {
@@ -2753,7 +2753,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Sheet } from '@annondeveloper/ui-kit'\n\n<Sheet open onClose={() => setOpen(false)}><p>Sheet content.</p></Sheet>"
+          "code": "import { Sheet } from '@frontier-labs/ui-kit'\n\n<Sheet open onClose={() => setOpen(false)}><p>Sheet content.</p></Sheet>"
         },
         {
           "title": "Large size",
@@ -2783,8 +2783,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenu } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenu } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [
         {
@@ -2822,7 +2822,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenu } from '@annondeveloper/ui-kit'\n\n<DropdownMenu />"
+          "code": "import { DropdownMenu } from '@frontier-labs/ui-kit'\n\n<DropdownMenu />"
         },
         {
           "title": "Bottom placement",
@@ -2844,14 +2844,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenuTrigger } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenuTrigger } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenuTrigger } from '@annondeveloper/ui-kit'\n\n<DropdownMenuTrigger />"
+          "code": "import { DropdownMenuTrigger } from '@frontier-labs/ui-kit'\n\n<DropdownMenuTrigger />"
         }
       ],
       "accessibility": "Implements WAI-ARIA menu pattern. Arrow key navigation, Escape to close. role=\"menu\" and role=\"menuitem\".",
@@ -2870,14 +2870,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenuContent } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenuContent } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenuContent } from '@annondeveloper/ui-kit'\n\n<DropdownMenuContent />"
+          "code": "import { DropdownMenuContent } from '@frontier-labs/ui-kit'\n\n<DropdownMenuContent />"
         }
       ],
       "accessibility": "Implements WAI-ARIA menu pattern. Arrow key navigation, Escape to close. role=\"menu\" and role=\"menuitem\".",
@@ -2896,8 +2896,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenuItem } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenuItem } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [
         {
@@ -2934,7 +2934,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenuItem } from '@annondeveloper/ui-kit'\n\n<DropdownMenuItem />"
+          "code": "import { DropdownMenuItem } from '@frontier-labs/ui-kit'\n\n<DropdownMenuItem />"
         }
       ],
       "accessibility": "Implements WAI-ARIA menu pattern. Arrow key navigation, Escape to close. role=\"menu\" and role=\"menuitem\".",
@@ -2953,14 +2953,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenuSeparator } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenuSeparator } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenuSeparator } from '@annondeveloper/ui-kit'\n\n<DropdownMenuSeparator />"
+          "code": "import { DropdownMenuSeparator } from '@frontier-labs/ui-kit'\n\n<DropdownMenuSeparator />"
         }
       ],
       "accessibility": "Implements WAI-ARIA menu pattern. Arrow key navigation, Escape to close. role=\"menu\" and role=\"menuitem\".",
@@ -2979,14 +2979,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DropdownMenuLabel } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DropdownMenuLabel } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/dropdown-menu.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DropdownMenuLabel } from '@annondeveloper/ui-kit'\n\n<DropdownMenuLabel />"
+          "code": "import { DropdownMenuLabel } from '@frontier-labs/ui-kit'\n\n<DropdownMenuLabel />"
         }
       ],
       "accessibility": "Implements WAI-ARIA menu pattern. Arrow key navigation, Escape to close. role=\"menu\" and role=\"menuitem\".",
@@ -3007,8 +3007,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Tabs } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Tabs } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tabs.tsx",
       "props": [
         {
@@ -3097,7 +3097,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Tabs } from '@annondeveloper/ui-kit'\n\n<Tabs />"
+          "code": "import { Tabs } from '@frontier-labs/ui-kit'\n\n<Tabs />"
         },
         {
           "title": "With pills variant",
@@ -3129,8 +3129,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TabPanel } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TabPanel } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tabs.tsx",
       "props": [
         {
@@ -3143,7 +3143,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TabPanel } from '@annondeveloper/ui-kit'\n\n<TabPanel tabId=\"value\"/>"
+          "code": "import { TabPanel } from '@frontier-labs/ui-kit'\n\n<TabPanel tabId=\"value\"/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -3161,14 +3161,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TabList } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TabList } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tabs.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TabList } from '@annondeveloper/ui-kit'\n\n<TabList />"
+          "code": "import { TabList } from '@frontier-labs/ui-kit'\n\n<TabList />"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -3186,8 +3186,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TabTrigger } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TabTrigger } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tabs.tsx",
       "props": [
         {
@@ -3206,7 +3206,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TabTrigger } from '@annondeveloper/ui-kit'\n\n<TabTrigger value=\"value\"/>"
+          "code": "import { TabTrigger } from '@frontier-labs/ui-kit'\n\n<TabTrigger value=\"value\"/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -3224,8 +3224,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TabContent } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TabContent } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tabs.tsx",
       "props": [
         {
@@ -3238,7 +3238,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TabContent } from '@annondeveloper/ui-kit'\n\n<TabContent value=\"value\"/>"
+          "code": "import { TabContent } from '@frontier-labs/ui-kit'\n\n<TabContent value=\"value\"/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -3256,8 +3256,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { UIProvider } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { UIProvider } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/ui-provider.tsx",
       "props": [
         {
@@ -3304,7 +3304,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { UIProvider } from '@annondeveloper/ui-kit'\n\n<UIProvider>Content</UIProvider>"
+          "code": "import { UIProvider } from '@frontier-labs/ui-kit'\n\n<UIProvider>Content</UIProvider>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -3323,8 +3323,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Accordion } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Accordion } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/accordion.tsx",
       "props": [
         {
@@ -3377,7 +3377,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Accordion } from '@annondeveloper/ui-kit'\n\n<Accordion items={[]}>Content</Accordion>"
+          "code": "import { Accordion } from '@frontier-labs/ui-kit'\n\n<Accordion items={[]}>Content</Accordion>"
         },
         {
           "title": "With bordered variant",
@@ -3409,8 +3409,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Divider } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Divider } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/divider.tsx",
       "props": [
         {
@@ -3444,7 +3444,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Divider } from '@annondeveloper/ui-kit'\n\n<Divider />"
+          "code": "import { Divider } from '@frontier-labs/ui-kit'\n\n<Divider />"
         },
         {
           "title": "With dashed variant",
@@ -3470,8 +3470,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Breadcrumbs } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Breadcrumbs } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/breadcrumbs.tsx",
       "props": [
         {
@@ -3502,7 +3502,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Breadcrumbs } from '@annondeveloper/ui-kit'\n\n<Breadcrumbs items={[]}/>"
+          "code": "import { Breadcrumbs } from '@frontier-labs/ui-kit'\n\n<Breadcrumbs items={[]}/>"
         }
       ],
       "accessibility": "Uses <nav aria-label=\"Breadcrumb\"> with <ol>. Current page marked with aria-current=\"page\".",
@@ -3524,8 +3524,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Pagination } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Pagination } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/pagination.tsx",
       "props": [
         {
@@ -3584,7 +3584,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Pagination } from '@annondeveloper/ui-kit'\n\n<Pagination page={1} totalPages={10} onChange={(value) => setValue(value)}/>"
+          "code": "import { Pagination } from '@frontier-labs/ui-kit'\n\n<Pagination page={1} totalPages={10} onChange={(value) => setValue(value)}/>"
         },
         {
           "title": "Large size",
@@ -3615,8 +3615,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Sidebar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Sidebar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sidebar.tsx",
       "props": [
         {
@@ -3663,7 +3663,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Sidebar } from '@annondeveloper/ui-kit'\n\n<Sidebar>Content</Sidebar>"
+          "code": "import { Sidebar } from '@frontier-labs/ui-kit'\n\n<Sidebar>Content</Sidebar>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3683,14 +3683,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SidebarHeader } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SidebarHeader } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sidebar.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SidebarHeader } from '@annondeveloper/ui-kit'\n\n<SidebarHeader>Content</SidebarHeader>"
+          "code": "import { SidebarHeader } from '@frontier-labs/ui-kit'\n\n<SidebarHeader>Content</SidebarHeader>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3708,14 +3708,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SidebarContent } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SidebarContent } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sidebar.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SidebarContent } from '@annondeveloper/ui-kit'\n\n<SidebarContent>Content</SidebarContent>"
+          "code": "import { SidebarContent } from '@frontier-labs/ui-kit'\n\n<SidebarContent>Content</SidebarContent>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3733,14 +3733,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SidebarFooter } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SidebarFooter } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sidebar.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SidebarFooter } from '@annondeveloper/ui-kit'\n\n<SidebarFooter>Content</SidebarFooter>"
+          "code": "import { SidebarFooter } from '@frontier-labs/ui-kit'\n\n<SidebarFooter>Content</SidebarFooter>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3758,8 +3758,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SidebarItem } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SidebarItem } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/sidebar.tsx",
       "props": [
         {
@@ -3803,7 +3803,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SidebarItem } from '@annondeveloper/ui-kit'\n\n<SidebarItem label=\"Example\"/>"
+          "code": "import { SidebarItem } from '@frontier-labs/ui-kit'\n\n<SidebarItem label=\"Example\"/>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3823,8 +3823,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Navbar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Navbar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/navbar.tsx",
       "props": [
         {
@@ -3871,7 +3871,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Navbar } from '@annondeveloper/ui-kit'\n\n<Navbar>Content</Navbar>"
+          "code": "import { Navbar } from '@frontier-labs/ui-kit'\n\n<Navbar>Content</Navbar>"
         }
       ],
       "accessibility": "Uses <nav> landmark with aria-label. Keyboard navigable links. Collapsed state uses aria-expanded.",
@@ -3893,8 +3893,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Drawer } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Drawer } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/drawer.tsx",
       "props": [
         {
@@ -3946,7 +3946,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Drawer } from '@annondeveloper/ui-kit'\n\n<Drawer open onClose={() => setOpen(false)} children=\"value\"><p>Drawer content.</p></Drawer>"
+          "code": "import { Drawer } from '@frontier-labs/ui-kit'\n\n<Drawer open onClose={() => setOpen(false)} children=\"value\"><p>Drawer content.</p></Drawer>"
         },
         {
           "title": "Large size",
@@ -3977,8 +3977,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { AppShell } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { AppShell } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/app-shell.tsx",
       "props": [
         {
@@ -4017,7 +4017,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { AppShell } from '@annondeveloper/ui-kit'\n\n<AppShell>Content</AppShell>"
+          "code": "import { AppShell } from '@frontier-labs/ui-kit'\n\n<AppShell>Content</AppShell>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -4040,8 +4040,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Alert } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Alert } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/alert.tsx",
       "props": [
         {
@@ -4124,7 +4124,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Alert } from '@annondeveloper/ui-kit'\n\n<Alert variant={value} children=\"value\">Something important happened.</Alert>"
+          "code": "import { Alert } from '@frontier-labs/ui-kit'\n\n<Alert variant={value} children=\"value\">Something important happened.</Alert>"
         },
         {
           "title": "With success variant",
@@ -4159,8 +4159,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SearchInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SearchInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/search-input.tsx",
       "props": [
         {
@@ -4230,7 +4230,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SearchInput } from '@annondeveloper/ui-kit'\n\n<SearchInput />"
+          "code": "import { SearchInput } from '@frontier-labs/ui-kit'\n\n<SearchInput />"
         },
         {
           "title": "Large size",
@@ -4265,8 +4265,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Rating } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Rating } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/rating.tsx",
       "props": [
         {
@@ -4344,7 +4344,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Rating } from '@annondeveloper/ui-kit'\n\n<Rating />"
+          "code": "import { Rating } from '@frontier-labs/ui-kit'\n\n<Rating />"
         },
         {
           "title": "Large size",
@@ -4372,8 +4372,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { OtpInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { OtpInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/otp-input.tsx",
       "props": [
         {
@@ -4445,7 +4445,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { OtpInput } from '@annondeveloper/ui-kit'\n\n<OtpInput />"
+          "code": "import { OtpInput } from '@frontier-labs/ui-kit'\n\n<OtpInput />"
         },
         {
           "title": "Large size",
@@ -4477,8 +4477,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TagInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TagInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/tag-input.tsx",
       "props": [
         {
@@ -4548,7 +4548,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TagInput } from '@annondeveloper/ui-kit'\n\n<TagInput tags={[]} onChange={[]}/>"
+          "code": "import { TagInput } from '@frontier-labs/ui-kit'\n\n<TagInput tags={[]} onChange={[]}/>"
         },
         {
           "title": "Large size",
@@ -4581,8 +4581,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DatePicker } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DatePicker } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/date-picker.tsx",
       "props": [
         {
@@ -4671,7 +4671,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DatePicker } from '@annondeveloper/ui-kit'\n\n<DatePicker />"
+          "code": "import { DatePicker } from '@frontier-labs/ui-kit'\n\n<DatePicker />"
         },
         {
           "title": "Large size",
@@ -4702,8 +4702,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Typography } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Typography } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/typography.tsx",
       "props": [
         {
@@ -4753,7 +4753,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Typography } from '@annondeveloper/ui-kit'\n\n<Typography>Hello world</Typography>"
+          "code": "import { Typography } from '@frontier-labs/ui-kit'\n\n<Typography>Hello world</Typography>"
         },
         {
           "title": "With h2 variant",
@@ -4787,8 +4787,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Kbd } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Kbd } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/kbd.tsx",
       "props": [
         {
@@ -4815,7 +4815,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Kbd } from '@annondeveloper/ui-kit'\n\n<Kbd />"
+          "code": "import { Kbd } from '@frontier-labs/ui-kit'\n\n<Kbd />"
         },
         {
           "title": "With ghost variant",
@@ -4843,8 +4843,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Link } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Link } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/link.tsx",
       "props": [
         {
@@ -4885,7 +4885,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Link } from '@annondeveloper/ui-kit'\n\n<Link>Content</Link>"
+          "code": "import { Link } from '@frontier-labs/ui-kit'\n\n<Link>Content</Link>"
         },
         {
           "title": "With subtle variant",
@@ -4916,8 +4916,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Timeline } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Timeline } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/timeline.tsx",
       "props": [
         {
@@ -4957,7 +4957,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Timeline } from '@annondeveloper/ui-kit'\n\n<Timeline items={[]}/>"
+          "code": "import { Timeline } from '@frontier-labs/ui-kit'\n\n<Timeline items={[]}/>"
         },
         {
           "title": "With alternate variant",
@@ -4989,8 +4989,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Stepper } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Stepper } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/stepper.tsx",
       "props": [
         {
@@ -5042,7 +5042,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Stepper } from '@annondeveloper/ui-kit'\n\n<Stepper steps={[]} activeStep={0}/>"
+          "code": "import { Stepper } from '@frontier-labs/ui-kit'\n\n<Stepper steps={[]} activeStep={0}/>"
         },
         {
           "title": "With dots variant",
@@ -5074,8 +5074,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Carousel } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Carousel } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/carousel.tsx",
       "props": [
         {
@@ -5137,7 +5137,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Carousel } from '@annondeveloper/ui-kit'\n\n<Carousel />"
+          "code": "import { Carousel } from '@frontier-labs/ui-kit'\n\n<Carousel />"
         }
       ],
       "accessibility": "Uses role=\"region\" with aria-roledescription=\"carousel\". Slides use aria-label. Keyboard arrows navigate.",
@@ -5156,8 +5156,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { MultiSelect } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { MultiSelect } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/multi-select.tsx",
       "props": [
         {
@@ -5252,7 +5252,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { MultiSelect } from '@annondeveloper/ui-kit'\n\n<MultiSelect options={[]}/>"
+          "code": "import { MultiSelect } from '@frontier-labs/ui-kit'\n\n<MultiSelect options={[]}/>"
         },
         {
           "title": "Large size",
@@ -5282,8 +5282,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Calendar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Calendar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/calendar.tsx",
       "props": [
         {
@@ -5411,7 +5411,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Calendar } from '@annondeveloper/ui-kit'\n\n<Calendar />"
+          "code": "import { Calendar } from '@frontier-labs/ui-kit'\n\n<Calendar />"
         },
         {
           "title": "Large size",
@@ -5441,8 +5441,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DateRangePicker } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DateRangePicker } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/date-range-picker.tsx",
       "props": [
         {
@@ -5523,7 +5523,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DateRangePicker } from '@annondeveloper/ui-kit'\n\n<DateRangePicker />"
+          "code": "import { DateRangePicker } from '@frontier-labs/ui-kit'\n\n<DateRangePicker />"
         },
         {
           "title": "Large size",
@@ -5555,8 +5555,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TimePicker } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TimePicker } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/time-picker.tsx",
       "props": [
         {
@@ -5652,7 +5652,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TimePicker } from '@annondeveloper/ui-kit'\n\n<TimePicker />"
+          "code": "import { TimePicker } from '@frontier-labs/ui-kit'\n\n<TimePicker />"
         },
         {
           "title": "Large size",
@@ -5683,8 +5683,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NumberInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NumberInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/number-input.tsx",
       "props": [
         {
@@ -5840,7 +5840,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NumberInput } from '@annondeveloper/ui-kit'\n\n<NumberInput />"
+          "code": "import { NumberInput } from '@frontier-labs/ui-kit'\n\n<NumberInput />"
         },
         {
           "title": "Large size",
@@ -5875,8 +5875,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PasswordInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PasswordInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/password-input.tsx",
       "props": [
         {
@@ -5976,7 +5976,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PasswordInput } from '@annondeveloper/ui-kit'\n\n<PasswordInput />"
+          "code": "import { PasswordInput } from '@frontier-labs/ui-kit'\n\n<PasswordInput />"
         },
         {
           "title": "Large size",
@@ -6011,8 +6011,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Textarea } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Textarea } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/textarea.tsx",
       "props": [
         {
@@ -6130,7 +6130,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Textarea } from '@annondeveloper/ui-kit'\n\n<Textarea />"
+          "code": "import { Textarea } from '@frontier-labs/ui-kit'\n\n<Textarea />"
         },
         {
           "title": "Large size",
@@ -6163,8 +6163,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SegmentedControl } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SegmentedControl } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/segmented-control.tsx",
       "props": [
         {
@@ -6242,7 +6242,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SegmentedControl } from '@annondeveloper/ui-kit'\n\n<SegmentedControl data={[]}/>"
+          "code": "import { SegmentedControl } from '@frontier-labs/ui-kit'\n\n<SegmentedControl data={[]}/>"
         },
         {
           "title": "Large size",
@@ -6274,8 +6274,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Chip } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Chip } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/chip.tsx",
       "props": [
         {
@@ -6347,7 +6347,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Chip } from '@annondeveloper/ui-kit'\n\n<Chip />"
+          "code": "import { Chip } from '@frontier-labs/ui-kit'\n\n<Chip />"
         },
         {
           "title": "With filled variant",
@@ -6383,8 +6383,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TableOfContents } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TableOfContents } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/table-of-contents.tsx",
       "props": [
         {
@@ -6443,7 +6443,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TableOfContents } from '@annondeveloper/ui-kit'\n\n<TableOfContents items={[]}/>"
+          "code": "import { TableOfContents } from '@frontier-labs/ui-kit'\n\n<TableOfContents items={[]}/>"
         },
         {
           "title": "With filled variant",
@@ -6477,8 +6477,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { AvatarUpload } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { AvatarUpload } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/avatar-upload.tsx",
       "props": [
         {
@@ -6549,7 +6549,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { AvatarUpload } from '@annondeveloper/ui-kit'\n\n<AvatarUpload />"
+          "code": "import { AvatarUpload } from '@frontier-labs/ui-kit'\n\n<AvatarUpload />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -6572,8 +6572,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Spotlight } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Spotlight } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/spotlight.tsx",
       "props": [
         {
@@ -6638,7 +6638,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Spotlight } from '@annondeveloper/ui-kit'\n\n<Spotlight actions={[]}/>"
+          "code": "import { Spotlight } from '@frontier-labs/ui-kit'\n\n<Spotlight actions={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -6657,8 +6657,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TransferList } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TransferList } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/transfer-list.tsx",
       "props": [
         {
@@ -6717,7 +6717,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TransferList } from '@annondeveloper/ui-kit'\n\n<TransferList value={[]} onChange={[]}/>"
+          "code": "import { TransferList } from '@frontier-labs/ui-kit'\n\n<TransferList value={[]} onChange={[]}/>"
         },
         {
           "title": "Large size",
@@ -6744,8 +6744,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CopyButton } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CopyButton } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/copy-button.tsx",
       "props": [
         {
@@ -6778,7 +6778,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CopyButton } from '@annondeveloper/ui-kit'\n\n<CopyButton value=\"value\"/>"
+          "code": "import { CopyButton } from '@frontier-labs/ui-kit'\n\n<CopyButton value=\"value\"/>"
         },
         {
           "title": "Large size",
@@ -6809,14 +6809,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Highlight as TextHighlight } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Highlight as TextHighlight } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/highlight.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Highlight as TextHighlight } from '@annondeveloper/ui-kit'\n\n<Highlight as TextHighlight />"
+          "code": "import { Highlight as TextHighlight } from '@frontier-labs/ui-kit'\n\n<Highlight as TextHighlight />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -6837,8 +6837,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Spoiler } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Spoiler } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/spoiler.tsx",
       "props": [
         {
@@ -6892,7 +6892,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Spoiler } from '@annondeveloper/ui-kit'\n\n<Spoiler maxHeight={0}>Content</Spoiler>"
+          "code": "import { Spoiler } from '@frontier-labs/ui-kit'\n\n<Spoiler maxHeight={0}>Content</Spoiler>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -6911,8 +6911,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Indicator } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Indicator } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/indicator.tsx",
       "props": [
         {
@@ -6987,7 +6987,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Indicator } from '@annondeveloper/ui-kit'\n\n<Indicator />"
+          "code": "import { Indicator } from '@frontier-labs/ui-kit'\n\n<Indicator />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7011,8 +7011,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Affix } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Affix } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/affix.tsx",
       "props": [
         {
@@ -7043,7 +7043,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Affix } from '@annondeveloper/ui-kit'\n\n<Affix />"
+          "code": "import { Affix } from '@frontier-labs/ui-kit'\n\n<Affix />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7062,8 +7062,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { BackToTop } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { BackToTop } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/back-to-top.tsx",
       "props": [
         {
@@ -7110,7 +7110,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { BackToTop } from '@annondeveloper/ui-kit'\n\n<BackToTop />"
+          "code": "import { BackToTop } from '@frontier-labs/ui-kit'\n\n<BackToTop />"
         },
         {
           "title": "Large size",
@@ -7138,8 +7138,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PinInput } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PinInput } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/pin-input.tsx",
       "props": [
         {
@@ -7233,7 +7233,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PinInput } from '@annondeveloper/ui-kit'\n\n<PinInput />"
+          "code": "import { PinInput } from '@frontier-labs/ui-kit'\n\n<PinInput />"
         },
         {
           "title": "Large size",
@@ -7265,8 +7265,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ActionIcon } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ActionIcon } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/action-icon.tsx",
       "props": [
         {
@@ -7320,7 +7320,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ActionIcon } from '@annondeveloper/ui-kit'\n\n<ActionIcon />"
+          "code": "import { ActionIcon } from '@frontier-labs/ui-kit'\n\n<ActionIcon />"
         },
         {
           "title": "With light variant",
@@ -7358,8 +7358,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ContainerQuery } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ContainerQuery } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/container-query.tsx",
       "props": [
         {
@@ -7372,7 +7372,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ContainerQuery } from '@annondeveloper/ui-kit'\n\n<ContainerQuery children={value}/>"
+          "code": "import { ContainerQuery } from '@frontier-labs/ui-kit'\n\n<ContainerQuery children={value}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7392,8 +7392,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PageShell } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PageShell } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/page-shell.tsx",
       "props": [
         {
@@ -7414,7 +7414,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PageShell } from '@annondeveloper/ui-kit'\n\n<PageShell />"
+          "code": "import { PageShell } from '@frontier-labs/ui-kit'\n\n<PageShell />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7434,8 +7434,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PageHeader } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PageHeader } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/page-header.tsx",
       "props": [
         {
@@ -7473,7 +7473,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PageHeader } from '@annondeveloper/ui-kit'\n\n<PageHeader title=\"Example\"/>"
+          "code": "import { PageHeader } from '@frontier-labs/ui-kit'\n\n<PageHeader title=\"Example\"/>"
         },
         {
           "title": "Large size",
@@ -7500,8 +7500,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SectionHeader } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SectionHeader } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/section-header.tsx",
       "props": [
         {
@@ -7533,7 +7533,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SectionHeader } from '@annondeveloper/ui-kit'\n\n<SectionHeader title=\"Example\"/>"
+          "code": "import { SectionHeader } from '@frontier-labs/ui-kit'\n\n<SectionHeader title=\"Example\"/>"
         },
         {
           "title": "Large size",
@@ -7560,8 +7560,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Toolbar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Toolbar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/toolbar.tsx",
       "props": [
         {
@@ -7602,7 +7602,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Toolbar } from '@annondeveloper/ui-kit'\n\n<Toolbar children=\"value\"/>"
+          "code": "import { Toolbar } from '@frontier-labs/ui-kit'\n\n<Toolbar children=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7621,8 +7621,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StatsGrid } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StatsGrid } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/stats-grid.tsx",
       "props": [
         {
@@ -7649,7 +7649,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StatsGrid } from '@annondeveloper/ui-kit'\n\n<StatsGrid children=\"value\"/>"
+          "code": "import { StatsGrid } from '@frontier-labs/ui-kit'\n\n<StatsGrid children=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7669,8 +7669,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CardGrid } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CardGrid } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/card-grid.tsx",
       "props": [
         {
@@ -7703,7 +7703,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CardGrid } from '@annondeveloper/ui-kit'\n\n<CardGrid children=\"value\"/>"
+          "code": "import { CardGrid } from '@frontier-labs/ui-kit'\n\n<CardGrid children=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7723,8 +7723,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ListLayout } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ListLayout } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/components/list-layout.tsx",
       "props": [
         {
@@ -7758,7 +7758,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ListLayout } from '@annondeveloper/ui-kit'\n\n<ListLayout children=\"value\"/>"
+          "code": "import { ListLayout } from '@frontier-labs/ui-kit'\n\n<ListLayout children=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7776,8 +7776,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ToastProvider } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ToastProvider } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/toast.tsx",
       "props": [
         {
@@ -7804,7 +7804,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ToastProvider } from '@annondeveloper/ui-kit'\n\n<ToastProvider />"
+          "code": "import { ToastProvider } from '@frontier-labs/ui-kit'\n\n<ToastProvider />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7824,8 +7824,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CommandBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CommandBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/command-bar.tsx",
       "props": [
         {
@@ -7876,7 +7876,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CommandBar } from '@annondeveloper/ui-kit'\n\n<CommandBar items={[]} open onOpenChange={value}/>"
+          "code": "import { CommandBar } from '@frontier-labs/ui-kit'\n\n<CommandBar items={[]} open onOpenChange={value}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7896,8 +7896,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NotificationStack } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NotificationStack } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/notification-stack.tsx",
       "props": [
         {
@@ -7954,7 +7954,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NotificationStack } from '@annondeveloper/ui-kit'\n\n<NotificationStack notifications={[]}/>"
+          "code": "import { NotificationStack } from '@frontier-labs/ui-kit'\n\n<NotificationStack notifications={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -7974,8 +7974,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StepWizard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StepWizard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/step-wizard.tsx",
       "props": [
         {
@@ -8027,7 +8027,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StepWizard } from '@annondeveloper/ui-kit'\n\n<StepWizard steps={[]}/>"
+          "code": "import { StepWizard } from '@frontier-labs/ui-kit'\n\n<StepWizard steps={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8047,8 +8047,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ScrollReveal } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ScrollReveal } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/scroll-reveal.tsx",
       "props": [
         {
@@ -8095,7 +8095,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ScrollReveal } from '@annondeveloper/ui-kit'\n\n<ScrollReveal>Content</ScrollReveal>"
+          "code": "import { ScrollReveal } from '@frontier-labs/ui-kit'\n\n<ScrollReveal>Content</ScrollReveal>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8115,8 +8115,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { InfiniteScroll } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { InfiniteScroll } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/infinite-scroll.tsx",
       "props": [
         {
@@ -8181,7 +8181,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { InfiniteScroll } from '@annondeveloper/ui-kit'\n\n<InfiniteScroll onLoadMore={value} hasMore>Content</InfiniteScroll>"
+          "code": "import { InfiniteScroll } from '@frontier-labs/ui-kit'\n\n<InfiniteScroll onLoadMore={value} hasMore>Content</InfiniteScroll>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8201,8 +8201,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ViewTransitionLink } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ViewTransitionLink } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/view-transition-link.tsx",
       "props": [
         {
@@ -8215,7 +8215,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ViewTransitionLink } from '@annondeveloper/ui-kit'\n\n<ViewTransitionLink />"
+          "code": "import { ViewTransitionLink } from '@frontier-labs/ui-kit'\n\n<ViewTransitionLink />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8236,8 +8236,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ResponsiveCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ResponsiveCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/responsive-card.tsx",
       "props": [
         {
@@ -8287,7 +8287,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ResponsiveCard } from '@annondeveloper/ui-kit'\n\n<ResponsiveCard title=\"Example\">Content</ResponsiveCard>"
+          "code": "import { ResponsiveCard } from '@frontier-labs/ui-kit'\n\n<ResponsiveCard title=\"Example\">Content</ResponsiveCard>"
         },
         {
           "title": "With horizontal variant",
@@ -8314,8 +8314,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DataTable } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DataTable } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/data-table.tsx",
       "props": [
         {
@@ -8622,7 +8622,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DataTable } from '@annondeveloper/ui-kit'\n\n<DataTable data={[]} columns={[]} page={1} pageSize={1} sortBy={[]} filters={value} search=\"value\"/>"
+          "code": "import { DataTable } from '@frontier-labs/ui-kit'\n\n<DataTable data={[]} columns={[]} page={1} pageSize={1} sortBy={[]} filters={value} search=\"value\"/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -8645,8 +8645,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DataTableSuggestions } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DataTableSuggestions } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/data-table-suggestions.tsx",
       "props": [
         {
@@ -8671,7 +8671,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DataTableSuggestions } from '@annondeveloper/ui-kit'\n\n<DataTableSuggestions insights={[]}/>"
+          "code": "import { DataTableSuggestions } from '@frontier-labs/ui-kit'\n\n<DataTableSuggestions insights={[]}/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -8692,8 +8692,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SmartTable } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SmartTable } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/smart-table.tsx",
       "props": [
         {
@@ -8730,7 +8730,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SmartTable } from '@annondeveloper/ui-kit'\n\n<SmartTable />"
+          "code": "import { SmartTable } from '@frontier-labs/ui-kit'\n\n<SmartTable />"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -8755,8 +8755,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TreeView } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TreeView } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/tree-view.tsx",
       "props": [
         {
@@ -8820,7 +8820,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TreeView } from '@annondeveloper/ui-kit'\n\n<TreeView nodes={[]}/>"
+          "code": "import { TreeView } from '@frontier-labs/ui-kit'\n\n<TreeView nodes={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8840,8 +8840,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SortableList } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SortableList } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/sortable-list.tsx",
       "props": [
         {
@@ -8887,7 +8887,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SortableList } from '@annondeveloper/ui-kit'\n\n<SortableList items={[]} onChange={[]}/>"
+          "code": "import { SortableList } from '@frontier-labs/ui-kit'\n\n<SortableList items={[]} onChange={[]}/>"
         }
       ],
       "accessibility": "Implements WAI-ARIA tabs pattern. Arrow key navigation. role=\"tablist\", role=\"tab\", role=\"tabpanel\" with aria-controls.",
@@ -8908,8 +8908,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { KanbanColumn } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { KanbanColumn } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/kanban-column.tsx",
       "props": [
         {
@@ -8971,7 +8971,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { KanbanColumn } from '@annondeveloper/ui-kit'\n\n<KanbanColumn title=\"Example\" cards={[]} columnId=\"value\"/>"
+          "code": "import { KanbanColumn } from '@frontier-labs/ui-kit'\n\n<KanbanColumn title=\"Example\" cards={[]} columnId=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -8991,8 +8991,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TruncatedText } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TruncatedText } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/truncated-text.tsx",
       "props": [
         {
@@ -9026,7 +9026,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TruncatedText } from '@annondeveloper/ui-kit'\n\n<TruncatedText text=\"value\"/>"
+          "code": "import { TruncatedText } from '@frontier-labs/ui-kit'\n\n<TruncatedText text=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -9046,8 +9046,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CopyBlock } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CopyBlock } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/copy-block.tsx",
       "props": [
         {
@@ -9098,7 +9098,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CopyBlock } from '@annondeveloper/ui-kit'\n\n<CopyBlock code=\"value\"/>"
+          "code": "import { CopyBlock } from '@frontier-labs/ui-kit'\n\n<CopyBlock code=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -9122,8 +9122,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DiffViewer } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DiffViewer } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/diff-viewer.tsx",
       "props": [
         {
@@ -9194,7 +9194,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DiffViewer } from '@annondeveloper/ui-kit'\n\n<DiffViewer oldValue=\"value\" newValue=\"value\"/>"
+          "code": "import { DiffViewer } from '@frontier-labs/ui-kit'\n\n<DiffViewer oldValue=\"value\" newValue=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -9218,8 +9218,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { EmptyState } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { EmptyState } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/empty-state.tsx",
       "props": [
         {
@@ -9269,7 +9269,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { EmptyState } from '@annondeveloper/ui-kit'\n\n<EmptyState title=\"Example\"/>"
+          "code": "import { EmptyState } from '@frontier-labs/ui-kit'\n\n<EmptyState title=\"Example\"/>"
         },
         {
           "title": "Large size",
@@ -9296,8 +9296,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { MetricCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { MetricCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/metric-card.tsx",
       "props": [
         {
@@ -9370,7 +9370,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { MetricCard } from '@annondeveloper/ui-kit'\n\n<MetricCard title=\"Example\" value=\"value\"/>"
+          "code": "import { MetricCard } from '@frontier-labs/ui-kit'\n\n<MetricCard title=\"Example\" value=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -9396,8 +9396,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Sparkline } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Sparkline } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/sparkline.tsx",
       "props": [
         {
@@ -9456,7 +9456,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Sparkline } from '@annondeveloper/ui-kit'\n\n<Sparkline data={[]}/>"
+          "code": "import { Sparkline } from '@frontier-labs/ui-kit'\n\n<Sparkline data={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -9480,8 +9480,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ThresholdGauge } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ThresholdGauge } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/threshold-gauge.tsx",
       "props": [
         {
@@ -9526,7 +9526,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ThresholdGauge } from '@annondeveloper/ui-kit'\n\n<ThresholdGauge value={0}/>"
+          "code": "import { ThresholdGauge } from '@frontier-labs/ui-kit'\n\n<ThresholdGauge value={0}/>"
         },
         {
           "title": "Large size",
@@ -9558,8 +9558,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { RingChart } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { RingChart } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/ring-chart.tsx",
       "props": [
         {
@@ -9625,7 +9625,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { RingChart } from '@annondeveloper/ui-kit'\n\n<RingChart value={0}/>"
+          "code": "import { RingChart } from '@frontier-labs/ui-kit'\n\n<RingChart value={0}/>"
         },
         {
           "title": "Large size",
@@ -9657,8 +9657,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CoreChart } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CoreChart } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/core-chart.tsx",
       "props": [
         {
@@ -9704,7 +9704,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CoreChart } from '@annondeveloper/ui-kit'\n\n<CoreChart cores={[]}/>"
+          "code": "import { CoreChart } from '@frontier-labs/ui-kit'\n\n<CoreChart cores={[]}/>"
         },
         {
           "title": "Large size",
@@ -9736,8 +9736,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StorageBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StorageBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/storage-bar.tsx",
       "props": [
         {
@@ -9783,7 +9783,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StorageBar } from '@annondeveloper/ui-kit'\n\n<StorageBar segments={[]} total={10}/>"
+          "code": "import { StorageBar } from '@frontier-labs/ui-kit'\n\n<StorageBar segments={[]} total={10}/>"
         },
         {
           "title": "Large size",
@@ -9813,8 +9813,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { RackDiagram } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { RackDiagram } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/rack-diagram.tsx",
       "props": [
         {
@@ -9860,7 +9860,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { RackDiagram } from '@annondeveloper/ui-kit'\n\n<RackDiagram units={0} devices={[]}/>"
+          "code": "import { RackDiagram } from '@frontier-labs/ui-kit'\n\n<RackDiagram units={0} devices={[]}/>"
         },
         {
           "title": "Large size",
@@ -9891,8 +9891,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { UtilizationBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { UtilizationBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/utilization-bar.tsx",
       "props": [
         {
@@ -9938,7 +9938,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { UtilizationBar } from '@annondeveloper/ui-kit'\n\n<UtilizationBar segments={[]}/>"
+          "code": "import { UtilizationBar } from '@frontier-labs/ui-kit'\n\n<UtilizationBar segments={[]}/>"
         },
         {
           "title": "Large size",
@@ -9968,8 +9968,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SeverityTimeline } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SeverityTimeline } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/severity-timeline.tsx",
       "props": [
         {
@@ -10008,7 +10008,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SeverityTimeline } from '@annondeveloper/ui-kit'\n\n<SeverityTimeline events={[]}/>"
+          "code": "import { SeverityTimeline } from '@frontier-labs/ui-kit'\n\n<SeverityTimeline events={[]}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -10031,8 +10031,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { LogViewer } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { LogViewer } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/log-viewer.tsx",
       "props": [
         {
@@ -10103,7 +10103,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { LogViewer } from '@annondeveloper/ui-kit'\n\n<LogViewer lines={[]}/>"
+          "code": "import { LogViewer } from '@frontier-labs/ui-kit'\n\n<LogViewer lines={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10123,8 +10123,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PortStatusGrid } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PortStatusGrid } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/port-status-grid.tsx",
       "props": [
         {
@@ -10163,7 +10163,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PortStatusGrid } from '@annondeveloper/ui-kit'\n\n<PortStatusGrid ports={[]}/>"
+          "code": "import { PortStatusGrid } from '@frontier-labs/ui-kit'\n\n<PortStatusGrid ports={[]}/>"
         },
         {
           "title": "Large size",
@@ -10194,8 +10194,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PipelineStage } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PipelineStage } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/pipeline-stage.tsx",
       "props": [
         {
@@ -10227,7 +10227,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PipelineStage } from '@annondeveloper/ui-kit'\n\n<PipelineStage stages={[]}/>"
+          "code": "import { PipelineStage } from '@frontier-labs/ui-kit'\n\n<PipelineStage stages={[]}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -10250,8 +10250,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { UptimeTracker } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { UptimeTracker } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/uptime-tracker.tsx",
       "props": [
         {
@@ -10283,7 +10283,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { UptimeTracker } from '@annondeveloper/ui-kit'\n\n<UptimeTracker days={[]}/>"
+          "code": "import { UptimeTracker } from '@frontier-labs/ui-kit'\n\n<UptimeTracker days={[]}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -10303,8 +10303,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TimeRangeSelector } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TimeRangeSelector } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/time-range-selector.tsx",
       "props": [
         {
@@ -10342,7 +10342,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TimeRangeSelector } from '@annondeveloper/ui-kit'\n\n<TimeRangeSelector />"
+          "code": "import { TimeRangeSelector } from '@frontier-labs/ui-kit'\n\n<TimeRangeSelector />"
         }
       ],
       "accessibility": "Implements WAI-ARIA combobox/listbox pattern. Arrow key navigation, type-ahead, aria-expanded, aria-activedescendant.",
@@ -10363,8 +10363,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { HeatmapCalendar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { HeatmapCalendar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/heatmap-calendar.tsx",
       "props": [
         {
@@ -10414,7 +10414,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { HeatmapCalendar } from '@annondeveloper/ui-kit'\n\n<HeatmapCalendar data={[]}/>"
+          "code": "import { HeatmapCalendar } from '@frontier-labs/ui-kit'\n\n<HeatmapCalendar data={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10434,8 +10434,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { StreamingText } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { StreamingText } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/streaming-text.tsx",
       "props": [
         {
@@ -10478,7 +10478,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { StreamingText } from '@annondeveloper/ui-kit'\n\n<StreamingText text=\"value\"/>"
+          "code": "import { StreamingText } from '@frontier-labs/ui-kit'\n\n<StreamingText text=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10501,8 +10501,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TypingIndicator } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TypingIndicator } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/typing-indicator.tsx",
       "props": [
         {
@@ -10535,7 +10535,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TypingIndicator } from '@annondeveloper/ui-kit'\n\n<TypingIndicator />"
+          "code": "import { TypingIndicator } from '@frontier-labs/ui-kit'\n\n<TypingIndicator />"
         },
         {
           "title": "Large size",
@@ -10564,8 +10564,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ConfidenceBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ConfidenceBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/confidence-bar.tsx",
       "props": [
         {
@@ -10608,7 +10608,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ConfidenceBar } from '@annondeveloper/ui-kit'\n\n<ConfidenceBar value={0}/>"
+          "code": "import { ConfidenceBar } from '@frontier-labs/ui-kit'\n\n<ConfidenceBar value={0}/>"
         },
         {
           "title": "Large size",
@@ -10638,8 +10638,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { LiveFeed } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { LiveFeed } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/live-feed.tsx",
       "props": [
         {
@@ -10708,7 +10708,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { LiveFeed } from '@annondeveloper/ui-kit'\n\n<LiveFeed items={[]}/>"
+          "code": "import { LiveFeed } from '@frontier-labs/ui-kit'\n\n<LiveFeed items={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10728,8 +10728,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { RealtimeValue } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { RealtimeValue } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/realtime-value.tsx",
       "props": [
         {
@@ -10774,7 +10774,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { RealtimeValue } from '@annondeveloper/ui-kit'\n\n<RealtimeValue value={0}/>"
+          "code": "import { RealtimeValue } from '@frontier-labs/ui-kit'\n\n<RealtimeValue value={0}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -10794,8 +10794,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ShimmerButton } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ShimmerButton } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/shimmer-button.tsx",
       "props": [
         {
@@ -10821,7 +10821,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ShimmerButton } from '@annondeveloper/ui-kit'\n\n<ShimmerButton />"
+          "code": "import { ShimmerButton } from '@frontier-labs/ui-kit'\n\n<ShimmerButton />"
         },
         {
           "title": "Large size",
@@ -10854,8 +10854,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { BorderBeam } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { BorderBeam } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/border-beam.tsx",
       "props": [
         {
@@ -10888,7 +10888,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { BorderBeam } from '@annondeveloper/ui-kit'\n\n<BorderBeam />"
+          "code": "import { BorderBeam } from '@frontier-labs/ui-kit'\n\n<BorderBeam />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10913,8 +10913,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { MeteorShower } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { MeteorShower } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/meteor-shower.tsx",
       "props": [
         {
@@ -10934,7 +10934,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { MeteorShower } from '@annondeveloper/ui-kit'\n\n<MeteorShower />"
+          "code": "import { MeteorShower } from '@frontier-labs/ui-kit'\n\n<MeteorShower />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10954,8 +10954,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { GlowCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { GlowCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/glow-card.tsx",
       "props": [
         {
@@ -10974,7 +10974,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { GlowCard } from '@annondeveloper/ui-kit'\n\n<GlowCard>Content</GlowCard>"
+          "code": "import { GlowCard } from '@frontier-labs/ui-kit'\n\n<GlowCard>Content</GlowCard>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -10999,8 +10999,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TextReveal } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TextReveal } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/text-reveal.tsx",
       "props": [
         {
@@ -11033,7 +11033,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TextReveal } from '@annondeveloper/ui-kit'\n\n<TextReveal text=\"value\"/>"
+          "code": "import { TextReveal } from '@frontier-labs/ui-kit'\n\n<TextReveal text=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11053,8 +11053,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { OrbitingCircles } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { OrbitingCircles } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/orbiting-circles.tsx",
       "props": [
         {
@@ -11088,7 +11088,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { OrbitingCircles } from '@annondeveloper/ui-kit'\n\n<OrbitingCircles />"
+          "code": "import { OrbitingCircles } from '@frontier-labs/ui-kit'\n\n<OrbitingCircles />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11108,8 +11108,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NumberTicker } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NumberTicker } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/number-ticker.tsx",
       "props": [
         {
@@ -11142,7 +11142,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NumberTicker } from '@annondeveloper/ui-kit'\n\n<NumberTicker value={0}/>"
+          "code": "import { NumberTicker } from '@frontier-labs/ui-kit'\n\n<NumberTicker value={0}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -11162,8 +11162,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Ripple } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Ripple } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/ripple.tsx",
       "props": [
         {
@@ -11189,7 +11189,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Ripple } from '@annondeveloper/ui-kit'\n\n<Ripple />"
+          "code": "import { Ripple } from '@frontier-labs/ui-kit'\n\n<Ripple />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11208,8 +11208,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { BackgroundBeams } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { BackgroundBeams } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/background-beams.tsx",
       "props": [
         {
@@ -11235,7 +11235,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { BackgroundBeams } from '@annondeveloper/ui-kit'\n\n<BackgroundBeams>Content</BackgroundBeams>"
+          "code": "import { BackgroundBeams } from '@frontier-labs/ui-kit'\n\n<BackgroundBeams>Content</BackgroundBeams>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11255,8 +11255,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { WavyBackground } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { WavyBackground } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/wavy-background.tsx",
       "props": [
         {
@@ -11289,7 +11289,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { WavyBackground } from '@annondeveloper/ui-kit'\n\n<WavyBackground>Content</WavyBackground>"
+          "code": "import { WavyBackground } from '@frontier-labs/ui-kit'\n\n<WavyBackground>Content</WavyBackground>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11309,8 +11309,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { BackgroundBoxes } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { BackgroundBoxes } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/background-boxes.tsx",
       "props": [
         {
@@ -11337,7 +11337,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { BackgroundBoxes } from '@annondeveloper/ui-kit'\n\n<BackgroundBoxes>Content</BackgroundBoxes>"
+          "code": "import { BackgroundBoxes } from '@frontier-labs/ui-kit'\n\n<BackgroundBoxes>Content</BackgroundBoxes>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11357,8 +11357,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SpotlightCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SpotlightCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/spotlight-card.tsx",
       "props": [
         {
@@ -11377,7 +11377,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SpotlightCard } from '@annondeveloper/ui-kit'\n\n<SpotlightCard>Content</SpotlightCard>"
+          "code": "import { SpotlightCard } from '@frontier-labs/ui-kit'\n\n<SpotlightCard>Content</SpotlightCard>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11400,8 +11400,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Card3D } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Card3D } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/card-3d.tsx",
       "props": [
         {
@@ -11435,7 +11435,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Card3D } from '@annondeveloper/ui-kit'\n\n<Card3D>Content</Card3D>"
+          "code": "import { Card3D } from '@frontier-labs/ui-kit'\n\n<Card3D>Content</Card3D>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11459,8 +11459,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { EvervaultCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { EvervaultCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/evervault-card.tsx",
       "props": [
         {
@@ -11473,7 +11473,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { EvervaultCard } from '@annondeveloper/ui-kit'\n\n<EvervaultCard>Content</EvervaultCard>"
+          "code": "import { EvervaultCard } from '@frontier-labs/ui-kit'\n\n<EvervaultCard>Content</EvervaultCard>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11493,8 +11493,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { FlipWords } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { FlipWords } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/flip-words.tsx",
       "props": [
         {
@@ -11520,7 +11520,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { FlipWords } from '@annondeveloper/ui-kit'\n\n<FlipWords words={[]}/>"
+          "code": "import { FlipWords } from '@frontier-labs/ui-kit'\n\n<FlipWords words={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11540,8 +11540,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { EncryptedText } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { EncryptedText } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/encrypted-text.tsx",
       "props": [
         {
@@ -11581,7 +11581,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { EncryptedText } from '@annondeveloper/ui-kit'\n\n<EncryptedText text=\"value\"/>"
+          "code": "import { EncryptedText } from '@frontier-labs/ui-kit'\n\n<EncryptedText text=\"value\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11601,8 +11601,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { HeroHighlight } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { HeroHighlight } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/hero-highlight.tsx",
       "props": [
         {
@@ -11615,7 +11615,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { HeroHighlight } from '@annondeveloper/ui-kit'\n\n<HeroHighlight>Content</HeroHighlight>"
+          "code": "import { HeroHighlight } from '@frontier-labs/ui-kit'\n\n<HeroHighlight>Content</HeroHighlight>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11635,8 +11635,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Highlight } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Highlight } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/hero-highlight.tsx",
       "props": [
         {
@@ -11655,7 +11655,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Highlight } from '@annondeveloper/ui-kit'\n\n<Highlight />"
+          "code": "import { Highlight } from '@frontier-labs/ui-kit'\n\n<Highlight />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11674,8 +11674,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TracingBeam } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TracingBeam } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/tracing-beam.tsx",
       "props": [
         {
@@ -11694,7 +11694,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TracingBeam } from '@annondeveloper/ui-kit'\n\n<TracingBeam>Content</TracingBeam>"
+          "code": "import { TracingBeam } from '@frontier-labs/ui-kit'\n\n<TracingBeam>Content</TracingBeam>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11714,8 +11714,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NetworkTrafficCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NetworkTrafficCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/network-traffic-card.tsx",
       "props": [
         {
@@ -11770,7 +11770,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NetworkTrafficCard } from '@annondeveloper/ui-kit'\n\n<NetworkTrafficCard title=\"Example\" traffic={value}/>"
+          "code": "import { NetworkTrafficCard } from '@frontier-labs/ui-kit'\n\n<NetworkTrafficCard title=\"Example\" traffic={value}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11791,8 +11791,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DashboardGrid } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DashboardGrid } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/dashboard-grid.tsx",
       "props": [
         {
@@ -11825,7 +11825,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DashboardGrid } from '@annondeveloper/ui-kit'\n\n<DashboardGrid />"
+          "code": "import { DashboardGrid } from '@frontier-labs/ui-kit'\n\n<DashboardGrid />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11849,8 +11849,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { GeoMap } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { GeoMap } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/geo-map.tsx",
       "props": [
         {
@@ -11912,7 +11912,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { GeoMap } from '@annondeveloper/ui-kit'\n\n<GeoMap points={[]}/>"
+          "code": "import { GeoMap } from '@frontier-labs/ui-kit'\n\n<GeoMap points={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -11935,8 +11935,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { UpstreamDashboard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { UpstreamDashboard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/upstream-dashboard.tsx",
       "props": [
         {
@@ -12040,7 +12040,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { UpstreamDashboard } from '@annondeveloper/ui-kit'\n\n<UpstreamDashboard links={[]}/>"
+          "code": "import { UpstreamDashboard } from '@frontier-labs/ui-kit'\n\n<UpstreamDashboard links={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -12064,8 +12064,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DensitySelector } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DensitySelector } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/density-selector.tsx",
       "props": [
         {
@@ -12104,7 +12104,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DensitySelector } from '@annondeveloper/ui-kit'\n\n<DensitySelector />"
+          "code": "import { DensitySelector } from '@frontier-labs/ui-kit'\n\n<DensitySelector />"
         },
         {
           "title": "Large size",
@@ -12135,8 +12135,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ColumnVisibilityToggle } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ColumnVisibilityToggle } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/column-visibility-toggle.tsx",
       "props": [
         {
@@ -12167,7 +12167,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ColumnVisibilityToggle } from '@annondeveloper/ui-kit'\n\n<ColumnVisibilityToggle columns={[]}/>"
+          "code": "import { ColumnVisibilityToggle } from '@frontier-labs/ui-kit'\n\n<ColumnVisibilityToggle columns={[]}/>"
         }
       ],
       "accessibility": "Uses role=\"switch\" with aria-checked. Toggled via Space/Enter. Meets 44px touch target minimum.",
@@ -12191,8 +12191,8 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CSVExportButton } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CSVExportButton } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/csv-export.tsx",
       "props": [
         {
@@ -12237,7 +12237,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CSVExportButton } from '@annondeveloper/ui-kit'\n\n<CSVExportButton data={[]}/>"
+          "code": "import { CSVExportButton } from '@frontier-labs/ui-kit'\n\n<CSVExportButton data={[]}/>"
         },
         {
           "title": "Large size",
@@ -12272,8 +12272,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TimeSeriesChart } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TimeSeriesChart } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/time-series-chart.tsx",
       "props": [
         {
@@ -12399,7 +12399,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TimeSeriesChart } from '@annondeveloper/ui-kit'\n\n<TimeSeriesChart series={[]}/>"
+          "code": "import { TimeSeriesChart } from '@frontier-labs/ui-kit'\n\n<TimeSeriesChart series={[]}/>"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",
@@ -12420,8 +12420,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { SwitchFaceplate } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { SwitchFaceplate } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/switch-faceplate.tsx",
       "props": [
         {
@@ -12473,7 +12473,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { SwitchFaceplate } from '@annondeveloper/ui-kit'\n\n<SwitchFaceplate ports={[]}/>"
+          "code": "import { SwitchFaceplate } from '@frontier-labs/ui-kit'\n\n<SwitchFaceplate ports={[]}/>"
         },
         {
           "title": "Large size",
@@ -12504,8 +12504,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { VlanBusBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { VlanBusBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/vlan-bus-bar.tsx",
       "props": [
         {
@@ -12621,7 +12621,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { VlanBusBar } from '@annondeveloper/ui-kit'\n\n<VlanBusBar vlans={[]} totalPorts={10}/>"
+          "code": "import { VlanBusBar } from '@frontier-labs/ui-kit'\n\n<VlanBusBar vlans={[]} totalPorts={10}/>"
         },
         {
           "title": "Large size",
@@ -12652,8 +12652,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NetworkInterfaceGrid } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NetworkInterfaceGrid } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/network-interface-grid.tsx",
       "props": [
         {
@@ -12712,7 +12712,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NetworkInterfaceGrid } from '@annondeveloper/ui-kit'\n\n<NetworkInterfaceGrid interfaces={[]}/>"
+          "code": "import { NetworkInterfaceGrid } from '@frontier-labs/ui-kit'\n\n<NetworkInterfaceGrid interfaces={[]}/>"
         },
         {
           "title": "Large size",
@@ -12744,8 +12744,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { JsonViewer } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { JsonViewer } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/json-viewer.tsx",
       "props": [
         {
@@ -12833,7 +12833,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { JsonViewer } from '@annondeveloper/ui-kit'\n\n<JsonViewer data={value}/>"
+          "code": "import { JsonViewer } from '@frontier-labs/ui-kit'\n\n<JsonViewer data={value}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -12857,8 +12857,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { CodeEditor } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { CodeEditor } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/code-editor.tsx",
       "props": [
         {
@@ -12957,7 +12957,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { CodeEditor } from '@annondeveloper/ui-kit'\n\n<CodeEditor />"
+          "code": "import { CodeEditor } from '@frontier-labs/ui-kit'\n\n<CodeEditor />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -12981,8 +12981,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Tour } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Tour } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/tour.tsx",
       "props": [
         {
@@ -13060,7 +13060,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Tour } from '@annondeveloper/ui-kit'\n\n<Tour steps={[]}/>"
+          "code": "import { Tour } from '@frontier-labs/ui-kit'\n\n<Tour steps={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -13079,8 +13079,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { RichTextEditor } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { RichTextEditor } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/rich-text-editor.tsx",
       "props": [
         {
@@ -13171,7 +13171,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { RichTextEditor } from '@annondeveloper/ui-kit'\n\n<RichTextEditor />"
+          "code": "import { RichTextEditor } from '@frontier-labs/ui-kit'\n\n<RichTextEditor />"
         },
         {
           "title": "Large size",
@@ -13199,8 +13199,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { Cropper } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { Cropper } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/cropper.tsx",
       "props": [
         {
@@ -13285,7 +13285,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { Cropper } from '@annondeveloper/ui-kit'\n\n<Cropper src=\"https://example.com\"/>"
+          "code": "import { Cropper } from '@frontier-labs/ui-kit'\n\n<Cropper src=\"https://example.com\"/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -13304,8 +13304,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DiskMountBar } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DiskMountBar } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/disk-mount-bar.tsx",
       "props": [
         {
@@ -13351,7 +13351,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DiskMountBar } from '@annondeveloper/ui-kit'\n\n<DiskMountBar mounts={[]}/>"
+          "code": "import { DiskMountBar } from '@frontier-labs/ui-kit'\n\n<DiskMountBar mounts={[]}/>"
         },
         {
           "title": "Large size",
@@ -13382,8 +13382,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ConnectionTestPanel } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ConnectionTestPanel } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/connection-test-panel.tsx",
       "props": [
         {
@@ -13435,7 +13435,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ConnectionTestPanel } from '@annondeveloper/ui-kit'\n\n<ConnectionTestPanel steps={[]}/>"
+          "code": "import { ConnectionTestPanel } from '@frontier-labs/ui-kit'\n\n<ConnectionTestPanel steps={[]}/>"
         },
         {
           "title": "Large size",
@@ -13463,8 +13463,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PropertyList } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PropertyList } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/property-list.tsx",
       "props": [
         {
@@ -13503,7 +13503,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PropertyList } from '@annondeveloper/ui-kit'\n\n<PropertyList items={[]}/>"
+          "code": "import { PropertyList } from '@frontier-labs/ui-kit'\n\n<PropertyList items={[]}/>"
         },
         {
           "title": "Large size",
@@ -13530,8 +13530,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { EntityCard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { EntityCard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/entity-card.tsx",
       "props": [
         {
@@ -13605,7 +13605,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { EntityCard } from '@annondeveloper/ui-kit'\n\n<EntityCard name=\"field-name\"/>"
+          "code": "import { EntityCard } from '@frontier-labs/ui-kit'\n\n<EntityCard name=\"field-name\"/>"
         },
         {
           "title": "Large size",
@@ -13632,8 +13632,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ServiceStrip } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ServiceStrip } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/service-strip.tsx",
       "props": [
         {
@@ -13671,7 +13671,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ServiceStrip } from '@annondeveloper/ui-kit'\n\n<ServiceStrip services={[]}/>"
+          "code": "import { ServiceStrip } from '@frontier-labs/ui-kit'\n\n<ServiceStrip services={[]}/>"
         },
         {
           "title": "Large size",
@@ -13697,8 +13697,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { TopologyGraph } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TopologyGraph } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/topology-graph.tsx",
       "props": [
         {
@@ -13811,7 +13811,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { TopologyGraph } from '@annondeveloper/ui-kit'\n\n<TopologyGraph nodes={[]} edges={[]}/>"
+          "code": "import { TopologyGraph } from '@frontier-labs/ui-kit'\n\n<TopologyGraph nodes={[]} edges={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -13834,8 +13834,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PipelineDAG } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PipelineDAG } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/pipeline-dag.tsx",
       "props": [
         {
@@ -13906,7 +13906,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PipelineDAG } from '@annondeveloper/ui-kit'\n\n<PipelineDAG nodes={[]} edges={[]}/>"
+          "code": "import { PipelineDAG } from '@frontier-labs/ui-kit'\n\n<PipelineDAG nodes={[]} edges={[]}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -13928,8 +13928,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DashboardTemplate } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DashboardTemplate } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/dashboard-template.tsx",
       "props": [
         {
@@ -14094,7 +14094,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DashboardTemplate } from '@annondeveloper/ui-kit'\n\n<DashboardTemplate />"
+          "code": "import { DashboardTemplate } from '@frontier-labs/ui-kit'\n\n<DashboardTemplate />"
         },
         {
           "title": "With compact variant",
@@ -14125,8 +14125,8 @@
         "lite",
         "premium"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { PluginDashboard } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { PluginDashboard } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [
         {
@@ -14182,7 +14182,7 @@
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { PluginDashboard } from '@annondeveloper/ui-kit'\n\n<PluginDashboard config={value} data={value}/>"
+          "code": "import { PluginDashboard } from '@frontier-labs/ui-kit'\n\n<PluginDashboard config={value} data={value}/>"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14204,14 +14204,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { POSTGRES_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { POSTGRES_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { POSTGRES_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<POSTGRES_DASHBOARD />"
+          "code": "import { POSTGRES_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<POSTGRES_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14228,14 +14228,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { MYSQL_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { MYSQL_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { MYSQL_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<MYSQL_DASHBOARD />"
+          "code": "import { MYSQL_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<MYSQL_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14252,14 +14252,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { REDIS_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { REDIS_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { REDIS_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<REDIS_DASHBOARD />"
+          "code": "import { REDIS_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<REDIS_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14276,14 +14276,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { KAFKA_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { KAFKA_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { KAFKA_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<KAFKA_DASHBOARD />"
+          "code": "import { KAFKA_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<KAFKA_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14300,14 +14300,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { KUBERNETES_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { KUBERNETES_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { KUBERNETES_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<KUBERNETES_DASHBOARD />"
+          "code": "import { KUBERNETES_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<KUBERNETES_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14324,14 +14324,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { DOCKER_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { DOCKER_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { DOCKER_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<DOCKER_DASHBOARD />"
+          "code": "import { DOCKER_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<DOCKER_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14348,14 +14348,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { NGINX_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { NGINX_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { NGINX_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<NGINX_DASHBOARD />"
+          "code": "import { NGINX_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<NGINX_DASHBOARD />"
         }
       ],
       "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
@@ -14372,14 +14372,14 @@
       "tier": [
         "standard"
       ],
-      "importPath": "@annondeveloper/ui-kit",
-      "importStatement": "import { ELASTICSEARCH_DASHBOARD } from '@annondeveloper/ui-kit'",
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { ELASTICSEARCH_DASHBOARD } from '@frontier-labs/ui-kit'",
       "sourceFile": "src/domain/plugin-dashboard.tsx",
       "props": [],
       "examples": [
         {
           "title": "Basic usage",
-          "code": "import { ELASTICSEARCH_DASHBOARD } from '@annondeveloper/ui-kit'\n\n<ELASTICSEARCH_DASHBOARD />"
+          "code": "import { ELASTICSEARCH_DASHBOARD } from '@frontier-labs/ui-kit'\n\n<ELASTICSEARCH_DASHBOARD />"
         }
       ],
       "accessibility": "Uses native form elements. Label association via aria-labelledby or <label>. Error states use aria-invalid and aria-describedby.",

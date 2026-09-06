@@ -662,9 +662,9 @@ const COLUMNS: Columns[] = ['auto', '1', '2', '3', '4']
 const GAPS: Gap[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DashboardGrid } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DashboardGrid } from '@annondeveloper/ui-kit'",
-  premium: "import { DashboardGrid } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DashboardGrid } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DashboardGrid } from '@frontier-labs/ui-kit'",
+  premium: "import { DashboardGrid } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -776,7 +776,7 @@ function generateReactCode(
     if (gap !== 'md') props.push(`  gap="${gap}"`)
     if (motion !== 3) props.push(`  motion={${motion}}`)
 
-    return `${IMPORT_STRING}\nimport type { DashboardGroup } from '@annondeveloper/ui-kit'\n\nconst groups: DashboardGroup[] = [\n  {\n    id: 'traffic',\n    title: 'Traffic',\n    summary: <span>1.2M total</span>,\n    items: [\n      <MetricCard title="Page Views" value="845K" />,\n      <MetricCard title="Visitors" value="312K" />,\n    ],\n  },\n  {\n    id: 'revenue',\n    title: 'Revenue',\n    items: [\n      <MetricCard title="MRR" value="$42.5K" />,\n      <MetricCard title="ARR" value="$510K" />,\n    ],\n  },\n]\n\n<DashboardGrid\n${props.join('\n')}\n/>`
+    return `${IMPORT_STRING}\nimport type { DashboardGroup } from '@frontier-labs/ui-kit'\n\nconst groups: DashboardGroup[] = [\n  {\n    id: 'traffic',\n    title: 'Traffic',\n    summary: <span>1.2M total</span>,\n    items: [\n      <MetricCard title="Page Views" value="845K" />,\n      <MetricCard title="Visitors" value="312K" />,\n    ],\n  },\n  {\n    id: 'revenue',\n    title: 'Revenue',\n    items: [\n      <MetricCard title="MRR" value="$42.5K" />,\n      <MetricCard title="ARR" value="$510K" />,\n    ],\n  },\n]\n\n<DashboardGrid\n${props.join('\n')}\n/>`
   }
 
   const props: string[] = []
@@ -793,7 +793,7 @@ function generateHtmlCode(columns: Columns, gap: Gap): string {
   if (columns !== 'auto') attrs.push(`data-columns="${columns}"`)
   attrs.push(`data-gap="${gap}"`)
 
-  return `<!-- DashboardGrid layout -->\n<div ${attrs.join(' ')}>\n  <div class="ui-dashboard-grid__grid">\n    <div class="ui-dashboard-grid__item">\n      <!-- Your card component -->\n    </div>\n    <div class="ui-dashboard-grid__item">\n      <!-- Your card component -->\n    </div>\n  </div>\n</div>\n\n<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/dashboard-grid.css">`
+  return `<!-- DashboardGrid layout -->\n<div ${attrs.join(' ')}>\n  <div class="ui-dashboard-grid__grid">\n    <div class="ui-dashboard-grid__item">\n      <!-- Your card component -->\n    </div>\n    <div class="ui-dashboard-grid__item">\n      <!-- Your card component -->\n    </div>\n  </div>\n</div>\n\n<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/dashboard-grid.css">`
 }
 
 function generateVueCode(columns: Columns, gap: Gap): string {
@@ -801,13 +801,13 @@ function generateVueCode(columns: Columns, gap: Gap): string {
   if (columns !== 'auto') props.push(`  :columns="${columns}"`)
   if (gap !== 'md') props.push(`  gap="${gap}"`)
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
-  return `<template>\n  <DashboardGrid${propsStr}>\n    <MetricCard title="Users" value="1,234" />\n    <MetricCard title="Revenue" value="$42.5K" />\n  </DashboardGrid>\n</template>\n\n<script setup>\nimport { DashboardGrid } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n  <DashboardGrid${propsStr}>\n    <MetricCard title="Users" value="1,234" />\n    <MetricCard title="Revenue" value="$42.5K" />\n  </DashboardGrid>\n</template>\n\n<script setup>\nimport { DashboardGrid } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(columns: Columns, gap: Gap): string {
   const attrs = [`class="ui-dashboard-grid"`, `data-gap="${gap}"`]
   if (columns !== 'auto') attrs.push(`data-columns="${columns}"`)
-  return `<!-- Angular — CSS class approach -->\n<div ${attrs.join(' ')}>\n  <div class="ui-dashboard-grid__grid">\n    <div class="ui-dashboard-grid__item" *ngFor="let card of cards">\n      <app-metric-card [title]="card.title" [value]="card.value" />\n    </div>\n  </div>\n</div>\n\n@import '@annondeveloper/ui-kit/css/components/dashboard-grid.css';`
+  return `<!-- Angular — CSS class approach -->\n<div ${attrs.join(' ')}>\n  <div class="ui-dashboard-grid__grid">\n    <div class="ui-dashboard-grid__item" *ngFor="let card of cards">\n      <app-metric-card [title]="card.title" [value]="card.value" />\n    </div>\n  </div>\n</div>\n\n@import '@frontier-labs/ui-kit/css/components/dashboard-grid.css';`
 }
 
 function generateSvelteCode(columns: Columns, gap: Gap): string {
@@ -815,7 +815,7 @@ function generateSvelteCode(columns: Columns, gap: Gap): string {
   if (columns !== 'auto') props.push(`  columns={${columns}}`)
   if (gap !== 'md') props.push(`  gap="${gap}"`)
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
-  return `<script>\n  import { DashboardGrid } from '@annondeveloper/ui-kit';\n</script>\n\n<DashboardGrid${propsStr}>\n  <MetricCard title="Users" value="1,234" />\n  <MetricCard title="Revenue" value="$42.5K" />\n</DashboardGrid>`
+  return `<script>\n  import { DashboardGrid } from '@frontier-labs/ui-kit';\n</script>\n\n<DashboardGrid${propsStr}>\n  <MetricCard title="Users" value="1,234" />\n  <MetricCard title="Revenue" value="$42.5K" />\n</DashboardGrid>`
 }
 
 // ─── Playground Section ───────────────────────────────────────────────────────
@@ -1215,7 +1215,7 @@ export default function DashboardGridPage() {
               CSS-only grid layout. No groups, no collapsible sections, no motion, no summary aggregation.
             </p>
             <div className="dashboard-grid-page__tier-import">
-              import {'{'} DashboardGrid {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DashboardGrid {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="dashboard-grid-page__tier-preview">
               <LiteDashboardGrid columns={2} gap="sm">
@@ -1249,7 +1249,7 @@ export default function DashboardGridPage() {
               container queries, motion, error boundary, and accessibility.
             </p>
             <div className="dashboard-grid-page__tier-import">
-              import {'{'} DashboardGrid {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DashboardGrid {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="dashboard-grid-page__size-breakdown">
               <div className="dashboard-grid-page__size-row">
@@ -1276,7 +1276,7 @@ export default function DashboardGridPage() {
               Glass morphism cells, aurora glow on drag, spring-snap positioning, and staggered entrance animation.
             </p>
             <div className="dashboard-grid-page__tier-import">
-              import {'{'} DashboardGrid {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DashboardGrid {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="dashboard-grid-page__tier-preview">
               <PremiumDashboardGrid columns={2} gap="sm">
@@ -1416,13 +1416,13 @@ export default function DashboardGridPage() {
         <h2 className="dashboard-grid-page__section-title"><a href="#source">Source</a></h2>
         <p className="dashboard-grid-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="dashboard-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/dashboard-grid.tsx (Standard)
           </a>
-          <a className="dashboard-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/dashboard-grid.tsx (Lite)
           </a>
-          <a className="dashboard-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/dashboard-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/dashboard-grid.tsx (Premium)
           </a>
         </div>

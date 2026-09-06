@@ -873,9 +873,9 @@ const TIERS: { id: Tier; label: string }[] = [
 const ANIMATION_STYLES: AnimationStyle[] = ['smooth', 'spring', 'bounce', 'none']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Button } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Button } from '@annondeveloper/ui-kit'",
-  premium: "import { Button } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Button } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Button } from '@frontier-labs/ui-kit'",
+  premium: "import { Button } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -1050,12 +1050,12 @@ function generateHtmlExport(tier: Tier, variant: Variant, size: Size, label: str
   const className = tier === 'lite' ? 'ui-lite-button' : 'ui-button'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/button.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/button.css';`
   const cssCode = generateLiteCss(variant, size, brandColor)
 
-  return `<!-- Button — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/button.css'}">
+  return `<!-- Button — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/button.css'}">
 
 <button class="${className}" data-variant="${variant}" data-size="${size}">
   ${label}
@@ -1085,7 +1085,7 @@ function generateReactCode(
   animationStyle: AnimationStyle,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = (showIcon || showIconEnd) ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = (showIcon || showIconEnd) ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = []
   if (variant !== 'primary') props.push(`  variant="${variant}"`)
@@ -1108,10 +1108,10 @@ function generateVueCode(tier: Tier, variant: Variant, size: Size, label: string
   if (tier === 'lite') {
     const attrs: string[] = [`class="ui-lite-button"`, `data-variant="${variant}"`, `data-size="${size}"`]
     if (disabled) attrs.push(':disabled="true"')
-    return `<template>\n  <button ${attrs.join(' ')}>\n    ${label}\n  </button>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <button ${attrs.join(' ')}>\n    ${label}\n  </button>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (variant !== 'primary') attrs.push(`  variant="${variant}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -1222,9 +1222,9 @@ function PlaygroundSection({ tier: tierProp, brandColor }: { tier: Tier; brandCo
     if (tier === 'lite') {
       const attrs = [`class="ui-lite-button"`, `data-variant="${variant}"`, `data-size="${size}"`]
       if (disabled) attrs.push('[disabled]="true"')
-      return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  ${label}\n</button>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+      return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  ${label}\n</button>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
     }
-    const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+    const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
     const props = [`variant="${variant}"`]
     if (size !== 'md') props.push(`size="${size}"`)
     if (disabled) props.push('[disabled]="true"')
@@ -1233,9 +1233,9 @@ function PlaygroundSection({ tier: tierProp, brandColor }: { tier: Tier; brandCo
 
   const svelteCode = useMemo(() => {
     if (tier === 'lite') {
-      return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-lite-button"\n  data-variant="${variant}"\n  data-size="${size}"\n  ${disabled ? 'disabled' : ''}\n>\n  ${label}\n</button>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+      return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-lite-button"\n  data-variant="${variant}"\n  data-size="${size}"\n  ${disabled ? 'disabled' : ''}\n>\n  ${label}\n</button>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
     }
-    const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+    const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
     return `<script>\n  import { Button } from '${importPath}';\n</script>\n\n<Button\n  variant="${variant}"\n  size="${size}"\n  ${disabled ? 'disabled' : ''}\n>\n  ${label}\n</Button>`
   }, [variant, size, label, disabled, tier])
 
@@ -1837,7 +1837,7 @@ export default function ButtonPage() {
               No loading spinner, no motion, no icon slots.
             </p>
             <div className="button-page__tier-import">
-              import {'{'} Button {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Button {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="button-page__tier-preview">
               <LiteButton variant="primary">Lite Button</LiteButton>
@@ -1868,7 +1868,7 @@ export default function ButtonPage() {
               motion levels, click debouncing, and accessibility.
             </p>
             <div className="button-page__tier-import">
-              import {'{'} Button {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Button {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="button-page__tier-preview">
               <Button variant="primary" icon={<Icon name="zap" size="sm" />}>Standard</Button>
@@ -1899,7 +1899,7 @@ export default function ButtonPage() {
               click ripple, particle burst, and entrance animation.
             </p>
             <div className="button-page__tier-import">
-              import {'{'} Button {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Button {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="button-page__tier-preview">
               <PremiumButton variant="primary" icon={<Icon name="zap" size="sm" />}>Premium</PremiumButton>
@@ -2041,13 +2041,13 @@ export default function ButtonPage() {
         <h2 className="button-page__section-title"><a href="#source">Source</a></h2>
         <p className="button-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/button.tsx (Standard)
           </a>
-          <a className="button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/button.tsx (Lite)
           </a>
-          <a className="button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/button.tsx (Premium)
           </a>
         </div>

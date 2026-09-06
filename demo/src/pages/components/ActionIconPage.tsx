@@ -32,9 +32,9 @@ type Size = (typeof SIZES)[number]
 type Radius = (typeof RADII)[number]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ActionIcon } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ActionIcon } from '@annondeveloper/ui-kit'",
-  premium: "import { ActionIcon } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ActionIcon } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ActionIcon } from '@frontier-labs/ui-kit'",
+  premium: "import { ActionIcon } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -609,7 +609,7 @@ function generateReactCode(
   iconName: string,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = "\nimport { Icon } from '@annondeveloper/ui-kit'"
+  const iconImport = "\nimport { Icon } from '@frontier-labs/ui-kit'"
 
   const props: string[] = [`  aria-label="Action"`]
   if (variant !== 'subtle') props.push(`  variant="${variant}"`)
@@ -647,8 +647,8 @@ function generateHtmlCode(
   ]
   if (disabled) attrs.push('disabled')
 
-  return `<!-- ActionIcon — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cssPath}">
+  return `<!-- ActionIcon — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cssPath}">
 
 <button ${attrs.join('\n       ')}>
   <svg><!-- ${iconName} icon SVG --></svg>
@@ -666,10 +666,10 @@ function generateVueCode(
   if (tier === 'lite') {
     const attrs = [`class="ui-action-icon"`, `data-variant="${variant}"`, `data-color="${color}"`, `data-size="${size}"`, `data-radius="${radius}"`, `aria-label="Action"`, `type="button"`]
     if (disabled) attrs.push(':disabled="true"')
-    return `<template>\n  <button ${attrs.join(' ')}>\n    <svg><!-- icon --></svg>\n  </button>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <button ${attrs.join(' ')}>\n    <svg><!-- icon --></svg>\n  </button>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  aria-label="Action"`]
   if (variant !== 'subtle') attrs.push(`  variant="${variant}"`)
   if (color !== 'default') attrs.push(`  color="${color}"`)
@@ -677,7 +677,7 @@ function generateVueCode(
   if (radius !== 'md') attrs.push(`  radius="${radius}"`)
   if (disabled) attrs.push('  disabled')
 
-  return `<template>\n  <ActionIcon\n  ${attrs.join('\n  ')}\n  >\n    <Icon name="settings" size="sm" />\n  </ActionIcon>\n</template>\n\n<script setup>\nimport { ActionIcon } from '${importPath}'\nimport { Icon } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n  <ActionIcon\n  ${attrs.join('\n  ')}\n  >\n    <Icon name="settings" size="sm" />\n  </ActionIcon>\n</template>\n\n<script setup>\nimport { ActionIcon } from '${importPath}'\nimport { Icon } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(
@@ -691,9 +691,9 @@ function generateAngularCode(
   if (tier === 'lite') {
     const attrs = [`class="ui-action-icon"`, `data-variant="${variant}"`, `data-color="${color}"`, `data-size="${size}"`, `data-radius="${radius}"`, `aria-label="Action"`, `type="button"`]
     if (disabled) attrs.push('[disabled]="true"')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  <svg><!-- icon --></svg>\n</button>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  <svg><!-- icon --></svg>\n</button>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<button\n  class="ui-action-icon"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  data-radius="${radius}"\n  aria-label="Action"\n  type="button"\n  ${disabled ? '[disabled]="true"' : ''}\n>\n  <svg><!-- icon --></svg>\n</button>\n\n/* Import component CSS */\n@import '${importPath}/css/components/action-icon.css';`
 }
 
@@ -706,10 +706,10 @@ function generateSvelteCode(
   disabled: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-action-icon"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  data-radius="${radius}"\n  aria-label="Action"\n  type="button"\n  ${disabled ? 'disabled' : ''}\n>\n  <svg><!-- icon --></svg>\n</button>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-action-icon"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  data-radius="${radius}"\n  aria-label="Action"\n  type="button"\n  ${disabled ? 'disabled' : ''}\n>\n  <svg><!-- icon --></svg>\n</button>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
-  return `<script>\n  import { ActionIcon } from '${importPath}';\n  import { Icon } from '@annondeveloper/ui-kit';\n</script>\n\n<ActionIcon\n  variant="${variant}"\n  color="${color}"\n  size="${size}"\n  radius="${radius}"\n  aria-label="Action"\n  ${disabled ? 'disabled' : ''}\n>\n  <Icon name="settings" size="sm" />\n</ActionIcon>`
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
+  return `<script>\n  import { ActionIcon } from '${importPath}';\n  import { Icon } from '@frontier-labs/ui-kit';\n</script>\n\n<ActionIcon\n  variant="${variant}"\n  color="${color}"\n  size="${size}"\n  radius="${radius}"\n  aria-label="Action"\n  ${disabled ? 'disabled' : ''}\n>\n  <Icon name="settings" size="sm" />\n</ActionIcon>`
 }
 
 // ─── Playground Section ──────────────────────────────────────────────────────
@@ -1064,7 +1064,7 @@ export default function ActionIconPage() {
               CSS-only wrapper. Zero JavaScript beyond forwardRef. No loading, no motion.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} ActionIcon {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ActionIcon {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteActionIcon variant="filled" color="primary" aria-label="Lite demo">
@@ -1099,7 +1099,7 @@ export default function ActionIconPage() {
               Full-featured with loading state, motion levels, spring bounce, and accessibility.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} ActionIcon {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ActionIcon {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <ActionIcon variant="filled" color="primary" aria-label="Standard demo">
@@ -1134,7 +1134,7 @@ export default function ActionIconPage() {
               Everything in Standard plus aurora glow on focus, spring hover scale, and press depression.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} ActionIcon {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ActionIcon {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumActionIcon variant="filled" color="primary" aria-label="Premium demo">
@@ -1287,13 +1287,13 @@ export default function ActionIconPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/action-icon.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/action-icon.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/action-icon.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/action-icon.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/action-icon.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/action-icon.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/action-icon.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/action-icon.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/action-icon.tsx (Premium)
           </a>
         </div>

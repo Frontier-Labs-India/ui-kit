@@ -9,7 +9,7 @@ The Choreography system lets you define a **sequence** of animation steps that p
 ## Quick Start
 
 ```tsx
-import { Choreography, choreography } from '@annondeveloper/ui-kit'
+import { Choreography, choreography } from '@frontier-labs/ui-kit'
 
 const intro = choreography({
   sequence: [
@@ -87,7 +87,7 @@ Use `getChoreographyPreset(name, selector, options?)` to get a ready-made `Chore
 | `focus-in` | Scale in, then fade children | `start` |
 
 ```ts
-import { getChoreographyPreset, Choreography } from '@annondeveloper/ui-kit'
+import { getChoreographyPreset, Choreography } from '@frontier-labs/ui-kit'
 
 const config = getChoreographyPreset('cascade', '.card-grid > *', {
   duration: 500,
@@ -104,7 +104,7 @@ Trigger a choreography sequence when an element scrolls into view.
 
 ```tsx
 import { useRef } from 'react'
-import { useScrollChoreography } from '@annondeveloper/ui-kit'
+import { useScrollChoreography } from '@frontier-labs/ui-kit'
 
 function FeatureSection() {
   const ref = useRef<HTMLDivElement>(null)

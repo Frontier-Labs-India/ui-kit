@@ -694,9 +694,9 @@ const MAX_SIZE_MAP: Record<MaxSizeOption, number | undefined> = {
 }
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { FileUpload } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { FileUpload } from '@annondeveloper/ui-kit'",
-  premium: "import { FileUpload } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { FileUpload } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { FileUpload } from '@frontier-labs/ui-kit'",
+  premium: "import { FileUpload } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -831,12 +831,12 @@ function generateHtmlCode(tier: Tier, acceptType: AcceptType): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<!-- FileUpload — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/file-upload.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/file-upload.css">
 
 <div class="ui-file-upload">
   <span class="ui-file-upload__label">Upload files</span>
@@ -860,7 +860,7 @@ function generateVueCode(tier: Tier, acceptType: AcceptType, multiple: boolean):
 </template>
 
 <script setup>
-import { FileUpload } from '@annondeveloper/ui-kit/lite'
+import { FileUpload } from '@frontier-labs/ui-kit/lite'
 </script>`
   }
 
@@ -878,7 +878,7 @@ ${attrs.join('\n')}
 </template>
 
 <script setup>
-import { FileUpload } from '@annondeveloper/ui-kit'
+import { FileUpload } from '@frontier-labs/ui-kit'
 
 function handleFiles(files) {
   console.log('Selected:', files)
@@ -897,7 +897,7 @@ function generateAngularCode(tier: Tier, acceptType: AcceptType): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier (CSS-only approach) -->
@@ -923,13 +923,13 @@ function generateAngularCode(tier: Tier, acceptType: AcceptType): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/file-upload.css';`
+@import '@frontier-labs/ui-kit/css/components/file-upload.css';`
 }
 
 function generateSvelteCode(tier: Tier, acceptType: AcceptType, multiple: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { FileUpload } from '@annondeveloper/ui-kit/lite';
+  import { FileUpload } from '@frontier-labs/ui-kit/lite';
 </script>
 
 <FileUpload
@@ -939,7 +939,7 @@ function generateSvelteCode(tier: Tier, acceptType: AcceptType, multiple: boolea
   }
 
   return `<script>
-  import { FileUpload } from '@annondeveloper/ui-kit';
+  import { FileUpload } from '@frontier-labs/ui-kit';
 
   function handleFiles(files) {
     console.log('Selected:', files);
@@ -1435,7 +1435,7 @@ export default function FileUploadPage() {
               no validation, no animation.
             </p>
             <div className="file-upload-page__tier-import">
-              import {'{'} FileUpload {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} FileUpload {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="file-upload-page__tier-preview">
               <Button variant="secondary" size="sm">Lite Upload</Button>
@@ -1466,7 +1466,7 @@ export default function FileUploadPage() {
               image thumbnails, file list, remove buttons, and motion.
             </p>
             <div className="file-upload-page__tier-import">
-              import {'{'} FileUpload {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} FileUpload {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="file-upload-page__tier-preview">
               <Button variant="primary" size="sm">Standard Upload</Button>
@@ -1496,7 +1496,7 @@ export default function FileUploadPage() {
               Aurora glow on drag-over, spring-bounce on file add, and shimmer sweep across the dropzone.
             </p>
             <div className="file-upload-page__tier-import">
-              import {'{'} FileUpload {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} FileUpload {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="file-upload-page__tier-preview">
               <Button variant="primary" size="sm">Premium Upload</Button>
@@ -1595,7 +1595,7 @@ export default function FileUploadPage() {
         </h2>
         <a
           className="file-upload-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/file-upload.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/file-upload.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

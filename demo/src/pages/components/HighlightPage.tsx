@@ -487,9 +487,9 @@ const SAMPLE_TEXT =
 // ─── Code Generators ────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Highlight } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Highlight } from '@annondeveloper/ui-kit'",
-  premium: "import { Highlight } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Highlight } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Highlight } from '@frontier-labs/ui-kit'",
+  premium: "import { Highlight } from '@frontier-labs/ui-kit/premium'",
 }
 
 function generateReactCode(
@@ -532,9 +532,9 @@ function generateVueCode(
   color: string,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Vue — Lite tier (CSS-only mark elements) -->\n<template>\n  <p>\n    <mark v-for="segment in segments" :key="segment.id"\n      :style="{ background: '${color || 'oklch(85% 0.15 80 / 0.5)'}' }"\n    >{{ segment.text }}</mark>\n  </p>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Vue — Lite tier (CSS-only mark elements) -->\n<template>\n  <p>\n    <mark v-for="segment in segments" :key="segment.id"\n      :style="{ background: '${color || 'oklch(85% 0.15 80 / 0.5)'}' }"\n    >{{ segment.text }}</mark>\n  </p>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`  highlight="${terms}"`]
   if (caseSensitive) props.push('  case-sensitive')
   if (color) props.push(`  color="${color}"`)
@@ -546,7 +546,7 @@ function generateAngularCode(
   terms: string,
   color: string,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier.charAt(0).toUpperCase() + tier.slice(1)} tier -->\n<!-- Use the CSS-only approach with mark elements -->\n<p>\n  <ng-container *ngFor="let segment of segments">\n    <mark *ngIf="segment.match" [style.background]="'${color || 'oklch(85% 0.15 80 / 0.5)'}'">\n      {{ segment.text }}\n    </mark>\n    <span *ngIf="!segment.match">{{ segment.text }}</span>\n  </ng-container>\n</p>\n\n/* Import CSS */\n@import '${importPath}/css/components/highlight.css';`
 }
 
@@ -557,9 +557,9 @@ function generateSvelteCode(
   color: string,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<p>\n  {#each segments as segment}\n    {#if segment.match}\n      <mark style="background: ${color || 'oklch(85% 0.15 80 / 0.5)'}">{segment.text}</mark>\n    {:else}\n      {segment.text}\n    {/if}\n  {/each}\n</p>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<p>\n  {#each segments as segment}\n    {#if segment.match}\n      <mark style="background: ${color || 'oklch(85% 0.15 80 / 0.5)'}">{segment.text}</mark>\n    {:else}\n      {segment.text}\n    {/if}\n  {/each}\n</p>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`  highlight="${terms}"`]
   if (caseSensitive) props.push('  caseSensitive')
   if (color) props.push(`  color="${color}"`)
@@ -722,7 +722,7 @@ export default function HighlightPage() {
               Use when only the Lite bundle is imported.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Highlight {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Highlight {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteHighlight highlight="Lite">Lite re-export — same as Standard.</LiteHighlight>
@@ -740,7 +740,7 @@ export default function HighlightPage() {
               <code>{'<mark>'}</code> with configurable color and className. Supports arrays of terms.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Highlight {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Highlight {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <Highlight highlight="Standard">Standard highlight component.</Highlight>
@@ -758,7 +758,7 @@ export default function HighlightPage() {
               so Premium adds no additional layer.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Highlight {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Highlight {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumHighlight highlight="Premium">Premium re-export — same as Standard.</PremiumHighlight>
@@ -958,13 +958,13 @@ export default function HighlightPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/highlight.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/highlight.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/highlight.tsx (Premium)
           </a>
         </div>

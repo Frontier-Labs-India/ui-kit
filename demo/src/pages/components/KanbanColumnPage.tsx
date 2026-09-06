@@ -614,9 +614,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { KanbanColumn } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { KanbanColumn } from '@annondeveloper/ui-kit'",
-  premium: "import { KanbanColumn } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { KanbanColumn } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { KanbanColumn } from '@frontier-labs/ui-kit'",
+  premium: "import { KanbanColumn } from '@frontier-labs/ui-kit/premium'",
 }
 
 type Priority = 'low' | 'medium' | 'high' | 'critical'
@@ -723,8 +723,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, title: string): string {
   const cls = tier === 'lite' ? 'ui-lite-kanban-column' : 'ui-kanban-column'
-  return `<!-- KanbanColumn — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/kanban-column.css">
+  return `<!-- KanbanColumn — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/kanban-column.css">
 
 <div class="${cls}">
   <div class="${cls}__header">
@@ -754,7 +754,7 @@ function generateVueCode(tier: Tier, title: string): string {
 </template>
 
 <script setup>
-import { KanbanColumn } from '@annondeveloper/ui-kit/lite'
+import { KanbanColumn } from '@frontier-labs/ui-kit/lite'
 const cards = [
   { id: '1', title: 'Design landing page', tags: ['design'], priority: 'medium' },
   { id: '2', title: 'Build auth flow', tags: ['backend'], priority: 'critical' },
@@ -771,7 +771,7 @@ const cards = [
 </template>
 
 <script setup>
-import { KanbanColumn } from '@annondeveloper/ui-kit'
+import { KanbanColumn } from '@frontier-labs/ui-kit'
 const cards = [
   { id: '1', title: 'Design landing page', tags: ['design'], priority: 'medium' },
   { id: '2', title: 'Build auth flow', tags: ['backend'], priority: 'critical' },
@@ -796,7 +796,7 @@ function generateAngularCode(tier: Tier, title: string): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier (CSS approach) -->
 <div class="ui-kanban-column" data-column-id="col-1">
@@ -814,13 +814,13 @@ function generateAngularCode(tier: Tier, title: string): string {
   </div>
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/kanban-column.css';`
+@import '@frontier-labs/ui-kit/css/components/kanban-column.css';`
 }
 
 function generateSvelteCode(tier: Tier, title: string): string {
   if (tier === 'lite') {
     return `<script>
-  import { KanbanColumn } from '@annondeveloper/ui-kit/lite';
+  import { KanbanColumn } from '@frontier-labs/ui-kit/lite';
   const cards = [
     { id: '1', title: 'Design landing page', tags: ['design'] },
     { id: '2', title: 'Build auth flow', tags: ['backend'] },
@@ -830,7 +830,7 @@ function generateSvelteCode(tier: Tier, title: string): string {
 <KanbanColumn title="${title}" {cards} count={cards.length} />`
   }
   return `<script>
-  import { KanbanColumn } from '@annondeveloper/ui-kit';
+  import { KanbanColumn } from '@frontier-labs/ui-kit';
   const cards = [
     { id: '1', title: 'Design landing page', tags: ['design'], priority: 'medium' },
     { id: '2', title: 'Build auth flow', tags: ['backend'], priority: 'critical' },
@@ -1281,7 +1281,7 @@ export default function KanbanColumnPage() {
               no WIP limits, no collapse, no motion. Pure CSS layout.
             </p>
             <div className="kanban-column-page__tier-import">
-              import {'{'} KanbanColumn {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} KanbanColumn {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="kanban-column-page__tier-preview">
               <LiteKanbanColumn
@@ -1316,7 +1316,7 @@ export default function KanbanColumnPage() {
               collapsible state, keyboard navigation, motion levels, and card move callbacks.
             </p>
             <div className="kanban-column-page__tier-import">
-              import {'{'} KanbanColumn {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} KanbanColumn {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="kanban-column-page__tier-preview">
               <KanbanColumn
@@ -1350,7 +1350,7 @@ export default function KanbanColumnPage() {
               Glass morphism header, aurora glow on drag-over, spring-snap staggered card entrance, and card hover glow.
             </p>
             <div className="kanban-column-page__tier-import">
-              import {'{'} KanbanColumn {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} KanbanColumn {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="kanban-column-page__tier-preview">
               <PremiumKanbanColumn
@@ -1404,13 +1404,13 @@ export default function KanbanColumnPage() {
         </h2>
         <p className="kanban-column-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="kanban-column-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kanban-column-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/kanban-column.tsx (Standard)
           </a>
-          <a className="kanban-column-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kanban-column-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/kanban-column.tsx (Lite)
           </a>
-          <a className="kanban-column-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kanban-column-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/kanban-column.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/kanban-column.tsx (Premium)
           </a>
         </div>

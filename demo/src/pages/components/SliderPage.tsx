@@ -729,9 +729,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Slider } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Slider } from '@annondeveloper/ui-kit'",
-  premium: "import { Slider } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Slider } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Slider } from '@frontier-labs/ui-kit'",
+  premium: "import { Slider } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -866,8 +866,8 @@ function generateReactCode(
 function generateHtmlCode(tier: Tier, size: Size, min: number, max: number, step: number, sliderLabel: string, disabled: boolean): string {
   const className = tier === 'lite' ? 'ui-lite-slider' : 'ui-slider'
   const tierLabel = tier === 'lite' ? 'lite' : 'standard'
-  return `<!-- Slider — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/slider.css'}">
+  return `<!-- Slider — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/slider.css'}">
 
 <div class="${className}" data-size="${size}">
   ${sliderLabel ? `<label>${sliderLabel}</label>\n  ` : ''}<input type="range" min="${min}" max="${max}" step="${step}"${disabled ? ' disabled' : ''} />
@@ -888,10 +888,10 @@ const value = ref(50)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   return `<template>
   <Slider
     v-model="value"
@@ -919,7 +919,7 @@ function generateAngularCode(tier: Tier, size: Size, min: number, max: number, s
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier -->
 <div class="ui-slider" data-size="${size}">
@@ -927,7 +927,7 @@ function generateAngularCode(tier: Tier, size: Size, min: number, max: number, s
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/slider.css';`
+@import '@frontier-labs/ui-kit/css/components/slider.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, min: number, max: number, step: number, sliderLabel: string, disabled: boolean): string {
@@ -938,11 +938,11 @@ function generateSvelteCode(tier: Tier, size: Size, min: number, max: number, st
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { Slider } from '@annondeveloper/ui-kit';
+  import { Slider } from '@frontier-labs/ui-kit';
   let value = 50;
 </script>
 
@@ -1356,7 +1356,7 @@ export default function SliderPage() {
               No tick marks, no sizes, no motion.
             </p>
             <div className="slider-page__tier-import">
-              import {'{'} Slider {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Slider {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="slider-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1389,7 +1389,7 @@ export default function SliderPage() {
               tick marks, label, value display, and motion levels.
             </p>
             <div className="slider-page__tier-import">
-              import {'{'} Slider {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Slider {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="slider-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1421,7 +1421,7 @@ export default function SliderPage() {
               Aurora glow on thumb with hover intensify, spring-bounce on active release, and shimmer track fill overlay.
             </p>
             <div className="slider-page__tier-import">
-              import {'{'} Slider {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Slider {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="slider-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1569,7 +1569,7 @@ export default function SliderPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
             className="slider-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/slider.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/slider.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1578,7 +1578,7 @@ export default function SliderPage() {
           </a>
           <a
             className="slider-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/slider.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/slider.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >

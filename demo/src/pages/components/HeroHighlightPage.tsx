@@ -695,9 +695,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { HeroHighlight, Highlight } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { HeroHighlight, Highlight } from '@annondeveloper/ui-kit'",
-  premium: "import { HeroHighlight, Highlight } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { HeroHighlight, Highlight } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { HeroHighlight, Highlight } from '@frontier-labs/ui-kit'",
+  premium: "import { HeroHighlight, Highlight } from '@frontier-labs/ui-kit/premium'",
 }
 
 const HIGHLIGHT_COLORS = [
@@ -801,8 +801,8 @@ function generateReactCode(
 
 function generateHtmlCssCode(tier: Tier, highlightColor: string): string {
   const colorVar = highlightColor ? `\n  --highlight-brand-color: ${highlightColor};` : ''
-  return `<!-- HeroHighlight — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/hero-highlight.css">
+  return `<!-- HeroHighlight — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/hero-highlight.css">
 
 <div class="ui-hero-highlight">
   <h1>
@@ -853,11 +853,11 @@ function generateVueCode(tier: Tier, motion: MotionLevel, highlightText: string,
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/hero-highlight.css';
+@import '@frontier-labs/ui-kit/css/components/hero-highlight.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const highlightAttrs: string[] = []
   if (motion !== 3) highlightAttrs.push(`:motion="${motion}"`)
   if (highlightColor) highlightAttrs.push(`color="${highlightColor}"`)
@@ -891,9 +891,9 @@ function generateAngularCode(tier: Tier, highlightText: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/hero-highlight.css';`
+@import '@frontier-labs/ui-kit/css/components/hero-highlight.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-hero-highlight">
   <h1>
@@ -919,10 +919,10 @@ function generateSvelteCode(tier: Tier, motion: MotionLevel, highlightText: stri
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/hero-highlight.css';
+  @import '@frontier-labs/ui-kit/css/components/hero-highlight.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const highlightAttrs: string[] = []
   if (motion !== 3) highlightAttrs.push(`motion={${motion}}`)
   if (highlightColor) highlightAttrs.push(`color="${highlightColor}"`)
@@ -1294,7 +1294,7 @@ export default function HeroHighlightPage() {
               </h3>
               <ul style={{ margin: 0, padding: '0 0 0 1.25rem', color: 'var(--text-secondary)', lineHeight: 2 }}>
                 <li><Highlight color="oklch(75% 0.2 150)">Zero dependencies</Highlight> — just React</li>
-                <li><Highlight color="oklch(75% 0.15 60)">62 components</Highlight> — all you need</li>
+                <li><Highlight color="oklch(75% 0.15 60)">162 components</Highlight> — all you need</li>
                 <li><Highlight color="oklch(70% 0.2 200)">Physics animations</Highlight> — real spring solver</li>
               </ul>
             </div>
@@ -1331,7 +1331,7 @@ export default function HeroHighlightPage() {
               The underline is always visible with no scroll trigger.
             </p>
             <div className="hero-highlight-page__tier-import">
-              import {'{'} HeroHighlight, Highlight {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} HeroHighlight, Highlight {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="hero-highlight-page__tier-preview">
               <LiteHighlight>Lite Highlight</LiteHighlight>
@@ -1362,7 +1362,7 @@ export default function HeroHighlightPage() {
               motion levels, and smooth CSS transitions for the underline sweep.
             </p>
             <div className="hero-highlight-page__tier-import">
-              import {'{'} HeroHighlight, Highlight {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} HeroHighlight, Highlight {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="hero-highlight-page__tier-preview">
               <Highlight>Standard Highlight</Highlight>
@@ -1393,7 +1393,7 @@ export default function HeroHighlightPage() {
               multi-step color transitions, and spring-based entrance animation.
             </p>
             <div className="hero-highlight-page__tier-import">
-              import {'{'} HeroHighlight, Highlight {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} HeroHighlight, Highlight {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="hero-highlight-page__tier-preview">
               <PremiumHighlight>Premium Highlight</PremiumHighlight>
@@ -1528,13 +1528,13 @@ export default function HeroHighlightPage() {
         <h2 className="hero-highlight-page__section-title"><a href="#source">Source</a></h2>
         <p className="hero-highlight-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="hero-highlight-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="hero-highlight-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/hero-highlight.tsx (Standard)
           </a>
-          <a className="hero-highlight-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="hero-highlight-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/hero-highlight.tsx (Lite)
           </a>
-          <a className="hero-highlight-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="hero-highlight-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/hero-highlight.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/hero-highlight.tsx (Premium)
           </a>
         </div>

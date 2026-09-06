@@ -433,10 +433,10 @@ const IMPORT_STR = "import { RichTextEditor } from '@ui/domain/rich-text-editor'
 
 function generateReactCode(tier: Tier, size: string, disabled: boolean, readOnly: boolean, motion: number): string {
   const importPath = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite"
+    ? "@frontier-labs/ui-kit/lite"
     : tier === 'premium'
-    ? "@annondeveloper/ui-kit/premium"
-    : "@annondeveloper/ui-kit"
+    ? "@frontier-labs/ui-kit/premium"
+    : "@frontier-labs/ui-kit"
 
   const props: string[] = ['  label="Post content"', '  placeholder="Write something..."']
   if (size !== 'md') props.push(`  size="${size}"`)
@@ -458,8 +458,8 @@ function generateHtmlCode(tier: Tier, size: string, disabled: boolean, readOnly:
   const sizeClass = size !== 'md' ? ` ui-rich-text-editor--${size}` : ''
 
   if (tier === 'lite') {
-    return `<!-- RichTextEditor -- @annondeveloper/ui-kit lite tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">
+    return `<!-- RichTextEditor -- @frontier-labs/ui-kit lite tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">
 
 <div class="ui-lite-rich-text-editor${sizeClass}">
   <label class="ui-lite-rich-text-editor__label">Post content</label>
@@ -478,8 +478,8 @@ function generateHtmlCode(tier: Tier, size: string, disabled: boolean, readOnly:
 </div>`
   }
 
-  return `<!-- RichTextEditor -- @annondeveloper/ui-kit standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/rich-text-editor.css">
+  return `<!-- RichTextEditor -- @frontier-labs/ui-kit standard tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/rich-text-editor.css">
 
 <div class="ui-rich-text-editor${sizeClass}">
   <label class="ui-rich-text-editor__label">Post content</label>
@@ -501,8 +501,8 @@ function generateHtmlCode(tier: Tier, size: string, disabled: boolean, readOnly:
 }
 
 function generateVueCode(tier: Tier, size: string): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/rich-text-editor.css'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/rich-text-editor.css'
   const sizeClass = size !== 'md' ? ` ui-rich-text-editor--${size}` : ''
 
   return `<template>
@@ -551,8 +551,8 @@ function onInput() {
 
 function generateAngularCode(tier: Tier, size: string): string {
   const sizeClass = size !== 'md' ? ` ui-rich-text-editor--${size}` : ''
-  const cssPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/rich-text-editor.css'
+  const cssPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/rich-text-editor.css'
 
   return `// Angular tier: ${tier} -- Angular CSS import: ${cssPath}
 import { Component } from '@angular/core';
@@ -600,8 +600,8 @@ export class RichTextEditorComponent {
 function generateSvelteCode(tier: Tier, size: string): string {
   const sizeClass = size !== 'md' ? ` ui-rich-text-editor--${size}` : ''
   const cssImport = tier === 'lite'
-    ? "@annondeveloper/ui-kit/lite/styles.css"
-    : "@annondeveloper/ui-kit/css/components/rich-text-editor.css"
+    ? "@frontier-labs/ui-kit/lite/styles.css"
+    : "@frontier-labs/ui-kit/css/components/rich-text-editor.css"
 
   return `<!-- Svelte tier: ${tier} -- Svelte import -->
 <script lang="ts">
@@ -1004,7 +1004,7 @@ export default function RichTextEditorPage() {
               No error state, no keyboard shortcuts, no motion.
             </p>
             <div className="rte-page__tier-import">
-              import {'{'} RichTextEditor {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} RichTextEditor {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="rte-page__tier-preview">
               <LiteRichTextEditor
@@ -1025,7 +1025,7 @@ export default function RichTextEditorPage() {
               sanitization, error display, disabled/readOnly states, size variants, and 4 motion levels.
             </p>
             <div className="rte-page__tier-import">
-              import {'{'} RichTextEditor {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} RichTextEditor {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="rte-page__tier-preview">
               <RichTextEditor
@@ -1047,7 +1047,7 @@ export default function RichTextEditorPage() {
               and motion-level-aware degradation. Full props compatibility with Standard.
             </p>
             <div className="rte-page__tier-import">
-              import {'{'} RichTextEditor {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} RichTextEditor {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="rte-page__tier-preview">
               <PremiumRichTextEditor
@@ -1068,7 +1068,7 @@ export default function RichTextEditorPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/rich-text-editor.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/rich-text-editor.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand, oklch(65% 0.2 270))', fontSize: 'var(--text-sm, 0.875rem)' }}
@@ -1076,7 +1076,7 @@ export default function RichTextEditorPage() {
             src/domain/rich-text-editor.tsx — Standard tier
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/rich-text-editor.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/rich-text-editor.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand, oklch(65% 0.2 270))', fontSize: 'var(--text-sm, 0.875rem)' }}
@@ -1084,7 +1084,7 @@ export default function RichTextEditorPage() {
             src/lite/rich-text-editor.tsx — Lite tier
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/rich-text-editor.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/rich-text-editor.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand, oklch(65% 0.2 270))', fontSize: 'var(--text-sm, 0.875rem)' }}

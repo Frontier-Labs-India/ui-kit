@@ -133,13 +133,13 @@ function discoverComponents(): ComponentMeta[] {
       )
 
       const imports: ComponentMeta['imports'] = {
-        standard: `import { ${componentName} } from '@annondeveloper/ui-kit'`,
+        standard: `import { ${componentName} } from '@frontier-labs/ui-kit'`,
       }
       if (tiers.includes('lite')) {
-        imports.lite = `import { ${componentName} } from '@annondeveloper/ui-kit/lite'`
+        imports.lite = `import { ${componentName} } from '@frontier-labs/ui-kit/lite'`
       }
       if (tiers.includes('premium')) {
-        imports.premium = `import { ${componentName} } from '@annondeveloper/ui-kit/premium'`
+        imports.premium = `import { ${componentName} } from '@frontier-labs/ui-kit/premium'`
       }
 
       components.push({

@@ -602,9 +602,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DashboardTemplate } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DashboardTemplate } from '@annondeveloper/ui-kit'",
-  premium: "import { DashboardTemplate } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DashboardTemplate } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DashboardTemplate } from '@frontier-labs/ui-kit'",
+  premium: "import { DashboardTemplate } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -725,8 +725,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(status: Status): string {
-  return `<!-- DashboardTemplate — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/dashboard-template.css">
+  return `<!-- DashboardTemplate — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/dashboard-template.css">
 
 <div class="ui-dashboard-template" data-columns="2" role="group"
      aria-label="Dashboard: System Dashboard">
@@ -757,7 +757,7 @@ function generateHtmlCode(status: Status): string {
 }
 
 function generateVueCode(tier: Tier, columns: number, status: Status): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   return `<template>
   <DashboardTemplate
     title="System Dashboard"
@@ -786,7 +786,7 @@ const sections = [
 
 function generateAngularCode(status: Status): string {
   return `<!-- Angular — CSS-only approach -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/dashboard-template.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/dashboard-template.css">
 
 <div class="ui-dashboard-template" data-columns="2" role="group"
      aria-label="Dashboard: System Dashboard">
@@ -813,12 +813,12 @@ function generateAngularCode(status: Status): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/dashboard-template.css';
+@import '@frontier-labs/ui-kit/css/components/dashboard-template.css';
 </style>`
 }
 
 function generateSvelteCode(tier: Tier, columns: number, status: Status): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   return `<script>
   import { DashboardTemplate } from '${importPath}';
 
@@ -1293,13 +1293,13 @@ export default function DashboardTemplatePage() {
         <h2 className="dashboard-template-page__section-title"><a href="#source">Source</a></h2>
         <p className="dashboard-template-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="dashboard-template-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-template-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/dashboard-template.tsx (Standard)
           </a>
-          <a className="dashboard-template-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-template-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/dashboard-template.tsx (Lite)
           </a>
-          <a className="dashboard-template-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dashboard-template-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/dashboard-template.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/dashboard-template.tsx (Premium)
           </a>
         </div>

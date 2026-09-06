@@ -2,7 +2,7 @@
 
 ## v2.5.0 Features
 
-The v2.5.0 release adds 8 new features and 1 new component (`ContainerQuery`), bringing the total to 147 components.
+The v2.5.0 release adds 8 new features and 1 new component (`ContainerQuery`), bringing the total to 162 components.
 
 - **[Motion Choreography](choreography.md)** — `Choreography` class for sequenced multi-step animations, 5 presets (cascade, stagger-grid, wave, spiral, focus-in), `useScrollChoreography` hook for scroll-triggered sequences
 - **[Container Query Design Tokens](container-queries.md)** — `<ContainerQuery>` component, `useContainerSize()` hook, `CONTAINER_BREAKPOINTS`, `resolveResponsive()` utility for container-responsive props
@@ -15,9 +15,9 @@ The v2.5.0 release adds 8 new features and 1 new component (`ContainerQuery`), b
 
 ## Overview
 
-`@annondeveloper/ui-kit` is a zero-dependency React component library with 147 components, physics-based animations, an OKLCH color system, and the Aurora Fluid design identity.
+`@frontier-labs/ui-kit` is a zero-dependency React component library with 162 components, physics-based animations, an OKLCH color system, and the Aurora Fluid design identity.
 
-- **147 components** across 3 weight tiers (Lite, Standard, Premium)
+- **162 components** across 3 weight tiers (Lite, Standard, Premium)
 - **Zero dependencies** — only `react` ^19 and `react-dom` ^19 as peer deps
 - **OKLCH color system** — perceptually uniform, with relative color syntax for theme generation
 - **Physics-based motion** — real spring solver (RK4 integration), 4 motion levels
@@ -27,13 +27,13 @@ The v2.5.0 release adds 8 new features and 1 new component (`ContainerQuery`), b
 ## Installation
 
 ```bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 ```
 
 ## Quick Start
 
 ```tsx
-import { UIProvider, Button, Card, Badge } from '@annondeveloper/ui-kit'
+import { UIProvider, Button, Card, Badge } from '@frontier-labs/ui-kit'
 
 function App() {
   return (
@@ -55,10 +55,10 @@ function App() {
 
 Every component is available in up to 3 weight tiers, allowing you to optimize bundle size.
 
-### Lite — 144 components
+### Lite — 159 components
 
 ```tsx
-import { Button, Badge, Card } from '@annondeveloper/ui-kit/lite'
+import { Button, Badge, Card } from '@frontier-labs/ui-kit/lite'
 ```
 
 - ~0.3–1.2 KB per component (gzipped)
@@ -66,10 +66,10 @@ import { Button, Badge, Card } from '@annondeveloper/ui-kit/lite'
 - Pure `className` + `data-*` attribute wrappers with `forwardRef`
 - Ideal for: landing pages, static sites, email templates, SSR
 
-### Standard (default) — 147 components
+### Standard (default) — 162 components
 
 ```tsx
-import { Button, Badge, Card } from '@annondeveloper/ui-kit'
+import { Button, Badge, Card } from '@frontier-labs/ui-kit'
 ```
 
 - ~1.5–5 KB per component (gzipped)
@@ -79,10 +79,10 @@ import { Button, Badge, Card } from '@annondeveloper/ui-kit'
 - `@scope` CSS isolation, `@layer components` cascade
 - Full keyboard navigation and ARIA patterns
 
-### Premium — 145 components
+### Premium — 159 components
 
 ```tsx
-import { Button, Badge, Card } from '@annondeveloper/ui-kit/premium'
+import { Button, Badge, Card } from '@frontier-labs/ui-kit/premium'
 ```
 
 - ~3–8 KB per component (gzipped)
@@ -96,9 +96,9 @@ import { Button, Badge, Card } from '@annondeveloper/ui-kit/premium'
 ### Mixing Tiers
 
 ```tsx
-import { MetricCard } from '@annondeveloper/ui-kit/premium'  // hero metric with aurora glow
-import { Badge } from '@annondeveloper/ui-kit/lite'           // lightweight table badge
-import { DataTable } from '@annondeveloper/ui-kit'            // full-featured table
+import { MetricCard } from '@frontier-labs/ui-kit/premium'  // hero metric with aurora glow
+import { Badge } from '@frontier-labs/ui-kit/lite'           // lightweight table badge
+import { DataTable } from '@frontier-labs/ui-kit'            // full-featured table
 ```
 
 ### Tier Coverage
@@ -113,21 +113,21 @@ import { DataTable } from '@annondeveloper/ui-kit'            // full-featured t
 
 | Path | Description | Components |
 |------|-------------|-----------|
-| `@annondeveloper/ui-kit` | Standard tier (default) | 147 |
-| `@annondeveloper/ui-kit/lite` | Lite tier | 144 |
-| `@annondeveloper/ui-kit/premium` | Premium tier | 145 |
-| `@annondeveloper/ui-kit/form` | Form engine | `createForm`, `useForm`, validators |
-| `@annondeveloper/ui-kit/theme` | Theme utilities | `generateTheme`, `applyTheme`, `themeToCSS`, `validateContrast` |
-| `@annondeveloper/ui-kit/css/theme.css` | Standalone theme CSS | Dark + light mode tokens |
-| `@annondeveloper/ui-kit/css/all.css` | All component CSS | 144 component stylesheets |
-| `@annondeveloper/ui-kit/css/components/*` | Per-component CSS | Individual stylesheets |
+| `@frontier-labs/ui-kit` | Standard tier (default) | 147 |
+| `@frontier-labs/ui-kit/lite` | Lite tier | 144 |
+| `@frontier-labs/ui-kit/premium` | Premium tier | 145 |
+| `@frontier-labs/ui-kit/form` | Form engine | `createForm`, `useForm`, validators |
+| `@frontier-labs/ui-kit/theme` | Theme utilities | `generateTheme`, `applyTheme`, `themeToCSS`, `validateContrast` |
+| `@frontier-labs/ui-kit/css/theme.css` | Standalone theme CSS | Dark + light mode tokens |
+| `@frontier-labs/ui-kit/css/all.css` | All component CSS | 144 component stylesheets |
+| `@frontier-labs/ui-kit/css/components/*` | Per-component CSS | Individual stylesheets |
 
 ## UIProvider
 
 Wrap your app root to configure motion, density, and color mode:
 
 ```tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 <UIProvider motion={3} mode="dark" density="default">
   <App />
@@ -343,8 +343,8 @@ Built-in form management with zero external dependencies:
 ```tsx
 // Form engine (createForm/useForm/validators/Form/FieldArray) lives at /form;
 // form *components* (FormInput, Select, Button) come from the main entry.
-import { createForm, useForm, v, Form, FieldArray } from '@annondeveloper/ui-kit/form'
-import { FormInput, Select, Button } from '@annondeveloper/ui-kit'
+import { createForm, useForm, v, Form, FieldArray } from '@frontier-labs/ui-kit/form'
+import { FormInput, Select, Button } from '@frontier-labs/ui-kit'
 
 const profileForm = createForm({
   fields: {
@@ -399,7 +399,7 @@ function ProfileForm() {
 Generate a complete theme from a single brand color:
 
 ```tsx
-import { generateTheme, applyTheme, themeToCSS, validateContrast } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, applyTheme, themeToCSS, validateContrast } from '@frontier-labs/ui-kit/theme'
 
 // Generate tokens
 const theme = generateTheme('#6366f1', 'dark')
@@ -439,8 +439,8 @@ Typical app importing ~20 components: **~15–25 KB gzipped** after tree-shaking
 ## CLI Tool
 
 ```bash
-npx @annondeveloper/ui-kit init          # Copy theme + utils
-npx @annondeveloper/ui-kit add <name>    # Copy component source
-npx @annondeveloper/ui-kit list          # List all 147 components
-npx @annondeveloper/ui-kit theme         # Generate theme from brand color
+npx @frontier-labs/ui-kit init          # Copy theme + utils
+npx @frontier-labs/ui-kit add <name>    # Copy component source
+npx @frontier-labs/ui-kit list          # List all 162 components
+npx @frontier-labs/ui-kit theme         # Generate theme from brand color
 ```

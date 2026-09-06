@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Report a bug in @annondeveloper/ui-kit
+about: Report a bug in @frontier-labs/ui-kit
 title: "[Bug] "
 labels: bug
 assignees: ''

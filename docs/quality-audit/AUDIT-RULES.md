@@ -1,7 +1,7 @@
 # Component Quality Audit Ruleset
 
 ## Purpose
-Every component in @annondeveloper/ui-kit must be world-class. This audit framework ensures each component meets the highest standards across 7 dimensions. Each component is audited independently — no shortcuts, no pattern matching, full code review.
+Every component in @frontier-labs/ui-kit must be world-class. This audit framework ensures each component meets the highest standards across 7 dimensions. Each component is audited independently — no shortcuts, no pattern matching, full code review.
 
 ## Audit Dimensions
 

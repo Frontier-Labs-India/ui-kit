@@ -533,9 +533,9 @@ const STEPS = [1, 5, 15, 30] as const
 const MOTIONS = [0, 1, 2, 3] as const
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { TimePicker } from '@annondeveloper/ui-kit'",
-  lite: "import { TimePicker } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { TimePicker } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { TimePicker } from '@frontier-labs/ui-kit'",
+  lite: "import { TimePicker } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { TimePicker } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -655,11 +655,11 @@ function generateHtmlCode(
   labelText: string,
 ): string {
   const cssImport = tier === 'lite'
-    ? "@import '@annondeveloper/ui-kit/lite/styles.css';"
-    : "@import '@annondeveloper/ui-kit/css/components/time-picker.css';"
+    ? "@import '@frontier-labs/ui-kit/lite/styles.css';"
+    : "@import '@frontier-labs/ui-kit/css/components/time-picker.css';"
 
-  return `<!-- TimePicker - @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/time-picker.css'}">
+  return `<!-- TimePicker - @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/time-picker.css'}">
 
 <div class="ui-time-picker" data-size="${size}">
   ${labelText ? `<label class="ui-time-picker__label">${labelText}</label>` : ''}
@@ -692,11 +692,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  v-model="time"']
   if (labelText) attrs.push(`  label="${labelText}"`)
   if (format !== '12h') attrs.push(`  format="${format}"`)
@@ -727,7 +727,7 @@ function generateAngularCode(
   disabled: boolean,
   labelText: string,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [`data-size="${size}"`]
   if (disabled) attrs.push('[disabled]="true"')
 
@@ -769,11 +769,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (labelText) attrs.push(`  label="${labelText}"`)
   if (format !== '12h') attrs.push(`  format="${format}"`)
@@ -1104,7 +1104,7 @@ export default function TimePickerPage() {
               Minimal wrapper. Zero motion, no animation. Forwards all props to the standard component with motion=0.
             </p>
             <div className="tp-page__tier-import">
-              import {'{'} TimePicker {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TimePicker {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="tp-page__tier-preview">
               <LiteTimePicker format="12h" placeholder="Lite" size="sm" />
@@ -1132,7 +1132,7 @@ export default function TimePickerPage() {
               Full-featured with dropdown animation, anchor positioning, keyboard navigation, and form integration.
             </p>
             <div className="tp-page__tier-import">
-              import {'{'} TimePicker {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TimePicker {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="tp-page__tier-preview">
               <TimePicker format="12h" placeholder="Standard" size="sm" />
@@ -1160,7 +1160,7 @@ export default function TimePickerPage() {
               Everything in Standard plus aurora glow on focus, spring dropdown animation, and shimmer effects.
             </p>
             <div className="tp-page__tier-import">
-              import {'{'} TimePicker {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TimePicker {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="tp-page__tier-preview">
               <PremiumTimePicker format="12h" placeholder="Premium" size="sm" />
@@ -1296,13 +1296,13 @@ export default function TimePickerPage() {
         <h2 className="tp-page__section-title"><a href="#source">Source</a></h2>
         <p className="tp-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="tp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/time-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/time-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/time-picker.tsx (Standard)
           </a>
-          <a className="tp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/time-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/time-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/time-picker.tsx (Lite)
           </a>
-          <a className="tp-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/time-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tp-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/time-picker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/time-picker.tsx (Premium)
           </a>
         </div>

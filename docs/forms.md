@@ -5,8 +5,8 @@ UI Kit v2 includes a complete form state management system with zero external de
 ## Quick Start
 
 ```tsx
-import { createForm, useForm, v, Form } from '@annondeveloper/ui-kit/form'
-import { FormInput, Button } from '@annondeveloper/ui-kit'
+import { createForm, useForm, v, Form } from '@frontier-labs/ui-kit/form'
+import { FormInput, Button } from '@frontier-labs/ui-kit'
 
 // 1. Define the form (can be at module scope, outside React)
 const loginForm = createForm({
@@ -256,7 +256,7 @@ v.pipe(
 The `<Form>` component wraps a native `<form>` element and provides form context to child components.
 
 ```tsx
-import { Form } from '@annondeveloper/ui-kit/form'
+import { Form } from '@frontier-labs/ui-kit/form'
 
 <Form form={form} className="space-y-4">
   {/* Child components can auto-wire via useFormContext() */}
@@ -282,8 +282,8 @@ The `<Form>` component:
 `<FieldArray>` manages dynamic form fields (tags, line items, invoice rows) using a render prop pattern.
 
 ```tsx
-import { createForm, useForm, v, Form, FieldArray } from '@annondeveloper/ui-kit/form'
-import { FormInput, Button } from '@annondeveloper/ui-kit'
+import { createForm, useForm, v, Form, FieldArray } from '@frontier-labs/ui-kit/form'
+import { FormInput, Button } from '@frontier-labs/ui-kit'
 
 const invoiceForm = createForm({
   fields: {
@@ -344,7 +344,7 @@ The `key` property on each field item is a stable identifier that persists acros
 When components are rendered inside a `<Form>`, they can access the form state via `useFormContext()`:
 
 ```tsx
-import { useFormContext } from '@annondeveloper/ui-kit/form'
+import { useFormContext } from '@frontier-labs/ui-kit/form'
 
 function SubmitButton() {
   const form = useFormContext()
@@ -365,8 +365,8 @@ This allows building reusable form components that automatically connect to the 
 ## Complete Example
 
 ```tsx
-import { createForm, useForm, v, Form, FieldArray } from '@annondeveloper/ui-kit/form'
-import { FormInput, Select, Checkbox, Button } from '@annondeveloper/ui-kit'
+import { createForm, useForm, v, Form, FieldArray } from '@frontier-labs/ui-kit/form'
+import { FormInput, Select, Checkbox, Button } from '@frontier-labs/ui-kit'
 
 const registrationForm = createForm({
   fields: {

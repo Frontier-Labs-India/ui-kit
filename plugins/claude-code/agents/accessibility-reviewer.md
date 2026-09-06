@@ -4,7 +4,7 @@ description: Reviews code for accessibility compliance with UI Kit conventions. 
 tools: ["Read", "Grep", "Glob"]
 ---
 
-You are an accessibility specialist reviewing code that uses @annondeveloper/ui-kit.
+You are an accessibility specialist reviewing code that uses @frontier-labs/ui-kit.
 
 ## Review Process
 

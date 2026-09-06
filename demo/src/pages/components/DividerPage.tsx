@@ -714,9 +714,9 @@ const DIV_VARIANTS: DivVariant[] = ['solid', 'dashed', 'dotted']
 const SPACINGS: Spacing[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Divider } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Divider } from '@annondeveloper/ui-kit'",
-  premium: "import { Divider } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Divider } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Divider } from '@frontier-labs/ui-kit'",
+  premium: "import { Divider } from '@frontier-labs/ui-kit/premium'",
 }
 
 const P = 'divider-page__'
@@ -823,12 +823,12 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, orientation: Orientation, variant: DivVariant, labelText: string): string {
   if (tier === 'lite') {
-    return `<!-- Divider — @annondeveloper/ui-kit lite tier -->
+    return `<!-- Divider — @frontier-labs/ui-kit lite tier -->
 <hr class="ui-lite-divider" />`
   }
 
   if (labelText) {
-    return `<!-- Divider with label — @annondeveloper/ui-kit ${tier} tier -->
+    return `<!-- Divider with label — @frontier-labs/ui-kit ${tier} tier -->
 <div
   class="ui-divider"
   role="separator"
@@ -840,7 +840,7 @@ function generateHtmlCode(tier: Tier, orientation: Orientation, variant: DivVari
 </div>`
   }
 
-  return `<!-- Divider — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Divider — @frontier-labs/ui-kit ${tier} tier -->
 <hr
   class="ui-divider"
   role="separator"
@@ -856,7 +856,7 @@ function generateVueCode(tier: Tier, orientation: Orientation, variant: DivVaria
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -871,7 +871,7 @@ function generateVueCode(tier: Tier, orientation: Orientation, variant: DivVaria
 </template>
 
 <script setup>
-import { Divider } from '@annondeveloper/ui-kit'
+import { Divider } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -881,7 +881,7 @@ function generateAngularCode(tier: Tier, orientation: Orientation, variant: DivV
 <hr class="ui-lite-divider" />
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   if (labelText) {
@@ -897,7 +897,7 @@ function generateAngularCode(tier: Tier, orientation: Orientation, variant: DivV
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/divider.css';`
+@import '@frontier-labs/ui-kit/css/components/divider.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -909,7 +909,7 @@ function generateAngularCode(tier: Tier, orientation: Orientation, variant: DivV
 />
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/divider.css';`
+@import '@frontier-labs/ui-kit/css/components/divider.css';`
 }
 
 function generateSvelteCode(tier: Tier, orientation: Orientation, variant: DivVariant, spacing: Spacing, labelText: string): string {
@@ -918,7 +918,7 @@ function generateSvelteCode(tier: Tier, orientation: Orientation, variant: DivVa
 <hr class="ui-lite-divider" />
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -929,7 +929,7 @@ function generateSvelteCode(tier: Tier, orientation: Orientation, variant: DivVa
   if (labelText) props.push(`  label="${labelText}"`)
 
   return `<script>
-  import { Divider } from '@annondeveloper/ui-kit'
+  import { Divider } from '@frontier-labs/ui-kit'
 </script>
 
 <Divider${props.length ? '\n' + props.join('\n') + '\n' : ' '}/>`
@@ -1353,7 +1353,7 @@ export default function DividerPage() {
               CSS-only horizontal rule. A simple styled hr element. No orientation, variant, label, or spacing props.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Divider {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Divider {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${P}tier-preview`} style={{ width: '100%' }}>
               <LiteDivider />
@@ -1383,7 +1383,7 @@ export default function DividerPage() {
               Full-featured divider with horizontal/vertical orientation, three line variants, centered label, spacing presets, and full ARIA support.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Divider {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Divider {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${P}tier-preview`} style={{ width: '100%' }}>
               <Divider label="OR" />
@@ -1413,7 +1413,7 @@ export default function DividerPage() {
               Shimmer gradient sweep along the divider line, and aurora glow on the label text.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Divider {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Divider {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${P}tier-preview`} style={{ width: '100%' }}>
               <PremiumDivider label="OR" />
@@ -1535,13 +1535,13 @@ export default function DividerPage() {
         <h2 className={`${P}section-title`}><a href="#source">Source</a></h2>
         <p className={`${P}section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="divider-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/divider.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="divider-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/divider.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/divider.tsx (Standard)
           </a>
-          <a className="divider-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/divider.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="divider-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/divider.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/divider.tsx (Lite)
           </a>
-          <a className="divider-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/divider.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="divider-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/divider.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/divider.tsx (Premium)
           </a>
         </div>

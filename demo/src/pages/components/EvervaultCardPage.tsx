@@ -693,9 +693,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { EvervaultCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { EvervaultCard } from '@annondeveloper/ui-kit'",
-  premium: "import { EvervaultCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { EvervaultCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { EvervaultCard } from '@frontier-labs/ui-kit'",
+  premium: "import { EvervaultCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -808,8 +808,8 @@ function generateReactCode(
 }
 
 function generateHtmlCssCode(tier: Tier, contentText: string): string {
-  return `<!-- EvervaultCard — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/evervault-card.css">
+  return `<!-- EvervaultCard — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/evervault-card.css">
 
 <div class="ui-evervault-card">
   <div class="ui-evervault-card--matrix" aria-hidden="true">
@@ -850,11 +850,11 @@ function generateVueCode(tier: Tier, motion: MotionLevel, contentText: string): 
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/evervault-card.css';
+@import '@frontier-labs/ui-kit/css/components/evervault-card.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (motion !== 3) attrs.push(`  :motion="${motion}"`)
 
@@ -876,9 +876,9 @@ function generateAngularCode(tier: Tier, contentText: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/evervault-card.css';`
+@import '@frontier-labs/ui-kit/css/components/evervault-card.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the React wrapper or CSS-only approach -->
 <div class="ui-evervault-card">
@@ -903,10 +903,10 @@ function generateSvelteCode(tier: Tier, motion: MotionLevel, contentText: string
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/evervault-card.css';
+  @import '@frontier-labs/ui-kit/css/components/evervault-card.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const motionAttr = motion !== 3 ? `\n  motion={${motion}}` : ''
   return `<script>
   import { EvervaultCard } from '${importPath}';
@@ -1291,7 +1291,7 @@ export default function EvervaultCardPage() {
               Just the card container with Aurora styling.
             </p>
             <div className="evervault-card-page__tier-import">
-              import {'{'} EvervaultCard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} EvervaultCard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="evervault-card-page__tier-preview">
               <LiteEvervaultCard style={{ inlineSize: '160px' }}>
@@ -1326,7 +1326,7 @@ export default function EvervaultCardPage() {
               animation, radial mask, and motion level support.
             </p>
             <div className="evervault-card-page__tier-import">
-              import {'{'} EvervaultCard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} EvervaultCard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="evervault-card-page__tier-preview">
               <EvervaultCard style={{ inlineSize: '160px' }}>
@@ -1361,7 +1361,7 @@ export default function EvervaultCardPage() {
               particle burst on hover enter, and cinematic entrance animation.
             </p>
             <div className="evervault-card-page__tier-import">
-              import {'{'} EvervaultCard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} EvervaultCard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="evervault-card-page__tier-preview">
               <PremiumEvervaultCard style={{ inlineSize: '160px' }}>
@@ -1493,7 +1493,7 @@ export default function EvervaultCardPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/evervault-card.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/evervault-card.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="evervault-card-page__source-link"
@@ -1502,7 +1502,7 @@ export default function EvervaultCardPage() {
             src/domain/evervault-card.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/evervault-card.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/evervault-card.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="evervault-card-page__source-link"
@@ -1511,7 +1511,7 @@ export default function EvervaultCardPage() {
             src/lite/evervault-card.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/evervault-card.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/evervault-card.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="evervault-card-page__source-link"

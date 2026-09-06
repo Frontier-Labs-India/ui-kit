@@ -713,9 +713,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md']
 const VARIANTS: Variant[] = ['default', 'ghost']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Kbd } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Kbd } from '@annondeveloper/ui-kit'",
-  premium: "import { Kbd } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Kbd } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Kbd } from '@frontier-labs/ui-kit'",
+  premium: "import { Kbd } from '@frontier-labs/ui-kit/premium'",
 }
 
 interface ShortcutCombo {
@@ -807,11 +807,11 @@ function generateHtmlCode(tier: Tier, size: Size, variant: Variant, content: str
   const className = tier === 'lite' ? 'ui-lite-kbd' : 'ui-kbd'
   const attrs = [`class="${className}"`, `data-size="${size}"`, `data-variant="${variant}"`]
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/kbd.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/kbd.css';`
 
-  return `<!-- Kbd -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/kbd.css'}">
+  return `<!-- Kbd -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/kbd.css'}">
 
 <kbd ${attrs.join(' ')}>
   ${content}
@@ -824,9 +824,9 @@ function generateHtmlCode(tier: Tier, size: Size, variant: Variant, content: str
 function generateVueCode(tier: Tier, size: Size, variant: Variant, content: string): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-kbd"`, `data-size="${size}"`, `data-variant="${variant}"`]
-    return `<template>\n  <kbd ${attrs.join(' ')}>${content}</kbd>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <kbd ${attrs.join(' ')}>${content}</kbd>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'sm') attrs.push(`  size="${size}"`)
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
@@ -841,7 +841,7 @@ function generateVueCode(tier: Tier, size: Size, variant: Variant, content: stri
 function generateAngularCode(tier: Tier, size: Size, variant: Variant, content: string): string {
   const className = tier === 'lite' ? 'ui-lite-kbd' : 'ui-kbd'
   const attrs = [`class="${className}"`, `data-size="${size}"`, `data-variant="${variant}"`]
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css' : '@annondeveloper/ui-kit/css/components/kbd.css'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css' : '@frontier-labs/ui-kit/css/components/kbd.css'
 
   return `<!-- Angular -- ${tier} tier -->\n<kbd ${attrs.join(' ')}>${content}</kbd>\n\n/* In styles.css */\n@import '${importPath}';`
 }
@@ -849,9 +849,9 @@ function generateAngularCode(tier: Tier, size: Size, variant: Variant, content: 
 function generateSvelteCode(tier: Tier, size: Size, variant: Variant, content: string): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-kbd"`, `data-size="${size}"`, `data-variant="${variant}"`]
-    return `<kbd ${attrs.join(' ')}>${content}</kbd>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<kbd ${attrs.join(' ')}>${content}</kbd>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  return `<script>\n  import { Kbd } from '@annondeveloper/ui-kit';\n</script>\n\n<Kbd\n  size="${size}"\n  variant="${variant}"\n>\n  ${content}\n</Kbd>`
+  return `<script>\n  import { Kbd } from '@frontier-labs/ui-kit';\n</script>\n\n<Kbd\n  size="${size}"\n  variant="${variant}"\n>\n  ${content}\n</Kbd>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1215,7 +1215,7 @@ export default function KbdPage() {
               No motion or hover lift effect.
             </p>
             <div className="kbd-page__tier-import">
-              import {'{'} Kbd {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Kbd {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="kbd-page__tier-preview">
               <LiteKbd>Ctrl</LiteKbd>
@@ -1247,7 +1247,7 @@ export default function KbdPage() {
               and embedded scoped CSS via adoptedStyleSheets.
             </p>
             <div className="kbd-page__tier-import">
-              import {'{'} Kbd {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Kbd {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="kbd-page__tier-preview">
               <Kbd>Ctrl</Kbd>
@@ -1278,7 +1278,7 @@ export default function KbdPage() {
               Spring-scale hover lift, subtle aurora glow shadow, shimmer on keypress, and press depression effect.
             </p>
             <div className="kbd-page__tier-import">
-              import {'{'} Kbd {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Kbd {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="kbd-page__tier-preview">
               <PremiumKbd>Ctrl</PremiumKbd>
@@ -1401,13 +1401,13 @@ export default function KbdPage() {
         <h2 className="kbd-page__section-title"><a href="#source">Source</a></h2>
         <p className="kbd-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="kbd-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/kbd.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kbd-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/kbd.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/kbd.tsx (Standard)
           </a>
-          <a className="kbd-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/kbd.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kbd-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/kbd.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/kbd.tsx (Lite)
           </a>
-          <a className="kbd-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/kbd.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="kbd-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/kbd.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/kbd.tsx (Premium)
           </a>
         </div>

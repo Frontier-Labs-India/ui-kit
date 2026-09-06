@@ -710,9 +710,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DensitySelector } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DensitySelector } from '@annondeveloper/ui-kit'",
-  premium: "import { DensitySelector } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DensitySelector } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DensitySelector } from '@frontier-labs/ui-kit'",
+  premium: "import { DensitySelector } from '@frontier-labs/ui-kit/premium'",
 }
 
 const DEMO_USERS = [
@@ -797,7 +797,7 @@ function generateHtmlCssCode(tier: Tier, densityValue: DensityValue, size: Size)
   const className = tier === 'lite' ? 'ui-lite-density-selector' : 'ui-density-selector'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
 
-  return `<!-- DensitySelector -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- DensitySelector -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <div class="${className}" role="radiogroup" aria-label="UI density" data-size="${size}">
   <button type="button" role="radio" aria-checked="${densityValue === 'compact'}"
     class="${className}__option" ${densityValue === 'compact' ? 'data-active' : ''}>compact</button>
@@ -808,7 +808,7 @@ function generateHtmlCssCode(tier: Tier, densityValue: DensityValue, size: Size)
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/density-selector.css'}';
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/density-selector.css'}';
 </style>`
 }
 
@@ -837,11 +837,11 @@ const density = ref('${densityValue}')
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (densityValue !== 'comfortable') attrs.push(`  default-value="${densityValue}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -881,10 +881,10 @@ function generateAngularCode(tier: Tier, densityValue: DensityValue, size: Size)
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use CSS-only approach with data attributes -->
 <div class="ui-density-selector" role="radiogroup" aria-label="UI density" data-size="${size}">
@@ -916,11 +916,11 @@ function generateSvelteCode(tier: Tier, densityValue: DensityValue, size: Size):
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { DensitySelector } from '${importPath}';
 
@@ -1262,7 +1262,7 @@ const [density, setDensity] = useState('comfortable')
               CSS-only variant. Plain text buttons without icons or sliding indicator. No motion, no animations.
             </p>
             <div className="density-selector-page__tier-import">
-              import {'{'} DensitySelector {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DensitySelector {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="density-selector-page__tier-preview">
               <LiteDensitySelector defaultValue="comfortable" />
@@ -1293,7 +1293,7 @@ const [density, setDensity] = useState('comfortable')
               and forced-colors support.
             </p>
             <div className="density-selector-page__tier-import">
-              import {'{'} DensitySelector {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DensitySelector {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="density-selector-page__tier-preview">
               <DensitySelector defaultValue="comfortable" />
@@ -1324,7 +1324,7 @@ const [density, setDensity] = useState('comfortable')
               and fade-up entrance animation.
             </p>
             <div className="density-selector-page__tier-import">
-              import {'{'} DensitySelector {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DensitySelector {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="density-selector-page__tier-preview">
               <PremiumDensitySelector defaultValue="comfortable" />
@@ -1419,7 +1419,7 @@ const [density, setDensity] = useState('comfortable')
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/density-selector.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/density-selector.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="density-selector-page__source-link"

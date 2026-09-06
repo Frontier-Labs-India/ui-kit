@@ -574,7 +574,7 @@ const copyBlockProps: PropDef[] = [
 // ─── Sample Code Strings ──────────────────────────────────────────────────────
 
 const SAMPLE_TS = `import { useState, useEffect } from 'react'
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 export function Counter() {
   const [count, setCount] = useState(0)
@@ -615,7 +615,7 @@ const SAMPLE_CSS = `@layer components {
 }`
 
 const SAMPLE_JSON = `{
-  "name": "@annondeveloper/ui-kit",
+  "name": "@frontier-labs/ui-kit",
   "version": "2.0.0",
   "description": "Zero-dependency React component library",
   "main": "./dist/index.js",
@@ -632,21 +632,21 @@ const SAMPLE_JSON = `{
 }`
 
 const SAMPLE_BASH = `# Install the UI Kit
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 
 # Initialize theme and utilities
-npx @annondeveloper/ui-kit init
+npx @frontier-labs/ui-kit init
 
 # Add specific components
-npx @annondeveloper/ui-kit add button
-npx @annondeveloper/ui-kit add card
-npx @annondeveloper/ui-kit add dialog
+npx @frontier-labs/ui-kit add button
+npx @frontier-labs/ui-kit add card
+npx @frontier-labs/ui-kit add dialog
 
 # Generate a theme from your brand color
-npx @annondeveloper/ui-kit theme --color "#6366f1"
+npx @frontier-labs/ui-kit theme --color "#6366f1"
 
 # List all available components
-npx @annondeveloper/ui-kit list`
+npx @frontier-labs/ui-kit list`
 
 const SAMPLE_HTML = `<!DOCTYPE html>
 <html lang="en">
@@ -686,9 +686,9 @@ const LANG_SAMPLES: Record<Language, { code: string; label: string }> = {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CopyBlock } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CopyBlock } from '@annondeveloper/ui-kit'",
-  premium: "import { CopyBlock } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CopyBlock } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CopyBlock } from '@frontier-labs/ui-kit'",
+  premium: "import { CopyBlock } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -787,8 +787,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, language: Language): string {
   const cls = tier === 'lite' ? 'ui-lite-copy-block' : 'ui-copy-block'
-  return `<!-- CopyBlock — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/copy-block.css">
+  return `<!-- CopyBlock — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/copy-block.css">
 
 <div class="${cls}">
   ${tier !== 'lite' ? `<div class="ui-copy-block__header">
@@ -815,7 +815,7 @@ function generateVueCode(tier: Tier, language: Language, showLineNumbers: boolea
 </template>
 
 <script setup>
-import { CopyBlock } from '@annondeveloper/ui-kit/lite'
+import { CopyBlock } from '@frontier-labs/ui-kit/lite'
 const code = '// your code here'
 </script>`
   }
@@ -829,7 +829,7 @@ const code = '// your code here'
 </template>
 
 <script setup>
-import { CopyBlock } from '@annondeveloper/ui-kit'
+import { CopyBlock } from '@frontier-labs/ui-kit'
 const code = '// your code here'
 </script>`
 }
@@ -846,13 +846,13 @@ function generateAngularCode(tier: Tier): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/copy-block.css'}';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/copy-block.css'}';`
 }
 
 function generateSvelteCode(tier: Tier, language: Language, showLineNumbers: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { CopyBlock } from '@annondeveloper/ui-kit/lite';
+  import { CopyBlock } from '@frontier-labs/ui-kit/lite';
   const code = '// your code here';
 </script>
 
@@ -863,7 +863,7 @@ function generateSvelteCode(tier: Tier, language: Language, showLineNumbers: boo
 />`
   }
   return `<script>
-  import { CopyBlock } from '@annondeveloper/ui-kit';
+  import { CopyBlock } from '@frontier-labs/ui-kit';
   const code = '// your code here';
 </script>
 
@@ -1196,13 +1196,13 @@ export default function CopyBlockPage() {
         <div className="copy-block-page__preview">
           {tier === 'lite' ? (
             <LiteCopyBlock
-              code={`npm install @annondeveloper/ui-kit`}
+              code={`npm install @frontier-labs/ui-kit`}
               language="bash"
               showLineNumbers={false}
             />
           ) : (
             <CopyBlock
-              code={`npm install @annondeveloper/ui-kit`}
+              code={`npm install @frontier-labs/ui-kit`}
               language="bash"
               showLineNumbers={false}
             />
@@ -1238,7 +1238,7 @@ export default function CopyBlockPage() {
               no line highlighting, no title header. Just code and copy.
             </p>
             <div className="copy-block-page__tier-import">
-              import {'{'} CopyBlock {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CopyBlock {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="copy-block-page__tier-preview">
               <LiteCopyBlock code="const x = 42" language="typescript" />
@@ -1269,7 +1269,7 @@ export default function CopyBlockPage() {
               line highlighting, title header, language badge, and max-height scroll.
             </p>
             <div className="copy-block-page__tier-import">
-              import {'{'} CopyBlock {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CopyBlock {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="copy-block-page__tier-preview">
               <CopyBlock code="const x = 42" language="typescript" title="example.ts" />
@@ -1299,7 +1299,7 @@ export default function CopyBlockPage() {
               Aurora glow on copy button and container hover, spring-scale click feedback, and shimmer on highlighted lines.
             </p>
             <div className="copy-block-page__tier-import">
-              import {'{'} CopyBlock {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CopyBlock {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="copy-block-page__tier-preview">
               <PremiumCopyBlock code="const x = 42" language="typescript" title="example.ts" />
@@ -1333,13 +1333,13 @@ export default function CopyBlockPage() {
         <h2 className="copy-block-page__section-title"><a href="#source">Source</a></h2>
         <p className="copy-block-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="copy-block-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/copy-block.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="copy-block-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/copy-block.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/copy-block.tsx (Standard)
           </a>
-          <a className="copy-block-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/copy-block.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="copy-block-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/copy-block.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/copy-block.tsx (Lite)
           </a>
-          <a className="copy-block-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/copy-block.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="copy-block-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/copy-block.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/copy-block.tsx (Premium)
           </a>
         </div>

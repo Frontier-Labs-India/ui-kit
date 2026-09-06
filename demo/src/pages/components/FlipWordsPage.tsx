@@ -704,9 +704,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { FlipWords } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { FlipWords } from '@annondeveloper/ui-kit'",
-  premium: "import { FlipWords } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { FlipWords } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { FlipWords } from '@frontier-labs/ui-kit'",
+  premium: "import { FlipWords } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -810,13 +810,13 @@ function generateHtmlCode(words: string[]): string {
 </span>
 
 <!-- Import component CSS -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/flip-words.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/flip-words.css">
 
 <!-- Word cycling requires JavaScript -->`
 }
 
 function generateVueCode(tier: Tier, words: string[], interval: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const wordsStr = `[${words.map(w => `'${w}'`).join(', ')}]`
   const attrs: string[] = [`  :words="${wordsStr}"`]
   if (interval !== 3000) attrs.push(`  :interval="${interval}"`)
@@ -825,7 +825,7 @@ function generateVueCode(tier: Tier, words: string[], interval: number): string 
 }
 
 function generateAngularCode(tier: Tier, words: string[], interval: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — FlipWords component -->
 <span
   class="ui-flip-words"
@@ -842,7 +842,7 @@ function generateAngularCode(tier: Tier, words: string[], interval: number): str
 }
 
 function generateSvelteCode(tier: Tier, words: string[], interval: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const wordsStr = `[${words.map(w => `'${w}'`).join(', ')}]`
   const attrs: string[] = [`  words={${wordsStr}}`]
   if (interval !== 3000) attrs.push(`  interval={${interval}}`)
@@ -1242,7 +1242,7 @@ export default function FlipWordsPage() {
               Useful for SSR scenarios where the first word is the most important.
             </p>
             <div className="flip-words-page__tier-import">
-              import {'{'} FlipWords {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} FlipWords {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="flip-words-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>
@@ -1275,7 +1275,7 @@ export default function FlipWordsPage() {
               Uses CSS rotateX transitions with proper entering/exiting states.
             </p>
             <div className="flip-words-page__tier-import">
-              import {'{'} FlipWords {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} FlipWords {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="flip-words-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1308,7 +1308,7 @@ export default function FlipWordsPage() {
               stagger animation, and OKLCH color shifting between words for a cinematic feel.
             </p>
             <div className="flip-words-page__tier-import">
-              import {'{'} FlipWords {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} FlipWords {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="flip-words-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1468,7 +1468,7 @@ export default function FlipWordsPage() {
         </p>
         <a
           className="flip-words-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/flip-words.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/flip-words.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -57,7 +57,7 @@ if (allCSS.length > 0) {
 
 // Lite tier: extract embedded CSS into a complete standalone stylesheet.
 // React consumers get auto-injection via useStyles(); this file serves
-// non-React / no-bundler consumers (exported as @annondeveloper/ui-kit/lite/styles.css).
+// non-React / no-bundler consumers (exported as @frontier-labs/ui-kit/lite/styles.css).
 const SRC_LITE = 'src/lite'
 const DIST_LITE = 'dist/css/lite'
 if (existsSync(SRC_LITE)) {

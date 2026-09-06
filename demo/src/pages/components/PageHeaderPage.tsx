@@ -452,9 +452,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PageHeader } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PageHeader } from '@annondeveloper/ui-kit'",
-  premium: "import { PageHeader } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PageHeader } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PageHeader } from '@frontier-labs/ui-kit'",
+  premium: "import { PageHeader } from '@frontier-labs/ui-kit/premium'",
 }
 
 const TIERS: { id: Tier; label: string }[] = [
@@ -504,13 +504,13 @@ function generateReactCode(tier: Tier, titleText: string, descText: string, size
   if (showActions) props.push(`  actions={<><Button size="sm" variant="secondary">Edit</Button><Button size="sm">Save</Button></>}`)
   if (showBreadcrumbs) props.push(`  breadcrumbs={<nav>Home / Settings</nav>}`)
 
-  return `${imp}\n${showActions ? "import { Button } from '@annondeveloper/ui-kit'\n" : ''}\n<PageHeader\n${props.join('\n')}\n/>`
+  return `${imp}\n${showActions ? "import { Button } from '@frontier-labs/ui-kit'\n" : ''}\n<PageHeader\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier, titleText: string, descText: string, size: Size): string {
   const cls = tier === 'lite' ? 'ui-lite-page-header' : 'ui-page-header'
-  return `<!-- PageHeader — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/page-header.css">
+  return `<!-- PageHeader — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/page-header.css">
 
 <header class="${cls}" data-size="${size}">
   <div class="${cls}__row">
@@ -524,9 +524,9 @@ function generateHtmlCode(tier: Tier, titleText: string, descText: string, size:
 
 function generateVueCode(tier: Tier, titleText: string, descText: string, size: Size): string {
   if (tier === 'lite') {
-    return `<template>\n  <header class="ui-lite-page-header" data-size="${size}">\n    <h1>${titleText}</h1>\n    ${descText ? `<p>${descText}</p>` : ''}\n  </header>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <header class="ui-lite-page-header" data-size="${size}">\n    <h1>${titleText}</h1>\n    ${descText ? `<p>${descText}</p>` : ''}\n  </header>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  title="${titleText}"`]
   if (descText) attrs.push(`  description="${descText}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -535,17 +535,17 @@ function generateVueCode(tier: Tier, titleText: string, descText: string, size: 
 
 function generateAngularCode(tier: Tier, titleText: string, descText: string, size: Size): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<header class="ui-lite-page-header" data-size="${size}">\n  <h1>${titleText}</h1>\n  ${descText ? `<p>${descText}</p>` : ''}\n</header>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<header class="ui-lite-page-header" data-size="${size}">\n  <h1>${titleText}</h1>\n  ${descText ? `<p>${descText}</p>` : ''}\n</header>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<header\n  class="ui-page-header"\n  data-size="${size}"\n>\n  <div class="ui-page-header__row">\n    <div class="ui-page-header__content">\n      <h1 class="ui-page-header__title">${titleText}</h1>\n      ${descText ? `<p class="ui-page-header__description">${descText}</p>` : ''}\n    </div>\n  </div>\n</header>\n\n/* Import component CSS */\n@import '${importPath}/css/components/page-header.css';`
 }
 
 function generateSvelteCode(tier: Tier, titleText: string, descText: string, size: Size): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<header class="ui-lite-page-header" data-size="${size}">\n  <h1>${titleText}</h1>\n  ${descText ? `<p>${descText}</p>` : ''}\n</header>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<header class="ui-lite-page-header" data-size="${size}">\n  <h1>${titleText}</h1>\n  ${descText ? `<p>${descText}</p>` : ''}\n</header>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  title="${titleText}"`]
   if (descText) attrs.push(`  description="${descText}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -922,7 +922,7 @@ export default function PageHeaderPage() {
         <h2 className="page-header-page__section-title">Source</h2>
         <a
           className="page-header-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/page-header.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/page-header.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -1,12 +1,12 @@
 /**
- * @module @annondeveloper/ui-kit/theme
+ * @module @frontier-labs/ui-kit/theme
  *
  * Theme utilities for the OKLCH color system. Generate complete themes from a
  * single brand color, validate WCAG contrast ratios, and export to CSS/Tailwind/Figma.
  *
  * @example
  * ```tsx
- * import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+ * import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
  *
  * const theme = generateTheme('#6366f1', 'dark')
  * applyTheme(theme)

@@ -716,9 +716,9 @@ const rippleProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Ripple } from '@annondeveloper/ui-kit/domain'",
-  standard: "import { Ripple } from '@annondeveloper/ui-kit'",
-  premium: "import { Ripple } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Ripple } from '@frontier-labs/ui-kit/domain'",
+  standard: "import { Ripple } from '@frontier-labs/ui-kit'",
+  premium: "import { Ripple } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -818,8 +818,8 @@ function generateReactCode(
 
 function generateHtmlCode(color: string, duration: number): string {
   const colorCss = color ? `\n  --ripple-effect-color: ${color};` : ''
-  return `<!-- Ripple — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/ripple.css">
+  return `<!-- Ripple — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/ripple.css">
 
 <div class="ui-ripple" style="--ripple-effect-duration: ${duration}ms;${colorCss}">
   <div class="ui-ripple--content">
@@ -846,7 +846,7 @@ document.querySelector('.ui-ripple').addEventListener('click', (e) => {
 }
 
 function generateVueCode(tier: Tier, color: string, duration: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (color) props.push(`  color="${color}"`)
   if (duration !== 600) props.push(`  :duration="${duration}"`)
@@ -895,11 +895,11 @@ onRipple(e: MouseEvent) {
 }
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/ripple.css';`
+@import '@frontier-labs/ui-kit/css/components/ripple.css';`
 }
 
 function generateSvelteCode(tier: Tier, color: string, duration: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (color) props.push(`  color="${color}"`)
   if (duration !== 600) props.push(`  duration={${duration}}`)
@@ -1312,7 +1312,7 @@ export default function RipplePage() {
               Ripple always originates from the element center.
             </p>
             <div className="ripple-page__tier-import">
-              import {'{'} Ripple {'}'} from '@annondeveloper/ui-kit/domain'
+              import {'{'} Ripple {'}'} from '@frontier-labs/ui-kit/domain'
             </div>
             <div className="ripple-page__tier-preview">
               <LiteRipple style={{ borderRadius: 'var(--radius-sm)' }}>
@@ -1345,7 +1345,7 @@ export default function RipplePage() {
               motion level support, and configurable color and duration.
             </p>
             <div className="ripple-page__tier-import">
-              import {'{'} Ripple {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Ripple {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="ripple-page__tier-preview">
               <Ripple style={{ borderRadius: 'var(--radius-sm)' }}>
@@ -1378,7 +1378,7 @@ export default function RipplePage() {
               effects, and physics-based ease curves for natural motion.
             </p>
             <div className="ripple-page__tier-import">
-              import {'{'} Ripple {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Ripple {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="ripple-page__tier-preview">
               <PremiumRipple style={{ borderRadius: 'var(--radius-sm)' }}>
@@ -1503,13 +1503,13 @@ export default function RipplePage() {
         <h2 className="ripple-page__section-title"><a href="#source">Source</a></h2>
         <p className="ripple-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="ripple-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/ripple.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ripple-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/ripple.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/ripple.tsx (Standard)
           </a>
-          <a className="ripple-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/ripple.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ripple-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/ripple.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/ripple.tsx (Lite)
           </a>
-          <a className="ripple-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/ripple.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="ripple-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/ripple.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/ripple.tsx (Premium)
           </a>
         </div>

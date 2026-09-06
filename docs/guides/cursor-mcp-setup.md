@@ -1,6 +1,6 @@
 # Cursor MCP Setup
 
-Use this guide to connect `@annondeveloper/ui-kit` to Cursor through MCP so Cursor can browse the component registry and generate code against the real API surface instead of guessing.
+Use this guide to connect `@frontier-labs/ui-kit` to Cursor through MCP so Cursor can browse the component registry and generate code against the real API surface instead of guessing.
 
 ## What you get in Cursor
 
@@ -110,7 +110,7 @@ For a shared remote setup, use the SSE flow described in the MCP docs and point 
 The MCP demo page references:
 
 ```bash
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 But the current CLI source in this repository does not yet expose a public `mcp` command. Until that lands, Cursor setup is still manual through `.cursor/mcp.json` plus the built `dist/mcp/index.js` server path.

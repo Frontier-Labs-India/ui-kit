@@ -1,12 +1,12 @@
 /**
- * @module @annondeveloper/ui-kit/form
+ * @module @frontier-labs/ui-kit/form
  *
  * Built-in form engine with zero external dependencies. Create type-safe forms
  * with validation, field arrays, and auto-wiring to ui-kit form components.
  *
  * @example
  * ```tsx
- * import { createForm, useForm, v } from '@annondeveloper/ui-kit/form'
+ * import { createForm, useForm, v } from '@frontier-labs/ui-kit/form'
  *
  * const LoginForm = createForm({
  *   fields: {

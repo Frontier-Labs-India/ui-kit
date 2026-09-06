@@ -702,9 +702,9 @@ const tracingBeamProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TracingBeam } from '@annondeveloper/ui-kit/domain'",
-  standard: "import { TracingBeam } from '@annondeveloper/ui-kit'",
-  premium: "import { TracingBeam } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TracingBeam } from '@frontier-labs/ui-kit/domain'",
+  standard: "import { TracingBeam } from '@frontier-labs/ui-kit'",
+  premium: "import { TracingBeam } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -828,8 +828,8 @@ function generateReactCode(
 
 function generateHtmlCode(beamColor: string): string {
   const colorVar = beamColor ? `\n  --tracing-beam-color: ${beamColor};` : ''
-  return `<!-- TracingBeam — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/tracing-beam.css">
+  return `<!-- TracingBeam — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/tracing-beam.css">
 
 <div class="ui-tracing-beam"${colorVar ? ` style="${colorVar.trim()}"` : ''}>
   <div class="ui-tracing-beam--track" aria-hidden="true">
@@ -859,7 +859,7 @@ window.addEventListener('scroll', () => {
 }
 
 function generateVueCode(tier: Tier, beamColor: string): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (beamColor) props.push(`  color="${beamColor}"`)
 
@@ -902,13 +902,13 @@ function generateAngularCode(beamColor: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/tracing-beam.css';
+@import '@frontier-labs/ui-kit/css/components/tracing-beam.css';
 
 // In component.ts: track scroll progress with @HostListener('window:scroll')`
 }
 
 function generateSvelteCode(tier: Tier, beamColor: string): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (beamColor) props.push(`  color="${beamColor}"`)
 
@@ -1253,7 +1253,7 @@ export default function TracingBeamPage() {
           <TracingBeam>
             <div className="tracing-beam-page__content-block">
               <h3><span className="tracing-beam-page__step-badge">1</span> Install the package</h3>
-              <p>Add @annondeveloper/ui-kit to your project with npm, yarn, or pnpm. The package includes TypeScript declarations and zero external dependencies.</p>
+              <p>Add @frontier-labs/ui-kit to your project with npm, yarn, or pnpm. The package includes TypeScript declarations and zero external dependencies.</p>
             </div>
             <div className="tracing-beam-page__content-block">
               <h3><span className="tracing-beam-page__step-badge">2</span> Initialize your theme</h3>
@@ -1319,7 +1319,7 @@ export default function TracingBeamPage() {
               The full beam is shown statically beside content.
             </p>
             <div className="tracing-beam-page__tier-import">
-              import {'{'} TracingBeam {'}'} from '@annondeveloper/ui-kit/domain'
+              import {'{'} TracingBeam {'}'} from '@frontier-labs/ui-kit/domain'
             </div>
             <div className="tracing-beam-page__tier-preview">
               <LiteTracingBeam>
@@ -1354,7 +1354,7 @@ export default function TracingBeamPage() {
               gradient beam, and motion level support with smooth transitions.
             </p>
             <div className="tracing-beam-page__tier-import">
-              import {'{'} TracingBeam {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TracingBeam {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="tracing-beam-page__tier-preview">
               <TracingBeam>
@@ -1389,7 +1389,7 @@ export default function TracingBeamPage() {
               glow effects, and hue-shifting gradient that cycles as you scroll.
             </p>
             <div className="tracing-beam-page__tier-import">
-              import {'{'} TracingBeam {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TracingBeam {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="tracing-beam-page__tier-preview">
               <PremiumTracingBeam>
@@ -1516,13 +1516,13 @@ export default function TracingBeamPage() {
         <h2 className="tracing-beam-page__section-title"><a href="#source">Source</a></h2>
         <p className="tracing-beam-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="tracing-beam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tracing-beam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/tracing-beam.tsx (Standard)
           </a>
-          <a className="tracing-beam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tracing-beam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/tracing-beam.tsx (Lite)
           </a>
-          <a className="tracing-beam-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tracing-beam-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/tracing-beam.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/tracing-beam.tsx (Premium)
           </a>
         </div>

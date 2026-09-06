@@ -2,7 +2,7 @@
 // Generates production-ready component compositions for five frameworks from
 // either a named template or a custom selection of components. Pure, browser-safe
 // TypeScript — no fs/path — so it tree-shakes into apps importing
-// `@annondeveloper/ui-kit/ai`.
+// `@frontier-labs/ui-kit/ai`.
 
 import { getComponentDatabase } from './component-database'
 
@@ -39,9 +39,9 @@ const DEFAULTS: Required<Omit<GeneratorOptions, never>> = {
 // ─── Import / naming helpers ────────────────────────────────────────────────
 
 function importPath(tier: Tier): string {
-  if (tier === 'lite') return '@annondeveloper/ui-kit/lite'
-  if (tier === 'premium') return '@annondeveloper/ui-kit/premium'
-  return '@annondeveloper/ui-kit'
+  if (tier === 'lite') return '@frontier-labs/ui-kit/lite'
+  if (tier === 'premium') return '@frontier-labs/ui-kit/premium'
+  return '@frontier-labs/ui-kit'
 }
 
 /** Tier-prefixed component identifier (Lite.../Premium...); standard is unprefixed. */
@@ -218,8 +218,8 @@ function renderHtml(comp: Composition, theme: string): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${comp.title}</title>
   <!-- UI Kit standalone CSS (all components + ${theme} theme) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@annondeveloper/ui-kit/css/theme.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@annondeveloper/ui-kit/css/all.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@frontier-labs/ui-kit/css/theme.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@frontier-labs/ui-kit/css/all.css" />
   <style>
     body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 2rem; }
     .generated-layout { max-width: 1200px; margin: 0 auto; }

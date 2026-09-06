@@ -714,9 +714,9 @@ type Variant = 'text' | 'circular' | 'rectangular' | 'rounded'
 const VARIANTS: Variant[] = ['text', 'circular', 'rectangular', 'rounded']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Skeleton } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Skeleton } from '@annondeveloper/ui-kit'",
-  premium: "import { Skeleton } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Skeleton } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Skeleton } from '@frontier-labs/ui-kit'",
+  premium: "import { Skeleton } from '@frontier-labs/ui-kit/premium'",
 }
 
 const P = 'skeleton-page__'
@@ -822,7 +822,7 @@ function generateHtmlCode(tier: Tier, variant: Variant, width: string, height: s
   const className = tier === 'lite' ? 'ui-lite-skeleton' : 'ui-skeleton'
   const style = [width ? `width: ${width}` : '', height ? `height: ${height}` : ''].filter(Boolean).join('; ')
 
-  return `<!-- Skeleton — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Skeleton — @frontier-labs/ui-kit ${tier} tier -->
 <div
   class="${className}"
   data-variant="${variant}"
@@ -844,7 +844,7 @@ function generateVueCode(tier: Tier, variant: Variant, width: string, height: st
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -858,7 +858,7 @@ function generateVueCode(tier: Tier, variant: Variant, width: string, height: st
 </template>
 
 <script setup>
-import { Skeleton } from '@annondeveloper/ui-kit'
+import { Skeleton } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -875,7 +875,7 @@ function generateAngularCode(tier: Tier, variant: Variant, width: string, height
 ></div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
@@ -888,7 +888,7 @@ function generateAngularCode(tier: Tier, variant: Variant, width: string, height
 ></div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/skeleton.css';`
+@import '@frontier-labs/ui-kit/css/components/skeleton.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: Variant, width: string, height: string): string {
@@ -903,7 +903,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, width: string, height:
 ></div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -913,7 +913,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, width: string, height:
   if (height) props.push(`  height="${height}"`)
 
   return `<script>
-  import { Skeleton } from '@annondeveloper/ui-kit'
+  import { Skeleton } from '@frontier-labs/ui-kit'
 </script>
 
 <Skeleton${props.length ? '\n' + props.join('\n') + '\n' : ' '}/>`
@@ -1483,7 +1483,7 @@ export default function SkeletonPage() {
               CSS-only skeleton. Three variants with basic styling. No shimmer animation, no multi-line support, no motion control.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Skeleton {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Skeleton {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${P}tier-preview`}>
               <LiteSkeleton variant="rectangular" width={120} height={40} />
@@ -1513,7 +1513,7 @@ export default function SkeletonPage() {
               Full-featured skeleton with aurora shimmer animation, multi-line text, motion control, and comprehensive accessibility support.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Skeleton {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Skeleton {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${P}tier-preview`}>
               <Skeleton variant="rectangular" width={120} height={40} />
@@ -1543,7 +1543,7 @@ export default function SkeletonPage() {
               Aurora brand-tinted shimmer gradient, ambient glow on skeleton blocks, and spring-fade transition to content.
             </p>
             <div className={`${P}tier-import`}>
-              import {'{'} Skeleton {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Skeleton {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${P}tier-preview`}>
               <PremiumSkeleton variant="rectangular" width={120} height={40} />
@@ -1653,13 +1653,13 @@ export default function SkeletonPage() {
         <h2 className={`${P}section-title`}><a href="#source">Source</a></h2>
         <p className={`${P}section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${P}source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/skeleton.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${P}source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/skeleton.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/skeleton.tsx (Standard)
           </a>
-          <a className={`${P}source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/skeleton.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${P}source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/skeleton.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/skeleton.tsx (Lite)
           </a>
-          <a className={`${P}source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/skeleton.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${P}source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/skeleton.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/skeleton.tsx (Premium)
           </a>
         </div>

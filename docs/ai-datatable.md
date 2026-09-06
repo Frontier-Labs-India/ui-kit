@@ -5,7 +5,7 @@ The DataTable component includes a built-in heuristic engine that analyzes your 
 ## Quick Start
 
 ```tsx
-import { DataTable } from '@annondeveloper/ui-kit'
+import { DataTable } from '@frontier-labs/ui-kit'
 
 <DataTable data={rows} columns={cols} showSuggestions />
 ```

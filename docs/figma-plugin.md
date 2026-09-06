@@ -10,7 +10,7 @@ The Figma integration has two parts: a **CLI command** (`figma-export`) that gen
 
 ```bash
 # 1. Export tokens from CLI
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
 
 # 2. Open Figma, run the plugin, paste tokens.json content, click Import
 ```
@@ -30,13 +30,13 @@ Use the CLI to generate a JSON file with Figma Variables:
 
 ```bash
 # Named theme (dark mode)
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
 
 # Custom brand color
-npx @annondeveloper/ui-kit figma-export --theme "#6366f1" --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme "#6366f1" --output tokens.json
 
 # Light mode
-npx @annondeveloper/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
+npx @frontier-labs/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
 ```
 
 ### Step 2: Import into Figma
@@ -80,7 +80,7 @@ The exported JSON follows the [Design Tokens Community Group](https://design-tok
 
 ```bash
 # Use with Style Dictionary
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
 npx style-dictionary build --config style-dictionary.config.json
 ```
 
@@ -111,8 +111,8 @@ aurora, sunset, rose, amber, ocean, emerald, cyan, violet, fuchsia, slate, corpo
 THEMES="aurora sunset rose amber ocean emerald cyan violet fuchsia slate corporate midnight forest wine carbon"
 
 for theme in $THEMES; do
-  npx @annondeveloper/ui-kit figma-export --theme "$theme" --output "tokens/${theme}-dark.json"
-  npx @annondeveloper/ui-kit figma-export --theme "$theme" --mode light --output "tokens/${theme}-light.json"
+  npx @frontier-labs/ui-kit figma-export --theme "$theme" --output "tokens/${theme}-dark.json"
+  npx @frontier-labs/ui-kit figma-export --theme "$theme" --mode light --output "tokens/${theme}-light.json"
 done
 ```
 
@@ -120,7 +120,7 @@ done
 
 ```bash
 # Your brand color as input
-npx @annondeveloper/ui-kit figma-export --theme "#1a73e8" --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme "#1a73e8" --output tokens.json
 
 # Google-blue inspired theme tokens ready for Figma
 ```

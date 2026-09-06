@@ -338,7 +338,7 @@ export default function IconsPage() {
       {/* ── Usage Section ──────────────────────────────────── */}
       <div className="icons-section">
         <h2 className="icons-section-title">Usage</h2>
-        <div className="icons-code-block">{`import { Icon } from '@annondeveloper/ui-kit'
+        <div className="icons-code-block">{`import { Icon } from '@frontier-labs/ui-kit'
 
 <Icon name="check" size="md" />
 <Icon name="search" size={24} />

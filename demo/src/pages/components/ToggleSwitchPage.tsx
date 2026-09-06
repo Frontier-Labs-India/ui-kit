@@ -781,9 +781,9 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ToggleSwitch } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ToggleSwitch } from '@annondeveloper/ui-kit'",
-  premium: "import { ToggleSwitch } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ToggleSwitch } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ToggleSwitch } from '@frontier-labs/ui-kit'",
+  premium: "import { ToggleSwitch } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -902,8 +902,8 @@ function generateHtmlExport(tier: Tier, size: Size, checked: boolean, disabled: 
   const disabledAttr = disabled ? ' disabled' : ''
 
   if (tier === 'lite') {
-    return `<!-- ToggleSwitch — @annondeveloper/ui-kit lite tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">
+    return `<!-- ToggleSwitch — @frontier-labs/ui-kit lite tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">
 
 <label class="ui-lite-toggle">
   <input type="checkbox" role="switch"${checkedAttr}${disabledAttr}>
@@ -911,8 +911,8 @@ function generateHtmlExport(tier: Tier, size: Size, checked: boolean, disabled: 
 </label>`
   }
 
-  return `<!-- ToggleSwitch — @annondeveloper/ui-kit standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/toggle-switch.css">
+  return `<!-- ToggleSwitch — @frontier-labs/ui-kit standard tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/toggle-switch.css">
 
 <div class="ui-toggle-switch" data-size="${size}">
   <label class="ui-toggle-switch__row">
@@ -936,7 +936,7 @@ function generateVueCode(tier: Tier, size: Size, checked: boolean, disabled: boo
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -955,7 +955,7 @@ ${template}
 </template>
 
 <script setup>
-import { ToggleSwitch } from '@annondeveloper/ui-kit'
+import { ToggleSwitch } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -968,7 +968,7 @@ function generateAngularCode(tier: Tier, size: Size, checked: boolean, disabled:
 </label>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -988,7 +988,7 @@ function generateAngularCode(tier: Tier, size: Size, checked: boolean, disabled:
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/toggle-switch.css';`
+@import '@frontier-labs/ui-kit/css/components/toggle-switch.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, checked: boolean, disabled: boolean, labelText: string): string {
@@ -1000,7 +1000,7 @@ function generateSvelteCode(tier: Tier, size: Size, checked: boolean, disabled: 
 </label>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -1013,7 +1013,7 @@ function generateSvelteCode(tier: Tier, size: Size, checked: boolean, disabled: 
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
 
   return `<script>
-  import { ToggleSwitch } from '@annondeveloper/ui-kit';
+  import { ToggleSwitch } from '@frontier-labs/ui-kit';
 </script>
 
 <ToggleSwitch${propsStr}/>`
@@ -1430,7 +1430,7 @@ export default function ToggleSwitchPage() {
               No size prop, no motion, no error state.
             </p>
             <div className="toggle-switch-page__tier-import">
-              import {'{'} ToggleSwitch {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ToggleSwitch {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="toggle-switch-page__tier-preview">
               <LiteToggleSwitch label="Lite Toggle" defaultChecked />
@@ -1461,7 +1461,7 @@ export default function ToggleSwitchPage() {
               error state, ARIA attributes, and scoped CSS injection.
             </p>
             <div className="toggle-switch-page__tier-import">
-              import {'{'} ToggleSwitch {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ToggleSwitch {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="toggle-switch-page__tier-preview">
               <ToggleSwitch label="Standard" size="md" defaultChecked />
@@ -1492,7 +1492,7 @@ export default function ToggleSwitchPage() {
               when checked, and motion-level-aware degradation. Wraps Standard with premium CSS layer.
             </p>
             <div className="toggle-switch-page__tier-import">
-              import {'{'} ToggleSwitch {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ToggleSwitch {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="toggle-switch-page__tier-preview">
               <PremiumToggleSwitch label="Premium" size="md" defaultChecked />
@@ -1644,7 +1644,7 @@ export default function ToggleSwitchPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/toggle-switch.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/toggle-switch.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="toggle-switch-page__source-link"
@@ -1653,7 +1653,7 @@ export default function ToggleSwitchPage() {
             src/components/toggle-switch.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/toggle-switch.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/toggle-switch.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="toggle-switch-page__source-link"

@@ -711,9 +711,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DatePicker } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DatePicker } from '@annondeveloper/ui-kit'",
-  premium: "import { DatePicker } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DatePicker } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DatePicker } from '@frontier-labs/ui-kit'",
+  premium: "import { DatePicker } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -841,11 +841,11 @@ function generateHtmlCode(tier: Tier, size: Size, label: string, disabled: boole
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<!-- DatePicker — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/date-picker.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/date-picker.css">
 
 <div class="ui-date-picker" data-size="${size}">
   ${label ? `<label class="ui-date-picker__label">${label}</label>` : ''}
@@ -870,10 +870,10 @@ const date = ref('')
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = ['  v-model="date"']
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (label) attrs.push(`  label="${label}"`)
@@ -900,7 +900,7 @@ function generateAngularCode(tier: Tier, size: Size, label: string, disabled: bo
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS-only approach) -->
 <div class="ui-date-picker" data-size="${size}">
@@ -911,7 +911,7 @@ function generateAngularCode(tier: Tier, size: Size, label: string, disabled: bo
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/date-picker.css';`
+@import '@frontier-labs/ui-kit/css/components/date-picker.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, label: string, disabled: boolean): string {
@@ -927,11 +927,11 @@ function generateSvelteCode(tier: Tier, size: Size, label: string, disabled: boo
 </script>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { DatePicker } from '@annondeveloper/ui-kit';
+  import { DatePicker } from '@frontier-labs/ui-kit';
   let date = '';
 </script>
 
@@ -1375,7 +1375,7 @@ export default function DatePickerPage() {
               No calendar popup, no month navigation, no custom styling.
             </p>
             <div className="date-picker-page__tier-import">
-              import {'{'} DatePicker {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DatePicker {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="date-picker-page__tier-preview">
               <LiteDatePicker label="Lite" />
@@ -1405,7 +1405,7 @@ export default function DatePickerPage() {
               date constraints, week numbers, first-day config, and animated entry.
             </p>
             <div className="date-picker-page__tier-import">
-              import {'{'} DatePicker {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DatePicker {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="date-picker-page__tier-preview">
               <DatePicker placeholder="Standard" size="sm" />
@@ -1436,7 +1436,7 @@ export default function DatePickerPage() {
               shimmer highlight on today, glass morphism dropdown.
             </p>
             <div className="date-picker-page__tier-import">
-              import {'{'} DatePicker {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DatePicker {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="date-picker-page__tier-preview">
               <PremiumDatePicker placeholder="Premium" size="sm" />
@@ -1533,13 +1533,13 @@ export default function DatePickerPage() {
         <h2 className="date-picker-page__section-title"><a href="#source">Source</a></h2>
         <p className="date-picker-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="date-picker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/date-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="date-picker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/date-picker.tsx" target="_blank" rel="noopener noreferrer">
             src/components/date-picker.tsx (Standard)
           </a>
-          <a className="date-picker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/date-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="date-picker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/date-picker.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/date-picker.tsx (Lite)
           </a>
-          <a className="date-picker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/date-picker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="date-picker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/date-picker.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/date-picker.tsx (Premium)
           </a>
         </div>

@@ -735,9 +735,9 @@ type Placement = 'top' | 'bottom' | 'left' | 'right'
 const PLACEMENTS: Placement[] = ['top', 'bottom', 'left', 'right']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Tooltip } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Tooltip } from '@annondeveloper/ui-kit'",
-  premium: "import { Tooltip } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Tooltip } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Tooltip } from '@frontier-labs/ui-kit'",
+  premium: "import { Tooltip } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -872,14 +872,14 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, placement: Placement): string {
   if (tier === 'lite') {
-    return `<!-- Tooltip — @annondeveloper/ui-kit lite tier -->
+    return `<!-- Tooltip — @frontier-labs/ui-kit lite tier -->
 <!-- Lite tooltip uses native title attribute -->
 <span class="ui-lite-tooltip" title="Helpful tooltip text">
   <button>Hover me</button>
 </span>`
   }
 
-  return `<!-- Tooltip — @annondeveloper/ui-kit standard tier -->
+  return `<!-- Tooltip — @frontier-labs/ui-kit standard tier -->
 <!-- The standard Tooltip requires React for positioning logic -->
 <!-- For HTML-only, use the lite tier with native title attribute -->
 <span class="ui-lite-tooltip" title="Helpful tooltip text">
@@ -921,7 +921,7 @@ function generateVueCode(tier: Tier, placement: Placement, delay: number, disabl
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -939,7 +939,7 @@ function generateVueCode(tier: Tier, placement: Placement, delay: number, disabl
 </template>
 
 <script setup>
-import { Tooltip } from '@annondeveloper/ui-kit'
+import { Tooltip } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -951,7 +951,7 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </span>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -964,7 +964,7 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </button>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/tooltip.css';`
+@import '@frontier-labs/ui-kit/css/components/tooltip.css';`
 }
 
 function generateSvelteCode(tier: Tier, placement: Placement, delay: number, disabled: boolean): string {
@@ -975,7 +975,7 @@ function generateSvelteCode(tier: Tier, placement: Placement, delay: number, dis
 </span>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -985,7 +985,7 @@ function generateSvelteCode(tier: Tier, placement: Placement, delay: number, dis
   if (disabled) attrs.push('  disabled')
 
   return `<script>
-  import { Tooltip } from '@annondeveloper/ui-kit';
+  import { Tooltip } from '@frontier-labs/ui-kit';
 </script>
 
 <Tooltip
@@ -1490,7 +1490,7 @@ export default function TooltipPage() {
               Zero JavaScript positioning. Browser-native tooltip rendering.
             </p>
             <div className="tooltip-page__tier-import">
-              import {'{'} Tooltip {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Tooltip {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="tooltip-page__tier-preview">
               <LiteTooltip content="Lite tooltip">
@@ -1523,7 +1523,7 @@ export default function TooltipPage() {
               configurable delay, motion animation, and arrow indicator.
             </p>
             <div className="tooltip-page__tier-import">
-              import {'{'} Tooltip {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Tooltip {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="tooltip-page__tier-preview">
               <Tooltip content="Standard tooltip" placement="top">
@@ -1556,7 +1556,7 @@ export default function TooltipPage() {
               and aurora glow shadow around the tooltip panel. Wraps Standard with premium CSS layer.
             </p>
             <div className="tooltip-page__tier-import">
-              import {'{'} Tooltip {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Tooltip {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="tooltip-page__tier-preview">
               <PremiumTooltip content="Premium spring + glow" placement="top">
@@ -1721,7 +1721,7 @@ export default function TooltipPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/tooltip.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/tooltip.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="tooltip-page__source-link"
@@ -1730,7 +1730,7 @@ export default function TooltipPage() {
             src/components/tooltip.tsx — Standard tier
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tooltip.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tooltip.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="tooltip-page__source-link"

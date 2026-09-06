@@ -476,9 +476,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PropertyList } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PropertyList } from '@annondeveloper/ui-kit'",
-  premium: "import { PropertyList } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PropertyList } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PropertyList } from '@frontier-labs/ui-kit'",
+  premium: "import { PropertyList } from '@frontier-labs/ui-kit/premium'",
 }
 
 const sampleItems: PropertyItem[] = [
@@ -575,7 +575,7 @@ ${props.join('\n')}
 }
 
 function generateVueCode(tier: Tier, size: Size, columns: Columns, striped: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':items="items"']
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (columns !== 1) attrs.push(`:columns="${columns}"`)
@@ -596,7 +596,7 @@ const items = [
 }
 
 function generateAngularCode(tier: Tier, size: Size, columns: Columns, striped: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- Use CSS-only approach or React wrapper -->
 <div class="ui-property-list" data-size="${size}" ${columns === 2 ? 'data-columns="2"' : ''} ${striped ? 'data-striped="true"' : ''}>
   <!-- Render rows programmatically -->
@@ -607,7 +607,7 @@ function generateAngularCode(tier: Tier, size: Size, columns: Columns, striped: 
 }
 
 function generateSvelteCode(tier: Tier, size: Size, columns: Columns, striped: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['{items}']
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (columns !== 1) attrs.push(`columns={${columns}}`)
@@ -626,7 +626,7 @@ function generateSvelteCode(tier: Tier, size: Size, columns: Columns, striped: b
 }
 
 function generateHtmlCode(size: Size, columns: Columns, striped: boolean): string {
-  return `<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/property-list.css">
+  return `<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/property-list.css">
 
 <div class="ui-property-list" data-size="${size}" ${columns === 2 ? 'data-columns="2"' : ''} ${striped ? 'data-striped="true"' : ''}>
   <div class="ui-property-list__row">
@@ -946,7 +946,7 @@ export default function PropertyListPage() {
         </h2>
         <a
           className="property-list-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/property-list.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/property-list.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

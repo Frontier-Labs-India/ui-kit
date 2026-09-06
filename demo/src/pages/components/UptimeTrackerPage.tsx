@@ -611,9 +611,9 @@ const uptimeDayProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { UptimeTracker } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { UptimeTracker } from '@annondeveloper/ui-kit'",
-  premium: "import { UptimeTracker } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { UptimeTracker } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { UptimeTracker } from '@frontier-labs/ui-kit'",
+  premium: "import { UptimeTracker } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -699,12 +699,12 @@ function generateReactCode(tier: Tier, dayCount: number, showSla: boolean, slaTa
   if (showSla && slaTarget === 0.999) props.push('  slaTarget={0.999}')
   if (motion !== 3 && tier !== 'lite') props.push(`  motion={${motion}}`)
 
-  return `${importStr}\nimport type { UptimeDay } from '@annondeveloper/ui-kit'\n\n// Generate ${dayCount} days of uptime data\nconst uptimeDays: UptimeDay[] = [\n  { date: '2026-03-22', status: 'up', uptime: 0.999 },\n  { date: '2026-03-23', status: 'degraded', uptime: 0.96 },\n  // ... ${dayCount} days total\n]\n\n<UptimeTracker\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { UptimeDay } from '@frontier-labs/ui-kit'\n\n// Generate ${dayCount} days of uptime data\nconst uptimeDays: UptimeDay[] = [\n  { date: '2026-03-22', status: 'up', uptime: 0.999 },\n  { date: '2026-03-23', status: 'degraded', uptime: 0.96 },\n  // ... ${dayCount} days total\n]\n\n<UptimeTracker\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier): string {
-  return `<!-- UptimeTracker — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/uptime-tracker.css'}">
+  return `<!-- UptimeTracker — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/uptime-tracker.css'}">
 
 <div class="${tier === 'lite' ? 'ui-lite-uptime-tracker' : 'ui-uptime-tracker'}" role="group" aria-label="Uptime history">
   <div class="${tier === 'lite' ? 'ui-lite-uptime-tracker__grid' : 'ui-uptime-tracker__bar'}">
@@ -717,18 +717,18 @@ function generateHtmlCode(tier: Tier): string {
 }
 
 function generateVueCode(tier: Tier, showSla: boolean, slaTarget: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const slaProps = showSla ? `\n    showSla\n    :sla-target="${slaTarget}"` : ''
   return `<template>\n  <UptimeTracker\n    :days="uptimeDays"${slaProps}\n  />\n</template>\n\n<script setup>\nimport { UptimeTracker } from '${importPath}'\nimport { ref } from 'vue'\n\nconst uptimeDays = ref([\n  { date: '2026-03-22', status: 'up', uptime: 0.999 },\n  // ... more days\n])\n</script>`
 }
 
 function generateAngularCode(tier: Tier, showSla: boolean): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->\n<ui-uptime-tracker\n  [days]="uptimeDays"${showSla ? '\n  showSla\n  [slaTarget]="0.999"' : ''}\n></ui-uptime-tracker>\n\n/* Import CSS */\n@import '${importPath}/css/components/uptime-tracker.css';`
 }
 
 function generateSvelteCode(tier: Tier, showSla: boolean, slaTarget: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const slaProps = showSla ? `\n  showSla\n  slaTarget={${slaTarget}}` : ''
   return `<script>\n  import { UptimeTracker } from '${importPath}';\n\n  const uptimeDays = [\n    { date: '2026-03-22', status: 'up', uptime: 0.999 },\n    // ... more days\n  ];\n</script>\n\n<UptimeTracker\n  days={uptimeDays}${slaProps}\n/>`
 }
@@ -1049,7 +1049,7 @@ export default function UptimeTrackerPage() {
               No hover animations, no SLA calculation, no JavaScript state.
             </p>
             <div className="uptime-tracker-page__tier-import">
-              import {'{'} UptimeTracker {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} UptimeTracker {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="uptime-tracker-page__tier-preview">
               <LiteUptimeTracker days={SAMPLE_30_DAYS.slice(0, 15)} slaTarget={0.999} />
@@ -1080,7 +1080,7 @@ export default function UptimeTrackerPage() {
               smooth hover scale animation, and motion-level support.
             </p>
             <div className="uptime-tracker-page__tier-import">
-              import {'{'} UptimeTracker {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} UptimeTracker {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="uptime-tracker-page__tier-preview">
               <UptimeTracker days={SAMPLE_30_DAYS.slice(0, 15)} showSla slaTarget={0.999} />
@@ -1111,7 +1111,7 @@ export default function UptimeTrackerPage() {
               ambient glow on incident days, and spring-physics hover.
             </p>
             <div className="uptime-tracker-page__tier-import">
-              import {'{'} UptimeTracker {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} UptimeTracker {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="uptime-tracker-page__tier-preview">
               <PremiumUptimeTracker days={SAMPLE_30_DAYS.slice(0, 15)} showSla slaTarget={0.999} />
@@ -1234,13 +1234,13 @@ export default function UptimeTrackerPage() {
         <h2 className="uptime-tracker-page__section-title"><a href="#source">Source</a></h2>
         <p className="uptime-tracker-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="uptime-tracker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="uptime-tracker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/uptime-tracker.tsx (Standard)
           </a>
-          <a className="uptime-tracker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="uptime-tracker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/uptime-tracker.tsx (Lite)
           </a>
-          <a className="uptime-tracker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="uptime-tracker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/uptime-tracker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/uptime-tracker.tsx (Premium)
           </a>
         </div>

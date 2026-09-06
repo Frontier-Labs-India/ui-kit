@@ -5,7 +5,7 @@ Everything you need to go from `npm install` to a working page in under 5 minute
 ## Installation
 
 ```bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 ```
 
 Peer dependencies: `react` ^19 and `react-dom` ^19. No other dependencies.
@@ -20,8 +20,8 @@ You must import the theme and component CSS in your app's root entry file.
 
 ```tsx
 // app/layout.tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -36,8 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 ```tsx
 // src/main.tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 
@@ -48,8 +48,8 @@ createRoot(document.getElementById('root')!).render(<App />)
 
 ```tsx
 // app/root.tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 ```
 
 ### SSR / Server-Side Rendering
@@ -61,7 +61,7 @@ For **dynamic theming during SSR** (e.g., generating a theme from a database-sto
 ```tsx
 // app/registry.tsx ('use client') — Next.js App Router
 import { useServerInsertedHTML } from 'next/navigation'
-import { StyleCollector, StyleProvider } from '@annondeveloper/ui-kit'
+import { StyleCollector, StyleProvider } from '@frontier-labs/ui-kit'
 import { useState } from 'react'
 
 export function StyleRegistry({ children }: { children: React.ReactNode }) {
@@ -79,7 +79,7 @@ export function StyleRegistry({ children }: { children: React.ReactNode }) {
 
 ```tsx
 // app/layout.tsx
-import '@annondeveloper/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/theme.css'
 import { StyleRegistry } from './registry'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -100,9 +100,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 If you only use a few components and want smaller bundles:
 
 ```tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/components/button.css'
-import '@annondeveloper/ui-kit/css/components/card.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/components/button.css'
+import '@frontier-labs/ui-kit/css/components/card.css'
 ```
 
 ## UIProvider Setup
@@ -110,7 +110,7 @@ import '@annondeveloper/ui-kit/css/components/card.css'
 Wrap your app with `UIProvider` to enable theming and motion control:
 
 ```tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -131,7 +131,7 @@ Motion automatically respects `prefers-reduced-motion` at the OS level.
 ## First Component
 
 ```tsx
-import { Button, Card, Badge } from '@annondeveloper/ui-kit'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit'
 
 function MyPage() {
   return (
@@ -151,13 +151,13 @@ function MyPage() {
 Every page should use layout primitives for consistent spacing and responsive behavior. Here is a complete dashboard you can copy-paste:
 
 ```tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import {
   UIProvider, PageShell, PageHeader, StatsGrid, SectionHeader,
   CardGrid, Card, Toolbar, ListLayout, Button, Badge, SearchInput
-} from '@annondeveloper/ui-kit'
-import { MetricCard } from '@annondeveloper/ui-kit'
+} from '@frontier-labs/ui-kit'
+import { MetricCard } from '@frontier-labs/ui-kit'
 
 export default function DashboardPage() {
   return (
@@ -226,19 +226,19 @@ Every component ships in 3 tiers. Choose based on your bundle budget and design 
 
 | Tier | Import | Size | Features |
 |------|--------|------|----------|
-| **Lite** | `@annondeveloper/ui-kit/lite` | ~0.3KB | Minimal CSS-only, no motion |
-| **Standard** | `@annondeveloper/ui-kit` | ~2KB | Full features, transitions |
-| **Premium** | `@annondeveloper/ui-kit/premium` | ~3KB | Spring physics + aurora glow |
+| **Lite** | `@frontier-labs/ui-kit/lite` | ~0.3KB | Minimal CSS-only, no motion |
+| **Standard** | `@frontier-labs/ui-kit` | ~2KB | Full features, transitions |
+| **Premium** | `@frontier-labs/ui-kit/premium` | ~3KB | Spring physics + aurora glow |
 
 ```tsx
 // Standard (default)
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 // Lite — minimal bundle, no animations
-import { Button } from '@annondeveloper/ui-kit/lite'
+import { Button } from '@frontier-labs/ui-kit/lite'
 
 // Premium — spring physics, shimmer effects, aurora glow
-import { Button } from '@annondeveloper/ui-kit/premium'
+import { Button } from '@frontier-labs/ui-kit/premium'
 ```
 
 **When to use each:**
@@ -251,7 +251,7 @@ import { Button } from '@annondeveloper/ui-kit/premium'
 Generate a complete theme from any brand color:
 
 ```tsx
-import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 
 // Generate a theme from your brand color
 const theme = generateTheme('#6366f1', 'dark')
@@ -261,7 +261,7 @@ applyTheme(theme)
 Or use one of 15 built-in themes:
 
 ```tsx
-import { applyTheme, themes } from '@annondeveloper/ui-kit/theme'
+import { applyTheme, themes } from '@frontier-labs/ui-kit/theme'
 
 applyTheme(themes.aurora)  // aurora, sunset, ocean, emerald, etc.
 ```
@@ -284,7 +284,7 @@ The MCP server lets Claude, Cursor, and other AI assistants discover and use com
 ### Setup
 
 ```bash
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 This auto-detects your AI assistant and configures MCP. After setup, the AI can use 8 tools:
@@ -293,7 +293,7 @@ This auto-detects your AI assistant and configures MCP. After setup, the AI can 
 |------|-------------|
 | `get_started` | Complete setup guide for your framework |
 | `get_page_template` | Full page scaffolds (dashboard, settings, list, detail, auth, landing, empty) |
-| `list_components` | Browse all 147 components with filters |
+| `list_components` | Browse all 162 components with filters |
 | `get_component` | Full API docs for any component |
 | `search_components` | Find components by use-case |
 | `generate_snippet` | Working TSX code for any component combo |

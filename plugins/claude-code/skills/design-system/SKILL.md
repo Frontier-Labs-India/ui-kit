@@ -6,7 +6,7 @@ user-invocable: true
 
 # Aurora Fluid Design System
 
-@annondeveloper/ui-kit uses the Aurora Fluid design identity. Here are the key principles:
+@frontier-labs/ui-kit uses the Aurora Fluid design identity. Here are the key principles:
 
 ## OKLCH Color System
 
@@ -53,7 +53,7 @@ Cascade: OS `prefers-reduced-motion` > component `motion` prop > CSS `--motion` 
 ## Theme Generation
 
 ```tsx
-import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 
 // Generate from any brand color
 const theme = generateTheme('#6366f1', 'dark')

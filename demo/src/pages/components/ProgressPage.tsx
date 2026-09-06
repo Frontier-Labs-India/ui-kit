@@ -789,9 +789,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Progress } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Progress } from '@annondeveloper/ui-kit'",
-  premium: "import { Progress } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Progress } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Progress } from '@frontier-labs/ui-kit'",
+  premium: "import { Progress } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -928,8 +928,8 @@ function generateHtmlCode(tier: Tier, variant: Variant, size: Size, value: numbe
 
   const fillStyle = pct !== undefined ? ` style="width: ${pct}%"` : ''
 
-  return `<!-- Progress — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/progress.css'}">
+  return `<!-- Progress — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/progress.css'}">
 
 <div ${attrs.join('\n     ')}>
   <div class="${className}__track">
@@ -947,7 +947,7 @@ function generateVueCode(tier: Tier, variant: Variant, size: Size, value: number
       attrs.push('aria-valuemax="100"')
     }
     const fillStyle = value !== undefined ? ` :style="{ width: '${value}%' }"` : ''
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <div class="ui-lite-progress__fill"${fillStyle} />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <div class="ui-lite-progress__fill"${fillStyle} />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
   const props: string[] = []
@@ -959,23 +959,23 @@ function generateVueCode(tier: Tier, variant: Variant, size: Size, value: number
     ? '  <Progress />'
     : `  <Progress\n  ${props.join('\n  ')}\n  />`
 
-  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Progress } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Progress } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(tier: Tier, variant: Variant, size: Size, value: number | undefined): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-progress"`, `role="progressbar"`, `data-size="${size}"`]
     if (value !== undefined) attrs.push(`[attr.aria-valuenow]="${value}"`)
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <div class="ui-lite-progress__fill" [style.width.%]="${value ?? 0}"></div>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <div class="ui-lite-progress__fill" [style.width.%]="${value ?? 0}"></div>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   const attrs = [`class="ui-progress"`, `role="progressbar"`, `data-variant="${variant}"`, `data-size="${size}"`]
   if (value !== undefined) attrs.push(`[attr.aria-valuenow]="${value}"`)
-  return `<!-- Angular — Standard tier -->\n<div\n  ${attrs.join('\n  ')}\n>\n  <div class="ui-progress__track">\n    <div class="ui-progress__fill" [style.inline-size.%]="${value ?? 0}"></div>\n  </div>\n</div>\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/progress.css';`
+  return `<!-- Angular — Standard tier -->\n<div\n  ${attrs.join('\n  ')}\n>\n  <div class="ui-progress__track">\n    <div class="ui-progress__fill" [style.inline-size.%]="${value ?? 0}"></div>\n  </div>\n</div>\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/progress.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: Variant, size: Size, value: number | undefined): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-progress"\n  role="progressbar"\n  data-size="${size}"\n  ${value !== undefined ? `aria-valuenow={${value}}` : ''}\n>\n  <div class="ui-lite-progress__fill" style="width: ${value ?? 0}%" />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-progress"\n  role="progressbar"\n  data-size="${size}"\n  ${value !== undefined ? `aria-valuenow={${value}}` : ''}\n>\n  <div class="ui-lite-progress__fill" style="width: ${value ?? 0}%" />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
   const props: string[] = []
@@ -983,7 +983,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, size: Size, value: num
   if (variant !== 'default') props.push(`  variant="${variant}"`)
   if (size !== 'md') props.push(`  size="${size}"`)
 
-  return `<script>\n  import { Progress } from '@annondeveloper/ui-kit';\n</script>\n\n<Progress\n${props.join('\n')}\n/>`
+  return `<script>\n  import { Progress } from '@frontier-labs/ui-kit';\n</script>\n\n<Progress\n${props.join('\n')}\n/>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1398,7 +1398,7 @@ export default function ProgressPage() {
               Basic value/max support, no variants, no motion, no value display.
             </p>
             <div className="progress-page__tier-import">
-              import {'{'} Progress {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Progress {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="progress-page__tier-preview">
               <LiteProgress value={65} max={100} />
@@ -1429,7 +1429,7 @@ export default function ProgressPage() {
               indeterminate animation, motion levels, and ARIA support.
             </p>
             <div className="progress-page__tier-import">
-              import {'{'} Progress {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Progress {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="progress-page__tier-preview">
               <Progress value={65} variant="default" showValue />
@@ -1460,7 +1460,7 @@ export default function ProgressPage() {
               and celebration particles at 100%. Wraps Standard with premium CSS layer.
             </p>
             <div className="progress-page__tier-import">
-              import {'{'} Progress {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Progress {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="progress-page__tier-preview">
               <PremiumProgress value={65} variant="default" showValue />
@@ -1612,7 +1612,7 @@ export default function ProgressPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/progress.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/progress.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="progress-page__source-link"
@@ -1621,7 +1621,7 @@ export default function ProgressPage() {
             src/components/progress.tsx — Standard tier
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/progress.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/progress.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="progress-page__source-link"

@@ -714,9 +714,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TruncatedText } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TruncatedText } from '@annondeveloper/ui-kit'",
-  premium: "import { TruncatedText } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TruncatedText } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TruncatedText } from '@frontier-labs/ui-kit'",
+  premium: "import { TruncatedText } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -839,13 +839,13 @@ function generateHtmlCode(text: string, lines: number): string {
 </span>
 
 <!-- Import component CSS -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/truncated-text.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/truncated-text.css">
 
 <!-- For expandable behavior, add JS to toggle data-expanded attribute -->`
 }
 
 function generateVueCode(tier: Tier, text: string, lines: number, expandable: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text.length > 60 ? text.slice(0, 57) + '...' : text}"`]
   if (lines !== 1) attrs.push(`  :lines="${lines}"`)
   if (expandable && tier !== 'lite') attrs.push('  expandable')
@@ -854,7 +854,7 @@ function generateVueCode(tier: Tier, text: string, lines: number, expandable: bo
 }
 
 function generateAngularCode(tier: Tier, text: string, lines: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — Use the CSS-only approach -->
 <span
   class="ui-truncated-text"
@@ -871,7 +871,7 @@ function generateAngularCode(tier: Tier, text: string, lines: number): string {
 }
 
 function generateSvelteCode(tier: Tier, text: string, lines: number, expandable: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text.length > 60 ? text.slice(0, 57) + '...' : text}"`]
   if (lines !== 1) attrs.push(`  lines={${lines}}`)
   if (expandable && tier !== 'lite') attrs.push('  expandable')
@@ -1306,7 +1306,7 @@ export default function TruncatedTextPage() {
               for multi-line. No expand toggle, no tooltip control. Title attribute always shows.
             </p>
             <div className="truncated-text-page__tier-import">
-              import {'{'} TruncatedText {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TruncatedText {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="truncated-text-page__tier-preview">
               <div style={{ maxInlineSize: '180px', fontSize: '0.75rem', lineHeight: 1.4, overflow: 'hidden' }}>
@@ -1339,7 +1339,7 @@ export default function TruncatedTextPage() {
               for accessibility. Brand-colored toggle with focus-visible ring.
             </p>
             <div className="truncated-text-page__tier-import">
-              import {'{'} TruncatedText {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TruncatedText {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="truncated-text-page__tier-preview">
               <div style={{ maxInlineSize: '180px', fontSize: '0.75rem', lineHeight: 1.4 }}>
@@ -1373,7 +1373,7 @@ export default function TruncatedTextPage() {
               spring-based toggle animation.
             </p>
             <div className="truncated-text-page__tier-import">
-              import {'{'} TruncatedText {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TruncatedText {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="truncated-text-page__tier-preview">
               <div style={{ maxInlineSize: '180px', fontSize: '0.75rem', lineHeight: 1.4 }}>
@@ -1503,7 +1503,7 @@ export default function TruncatedTextPage() {
         </p>
         <a
           className="truncated-text-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/truncated-text.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/truncated-text.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

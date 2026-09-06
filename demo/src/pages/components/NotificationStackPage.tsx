@@ -620,9 +620,9 @@ const notificationSubTypeProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { NotificationStack } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { NotificationStack } from '@annondeveloper/ui-kit'",
-  premium: "import { NotificationStack } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { NotificationStack } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { NotificationStack } from '@frontier-labs/ui-kit'",
+  premium: "import { NotificationStack } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -748,8 +748,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(tier: Tier): string {
-  return `<!-- NotificationStack — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/notification-stack.css">
+  return `<!-- NotificationStack — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/notification-stack.css">
 
 <div class="ui-notification-stack">
   <div class="ui-notification-stack__header">
@@ -776,7 +776,7 @@ function generateHtmlCode(tier: Tier): string {
   </div>
 </div>
 
-<!-- @import '@annondeveloper/ui-kit/css/components/notification-stack.css'; -->`
+<!-- @import '@frontier-labs/ui-kit/css/components/notification-stack.css'; -->`
 }
 
 function generateVueCode(tier: Tier, motion: number): string {
@@ -808,11 +808,11 @@ function generateVueCode(tier: Tier, motion: number): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     '  :notifications="notifications"',
     '  @dismiss="handleDismiss"',
@@ -837,7 +837,7 @@ const notifications = ref([/* ... */])
 }
 
 function generateAngularCode(tier: Tier): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <div class="ui-notification-stack">
   <div class="ui-notification-stack__header">
@@ -898,11 +898,11 @@ function generateSvelteCode(tier: Tier, motion: number): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [
     '  notifications={notifications}',
     '  onDismiss={handleDismiss}',
@@ -1295,7 +1295,7 @@ export default function NotificationStackPage() {
               CSS-only notification list. No staggered animations, no grouping, no relative timestamps. Static markup with data attributes.
             </p>
             <div className="notification-stack-page__tier-import">
-              import {'{'} NotificationStack {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} NotificationStack {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="notification-stack-page__tier-preview">
               <LiteNotificationStack notifications={notifications.slice(0, 2)} />
@@ -1326,7 +1326,7 @@ export default function NotificationStackPage() {
               unread tracking, and touch-optimized targets.
             </p>
             <div className="notification-stack-page__tier-import">
-              import {'{'} NotificationStack {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} NotificationStack {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="notification-stack-page__tier-preview">
               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>Groups + Animations</span>
@@ -1357,7 +1357,7 @@ export default function NotificationStackPage() {
               sound effects, badge counters, and real-time push via WebSocket integration.
             </p>
             <div className="notification-stack-page__tier-import">
-              import {'{'} NotificationStack {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} NotificationStack {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="notification-stack-page__tier-preview">
               <PremiumNotificationStack notifications={notifications.slice(0, 2)} />
@@ -1461,13 +1461,13 @@ export default function NotificationStackPage() {
         <h2 className="notification-stack-page__section-title"><a href="#source">Source</a></h2>
         <p className="notification-stack-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="notification-stack-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="notification-stack-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/notification-stack.tsx (Standard)
           </a>
-          <a className="notification-stack-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="notification-stack-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/notification-stack.tsx (Lite)
           </a>
-          <a className="notification-stack-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="notification-stack-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/notification-stack.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/notification-stack.tsx (Premium)
           </a>
         </div>

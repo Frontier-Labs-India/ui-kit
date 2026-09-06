@@ -628,9 +628,9 @@ type ConnectionStatus = 'connected' | 'reconnecting' | 'offline'
 const CONNECTION_STATUSES: ConnectionStatus[] = ['connected', 'reconnecting', 'offline']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { LiveFeed } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { LiveFeed } from '@annondeveloper/ui-kit'",
-  premium: "import { LiveFeed } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { LiveFeed } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { LiveFeed } from '@frontier-labs/ui-kit'",
+  premium: "import { LiveFeed } from '@frontier-labs/ui-kit/premium'",
 }
 
 const EVENT_MESSAGES = [
@@ -748,7 +748,7 @@ function generateReactCode(
   if (height !== '300px') props.push(`  height="${height}"`)
   if (motion !== 3) props.push(`  motion={${motion}}`)
 
-  return `${importStr}\nimport type { FeedItem } from '@annondeveloper/ui-kit'\n\nconst [items, setItems] = useState<FeedItem[]>([])\n\n// Add new items from your data source\nuseEffect(() => {\n  const ws = new WebSocket('wss://api.example.com/events')\n  ws.onmessage = (e) => {\n    const event = JSON.parse(e.data)\n    setItems(prev => [...prev, {\n      id: event.id,\n      content: event.message,\n      timestamp: event.timestamp,\n      type: event.level,\n    }])\n  }\n  return () => ws.close()\n}, [])\n\n<LiveFeed\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { FeedItem } from '@frontier-labs/ui-kit'\n\nconst [items, setItems] = useState<FeedItem[]>([])\n\n// Add new items from your data source\nuseEffect(() => {\n  const ws = new WebSocket('wss://api.example.com/events')\n  ws.onmessage = (e) => {\n    const event = JSON.parse(e.data)\n    setItems(prev => [...prev, {\n      id: event.id,\n      content: event.message,\n      timestamp: event.timestamp,\n      type: event.level,\n    }])\n  }\n  return () => ws.close()\n}, [])\n\n<LiveFeed\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier, connectionStatus: ConnectionStatus | '', height: string): string {
@@ -761,26 +761,26 @@ function generateHtmlCode(tier: Tier, connectionStatus: ConnectionStatus | '', h
 
 function generateVueCode(tier: Tier, connectionStatus: ConnectionStatus | ''): string {
   if (tier === 'lite') {
-    return `<template>\n  <LiveFeed :items="items" max-height="300px" />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { LiveFeed } from '@annondeveloper/ui-kit/lite'\n\nconst items = ref([\n  { id: '1', content: 'User signed in', timestamp: Date.now() },\n])\n</script>`
+    return `<template>\n  <LiveFeed :items="items" max-height="300px" />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { LiveFeed } from '@frontier-labs/ui-kit/lite'\n\nconst items = ref([\n  { id: '1', content: 'User signed in', timestamp: Date.now() },\n])\n</script>`
   }
   const connProp = connectionStatus ? `\n    connection-status="${connectionStatus}"` : ''
-  return `<template>\n  <LiveFeed\n    :items="items"${connProp}\n    height="300px"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { LiveFeed } from '@annondeveloper/ui-kit'\n\nconst items = ref([])\n</script>`
+  return `<template>\n  <LiveFeed\n    :items="items"${connProp}\n    height="300px"\n  />\n</template>\n\n<script setup>\nimport { ref } from 'vue'\nimport { LiveFeed } from '@frontier-labs/ui-kit'\n\nconst items = ref([])\n</script>`
 }
 
 function generateAngularCode(tier: Tier, connectionStatus: ConnectionStatus | ''): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier -->\n<div class="ui-lite-live-feed" style="max-height: 300px" aria-live="polite">\n  <div *ngFor="let item of items" class="ui-lite-live-feed__item">\n    <span class="ui-lite-live-feed__time">{{ formatTime(item.timestamp) }}</span>\n    <div class="ui-lite-live-feed__content">{{ item.content }}</div>\n  </div>\n</div>\n\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier -->\n<div class="ui-lite-live-feed" style="max-height: 300px" aria-live="polite">\n  <div *ngFor="let item of items" class="ui-lite-live-feed__item">\n    <span class="ui-lite-live-feed__time">{{ formatTime(item.timestamp) }}</span>\n    <div class="ui-lite-live-feed__content">{{ item.content }}</div>\n  </div>\n</div>\n\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   const connAttr = connectionStatus ? ` data-connection="${connectionStatus}"` : ''
-  return `<!-- Angular — CSS class approach -->\n<div class="ui-live-feed"${connAttr} aria-live="polite">\n  <div class="ui-live-feed__scroll" style="block-size: 300px">\n    <div class="ui-live-feed__list">\n      <div *ngFor="let item of items" class="ui-live-feed__item">\n        <div class="ui-live-feed__item-content">{{ item.content }}</div>\n        <span class="ui-live-feed__timestamp">{{ formatTime(item.timestamp) }}</span>\n      </div>\n    </div>\n  </div>\n</div>\n\n@import '@annondeveloper/ui-kit/css/components/live-feed.css';`
+  return `<!-- Angular — CSS class approach -->\n<div class="ui-live-feed"${connAttr} aria-live="polite">\n  <div class="ui-live-feed__scroll" style="block-size: 300px">\n    <div class="ui-live-feed__list">\n      <div *ngFor="let item of items" class="ui-live-feed__item">\n        <div class="ui-live-feed__item-content">{{ item.content }}</div>\n        <span class="ui-live-feed__timestamp">{{ formatTime(item.timestamp) }}</span>\n      </div>\n    </div>\n  </div>\n</div>\n\n@import '@frontier-labs/ui-kit/css/components/live-feed.css';`
 }
 
 function generateSvelteCode(tier: Tier, connectionStatus: ConnectionStatus | ''): string {
   if (tier === 'lite') {
-    return `<script>\n  import { LiveFeed } from '@annondeveloper/ui-kit/lite';\n  let items = [];\n</script>\n\n<LiveFeed {items} maxHeight="300px" />`
+    return `<script>\n  import { LiveFeed } from '@frontier-labs/ui-kit/lite';\n  let items = [];\n</script>\n\n<LiveFeed {items} maxHeight="300px" />`
   }
   const connProp = connectionStatus ? `\n  connectionStatus="${connectionStatus}"` : ''
-  return `<script>\n  import { LiveFeed } from '@annondeveloper/ui-kit';\n  let items = [];\n</script>\n\n<LiveFeed\n  {items}${connProp}\n  height="300px"\n/>`
+  return `<script>\n  import { LiveFeed } from '@frontier-labs/ui-kit';\n  let items = [];\n</script>\n\n<LiveFeed\n  {items}${connProp}\n  height="300px"\n/>`
 }
 
 // ─── Playground Section ───────────────────────────────────────────────────────
@@ -1203,7 +1203,7 @@ export default function LiveFeedPage() {
               no pause, no flash animation.
             </p>
             <div className="live-feed-page__tier-import">
-              import {'{'} LiveFeed {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} LiveFeed {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="live-feed-page__size-breakdown">
               <div className="live-feed-page__size-row">
@@ -1229,7 +1229,7 @@ export default function LiveFeedPage() {
               flash animations, max items truncation, and error boundary.
             </p>
             <div className="live-feed-page__tier-import">
-              import {'{'} LiveFeed {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} LiveFeed {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="live-feed-page__size-breakdown">
               <div className="live-feed-page__size-row">
@@ -1255,7 +1255,7 @@ export default function LiveFeedPage() {
               Spring-slide entrance for new items, aurora glow on the newest entry, and shimmer loading state.
             </p>
             <div className="live-feed-page__tier-import">
-              import {'{'} LiveFeed {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} LiveFeed {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="live-feed-page__size-breakdown">
               <div className="live-feed-page__size-row">
@@ -1378,13 +1378,13 @@ export default function LiveFeedPage() {
         <h2 className="live-feed-page__section-title"><a href="#source">Source</a></h2>
         <p className="live-feed-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="live-feed-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/live-feed.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="live-feed-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/live-feed.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/live-feed.tsx (Standard)
           </a>
-          <a className="live-feed-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/live-feed.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="live-feed-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/live-feed.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/live-feed.tsx (Lite)
           </a>
-          <a className="live-feed-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/live-feed.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="live-feed-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/live-feed.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/live-feed.tsx (Premium)
           </a>
         </div>

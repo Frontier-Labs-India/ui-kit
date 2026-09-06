@@ -420,9 +420,9 @@ const pageStyles = css`
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Affix } from '@annondeveloper/ui-kit'",
-  lite: "import { Affix } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Affix } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Affix } from '@frontier-labs/ui-kit'",
+  lite: "import { Affix } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Affix } from '@frontier-labs/ui-kit/premium'",
 }
 
 const propsData: PropDef[] = [
@@ -630,11 +630,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/affix.css';
+@import '@frontier-labs/ui-kit/css/components/affix.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const posObj = positionKey === 'custom'
     ? `{ top: ${top}, left: ${left} }`
     : positionKey === 'top-left'
@@ -684,7 +684,7 @@ function generateAngularCode(
     posStyle = 'bottom: 20px; right: 20px;'
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
 
   return `<!-- Angular — ${tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use the CSS-only approach for framework compatibility -->
@@ -727,11 +727,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/affix.css';
+  @import '@frontier-labs/ui-kit/css/components/affix.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const posObj = positionKey === 'custom'
     ? `{{ top: ${top}, left: ${left} }}`
     : positionKey === 'top-left'
@@ -1076,7 +1076,7 @@ export default function AffixPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Full-featured with portal support and ref forwarding.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@frontier-labs/ui-kit'</code>
             <div className="affix-page__size-row">
               <span>~0.5 KB gzip</span>
               <span>JS + CSS</span>
@@ -1087,7 +1087,7 @@ export default function AffixPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Re-exports standard — identical API, minimal overhead.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@frontier-labs/ui-kit/lite'</code>
             <div className="affix-page__size-row">
               <span>~0.4 KB gzip</span>
               <span>JS + CSS</span>
@@ -1098,7 +1098,7 @@ export default function AffixPage() {
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', margin: '0.25rem 0' }}>
               Re-exports standard — Affix has no motion props to enhance.
             </p>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Affix {'}'} from '@frontier-labs/ui-kit/premium'</code>
             <div className="affix-page__size-row">
               <span>~0.5 KB gzip</span>
               <span>JS + CSS</span>
@@ -1241,7 +1241,7 @@ export default function AffixPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
             className="affix-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/affix.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/affix.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1249,7 +1249,7 @@ export default function AffixPage() {
           </a>
           <a
             className="affix-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/affix.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/affix.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1257,7 +1257,7 @@ export default function AffixPage() {
           </a>
           <a
             className="affix-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/affix.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/affix.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >

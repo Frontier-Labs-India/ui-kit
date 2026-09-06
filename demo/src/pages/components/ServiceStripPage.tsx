@@ -531,9 +531,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ServiceStrip } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ServiceStrip } from '@annondeveloper/ui-kit'",
-  premium: "import { ServiceStrip } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ServiceStrip } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ServiceStrip } from '@frontier-labs/ui-kit'",
+  premium: "import { ServiceStrip } from '@frontier-labs/ui-kit/premium'",
 }
 
 const allServices: ServiceItem[] = [
@@ -594,7 +594,7 @@ ${props.join('\n')}
 }
 
 function generateVueCode(tier: Tier, size: Size, maxVisible: number | undefined): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [':services="services"']
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (maxVisible) attrs.push(`:max-visible="${maxVisible}"`)
@@ -602,17 +602,17 @@ function generateVueCode(tier: Tier, size: Size, maxVisible: number | undefined)
 }
 
 function generateAngularCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- CSS-only approach -->\n<div class="ui-service-strip">\n  <span class="ui-service-strip__badge" data-status="running">nginx</span>\n  <span class="ui-service-strip__badge" data-status="stopped">redis</span>\n</div>\n\n@import '${importPath}/css/components/service-strip.css';`
 }
 
 function generateSvelteCode(tier: Tier): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { ServiceStrip } from '${importPath}';\n  const services = [{ name: 'nginx', status: 'running' }];\n</script>\n\n<ServiceStrip {services} on:serviceClick={e => console.log(e.detail)} />`
 }
 
 function generateHtmlCode(): string {
-  return `<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/service-strip.css">\n\n<div class="ui-service-strip">\n  <span class="ui-service-strip__badge" data-status="running">nginx</span>\n  <span class="ui-service-strip__badge" data-status="running">postgres</span>\n  <span class="ui-service-strip__badge" data-status="stopped">cron</span>\n  <span class="ui-service-strip__badge" data-status="error">grafana</span>\n</div>`
+  return `<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/service-strip.css">\n\n<div class="ui-service-strip">\n  <span class="ui-service-strip__badge" data-status="running">nginx</span>\n  <span class="ui-service-strip__badge" data-status="running">postgres</span>\n  <span class="ui-service-strip__badge" data-status="stopped">cron</span>\n  <span class="ui-service-strip__badge" data-status="error">grafana</span>\n</div>`
 }
 
 // ─── Playground ──────────────────────────────────────────────────────────────
@@ -902,7 +902,7 @@ export default function ServiceStripPage() {
       {/* Source */}
       <section className="service-strip-page__section" id="source">
         <h2 className="service-strip-page__section-title"><a href="#source">Source</a></h2>
-        <a className="service-strip-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/service-strip.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="service-strip-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/service-strip.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

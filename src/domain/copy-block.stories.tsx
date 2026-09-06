@@ -14,7 +14,7 @@ type Story = StoryObj<typeof CopyBlock>
 
 export const Default: Story = {
   args: {
-    code: `import { Button } from '@annondeveloper/ui-kit'\n\nexport function App() {\n  return <Button variant="primary">Click me</Button>\n}`,
+    code: `import { Button } from '@frontier-labs/ui-kit'\n\nexport function App() {\n  return <Button variant="primary">Click me</Button>\n}`,
     language: 'typescript',
     showLineNumbers: true,
     title: 'app.tsx',
@@ -23,7 +23,7 @@ export const Default: Story = {
 
 export const Bash: Story = {
   args: {
-    code: 'npm install @annondeveloper/ui-kit\nnpx @annondeveloper/ui-kit init',
+    code: 'npm install @frontier-labs/ui-kit\nnpx @frontier-labs/ui-kit init',
     language: 'bash',
     title: 'Terminal',
   },
@@ -31,7 +31,7 @@ export const Bash: Story = {
 
 export const JSON: Story = {
   args: {
-    code: '{\n  "name": "my-app",\n  "dependencies": {\n    "@annondeveloper/ui-kit": "^2.0.0"\n  }\n}',
+    code: '{\n  "name": "my-app",\n  "dependencies": {\n    "@frontier-labs/ui-kit": "^2.0.0"\n  }\n}',
     language: 'json',
     title: 'package.json',
   },

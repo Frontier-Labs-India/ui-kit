@@ -694,9 +694,9 @@ const spotlightCardProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SpotlightCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SpotlightCard } from '@annondeveloper/ui-kit'",
-  premium: "import { SpotlightCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SpotlightCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SpotlightCard } from '@frontier-labs/ui-kit'",
+  premium: "import { SpotlightCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -794,12 +794,12 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, spotlightColor: string): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/spotlight-card.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/spotlight-card.css';`
   const colorStyle = spotlightColor !== SPOTLIGHT_COLORS[0].value ? ` style="--spotlight-card-color: ${spotlightColor}"` : ''
 
-  return `<!-- SpotlightCard — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/spotlight-card.css">
+  return `<!-- SpotlightCard — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/spotlight-card.css">
 
 <div class="ui-spotlight-card"${colorStyle}>
   <div class="ui-spotlight-card--content">
@@ -826,11 +826,11 @@ function generateVueCode(tier: Tier, spotlightColor: string): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (spotlightColor !== SPOTLIGHT_COLORS[0].value) attrs.push(`  spotlight-color="${spotlightColor}"`)
 
@@ -852,9 +852,9 @@ function generateAngularCode(tier: Tier, spotlightColor: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const colorAttr = spotlightColor !== SPOTLIGHT_COLORS[0].value ? `\n  [style]="'--spotlight-card-color: ${spotlightColor}'"` : ''
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
@@ -881,10 +881,10 @@ function generateSvelteCode(tier: Tier, spotlightColor: string): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = spotlightColor !== SPOTLIGHT_COLORS[0].value ? `\n  spotlightColor="${spotlightColor}"` : ''
   return `<script>
   import { SpotlightCard } from '${importPath}';
@@ -1283,7 +1283,7 @@ export default function SpotlightCardPage() {
               Simple opacity transition for hover state.
             </p>
             <div className="spotlight-card-page__tier-import">
-              import {'{'} SpotlightCard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} SpotlightCard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="spotlight-card-page__tier-preview">
               <LiteSpotlightCard style={{ inlineSize: '140px' }}>
@@ -1319,7 +1319,7 @@ export default function SpotlightCardPage() {
               Smooth opacity transitions on enter/leave. Customizable color and motion levels.
             </p>
             <div className="spotlight-card-page__tier-import">
-              import {'{'} SpotlightCard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} SpotlightCard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="spotlight-card-page__tier-preview">
               <SpotlightCard style={{ inlineSize: '140px' }}>
@@ -1355,7 +1355,7 @@ export default function SpotlightCardPage() {
               depth-of-field blur on card edges, gradient edge fade, and spring-based entrance animation.
             </p>
             <div className="spotlight-card-page__tier-import">
-              import {'{'} SpotlightCard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} SpotlightCard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="spotlight-card-page__tier-preview">
               <PremiumSpotlightCard spotlightColor="oklch(75% 0.15 270 / 0.25)" style={{ inlineSize: '140px' }}>
@@ -1489,13 +1489,13 @@ export default function SpotlightCardPage() {
         <h2 className="spotlight-card-page__section-title"><a href="#source">Source</a></h2>
         <p className="spotlight-card-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="spotlight-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spotlight-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/spotlight-card.tsx (Standard)
           </a>
-          <a className="spotlight-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spotlight-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/spotlight-card.tsx (Lite)
           </a>
-          <a className="spotlight-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="spotlight-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/spotlight-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/spotlight-card.tsx (Premium)
           </a>
         </div>

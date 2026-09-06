@@ -10,16 +10,16 @@ The CLI provides 6 commands: `init` for project setup, `add` for copying individ
 
 ```bash
 # Initialize a project with theme CSS
-npx @annondeveloper/ui-kit init
+npx @frontier-labs/ui-kit init
 
 # Add a single component
-npx @annondeveloper/ui-kit add button
+npx @frontier-labs/ui-kit add button
 
 # Scaffold a full project
-npx @annondeveloper/ui-kit create my-dashboard --template dashboard
+npx @frontier-labs/ui-kit create my-dashboard --template dashboard
 
 # Export Figma tokens
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
 ```
 
 ## Commands
@@ -29,8 +29,8 @@ npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
 Copies theme CSS and prints setup instructions.
 
 ```bash
-npx @annondeveloper/ui-kit init
-npx @annondeveloper/ui-kit init ./src/styles
+npx @frontier-labs/ui-kit init
+npx @frontier-labs/ui-kit init ./src/styles
 ```
 
 **What it does:**
@@ -42,8 +42,8 @@ npx @annondeveloper/ui-kit init ./src/styles
 Copies a component's source files into your project.
 
 ```bash
-npx @annondeveloper/ui-kit add button
-npx @annondeveloper/ui-kit add metric-card --tier premium --out-dir ./src/ui
+npx @frontier-labs/ui-kit add button
+npx @frontier-labs/ui-kit add metric-card --tier premium --out-dir ./src/ui
 ```
 
 **Flags:**
@@ -57,13 +57,13 @@ npx @annondeveloper/ui-kit add metric-card --tier premium --out-dir ./src/ui
 
 ```bash
 # Copy standard Button
-npx @annondeveloper/ui-kit add button
+npx @frontier-labs/ui-kit add button
 
 # Copy premium MetricCard to custom directory
-npx @annondeveloper/ui-kit add metric-card --tier premium --out-dir ./src/components
+npx @frontier-labs/ui-kit add metric-card --tier premium --out-dir ./src/components
 
 # Copy lite Badge
-npx @annondeveloper/ui-kit add badge --tier lite
+npx @frontier-labs/ui-kit add badge --tier lite
 ```
 
 ### `ui-kit create <name>`
@@ -71,7 +71,7 @@ npx @annondeveloper/ui-kit add badge --tier lite
 Scaffolds a complete Vite + React project from a template.
 
 ```bash
-npx @annondeveloper/ui-kit create my-app --template dashboard
+npx @frontier-labs/ui-kit create my-app --template dashboard
 ```
 
 **Flags:**
@@ -107,7 +107,7 @@ my-app/
 Each template generates a fully runnable project:
 
 ```bash
-npx @annondeveloper/ui-kit create my-dashboard --template dashboard --theme ocean
+npx @frontier-labs/ui-kit create my-dashboard --template dashboard --theme ocean
 cd my-dashboard
 npm install
 npm run dev
@@ -118,7 +118,7 @@ npm run dev
 Lists all available components.
 
 ```bash
-npx @annondeveloper/ui-kit list
+npx @frontier-labs/ui-kit list
 ```
 
 ### `ui-kit theme [color]`
@@ -126,7 +126,7 @@ npx @annondeveloper/ui-kit list
 Generates a theme from a brand color and prints the CSS.
 
 ```bash
-npx @annondeveloper/ui-kit theme "#6366f1"
+npx @frontier-labs/ui-kit theme "#6366f1"
 ```
 
 ### `ui-kit figma-export`
@@ -134,9 +134,9 @@ npx @annondeveloper/ui-kit theme "#6366f1"
 Exports theme tokens as Figma Variables JSON.
 
 ```bash
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens.json
-npx @annondeveloper/ui-kit figma-export --theme "#6366f1" --output tokens.json
-npx @annondeveloper/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme "#6366f1" --output tokens.json
+npx @frontier-labs/ui-kit figma-export --theme ocean --mode light --output tokens-light.json
 ```
 
 **Flags:**
@@ -168,7 +168,7 @@ When present, the CLI reads defaults from this file so you can omit flags:
 
 ```bash
 # Uses outDir and tier from config
-npx @annondeveloper/ui-kit add button
+npx @frontier-labs/ui-kit add button
 ```
 
 ## Examples
@@ -177,7 +177,7 @@ npx @annondeveloper/ui-kit add button
 
 ```bash
 # Create a new dashboard project
-npx @annondeveloper/ui-kit create ops-dashboard --template dashboard --theme midnight
+npx @frontier-labs/ui-kit create ops-dashboard --template dashboard --theme midnight
 
 # Enter the project
 cd ops-dashboard
@@ -192,16 +192,16 @@ npm run dev
 ### Copy multiple components
 
 ```bash
-npx @annondeveloper/ui-kit add button
-npx @annondeveloper/ui-kit add card
-npx @annondeveloper/ui-kit add metric-card
-npx @annondeveloper/ui-kit add data-table
+npx @frontier-labs/ui-kit add button
+npx @frontier-labs/ui-kit add card
+npx @frontier-labs/ui-kit add metric-card
+npx @frontier-labs/ui-kit add data-table
 ```
 
 ### Export tokens for design handoff
 
 ```bash
 # Export both dark and light mode tokens
-npx @annondeveloper/ui-kit figma-export --theme aurora --output tokens-dark.json
-npx @annondeveloper/ui-kit figma-export --theme aurora --mode light --output tokens-light.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --output tokens-dark.json
+npx @frontier-labs/ui-kit figma-export --theme aurora --mode light --output tokens-light.json
 ```

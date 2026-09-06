@@ -510,9 +510,9 @@ const COLOR_PRESETS = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { InfiniteScroll } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { InfiniteScroll } from '@annondeveloper/ui-kit'",
-  premium: "import { InfiniteScroll } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { InfiniteScroll } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { InfiniteScroll } from '@frontier-labs/ui-kit'",
+  premium: "import { InfiniteScroll } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -576,8 +576,8 @@ function generateReactCode(tier: Tier, direction: 'down' | 'up', threshold: numb
 
 function generateHtmlCode(tier: Tier): string {
   const cls = tier === 'lite' ? 'ui-lite-infinite-scroll' : 'ui-infinite-scroll'
-  return `<!-- InfiniteScroll — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/infinite-scroll.css">
+  return `<!-- InfiniteScroll — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/infinite-scroll.css">
 
 <div class="${cls}">
   <div class="${cls}__content">
@@ -605,7 +605,7 @@ function generateVueCode(tier: Tier, direction: 'down' | 'up'): string {
 </template>
 
 <script setup>
-import { InfiniteScroll } from '@annondeveloper/ui-kit/lite'
+import { InfiniteScroll } from '@frontier-labs/ui-kit/lite'
 import { ref } from 'vue'
 const items = ref([])
 const loading = ref(false)
@@ -625,7 +625,7 @@ const loadMore = () => { /* fetch more */ }
 </template>
 
 <script setup>
-import { InfiniteScroll } from '@annondeveloper/ui-kit'
+import { InfiniteScroll } from '@frontier-labs/ui-kit'
 import { ref } from 'vue'
 const items = ref([])
 const loading = ref(false)
@@ -645,13 +645,13 @@ function generateAngularCode(tier: Tier): string {
     : `<!-- Use IntersectionObserver in component -->`}
 </div>
 
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/infinite-scroll'}.css';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles' : 'css/components/infinite-scroll'}.css';`
 }
 
 function generateSvelteCode(tier: Tier, direction: 'down' | 'up'): string {
   if (tier === 'lite') {
     return `<script>
-  import { InfiniteScroll } from '@annondeveloper/ui-kit/lite';
+  import { InfiniteScroll } from '@frontier-labs/ui-kit/lite';
   let items = [];
   let loading = false;
   let hasMore = true;
@@ -665,7 +665,7 @@ function generateSvelteCode(tier: Tier, direction: 'down' | 'up'): string {
 </InfiniteScroll>`
   }
   return `<script>
-  import { InfiniteScroll } from '@annondeveloper/ui-kit';
+  import { InfiniteScroll } from '@frontier-labs/ui-kit';
   let items = [];
   let loading = false;
   let hasMore = true;
@@ -1061,7 +1061,7 @@ export default function InfiniteScrollPage() {
               no auto-loading, no direction control, no pull-to-refresh.
             </p>
             <div className="infinite-scroll-page__tier-import">
-              import {'{'} InfiniteScroll {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} InfiniteScroll {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="infinite-scroll-page__tier-preview">
               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>Manual "Load more" button</span>
@@ -1091,7 +1091,7 @@ export default function InfiniteScrollPage() {
               bidirectional scroll, custom loader, end message, pull-to-refresh, and ARIA live region.
             </p>
             <div className="infinite-scroll-page__tier-import">
-              import {'{'} InfiniteScroll {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} InfiniteScroll {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="infinite-scroll-page__tier-preview">
               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-tertiary)' }}>Auto-load with observer</span>
@@ -1120,7 +1120,7 @@ export default function InfiniteScrollPage() {
               Spring entrance per item with stagger, aurora loading glow, and fade edge for seamless scrolling.
             </p>
             <div className="infinite-scroll-page__tier-import">
-              import {'{'} InfiniteScroll {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} InfiniteScroll {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="infinite-scroll-page__tier-preview">
               <PremiumInfiniteScroll onLoadMore={() => {}} hasMore={false} loading={false} style={{ maxBlockSize: '80px' }}>
@@ -1234,13 +1234,13 @@ export default function InfiniteScrollPage() {
         <h2 className="infinite-scroll-page__section-title"><a href="#source">Source</a></h2>
         <p className="infinite-scroll-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="infinite-scroll-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="infinite-scroll-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/infinite-scroll.tsx (Standard)
           </a>
-          <a className="infinite-scroll-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="infinite-scroll-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/infinite-scroll.tsx (Lite)
           </a>
-          <a className="infinite-scroll-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="infinite-scroll-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/infinite-scroll.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/infinite-scroll.tsx (Premium)
           </a>
         </div>

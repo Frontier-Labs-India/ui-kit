@@ -30,7 +30,7 @@ Performance budgets reconciled, CLI commands updated, MCP section added, version
 5 issues created: #2-#6 on GitHub.
 
 ### ~~[P0] Component Example Audit~~ DONE
-All 156 components have auto-generated examples (100% coverage). Quality is scaffold-level.
+All 162 components have auto-generated examples (100% coverage). Quality is scaffold-level.
 
 ## Phase 1 — COMPLETE
 
@@ -65,7 +65,7 @@ Demo video + "I built a component library that AI agents can use natively via MC
 
 ### [P2] Hacker News Show HN
 Target: April 15-16, 2026. Hard deadline: April 23.
-Title: "Show HN: AI-native React component library with MCP server (147 components, zero deps)"
+Title: "Show HN: AI-native React component library with MCP server (162 components, zero deps)"
 
 ### [P2] Reddit Posts
 r/reactjs + r/webdev, educational angle on MCP.

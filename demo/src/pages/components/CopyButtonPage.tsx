@@ -585,12 +585,12 @@ type Size = 'xs' | 'sm' | 'md' | 'lg'
 const SIZES: readonly Size[] = ['xs', 'sm', 'md', 'lg'] as const
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CopyButton } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CopyButton } from '@annondeveloper/ui-kit'",
-  premium: "import { CopyButton } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CopyButton } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CopyButton } from '@frontier-labs/ui-kit'",
+  premium: "import { CopyButton } from '@frontier-labs/ui-kit/premium'",
 }
 
-const SAMPLE_CODE = 'npm install @annondeveloper/ui-kit'
+const SAMPLE_CODE = 'npm install @frontier-labs/ui-kit'
 const SAMPLE_TOKEN = 'sk-proj-abc123def456ghi789'
 
 const COLOR_PRESETS = [
@@ -680,12 +680,12 @@ function generateReactCode(
   copyValue: string,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = "\nimport { Icon } from '@annondeveloper/ui-kit'"
+  const iconImport = "\nimport { Icon } from '@frontier-labs/ui-kit'"
   const btnImport = tier === 'lite'
-    ? "\nimport { Button } from '@annondeveloper/ui-kit/lite'"
+    ? "\nimport { Button } from '@frontier-labs/ui-kit/lite'"
     : tier === 'premium'
-      ? "\nimport { Button } from '@annondeveloper/ui-kit/premium'"
-      : "\nimport { Button } from '@annondeveloper/ui-kit'"
+      ? "\nimport { Button } from '@frontier-labs/ui-kit/premium'"
+      : "\nimport { Button } from '@frontier-labs/ui-kit'"
 
   const cbProps: string[] = [`  value="${copyValue}"`]
   if (timeout !== 2000) cbProps.push(`  timeout={${timeout}}`)
@@ -721,8 +721,8 @@ function generateHtmlCode(
     ? 'lite/styles.css'
     : 'css/components/copy-button.css'
 
-  return `<!-- CopyButton — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${cssPath}">
+  return `<!-- CopyButton — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${cssPath}">
 ${brandColor !== '#6366f1' ? `\n<style>:root { --brand: ${brandColor}; }</style>\n` : ''}
 <button
   class="ui-copy-button"
@@ -774,11 +774,11 @@ function copy() {
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const sizeAttr = size !== 'md' ? `\n    size="${size}"` : ''
   const timeoutAttr = timeout !== 2000 ? `\n    :timeout="${timeout}"` : ''
 
@@ -829,10 +829,10 @@ copy() {
 }
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <button
   class="ui-copy-button"
@@ -887,11 +887,11 @@ function generateSvelteCode(
 </button>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { CopyButton, Button } from '${importPath}';
 </script>
@@ -1263,7 +1263,7 @@ export default function CopyButtonPage() {
               No motion animations, minimal overhead.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} CopyButton {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CopyButton {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteCopyButton value="Lite tier demo">
@@ -1300,7 +1300,7 @@ export default function CopyButtonPage() {
               copied-state styling, and accessibility.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} CopyButton {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CopyButton {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <CopyButton value="Standard tier demo">
@@ -1338,7 +1338,7 @@ export default function CopyButtonPage() {
               spring animations, and shimmer on copied state.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} CopyButton {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CopyButton {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumCopyButton value="Premium tier demo">
@@ -1474,13 +1474,13 @@ export default function CopyButtonPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/copy-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/copy-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/copy-button.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/copy-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/copy-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/copy-button.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/copy-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/copy-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/copy-button.tsx (Premium)
           </a>
         </div>

@@ -762,9 +762,9 @@ const dataTableProps: PropDef[] = [
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DataTable } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DataTable } from '@annondeveloper/ui-kit'",
-  premium: "import { DataTable } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DataTable } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DataTable } from '@frontier-labs/ui-kit'",
+  premium: "import { DataTable } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -867,7 +867,7 @@ function generateReactCode(opts: {
   bordered: boolean
   responsiveMode: 'scroll' | 'card'
 }): string {
-  const importPath = opts.tier === 'lite' ? '@annondeveloper/ui-kit/lite' : opts.tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = opts.tier === 'lite' ? '@frontier-labs/ui-kit/lite' : opts.tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
 
   const props: string[] = [
     '  data={servers}',
@@ -899,7 +899,7 @@ function generateHtmlCode(): string {
 <!-- DataTable requires JavaScript for interactivity -->
 <!-- Use the React component or server-render the HTML -->
 
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/data-table.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/data-table.css">
 
 <div class="ui-data-table">
   <table class="ui-data-table__table">
@@ -914,7 +914,7 @@ function generateHtmlCode(): string {
 }
 
 function generateVueCode(tier: Tier): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <DataTable
     :data="servers"
@@ -957,11 +957,11 @@ function generateAngularCode(): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/data-table.css';`
+@import '@frontier-labs/ui-kit/css/components/data-table.css';`
 }
 
 function generateSvelteCode(tier: Tier): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { DataTable } from '${importPath}';
 
@@ -2384,13 +2384,13 @@ const [totalRows, setTotalRows] = useState(0)
         <h2 className="datatable-page__section-title"><a href="#source">Source</a></h2>
         <p className="datatable-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="datatable-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/data-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="datatable-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/data-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/data-table.tsx (Standard)
           </a>
-          <a className="datatable-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/data-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="datatable-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/data-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/data-table.tsx (Lite)
           </a>
-          <a className="datatable-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/data-table.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="datatable-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/data-table.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/data-table.tsx (Premium)
           </a>
         </div>

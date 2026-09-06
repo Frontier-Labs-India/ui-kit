@@ -483,9 +483,9 @@ const SIZES: Size[] = ['sm', 'md', 'lg']
 const DEFAULT_SWATCHES = ['#ff0000', '#ff8800', '#ffcc00', '#00cc44', '#0088ff', '#6644ff', '#cc00cc', '#ff4488', '#222222', '#888888']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ColorInput } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ColorInput } from '@annondeveloper/ui-kit'",
-  premium: "import { ColorInput } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ColorInput } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ColorInput } from '@frontier-labs/ui-kit'",
+  premium: "import { ColorInput } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -554,11 +554,11 @@ function generateHtmlCode(tier: Tier, label: string): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<!-- ColorInput — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/color-input.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/color-input.css">
 
 <div class="ui-color-input" data-size="md">
   ${label ? `<label class="ui-color-input__label">${label}</label>` : ''}
@@ -586,7 +586,7 @@ const color = ref('#6366f1')
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -600,7 +600,7 @@ const color = ref('#6366f1')
 
 <script setup>
 import { ref } from 'vue'
-import { ColorInput } from '@annondeveloper/ui-kit'
+import { ColorInput } from '@frontier-labs/ui-kit'
 const color = ref('#6366f1')
 </script>`
 }
@@ -614,7 +614,7 @@ function generateAngularCode(tier: Tier, label: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier (CSS approach) -->
 <div class="ui-color-input" data-size="md">
@@ -628,7 +628,7 @@ function generateAngularCode(tier: Tier, label: string): string {
 </div>
 
 /* Import CSS */
-@import '@annondeveloper/ui-kit/css/components/color-input.css';`
+@import '@frontier-labs/ui-kit/css/components/color-input.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, label: string): string {
@@ -643,11 +643,11 @@ function generateSvelteCode(tier: Tier, size: Size, label: string): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { ColorInput } from '@annondeveloper/ui-kit';
+  import { ColorInput } from '@frontier-labs/ui-kit';
   let color = '#6366f1';
 </script>
 
@@ -1070,7 +1070,7 @@ export default function ColorInputPage() {
           </div>
           <div style={{ marginBlockStart: '1rem' }}>
             <CopyBlock
-              code={`import { ColorInput } from '@annondeveloper/ui-kit'\nimport { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'\n\nconst [brand, setBrand] = useState('#6366f1')\nconst theme = generateTheme(brand)\napplyTheme(theme)\n\n<ColorInput\n  name="brand"\n  value={brand}\n  onChange={setBrand}\n  label="Brand color"\n/>`}
+              code={`import { ColorInput } from '@frontier-labs/ui-kit'\nimport { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'\n\nconst [brand, setBrand] = useState('#6366f1')\nconst theme = generateTheme(brand)\napplyTheme(theme)\n\n<ColorInput\n  name="brand"\n  value={brand}\n  onChange={setBrand}\n  label="Brand color"\n/>`}
               language="typescript"
             />
           </div>
@@ -1100,7 +1100,7 @@ export default function ColorInputPage() {
               No HSL picker, no hex input, no swatches.
             </p>
             <div className="color-input-page__tier-import">
-              import {'{'} ColorInput {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ColorInput {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="color-input-page__tier-preview">
               <LiteColorInput label="Lite" defaultValue="#6366f1" />
@@ -1127,7 +1127,7 @@ export default function ColorInputPage() {
               hex input, preset swatches, click-outside close, and animated popover.
             </p>
             <div className="color-input-page__tier-import">
-              import {'{'} ColorInput {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ColorInput {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="color-input-page__tier-preview">
               <ColorInput name="tier-std" size="sm" defaultValue="#6366f1" />
@@ -1154,7 +1154,7 @@ export default function ColorInputPage() {
               Aurora glow on focus, spring-scale on swatch hover, shimmer sweep on selected color, and glass popover.
             </p>
             <div className="color-input-page__tier-import">
-              import {'{'} ColorInput {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ColorInput {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="color-input-page__tier-preview">
               <PremiumColorInput name="tier-prem" size="sm" defaultValue="#6366f1" />
@@ -1230,13 +1230,13 @@ export default function ColorInputPage() {
         <h2 className="color-input-page__section-title"><a href="#source">Source</a></h2>
         <p className="color-input-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="color-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/color-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="color-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/color-input.tsx" target="_blank" rel="noopener noreferrer">
             src/components/color-input.tsx (Standard)
           </a>
-          <a className="color-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/color-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="color-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/color-input.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/color-input.tsx (Lite)
           </a>
-          <a className="color-input-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/color-input.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="color-input-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/color-input.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/color-input.tsx (Premium)
           </a>
         </div>

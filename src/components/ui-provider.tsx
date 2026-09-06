@@ -70,10 +70,10 @@ export function UIProvider({
       console.warn(
         '[ui-kit] Component styles not detected. Did you import the CSS?\n\n' +
         '  Add to your root layout:\n' +
-        "    import '@annondeveloper/ui-kit/css/theme.css'\n" +
-        "    import '@annondeveloper/ui-kit/css/all.css'\n\n" +
-        '  Or use the CLI: npx @annondeveloper/ui-kit init\n' +
-        '  Docs: https://github.com/annondeveloper/ui-kit#setup'
+        "    import '@frontier-labs/ui-kit/css/theme.css'\n" +
+        "    import '@frontier-labs/ui-kit/css/all.css'\n\n" +
+        '  Or use the CLI: npx @frontier-labs/ui-kit init\n' +
+        '  Docs: https://github.com/Frontier-Labs-India/ui-kit#setup'
       )
     }
   }, [])

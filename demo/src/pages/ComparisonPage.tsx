@@ -222,7 +222,7 @@ export default function ComparisonPage() {
         <h1 className="comp__title">Tier Comparison</h1>
         <p className="comp__subtitle">
           Compare Lite, Standard, and Premium tiers side by side.
-          Select any of the 147 components to see how they render in each tier.
+          Select any of the 162 components to see how they render in each tier.
         </p>
       </header>
 
@@ -263,8 +263,8 @@ export default function ComparisonPage() {
 
                 <div className="comp__import">
                   {tier === 'standard'
-                    ? `import { ${comp.name} } from '@annondeveloper/ui-kit'`
-                    : `import { ${comp.name} } from '@annondeveloper/ui-kit/${tier}'`
+                    ? `import { ${comp.name} } from '@frontier-labs/ui-kit'`
+                    : `import { ${comp.name} } from '@frontier-labs/ui-kit/${tier}'`
                   }
                 </div>
 

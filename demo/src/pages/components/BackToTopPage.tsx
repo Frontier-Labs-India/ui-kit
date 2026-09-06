@@ -589,9 +589,9 @@ type BTTSize = 'sm' | 'md' | 'lg'
 const SIZES: BTTSize[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { BackToTop } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { BackToTop } from '@annondeveloper/ui-kit'",
-  premium: "import { BackToTop } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { BackToTop } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { BackToTop } from '@frontier-labs/ui-kit'",
+  premium: "import { BackToTop } from '@frontier-labs/ui-kit/premium'",
 }
 
 const FILLER_PARAGRAPHS = Array.from({ length: 15 }, (_, i) =>
@@ -695,8 +695,8 @@ function generateHtmlCode(
   showProgress: boolean,
 ): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
-  return `<!-- BackToTop — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/back-to-top.css">
+  return `<!-- BackToTop — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/back-to-top.css">
 
 <button
   class="ui-back-to-top"
@@ -767,11 +767,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/back-to-top.css';
+@import '@frontier-labs/ui-kit/css/components/back-to-top.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (showProgress) attrs.push('  show-progress')
@@ -806,10 +806,10 @@ function generateAngularCode(
 </button>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/back-to-top.css';`
+@import '@frontier-labs/ui-kit/css/components/back-to-top.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <button
   class="ui-back-to-top"
@@ -868,11 +868,11 @@ function generateSvelteCode(
 </button>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/back-to-top.css';
+  @import '@frontier-labs/ui-kit/css/components/back-to-top.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (showProgress) attrs.push('  showProgress')
@@ -1211,7 +1211,7 @@ export default function BackToTopPage() {
               Minimal wrapper with motion forced to 0. Zero JavaScript beyond the forwardRef delegate.
             </p>
             <div className="back-to-top-page__tier-import">
-              import {'{'} BackToTop {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} BackToTop {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="back-to-top-page__size-breakdown">
               <div className="back-to-top-page__size-row">
@@ -1239,7 +1239,7 @@ export default function BackToTopPage() {
               and container-scoped scrolling.
             </p>
             <div className="back-to-top-page__tier-import">
-              import {'{'} BackToTop {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BackToTop {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="back-to-top-page__size-breakdown">
               <div className="back-to-top-page__size-row">
@@ -1267,7 +1267,7 @@ export default function BackToTopPage() {
               and enhanced active press effect.
             </p>
             <div className="back-to-top-page__tier-import">
-              import {'{'} BackToTop {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} BackToTop {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="back-to-top-page__size-breakdown">
               <div className="back-to-top-page__size-row">
@@ -1384,13 +1384,13 @@ export default function BackToTopPage() {
         <h2 className="back-to-top-page__section-title"><a href="#source">Source</a></h2>
         <p className="back-to-top-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="back-to-top-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="back-to-top-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/back-to-top.tsx (Standard)
           </a>
-          <a className="back-to-top-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="back-to-top-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/back-to-top.tsx (Lite)
           </a>
-          <a className="back-to-top-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="back-to-top-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/back-to-top.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/back-to-top.tsx (Premium)
           </a>
         </div>

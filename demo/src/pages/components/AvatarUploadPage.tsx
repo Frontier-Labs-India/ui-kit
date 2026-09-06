@@ -486,9 +486,9 @@ const SIZES = [60, 80, 120, 160] as const
 const SHAPES: Shape[] = ['circle', 'square']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { AvatarUpload } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { AvatarUpload } from '@annondeveloper/ui-kit'",
-  premium: "import { AvatarUpload } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { AvatarUpload } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { AvatarUpload } from '@frontier-labs/ui-kit'",
+  premium: "import { AvatarUpload } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -560,7 +560,7 @@ ${props.join('\n')}
 
 function generateHtmlCode(tier: Tier, size: number, shape: Shape): string {
   const className = tier === 'lite' ? 'ui-lite-avatar-upload' : 'ui-avatar-upload'
-  return `<!-- AvatarUpload — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- AvatarUpload — @frontier-labs/ui-kit ${tier} tier -->
 <div class="${className}" data-shape="${shape}">
   <label class="${className}__container" style="width: ${size}px; height: ${size}px;">
     <input type="file" accept="image/*" class="${className}__input" />
@@ -574,7 +574,7 @@ function generateHtmlCode(tier: Tier, size: number, shape: Shape): string {
   </label>
 </div>
 
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/avatar-upload.css">`
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/avatar-upload.css">`
 }
 
 function generateVueCode(tier: Tier, size: number, shape: Shape, accept: string, disabled: boolean): string {
@@ -589,7 +589,7 @@ function generateVueCode(tier: Tier, size: number, shape: Shape, accept: string,
 </template>
 
 <script setup>
-import { AvatarUpload } from '@annondeveloper/ui-kit/lite'
+import { AvatarUpload } from '@frontier-labs/ui-kit/lite'
 
 function handleChange(file, preview) {
   console.log('Selected:', file.name)
@@ -610,7 +610,7 @@ function handleRemove() {
 </template>
 
 <script setup>
-import { AvatarUpload } from '@annondeveloper/ui-kit'
+import { AvatarUpload } from '@frontier-labs/ui-kit'
 
 function handleChange(file, preview) {
   console.log('Selected:', file.name)
@@ -636,13 +636,13 @@ function generateAngularCode(tier: Tier, size: number, shape: Shape): string {
   </label>
 </div>
 
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/avatar-upload.css'}';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/avatar-upload.css'}';`
 }
 
 function generateSvelteCode(tier: Tier, size: number, shape: Shape, accept: string, disabled: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { AvatarUpload } from '@annondeveloper/ui-kit/lite'
+  import { AvatarUpload } from '@frontier-labs/ui-kit/lite'
 
   function handleChange(file, preview) {
     console.log('Selected:', file.name)
@@ -657,7 +657,7 @@ function generateSvelteCode(tier: Tier, size: number, shape: Shape, accept: stri
 />`
   }
   return `<script>
-  import { AvatarUpload } from '@annondeveloper/ui-kit${tier === 'premium' ? '/premium' : ''}'
+  import { AvatarUpload } from '@frontier-labs/ui-kit${tier === 'premium' ? '/premium' : ''}'
 
   function handleChange(file, preview) {
     console.log('Selected:', file.name)
@@ -972,7 +972,7 @@ export default function AvatarUploadPage() {
             <p className="avatar-upload-page__tier-desc">
               Minimal wrapper. No motion, no premium effects. Wraps standard with motion=0.
             </p>
-            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="avatar-upload-page__tier-preview">
               <LiteAvatarUpload value={undefined} onChange={() => {}} size={80} />
             </div>
@@ -994,7 +994,7 @@ export default function AvatarUploadPage() {
             <p className="avatar-upload-page__tier-desc">
               Full-featured with drag-and-drop, file validation, motion choreography, and theming.
             </p>
-            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="avatar-upload-page__tier-preview">
               <AvatarUpload value={undefined} onChange={() => {}} size={80} />
             </div>
@@ -1016,7 +1016,7 @@ export default function AvatarUploadPage() {
             <p className="avatar-upload-page__tier-desc">
               Aurora ring glow on hover, spring entrance animation, and enhanced hover transform.
             </p>
-            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className="avatar-upload-page__tier-import">import {'{'} AvatarUpload {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className="avatar-upload-page__tier-preview">
               <PremiumAvatarUpload value={undefined} onChange={() => {}} size={80} />
             </div>
@@ -1106,13 +1106,13 @@ export default function AvatarUploadPage() {
           View the component source code on GitHub.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="avatar-upload-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-upload-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source — Standard tier
           </a>
-          <a className="avatar-upload-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-upload-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source — Lite tier
           </a>
-          <a className="avatar-upload-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="avatar-upload-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/avatar-upload.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source — Premium tier
           </a>
         </div>

@@ -722,9 +722,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Typography } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Typography } from '@annondeveloper/ui-kit'",
-  premium: "import { Typography } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Typography } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Typography } from '@frontier-labs/ui-kit'",
+  premium: "import { Typography } from '@frontier-labs/ui-kit/premium'",
 }
 
 const VARIANT_DISPLAY_TEXT: Record<Variant, string> = {
@@ -857,11 +857,11 @@ function generateHtmlCode(tier: Tier, variant: Variant, color: Color | '', conte
   if (color) attrs.push(`data-color="${color}"`)
 
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/typography.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/typography.css';`
 
-  return `<!-- Typography -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/typography.css'}">
+  return `<!-- Typography -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/typography.css'}">
 
 <${el} ${attrs.join(' ')}>
   ${content}
@@ -880,9 +880,9 @@ function generateVueCode(tier: Tier, variant: Variant, color: Color | '', conten
     const el = elementMap[variant] || 'span'
     const attrs = [`class="ui-lite-typography"`, `data-variant="${variant}"`]
     if (color) attrs.push(`data-color="${color}"`)
-    return `<template>\n  <${el} ${attrs.join(' ')}>\n    ${content}\n  </${el}>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <${el} ${attrs.join(' ')}>\n    ${content}\n  </${el}>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (variant !== 'body') attrs.push(`  variant="${variant}"`)
   if (color) attrs.push(`  color="${color}"`)
@@ -903,7 +903,7 @@ function generateAngularCode(tier: Tier, variant: Variant, color: Color | '', co
   const className = tier === 'lite' ? 'ui-lite-typography' : 'ui-typography'
   const attrs = [`class="${className}"`, `data-variant="${variant}"`]
   if (color) attrs.push(`data-color="${color}"`)
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite/styles.css' : '@annondeveloper/ui-kit/css/components/typography.css'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite/styles.css' : '@frontier-labs/ui-kit/css/components/typography.css'
 
   return `<!-- Angular -- ${tier} tier -->\n<${el} ${attrs.join(' ')}>\n  ${content}\n</${el}>\n\n/* In styles.css */\n@import '${importPath}';`
 }
@@ -917,9 +917,9 @@ function generateSvelteCode(tier: Tier, variant: Variant, color: Color | '', con
     const el = elementMap[variant] || 'span'
     const attrs = [`class="ui-lite-typography"`, `data-variant="${variant}"`]
     if (color) attrs.push(`data-color="${color}"`)
-    return `<${el} ${attrs.join(' ')}>\n  ${content}\n</${el}>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<${el} ${attrs.join(' ')}>\n  ${content}\n</${el}>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  return `<script>\n  import { Typography } from '@annondeveloper/ui-kit';\n</script>\n\n<Typography\n  variant="${variant}"\n  ${color ? `color="${color}"` : ''}\n>\n  ${content}\n</Typography>`
+  return `<script>\n  import { Typography } from '@frontier-labs/ui-kit';\n</script>\n\n<Typography\n  variant="${variant}"\n  ${color ? `color="${color}"` : ''}\n>\n  ${content}\n</Typography>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1313,7 +1313,7 @@ export default function TypographyPage() {
               No weight override, alignment, or truncation props.
             </p>
             <div className="typography-page__tier-import">
-              import {'{'} Typography {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Typography {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="typography-page__tier-preview">
               <LiteTypography variant="h4">Lite Typography</LiteTypography>
@@ -1344,7 +1344,7 @@ export default function TypographyPage() {
               motion levels, and embedded scoped CSS.
             </p>
             <div className="typography-page__tier-import">
-              import {'{'} Typography {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Typography {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="typography-page__tier-preview">
               <Typography variant="h4" color="brand">Standard</Typography>
@@ -1374,7 +1374,7 @@ export default function TypographyPage() {
               Shimmer gradient text on headings, aurora glow on code variant, and spring-fade entrance animation.
             </p>
             <div className="typography-page__tier-import">
-              import {'{'} Typography {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Typography {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="typography-page__tier-preview">
               <PremiumTypography variant="h4" color="brand">Premium</PremiumTypography>
@@ -1468,7 +1468,7 @@ export default function TypographyPage() {
               <span className="typography-page__a11y-icon"><Icon name="external-link" size="sm" /></span>
               <span>
                 <strong>Standard:</strong>{' '}
-                <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
+                <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
                   Source on GitHub
                 </a>
               </span>
@@ -1477,7 +1477,7 @@ export default function TypographyPage() {
               <span className="typography-page__a11y-icon"><Icon name="external-link" size="sm" /></span>
               <span>
                 <strong>Lite:</strong>{' '}
-                <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
+                <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
                   Source on GitHub
                 </a>
               </span>
@@ -1486,7 +1486,7 @@ export default function TypographyPage() {
               <span className="typography-page__a11y-icon"><Icon name="external-link" size="sm" /></span>
               <span>
                 <strong>Premium:</strong>{' '}
-                <a href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
+                <a href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/typography.tsx" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--brand)' }}>
                   Source on GitHub
                 </a>
               </span>

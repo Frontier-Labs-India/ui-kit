@@ -619,9 +619,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Toast } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ToastProvider, useToast } from '@annondeveloper/ui-kit'",
-  premium: "import { ToastProvider, useToast } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Toast } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ToastProvider, useToast } from '@frontier-labs/ui-kit'",
+  premium: "import { ToastProvider, useToast } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -709,7 +709,7 @@ function generateReactCode(
   hasAction: boolean,
 ): string {
   if (tier === 'lite') {
-    return `import { Toast } from '@annondeveloper/ui-kit/lite'
+    return `import { Toast } from '@frontier-labs/ui-kit/lite'
 
 <Toast
   title="${title}"${description ? `\n  description="${description}"` : ''}
@@ -747,7 +747,7 @@ ${opts.join(',\n')}
 }
 
 function generateHtmlCode(variant: ToastVariant, title: string, description: string): string {
-  return `<!-- Toast — @annondeveloper/ui-kit lite tier (CSS-only) -->
+  return `<!-- Toast — @frontier-labs/ui-kit lite tier (CSS-only) -->
 <div class="ui-lite-toast" data-variant="${variant}" role="status" aria-live="polite">
   <div class="ui-lite-toast__content">
     <strong>${title}</strong>${description ? `\n    <p>${description}</p>` : ''}
@@ -768,7 +768,7 @@ function generateVueCode(tier: Tier, variant: ToastVariant, title: string, descr
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -779,7 +779,7 @@ function generateVueCode(tier: Tier, variant: ToastVariant, title: string, descr
 </template>
 
 <script setup>
-import { ToastProvider, useToast } from '@annondeveloper/ui-kit'
+import { ToastProvider, useToast } from '@frontier-labs/ui-kit'
 
 const { toast } = useToast()
 
@@ -803,7 +803,7 @@ function generateAngularCode(tier: Tier, variant: ToastVariant, title: string, d
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Use the CSS-only approach or React wrapper -->
@@ -817,7 +817,7 @@ function generateAngularCode(tier: Tier, variant: ToastVariant, title: string, d
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/toast.css';`
+@import '@frontier-labs/ui-kit/css/components/toast.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: ToastVariant, title: string, description: string): string {
@@ -831,12 +831,12 @@ function generateSvelteCode(tier: Tier, variant: ToastVariant, title: string, de
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<script>
-  import { ToastProvider, useToast } from '@annondeveloper/ui-kit';
+  import { ToastProvider, useToast } from '@frontier-labs/ui-kit';
 
   const { toast } = useToast();
 
@@ -1265,7 +1265,7 @@ toast({
                 Perfect for server-rendered notifications.
               </p>
               <div className="toast-page__tier-import">
-                import {'{'} Toast {'}'} from '@annondeveloper/ui-kit/lite'
+                import {'{'} Toast {'}'} from '@frontier-labs/ui-kit/lite'
               </div>
               <div className="toast-page__tier-preview">
                 <LiteToast title="Lite Toast" variant="success" onClose={() => {}} />
@@ -1296,7 +1296,7 @@ toast({
                 deduplication, action buttons, and variant icons.
               </p>
               <div className="toast-page__tier-import">
-                import {'{'} ToastProvider, useToast {'}'} from '@annondeveloper/ui-kit'
+                import {'{'} ToastProvider, useToast {'}'} from '@frontier-labs/ui-kit'
               </div>
               <div className="toast-page__tier-preview">
                 <Button size="sm" variant="primary" onClick={() => setTier('standard')}>Select Standard</Button>
@@ -1327,7 +1327,7 @@ toast({
                 aurora glow per variant, shimmer dismiss effects, and motion levels.
               </p>
               <div className="toast-page__tier-import">
-                import {'{'} ToastProvider {'}'} from '@annondeveloper/ui-kit/premium'
+                import {'{'} ToastProvider {'}'} from '@frontier-labs/ui-kit/premium'
               </div>
               <div className="toast-page__tier-preview">
                 <PremiumToastProvider>
@@ -1462,13 +1462,13 @@ toast({
           <h2 className="toast-page__section-title"><a href="#source">Source</a></h2>
           <p className="toast-page__section-desc">View the full component source code on GitHub.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a className="toast-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/toast.tsx" target="_blank" rel="noopener noreferrer">
+            <a className="toast-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/toast.tsx" target="_blank" rel="noopener noreferrer">
               <Icon name="code" size="sm" /> src/domain/toast.tsx (Standard)
             </a>
-            <a className="toast-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/toast.tsx" target="_blank" rel="noopener noreferrer">
+            <a className="toast-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/toast.tsx" target="_blank" rel="noopener noreferrer">
               <Icon name="code" size="sm" /> src/lite/toast.tsx (Lite)
             </a>
-            <a className="toast-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/toast.tsx" target="_blank" rel="noopener noreferrer">
+            <a className="toast-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/toast.tsx" target="_blank" rel="noopener noreferrer">
               <Icon name="code" size="sm" /> src/premium/toast.tsx (Premium)
             </a>
           </div>

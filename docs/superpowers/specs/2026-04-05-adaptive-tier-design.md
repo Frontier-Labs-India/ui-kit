@@ -70,11 +70,11 @@ ALL 159 components must have identical DOM structure across Lite/Standard/Premiu
 
 ### 2b. Adaptive Entry Point
 
-**New entry:** `@annondeveloper/ui-kit/adaptive`
+**New entry:** `@frontier-labs/ui-kit/adaptive`
 
 ```tsx
 // Developer imports from /adaptive — gets auto-switching components
-import { Button, Card, Dialog } from '@annondeveloper/ui-kit/adaptive'
+import { Button, Card, Dialog } from '@frontier-labs/ui-kit/adaptive'
 ```
 
 Under the hood, each adaptive component:

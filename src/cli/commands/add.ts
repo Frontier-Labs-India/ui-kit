@@ -41,38 +41,38 @@ function resolveSourcePath(name: string, tier: string): string | null {
 
 /**
  * Rewrites internal relative imports to package imports.
- * e.g. `from '../core/styles'` → `from '@annondeveloper/ui-kit'`
- * e.g. `from '../core/tokens/generator'` → `from '@annondeveloper/ui-kit/theme'`
+ * e.g. `from '../core/styles'` → `from '@frontier-labs/ui-kit'`
+ * e.g. `from '../core/tokens/generator'` → `from '@frontier-labs/ui-kit/theme'`
  */
 export function rewriteImports(source: string): string {
   return source
     // Theme-related imports
     .replace(
       /from\s+['"]\.\.\/core\/tokens\/(?:generator|themes|tokens)['"]/g,
-      "from '@annondeveloper/ui-kit/theme'"
+      "from '@frontier-labs/ui-kit/theme'"
     )
     // Form-related imports
     .replace(
       /from\s+['"]\.\.\/core\/forms\/[^'"]*['"]/g,
-      "from '@annondeveloper/ui-kit/form'"
+      "from '@frontier-labs/ui-kit/form'"
     )
     // All other core imports → main package
     .replace(
       /from\s+['"]\.\.\/core\/[^'"]*['"]/g,
-      "from '@annondeveloper/ui-kit'"
+      "from '@frontier-labs/ui-kit'"
     )
     // Relative component imports
     .replace(
       /from\s+['"]\.\.\/components\/[^'"]*['"]/g,
-      "from '@annondeveloper/ui-kit'"
+      "from '@frontier-labs/ui-kit'"
     )
     .replace(
       /from\s+['"]\.\.\/domain\/[^'"]*['"]/g,
-      "from '@annondeveloper/ui-kit'"
+      "from '@frontier-labs/ui-kit'"
     )
     .replace(
       /from\s+['"]\.\/[^'"]*['"]/g,
-      "from '@annondeveloper/ui-kit'"
+      "from '@frontier-labs/ui-kit'"
     )
 }
 
@@ -107,5 +107,5 @@ export function addCommand(componentName: string, options: { tier?: string; outD
 
   writeFileSync(destPath, rewritten, 'utf-8')
   console.log(`\u2713 Copied ${componentName} (${tier}) to ${destPath}`)
-  console.log(`  Imports rewritten to use @annondeveloper/ui-kit`)
+  console.log(`  Imports rewritten to use @frontier-labs/ui-kit`)
 }

@@ -479,9 +479,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: readonly Size[] = ['sm', 'md', 'lg'] as const
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Calendar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Calendar } from '@annondeveloper/ui-kit'",
-  premium: "import { Calendar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Calendar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Calendar } from '@frontier-labs/ui-kit'",
+  premium: "import { Calendar } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -595,8 +595,8 @@ function generateHtmlCode(
 ): string {
   const className = tier === 'lite' ? 'ui-lite-calendar' : 'ui-calendar'
   const cssImport = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/calendar.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/calendar.css'
 
   return `<!-- HTML+CSS — ${tier} tier -->
 <link rel="stylesheet" href="https://unpkg.com/${cssImport}">
@@ -620,10 +620,10 @@ function generateVueCode(
 ): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-calendar"`, `data-size="${size}"`]
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <!-- Lite calendar: CSS-only shell -->\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <!-- Lite calendar: CSS-only shell -->\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  @change="onDateChange"']
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (showWeekNumbers) attrs.push('  show-week-numbers')
@@ -641,9 +641,9 @@ function generateAngularCode(
 ): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-calendar"`, `data-size="${size}"`]
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <!-- Lite calendar shell -->\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <!-- Lite calendar shell -->\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [`class="ui-calendar"`, `data-size="${size}"`]
   if (showWeekNumbers) attrs.push('[attr.data-week-numbers]="true"')
   if (highlightToday) attrs.push('[attr.data-highlight-today]="true"')
@@ -658,9 +658,9 @@ function generateSvelteCode(
   disabled: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-calendar"\n  data-size="${size}"\n>\n  <!-- Lite calendar shell -->\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div\n  class="ui-lite-calendar"\n  data-size="${size}"\n>\n  <!-- Lite calendar shell -->\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  on:change={handleDate}`]
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (showWeekNumbers) attrs.push('  showWeekNumbers')
@@ -967,7 +967,7 @@ export default function CalendarPage() {
               Thin wrapper over Standard with motion forced to 0. Zero extra JavaScript.
             </p>
             <div className="calendar-page__tier-import">
-              import {'{'} Calendar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Calendar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="calendar-page__tier-preview">
               <LiteCalendar size="sm" highlightToday />
@@ -997,7 +997,7 @@ export default function CalendarPage() {
               Full-featured calendar with motion, keyboard navigation, locale support, and date range helpers.
             </p>
             <div className="calendar-page__tier-import">
-              import {'{'} Calendar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Calendar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="calendar-page__tier-preview">
               <Calendar size="sm" highlightToday />
@@ -1027,7 +1027,7 @@ export default function CalendarPage() {
               Everything in Standard plus spring hover on day cells, glow on selected day, and shimmer effects.
             </p>
             <div className="calendar-page__tier-import">
-              import {'{'} Calendar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Calendar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="calendar-page__tier-preview">
               <PremiumCalendar size="sm" highlightToday />
@@ -1138,13 +1138,13 @@ export default function CalendarPage() {
         <h2 className="calendar-page__section-title"><a href="#source">Source</a></h2>
         <p className="calendar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/calendar.tsx (Standard)
           </a>
-          <a className="calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/calendar.tsx (Lite)
           </a>
-          <a className="calendar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/calendar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="calendar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/calendar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/calendar.tsx (Premium)
           </a>
         </div>

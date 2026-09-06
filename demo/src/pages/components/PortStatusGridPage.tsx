@@ -639,9 +639,9 @@ const DENSE_PORTS: PortStatus[] = Array.from({ length: 48 }, (_, i) => ({
 }))
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PortStatusGrid } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PortStatusGrid } from '@annondeveloper/ui-kit'",
-  premium: "import { PortStatusGrid } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PortStatusGrid } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PortStatusGrid } from '@frontier-labs/ui-kit'",
+  premium: "import { PortStatusGrid } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -736,7 +736,7 @@ function generateReactCode(
   if (motion !== 3) props.push(`  motion={${motion}}`)
 
   return `${importStr}
-import type { PortStatus } from '@annondeveloper/ui-kit'
+import type { PortStatus } from '@frontier-labs/ui-kit'
 
 const ports: PortStatus[] = [
   { port: 22, status: 'ok', label: 'SSH' },
@@ -753,8 +753,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(columns: number, size: 'sm' | 'md'): string {
-  return `<!-- PortStatusGrid — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/port-status-grid.css">
+  return `<!-- PortStatusGrid — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/port-status-grid.css">
 
 <div class="ui-port-status-grid" data-size="${size}">
   <div class="ui-port-status-grid__grid" style="--columns: ${columns}">
@@ -769,7 +769,7 @@ function generateHtmlCode(columns: number, size: 'sm' | 'md'): string {
 }
 
 function generateVueCode(tier: Tier, columns: number, size: 'sm' | 'md', interactive: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :ports="ports"']
   if (columns !== 8) attrs.push(`  :columns="${columns}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -799,7 +799,7 @@ const handlePortClick = (port) => {
 }
 
 function generateAngularCode(tier: Tier, columns: number, size: 'sm' | 'md', interactive: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <ui-port-status-grid
   [ports]="ports"
@@ -820,7 +820,7 @@ ports = [
 }
 
 function generateSvelteCode(tier: Tier, columns: number, size: 'sm' | 'md', interactive: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['{ports}']
   if (columns !== 8) attrs.push(`columns={${columns}}`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -1242,7 +1242,7 @@ export default function PortStatusGridPage() {
               Minimal JS wrapper with forwardRef.
             </p>
             <div className="psg-page__tier-import">
-              import {'{'} PortStatusGrid {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} PortStatusGrid {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="psg-page__tier-preview">
               <LitePortStatusGrid
@@ -1275,7 +1275,7 @@ export default function PortStatusGridPage() {
               click handlers via accessible buttons, focus-visible outlines, and motion levels.
             </p>
             <div className="psg-page__tier-import">
-              import {'{'} PortStatusGrid {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} PortStatusGrid {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="psg-page__tier-preview">
               <PortStatusGrid
@@ -1310,7 +1310,7 @@ export default function PortStatusGridPage() {
               glow effect on critical ports, and smooth tooltip transitions.
             </p>
             <div className="psg-page__tier-import">
-              import {'{'} PortStatusGrid {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} PortStatusGrid {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="psg-page__tier-preview">
               <PremiumPortStatusGrid
@@ -1418,13 +1418,13 @@ export default function PortStatusGridPage() {
         <h2 className="psg-page__section-title"><a href="#source">Source</a></h2>
         <p className="psg-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="psg-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="psg-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/port-status-grid.tsx (Standard)
           </a>
-          <a className="psg-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="psg-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/port-status-grid.tsx (Lite)
           </a>
-          <a className="psg-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="psg-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/port-status-grid.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/port-status-grid.tsx (Premium)
           </a>
         </div>

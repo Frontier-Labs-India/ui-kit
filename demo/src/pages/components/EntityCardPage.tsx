@@ -569,9 +569,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { EntityCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { EntityCard } from '@annondeveloper/ui-kit'",
-  premium: "import { EntityCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { EntityCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { EntityCard } from '@frontier-labs/ui-kit'",
+  premium: "import { EntityCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const sampleMetrics = [
@@ -623,22 +623,22 @@ function generateReactCode(tier: Tier, name: string, status: Status, size: Size,
 }
 
 function generateVueCode(tier: Tier, name: string, status: Status): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>\n  <EntityCard name="${name}" status="${status}" :metrics="metrics" />\n</template>\n\n<script setup>\nimport { EntityCard } from '${importPath}'\nconst metrics = [{ label: 'CPU', value: '24%' }]\n</script>`
 }
 
 function generateAngularCode(tier: Tier, name: string, status: Status): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- CSS-only approach -->\n<div class="ui-entity-card" data-status="${status}">\n  <span class="ui-entity-card__name">${name}</span>\n</div>\n\n@import '${importPath}/css/components/entity-card.css';`
 }
 
 function generateSvelteCode(tier: Tier, name: string, status: Status): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { EntityCard } from '${importPath}';\n</script>\n\n<EntityCard name="${name}" status="${status}" />`
 }
 
 function generateHtmlCode(name: string, status: Status): string {
-  return `<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/entity-card.css">\n\n<div class="ui-entity-card" data-status="${status}">\n  <div class="ui-entity-card__header">\n    <span class="ui-entity-card__name">${name}</span>\n  </div>\n</div>`
+  return `<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/entity-card.css">\n\n<div class="ui-entity-card" data-status="${status}">\n  <div class="ui-entity-card__header">\n    <span class="ui-entity-card__name">${name}</span>\n  </div>\n</div>`
 }
 
 // ─── Playground Section ──────────────────────────────────────────────────────
@@ -947,7 +947,7 @@ export default function EntityCardPage() {
       {/* Source */}
       <section className="entity-card-page__section" id="source">
         <h2 className="entity-card-page__section-title"><a href="#source">Source</a></h2>
-        <a className="entity-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/entity-card.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="entity-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/entity-card.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

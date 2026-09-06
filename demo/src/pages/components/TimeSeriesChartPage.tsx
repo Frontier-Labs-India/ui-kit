@@ -686,9 +686,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TimeSeriesChart } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TimeSeriesChart } from '@annondeveloper/ui-kit'",
-  premium: "import { TimeSeriesChart } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TimeSeriesChart } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TimeSeriesChart } from '@frontier-labs/ui-kit'",
+  premium: "import { TimeSeriesChart } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -796,8 +796,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, height: number): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
-  return `<!-- TimeSeriesChart — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/time-series-chart.css">
+  return `<!-- TimeSeriesChart — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/time-series-chart.css">
 
 <!-- TimeSeriesChart is an interactive SVG component. -->
 <!-- For non-React usage, use the CSS classes with server-rendered SVG. -->
@@ -809,7 +809,7 @@ function generateHtmlCode(tier: Tier, height: number): string {
 }
 
 function generateVueCode(tier: Tier, showGrid: boolean, showXAxis: boolean, showYAxis: boolean, height: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':series="series"']
   if (height !== 200) attrs.push(`:height="${height}"`)
   if (!showGrid) attrs.push(':show-grid="false"')
@@ -833,7 +833,7 @@ const series = [
 }
 
 function generateAngularCode(tier: Tier, height: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <div class="ui-time-series-chart" style="height: ${height}px;">
   <!-- Use server-rendered SVG or React integration -->
@@ -844,7 +844,7 @@ function generateAngularCode(tier: Tier, height: number): string {
 }
 
 function generateSvelteCode(tier: Tier, showGrid: boolean, showXAxis: boolean, showYAxis: boolean, height: number): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = ['{series}']
   if (height !== 200) attrs.push(`height={${height}}`)
   if (!showGrid) attrs.push('showGrid={false}')
@@ -1301,7 +1301,7 @@ export default function TimeSeriesChartPage() {
               Static SVG polylines. No animation, no tooltip, no interactivity. Lightweight chart for static dashboards.
             </p>
             <div className="time-series-chart-page__tier-import">
-              import {'{'} TimeSeriesChart {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TimeSeriesChart {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="time-series-chart-page__tier-preview">
               <LiteTimeSeriesChart series={singleSeries} height={80} width={200} />
@@ -1331,7 +1331,7 @@ export default function TimeSeriesChartPage() {
               Full-featured with crosshair tooltip, responsive width, line draw animation, legend, and motion levels.
             </p>
             <div className="time-series-chart-page__tier-import">
-              import {'{'} TimeSeriesChart {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TimeSeriesChart {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="time-series-chart-page__tier-preview">
               <TimeSeriesChart series={singleSeries} height={80} />
@@ -1362,7 +1362,7 @@ export default function TimeSeriesChartPage() {
               grid fade-in, glowing hover dots, and frosted tooltip.
             </p>
             <div className="time-series-chart-page__tier-import">
-              import {'{'} TimeSeriesChart {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TimeSeriesChart {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="time-series-chart-page__tier-preview">
               <PremiumTimeSeriesChart series={singleSeries} height={80} />
@@ -1500,13 +1500,13 @@ export default function TimeSeriesChartPage() {
         <h2 className="time-series-chart-page__section-title"><a href="#source">Source</a></h2>
         <p className="time-series-chart-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="time-series-chart-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-series-chart-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/time-series-chart.tsx (Standard)
           </a>
-          <a className="time-series-chart-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-series-chart-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/time-series-chart.tsx (Lite)
           </a>
-          <a className="time-series-chart-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="time-series-chart-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/time-series-chart.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/time-series-chart.tsx (Premium)
           </a>
         </div>

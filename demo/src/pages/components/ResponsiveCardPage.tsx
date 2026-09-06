@@ -710,9 +710,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ResponsiveCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ResponsiveCard } from '@annondeveloper/ui-kit'",
-  premium: "import { ResponsiveCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ResponsiveCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ResponsiveCard } from '@frontier-labs/ui-kit'",
+  premium: "import { ResponsiveCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -847,8 +847,8 @@ function generateReactCode(
 }
 
 function generateHtmlCssCode(tier: Tier, variant: Variant, titleText: string): string {
-  return `<!-- ResponsiveCard — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/responsive-card.css">
+  return `<!-- ResponsiveCard — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/responsive-card.css">
 
 <article class="ui-responsive-card" data-variant="${variant}">
   <div class="ui-responsive-card__image">
@@ -894,11 +894,11 @@ function generateVueCode(tier: Tier, variant: Variant, motion: MotionLevel, titl
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  title="${titleText}"`]
   attrs.push('  description="A brief description of this card\'s content."')
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
@@ -931,9 +931,9 @@ function generateAngularCode(tier: Tier, variant: Variant, titleText: string): s
 </article>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <article
   class="ui-responsive-card"
@@ -968,10 +968,10 @@ function generateSvelteCode(tier: Tier, variant: Variant, motion: MotionLevel, t
 </article>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`title="${titleText}"`]
   attrs.push('description="A brief description of this card\'s content."')
   if (variant !== 'default') attrs.push(`variant="${variant}"`)
@@ -1456,7 +1456,7 @@ export default function ResponsiveCardPage() {
               Minimal HTML structure with forwardRef wrapper.
             </p>
             <div className="responsive-card-page__tier-import">
-              import {'{'} ResponsiveCard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ResponsiveCard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="responsive-card-page__tier-preview">
               <LiteResponsiveCard
@@ -1490,7 +1490,7 @@ export default function ResponsiveCardPage() {
               three variants, motion levels, and badge positioning.
             </p>
             <div className="responsive-card-page__tier-import">
-              import {'{'} ResponsiveCard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ResponsiveCard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="responsive-card-page__tier-preview">
               <ResponsiveCard
@@ -1524,7 +1524,7 @@ export default function ResponsiveCardPage() {
               3D tilt on hover, and spring-based entrance animation.
             </p>
             <div className="responsive-card-page__tier-import">
-              import {'{'} ResponsiveCard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ResponsiveCard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="responsive-card-page__tier-preview">
               <PremiumResponsiveCard
@@ -1654,7 +1654,7 @@ export default function ResponsiveCardPage() {
       {/* Source */}
       <section className="responsive-card-page__section" id="source">
         <h2 className="responsive-card-page__section-title"><a href="#source">Source</a></h2>
-        <a className="responsive-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/responsive-card.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="responsive-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/responsive-card.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

@@ -633,9 +633,9 @@ const VARIANTS: Variant[] = ['default', 'danger']
 const MOTION_LEVELS: MotionLevel[] = [0, 1, 2, 3]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ConfirmDialog } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ConfirmDialog } from '@annondeveloper/ui-kit'",
-  premium: "import { ConfirmDialog } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ConfirmDialog } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ConfirmDialog } from '@frontier-labs/ui-kit'",
+  premium: "import { ConfirmDialog } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -788,7 +788,7 @@ function generateHtmlCode(
   confirmLabel: string,
   cancelLabel: string,
 ): string {
-  return `<!-- ConfirmDialog — @annondeveloper/ui-kit HTML/CSS approach -->
+  return `<!-- ConfirmDialog — @frontier-labs/ui-kit HTML/CSS approach -->
 <dialog id="confirm-dialog" class="ui-confirm-dialog">
   <h2>${title}</h2>
   ${description ? `<p>${description}</p>` : ''}
@@ -806,7 +806,7 @@ function generateHtmlCode(
   Open Dialog
 </button>
 
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/confirm-dialog.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/confirm-dialog.css">`
 }
 
 function generateVueCode(
@@ -817,7 +817,7 @@ function generateVueCode(
   confirmLabel: string,
   cancelLabel: string,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
 
   if (tier === 'lite') {
     return `<template>
@@ -884,8 +884,8 @@ function generateAngularCode(
 ): string {
   const tierLabel = tier === 'premium' ? 'Premium' : tier === 'lite' ? 'Lite' : 'Standard'
   const cssImport = tier === 'lite'
-    ? "@import '@annondeveloper/ui-kit/lite/styles.css';"
-    : "@import '@annondeveloper/ui-kit/css/components/confirm-dialog.css';"
+    ? "@import '@frontier-labs/ui-kit/lite/styles.css';"
+    : "@import '@frontier-labs/ui-kit/css/components/confirm-dialog.css';"
 
   return `<!-- Angular — ${tierLabel} tier (CSS-only approach) -->
 <button (click)="open = true">Open Dialog</button>
@@ -915,7 +915,7 @@ function generateSvelteCode(
   confirmLabel: string,
   cancelLabel: string,
 ): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
 
   if (tier === 'lite') {
     return `<script>
@@ -1452,7 +1452,7 @@ export default function ConfirmDialogPage() {
               CSS-only native &lt;dialog&gt; wrapper. Zero styling dependencies, minimal JS.
             </p>
             <div className="confirm-dialog-page__tier-import">
-              import {'{'} ConfirmDialog {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ConfirmDialog {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="confirm-dialog-page__size-breakdown">
               <div className="confirm-dialog-page__size-row">
@@ -1479,7 +1479,7 @@ export default function ConfirmDialogPage() {
               Full-featured with focus trapping, motion levels, embedded scoped CSS, and accessibility.
             </p>
             <div className="confirm-dialog-page__tier-import">
-              import {'{'} ConfirmDialog {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ConfirmDialog {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="confirm-dialog-page__size-breakdown">
               <div className="confirm-dialog-page__size-row">
@@ -1506,7 +1506,7 @@ export default function ConfirmDialogPage() {
               Everything in Standard plus spring scale entrance, aurora backdrop glow, and button shimmer.
             </p>
             <div className="confirm-dialog-page__tier-import">
-              import {'{'} ConfirmDialog {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ConfirmDialog {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="confirm-dialog-page__size-breakdown">
               <div className="confirm-dialog-page__size-row">
@@ -1637,13 +1637,13 @@ export default function ConfirmDialogPage() {
         <h2 className="confirm-dialog-page__section-title"><a href="#source">Source</a></h2>
         <p className="confirm-dialog-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="confirm-dialog-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confirm-dialog-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/confirm-dialog.tsx (Standard)
           </a>
-          <a className="confirm-dialog-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confirm-dialog-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/confirm-dialog.tsx (Lite)
           </a>
-          <a className="confirm-dialog-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="confirm-dialog-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/confirm-dialog.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/confirm-dialog.tsx (Premium)
           </a>
         </div>

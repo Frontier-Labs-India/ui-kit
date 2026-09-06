@@ -379,9 +379,9 @@ const pageStyles = css`
 // ─── Import Strings ──────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Timeline } from '@annondeveloper/ui-kit'",
-  lite: "import { Timeline } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Timeline } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Timeline } from '@frontier-labs/ui-kit'",
+  lite: "import { Timeline } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Timeline } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -548,7 +548,7 @@ function generateHtmlCode(
   </div>
 </div>
 
-<link rel="stylesheet" href="@annondeveloper/ui-kit/css/components/timeline.css" />`
+<link rel="stylesheet" href="@frontier-labs/ui-kit/css/components/timeline.css" />`
 }
 
 function generateVueCode(
@@ -581,11 +581,11 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :items="items"']
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -636,10 +636,10 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
   class="ui-timeline"
@@ -690,11 +690,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { Timeline } from '${importPath}';
 
@@ -1014,7 +1014,7 @@ export default function TimelinePage() {
               Full-featured with motion, theming, and accessibility.
             </p>
             <div className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0' }}>~3.2KB JS gzip + ~0.8KB CSS gzip</div>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@annondeveloper/ui-kit'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@frontier-labs/ui-kit'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'lite' ? 'var(--brand)' : undefined }}>
             <strong>Lite</strong>
@@ -1022,7 +1022,7 @@ export default function TimelinePage() {
               Minimal footprint, no motion or advanced theming. Wraps standard with motion=0.
             </p>
             <div className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0' }}>~1.8KB JS gzip + ~0.5KB CSS gzip</div>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@annondeveloper/ui-kit/lite'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@frontier-labs/ui-kit/lite'</code>
           </Card>
           <Card padding="sm" style={{ borderColor: tier === 'premium' ? 'var(--brand)' : undefined }}>
             <strong>Premium</strong>
@@ -1030,7 +1030,7 @@ export default function TimelinePage() {
               Aurora glow, spring animations, shimmer connector, and staggered dot entrance.
             </p>
             <div className="size-row" style={{ fontSize: '0.6875rem', color: 'var(--text-tertiary)', margin: '0.25rem 0' }}>~4.1KB JS gzip + ~1.2KB CSS gzip</div>
-            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@annondeveloper/ui-kit/premium'</code>
+            <code style={{ fontSize: '0.6875rem' }}>import {'{'} Timeline {'}'} from '@frontier-labs/ui-kit/premium'</code>
           </Card>
         </div>
       </section>
@@ -1111,7 +1111,7 @@ export default function TimelinePage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/timeline.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/timeline.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand)', fontSize: 'var(--text-sm)', textDecoration: 'underline', textUnderlineOffset: '0.2em' }}
@@ -1119,7 +1119,7 @@ export default function TimelinePage() {
             Source — src/components/timeline.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/timeline.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/timeline.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand)', fontSize: 'var(--text-sm)', textDecoration: 'underline', textUnderlineOffset: '0.2em' }}
@@ -1127,7 +1127,7 @@ export default function TimelinePage() {
             Source — src/lite/timeline.tsx
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/timeline.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/timeline.tsx"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--brand)', fontSize: 'var(--text-sm)', textDecoration: 'underline', textUnderlineOffset: '0.2em' }}

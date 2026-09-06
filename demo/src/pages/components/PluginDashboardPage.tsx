@@ -749,9 +749,9 @@ const dashboardWidgetProps: PropDef[] = [
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { PluginDashboard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { PluginDashboard, POSTGRES_DASHBOARD } from '@annondeveloper/ui-kit'",
-  premium: "import { PluginDashboard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { PluginDashboard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { PluginDashboard, POSTGRES_DASHBOARD } from '@frontier-labs/ui-kit'",
+  premium: "import { PluginDashboard } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -784,7 +784,7 @@ function generateReactCode(
 ): string {
   const importStr = IMPORT_STRINGS[tier]
   const configName = selectedConfig.toUpperCase() + '_DASHBOARD'
-  const configImport = `import { ${configName} } from '@annondeveloper/ui-kit'`
+  const configImport = `import { ${configName} } from '@frontier-labs/ui-kit'`
 
   const props: string[] = [`  config={${configName}}`]
   props.push('  data={data}')
@@ -802,11 +802,11 @@ function generateHtmlCode(
 ): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite/styles.css'
-    : '@annondeveloper/ui-kit/css/components/plugin-dashboard.css'
+    ? '@frontier-labs/ui-kit/lite/styles.css'
+    : '@frontier-labs/ui-kit/css/components/plugin-dashboard.css'
   const configName = selectedConfig.toUpperCase() + '_DASHBOARD'
 
-  return `<!-- PluginDashboard \u2014 @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- PluginDashboard \u2014 @frontier-labs/ui-kit ${tierLabel} tier -->
 <link rel="stylesheet" href="https://unpkg.com/${cssPath}">
 
 <div class="ui-plugin-dashboard" data-config="${selectedConfig}">
@@ -847,11 +847,11 @@ function generateVueCode(
 </template>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`:config="${configName}"`, ':data="data"']
   if (isLoading) props.push(':loading="true"')
   if (motion !== 3) props.push(`:motion="${motion}"`)
@@ -866,7 +866,7 @@ function generateVueCode(
 
 <script setup>
 import { PluginDashboard } from '${importPath}'
-import { ${configName} } from '@annondeveloper/ui-kit'
+import { ${configName} } from '@frontier-labs/ui-kit'
 import { ref, onMounted } from 'vue'
 
 const data = ref({})
@@ -893,10 +893,10 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular \u2014 ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <!-- Use React wrapper or CSS-only approach -->
 <div
@@ -937,11 +937,11 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = [`config={${configName}}`, '{data}']
   if (isLoading) props.push('loading')
   if (motion !== 3) props.push(`motion={${motion}}`)
@@ -950,7 +950,7 @@ function generateSvelteCode(
 
   return `<script>
   import { PluginDashboard } from '${importPath}';
-  import { ${configName} } from '@annondeveloper/ui-kit';
+  import { ${configName} } from '@frontier-labs/ui-kit';
   import { onMount } from 'svelte';
 
   let data = {};
@@ -1296,7 +1296,7 @@ export default function PluginDashboardPage() {
               Simple metrics grid + property list. Inline styles, no charts, no sidebar, no auto-refresh.
             </p>
             <div className="plugin-dashboard-page__tier-import">
-              import {'{'} PluginDashboard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} PluginDashboard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="plugin-dashboard-page__size-breakdown">
               <div className="plugin-dashboard-page__size-row">
@@ -1326,7 +1326,7 @@ export default function PluginDashboardPage() {
               auto-refresh, loading overlay, and error handling.
             </p>
             <div className="plugin-dashboard-page__tier-import">
-              import {'{'} PluginDashboard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} PluginDashboard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="plugin-dashboard-page__size-breakdown">
               <div className="plugin-dashboard-page__size-row">
@@ -1356,7 +1356,7 @@ export default function PluginDashboardPage() {
               enhanced property hover, and metric card glow on hover.
             </p>
             <div className="plugin-dashboard-page__tier-import">
-              import {'{'} PluginDashboard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} PluginDashboard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="plugin-dashboard-page__size-breakdown">
               <div className="plugin-dashboard-page__size-row">
@@ -1558,13 +1558,13 @@ export default function PluginDashboardPage() {
         <h2 className="plugin-dashboard-page__section-title"><a href="#source">Source</a></h2>
         <p className="plugin-dashboard-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/plugin-dashboard.tsx (Standard)
           </a>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/plugin-dashboard.tsx (Lite)
           </a>
-          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
+          <a style={{ color: 'var(--brand)', textDecoration: 'none' }} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/plugin-dashboard.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/plugin-dashboard.tsx (Premium)
           </a>
         </div>

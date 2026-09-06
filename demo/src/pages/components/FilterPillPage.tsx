@@ -696,9 +696,9 @@ type Size = 'sm' | 'md'
 const SIZES: Size[] = ['sm', 'md']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { FilterPill } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { FilterPill, FilterPillGroup } from '@annondeveloper/ui-kit'",
-  premium: "import { FilterPill, FilterPillGroup } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { FilterPill } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { FilterPill, FilterPillGroup } from '@frontier-labs/ui-kit'",
+  premium: "import { FilterPill, FilterPillGroup } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -800,7 +800,7 @@ function generateReactCode(
   count: number | undefined, showIcon: boolean, size: Size, motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = showIcon && tier !== 'lite' ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon && tier !== 'lite' ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = [`  label="${label}"`]
   if (active) props.push('  active')
@@ -816,8 +816,8 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, label: string, active: boolean, size: Size): string {
   const cls = tier === 'lite' ? 'ui-lite-filter-pill' : 'ui-filter-pill'
-  return `<!-- FilterPill -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/filter-pill.css">
+  return `<!-- FilterPill -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/filter-pill.css">
 
 <button
   class="${cls}"
@@ -848,7 +848,7 @@ const active = ref(${active})
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -862,7 +862,7 @@ const active = ref(${active})
 
 <script setup>
 import { ref } from 'vue'
-import { FilterPill } from '@annondeveloper/ui-kit'
+import { FilterPill } from '@frontier-labs/ui-kit'
 const active = ref(${active})
 </script>`
 }
@@ -880,7 +880,7 @@ function generateAngularCode(tier: Tier, label: string, active: boolean, size: S
 </button>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular -- Standard tier -->
 <button
@@ -894,7 +894,7 @@ function generateAngularCode(tier: Tier, label: string, active: boolean, size: S
 </button>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/filter-pill.css';`
+@import '@frontier-labs/ui-kit/css/components/filter-pill.css';`
 }
 
 function generateSvelteCode(tier: Tier, label: string, active: boolean, size: Size): string {
@@ -914,11 +914,11 @@ function generateSvelteCode(tier: Tier, label: string, active: boolean, size: Si
 </button>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { FilterPill } from '@annondeveloper/ui-kit';
+  import { FilterPill } from '@frontier-labs/ui-kit';
   let active = ${active};
 </script>
 
@@ -1362,7 +1362,7 @@ export default function FilterPillPage() {
               No icon, no count badge, no motion, no FilterPillGroup.
             </p>
             <div className="filter-pill-page__tier-import">
-              import {'{'} FilterPill {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} FilterPill {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="filter-pill-page__tier-preview">
               <LiteFilterPill active>Lite</LiteFilterPill>
@@ -1394,7 +1394,7 @@ export default function FilterPillPage() {
               aria-pressed, focus-visible, and FilterPillGroup with clear-all.
             </p>
             <div className="filter-pill-page__tier-import">
-              import {'{'} FilterPill, FilterPillGroup {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} FilterPill, FilterPillGroup {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="filter-pill-page__tier-preview">
               <FilterPill label="React" active count={12} icon={<Icon name="code" size="sm" />} />
@@ -1425,7 +1425,7 @@ export default function FilterPillPage() {
               Spring-scale on select/deselect, aurora glow on active pill, and shimmer sweep on active state.
             </p>
             <div className="filter-pill-page__tier-import">
-              import {'{'} FilterPill, FilterPillGroup {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} FilterPill, FilterPillGroup {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="filter-pill-page__tier-preview">
               <FilterPill label="Premium" active icon={<Icon name="zap" size="sm" />} count={99} />
@@ -1561,7 +1561,7 @@ export default function FilterPillPage() {
         </h2>
         <a
           className="filter-pill-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/filter-pill.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/filter-pill.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

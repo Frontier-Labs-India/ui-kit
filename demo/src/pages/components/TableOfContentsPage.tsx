@@ -504,9 +504,9 @@ const pageStyles = css`
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TableOfContents } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TableOfContents } from '@annondeveloper/ui-kit'",
-  premium: "import { TableOfContents } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TableOfContents } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TableOfContents } from '@frontier-labs/ui-kit'",
+  premium: "import { TableOfContents } from '@frontier-labs/ui-kit/premium'",
 }
 
 const BRAND_ONLY_KEYS: (keyof ThemeTokens)[] = [
@@ -637,14 +637,14 @@ function generateReactCode(
 function generateHtmlCode(tier: Tier, variant: TocVariant, size: TocSize): string {
   const cls = tier === 'lite' ? 'ui-lite-toc' : 'ui-toc'
   const attrs = [`class="${cls}"`, `data-variant="${variant}"`, `data-size="${size}"`]
-  return `<!-- TableOfContents — @annondeveloper/ui-kit ${tier} tier -->\n<nav ${attrs.join(' ')} aria-label="Table of contents">\n  <ul class="${cls}__list">\n    <li class="${cls}__item"><a href="#intro" class="${cls}__link" data-active="true">Introduction</a></li>\n    <li class="${cls}__item"><a href="#setup" class="${cls}__link">Setup</a></li>\n    <li class="${cls}__item ${cls}__item--nested"><a href="#install" class="${cls}__link">Installation</a></li>\n  </ul>\n</nav>\n\n<style>\n@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/table-of-contents.css'}';\n</style>`
+  return `<!-- TableOfContents — @frontier-labs/ui-kit ${tier} tier -->\n<nav ${attrs.join(' ')} aria-label="Table of contents">\n  <ul class="${cls}__list">\n    <li class="${cls}__item"><a href="#intro" class="${cls}__link" data-active="true">Introduction</a></li>\n    <li class="${cls}__item"><a href="#setup" class="${cls}__link">Setup</a></li>\n    <li class="${cls}__item ${cls}__item--nested"><a href="#install" class="${cls}__link">Installation</a></li>\n  </ul>\n</nav>\n\n<style>\n@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/table-of-contents.css'}';\n</style>`
 }
 
 function generateVueCode(tier: Tier, variant: TocVariant, size: TocSize, scrollSpy: boolean): string {
   if (tier === 'lite') {
-    return `<template>\n  <nav class="ui-lite-toc" data-variant="${variant}" data-size="${size}" aria-label="Table of contents">\n    <ul class="ui-lite-toc__list">\n      <li v-for="item in items" :key="item.id" class="ui-lite-toc__item">\n        <a :href="'#' + item.id" class="ui-lite-toc__link">{{ item.label }}</a>\n      </li>\n    </ul>\n  </nav>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <nav class="ui-lite-toc" data-variant="${variant}" data-size="${size}" aria-label="Table of contents">\n    <ul class="ui-lite-toc__list">\n      <li v-for="item in items" :key="item.id" class="ui-lite-toc__item">\n        <a :href="'#' + item.id" class="ui-lite-toc__link">{{ item.label }}</a>\n      </li>\n    </ul>\n  </nav>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :items="items"', '  v-model:activeId="activeId"']
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -654,15 +654,15 @@ function generateVueCode(tier: Tier, variant: TocVariant, size: TocSize, scrollS
 
 function generateAngularCode(tier: Tier, variant: TocVariant, size: TocSize): string {
   const cls = tier === 'lite' ? 'ui-lite-toc' : 'ui-toc'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier.charAt(0).toUpperCase() + tier.slice(1)} tier CSS -->\n<nav class="${cls}" data-variant="${variant}" data-size="${size}" aria-label="Table of contents">\n  <ul class="${cls}__list">\n    <li *ngFor="let item of items" class="${cls}__item">\n      <a [href]="'#' + item.id" class="${cls}__link" (click)="setActive(item.id)">{{ item.label }}</a>\n    </li>\n  </ul>\n</nav>\n\n/* In styles.css */\n@import '${importPath}/css/components/table-of-contents.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: TocVariant, size: TocSize, scrollSpy: boolean): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<nav class="ui-lite-toc" data-variant="${variant}" data-size="${size}" aria-label="Table of contents">\n  <ul class="ui-lite-toc__list">\n    {#each items as item}\n      <li class="ui-lite-toc__item">\n        <a href={'#' + item.id} class="ui-lite-toc__link">{item.label}</a>\n      </li>\n    {/each}\n  </ul>\n</nav>\n\n<script>\n  let items = [\n    { id: 'intro', label: 'Introduction', level: 1 },\n    { id: 'setup', label: 'Setup', level: 1 },\n  ];\n</script>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<nav class="ui-lite-toc" data-variant="${variant}" data-size="${size}" aria-label="Table of contents">\n  <ul class="ui-lite-toc__list">\n    {#each items as item}\n      <li class="ui-lite-toc__item">\n        <a href={'#' + item.id} class="ui-lite-toc__link">{item.label}</a>\n      </li>\n    {/each}\n  </ul>\n</nav>\n\n<script>\n  let items = [\n    { id: 'intro', label: 'Introduction', level: 1 },\n    { id: 'setup', label: 'Setup', level: 1 },\n  ];\n</script>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { TableOfContents } from '${importPath}';\n  let activeId = 'intro';\n  const items = [\n    { id: 'intro', label: 'Introduction', level: 1 },\n    { id: 'setup', label: 'Setup', level: 1 },\n  ];\n</script>\n\n<TableOfContents\n  {items}\n  bind:activeId\n  variant="${variant}"\n  size="${size}"\n  ${scrollSpy ? 'scrollSpy' : ''}\n/>`
 }
 
@@ -910,7 +910,7 @@ export default function TableOfContentsPage() {
               <span className={`${PAGE}__tier-size`}>~0.3 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>CSS-only, zero motion. Minimal wrapper around Standard with motion=0.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@annondeveloper/ui-kit/lite'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteTableOfContents items={TOC_ITEMS.slice(0, 3)} activeId="introduction" />
             </div>
@@ -933,7 +933,7 @@ export default function TableOfContentsPage() {
               <span className={`${PAGE}__tier-size`}>~2 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>Full-featured with scroll spy, motion levels, and accessibility.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@annondeveloper/ui-kit'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@frontier-labs/ui-kit'</div>
             <div className={`${PAGE}__tier-preview`}>
               <TableOfContents items={TOC_ITEMS.slice(0, 3)} activeId="introduction" />
             </div>
@@ -956,7 +956,7 @@ export default function TableOfContentsPage() {
               <span className={`${PAGE}__tier-size`}>~3 KB</span>
             </div>
             <p className={`${PAGE}__tier-desc`}>Everything in Standard plus spring indicator, aurora glow on active, and hover slide.</p>
-            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@annondeveloper/ui-kit/premium'</div>
+            <div className={`${PAGE}__tier-import`}>import {'{'} TableOfContents {'}'} from '@frontier-labs/ui-kit/premium'</div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumTableOfContents items={TOC_ITEMS.slice(0, 3)} activeId="introduction" />
             </div>
@@ -1060,13 +1060,13 @@ export default function TableOfContentsPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/table-of-contents.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/table-of-contents.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/table-of-contents.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/table-of-contents.tsx (Premium)
           </a>
         </div>

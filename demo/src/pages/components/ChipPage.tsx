@@ -27,9 +27,9 @@ const SIZES: readonly Size[] = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 const COLORS: readonly Color[] = ['default', 'primary', 'success', 'warning', 'danger'] as const
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  standard: "import { Chip } from '@annondeveloper/ui-kit'",
-  lite: "import { Chip } from '@annondeveloper/ui-kit/lite'",
-  premium: "import { Chip } from '@annondeveloper/ui-kit/premium'",
+  standard: "import { Chip } from '@frontier-labs/ui-kit'",
+  lite: "import { Chip } from '@frontier-labs/ui-kit/lite'",
+  premium: "import { Chip } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Styles ──────────────────────────────────────────────────────────────────
@@ -581,7 +581,7 @@ function generateReactCode(
   motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const iconImport = showIcon ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = []
   if (variant !== 'outline') props.push(`  variant="${variant}"`)
@@ -625,7 +625,7 @@ function generateHtmlCode(
 </label>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/chip.css';
+@import '@frontier-labs/ui-kit/css/components/chip.css';
 </style>`
 }
 
@@ -641,10 +641,10 @@ function generateVueCode(
     const attrs = [`class="ui-chip"`, `data-variant="${variant}"`, `data-color="${color}"`, `data-size="${size}"`]
     if (checked) attrs.push('data-checked="true"')
     if (disabled) attrs.push('data-disabled="true"')
-    return `<template>\n  <label ${attrs.join(' ')}>\n    <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n    <span class="ui-chip__label">Label</span>\n  </label>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <label ${attrs.join(' ')}>\n    <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n    <span class="ui-chip__label">Label</span>\n  </label>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (variant !== 'outline') attrs.push(`  variant="${variant}"`)
   if (color !== 'default') attrs.push(`  color="${color}"`)
@@ -671,9 +671,9 @@ function generateAngularCode(
     const attrs = [`class="ui-chip"`, `data-variant="${variant}"`, `data-color="${color}"`, `data-size="${size}"`]
     if (checked) attrs.push('data-checked="true"')
     if (disabled) attrs.push('[attr.data-disabled]="true"')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<label ${attrs.join(' ')}>\n  <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n  <span class="ui-chip__label">Label</span>\n</label>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<label ${attrs.join(' ')}>\n  <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n  <span class="ui-chip__label">Label</span>\n</label>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<label\n  class="ui-chip"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  ${checked ? 'data-checked="true"' : ''}\n  ${disabled ? '[attr.data-disabled]="true"' : ''}\n>\n  <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n  <span class="ui-chip__label">Label</span>\n</label>\n\n/* Import component CSS */\n@import '${importPath}/css/components/chip.css';`
 }
 
@@ -686,9 +686,9 @@ function generateSvelteCode(
   disabled: boolean,
 ): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<label\n  class="ui-chip"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  ${checked ? 'data-checked="true"' : ''}\n  ${disabled ? 'data-disabled="true"' : ''}\n>\n  <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n  <span class="ui-chip__label">Label</span>\n</label>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<label\n  class="ui-chip"\n  data-variant="${variant}"\n  data-color="${color}"\n  data-size="${size}"\n  ${checked ? 'data-checked="true"' : ''}\n  ${disabled ? 'data-disabled="true"' : ''}\n>\n  <input type="checkbox" class="ui-chip__input"${checked ? ' checked' : ''} />\n  <span class="ui-chip__label">Label</span>\n</label>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`variant="${variant}"`]
   if (color !== 'default') attrs.push(`color="${color}"`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -1034,7 +1034,7 @@ export default function ChipPage() {
               Minimal wrapper with motion disabled. Zero overhead beyond forwardRef.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Chip {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Chip {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <LiteChip defaultChecked color="primary">Lite</LiteChip>
@@ -1064,7 +1064,7 @@ export default function ChipPage() {
               Full-featured chip with motion levels, color variants, icon support, and accessibility.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Chip {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Chip {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <Chip defaultChecked color="primary" icon={<Icon name="star" size="sm" />}>Standard</Chip>
@@ -1094,7 +1094,7 @@ export default function ChipPage() {
               Everything in Standard plus aurora glow on checked state, spring scale hover, and shimmer effects.
             </p>
             <div className={`${PAGE}__tier-import`}>
-              import {'{'} Chip {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Chip {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className={`${PAGE}__tier-preview`}>
               <PremiumChip defaultChecked color="primary" icon={<Icon name="star" size="sm" />}>Premium</PremiumChip>
@@ -1226,13 +1226,13 @@ export default function ChipPage() {
         <h2 className={`${PAGE}__section-title`}><a href="#source">Source</a></h2>
         <p className={`${PAGE}__section-desc`}>View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/chip.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/chip.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/chip.tsx (Standard)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/chip.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/chip.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/chip.tsx (Lite)
           </a>
-          <a className={`${PAGE}__source-link`} href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/chip.tsx" target="_blank" rel="noopener noreferrer">
+          <a className={`${PAGE}__source-link`} href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/chip.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/chip.tsx (Premium)
           </a>
         </div>

@@ -705,9 +705,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Popover } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Popover } from '@annondeveloper/ui-kit'",
-  premium: "import { Popover } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Popover } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Popover } from '@frontier-labs/ui-kit'",
+  premium: "import { Popover } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -853,12 +853,12 @@ function generateHtmlCode(tier: Tier, placement: Placement): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<!-- Popover — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/popover.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/popover.css">
 
 <div class="ui-popover" data-placement="${placement}">
   <div class="ui-popover__panel" role="dialog" aria-label="Popover">
@@ -886,11 +886,11 @@ const isOpen = ref(false)
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = '@annondeveloper/ui-kit'
+  const importPath = '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (placement !== 'bottom') attrs.push(`    placement="${placement}"`)
   if (!arrow) attrs.push('    :arrow="false"')
@@ -920,7 +920,7 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier -->
@@ -937,7 +937,7 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/popover.css';`
+@import '@frontier-labs/ui-kit/css/components/popover.css';`
 }
 
 function generateSvelteCode(tier: Tier, placement: Placement, arrow: boolean): string {
@@ -953,7 +953,7 @@ function generateSvelteCode(tier: Tier, placement: Placement, arrow: boolean): s
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -962,8 +962,8 @@ function generateSvelteCode(tier: Tier, placement: Placement, arrow: boolean): s
   if (!arrow) attrs.push('  arrow={false}')
 
   return `<script>
-  import { Popover } from '@annondeveloper/ui-kit';
-  import { Button } from '@annondeveloper/ui-kit';
+  import { Popover } from '@frontier-labs/ui-kit';
+  import { Button } from '@frontier-labs/ui-kit';
 </script>
 
 <Popover
@@ -1384,7 +1384,7 @@ export default function PopoverPage() {
               focus management, or animation support.
             </p>
             <div className="popover-page__tier-import">
-              import {'{'} Popover {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Popover {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="popover-page__tier-preview">
               <Button variant="secondary" size="sm">Lite Trigger</Button>
@@ -1415,7 +1415,7 @@ export default function PopoverPage() {
               click-outside, escape key, and motion levels.
             </p>
             <div className="popover-page__tier-import">
-              import {'{'} Popover {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Popover {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="popover-page__tier-preview">
               <Popover content={<span style={{ fontSize: '0.75rem' }}>Preview content</span>}>
@@ -1447,7 +1447,7 @@ export default function PopoverPage() {
               Aurora glow shadow on panel, animated shimmer border, and spring-scale entrance with blur.
             </p>
             <div className="popover-page__tier-import">
-              import {'{'} Popover {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Popover {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="popover-page__tier-preview">
               <PremiumPopover content={<span style={{ fontSize: '0.75rem' }}>Preview content</span>}>
@@ -1583,13 +1583,13 @@ export default function PopoverPage() {
         <h2 className="popover-page__section-title"><a href="#source">Source</a></h2>
         <p className="popover-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="popover-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/popover.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="popover-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/popover.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/popover.tsx (Standard)
           </a>
-          <a className="popover-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/popover.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="popover-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/popover.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/popover.tsx (Lite)
           </a>
-          <a className="popover-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/popover.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="popover-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/popover.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/popover.tsx (Premium)
           </a>
         </div>

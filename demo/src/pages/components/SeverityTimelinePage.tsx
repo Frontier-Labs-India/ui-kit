@@ -607,9 +607,9 @@ const LITE_EVENTS = SAMPLE_EVENTS.slice(0, 3).map(e => ({
 }))
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SeverityTimeline } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SeverityTimeline } from '@annondeveloper/ui-kit'",
-  premium: "import { SeverityTimeline } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SeverityTimeline } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SeverityTimeline } from '@frontier-labs/ui-kit'",
+  premium: "import { SeverityTimeline } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -717,7 +717,7 @@ function generateReactCode(
   if (motion !== 3) props.push(`  motion={${motion}}`)
 
   return `${importStr}
-import type { TimelineEvent } from '@annondeveloper/ui-kit'
+import type { TimelineEvent } from '@frontier-labs/ui-kit'
 
 const events: TimelineEvent[] = [
   {
@@ -748,8 +748,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(orientation: 'vertical' | 'horizontal'): string {
-  return `<!-- SeverityTimeline — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/severity-timeline.css">
+  return `<!-- SeverityTimeline — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/severity-timeline.css">
 
 <div class="ui-severity-timeline" data-orientation="${orientation}">
   <ol class="ui-severity-timeline__list">
@@ -781,7 +781,7 @@ function generateHtmlCode(orientation: 'vertical' | 'horizontal'): string {
 }
 
 function generateVueCode(tier: Tier, orientation: 'vertical' | 'horizontal', expandable: boolean, maxVisible: number | undefined): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :events="events"']
   if (orientation !== 'vertical') attrs.push(`  orientation="${orientation}"`)
   if (expandable) attrs.push('  expandable')
@@ -816,7 +816,7 @@ const events = ref([
 }
 
 function generateAngularCode(tier: Tier, orientation: 'vertical' | 'horizontal', expandable: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <ui-severity-timeline
   [events]="events"
@@ -835,7 +835,7 @@ events = [
 }
 
 function generateSvelteCode(tier: Tier, orientation: 'vertical' | 'horizontal', expandable: boolean, maxVisible: number | undefined): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['{events}']
   if (orientation !== 'vertical') attrs.push(`orientation="${orientation}"`)
   if (expandable) attrs.push('expandable')
@@ -1268,7 +1268,7 @@ export default function SeverityTimelinePage() {
               Minimal forwardRef wrapper only.
             </p>
             <div className="stl-page__tier-import">
-              import {'{'} SeverityTimeline {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} SeverityTimeline {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="stl-page__tier-preview">
               <LiteSeverityTimeline
@@ -1301,7 +1301,7 @@ export default function SeverityTimelinePage() {
               with aria-expanded, maxVisible truncation, severity dots with connector lines, and motion control.
             </p>
             <div className="stl-page__tier-import">
-              import {'{'} SeverityTimeline {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} SeverityTimeline {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="stl-page__tier-preview">
               <SeverityTimeline
@@ -1334,7 +1334,7 @@ export default function SeverityTimelinePage() {
               smooth expand/collapse transitions, severity dot glow pulses, and animated connector drawing.
             </p>
             <div className="stl-page__tier-import">
-              import {'{'} SeverityTimeline {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} SeverityTimeline {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="stl-page__tier-preview">
               <PremiumSeverityTimeline
@@ -1478,13 +1478,13 @@ export default function SeverityTimelinePage() {
         <h2 className="stl-page__section-title"><a href="#source">Source</a></h2>
         <p className="stl-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="stl-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stl-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/severity-timeline.tsx (Standard)
           </a>
-          <a className="stl-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stl-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/severity-timeline.tsx (Lite)
           </a>
-          <a className="stl-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stl-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/severity-timeline.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/severity-timeline.tsx (Premium)
           </a>
         </div>

@@ -1,6 +1,6 @@
 # AI Marketplace Submissions
 
-Status tracker for getting @annondeveloper/ui-kit recognized by AI platforms.
+Status tracker for getting @frontier-labs/ui-kit recognized by AI platforms.
 
 ## 1. Claude Code Plugin Marketplace (Anthropic)
 
@@ -12,7 +12,7 @@ Status tracker for getting @annondeveloper/ui-kit recognized by AI platforms.
 1. Go to https://claude.ai/settings/plugins/submit (or https://platform.claude.com/plugins/submit)
 2. Fill in plugin details:
    - Name: ui-kit
-   - Source: https://github.com/annondeveloper/ui-kit.git
+   - Source: https://github.com/Frontier-Labs-India/ui-kit.git
    - Directory: plugins/claude-code
    - Description: 147 zero-dependency React components. 5 skills, 2 agents, hosted MCP.
 3. Submit and wait for Anthropic review
@@ -29,10 +29,10 @@ Status tracker for getting @annondeveloper/ui-kit recognized by AI platforms.
 1. Fork `modelcontextprotocol/servers`
 2. Add to the community servers list in README.md:
 ```markdown
-### UI Kit (@annondeveloper/ui-kit)
+### UI Kit (@frontier-labs/ui-kit)
 147 React components discoverable via MCP. Browse, search, generate code, access themes.
-- **Hosted:** `https://ui-kit-mcp.annondeveloper.workers.dev/sse`
-- **Local:** `npx @annondeveloper/ui-kit mcp`
+- **Hosted:** `https://ui-kit-mcp.frontier-labs.workers.dev/sse`
+- **Local:** `npx @frontier-labs/ui-kit mcp`
 - **Tools:** list_components, get_component, search_components, generate_snippet, get_theme, get_icons
 ```
 3. Open PR
@@ -61,9 +61,9 @@ Status tracker for getting @annondeveloper/ui-kit recognized by AI platforms.
 **Status:** Planned
 **Approach:** Create a VS Code extension that:
 - Auto-configures MCP for Copilot
-- Provides IntelliSense snippets for all 147 components
+- Provides IntelliSense snippets for all 162 components
 - Adds "UI Kit" panel in sidebar
-**Package:** `annondeveloper.ui-kit-vscode`
+**Package:** `frontier-labs.ui-kit-vscode`
 
 ## 6. npm/JSR Featured Packages
 

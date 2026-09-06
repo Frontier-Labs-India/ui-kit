@@ -621,9 +621,9 @@ const realtimeValueProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { RealtimeValue } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { RealtimeValue } from '@annondeveloper/ui-kit'",
-  premium: "import { RealtimeValue } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { RealtimeValue } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { RealtimeValue } from '@frontier-labs/ui-kit'",
+  premium: "import { RealtimeValue } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -760,8 +760,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(tier: Tier, showDelta: boolean): string {
-  return `<!-- RealtimeValue — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/realtime-value.css">
+  return `<!-- RealtimeValue — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/realtime-value.css">
 
 <span class="ui-realtime-value" aria-live="polite">
   <span class="ui-realtime-value__number">1,847.32</span>${showDelta ? `
@@ -769,7 +769,7 @@ function generateHtmlCode(tier: Tier, showDelta: boolean): string {
 </span>
 
 <!-- To trigger flash: add data-flash="up" or data-flash="down" attribute -->
-<!-- @import '@annondeveloper/ui-kit/css/components/realtime-value.css'; -->`
+<!-- @import '@frontier-labs/ui-kit/css/components/realtime-value.css'; -->`
 }
 
 function generateVueCode(tier: Tier, showDelta: boolean): string {
@@ -785,11 +785,11 @@ function generateVueCode(tier: Tier, showDelta: boolean): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  :value="currentValue"']
   if (showDelta) {
     attrs.push('  :previous-value="prevValue"')
@@ -812,7 +812,7 @@ const prevValue = ref(1842.15)
 }
 
 function generateAngularCode(tier: Tier, showDelta: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->
 <span class="ui-realtime-value" aria-live="polite">
   <span class="ui-realtime-value__number">{{ formattedValue }}</span>${showDelta ? `
@@ -838,11 +838,11 @@ function generateSvelteCode(tier: Tier, showDelta: boolean): string {
 </span>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = ['  value={currentValue}']
   if (showDelta) {
     attrs.push('  previousValue={prevValue}')
@@ -1216,7 +1216,7 @@ export default function RealtimeValuePage() {
               CSS-only display with static number and delta. No flash animation, no motion levels, no live region announcements.
             </p>
             <div className="realtime-value-page__tier-import">
-              import {'{'} RealtimeValue {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} RealtimeValue {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="realtime-value-page__tier-preview">
               <RealtimeValue value={1847.32} previousValue={1842.15} showDelta />
@@ -1246,7 +1246,7 @@ export default function RealtimeValuePage() {
               Full-featured with flash animations, delta indicators, custom formatting, motion levels, error boundary, and aria-live.
             </p>
             <div className="realtime-value-page__tier-import">
-              import {'{'} RealtimeValue {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} RealtimeValue {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="realtime-value-page__tier-preview">
               <RealtimeValue value={1847.32} previousValue={1842.15} showDelta />
@@ -1277,7 +1277,7 @@ export default function RealtimeValuePage() {
               threshold-based color shifting, and configurable precision.
             </p>
             <div className="realtime-value-page__tier-import">
-              import {'{'} RealtimeValue {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} RealtimeValue {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="realtime-value-page__tier-preview">
               <RealtimeValue value={1847.32} previousValue={1842.15} showDelta />
@@ -1362,13 +1362,13 @@ export default function RealtimeValuePage() {
         <h2 className="realtime-value-page__section-title"><a href="#source">Source</a></h2>
         <p className="realtime-value-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="realtime-value-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="realtime-value-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/realtime-value.tsx (Standard)
           </a>
-          <a className="realtime-value-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="realtime-value-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/realtime-value.tsx (Lite)
           </a>
-          <a className="realtime-value-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="realtime-value-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/realtime-value.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/realtime-value.tsx (Premium)
           </a>
         </div>

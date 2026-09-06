@@ -552,7 +552,7 @@ function generateExamples(
   isDomain: boolean
 ): Example[] {
   const examples: Example[] = []
-  const importFrom = isDomain ? '@annondeveloper/ui-kit' : '@annondeveloper/ui-kit'
+  const importFrom = isDomain ? '@frontier-labs/ui-kit' : '@frontier-labs/ui-kit'
 
   // Basic usage
   const requiredProps = props.filter((p) => p.required)
@@ -926,8 +926,8 @@ function buildRegistry(): Registry {
         description,
         category,
         tier,
-        importPath: '@annondeveloper/ui-kit',
-        importStatement: `import { ${name} } from '@annondeveloper/ui-kit'`,
+        importPath: '@frontier-labs/ui-kit',
+        importStatement: `import { ${name} } from '@frontier-labs/ui-kit'`,
         sourceFile,
         props,
         examples,
@@ -982,8 +982,8 @@ function buildRegistry(): Registry {
         description,
         category,
         tier,
-        importPath: '@annondeveloper/ui-kit',
-        importStatement: `import { ${name} } from '@annondeveloper/ui-kit'`,
+        importPath: '@frontier-labs/ui-kit',
+        importStatement: `import { ${name} } from '@frontier-labs/ui-kit'`,
         sourceFile,
         props,
         examples,

@@ -7,14 +7,14 @@ UI Kit v2 provides a Web Components wrapper that lets you use UI Kit components 
 ## Installation
 
 ```bash
-npm install @annondeveloper/ui-kit react react-dom
+npm install @frontier-labs/ui-kit react react-dom
 ```
 
 ## Quick start
 
 ```html
 <script type="module">
-  import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+  import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
   defineCustomElements()
 </script>
 
@@ -30,7 +30,7 @@ npm install @annondeveloper/ui-kit react react-dom
 Registers all 20 built-in elements with the browser. Call once at application startup.
 
 ```ts
-import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
 
 // Default prefix: 'ui'
 defineCustomElements()
@@ -98,7 +98,7 @@ The text content of a custom element is passed as the `children` prop:
 Wrap any React component as a Custom Element using `createWebComponent`:
 
 ```ts
-import { createWebComponent } from '@annondeveloper/ui-kit/web-components'
+import { createWebComponent } from '@frontier-labs/ui-kit/web-components'
 import { MyComponent } from './my-component'
 
 const MyElement = createWebComponent(
@@ -132,8 +132,8 @@ Theme CSS variables are injected into each Shadow DOM automatically when using `
 For theme variables to work inside Shadow DOM, the theme CSS is embedded in each element. For custom elements created with `createWebComponent`, pass your theme CSS as the third argument:
 
 ```ts
-import { createWebComponent } from '@annondeveloper/ui-kit/web-components'
-import themeCSS from '@annondeveloper/ui-kit/css/theme.css?raw'
+import { createWebComponent } from '@frontier-labs/ui-kit/web-components'
+import themeCSS from '@frontier-labs/ui-kit/css/theme.css?raw'
 
 const MyButton = createWebComponent(Button, ['variant', 'size'], themeCSS)
 ```
@@ -147,7 +147,7 @@ const MyButton = createWebComponent(Button, ['variant', 'size'], themeCSS)
 <html lang="en">
 <head>
   <script type="module">
-    import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+    import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
     defineCustomElements()
   </script>
 </head>
@@ -170,7 +170,7 @@ const MyButton = createWebComponent(Button, ['variant', 'size'], themeCSS)
 </template>
 
 <script setup>
-import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
 defineCustomElements()
 
 const label = 'Click me'
@@ -182,7 +182,7 @@ const handleClick = () => console.log('clicked')
 
 ```svelte
 <script>
-  import { defineCustomElements } from '@annondeveloper/ui-kit/web-components'
+  import { defineCustomElements } from '@frontier-labs/ui-kit/web-components'
   import { onMount } from 'svelte'
 
   onMount(() => defineCustomElements())

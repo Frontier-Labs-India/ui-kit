@@ -671,9 +671,9 @@ type Placement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end'
 const PLACEMENTS: Placement[] = ['bottom-start', 'bottom-end', 'top-start', 'top-end']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { DropdownMenu } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { DropdownMenu } from '@annondeveloper/ui-kit'",
-  premium: "import { DropdownMenu } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { DropdownMenu } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { DropdownMenu } from '@frontier-labs/ui-kit'",
+  premium: "import { DropdownMenu } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -855,7 +855,7 @@ function generateReactCode(
   if (placement !== 'bottom-start') props.push(`  placement="${placement}"`)
   if (motion !== 3) props.push(`  motion={${motion}}`)
 
-  return `${importStr}${showIcons ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''}
+  return `${importStr}${showIcons ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''}
 
 <DropdownMenu
 ${props.join('\n')}
@@ -879,12 +879,12 @@ function generateHtmlCode(tier: Tier, placement: Placement): string {
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<!-- DropdownMenu — Standard tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/dropdown-menu.css">
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/dropdown-menu.css">
 
 <div class="ui-dropdown-menu" data-placement="${placement}">
   <div class="ui-dropdown-menu__panel" role="menu">
@@ -912,7 +912,7 @@ function generateVueCode(tier: Tier, placement: Placement): string {
 </template>
 
 <script setup>
-import { DropdownMenu } from '@annondeveloper/ui-kit/lite'
+import { DropdownMenu } from '@frontier-labs/ui-kit/lite'
 
 const menuItems = [
   { id: 'edit', label: 'Edit', onClick: () => handleEdit() },
@@ -931,8 +931,8 @@ const menuItems = [
 </template>
 
 <script setup>
-import { DropdownMenu } from '@annondeveloper/ui-kit'
-import { Button } from '@annondeveloper/ui-kit'
+import { DropdownMenu } from '@frontier-labs/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 const menuItems = [
   { type: 'label', label: 'Actions' },
@@ -957,7 +957,7 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier (CSS-only approach) -->
@@ -979,13 +979,13 @@ function generateAngularCode(tier: Tier, placement: Placement): string {
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/dropdown-menu.css';`
+@import '@frontier-labs/ui-kit/css/components/dropdown-menu.css';`
 }
 
 function generateSvelteCode(tier: Tier, placement: Placement): string {
   if (tier === 'lite') {
     return `<script>
-  import { DropdownMenu } from '@annondeveloper/ui-kit/lite';
+  import { DropdownMenu } from '@frontier-labs/ui-kit/lite';
 
   const items = [
     { id: 'edit', label: 'Edit', onClick: () => handleEdit() },
@@ -997,8 +997,8 @@ function generateSvelteCode(tier: Tier, placement: Placement): string {
   }
 
   return `<script>
-  import { DropdownMenu } from '@annondeveloper/ui-kit';
-  import { Button } from '@annondeveloper/ui-kit';
+  import { DropdownMenu } from '@frontier-labs/ui-kit';
+  import { Button } from '@frontier-labs/ui-kit';
 
   const items = [
     { type: 'label', label: 'Actions' },
@@ -1404,7 +1404,7 @@ export default function DropdownMenuPage() {
               separators, or keyboard navigation.
             </p>
             <div className="dropdown-menu-page__tier-import">
-              import {'{'} DropdownMenu {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} DropdownMenu {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="dropdown-menu-page__tier-preview">
               <Button variant="secondary" size="sm">Lite Menu</Button>
@@ -1435,7 +1435,7 @@ export default function DropdownMenuPage() {
               icons, shortcuts, separators, danger items, and motion.
             </p>
             <div className="dropdown-menu-page__tier-import">
-              import {'{'} DropdownMenu {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} DropdownMenu {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="dropdown-menu-page__tier-preview">
               <Button variant="primary" size="sm">Standard Menu</Button>
@@ -1465,7 +1465,7 @@ export default function DropdownMenuPage() {
               Spring-scale panel entrance, aurora glow on active item, and shimmer gradient on hover.
             </p>
             <div className="dropdown-menu-page__tier-import">
-              import {'{'} DropdownMenu {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} DropdownMenu {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="dropdown-menu-page__tier-preview">
               <Button variant="primary" size="sm">Premium Menu</Button>
@@ -1613,13 +1613,13 @@ export default function DropdownMenuPage() {
         <h2 className="dropdown-menu-page__section-title"><a href="#source">Source</a></h2>
         <p className="dropdown-menu-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="dropdown-menu-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dropdown-menu-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/dropdown-menu.tsx (Standard)
           </a>
-          <a className="dropdown-menu-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dropdown-menu-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/dropdown-menu.tsx (Lite)
           </a>
-          <a className="dropdown-menu-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="dropdown-menu-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/dropdown-menu.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/dropdown-menu.tsx (Premium)
           </a>
         </div>

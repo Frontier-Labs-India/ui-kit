@@ -5,8 +5,8 @@ UI Kit provides a dedicated RSC entry point that exports only server-safe utilit
 ## Import
 
 ```tsx
-import { ServerStyleSheet, CONTAINER_BREAKPOINTS, generateTheme, themeToCSS } from '@annondeveloper/ui-kit/rsc'
-import type { ThemeTokens, ThemeMode, ContainerBreakpoint } from '@annondeveloper/ui-kit/rsc'
+import { ServerStyleSheet, CONTAINER_BREAKPOINTS, generateTheme, themeToCSS } from '@frontier-labs/ui-kit/rsc'
+import type { ThemeTokens, ThemeMode, ContainerBreakpoint } from '@frontier-labs/ui-kit/rsc'
 ```
 
 ## What's Safe on the Server
@@ -28,7 +28,7 @@ Everything else (hooks, components, motion engine) requires `'use client'`.
 Collects CSS chunks during server rendering, then flushes them as `<style>` tags.
 
 ```tsx
-import { ServerStyleSheet } from '@annondeveloper/ui-kit/rsc'
+import { ServerStyleSheet } from '@frontier-labs/ui-kit/rsc'
 
 const sheet = new ServerStyleSheet()
 
@@ -48,7 +48,7 @@ sheet.seal() // Prevent further collection after render completes
 
 ```tsx
 // app/layout.tsx (Server Component)
-import { ServerStyleSheet, generateTheme, themeToCSS } from '@annondeveloper/ui-kit/rsc'
+import { ServerStyleSheet, generateTheme, themeToCSS } from '@frontier-labs/ui-kit/rsc'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const theme = generateTheme('#6366f1', 'dark')
@@ -73,7 +73,7 @@ Interactive components must be wrapped in client component files:
 // components/interactive-card.tsx
 'use client'
 
-import { Card, Button } from '@annondeveloper/ui-kit'
+import { Card, Button } from '@frontier-labs/ui-kit'
 
 export function InteractiveCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -118,7 +118,7 @@ Place a `<Suspense>` boundary between `UIProvider` and the page content that use
 'use client'
 
 import { Suspense } from 'react'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -174,7 +174,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 // app/search/layout.tsx
 'use client'
 
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function SearchLayout({ children }: { children: React.ReactNode }) {
   return <UIProvider>{children}</UIProvider>

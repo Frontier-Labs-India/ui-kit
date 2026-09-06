@@ -633,9 +633,9 @@ const COLOR_OPTIONS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { RingChart } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { RingChart } from '@annondeveloper/ui-kit'",
-  premium: "import { RingChart } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { RingChart } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { RingChart } from '@frontier-labs/ui-kit'",
+  premium: "import { RingChart } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -746,7 +746,7 @@ function generateHtmlCode(tier: Tier, value: number, size: Size, color: string):
   const circ = (2 * Math.PI * r).toFixed(1)
   const offset = (2 * Math.PI * r * (1 - value / 100)).toFixed(1)
 
-  return `<!-- RingChart -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- RingChart -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <div class="ui-ring-chart" data-size="${size}" role="meter"
   aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100"
   style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: ${svgSize}px; height: ${svgSize}px;">
@@ -761,7 +761,7 @@ function generateHtmlCode(tier: Tier, value: number, size: Size, color: string):
 </div>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/ring-chart.css';
+@import '@frontier-labs/ui-kit/css/components/ring-chart.css';
 </style>`
 }
 
@@ -773,11 +773,11 @@ function generateVueCode(tier: Tier, value: number, size: Size, color: string, s
 
 <script setup>
 // Lite tier uses inline SVG -- see HTML+CSS tab for details
-import { RingChart } from '@annondeveloper/ui-kit/lite'
+import { RingChart } from '@frontier-labs/ui-kit/lite'
 </script>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`:value="${value}"`]
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (color !== 'oklch(65% 0.2 270)') attrs.push(`color="${color}"`)
@@ -804,10 +804,10 @@ function generateAngularCode(tier: Tier, value: number, size: Size, color: strin
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div class="ui-ring-chart" data-size="${size}" role="meter"
   [attr.aria-valuenow]="${value}" aria-valuemin="0" aria-valuemax="100">
@@ -822,13 +822,13 @@ function generateSvelteCode(tier: Tier, value: number, size: Size, color: string
   if (tier === 'lite') {
     return `<!-- Svelte -- Lite tier -->
 <script>
-  import { RingChart } from '@annondeveloper/ui-kit/lite';
+  import { RingChart } from '@frontier-labs/ui-kit/lite';
 </script>
 
 <RingChart value={${value}} ${size !== 'md' ? `size={${size === 'sm' ? 48 : 96}} ` : ''}${color !== 'oklch(65% 0.2 270)' ? `color="${color}" ` : ''}${showValue ? 'showValue ' : ''}/>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`value={${value}}`]
   if (size !== 'md') attrs.push(`size="${size}"`)
   if (color !== 'oklch(65% 0.2 270)') attrs.push(`color="${color}"`)
@@ -1232,7 +1232,7 @@ export default function RingChartPage() {
               Pure render with forwardRef.
             </p>
             <div className="ring-chart-page__tier-import">
-              import {'{'} RingChart {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} RingChart {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="ring-chart-page__tier-preview">
               <LiteRingChart value={72} showValue />
@@ -1263,7 +1263,7 @@ export default function RingChartPage() {
               ARIA meter role, motion levels, and error boundary.
             </p>
             <div className="ring-chart-page__tier-import">
-              import {'{'} RingChart {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} RingChart {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="ring-chart-page__tier-preview">
               <RingChart value={72} showValue size="md" />
@@ -1294,7 +1294,7 @@ export default function RingChartPage() {
               stroke draw-in animation, and periodic shimmer sweep.
             </p>
             <div className="ring-chart-page__tier-import">
-              import {'{'} RingChart {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} RingChart {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="ring-chart-page__tier-preview">
               <PremiumRingChart value={72} showValue size="md" color="oklch(65% 0.2 270)" />
@@ -1396,7 +1396,7 @@ export default function RingChartPage() {
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/ring-chart.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/ring-chart.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="ring-chart-page__source-link"

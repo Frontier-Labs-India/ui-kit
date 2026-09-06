@@ -1,7 +1,7 @@
 // ─── AI Component Database ──────────────────────────────────────────────────
 // In-bundle registry of every shipped component, with metadata for the AI
 // Component Generator. This is pure, browser-safe TypeScript data — no fs/path
-// access — so it tree-shakes cleanly into apps that import `@annondeveloper/ui-kit/ai`.
+// access — so it tree-shakes cleanly into apps that import `@frontier-labs/ui-kit/ai`.
 
 /**
  * Metadata describing a single component in the library.

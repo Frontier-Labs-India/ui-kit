@@ -529,9 +529,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { VlanBusBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { VlanBusBar } from '@annondeveloper/ui-kit'",
-  premium: "import { VlanBusBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { VlanBusBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { VlanBusBar } from '@frontier-labs/ui-kit'",
+  premium: "import { VlanBusBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -628,11 +628,11 @@ function generateReactCode(tier: Tier, size: Size, showLabels: boolean, showPort
 
 function generateHtmlCode(tier: Tier, size: Size, showLabels: boolean, showPortNumbers: boolean): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/vlan-bus-bar.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/vlan-bus-bar.css';`
 
-  return `<!-- VlanBusBar — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/vlan-bus-bar.css">
+  return `<!-- VlanBusBar — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/vlan-bus-bar.css">
 
 <div class="ui-vlan-bus-bar" data-size="${size}"${!showLabels ? ' data-show-labels="false"' : ''}${showPortNumbers ? ' data-show-port-numbers="true"' : ''}
      role="img" aria-label="VLAN bus bar diagram showing 5 VLANs across 24 ports">
@@ -645,10 +645,10 @@ function generateHtmlCode(tier: Tier, size: Size, showLabels: boolean, showPortN
 
 function generateVueCode(tier: Tier, size: Size, showLabels: boolean, showPortNumbers: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  :vlans="vlans"', '  :total-ports="24"']
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -682,10 +682,10 @@ function onVlanClick(vlan) {
 
 function generateAngularCode(tier: Tier, size: Size, showLabels: boolean, showPortNumbers: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const cssImport = `@import '${importPath}/css/components/vlan-bus-bar.css';`
   const attrs: string[] = ['  class="ui-vlan-bus-bar"', `  data-size="${size}"`]
@@ -721,10 +721,10 @@ export class VlanBusBarComponent {
 
 function generateSvelteCode(tier: Tier, size: Size, showLabels: boolean, showPortNumbers: boolean): string {
   const importPath = tier === 'lite'
-    ? '@annondeveloper/ui-kit/lite'
+    ? '@frontier-labs/ui-kit/lite'
     : tier === 'premium'
-    ? '@annondeveloper/ui-kit/premium'
-    : '@annondeveloper/ui-kit'
+    ? '@frontier-labs/ui-kit/premium'
+    : '@frontier-labs/ui-kit'
 
   const attrs: string[] = ['  {vlans}', '  totalPorts={24}']
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -1159,7 +1159,7 @@ export default function VlanBusBarPage() {
               Inline-style SVG rendering. No animation, no tooltips, no hover effects. Static VLAN diagram.
             </p>
             <div className="vlan-bus-bar-page__tier-import">
-              import {'{'} VlanBusBar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} VlanBusBar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="vlan-bus-bar-page__tier-preview">
               <LiteVlanBusBar vlans={smallVlans} totalPorts={8} />
@@ -1190,7 +1190,7 @@ export default function VlanBusBarPage() {
               clickable segments and ports, and motion levels.
             </p>
             <div className="vlan-bus-bar-page__tier-import">
-              import {'{'} VlanBusBar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} VlanBusBar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="vlan-bus-bar-page__tier-preview">
               <VlanBusBar vlans={smallVlans} totalPorts={8} size="sm" />
@@ -1221,7 +1221,7 @@ export default function VlanBusBarPage() {
               aurora gradient behind labels, and spring physics entrance.
             </p>
             <div className="vlan-bus-bar-page__tier-import">
-              import {'{'} VlanBusBar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} VlanBusBar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="vlan-bus-bar-page__tier-preview">
               <PremiumVlanBusBar vlans={smallVlans} totalPorts={8} size="sm" />
@@ -1338,13 +1338,13 @@ export default function VlanBusBarPage() {
         <h2 className="vlan-bus-bar-page__section-title"><a href="#source">Source</a></h2>
         <p className="vlan-bus-bar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="vlan-bus-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="vlan-bus-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/domain/vlan-bus-bar.tsx (Standard)
           </a>
-          <a className="vlan-bus-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="vlan-bus-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/lite/vlan-bus-bar.tsx (Lite)
           </a>
-          <a className="vlan-bus-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="vlan-bus-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/vlan-bus-bar.tsx" target="_blank" rel="noopener noreferrer">
             src/premium/vlan-bus-bar.tsx (Premium)
           </a>
         </div>

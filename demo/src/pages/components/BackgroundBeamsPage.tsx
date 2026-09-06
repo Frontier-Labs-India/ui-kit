@@ -728,9 +728,9 @@ const COLOR_PRESETS = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "/* CSS-only: @import '@annondeveloper/ui-kit/css/components/background-beams.css' */",
-  standard: "import { BackgroundBeams } from '@annondeveloper/ui-kit'",
-  premium: "import { BackgroundBeams } from '@annondeveloper/ui-kit/premium'",
+  lite: "/* CSS-only: @import '@frontier-labs/ui-kit/css/components/background-beams.css' */",
+  standard: "import { BackgroundBeams } from '@frontier-labs/ui-kit'",
+  premium: "import { BackgroundBeams } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -793,7 +793,7 @@ function generateReactCode(
 ): string {
   if (tier === 'lite') {
     return `/* Lite tier — CSS-only background beams */
-@import '@annondeveloper/ui-kit/css/components/background-beams.css';
+@import '@frontier-labs/ui-kit/css/components/background-beams.css';
 
 <div class="ui-background-beams" data-motion="${motion}">
   <div class="ui-background-beams--content">
@@ -828,8 +828,8 @@ function generateHtmlCode(
   motion: MotionLevel,
 ): string {
   const colorAttr = color ? ` style="--beam-color: ${color}"` : ''
-  return `<!-- BackgroundBeams — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/background-beams.css">
+  return `<!-- BackgroundBeams — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/background-beams.css">
 
 <div class="ui-background-beams" data-motion="${motion}"${colorAttr}>
   <!-- Beams are rendered via CSS animations -->
@@ -868,7 +868,7 @@ function generateVueCode(
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/css/components/background-beams.css';
+@import '@frontier-labs/ui-kit/css/components/background-beams.css';
 </style>`
   }
 
@@ -889,7 +889,7 @@ function generateVueCode(
 </template>
 
 <script setup>
-import { BackgroundBeams } from '@annondeveloper/ui-kit'
+import { BackgroundBeams } from '@frontier-labs/ui-kit'
 </script>`
 }
 
@@ -909,7 +909,7 @@ function generateAngularCode(
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/background-beams.css';`
+@import '@frontier-labs/ui-kit/css/components/background-beams.css';`
   }
 
   const colorAttr = color ? ` style="--beam-color: ${color}"` : ''
@@ -926,7 +926,7 @@ function generateAngularCode(
 </div>
 
 /* Import component CSS */
-@import '@annondeveloper/ui-kit/css/components/background-beams.css';`
+@import '@frontier-labs/ui-kit/css/components/background-beams.css';`
 }
 
 function generateSvelteCode(
@@ -945,7 +945,7 @@ function generateSvelteCode(
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/css/components/background-beams.css';
+  @import '@frontier-labs/ui-kit/css/components/background-beams.css';
 </style>`
   }
 
@@ -957,7 +957,7 @@ function generateSvelteCode(
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
 
   return `<script>
-  import { BackgroundBeams } from '@annondeveloper/ui-kit';
+  import { BackgroundBeams } from '@frontier-labs/ui-kit';
 </script>
 
 <BackgroundBeams${propsStr}>
@@ -1423,7 +1423,7 @@ export default function BackgroundBeamsPage() {
               Limited to static count and color via custom properties.
             </p>
             <div className="bgbeams-page__tier-import">
-              @import '@annondeveloper/ui-kit/css/components/background-beams.css'
+              @import '@frontier-labs/ui-kit/css/components/background-beams.css'
             </div>
             <div className="bgbeams-page__tier-preview">
               <div style={{
@@ -1464,7 +1464,7 @@ export default function BackgroundBeamsPage() {
               Style engine auto-injects CSS via adoptedStyleSheets.
             </p>
             <div className="bgbeams-page__tier-import">
-              import {'{'} BackgroundBeams {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BackgroundBeams {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="bgbeams-page__tier-preview">
               <div style={{
@@ -1505,7 +1505,7 @@ export default function BackgroundBeamsPage() {
               and parallax depth layers. Entrance animation with stagger.
             </p>
             <div className="bgbeams-page__tier-import">
-              import {'{'} BackgroundBeams {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} BackgroundBeams {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="bgbeams-page__tier-preview">
               <div style={{
@@ -1637,13 +1637,13 @@ export default function BackgroundBeamsPage() {
         <h2 className="bgbeams-page__section-title"><a href="#source">Source</a></h2>
         <p className="bgbeams-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="bgbeams-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/background-beams.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="bgbeams-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/background-beams.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/background-beams.tsx (Standard)
           </a>
-          <a className="bgbeams-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/background-beams.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="bgbeams-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/background-beams.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/background-beams.tsx (Lite)
           </a>
-          <a className="bgbeams-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/background-beams.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="bgbeams-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/background-beams.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/background-beams.tsx (Premium)
           </a>
         </div>

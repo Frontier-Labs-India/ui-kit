@@ -107,11 +107,11 @@ describe('generateFromTemplate', () => {
 
   it('honors the tier option in import paths and component names', () => {
     const code = generateFromTemplate('dashboard', { tier: 'premium' })
-    expect(code.react).toContain('@annondeveloper/ui-kit/premium')
+    expect(code.react).toContain('@frontier-labs/ui-kit/premium')
     expect(code.react).toContain('PremiumMetricCard')
 
     const lite = generateFromTemplate('dashboard', { tier: 'lite' })
-    expect(lite.react).toContain('@annondeveloper/ui-kit/lite')
+    expect(lite.react).toContain('@frontier-labs/ui-kit/lite')
     expect(lite.react).toContain('LiteMetricCard')
   })
 
@@ -148,7 +148,7 @@ describe('generateFromComponents', () => {
 
   it('honors the standard tier import path by default', () => {
     const code = generateFromComponents(['Button'])
-    expect(code.react).toContain("from '@annondeveloper/ui-kit'")
+    expect(code.react).toContain("from '@frontier-labs/ui-kit'")
   })
 })
 

@@ -1,6 +1,6 @@
 # SSR Integration Guide
 
-`@annondeveloper/ui-kit` uses `adoptedStyleSheets` for zero-flash style injection at runtime. For server-side rendering (SSR), the library provides a `StyleCollector` + `StyleProvider` pair that captures all component CSS during the render pass so you can inline it into the HTML response.
+`@frontier-labs/ui-kit` uses `adoptedStyleSheets` for zero-flash style injection at runtime. For server-side rendering (SSR), the library provides a `StyleCollector` + `StyleProvider` pair that captures all component CSS during the render pass so you can inline it into the HTML response.
 
 ## How It Works
 
@@ -10,8 +10,8 @@
 4. Inject that string into a `<style>` tag in the document `<head>`.
 
 ```tsx
-import { StyleCollector } from '@annondeveloper/ui-kit'
-import { StyleProvider } from '@annondeveloper/ui-kit'
+import { StyleCollector } from '@frontier-labs/ui-kit'
+import { StyleProvider } from '@frontier-labs/ui-kit'
 
 const collector = new StyleCollector()
 
@@ -44,7 +44,7 @@ In Next.js 13+ with the App Router, create a root layout that collects styles du
 
 ```tsx
 // app/layout.tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -66,7 +66,7 @@ For full SSR style extraction in a custom `renderToPipeableStream` setup:
 'use client'
 import { useState } from 'react'
 import { useServerInsertedHTML } from 'next/navigation'
-import { StyleCollector, StyleProvider } from '@annondeveloper/ui-kit'
+import { StyleCollector, StyleProvider } from '@frontier-labs/ui-kit'
 
 export function StyleRegistry({ children }: { children: React.ReactNode }) {
   const [collector] = useState(() => new StyleCollector())
@@ -109,7 +109,7 @@ In Remix, collect styles during the server render in `entry.server.tsx`:
 // entry.server.tsx
 import { renderToPipeableStream } from 'react-dom/server'
 import { RemixServer } from '@remix-run/react'
-import { StyleCollector, StyleProvider } from '@annondeveloper/ui-kit'
+import { StyleCollector, StyleProvider } from '@frontier-labs/ui-kit'
 
 export default function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
   const collector = new StyleCollector()
@@ -145,8 +145,8 @@ Astro supports React components via `@astrojs/react`. Since Astro renders to sta
 ---
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="@annondeveloper/ui-kit/css/theme.css" />
-    <link rel="stylesheet" href="@annondeveloper/ui-kit/css/all.css" />
+    <link rel="stylesheet" href="@frontier-labs/ui-kit/css/theme.css" />
+    <link rel="stylesheet" href="@frontier-labs/ui-kit/css/all.css" />
   </head>
   <body>
     <slot />
@@ -160,7 +160,7 @@ For SSR mode (`output: 'server'`), wrap the React island root:
 
 ```tsx
 // src/components/MyIsland.tsx
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 export default function MyIsland() {
   return <Button variant="primary">Click me</Button>
@@ -176,7 +176,7 @@ For custom Vite SSR setups:
 ```tsx
 // server.js
 import { renderToString } from 'react-dom/server'
-import { StyleCollector, StyleProvider } from '@annondeveloper/ui-kit'
+import { StyleCollector, StyleProvider } from '@frontier-labs/ui-kit'
 import App from './src/App'
 
 export function render(url) {
@@ -215,15 +215,15 @@ For optimal bundle size, import only the components you use:
 
 ```tsx
 // Recommended: named imports from subpaths
-import { Button } from '@annondeveloper/ui-kit'
-import { MetricCard } from '@annondeveloper/ui-kit'
-import { useForm } from '@annondeveloper/ui-kit/form'
-import { generateTheme } from '@annondeveloper/ui-kit/theme'
+import { Button } from '@frontier-labs/ui-kit'
+import { MetricCard } from '@frontier-labs/ui-kit'
+import { useForm } from '@frontier-labs/ui-kit/form'
+import { generateTheme } from '@frontier-labs/ui-kit/theme'
 
 // For CSS-only consumers (no JS runtime needed):
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/components/button.css'
-import '@annondeveloper/ui-kit/css/components/card.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/components/button.css'
+import '@frontier-labs/ui-kit/css/components/card.css'
 ```
 
 The library is fully tree-shakable with ESM. Bundlers like Vite, Webpack 5, and esbuild will only include the components you import.
@@ -233,9 +233,9 @@ The library is fully tree-shakable with ESM. Bundlers like Vite, Webpack 5, and 
 For non-React projects or to avoid the JS style injection:
 
 ```
-@annondeveloper/ui-kit/css/theme.css          # Base theme tokens
-@annondeveloper/ui-kit/css/all.css            # All component CSS bundled
-@annondeveloper/ui-kit/css/components/*.css   # Individual component CSS
+@frontier-labs/ui-kit/css/theme.css          # Base theme tokens
+@frontier-labs/ui-kit/css/all.css            # All component CSS bundled
+@frontier-labs/ui-kit/css/components/*.css   # Individual component CSS
 ```
 
 ### Weight Tiers
@@ -244,11 +244,11 @@ Use the tier that fits your needs:
 
 ```tsx
 // Standard (default) -- full features
-import { Button } from '@annondeveloper/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
 
 // Lite -- minimal, no motion, ~20-30 lines each
-import { Button } from '@annondeveloper/ui-kit/lite'
+import { Button } from '@frontier-labs/ui-kit/lite'
 
 // Premium -- aurora glow, spring physics, shimmer effects
-import { Button } from '@annondeveloper/ui-kit/premium'
+import { Button } from '@frontier-labs/ui-kit/premium'
 ```

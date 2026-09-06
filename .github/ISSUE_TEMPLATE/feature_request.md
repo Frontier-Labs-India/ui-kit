@@ -20,7 +20,7 @@ Describe how you envision this working. Include API examples if possible:
 
 ```tsx
 // Example usage
-import { NewComponent } from '@annondeveloper/ui-kit'
+import { NewComponent } from '@frontier-labs/ui-kit'
 
 <NewComponent variant="primary" size="md" />
 ```

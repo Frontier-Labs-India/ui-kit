@@ -5,7 +5,7 @@ UI Kit ships a Model Context Protocol server that gives AI assistants direct acc
 ## Setup
 
 ```bash
-npx @annondeveloper/ui-kit mcp
+npx @frontier-labs/ui-kit mcp
 ```
 
 This auto-detects your AI assistant (Claude Desktop, Claude Code, or Cursor) and writes the MCP configuration. See `docs/guides/mcp-setup.md` for manual configuration and troubleshooting.
@@ -124,8 +124,8 @@ Every tool that returns component code includes this reminder:
 
 > **Required CSS Setup** — Add these imports to your root layout:
 > ```tsx
-> import '@annondeveloper/ui-kit/css/theme.css'
-> import '@annondeveloper/ui-kit/css/all.css'
+> import '@frontier-labs/ui-kit/css/theme.css'
+> import '@frontier-labs/ui-kit/css/all.css'
 > ```
 > Without these imports, components will render with correct HTML/ARIA but no visual styling.
 
@@ -148,7 +148,7 @@ Each resource returns a Markdown document with the component's description, impo
 Tool usage is logged locally (opt-in via `UI_KIT_TELEMETRY=1`) to `~/.ui-kit/analytics.jsonl`. View aggregated stats with:
 
 ```bash
-npx @annondeveloper/ui-kit stats
+npx @frontier-labs/ui-kit stats
 ```
 
 This shows total tool calls, calls by tool name, and the most-requested components.

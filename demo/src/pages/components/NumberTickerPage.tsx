@@ -638,9 +638,9 @@ type Direction = 'up' | 'down'
 const DIRECTIONS: Direction[] = ['up', 'down']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { NumberTicker } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { NumberTicker } from '@annondeveloper/ui-kit'",
-  premium: "import { NumberTicker } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { NumberTicker } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { NumberTicker } from '@frontier-labs/ui-kit'",
+  premium: "import { NumberTicker } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -736,14 +736,14 @@ function generateHtmlCode(value: number): string {
 </span>
 
 <!-- For animated version, use the React component -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/number-ticker.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/number-ticker.css">`
 }
 
 function generateVueCode(tier: Tier, value: number, direction: Direction, delay: number): string {
   if (tier === 'lite') {
-    return `<template>\n  <span class="ui-lite-number-ticker">{{ formatted }}</span>\n</template>\n\n<script setup>\nimport { computed } from 'vue'\nconst value = ${value}\nconst formatted = computed(() => new Intl.NumberFormat().format(value))\n</script>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <span class="ui-lite-number-ticker">{{ formatted }}</span>\n</template>\n\n<script setup>\nimport { computed } from 'vue'\nconst value = ${value}\nconst formatted = computed(() => new Intl.NumberFormat().format(value))\n</script>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`:value="${value}"`]
   if (direction !== 'up') attrs.push(`direction="${direction}"`)
   if (delay > 0) attrs.push(`:delay="${delay}"`)
@@ -752,16 +752,16 @@ function generateVueCode(tier: Tier, value: number, direction: Direction, delay:
 
 function generateAngularCode(tier: Tier, value: number): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<span class="ui-lite-number-ticker">{{ ${value} | number }}</span>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<span class="ui-lite-number-ticker">{{ ${value} | number }}</span>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  return `<!-- Angular — Use the CSS-only approach or React wrapper -->\n<span\n  class="ui-number-ticker"\n  [attr.aria-label]="'${new Intl.NumberFormat().format(value)}'"\n  role="img"\n>\n  {{ ${value} | number }}\n</span>\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/number-ticker.css';`
+  return `<!-- Angular — Use the CSS-only approach or React wrapper -->\n<span\n  class="ui-number-ticker"\n  [attr.aria-label]="'${new Intl.NumberFormat().format(value)}'"\n  role="img"\n>\n  {{ ${value} | number }}\n</span>\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/number-ticker.css';`
 }
 
 function generateSvelteCode(tier: Tier, value: number, direction: Direction): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<span class="ui-lite-number-ticker">\n  {new Intl.NumberFormat().format(${value})}\n</span>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<span class="ui-lite-number-ticker">\n  {new Intl.NumberFormat().format(${value})}\n</span>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { NumberTicker } from '${importPath}';\n</script>\n\n<NumberTicker\n  value={${value}}\n  direction="${direction}"\n/>`
 }
 
@@ -1145,7 +1145,7 @@ export default function NumberTickerPage() {
               Pure CSS with Intl.NumberFormat output.
             </p>
             <div className="number-ticker-page__tier-import">
-              import {'{'} NumberTicker {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} NumberTicker {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="number-ticker-page__tier-preview">
               <span className="number-ticker-page__medium-value">
@@ -1178,7 +1178,7 @@ export default function NumberTickerPage() {
               delay, motion levels, and locale-aware formatting.
             </p>
             <div className="number-ticker-page__tier-import">
-              import {'{'} NumberTicker {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} NumberTicker {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="number-ticker-page__tier-preview">
               <span className="number-ticker-page__medium-value">
@@ -1211,7 +1211,7 @@ export default function NumberTickerPage() {
               glow effects on value change, and scroll-triggered entrance.
             </p>
             <div className="number-ticker-page__tier-import">
-              import {'{'} NumberTicker {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} NumberTicker {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="number-ticker-page__tier-preview">
               <span className="number-ticker-page__medium-value">
@@ -1334,13 +1334,13 @@ export default function NumberTickerPage() {
         <h2 className="number-ticker-page__section-title"><a href="#source">Source</a></h2>
         <p className="number-ticker-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="number-ticker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="number-ticker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/number-ticker.tsx (Standard)
           </a>
-          <a className="number-ticker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="number-ticker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/number-ticker.tsx (Lite)
           </a>
-          <a className="number-ticker-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="number-ticker-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/number-ticker.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/number-ticker.tsx (Premium)
           </a>
         </div>

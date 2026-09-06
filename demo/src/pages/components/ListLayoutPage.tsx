@@ -445,9 +445,9 @@ const listLayoutProps: PropDef[] = [
 // ─── Import Strings ───────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ListLayout } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ListLayout } from '@annondeveloper/ui-kit'",
-  premium: "import { ListLayout } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ListLayout } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ListLayout } from '@frontier-labs/ui-kit'",
+  premium: "import { ListLayout } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ──────────────────────────────────────────────────────────
@@ -471,16 +471,16 @@ function generateHtmlCode(tier: Tier, gap: Gap, dividers: boolean, padding: Padd
   const cls = tier === 'lite' ? 'ui-lite-list-layout' : 'ui-list-layout'
   const attrs = [`class="${cls}"`, `data-gap="${gap}"`, `data-padding="${padding}"`]
   if (dividers) attrs.push('data-dividers="true"')
-  return `<div ${attrs.join(' ')}>\n  <div>Item 1</div>\n  <div>Item 2</div>\n</div>\n\n<style>\n@import '@annondeveloper/ui-kit/css/components/list-layout.css';\n</style>`
+  return `<div ${attrs.join(' ')}>\n  <div>Item 1</div>\n  <div>Item 2</div>\n</div>\n\n<style>\n@import '@frontier-labs/ui-kit/css/components/list-layout.css';\n</style>`
 }
 
 function generateVueCode(tier: Tier, gap: Gap, dividers: boolean, padding: Padding): string {
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-list-layout"`, `data-gap="${gap}"`, `data-padding="${padding}"`]
     if (dividers) attrs.push('data-dividers="true"')
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (gap !== 'md') attrs.push(`gap="${gap}"`)
   if (dividers) attrs.push(':dividers="true"')
@@ -490,7 +490,7 @@ function generateVueCode(tier: Tier, gap: Gap, dividers: boolean, padding: Paddi
 
 function generateAngularCode(tier: Tier, gap: Gap, dividers: boolean, padding: Padding): string {
   const cls = tier === 'lite' ? 'ui-lite-list-layout' : 'ui-list-layout'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = [`class="${cls}"`, `data-gap="${gap}"`, `data-padding="${padding}"`]
   if (dividers) attrs.push('data-dividers="true"')
   return `<!-- Angular — ${tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <ng-content></ng-content>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/list-layout.css';`
@@ -500,9 +500,9 @@ function generateSvelteCode(tier: Tier, gap: Gap, dividers: boolean, padding: Pa
   if (tier === 'lite') {
     const attrs = [`class="ui-lite-list-layout"`, `data-gap="${gap}"`, `data-padding="${padding}"`]
     if (dividers) attrs.push('data-dividers="true"')
-    return `<div ${attrs.join(' ')}>\n  <slot />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<div ${attrs.join(' ')}>\n  <slot />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`gap="${gap}"`]
   if (dividers) attrs.push('dividers')
   if (padding !== 'none') attrs.push(`padding="${padding}"`)
@@ -750,7 +750,7 @@ export default function ListLayoutPage() {
               CSS-only vertical list. Zero JavaScript beyond forwardRef. No motion.
             </p>
             <div className="list-layout-page__tier-import">
-              import {'{'} ListLayout {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ListLayout {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="list-layout-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.2 KB</strong></span>
@@ -773,7 +773,7 @@ export default function ListLayoutPage() {
               Full scoped CSS with dividers, forced-colors, and print support.
             </p>
             <div className="list-layout-page__tier-import">
-              import {'{'} ListLayout {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ListLayout {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="list-layout-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.9 KB</strong></span>
@@ -796,7 +796,7 @@ export default function ListLayoutPage() {
               Everything in Standard plus staggered slide-in animations, hover glow, and entrance effects.
             </p>
             <div className="list-layout-page__tier-import">
-              import {'{'} ListLayout {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ListLayout {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="list-layout-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.4 KB</strong></span>
@@ -885,13 +885,13 @@ export default function ListLayoutPage() {
         <h2 className="list-layout-page__section-title"><a href="#source">Source</a></h2>
         <p className="list-layout-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="list-layout-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/list-layout.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="list-layout-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/list-layout.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/components/list-layout.tsx (Standard)
           </a>
-          <a className="list-layout-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/list-layout.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="list-layout-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/list-layout.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/lite/list-layout.tsx (Lite)
           </a>
-          <a className="list-layout-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/list-layout.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="list-layout-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/list-layout.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/premium/list-layout.tsx (Premium)
           </a>
         </div>

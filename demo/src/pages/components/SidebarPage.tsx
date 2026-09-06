@@ -657,9 +657,9 @@ const sidebarItemProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Sidebar, SidebarItem } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Sidebar, SidebarItem } from '@annondeveloper/ui-kit'",
-  premium: "import { Sidebar, SidebarItem } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Sidebar, SidebarItem } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Sidebar, SidebarItem } from '@frontier-labs/ui-kit'",
+  premium: "import { Sidebar, SidebarItem } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -835,7 +835,7 @@ function generateReactCode(tier: Tier, collapsed: boolean, position: 'left' | 'r
   if (motion !== 3 && tier !== 'lite') props.push(`  motion={${motion}}`)
 
   return `${importStr}
-import { SidebarHeader, SidebarContent, SidebarFooter } from '@annondeveloper/ui-kit'
+import { SidebarHeader, SidebarContent, SidebarFooter } from '@frontier-labs/ui-kit'
 
 const [collapsed, setCollapsed] = useState(false)
 
@@ -858,8 +858,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(tier: Tier, collapsed: boolean, position: 'left' | 'right', width: number): string {
-  return `<!-- Sidebar -- @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/sidebar.css">
+  return `<!-- Sidebar -- @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/sidebar.css">
 
 <aside class="ui-sidebar"
   data-collapsed="${collapsed}"
@@ -911,7 +911,7 @@ const collapsed = ref(${collapsed})
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
@@ -926,7 +926,7 @@ const collapsed = ref(${collapsed})
 
 <script setup>
 import { ref } from 'vue'
-import { Sidebar, SidebarContent, SidebarItem } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}'
+import { Sidebar, SidebarContent, SidebarItem } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}'
 const collapsed = ref(${collapsed})
 </script>`
 }
@@ -950,7 +950,7 @@ function generateAngularCode(tier: Tier, collapsed: boolean, position: 'left' | 
 </aside>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/css/components/sidebar.css';`
+@import '@frontier-labs/ui-kit/css/components/sidebar.css';`
 }
 
 function generateSvelteCode(tier: Tier, collapsed: boolean, position: 'left' | 'right'): string {
@@ -971,12 +971,12 @@ function generateSvelteCode(tier: Tier, collapsed: boolean, position: 'left' | '
 </aside>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
   return `<script>
-  import { Sidebar, SidebarContent, SidebarItem } from '${tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'}';
+  import { Sidebar, SidebarContent, SidebarItem } from '${tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'}';
   let collapsed = $state(${collapsed});
 </script>
 
@@ -1414,7 +1414,7 @@ export default function SidebarPage() {
               Collapse/expand is handled purely via CSS data attributes.
             </p>
             <div className="sidebar-page__tier-import">
-              import {'{'} Sidebar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Sidebar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="sidebar-page__tier-preview">
               <LiteSidebar>
@@ -1448,7 +1448,7 @@ export default function SidebarPage() {
               useMotionLevel integration, and all sub-components with proper accessibility.
             </p>
             <div className="sidebar-page__tier-import">
-              import {'{'} Sidebar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Sidebar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="sidebar-page__tier-preview">
               <Sidebar collapsed={false} width={120} collapsedWidth={48} motion={0}>
@@ -1483,7 +1483,7 @@ export default function SidebarPage() {
               Glass morphism background, aurora glow on active item, spring collapse/expand animation, and glass toggle button.
             </p>
             <div className="sidebar-page__tier-import">
-              import {'{'} Sidebar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Sidebar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="sidebar-page__tier-preview">
               <PremiumSidebar collapsed={false} width={120} collapsedWidth={48} motion={0}>
@@ -1624,7 +1624,7 @@ export default function SidebarPage() {
       {/* Source */}
       <section className="sidebar-page__section" id="source">
         <h2 className="sidebar-page__section-title"><a href="#source">Source</a></h2>
-        <a className="sidebar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/sidebar.tsx" target="_blank" rel="noopener noreferrer">
+        <a className="sidebar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/sidebar.tsx" target="_blank" rel="noopener noreferrer">
           <Icon name="code" size="sm" />View source on GitHub
         </a>
       </section>

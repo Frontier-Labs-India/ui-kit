@@ -25,8 +25,8 @@ function findSimilarNames(name: string, allNames: string[], limit = 5): string[]
 const CSS_SETUP_NOTE = `
 > **Required CSS Setup** — Add these imports to your root layout (e.g. \`app/layout.tsx\` or \`main.tsx\`):
 > \`\`\`tsx
-> import '@annondeveloper/ui-kit/css/theme.css'
-> import '@annondeveloper/ui-kit/css/all.css'
+> import '@frontier-labs/ui-kit/css/theme.css'
+> import '@frontier-labs/ui-kit/css/all.css'
 > \`\`\`
 > Without these imports, components will render with correct HTML/ARIA but no visual styling.`
 
@@ -83,7 +83,7 @@ Always wrap pages with \`<PageShell>\` and use layout primitives:
 export function createServer() {
   const reg = loadRegistry()
   const server = new McpServer({
-    name: '@annondeveloper/ui-kit',
+    name: '@frontier-labs/ui-kit',
     version: reg.version,
   })
 
@@ -240,11 +240,11 @@ ${DESIGN_GUIDE}`
       const indent = '        '
       const snippet = jsxParts.join(`\n${indent}`)
       const code = `// Required CSS imports — add to your root layout:
-// import '@annondeveloper/ui-kit/css/theme.css'
-// import '@annondeveloper/ui-kit/css/all.css'
+// import '@frontier-labs/ui-kit/css/theme.css'
+// import '@frontier-labs/ui-kit/css/all.css'
 
 ${imports}
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export function ${scenario ? scenario.replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) || 'Example' : 'Example'}() {
   return (
@@ -258,7 +258,7 @@ export function ${scenario ? scenario.replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) 
 
       const notes = [
         `Components used: ${comps.map(c => c!.name).join(', ')}`,
-        comps.some(c => c!.tier.includes('premium')) ? 'Tip: Import from "@annondeveloper/ui-kit/premium" for enhanced animations' : '',
+        comps.some(c => c!.tier.includes('premium')) ? 'Tip: Import from "@frontier-labs/ui-kit/premium" for enhanced animations' : '',
         'Output is wrapped in <UIProvider> for theme and motion support',
       ].filter(Boolean).join('\n')
 
@@ -280,7 +280,7 @@ export function ${scenario ? scenario.replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) 
       const key = `${name}-${mode}`
       const theme = reg.themes[key] || reg.themes[name]
       if (!theme) return { content: [{ type: 'text' as const, text: `Theme "${name}" not found. Available: ${Object.keys(reg.themes).join(', ')}` }] }
-      return { content: [{ type: 'text' as const, text: `# Theme: ${theme.name} (${mode})\n\nHex: \`${theme.hex}\`\n\n## CSS Tokens\n\`\`\`css\n${theme.css}\n\`\`\`\n\n## Usage\n\`\`\`tsx\nimport { applyTheme, generateTheme } from '@annondeveloper/ui-kit/theme'\n\nconst theme = generateTheme('${theme.hex}', '${mode}')\napplyTheme(theme)\n\`\`\`` }] }
+      return { content: [{ type: 'text' as const, text: `# Theme: ${theme.name} (${mode})\n\nHex: \`${theme.hex}\`\n\n## CSS Tokens\n\`\`\`css\n${theme.css}\n\`\`\`\n\n## Usage\n\`\`\`tsx\nimport { applyTheme, generateTheme } from '@frontier-labs/ui-kit/theme'\n\nconst theme = generateTheme('${theme.hex}', '${mode}')\napplyTheme(theme)\n\`\`\`` }] }
     } catch (error) {
       console.error('[ui-kit-mcp]', 'get_theme', error)
       return { content: [{ type: 'text' as const, text: `Error in get_theme: ${(error as Error).message}` }], isError: true }
@@ -297,7 +297,7 @@ export function ${scenario ? scenario.replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) 
       let icons = Object.values(reg.icons)
       if (search) icons = icons.filter(i => i.name.includes(search.toLowerCase()) || i.keywords.some(k => k.includes(search.toLowerCase())))
       const list = icons.map(i => `- **${i.name}** — \`<Icon name="${i.name}" />\``).join('\n')
-      return { content: [{ type: 'text' as const, text: `# Icons (${icons.length})\n\nImport: \`import { Icon } from '@annondeveloper/ui-kit'\`\n\n${list}` }] }
+      return { content: [{ type: 'text' as const, text: `# Icons (${icons.length})\n\nImport: \`import { Icon } from '@frontier-labs/ui-kit'\`\n\n${list}` }] }
     } catch (error) {
       console.error('[ui-kit-mcp]', 'get_icons', error)
       return { content: [{ type: 'text' as const, text: `Error in get_icons: ${(error as Error).message}` }], isError: true }
@@ -324,21 +324,21 @@ export function ${scenario ? scenario.replace(/[^a-zA-Z0-9]/g, '').slice(0, 30) 
 
 ## Step 1: Install
 \`\`\`bash
-npm install @annondeveloper/ui-kit
+npm install @frontier-labs/ui-kit
 \`\`\`
 
 ## Step 2: Import CSS (⚠️ Required!)
 Add these to \`${file}\`:
 \`\`\`tsx
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 \`\`\`
 > Without CSS imports, components render correct HTML but have **no visual styling**.
 > These CSS imports are SSR-safe — they're bundled into your CSS output and included in the initial HTML, preventing any flash of unstyled content (FOUC).
 
 ## Step 3: Wrap with UIProvider
 \`\`\`tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function RootLayout({ children }) {
   return (
@@ -351,7 +351,7 @@ export default function RootLayout({ children }) {
 
 ## Step 4: Use Components
 \`\`\`tsx
-import { Button, Card, Badge } from '@annondeveloper/ui-kit'
+import { Button, Card, Badge } from '@frontier-labs/ui-kit'
 
 function MyPage() {
   return (
@@ -366,13 +366,13 @@ function MyPage() {
 
 ## Weight Tiers
 Each component comes in 3 tiers:
-- **Lite** (\`@annondeveloper/ui-kit/lite\`) — minimal CSS-only, ~0.3KB
-- **Standard** (\`@annondeveloper/ui-kit\`) — full features, ~2KB
-- **Premium** (\`@annondeveloper/ui-kit/premium\`) — spring animations + aurora glow, ~3KB
+- **Lite** (\`@frontier-labs/ui-kit/lite\`) — minimal CSS-only, ~0.3KB
+- **Standard** (\`@frontier-labs/ui-kit\`) — full features, ~2KB
+- **Premium** (\`@frontier-labs/ui-kit/premium\`) — spring animations + aurora glow, ~3KB
 
 ## Theming
 \`\`\`tsx
-import { generateTheme, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, applyTheme } from '@frontier-labs/ui-kit/theme'
 const theme = generateTheme('#6366f1', 'dark')
 applyTheme(theme)
 \`\`\`
@@ -415,15 +415,15 @@ Use \`get_adaptive_info\` to learn more about testing and customization.
       logToolCall('get_page_template', { query: `${template}-${tier}` })
 
       const importPath = tier === 'lite'
-        ? '@annondeveloper/ui-kit/lite'
+        ? '@frontier-labs/ui-kit/lite'
         : tier === 'premium'
-          ? '@annondeveloper/ui-kit/premium'
-          : '@annondeveloper/ui-kit'
+          ? '@frontier-labs/ui-kit/premium'
+          : '@frontier-labs/ui-kit'
 
       const templates: Record<string, string> = {
         dashboard: `// Dashboard Page — stats overview + content sections
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import {
   PageShell, PageHeader, StatsGrid, SectionHeader,
   CardGrid, Card, Toolbar, ListLayout
@@ -432,7 +432,7 @@ import { MetricCard } from '${importPath}'
 import { Button } from '${importPath}'
 import { SearchInput } from '${importPath}'
 import { Badge } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function DashboardPage() {
   return (
@@ -478,13 +478,13 @@ export default function DashboardPage() {
 }`,
 
         settings: `// Settings Page — form sections with save actions
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, SectionHeader, Card, ListLayout } from '${importPath}'
 import { FormInput } from '${importPath}'
 import { Button } from '${importPath}'
 import { ToggleSwitch } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function SettingsPage() {
   return (
@@ -520,14 +520,14 @@ export default function SettingsPage() {
 }`,
 
         list: `// List Page — searchable, filterable list of items
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, Toolbar, ListLayout, Card } from '${importPath}'
 import { SearchInput } from '${importPath}'
 import { Button } from '${importPath}'
 import { Badge } from '${importPath}'
 import { Pagination } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function ListPage() {
   return (
@@ -562,13 +562,13 @@ export default function ListPage() {
 }`,
 
         detail: `// Detail Page — single item view with metadata
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader, SectionHeader, Card, CardGrid } from '${importPath}'
 import { Button } from '${importPath}'
 import { Badge } from '${importPath}'
 import { PropertyList } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function DetailPage() {
   return (
@@ -611,12 +611,12 @@ export default function DetailPage() {
 }`,
 
         empty: `// Empty State Page — when no data exists yet
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, PageHeader } from '${importPath}'
 import { EmptyState } from '${importPath}'
 import { Button } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function EmptyPage() {
   return (
@@ -635,12 +635,12 @@ export default function EmptyPage() {
 }`,
 
         auth: `// Auth Page — centered login/signup form
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, Card } from '${importPath}'
 import { FormInput } from '${importPath}'
 import { Button } from '${importPath}'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function AuthPage() {
   return (
@@ -663,12 +663,12 @@ export default function AuthPage() {
 }`,
 
         landing: `// Landing Page — hero + features + CTA
-import '@annondeveloper/ui-kit/css/theme.css'
-import '@annondeveloper/ui-kit/css/all.css'
+import '@frontier-labs/ui-kit/css/theme.css'
+import '@frontier-labs/ui-kit/css/all.css'
 import { PageShell, CardGrid, Card, SectionHeader } from '${importPath}'
 import { Button } from '${importPath}'
-import { Icon } from '@annondeveloper/ui-kit'
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { Icon } from '@frontier-labs/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 export default function LandingPage() {
   return (

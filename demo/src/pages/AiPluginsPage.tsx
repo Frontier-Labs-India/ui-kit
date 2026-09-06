@@ -33,7 +33,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
     badgeVariant: 'success',
     steps: [
       'Install: npm i -g @anthropic-ai/claude-code',
-      'Run: npx @annondeveloper/ui-kit mcp',
+      'Run: npx @frontier-labs/ui-kit mcp',
       'Plugin auto-detected -- 5 skills + 2 agents available',
     ],
     config: `// ~/.claude/plugins/ui-kit/plugin.json
@@ -71,7 +71,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit", "mcp", "--stdio"]
+      "args": ["-y", "@frontier-labs/ui-kit", "mcp", "--stdio"]
     }
   }
 }`,
@@ -93,7 +93,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit", "mcp", "--stdio"]
+      "args": ["-y", "@frontier-labs/ui-kit", "mcp", "--stdio"]
     }
   }
 }`,
@@ -116,7 +116,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
     "ui-kit": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit", "mcp", "--stdio"]
+      "args": ["-y", "@frontier-labs/ui-kit", "mcp", "--stdio"]
     }
   }
 }`,
@@ -138,7 +138,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit", "mcp", "--stdio"]
+      "args": ["-y", "@frontier-labs/ui-kit", "mcp", "--stdio"]
     }
   }
 }`,
@@ -160,7 +160,7 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
   "mcpServers": {
     "ui-kit": {
       "command": "npx",
-      "args": ["-y", "@annondeveloper/ui-kit", "mcp", "--stdio"]
+      "args": ["-y", "@frontier-labs/ui-kit", "mcp", "--stdio"]
     }
   }
 }`,
@@ -170,10 +170,10 @@ const ASSISTANT_CONFIGS: AssistantConfig[] = [
 
 // ─── Generated Code Samples ─────────────────────────────────────────────────
 
-const GENERATED_LOGIN_CODE = `import { Card } from '@annondeveloper/ui-kit'
-import { FormInput } from '@annondeveloper/ui-kit'
-import { Button } from '@annondeveloper/ui-kit'
-import { PasswordInput } from '@annondeveloper/ui-kit'
+const GENERATED_LOGIN_CODE = `import { Card } from '@frontier-labs/ui-kit'
+import { FormInput } from '@frontier-labs/ui-kit'
+import { Button } from '@frontier-labs/ui-kit'
+import { PasswordInput } from '@frontier-labs/ui-kit'
 
 export function LoginForm() {
   return (
@@ -195,8 +195,8 @@ const USE_CASES = [
   {
     prompt: '"Build me a dashboard with key metrics"',
     lang: 'typescript',
-    result: `import { MetricCard } from '@annondeveloper/ui-kit'
-import { TimeSeriesChart } from '@annondeveloper/ui-kit'
+    result: `import { MetricCard } from '@frontier-labs/ui-kit'
+import { TimeSeriesChart } from '@frontier-labs/ui-kit'
 
 export function Dashboard() {
   return (
@@ -258,9 +258,9 @@ If you later need animations on tablet/desktop:
   -> Use <ContainerQuery> to swap tiers dynamically
 
 Example:
-  import { Button } from '@annondeveloper/ui-kit/lite'  // 0.4KB
+  import { Button } from '@frontier-labs/ui-kit/lite'  // 0.4KB
   vs
-  import { Button } from '@annondeveloper/ui-kit'        // 1.8KB`,
+  import { Button } from '@frontier-labs/ui-kit'        // 1.8KB`,
   },
 ]
 
@@ -698,7 +698,7 @@ export default function AiPluginsPage() {
         <h1 className="ai-hero__title">AI Plugins &amp; Integrations</h1>
         <p className="ai-hero__desc">
           The first React component library your AI can use natively. Connect Claude, Cursor, Copilot,
-          Windsurf, or Codex to 178 components via MCP — the AI reads ground truth (every prop, type,
+          Windsurf, or Codex to 185 components via MCP — the AI reads ground truth (every prop, type,
           default, example, theme token) and generates correct, working code.
         </p>
 
@@ -723,7 +723,7 @@ export default function AiPluginsPage() {
             color: 'oklch(85% 0 0)',
             lineHeight: 1.5,
             wordBreak: 'break-all' as const,
-          }}>https://ui-kit-mcp.annondeveloper.workers.dev/sse</code>
+          }}>https://ui-kit-mcp.frontier-labs.workers.dev/sse</code>
           <p style={{ margin: '0.5rem 0 0', fontSize: '0.75rem', color: 'oklch(55% 0 0)' }}>
             Add this URL to any MCP client config. No npm install needed. Works with Claude Code, Cursor, VS Code, Windsurf, Codex.
           </p>
@@ -751,7 +751,7 @@ export default function AiPluginsPage() {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
           {[
-            { cmd: '/ui-kit:component-finder', desc: 'Search 178 components by name or use case' },
+            { cmd: '/ui-kit:component-finder', desc: 'Search 185 components by name or use case' },
             { cmd: '/ui-kit:generate-component', desc: 'Produce working TSX with correct imports' },
             { cmd: '/ui-kit:design-system', desc: 'Learn OKLCH, motion levels, Aurora Fluid' },
             { cmd: '/ui-kit:tier-guide', desc: 'Choose Lite / Standard / Premium' },
@@ -776,7 +776,7 @@ export default function AiPluginsPage() {
         </div>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1rem', lineHeight: 1.6 }}>
           One-click configuration for every major AI coding assistant. Each card shows the exact config
-          you need -- copy it and you are connected to 178 components in seconds.
+          you need -- copy it and you are connected to 185 components in seconds.
         </p>
         <div className="ai-assistant-grid">
           {ASSISTANT_CONFIGS.map(a => (
@@ -820,7 +820,7 @@ export default function AiPluginsPage() {
             <div className="ai-skill__cmd">/ui-kit:component-finder</div>
             <div className="ai-skill__title">Component Finder</div>
             <div className="ai-skill__desc">
-              Search 178 components by name or natural language use case. Try typing a query.
+              Search 185 components by name or natural language use case. Try typing a query.
             </div>
             <div className="ai-skill__demo">
               <FormInput

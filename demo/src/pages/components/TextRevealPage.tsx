@@ -709,9 +709,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TextReveal } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TextReveal } from '@annondeveloper/ui-kit'",
-  premium: "import { TextReveal } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TextReveal } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TextReveal } from '@frontier-labs/ui-kit'",
+  premium: "import { TextReveal } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -810,11 +810,11 @@ function generateHtmlCode(text: string): string {
 </div>
 
 <!-- Import component CSS -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/text-reveal.css">`
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/text-reveal.css">`
 }
 
 function generateVueCode(tier: Tier, text: string, trigger: TriggerType, speed: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text}"`]
   if (trigger !== 'mount') attrs.push(`  trigger="${trigger}"`)
   if (speed !== 30) attrs.push(`  :speed="${speed}"`)
@@ -823,7 +823,7 @@ function generateVueCode(tier: Tier, text: string, trigger: TriggerType, speed: 
 }
 
 function generateAngularCode(tier: Tier, text: string, trigger: TriggerType): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — Use the CSS-only approach or React wrapper -->
 <div
   class="ui-text-reveal"
@@ -838,7 +838,7 @@ function generateAngularCode(tier: Tier, text: string, trigger: TriggerType): st
 }
 
 function generateSvelteCode(tier: Tier, text: string, trigger: TriggerType, speed: number): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [`  text="${text}"`]
   if (trigger !== 'mount') attrs.push(`  trigger="${trigger}"`)
   if (speed !== 30) attrs.push(`  speed={${speed}}`)
@@ -1222,7 +1222,7 @@ export default function TextRevealPage() {
               Useful for SSR or contexts where animation is not needed.
             </p>
             <div className="text-reveal-page__tier-import">
-              import {'{'} TextReveal {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TextReveal {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="text-reveal-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-primary)' }}>
@@ -1255,7 +1255,7 @@ export default function TextRevealPage() {
               Configurable speed, smooth CSS transitions, and motion level support.
             </p>
             <div className="text-reveal-page__tier-import">
-              import {'{'} TextReveal {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TextReveal {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="text-reveal-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1288,7 +1288,7 @@ export default function TextRevealPage() {
               trail effect, and OKLCH color wash that sweeps across revealed characters.
             </p>
             <div className="text-reveal-page__tier-import">
-              import {'{'} TextReveal {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TextReveal {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="text-reveal-page__tier-preview">
               <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>
@@ -1456,7 +1456,7 @@ export default function TextRevealPage() {
         </p>
         <a
           className="text-reveal-page__source-link"
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/text-reveal.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/text-reveal.tsx"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -659,9 +659,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { UtilizationBar } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { UtilizationBar } from '@annondeveloper/ui-kit'",
-  premium: "import { UtilizationBar } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { UtilizationBar } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { UtilizationBar } from '@frontier-labs/ui-kit'",
+  premium: "import { UtilizationBar } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -747,13 +747,13 @@ function generateReactCode(tier: Tier, size: Size, showLabels: boolean, useThres
   if (useThresholds) props.push('  thresholds={{ warning: 70, critical: 90 }}')
   if (motion !== 3 && tier !== 'lite') props.push(`  motion={${motion}}`)
 
-  return `${importStr}\nimport type { UtilizationSegment } from '@annondeveloper/ui-kit'\n\nconst segments: UtilizationSegment[] = [\n  { value: 45, label: 'User', color: 'oklch(65% 0.2 270)' },\n  { value: 12, label: 'System', color: 'oklch(72% 0.19 155)' },${segmentCount > 2 ? "\n  { value: 8, label: 'I/O Wait', color: 'oklch(80% 0.18 85)' }," : ''}\n]\n\n<UtilizationBar\n${props.join('\n')}\n/>`
+  return `${importStr}\nimport type { UtilizationSegment } from '@frontier-labs/ui-kit'\n\nconst segments: UtilizationSegment[] = [\n  { value: 45, label: 'User', color: 'oklch(65% 0.2 270)' },\n  { value: 12, label: 'System', color: 'oklch(72% 0.19 155)' },${segmentCount > 2 ? "\n  { value: 8, label: 'I/O Wait', color: 'oklch(80% 0.18 85)' }," : ''}\n]\n\n<UtilizationBar\n${props.join('\n')}\n/>`
 }
 
 function generateHtmlCode(tier: Tier, size: Size): string {
   const cls = tier === 'lite' ? 'ui-lite-utilization-bar' : 'ui-utilization-bar'
-  return `<!-- UtilizationBar — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/utilization-bar.css'}">
+  return `<!-- UtilizationBar — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/utilization-bar.css'}">
 
 <div class="${cls}" data-size="${size}" role="group" aria-label="Utilization">
   <div class="${cls}__track">
@@ -765,7 +765,7 @@ function generateHtmlCode(tier: Tier, size: Size): string {
 }
 
 function generateVueCode(tier: Tier, size: Size, showLabels: boolean, useThresholds: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const extraProps = [
     showLabels ? '\n    showLabels' : '',
     useThresholds ? '\n    :thresholds="{ warning: 70, critical: 90 }"' : '',
@@ -774,12 +774,12 @@ function generateVueCode(tier: Tier, size: Size, showLabels: boolean, useThresho
 }
 
 function generateAngularCode(tier: Tier, size: Size): string {
-  const importPath = tier === 'lite' ? '@annondeveloper/ui-kit/lite' : tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'lite' ? '@frontier-labs/ui-kit/lite' : tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier} tier -->\n<ui-utilization-bar\n  [segments]="segments"\n  size="${size}"\n></ui-utilization-bar>\n\n/* Import CSS */\n@import '${importPath}/css/components/utilization-bar.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, showLabels: boolean, useThresholds: boolean): string {
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : tier === 'lite' ? '@annondeveloper/ui-kit/lite' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : tier === 'lite' ? '@frontier-labs/ui-kit/lite' : '@frontier-labs/ui-kit'
   const extraProps = [
     showLabels ? '\n  showLabels' : '',
     useThresholds ? '\n  thresholds={{ warning: 70, critical: 90 }}' : '',
@@ -1114,7 +1114,7 @@ export default function UtilizationBarPage() {
               No hover popover, no threshold markers, no label legend.
             </p>
             <div className="utilization-bar-page__tier-import">
-              import {'{'} UtilizationBar {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} UtilizationBar {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="utilization-bar-page__tier-preview">
               <LiteUtilizationBar segments={CPU_SEGMENTS} />
@@ -1145,7 +1145,7 @@ export default function UtilizationBarPage() {
               label legend, animated width transitions, and motion-level support.
             </p>
             <div className="utilization-bar-page__tier-import">
-              import {'{'} UtilizationBar {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} UtilizationBar {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="utilization-bar-page__tier-preview">
               <UtilizationBar segments={CPU_SEGMENTS} showLabels size="md" />
@@ -1176,7 +1176,7 @@ export default function UtilizationBarPage() {
               gradient shimmer on hover, and entrance reveal animation.
             </p>
             <div className="utilization-bar-page__tier-import">
-              import {'{'} UtilizationBar {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} UtilizationBar {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="utilization-bar-page__tier-preview">
               <PremiumUtilizationBar segments={CPU_SEGMENTS} showLabels size="md" />
@@ -1306,13 +1306,13 @@ export default function UtilizationBarPage() {
         <h2 className="utilization-bar-page__section-title"><a href="#source">Source</a></h2>
         <p className="utilization-bar-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="utilization-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="utilization-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/utilization-bar.tsx (Standard)
           </a>
-          <a className="utilization-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="utilization-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/utilization-bar.tsx (Lite)
           </a>
-          <a className="utilization-bar-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="utilization-bar-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/utilization-bar.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/utilization-bar.tsx (Premium)
           </a>
         </div>

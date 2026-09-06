@@ -603,10 +603,10 @@ export default function McpPage() {
 }`
 
   const npxConfig = `# After npm publish, use npx:
-npx @annondeveloper/ui-kit-mcp
+npx @frontier-labs/ui-kit-mcp
 
 # Or for SSE (team-shared) mode:
-npx @annondeveloper/ui-kit-mcp --sse --port 3100`
+npx @frontier-labs/ui-kit-mcp --sse --port 3100`
 
   return (
     <div className="mcp-page">
@@ -617,7 +617,7 @@ npx @annondeveloper/ui-kit-mcp --sse --port 3100`
         </div>
         <h1 className="mcp-hero__title">MCP Server</h1>
         <p className="mcp-hero__desc">
-          Model Context Protocol server exposing 178 components, 15 themes, and 50+ icons as structured
+          Model Context Protocol server exposing 185 components, 15 themes, and 50+ icons as structured
           tools. Connect any MCP-compatible AI assistant to read ground truth API documentation and
           generate correct, working code.
         </p>
@@ -652,7 +652,7 @@ npx @annondeveloper/ui-kit-mcp --sse --port 3100`
             <div className="mcp-arch__node">
               <Icon name="bar-chart" size="md" />
               <span className="mcp-arch__node-label">Component Registry</span>
-              <span className="mcp-arch__node-desc">178 components, 15 themes</span>
+              <span className="mcp-arch__node-desc">185 components, 15 themes</span>
             </div>
           </div>
         </Card>
@@ -972,7 +972,7 @@ npx @annondeveloper/ui-kit-mcp --sse --port 3100`
                 <div className="mcp-setup__detail">
                   The MCP server ships with the ui-kit package. Run the setup command:
                 </div>
-                <CopyBlock code="npx @annondeveloper/ui-kit mcp" language="bash" />
+                <CopyBlock code="npx @frontier-labs/ui-kit mcp" language="bash" />
               </div>
             </div>
 

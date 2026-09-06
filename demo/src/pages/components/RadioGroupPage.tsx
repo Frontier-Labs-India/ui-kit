@@ -690,9 +690,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const ORIENTATIONS: Orientation[] = ['horizontal', 'vertical']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { RadioGroup } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { RadioGroup } from '@annondeveloper/ui-kit'",
-  premium: "import { RadioGroup } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { RadioGroup } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { RadioGroup } from '@frontier-labs/ui-kit'",
+  premium: "import { RadioGroup } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_OPTIONS = [
@@ -818,7 +818,7 @@ function generateReactCode(tier: Tier, size: Size, orientation: Orientation, err
 
 function generateHtmlCode(tier: Tier, orientation: Orientation, disabled: boolean): string {
   const className = tier === 'lite' ? 'ui-lite-radio-group' : 'ui-radio-group'
-  return `<!-- RadioGroup — @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- RadioGroup — @frontier-labs/ui-kit ${tier} tier -->
 <fieldset class="${className}" data-orientation="${orientation}">
   <legend>Favorite Framework</legend>
   <label>
@@ -859,7 +859,7 @@ const options = [
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -876,7 +876,7 @@ const options = [
 
 <script setup>
 import { ref } from 'vue'
-import { RadioGroup } from '@annondeveloper/ui-kit'
+import { RadioGroup } from '@frontier-labs/ui-kit'
 const selected = ref('react')
 const options = [
   { value: 'react', label: 'React' },
@@ -898,7 +898,7 @@ function generateAngularCode(tier: Tier, size: Size, orientation: Orientation, d
 </fieldset>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular — Standard tier -->
 <fieldset class="ui-radio-group" data-size="${size}" data-orientation="${orientation}">
@@ -912,7 +912,7 @@ function generateAngularCode(tier: Tier, size: Size, orientation: Orientation, d
   </div>
 </fieldset>
 
-@import '@annondeveloper/ui-kit/css/components/radio-group.css';`
+@import '@frontier-labs/ui-kit/css/components/radio-group.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, orientation: Orientation, disabled: boolean): string {
@@ -929,11 +929,11 @@ function generateSvelteCode(tier: Tier, size: Size, orientation: Orientation, di
 </fieldset>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { RadioGroup } from '@annondeveloper/ui-kit';
+  import { RadioGroup } from '@frontier-labs/ui-kit';
   let selected = 'react';
   const options = [
     { value: 'react', label: 'React' },
@@ -1388,7 +1388,7 @@ export default function RadioGroupPage() {
               Native radio inputs with minimal wrapper. No custom circles, no sizes, no error state.
             </p>
             <div className="radio-group-page__tier-import">
-              import {'{'} RadioGroup {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} RadioGroup {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="radio-group-page__tier-preview">
               <LiteRadioGroup
@@ -1423,7 +1423,7 @@ export default function RadioGroupPage() {
               five sizes, error state, and motion levels.
             </p>
             <div className="radio-group-page__tier-import">
-              import {'{'} RadioGroup {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} RadioGroup {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="radio-group-page__tier-preview">
               <RadioGroup
@@ -1457,7 +1457,7 @@ export default function RadioGroupPage() {
               Spring-scale pop on selection, aurora glow on checked radio, and shimmer on the checked dot indicator.
             </p>
             <div className="radio-group-page__tier-import">
-              import {'{'} RadioGroup {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} RadioGroup {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="radio-group-page__tier-preview">
               <PremiumRadioGroup
@@ -1625,7 +1625,7 @@ export default function RadioGroupPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <a
             className="radio-group-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/radio-group.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/radio-group.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1634,7 +1634,7 @@ export default function RadioGroupPage() {
           </a>
           <a
             className="radio-group-page__source-link"
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/radio-group.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/radio-group.tsx"
             target="_blank"
             rel="noopener noreferrer"
           >

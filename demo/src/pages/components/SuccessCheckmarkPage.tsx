@@ -575,9 +575,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SuccessCheckmark } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SuccessCheckmark } from '@annondeveloper/ui-kit'",
-  premium: "import { SuccessCheckmark } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SuccessCheckmark } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SuccessCheckmark } from '@frontier-labs/ui-kit'",
+  premium: "import { SuccessCheckmark } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -671,11 +671,11 @@ function generateReactCode(tier: Tier, size: Size, animated: boolean, motion: nu
 function generateHtmlCode(tier: Tier, size: Size): string {
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/success-checkmark.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/success-checkmark.css';`
 
-  return `<!-- SuccessCheckmark — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/success-checkmark.css'}">
+  return `<!-- SuccessCheckmark — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/success-checkmark.css'}">
 
 <div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">
   <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -690,10 +690,10 @@ function generateHtmlCode(tier: Tier, size: Size): string {
 
 function generateVueCode(tier: Tier, size: Size, animated: boolean): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n    ✓\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n    ✓\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (!animated) attrs.push('  :animated="false"')
@@ -707,17 +707,17 @@ function generateVueCode(tier: Tier, size: Size, animated: boolean): string {
 
 function generateAngularCode(tier: Tier, size: Size): string {
   if (tier === 'lite') {
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n  ✓\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n  ✓\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<div\n  class="ui-success-checkmark"\n  data-size="${size}"\n  role="img"\n  aria-label="Success"\n>\n  <svg viewBox="0 0 48 48" aria-hidden="true">...</svg>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/success-checkmark.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, animated: boolean): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n  ✓\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<div class="ui-success-checkmark" data-size="${size}" role="img" aria-label="Success">\n  ✓\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (size !== 'md') attrs.push(`  size="${size}"`)
   if (!animated) attrs.push('  animated={false}')
@@ -1250,7 +1250,7 @@ export default function SuccessCheckmarkPage() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/success-checkmark.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/success-checkmark.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="success-checkmark-page__source-link"
@@ -1259,7 +1259,7 @@ export default function SuccessCheckmarkPage() {
             src/components/success-checkmark.tsx (Standard)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/success-checkmark.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/success-checkmark.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="success-checkmark-page__source-link"
@@ -1268,7 +1268,7 @@ export default function SuccessCheckmarkPage() {
             src/lite/success-checkmark.tsx (Lite)
           </a>
           <a
-            href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/success-checkmark.tsx"
+            href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/success-checkmark.tsx"
             target="_blank"
             rel="noopener noreferrer"
             className="success-checkmark-page__source-link"

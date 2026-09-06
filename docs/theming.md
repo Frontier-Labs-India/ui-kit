@@ -37,7 +37,7 @@ oklch(65% 0.2 270 / 0.5) /* 50% transparent blue */
 ### From a brand color
 
 ```tsx
-import { generateTheme, themeToCSS, applyTheme } from '@annondeveloper/ui-kit/theme'
+import { generateTheme, themeToCSS, applyTheme } from '@frontier-labs/ui-kit/theme'
 
 // Generate a complete theme from a single hex color
 const tokens = generateTheme('#6366f1', 'dark')
@@ -70,7 +70,7 @@ const css = themeToCSS(tokens, '.my-app')
 ### Validate contrast
 
 ```tsx
-import { validateContrast } from '@annondeveloper/ui-kit/theme'
+import { validateContrast } from '@frontier-labs/ui-kit/theme'
 
 const tokens = generateTheme('#6366f1', 'dark')
 const result = validateContrast(tokens)
@@ -150,7 +150,7 @@ These are used by the Aurora Fluid design system for atmospheric background effe
 ### Via UIProvider
 
 ```tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
 
 <UIProvider mode="dark">  {/* or "light" */}
   <App />

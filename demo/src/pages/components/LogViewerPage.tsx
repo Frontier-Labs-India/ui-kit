@@ -600,9 +600,9 @@ const SHORT_LINES: LogLine[] = SAMPLE_LINES.slice(0, 5)
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { LogViewer } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { LogViewer } from '@annondeveloper/ui-kit'",
-  premium: "import { LogViewer } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { LogViewer } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { LogViewer } from '@frontier-labs/ui-kit'",
+  premium: "import { LogViewer } from '@frontier-labs/ui-kit/premium'",
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -689,7 +689,7 @@ function generateReactCode(
   height: string,
 ): string {
   const importStr = IMPORT_STRINGS[tier]
-  const typeImport = tier !== 'lite' ? "\nimport type { LogLine } from '@annondeveloper/ui-kit'" : ''
+  const typeImport = tier !== 'lite' ? "\nimport type { LogLine } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = ['  lines={logs}']
   if (height) props.push(`  height="${height}"`)
@@ -715,8 +715,8 @@ ${props.join('\n')}
 }
 
 function generateHtmlCode(tier: Tier): string {
-  return `<!-- LogViewer — @annondeveloper/ui-kit ${tier} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/log-viewer.css">
+  return `<!-- LogViewer — @frontier-labs/ui-kit ${tier} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/log-viewer.css">
 
 <div class="${tier === 'lite' ? 'ui-lite-log-viewer' : 'ui-log-viewer'}" role="log">
   <div class="${tier === 'lite' ? '' : 'ui-log-viewer__scroll'}" style="height: 300px">
@@ -736,7 +736,7 @@ function generateVueCode(tier: Tier, showTimestamp: boolean, showLevel: boolean)
 </template>
 
 <script setup>
-import { LogViewer } from '@annondeveloper/ui-kit/lite'
+import { LogViewer } from '@frontier-labs/ui-kit/lite'
 import { ref } from 'vue'
 
 const logs = ref([
@@ -755,7 +755,7 @@ const logs = ref([
 </template>
 
 <script setup>
-import { LogViewer } from '@annondeveloper/ui-kit'
+import { LogViewer } from '@frontier-labs/ui-kit'
 import { ref } from 'vue'
 
 const logs = ref([
@@ -783,13 +783,13 @@ function generateAngularCode(tier: Tier): string {
 </div>
 
 /* styles.css */
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/log-viewer.css'}';`
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/log-viewer.css'}';`
 }
 
 function generateSvelteCode(tier: Tier, showTimestamp: boolean, showLevel: boolean): string {
   if (tier === 'lite') {
     return `<script>
-  import { LogViewer } from '@annondeveloper/ui-kit/lite';
+  import { LogViewer } from '@frontier-labs/ui-kit/lite';
   let logs = [
     { id: 1, message: 'Server started' },
     { id: 2, level: 'error', message: 'Connection failed' },
@@ -799,7 +799,7 @@ function generateSvelteCode(tier: Tier, showTimestamp: boolean, showLevel: boole
 <LogViewer lines={logs} maxHeight="300px" />`
   }
   return `<script>
-  import { LogViewer } from '@annondeveloper/ui-kit';
+  import { LogViewer } from '@frontier-labs/ui-kit';
   let logs = [
     { id: 1, timestamp: Date.now(), level: 'info', message: 'Server started' },
   ];
@@ -1231,7 +1231,7 @@ export default function LogViewerPage() {
               no filtering. Just lines in a scrollable container.
             </p>
             <div className="log-viewer-page__tier-import">
-              import {'{'} LogViewer {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} LogViewer {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="log-viewer-page__tier-preview">
               <LiteLogViewer lines={SHORT_LINES} maxHeight="100px" />
@@ -1262,7 +1262,7 @@ export default function LogViewerPage() {
               level filtering, timestamps, auto-tail, and word wrap.
             </p>
             <div className="log-viewer-page__tier-import">
-              import {'{'} LogViewer {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} LogViewer {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="log-viewer-page__tier-preview">
               <LogViewer lines={SHORT_LINES} showLevel showTimestamp height="100px" />
@@ -1292,7 +1292,7 @@ export default function LogViewerPage() {
               Aurora glow on error lines, shimmer sweep on new entries, and pulsing error line highlight.
             </p>
             <div className="log-viewer-page__tier-import">
-              import {'{'} LogViewer {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} LogViewer {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="log-viewer-page__tier-preview">
               <PremiumLogViewer lines={SHORT_LINES} showLevel showTimestamp height="100px" />
@@ -1414,13 +1414,13 @@ export default function LogViewerPage() {
         <h2 className="log-viewer-page__section-title"><a href="#source">Source</a></h2>
         <p className="log-viewer-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="log-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="log-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/log-viewer.tsx (Standard)
           </a>
-          <a className="log-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="log-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/log-viewer.tsx (Lite)
           </a>
-          <a className="log-viewer-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="log-viewer-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/log-viewer.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/log-viewer.tsx (Premium)
           </a>
         </div>

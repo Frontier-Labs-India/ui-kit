@@ -422,9 +422,9 @@ const statsGridProps: PropDef[] = [
 // ─── Import Strings ───────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { StatsGrid } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { StatsGrid } from '@annondeveloper/ui-kit'",
-  premium: "import { StatsGrid } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { StatsGrid } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { StatsGrid } from '@frontier-labs/ui-kit'",
+  premium: "import { StatsGrid } from '@frontier-labs/ui-kit/premium'",
 }
 
 // ─── Code Generators ───────────��──────────────────────────────────────────────
@@ -445,14 +445,14 @@ function generateReactCode(tier: Tier, columns: Cols, gap: Gap): string {
 
 function generateHtmlCode(tier: Tier, columns: Cols, gap: Gap): string {
   const cls = tier === 'lite' ? 'ui-lite-stats-grid' : 'ui-stats-grid'
-  return `<div class="${cls}" data-columns="${columns}" data-gap="${gap}" role="region">\n  <!-- stat cards -->\n</div>\n\n<style>\n@import '@annondeveloper/ui-kit/css/components/stats-grid.css';\n</style>`
+  return `<div class="${cls}" data-columns="${columns}" data-gap="${gap}" role="region">\n  <!-- stat cards -->\n</div>\n\n<style>\n@import '@frontier-labs/ui-kit/css/components/stats-grid.css';\n</style>`
 }
 
 function generateVueCode(tier: Tier, columns: Cols, gap: Gap): string {
   if (tier === 'lite') {
-    return `<template>\n  <div class="ui-lite-stats-grid" data-columns="${columns}" data-gap="${gap}" role="region">\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div class="ui-lite-stats-grid" data-columns="${columns}" data-gap="${gap}" role="region">\n    <slot />\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (columns !== 4) attrs.push(`:columns="${columns}"`)
   if (gap !== 'md') attrs.push(`gap="${gap}"`)
@@ -461,15 +461,15 @@ function generateVueCode(tier: Tier, columns: Cols, gap: Gap): string {
 
 function generateAngularCode(tier: Tier, columns: Cols, gap: Gap): string {
   const cls = tier === 'lite' ? 'ui-lite-stats-grid' : 'ui-stats-grid'
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular — ${tier === 'lite' ? 'Lite' : tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS-only) -->\n<div class="${cls}" data-columns="${columns}" data-gap="${gap}" role="region">\n  <ng-content></ng-content>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/stats-grid.css';`
 }
 
 function generateSvelteCode(tier: Tier, columns: Cols, gap: Gap): string {
   if (tier === 'lite') {
-    return `<div class="ui-lite-stats-grid" data-columns="${columns}" data-gap="${gap}" role="region">\n  <slot />\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<div class="ui-lite-stats-grid" data-columns="${columns}" data-gap="${gap}" role="region">\n  <slot />\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>\n  import { StatsGrid } from '${importPath}';\n</script>\n\n<StatsGrid columns={${columns}} gap="${gap}">\n  <slot />\n</StatsGrid>`
 }
 
@@ -702,7 +702,7 @@ export default function StatsGridPage() {
               CSS-only grid. Zero JavaScript beyond the forwardRef wrapper. No motion.
             </p>
             <div className="stats-grid-page__tier-import">
-              import {'{'} StatsGrid {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} StatsGrid {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="stats-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.2 KB</strong></span>
@@ -725,7 +725,7 @@ export default function StatsGridPage() {
               Full-featured grid with useStyles, scoped CSS, forced-colors and print support.
             </p>
             <div className="stats-grid-page__tier-import">
-              import {'{'} StatsGrid {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} StatsGrid {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="stats-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>0.8 KB</strong></span>
@@ -748,7 +748,7 @@ export default function StatsGridPage() {
               Everything in Standard plus staggered entrance animations, aurora glow, and shimmer effects.
             </p>
             <div className="stats-grid-page__tier-import">
-              import {'{'} StatsGrid {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} StatsGrid {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="stats-grid-page__size-row">
               <span>Component: <strong style={{ color: 'var(--text-primary)' }}>1.5 KB</strong></span>
@@ -837,13 +837,13 @@ export default function StatsGridPage() {
         <h2 className="stats-grid-page__section-title"><a href="#source">Source</a></h2>
         <p className="stats-grid-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="stats-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stats-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/components/stats-grid.tsx (Standard)
           </a>
-          <a className="stats-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stats-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/lite/stats-grid.tsx (Lite)
           </a>
-          <a className="stats-grid-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="stats-grid-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/stats-grid.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> Source: src/premium/stats-grid.tsx (Premium)
           </a>
         </div>

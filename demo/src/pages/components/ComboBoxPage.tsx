@@ -603,9 +603,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Combobox } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Combobox } from '@annondeveloper/ui-kit'",
-  premium: "import { Combobox } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Combobox } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Combobox } from '@frontier-labs/ui-kit'",
+  premium: "import { Combobox } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -693,7 +693,7 @@ function generateReactCode(tier: Tier, size: Size, label: string, placeholder: s
 
 function generateHtmlCode(tier: Tier, label: string): string {
   const className = tier === 'lite' ? 'ui-lite-select' : 'ui-combobox'
-  return `<!-- Combobox -- @annondeveloper/ui-kit ${tier} tier -->
+  return `<!-- Combobox -- @frontier-labs/ui-kit ${tier} tier -->
 ${tier === 'lite' ? `<div class="${className}">
   ${label ? `<label for="framework">${label}</label>` : ''}
   <select id="framework" name="framework">
@@ -722,7 +722,7 @@ function generateVueCode(tier: Tier, size: Size, label: string, placeholder: str
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<template>
@@ -738,7 +738,7 @@ function generateVueCode(tier: Tier, size: Size, label: string, placeholder: str
 </template>
 
 <script setup>
-import { Combobox } from '@annondeveloper/ui-kit'
+import { Combobox } from '@frontier-labs/ui-kit'
 
 const frameworks = [
   { value: 'react', label: 'React' },
@@ -760,7 +760,7 @@ function generateAngularCode(tier: Tier, size: Size, label: string, disabled: bo
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
   return `<!-- Angular -- Standard tier -->
 <div class="ui-combobox" data-size="${size}">
@@ -768,7 +768,7 @@ function generateAngularCode(tier: Tier, size: Size, label: string, disabled: bo
   <input type="text" role="combobox" ${disabled ? '[disabled]="true"' : ''} />
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/combobox.css';`
+@import '@frontier-labs/ui-kit/css/components/combobox.css';`
 }
 
 function generateSvelteCode(tier: Tier, size: Size, label: string, placeholder: string, disabled: boolean): string {
@@ -783,11 +783,11 @@ function generateSvelteCode(tier: Tier, size: Size, label: string, placeholder: 
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
   return `<script>
-  import { Combobox } from '@annondeveloper/ui-kit';
+  import { Combobox } from '@frontier-labs/ui-kit';
 
   const frameworks = [
     { value: 'react', label: 'React' },
@@ -1219,7 +1219,7 @@ export default function ComboBoxPage() {
               Native {'<select>'} fallback. No search, no groups, no descriptions. Just a simple dropdown.
             </p>
             <div className="combobox-page__tier-import">
-              import {'{'} Combobox {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Combobox {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="combobox-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1251,7 +1251,7 @@ export default function ComboBoxPage() {
               Full searchable combobox with keyboard nav, groups, match highlighting, create-new, and anchor positioning.
             </p>
             <div className="combobox-page__tier-import">
-              import {'{'} Combobox {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Combobox {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="combobox-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1283,7 +1283,7 @@ export default function ComboBoxPage() {
               Aurora glow on focus, spring-animated dropdown entrance, and shimmer on selected option.
             </p>
             <div className="combobox-page__tier-import">
-              import {'{'} Combobox {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Combobox {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="combobox-page__tier-preview">
               <div style={{ inlineSize: '100%' }}>
@@ -1366,13 +1366,13 @@ export default function ComboBoxPage() {
         <h2 className="combobox-page__section-title"><a href="#source">Source</a></h2>
         <p className="combobox-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="combobox-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/combobox.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="combobox-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/combobox.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/combobox.tsx (Standard)
           </a>
-          <a className="combobox-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/combobox.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="combobox-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/combobox.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/combobox.tsx (Lite)
           </a>
-          <a className="combobox-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/combobox.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="combobox-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/combobox.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/combobox.tsx (Premium)
           </a>
         </div>

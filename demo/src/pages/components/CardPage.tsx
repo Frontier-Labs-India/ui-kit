@@ -828,9 +828,9 @@ const PADDINGS: Padding[] = ['none', 'sm', 'md', 'lg']
 const AS_ELEMENTS: AsElement[] = ['div', 'article', 'a', 'section']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { Card } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Card } from '@annondeveloper/ui-kit'",
-  premium: "import { Card } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Card } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Card } from '@frontier-labs/ui-kit'",
+  premium: "import { Card } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -972,14 +972,14 @@ function generateHtmlExport(tier: Tier, variant: Variant, padding: Padding, labe
   const className = tier === 'lite' ? 'ui-lite-card' : 'ui-card'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/card.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/card.css';`
 
   const liteVariant = (variant === 'outlined' || variant === 'ghost') ? 'default' : variant
   const cssCode = generateLiteCss(liteVariant as 'default' | 'elevated', padding)
 
-  return `<!-- Card -- @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/card.css'}">
+  return `<!-- Card -- @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/card.css'}">
 
 <div class="${className}" data-variant="${variant}" data-padding="${padding}">
   <h3>${label}</h3>
@@ -1025,10 +1025,10 @@ function generateVueCode(tier: Tier, variant: Variant, padding: Padding): string
   if (tier === 'lite') {
     const liteVariant = (variant === 'outlined' || variant === 'ghost') ? 'default' : variant
     const attrs: string[] = [`class="ui-lite-card"`, `data-variant="${liteVariant}"`, `data-padding="${padding}"`]
-    return `<template>\n  <div ${attrs.join(' ')}>\n    <h3>Card Title</h3>\n    <p>Card content goes here.</p>\n  </div>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <div ${attrs.join(' ')}>\n    <h3>Card Title</h3>\n    <p>Card content goes here.</p>\n  </div>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (variant !== 'default') attrs.push(`  variant="${variant}"`)
   if (padding !== 'md') attrs.push(`  padding="${padding}"`)
@@ -1044,18 +1044,18 @@ function generateAngularCode(tier: Tier, variant: Variant, padding: Padding): st
   if (tier === 'lite') {
     const liteVariant = (variant === 'outlined' || variant === 'ghost') ? 'default' : variant
     const attrs = [`class="ui-lite-card"`, `data-variant="${liteVariant}"`, `data-padding="${padding}"`]
-    return `<!-- Angular -- Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <h3>Card Title</h3>\n  <p>Card content goes here.</p>\n</div>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular -- Lite tier (CSS-only) -->\n<div ${attrs.join(' ')}>\n  <h3>Card Title</h3>\n  <p>Card content goes here.</p>\n</div>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<div\n  class="ui-card"\n  data-variant="${variant}"\n  data-padding="${padding}"\n>\n  <h3>Card Title</h3>\n  <p>Card content goes here.</p>\n</div>\n\n/* Import component CSS */\n@import '${importPath}/css/components/card.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: Variant, padding: Padding): string {
   if (tier === 'lite') {
     const liteVariant = (variant === 'outlined' || variant === 'ghost') ? 'default' : variant
-    return `<!-- Svelte -- Lite tier (CSS-only) -->\n<div\n  class="ui-lite-card"\n  data-variant="${liteVariant}"\n  data-padding="${padding}"\n>\n  <h3>Card Title</h3>\n  <p>Card content goes here.</p>\n</div>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte -- Lite tier (CSS-only) -->\n<div\n  class="ui-lite-card"\n  data-variant="${liteVariant}"\n  data-padding="${padding}"\n>\n  <h3>Card Title</h3>\n  <p>Card content goes here.</p>\n</div>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const props: string[] = []
   if (variant !== 'default') props.push(`  variant="${variant}"`)
   if (padding !== 'md') props.push(`  padding="${padding}"`)
@@ -1976,7 +1976,7 @@ export default function CardPage() {
               Two variants (default, elevated), no interactive mode, no polymorphic as.
             </p>
             <div className="card-page__tier-import">
-              import {'{'} Card {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Card {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="card-page__tier-preview">
               <LiteCard variant="elevated" padding="sm" style={{ width: '100%' }}>
@@ -2010,7 +2010,7 @@ export default function CardPage() {
               polymorphic as, motion levels, and aurora glow styling.
             </p>
             <div className="card-page__tier-import">
-              import {'{'} Card {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Card {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="card-page__tier-preview">
               <Card variant="elevated" padding="sm" interactive style={{ width: '100%' }}>
@@ -2043,7 +2043,7 @@ export default function CardPage() {
               cursor-tracking glow, and entrance animation.
             </p>
             <div className="card-page__tier-import">
-              import {'{'} Card {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Card {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="card-page__tier-preview">
               <PremiumCard variant="elevated" padding="sm" interactive style={{ width: '100%' }}>
@@ -2178,13 +2178,13 @@ export default function CardPage() {
           View the full component source code on GitHub.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/card.tsx (Standard)
           </a>
-          <a className="card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/card.tsx (Lite)
           </a>
-          <a className="card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/card.tsx (Premium)
           </a>
         </div>

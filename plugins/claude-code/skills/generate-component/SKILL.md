@@ -5,12 +5,12 @@ description: Generate production-ready React code using UI Kit components. Use w
 
 # UI Kit Code Generator
 
-Generate a component using @annondeveloper/ui-kit for: $ARGUMENTS
+Generate a component using @frontier-labs/ui-kit for: $ARGUMENTS
 
 ## Rules
 
 1. **Always wrap in UIProvider** — the root of any ui-kit app needs `<UIProvider>` for theme/motion
-2. **Use correct imports** — Standard: `@annondeveloper/ui-kit`, Lite: `@annondeveloper/ui-kit/lite`, Premium: `@annondeveloper/ui-kit/premium`
+2. **Use correct imports** — Standard: `@frontier-labs/ui-kit`, Lite: `@frontier-labs/ui-kit/lite`, Premium: `@frontier-labs/ui-kit/premium`
 3. **OKLCH colors only** — never use hex/rgb in custom styles. Use `oklch(65% 0.2 270)` or CSS variables like `var(--brand)`
 4. **Motion prop** — all animated components accept `motion={0|1|2|3}`. Default is 3 (cinematic). Use 0 for instant, 1 for subtle
 5. **Logical properties** — use `margin-inline-start` not `margin-left`, `block-size` not `height`
@@ -23,8 +23,8 @@ Use `get_component` to look up exact props before generating code. Use `generate
 ## Template
 
 ```tsx
-import { UIProvider } from '@annondeveloper/ui-kit'
-import { /* components */ } from '@annondeveloper/ui-kit'
+import { UIProvider } from '@frontier-labs/ui-kit'
+import { /* components */ } from '@frontier-labs/ui-kit'
 
 export function MyComponent() {
   return (

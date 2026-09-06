@@ -703,9 +703,9 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { CSVExportButton } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { CSVExportButton } from '@annondeveloper/ui-kit'",
-  premium: "import { CSVExportButton } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { CSVExportButton } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { CSVExportButton } from '@frontier-labs/ui-kit'",
+  premium: "import { CSVExportButton } from '@frontier-labs/ui-kit/premium'",
 }
 
 const SAMPLE_DATA: Record<string, unknown>[] = [
@@ -844,7 +844,7 @@ function generateHtmlCssCode(tier: Tier, size: Size): string {
   const className = tier === 'lite' ? 'ui-lite-csv-export' : 'ui-csv-export'
   const tierLabel = tier === 'lite' ? 'lite' : tier === 'premium' ? 'premium' : 'standard'
 
-  return `<!-- CSVExportButton -- @annondeveloper/ui-kit ${tierLabel} tier -->
+  return `<!-- CSVExportButton -- @frontier-labs/ui-kit ${tierLabel} tier -->
 <!-- Note: CSV generation requires JavaScript. The button styling is CSS-only. -->
 <button class="${className}" data-size="${size}">
   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -855,7 +855,7 @@ function generateHtmlCssCode(tier: Tier, size: Size): string {
 </button>
 
 <style>
-@import '@annondeveloper/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/csv-export.css'}';
+@import '@frontier-labs/ui-kit/${tier === 'lite' ? 'lite/styles.css' : 'css/components/csv-export.css'}';
 </style>
 
 <script>
@@ -905,11 +905,11 @@ function handleExport() {
 </script>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = [':data="data"']
   if (filename !== 'export.csv') attrs.push(`filename="${filename}"`)
   if (useColumns) attrs.push(':columns="columns"')
@@ -945,10 +945,10 @@ function generateAngularCode(tier: Tier, size: Size): string {
 </button>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<!-- Angular -- ${tier === 'premium' ? 'Premium' : 'Standard'} tier (CSS approach) -->
 <button class="ui-csv-export" data-size="${size}" (click)="exportCSV()">
   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -992,11 +992,11 @@ function generateSvelteCode(tier: Tier, filename: string, size: Size, useColumns
 </button>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { CSVExportButton } from '${importPath}';
 
@@ -1457,7 +1457,7 @@ export default function CsvExportPage() {
               Minimal export button with built-in CSV generation. No icons, no animations, no success state styling.
             </p>
             <div className="csv-export-page__tier-import">
-              import {'{'} CSVExportButton {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} CSVExportButton {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="csv-export-page__tier-preview">
               <LiteCSVExportButton data={SAMPLE_DATA} />
@@ -1488,7 +1488,7 @@ export default function CsvExportPage() {
               press animation, motion levels, and 5 sizes.
             </p>
             <div className="csv-export-page__tier-import">
-              import {'{'} CSVExportButton {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} CSVExportButton {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="csv-export-page__tier-preview">
               <CSVExportButton data={SAMPLE_DATA} />
@@ -1519,7 +1519,7 @@ export default function CsvExportPage() {
               particle burst at motion level 3, and fade-up entrance.
             </p>
             <div className="csv-export-page__tier-import">
-              import {'{'} CSVExportButton {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} CSVExportButton {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="csv-export-page__tier-preview">
               <PremiumCSVExportButton data={SAMPLE_DATA} />
@@ -1614,7 +1614,7 @@ export default function CsvExportPage() {
           View the component source code on GitHub.
         </p>
         <a
-          href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/csv-export.tsx"
+          href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/csv-export.tsx"
           target="_blank"
           rel="noopener noreferrer"
           className="csv-export-page__source-link"

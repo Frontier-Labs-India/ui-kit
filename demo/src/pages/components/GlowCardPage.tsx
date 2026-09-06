@@ -700,9 +700,9 @@ const TIERS: { id: Tier; label: string }[] = [
 ]
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { GlowCard } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { GlowCard } from '@annondeveloper/ui-kit'",
-  premium: "import { GlowCard } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { GlowCard } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { GlowCard } from '@frontier-labs/ui-kit'",
+  premium: "import { GlowCard } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -799,12 +799,12 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, glowColor: string): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/glow-card.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/glow-card.css';`
   const colorStyle = glowColor !== GLOW_COLORS[0].value ? ` style="--glow-card-color: ${glowColor}"` : ''
 
-  return `<!-- GlowCard — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/glow-card.css">
+  return `<!-- GlowCard — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/glow-card.css">
 
 <div class="ui-glow-card"${colorStyle}>
   <div class="ui-glow-card--content">
@@ -831,11 +831,11 @@ function generateVueCode(tier: Tier, glowColor: string): string {
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (glowColor !== GLOW_COLORS[0].value) attrs.push(`  glow-color="${glowColor}"`)
 
@@ -857,9 +857,9 @@ function generateAngularCode(tier: Tier, glowColor: string): string {
 </div>
 
 /* In styles.css */
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const colorAttr = glowColor !== GLOW_COLORS[0].value ? `\n  [style]="'--glow-card-color: ${glowColor}'"` : ''
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <div
@@ -886,10 +886,10 @@ function generateSvelteCode(tier: Tier, glowColor: string): string {
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs = glowColor !== GLOW_COLORS[0].value ? `\n  glowColor="${glowColor}"` : ''
   return `<script>
   import { GlowCard } from '${importPath}';
@@ -1237,7 +1237,7 @@ export default function GlowCardPage() {
               Simple hover transition with no radial gradient follow.
             </p>
             <div className="glow-card-page__tier-import">
-              import {'{'} GlowCard {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} GlowCard {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="glow-card-page__tier-preview">
               <LiteGlowCard style={{ inlineSize: '140px' }}>
@@ -1273,7 +1273,7 @@ export default function GlowCardPage() {
               Smooth opacity transitions on enter/leave. Motion level support.
             </p>
             <div className="glow-card-page__tier-import">
-              import {'{'} GlowCard {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} GlowCard {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="glow-card-page__tier-preview">
               <GlowCard style={{ inlineSize: '140px' }}>
@@ -1309,7 +1309,7 @@ export default function GlowCardPage() {
               ambient floating particles, and spring-based entrance animation.
             </p>
             <div className="glow-card-page__tier-import">
-              import {'{'} GlowCard {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} GlowCard {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="glow-card-page__tier-preview">
               <PremiumGlowCard glowColor="oklch(75% 0.18 270 / 0.35)" style={{ inlineSize: '140px' }}>
@@ -1437,13 +1437,13 @@ export default function GlowCardPage() {
         <h2 className="glow-card-page__section-title"><a href="#source">Source</a></h2>
         <p className="glow-card-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="glow-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/glow-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="glow-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/glow-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/glow-card.tsx (Standard)
           </a>
-          <a className="glow-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/glow-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="glow-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/glow-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/glow-card.tsx (Lite)
           </a>
-          <a className="glow-card-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/glow-card.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="glow-card-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/glow-card.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/glow-card.tsx (Premium)
           </a>
         </div>

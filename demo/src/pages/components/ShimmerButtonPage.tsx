@@ -732,9 +732,9 @@ type Size = 'sm' | 'md' | 'lg'
 const SIZES: Size[] = ['sm', 'md', 'lg']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { ShimmerButton } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { ShimmerButton } from '@annondeveloper/ui-kit'",
-  premium: "import { ShimmerButton } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { ShimmerButton } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { ShimmerButton } from '@frontier-labs/ui-kit'",
+  premium: "import { ShimmerButton } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -856,12 +856,12 @@ function generateReactCode(
 
 function generateHtmlCode(tier: Tier, shimmerColor: string, size: Size, label: string): string {
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/shimmer-button.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/shimmer-button.css';`
   const colorStyle = shimmerColor !== SHIMMER_COLORS[0].value ? ` style="--shimmer-button-color: ${shimmerColor}"` : ''
 
-  return `<!-- ShimmerButton — @annondeveloper/ui-kit -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/shimmer-button.css">
+  return `<!-- ShimmerButton — @frontier-labs/ui-kit -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/shimmer-button.css">
 
 <button class="ui-shimmer-button" data-size="${size}"${colorStyle}>
   ${label}
@@ -875,10 +875,10 @@ function generateVueCode(tier: Tier, shimmerColor: string, size: Size, label: st
   if (tier === 'lite') {
     const attrs = [`class="ui-shimmer-button"`, `data-size="${size}"`]
     if (disabled) attrs.push(':disabled="true"')
-    return `<template>\n  <button ${attrs.join(' ')}>\n    ${label}\n  </button>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <button ${attrs.join(' ')}>\n    ${label}\n  </button>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (shimmerColor !== SHIMMER_COLORS[0].value) attrs.push(`  shimmer-color="${shimmerColor}"`)
   if (size !== 'md') attrs.push(`  size="${size}"`)
@@ -895,9 +895,9 @@ function generateAngularCode(tier: Tier, shimmerColor: string, size: Size, label
   if (tier === 'lite') {
     const attrs = [`class="ui-shimmer-button"`, `data-size="${size}"`]
     if (disabled) attrs.push('[disabled]="true"')
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  ${label}\n</button>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<button ${attrs.join(' ')}>\n  ${label}\n</button>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const colorAttr = shimmerColor !== SHIMMER_COLORS[0].value ? `\n  [style]="'--shimmer-button-color: ${shimmerColor}'"` : ''
   return `<!-- Angular — ${tier === 'premium' ? 'Premium' : 'Standard'} tier -->
 <button
@@ -914,9 +914,9 @@ function generateAngularCode(tier: Tier, shimmerColor: string, size: Size, label
 
 function generateSvelteCode(tier: Tier, shimmerColor: string, size: Size, label: string, disabled: boolean): string {
   if (tier === 'lite') {
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-shimmer-button"\n  data-size="${size}"\n  ${disabled ? 'disabled' : ''}\n>\n  ${label}\n</button>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<button\n  class="ui-shimmer-button"\n  data-size="${size}"\n  ${disabled ? 'disabled' : ''}\n>\n  ${label}\n</button>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   const attrs: string[] = []
   if (shimmerColor !== SHIMMER_COLORS[0].value) attrs.push(`shimmerColor="${shimmerColor}"`)
   if (size !== 'md') attrs.push(`size="${size}"`)
@@ -1299,7 +1299,7 @@ export default function ShimmerButtonPage() {
               No JavaScript. Fixed shimmer color via CSS custom property.
             </p>
             <div className="shimmer-button-page__tier-import">
-              import {'{'} ShimmerButton {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} ShimmerButton {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="shimmer-button-page__tier-preview">
               <LiteShimmerButton size="sm">Lite</LiteShimmerButton>
@@ -1330,7 +1330,7 @@ export default function ShimmerButtonPage() {
               three size variants, motion level support, and disabled states.
             </p>
             <div className="shimmer-button-page__tier-import">
-              import {'{'} ShimmerButton {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} ShimmerButton {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="shimmer-button-page__tier-preview">
               <ShimmerButton size="sm">Standard</ShimmerButton>
@@ -1361,7 +1361,7 @@ export default function ShimmerButtonPage() {
               click ripple effect, particle burst on press, and spring-based hover lift animation.
             </p>
             <div className="shimmer-button-page__tier-import">
-              import {'{'} ShimmerButton {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} ShimmerButton {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="shimmer-button-page__tier-preview">
               <PremiumShimmerButton shimmerColor="oklch(75% 0.18 270)" size="sm">Premium</PremiumShimmerButton>
@@ -1490,13 +1490,13 @@ export default function ShimmerButtonPage() {
         <h2 className="shimmer-button-page__section-title"><a href="#source">Source</a></h2>
         <p className="shimmer-button-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="shimmer-button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="shimmer-button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/shimmer-button.tsx (Standard)
           </a>
-          <a className="shimmer-button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="shimmer-button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/shimmer-button.tsx (Lite)
           </a>
-          <a className="shimmer-button-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="shimmer-button-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/shimmer-button.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/shimmer-button.tsx (Premium)
           </a>
         </div>

@@ -584,9 +584,9 @@ const treeNodeProps: PropDef[] = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { TreeView } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { TreeView } from '@annondeveloper/ui-kit'",
-  premium: "import { TreeView } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { TreeView } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { TreeView } from '@frontier-labs/ui-kit'",
+  premium: "import { TreeView } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -723,7 +723,7 @@ function OptionGroup<T extends string>({
 
 function generateReactCode(tier: Tier, showGuides: boolean, multiSelect: boolean, motion: number): string {
   if (tier === 'lite') {
-    return `import { TreeView } from '@annondeveloper/ui-kit/lite'
+    return `import { TreeView } from '@frontier-labs/ui-kit/lite'
 
 const nodes = [
   {
@@ -799,11 +799,11 @@ function generateVueCode(tier: Tier, showGuides: boolean, multiSelect: boolean):
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <TreeView
     :nodes="nodes"
@@ -838,7 +838,7 @@ function generateAngularCode(tier: Tier): string {
   </details>
 </div>
 
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier (CSS approach) -->
@@ -856,7 +856,7 @@ function generateAngularCode(tier: Tier): string {
   </ul>
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/tree-view.css';`
+@import '@frontier-labs/ui-kit/css/components/tree-view.css';`
 }
 
 function generateSvelteCode(tier: Tier, showGuides: boolean, multiSelect: boolean): string {
@@ -880,11 +880,11 @@ function generateSvelteCode(tier: Tier, showGuides: boolean, multiSelect: boolea
 </div>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { TreeView } from '${importPath}';
 
@@ -1216,7 +1216,7 @@ export default function TreeViewPage() {
               no selection tracking, no lazy loading.
             </p>
             <div className="tree-view-page__tier-import">
-              import {'{'} TreeView {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} TreeView {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="tree-view-page__tier-preview">
               <LiteTreeView nodes={[
@@ -1252,7 +1252,7 @@ export default function TreeViewPage() {
               indent guides, animated expand/collapse, and disabled state.
             </p>
             <div className="tree-view-page__tier-import">
-              import {'{'} TreeView {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} TreeView {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="tree-view-page__tier-preview">
               <Button size="sm" variant="primary" onClick={() => setTier('standard')}>Select Standard</Button>
@@ -1282,7 +1282,7 @@ export default function TreeViewPage() {
               drag-and-drop reordering, virtual scrolling for large trees, and search/filter.
             </p>
             <div className="tree-view-page__tier-import">
-              import {'{'} TreeView {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} TreeView {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="tree-view-page__tier-preview">
               <PremiumTreeView
@@ -1439,13 +1439,13 @@ export default function TreeViewPage() {
         <h2 className="tree-view-page__section-title"><a href="#source">Source</a></h2>
         <p className="tree-view-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="tree-view-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/tree-view.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tree-view-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/tree-view.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/tree-view.tsx (Standard)
           </a>
-          <a className="tree-view-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/tree-view.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tree-view-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/tree-view.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/tree-view.tsx (Lite)
           </a>
-          <a className="tree-view-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/tree-view.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="tree-view-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/tree-view.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/tree-view.tsx (Premium)
           </a>
         </div>

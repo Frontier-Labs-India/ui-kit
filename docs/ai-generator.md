@@ -6,7 +6,7 @@ Generate production-ready component compositions from templates or custom select
 
 The AI Component Generator provides a template gallery with pre-built layouts, a custom composition builder for assembling components, and a searchable component database with metadata. Generated code is available in React (JSX), React (TypeScript), Vue, Svelte, and HTML/CSS.
 
-The generator ships as a tree-shakeable subpath, `@annondeveloper/ui-kit/ai`, so importing it never pulls component runtime into your main bundle.
+The generator ships as a tree-shakeable subpath, `@frontier-labs/ui-kit/ai`, so importing it never pulls component runtime into your main bundle.
 
 ## Quick Start
 
@@ -18,7 +18,7 @@ import {
   searchComponents,
   generateFromTemplate,
   generateFromComponents,
-} from '@annondeveloper/ui-kit/ai'
+} from '@frontier-labs/ui-kit/ai'
 ```
 
 ## API Reference
@@ -123,7 +123,7 @@ The `GeneratedCode` object contains:
 ### Browse and search components
 
 ```tsx
-import { getComponentDatabase, searchComponents } from '@annondeveloper/ui-kit/ai'
+import { getComponentDatabase, searchComponents } from '@frontier-labs/ui-kit/ai'
 
 // Get all components
 const all = getComponentDatabase()
@@ -140,7 +140,7 @@ const domain = all.filter((c) => c.category === 'domain')
 ### Generate from template and copy
 
 ```tsx
-import { generateFromTemplate } from '@annondeveloper/ui-kit/ai'
+import { generateFromTemplate } from '@frontier-labs/ui-kit/ai'
 
 function GeneratorUI() {
   // The GeneratedCode key for "react-ts" is `reactTs` (camelCase).

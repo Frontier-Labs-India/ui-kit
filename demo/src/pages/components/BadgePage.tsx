@@ -802,9 +802,9 @@ const SIZES: Size[] = ['xs', 'sm', 'md', 'lg', 'xl']
 const LITE_SIZES: LiteSize[] = ['xs', 'sm', 'md']
 
 const IMPORT_STRINGS: Record<string, string> = {
-  lite: "import { Badge } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { Badge } from '@annondeveloper/ui-kit'",
-  premium: "import { Badge } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { Badge } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { Badge } from '@frontier-labs/ui-kit'",
+  premium: "import { Badge } from '@frontier-labs/ui-kit/premium'",
 }
 
 const COLOR_PRESETS = [
@@ -907,7 +907,7 @@ function generateReactCode(
   motion: number,
 ): string {
   const importStr = IMPORT_STRINGS[tier] || IMPORT_STRINGS.standard
-  const iconImport = showIcon && tier !== 'lite' ? "\nimport { Icon } from '@annondeveloper/ui-kit'" : ''
+  const iconImport = showIcon && tier !== 'lite' ? "\nimport { Icon } from '@frontier-labs/ui-kit'" : ''
 
   const props: string[] = []
   if (variant !== 'default') props.push(`  variant="${variant}"`)
@@ -943,8 +943,8 @@ function generateHtmlCssCode(
   const className = tier === 'lite' ? 'ui-lite-badge' : 'ui-badge'
   const tierLabel = tier === 'lite' ? 'lite' : 'standard'
   const cssImport = tier === 'lite'
-    ? `@import '@annondeveloper/ui-kit/lite/styles.css';`
-    : `@import '@annondeveloper/ui-kit/css/components/badge.css';`
+    ? `@import '@frontier-labs/ui-kit/lite/styles.css';`
+    : `@import '@frontier-labs/ui-kit/css/components/badge.css';`
 
   const displayCount = count !== undefined
     ? count > maxCount ? `${maxCount}+` : String(count)
@@ -952,8 +952,8 @@ function generateHtmlCssCode(
   const content = displayCount ?? label
 
   if (tier === 'lite') {
-    return `<!-- Badge — @annondeveloper/ui-kit lite tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/lite/styles.css">
+    return `<!-- Badge — @frontier-labs/ui-kit lite tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/lite/styles.css">
 
 <span class="${className}" data-variant="${variant}" data-size="${size}">
   ${content}
@@ -967,8 +967,8 @@ function generateHtmlCssCode(
     ? `\n  <span class="ui-badge__dot"${pulse ? ' data-pulse="true"' : ''}></span>`
     : ''
 
-  return `<!-- Badge — @annondeveloper/ui-kit ${tierLabel} tier -->
-<link rel="stylesheet" href="https://unpkg.com/@annondeveloper/ui-kit/css/components/badge.css">
+  return `<!-- Badge — @frontier-labs/ui-kit ${tierLabel} tier -->
+<link rel="stylesheet" href="https://unpkg.com/@frontier-labs/ui-kit/css/components/badge.css">
 
 <span class="${className}" data-variant="${variant}" data-size="${size}" data-motion="${motion}">${dotHtml}
   ${content}
@@ -983,7 +983,7 @@ function generateVueCode(tier: Tier, variant: Variant, size: Size, label: string
     const attrs: string[] = [`class="ui-lite-badge"`, `data-variant="${variant}"`, `data-size="${size}"`]
     const displayCount = count !== undefined ? (count > 99 ? '99+' : String(count)) : null
     const content = displayCount ?? label
-    return `<template>\n  <span ${attrs.join(' ')}>\n    ${content}\n  </span>\n</template>\n\n<style>\n@import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<template>\n  <span ${attrs.join(' ')}>\n    ${content}\n  </span>\n</template>\n\n<style>\n@import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
   const attrs: string[] = []
@@ -1000,7 +1000,7 @@ function generateVueCode(tier: Tier, variant: Variant, size: Size, label: string
     ? `  <Badge>${content}</Badge>`
     : `  <Badge\n  ${attrs.join('\n  ')}\n  >${content}</Badge>`
 
-  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Badge } from '@annondeveloper/ui-kit'\n</script>`
+  return `<template>\n${template}\n</template>\n\n<script setup>\nimport { Badge } from '@frontier-labs/ui-kit'\n</script>`
 }
 
 function generateAngularCode(tier: Tier, variant: Variant, size: Size, label: string, dot: boolean, count: number | undefined): string {
@@ -1008,7 +1008,7 @@ function generateAngularCode(tier: Tier, variant: Variant, size: Size, label: st
     const attrs = [`class="ui-lite-badge"`, `data-variant="${variant}"`, `data-size="${size}"`]
     const displayCount = count !== undefined ? (count > 99 ? '99+' : String(count)) : null
     const content = displayCount ?? label
-    return `<!-- Angular — Lite tier (CSS-only) -->\n<span ${attrs.join(' ')}>\n  ${content}\n</span>\n\n/* In styles.css */\n@import '@annondeveloper/ui-kit/lite/styles.css';`
+    return `<!-- Angular — Lite tier (CSS-only) -->\n<span ${attrs.join(' ')}>\n  ${content}\n</span>\n\n/* In styles.css */\n@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   const attrs = [`class="ui-badge"`, `data-variant="${variant}"`, `data-size="${size}"`]
@@ -1016,14 +1016,14 @@ function generateAngularCode(tier: Tier, variant: Variant, size: Size, label: st
   const displayCount = count !== undefined ? (count > 99 ? '99+' : String(count)) : null
   const content = displayCount ?? label
 
-  return `<!-- Angular — Standard tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<span\n  ${attrs.join('\n  ')}\n>${dotHtml}\n  ${content}\n</span>\n\n/* Import component CSS */\n@import '@annondeveloper/ui-kit/css/components/badge.css';`
+  return `<!-- Angular — Standard tier -->\n<!-- Use the React wrapper or CSS-only approach -->\n<span\n  ${attrs.join('\n  ')}\n>${dotHtml}\n  ${content}\n</span>\n\n/* Import component CSS */\n@import '@frontier-labs/ui-kit/css/components/badge.css';`
 }
 
 function generateSvelteCode(tier: Tier, variant: Variant, size: Size, label: string, dot: boolean, pulse: boolean, count: number | undefined): string {
   if (tier === 'lite') {
     const displayCount = count !== undefined ? (count > 99 ? '99+' : String(count)) : null
     const content = displayCount ?? label
-    return `<!-- Svelte — Lite tier (CSS-only) -->\n<span\n  class="ui-lite-badge"\n  data-variant="${variant}"\n  data-size="${size}"\n>\n  ${content}\n</span>\n\n<style>\n  @import '@annondeveloper/ui-kit/lite/styles.css';\n</style>`
+    return `<!-- Svelte — Lite tier (CSS-only) -->\n<span\n  class="ui-lite-badge"\n  data-variant="${variant}"\n  data-size="${size}"\n>\n  ${content}\n</span>\n\n<style>\n  @import '@frontier-labs/ui-kit/lite/styles.css';\n</style>`
   }
 
   const attrs: string[] = []
@@ -1037,7 +1037,7 @@ function generateSvelteCode(tier: Tier, variant: Variant, size: Size, label: str
   const content = displayCount ?? label
 
   const propsStr = attrs.length > 0 ? `\n${attrs.join('\n')}\n` : ''
-  return `<script>\n  import { Badge } from '@annondeveloper/ui-kit';\n</script>\n\n<Badge${propsStr}>\n  ${content}\n</Badge>`
+  return `<script>\n  import { Badge } from '@frontier-labs/ui-kit';\n</script>\n\n<Badge${propsStr}>\n  ${content}\n</Badge>`
 }
 
 // ─── Section: Interactive Playground ──────────────────────────────────────────
@@ -1694,7 +1694,7 @@ export default function BadgePage() {
               No dot, pulse, count, icon, or motion support. Supports 3 sizes (xs/sm/md).
             </p>
             <div className="badge-page__tier-import">
-              import {'{'} Badge {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} Badge {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="badge-page__tier-preview">
               <LiteBadge variant="primary">Lite Badge</LiteBadge>
@@ -1725,7 +1725,7 @@ export default function BadgePage() {
               count display, icon support, and motion levels.
             </p>
             <div className="badge-page__tier-import">
-              import {'{'} Badge {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} Badge {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="badge-page__tier-preview">
               <Badge variant="primary" dot pulse icon={<Icon name="check" size="sm" />}>Standard</Badge>
@@ -1756,7 +1756,7 @@ export default function BadgePage() {
               and enhanced pulse effect. Wraps Standard with premium CSS layer.
             </p>
             <div className="badge-page__tier-import">
-              import {'{'} Badge {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} Badge {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="badge-page__tier-preview">
               <PremiumBadge variant="primary" dot pulse icon={<Icon name="check" size="sm" />}>Premium</PremiumBadge>
@@ -1886,10 +1886,10 @@ export default function BadgePage() {
         <h2 className="badge-page__section-title"><a href="#source">Source</a></h2>
         <p className="badge-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="badge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/components/badge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="badge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/components/badge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/components/badge.tsx (Standard)
           </a>
-          <a className="badge-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/badge.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="badge-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/badge.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/badge.tsx (Lite)
           </a>
         </div>

@@ -556,9 +556,9 @@ type Orientation = 'vertical' | 'horizontal'
 const ORIENTATIONS: Orientation[] = ['vertical', 'horizontal']
 
 const IMPORT_STRINGS: Record<Tier, string> = {
-  lite: "import { SortableList } from '@annondeveloper/ui-kit/lite'",
-  standard: "import { SortableList } from '@annondeveloper/ui-kit'",
-  premium: "import { SortableList } from '@annondeveloper/ui-kit/premium'",
+  lite: "import { SortableList } from '@frontier-labs/ui-kit/lite'",
+  standard: "import { SortableList } from '@frontier-labs/ui-kit'",
+  premium: "import { SortableList } from '@frontier-labs/ui-kit/premium'",
 }
 
 function createInitialItems(): SortableItem[] {
@@ -653,7 +653,7 @@ function generateReactCode(
   motion: number,
 ): string {
   if (tier === 'lite') {
-    return `import { SortableList } from '@annondeveloper/ui-kit/lite'
+    return `import { SortableList } from '@frontier-labs/ui-kit/lite'
 
 const items = [
   { id: '1', content: 'First item' },
@@ -706,11 +706,11 @@ function generateVueCode(tier: Tier, orientation: Orientation, handle: boolean):
 </template>
 
 <style>
-@import '@annondeveloper/ui-kit/lite/styles.css';
+@import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<template>
   <SortableList
     :items="items"
@@ -740,7 +740,7 @@ function generateAngularCode(tier: Tier): string {
   </li>
 </ol>
 
-@import '@annondeveloper/ui-kit/lite/styles.css';`
+@import '@frontier-labs/ui-kit/lite/styles.css';`
   }
 
   return `<!-- Angular — Standard tier (CSS approach) -->
@@ -758,7 +758,7 @@ function generateAngularCode(tier: Tier): string {
   </div>
 </div>
 
-@import '@annondeveloper/ui-kit/css/components/sortable-list.css';`
+@import '@frontier-labs/ui-kit/css/components/sortable-list.css';`
 }
 
 function generateSvelteCode(tier: Tier, orientation: Orientation, handle: boolean): string {
@@ -771,11 +771,11 @@ function generateSvelteCode(tier: Tier, orientation: Orientation, handle: boolea
 </ol>
 
 <style>
-  @import '@annondeveloper/ui-kit/lite/styles.css';
+  @import '@frontier-labs/ui-kit/lite/styles.css';
 </style>`
   }
 
-  const importPath = tier === 'premium' ? '@annondeveloper/ui-kit/premium' : '@annondeveloper/ui-kit'
+  const importPath = tier === 'premium' ? '@frontier-labs/ui-kit/premium' : '@frontier-labs/ui-kit'
   return `<script>
   import { SortableList } from '${importPath}';
 
@@ -1115,7 +1115,7 @@ export default function SortableListPage() {
               Useful for read-only priority displays.
             </p>
             <div className="sortable-list-page__tier-import">
-              import {'{'} SortableList {'}'} from '@annondeveloper/ui-kit/lite'
+              import {'{'} SortableList {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="sortable-list-page__tier-preview">
               <LiteSortableList items={[{ id: 'l1', content: 'Item A' }, { id: 'l2', content: 'Item B' }]} />
@@ -1145,7 +1145,7 @@ export default function SortableListPage() {
               drag handles, orientation support, and ARIA roledescription.
             </p>
             <div className="sortable-list-page__tier-import">
-              import {'{'} SortableList {'}'} from '@annondeveloper/ui-kit'
+              import {'{'} SortableList {'}'} from '@frontier-labs/ui-kit'
             </div>
             <div className="sortable-list-page__tier-preview">
               <Button size="sm" variant="primary" onClick={() => setTier('standard')}>Select Standard</Button>
@@ -1175,7 +1175,7 @@ export default function SortableListPage() {
               drop placeholder preview, and touch gesture support with haptic feedback.
             </p>
             <div className="sortable-list-page__tier-import">
-              import {'{'} SortableList {'}'} from '@annondeveloper/ui-kit/premium'
+              import {'{'} SortableList {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="sortable-list-page__tier-preview">
               <PremiumSortableList items={[{ id: 'p1', content: 'Item A' }, { id: 'p2', content: 'Item B' }]} onChange={() => {}} />
@@ -1284,13 +1284,13 @@ export default function SortableListPage() {
         <h2 className="sortable-list-page__section-title"><a href="#source">Source</a></h2>
         <p className="sortable-list-page__section-desc">View the full component source code on GitHub.</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <a className="sortable-list-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/domain/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sortable-list-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/domain/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/domain/sortable-list.tsx (Standard)
           </a>
-          <a className="sortable-list-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/lite/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sortable-list-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/lite/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/lite/sortable-list.tsx (Lite)
           </a>
-          <a className="sortable-list-page__source-link" href="https://github.com/annondeveloper/ui-kit/blob/main/src/premium/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
+          <a className="sortable-list-page__source-link" href="https://github.com/Frontier-Labs-India/ui-kit/blob/main/src/premium/sortable-list.tsx" target="_blank" rel="noopener noreferrer">
             <Icon name="code" size="sm" /> src/premium/sortable-list.tsx (Premium)
           </a>
         </div>
