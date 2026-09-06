@@ -52,7 +52,7 @@ jobs:
       id-token: write  # Required for npm provenance / trusted publishing
     environment:
       name: npm
-      url: https://www.npmjs.com/package/@annondeveloper/ui-kit
+      url: https://www.npmjs.com/package/@frontier-labs/ui-kit
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -87,7 +87,7 @@ jobs:
         with:
           node-version: 22
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@annondeveloper'
+          scope: '@frontier-labs'
       - uses: actions/download-artifact@v4
         with:
           name: dist
