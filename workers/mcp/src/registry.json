@@ -1,7 +1,7 @@
 {
-  "version": "2.7.3",
-  "generatedAt": "2026-04-04T16:08:08.294Z",
-  "componentCount": 178,
+  "version": "2.9.0",
+  "generatedAt": "2026-09-06T14:28:25.921Z",
+  "componentCount": 185,
   "components": {
     "Button": {
       "name": "Button",
@@ -2328,7 +2328,9 @@
       "description": "NativeTooltip component — overlay / popup layer",
       "category": "overlays",
       "tier": [
-        "standard"
+        "standard",
+        "lite",
+        "premium"
       ],
       "importPath": "@annondeveloper/ui-kit",
       "importStatement": "import { NativeTooltip } from '@annondeveloper/ui-kit'",
@@ -3290,6 +3292,13 @@
           "type": "(mode: 'dark' | 'light') => void",
           "required": false,
           "description": "The onModeChange property"
+        },
+        {
+          "name": "adaptive",
+          "type": "boolean | AdaptiveTier",
+          "required": false,
+          "description": "Enable adaptive tier rendering based on network bandwidth. - `true`: auto-detect tier per page (lite/standard/premium) - `false` (default in v2.x): use fixed `motion` prop - `'lite' | 'standard' | 'premium'`: force a specific tier  When adaptive is enabled, the `motion` prop is ignored and motion level is set automatically based on detected bandwidth.",
+          "default": "true"
         }
       ],
       "examples": [
@@ -7370,6 +7379,392 @@
       "keywords": [
         "container",
         "query",
+        "other"
+      ],
+      "relatedComponents": []
+    },
+    "PageShell": {
+      "name": "PageShell",
+      "description": "PageShell component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { PageShell } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/page-shell.tsx",
+      "props": [
+        {
+          "name": "maxWidth",
+          "type": "'sm' | 'md' | 'lg' | 'xl' | 'full'",
+          "required": false,
+          "description": "Maximum width of the content area",
+          "default": "'lg'"
+        },
+        {
+          "name": "padding",
+          "type": "'none' | 'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Internal padding scale",
+          "default": "'md'"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { PageShell } from '@annondeveloper/ui-kit'\n\n<PageShell />"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "page",
+        "shell",
+        "other"
+      ],
+      "relatedComponents": []
+    },
+    "PageHeader": {
+      "name": "PageHeader",
+      "description": "PageHeader component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { PageHeader } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/page-header.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "Page title text"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Optional description below the title"
+        },
+        {
+          "name": "actions",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Action buttons rendered on the right side"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Title sizing: sm, md, or lg",
+          "default": "'md'"
+        },
+        {
+          "name": "breadcrumbs",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Breadcrumb navigation rendered above the title"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { PageHeader } from '@annondeveloper/ui-kit'\n\n<PageHeader title=\"Example\"/>"
+        },
+        {
+          "title": "Large size",
+          "code": "<PageHeader size=\"lg\" title=\"Example\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "page",
+        "header",
+        "other",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "relatedComponents": []
+    },
+    "SectionHeader": {
+      "name": "SectionHeader",
+      "description": "SectionHeader component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { SectionHeader } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/section-header.tsx",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": "Section title text"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Optional description below the title"
+        },
+        {
+          "name": "action",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Action slot rendered on the right side, e.g. <Button variant=\"ghost\">View All</Button>"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Title size scale (default: 'md')",
+          "default": "'md'"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { SectionHeader } from '@annondeveloper/ui-kit'\n\n<SectionHeader title=\"Example\"/>"
+        },
+        {
+          "title": "Large size",
+          "code": "<SectionHeader size=\"lg\" title=\"Example\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "section",
+        "header",
+        "other",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "relatedComponents": []
+    },
+    "Toolbar": {
+      "name": "Toolbar",
+      "description": "Toolbar component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { Toolbar } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/toolbar.tsx",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "Toolbar content: search inputs, filter buttons, action buttons, etc."
+        },
+        {
+          "name": "gap",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Gap between items (default: 'md')",
+          "default": "'md'"
+        },
+        {
+          "name": "justify",
+          "type": "'start' | 'end' | 'between' | 'center'",
+          "required": false,
+          "description": "Horizontal alignment (default: 'start')",
+          "default": "'start'"
+        },
+        {
+          "name": "wrap",
+          "type": "boolean",
+          "required": false,
+          "description": "Allow items to wrap on narrow containers (default: false)",
+          "default": "false"
+        },
+        {
+          "name": "sticky",
+          "type": "boolean",
+          "required": false,
+          "description": "Stick to top of scroll container with backdrop blur (default: false)",
+          "default": "false"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { Toolbar } from '@annondeveloper/ui-kit'\n\n<Toolbar children=\"value\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "toolbar",
+        "other"
+      ],
+      "relatedComponents": []
+    },
+    "StatsGrid": {
+      "name": "StatsGrid",
+      "description": "StatsGrid component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { StatsGrid } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/stats-grid.tsx",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "Grid children (typically stat/metric cards)"
+        },
+        {
+          "name": "columns",
+          "type": "2 | 3 | 4 | 5 | 6",
+          "required": false,
+          "description": "Maximum number of columns (default: 4)",
+          "default": "4"
+        },
+        {
+          "name": "gap",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Gap between grid items (default: 'md')",
+          "default": "'md'"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { StatsGrid } from '@annondeveloper/ui-kit'\n\n<StatsGrid children=\"value\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "stats",
+        "grid",
+        "other"
+      ],
+      "relatedComponents": []
+    },
+    "CardGrid": {
+      "name": "CardGrid",
+      "description": "CardGrid component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { CardGrid } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/card-grid.tsx",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "Grid children (typically Card components)"
+        },
+        {
+          "name": "columns",
+          "type": "1 | 2 | 3 | 4 | 5 | 6",
+          "required": false,
+          "description": "Number of columns when minChildWidth is not set (default: 3)",
+          "default": "3"
+        },
+        {
+          "name": "gap",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Gap between grid items (default: 'md')",
+          "default": "'md'"
+        },
+        {
+          "name": "minChildWidth",
+          "type": "string",
+          "required": false,
+          "description": "Minimum child width — overrides column count with auto-fill (e.g. '280px')"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { CardGrid } from '@annondeveloper/ui-kit'\n\n<CardGrid children=\"value\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "card",
+        "grid",
+        "other"
+      ],
+      "relatedComponents": []
+    },
+    "ListLayout": {
+      "name": "ListLayout",
+      "description": "ListLayout component — UI component",
+      "category": "other",
+      "tier": [
+        "standard",
+        "lite",
+        "premium"
+      ],
+      "importPath": "@annondeveloper/ui-kit",
+      "importStatement": "import { ListLayout } from '@annondeveloper/ui-kit'",
+      "sourceFile": "src/components/list-layout.tsx",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "List children"
+        },
+        {
+          "name": "gap",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "description": "Gap between items (default: 'md')",
+          "default": "'md'"
+        },
+        {
+          "name": "dividers",
+          "type": "boolean",
+          "required": false,
+          "description": "Show dividers between items (default: false)",
+          "default": "false"
+        },
+        {
+          "name": "padding",
+          "type": "'none' | 'sm' | 'md'",
+          "required": false,
+          "description": "Internal padding (default: 'none')",
+          "default": "'none'"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { ListLayout } from '@annondeveloper/ui-kit'\n\n<ListLayout children=\"value\"/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "list",
+        "layout",
         "other"
       ],
       "relatedComponents": []
@@ -14693,7 +15088,7 @@
     "eye": {
       "name": "eye",
       "paths": [
-        "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z",
+        "M1 12C4 6 8 4 12 4 16 4 20 6 23 12 20 18 16 20 12 20 8 20 4 18 1 12Z",
         "M12 9a3 3 0 100 6 3 3 0 000-6z"
       ],
       "keywords": [
@@ -15156,7 +15551,14 @@
       "TabTrigger",
       "TabContent",
       "Highlight as TextHighlight",
-      "ContainerQuery"
+      "ContainerQuery",
+      "PageShell",
+      "PageHeader",
+      "SectionHeader",
+      "Toolbar",
+      "StatsGrid",
+      "CardGrid",
+      "ListLayout"
     ],
     "navigation": [
       "Tabs",
