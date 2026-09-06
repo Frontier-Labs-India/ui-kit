@@ -195,4 +195,5 @@ Engine modules:
 
 ## Design Spec
 
-Full design document: `docs/superpowers/specs/2026-03-20-ui-kit-v2-design.md`
+The v2 design documents and dated implementation plans are kept internally and
+are not part of the public repository.

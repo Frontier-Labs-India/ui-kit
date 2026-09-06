@@ -248,7 +248,6 @@ function App() {
 - [Theming](docs/theming.md) -- OKLCH colors, theme generation, customization
 - [Form Engine](docs/forms.md) -- Built-in form state, validators, auto-wiring
 - [Animation](docs/animation.md) -- Physics springs, timeline, stagger, scroll
-- [Design Spec](docs/superpowers/specs/2026-03-20-ui-kit-v2-design.md) -- Full architecture document
 
 ### New in v2.7
 
