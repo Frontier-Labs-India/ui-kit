@@ -26,6 +26,8 @@ npm run typecheck      # TypeScript strict check
 npm test               # Run Vitest + jest-axe a11y tests
 npm run test:a11y      # Accessibility audit
 npm run test:bundle-size  # Enforce per-component size budgets
+npm run test:counts    # Every component count must be derived from build output
+npm run sync:registry  # Regenerate the worker registry (runs inside `build`)
 ```
 
 ### Running the Demo Site
@@ -52,12 +54,28 @@ npm run dev            # Starts Vite dev server at localhost:5173
 
 4. **Verify everything passes**:
    ```bash
-   npm run build && npm run typecheck && npm test
+   npm run build && npm run typecheck && npm test && npm run test:counts
    ```
 
 5. **Create a demo page** -- Add a page in `demo/src/pages/components/` demonstrating all variants.
 
 6. **Submit a PR** -- Fill in the PR template and request review.
+
+## Two invariants that fail the build
+
+**1. Never write a component count into prose.** This repository once published
+twenty different counts at the same time. `npm run test:counts` derives every
+number from `dist/component-meta.json`, the MCP registry and `dist/css`, and
+fails on any figure it cannot account for. If you need a number, take it from
+that command's output and say *what it counts* — "162 components with extracted
+metadata", not "162 components". Historical files (`CHANGELOG.md`, dated plan
+docs), approximations written `~20`, and counts tied to a named past release are
+exempt by rule, so you never need to edit one to satisfy the gate.
+
+**2. Never edit `workers/mcp/src/registry.json`.** It is generated. It was once
+hand-copied and went five months stale while the hosted server served it. Run
+`npm run sync:registry` — or just `npm run build`, which now ends with it — and
+`npm run test:counts` plus the freshness test will tell you if it drifts.
 
 ## Component Structure
 

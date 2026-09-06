@@ -2,11 +2,29 @@
 
 ## Project Overview
 
-`@frontier-labs/ui-kit` — A zero-dependency React component library with 162 components across 3 weight tiers (Lite/Standard/Premium), physics-based animations, OKLCH color system, and Aurora Fluid design identity.
+`@frontier-labs/ui-kit` — a zero-dependency React component library across 3 weight
+tiers (Lite/Standard/Premium), with physics-based animations, an OKLCH colour
+system and the Aurora Fluid design identity.
+
+162 components carry extracted metadata (the Standard tier); Lite and Premium
+hold 159 each. Those numbers are derived — `npm run test:counts` recomputes them
+from build output and fails if this line stops matching the code.
 
 **Repository:** https://github.com/Frontier-Labs-India/ui-kit
-**Current:** v2.8.1 on `main` branch
-**Legacy:** v0.4.1 on `v1` branch (archived)
+**Version:** see `package.json` — do not restate it here; it goes stale and then lies.
+**Legacy:** v0.4.x on the `v1` branch (archived, read-only)
+
+## Counts and versions are derived, never asserted
+
+This repository published **twenty** different component counts at once (147,
+154, 156, 159, 178 and more). They were not all wrong in the same way — some
+were historical, some hypothetical — but none was checkable.
+
+`npm run test:counts` now derives every count from build output and fails the
+build on an undefined one. **Do not write a component count or a version number
+into prose here or anywhere else.** Point at the command instead. A number a
+file cannot keep true is worse than no number, and this file loads into agent
+sessions where a stale assertion is repeated with confidence.
 
 ## Development Philosophy
 
@@ -59,10 +77,10 @@ Automated via GitHub Actions on `v*` tag push:
 
 ```
 src/core/          # Foundation: styles, motion, tokens, a11y, icons, forms, utils
-src/components/    # General-purpose (73): Button, Card, Dialog, Tabs, Typography, ActionIcon, Calendar, ContainerQuery, etc.
-src/domain/        # Specialized (74): MetricCard, LogViewer, TimeSeriesChart, RackDiagram, CodeEditor, Tour, etc.
-src/lite/          # Lite tier (144): minimal wrappers, no motion, ~20-30 lines each
-src/premium/       # Premium tier (145): aurora glow, spring animations, shimmer effects
+src/components/    # General-purpose: Button, Card, Dialog, Tabs, Typography, ActionIcon, Calendar, ContainerQuery, etc.
+src/domain/        # Specialized: MetricCard, LogViewer, TimeSeriesChart, RackDiagram, CodeEditor, Tour, etc.
+src/lite/          # Lite tier: minimal wrappers, no motion, ~20-30 lines each
+src/premium/       # Premium tier: aurora glow, spring animations, shimmer effects
 ```
 
 ## Style Conventions
