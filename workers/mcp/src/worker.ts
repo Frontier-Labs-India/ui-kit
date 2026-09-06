@@ -1024,6 +1024,11 @@ export default {
       return Response.json({ status: 'ok', sessions: sessions.size, version: reg.version }, { headers: cors })
     }
 
+    // BROKEN ON WORKERS — see workers/mcp/README.md.
+    // SSEServerTransport.start() calls this.res.writeHead(); the Response
+    // below has no such method, so server.connect() throws and Cloudflare
+    // returns error 1101. Patching .send() does not help: start() runs first.
+    // The supported hosted path is Node (src/mcp/transports/sse.ts).
     // SSE connection
     if (request.method === 'GET' && url.pathname === '/sse') {
       const server = createMcpServer()

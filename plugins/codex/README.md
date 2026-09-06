@@ -11,7 +11,7 @@ Add to your Codex MCP configuration (`~/.codex/config.json` or project-level):
   "mcpServers": {
     "ui-kit": {
       "type": "sse",
-      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+      "url": "https://ui.frontier-labs.in/sse"
     }
   }
 }

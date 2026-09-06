@@ -11,7 +11,7 @@ Add to `.vscode/mcp.json` in your project:
   "servers": {
     "ui-kit": {
       "type": "sse",
-      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+      "url": "https://ui.frontier-labs.in/sse"
     }
   }
 }
@@ -28,7 +28,7 @@ Add to `~/.continue/config.json`:
       "name": "ui-kit",
       "transport": {
         "type": "sse",
-        "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+        "url": "https://ui.frontier-labs.in/sse"
       }
     }
   ]

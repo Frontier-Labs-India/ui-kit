@@ -4,7 +4,7 @@ Connect @frontier-labs/ui-kit to your AI coding assistant. All integrations use 
 
 ## Quick Connect
 
-**Hosted MCP URL:** `https://ui-kit-mcp.frontier-labs.workers.dev/sse`
+**Hosted MCP URL:** `https://ui.frontier-labs.in/sse`
 
 | Assistant | Config File | Guide |
 |-----------|------------|-------|

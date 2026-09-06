@@ -31,7 +31,7 @@ Status tracker for getting @frontier-labs/ui-kit recognized by AI platforms.
 ```markdown
 ### UI Kit (@frontier-labs/ui-kit)
 147 React components discoverable via MCP. Browse, search, generate code, access themes.
-- **Hosted:** `https://ui-kit-mcp.frontier-labs.workers.dev/sse`
+- **Hosted:** `https://ui.frontier-labs.in/sse`
 - **Local:** `npx @frontier-labs/ui-kit mcp`
 - **Tools:** list_components, get_component, search_components, generate_snippet, get_theme, get_icons
 ```

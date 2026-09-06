@@ -32,11 +32,13 @@ import '@frontier-labs/ui-kit/css/all.css'
 **Step 3.** Connect your AI assistant (pick one)
 
 ```bash
-# Zero setup — hosted MCP (works instantly, no install needed)
-# Add to your MCP config: { "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse" }
-
-# Or run locally
+# Local — runs on your machine over stdio. No account, no network dependency.
 npx @frontier-labs/ui-kit mcp
+
+# Hosted — add to your MCP config instead, if you would rather not run it:
+#   { "url": "https://ui.frontier-labs.in/sse" }
+# Self-hosted by Frontier Labs. You can run the same thing yourself:
+#   npx @frontier-labs/ui-kit mcp --sse --port 3100
 ```
 
 **Step 4.** Ask your AI to build
@@ -102,7 +104,7 @@ No install needed. Connect any MCP client to the hosted server:
 {
   "mcpServers": {
     "ui-kit": {
-      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+      "url": "https://ui.frontier-labs.in/sse"
     }
   }
 }

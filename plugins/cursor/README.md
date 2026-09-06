@@ -16,7 +16,7 @@ Or manually create `.cursor/mcp.json` in your project:
 {
   "mcpServers": {
     "ui-kit": {
-      "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+      "url": "https://ui.frontier-labs.in/sse"
     }
   }
 }

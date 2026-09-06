@@ -36,7 +36,7 @@ claude --plugin-dir ui-kit/plugins/claude-code
 
 ### MCP Server (auto-connected)
 
-The plugin auto-connects to the hosted MCP server at `ui-kit-mcp.frontier-labs.workers.dev`, giving Claude programmatic access to:
+The plugin auto-connects to the hosted MCP server at `ui.frontier-labs.in`, giving Claude programmatic access to:
 - `list_components` — browse all components
 - `get_component` — full API reference
 - `search_components` — semantic search

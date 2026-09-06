@@ -1,3 +1,20 @@
+> **UNSUPPORTED — `/sse` does not work on Cloudflare Workers.**
+>
+> `SSEServerTransport` from the MCP SDK is a Node transport: `start()` calls
+> `this.res.writeHead()` and `this.res.on('close')`. Workers has no
+> `ServerResponse`, so `worker.ts` passes `new Response() as any` and
+> `server.connect()` throws — Cloudflare returns error 1101 on every request.
+> Patching `transport.send` (as this worker does) does not help, because
+> `start()` runs first.
+>
+> Making this work needs a Workers-native MCP transport, which does not exist
+> here. **The supported hosted deployment is Node, self-hosted:**
+> `npx @frontier-labs/ui-kit mcp --sse --port 3100` behind a reverse proxy.
+> That path runs `src/mcp/transports/sse.ts`, which passes a real
+> `ServerResponse` and is covered by `src/__tests__/core/mcp-sse-boot.test.ts`.
+>
+> This directory is kept for reference. Do not deploy it expecting it to serve.
+
 # ui-kit MCP Server — Cloudflare Worker
 
 Hosted MCP server for `@frontier-labs/ui-kit`. Provides the same 6 tools as the local MCP server but accessible via HTTP SSE transport from anywhere.

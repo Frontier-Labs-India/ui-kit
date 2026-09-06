@@ -1238,7 +1238,7 @@ export default function Home() {
 
         <div className="home-hero-entrance">
           <div className="home-hero-actions">
-            <a href="https://ui-kit-mcp.frontier-labs.workers.dev" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <a href="https://ui.frontier-labs.in" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
               <ShimmerButton size="lg" shimmerColor="oklch(70% 0.2 270)">
                 <Icon name="zap" size="sm" />
                 Try MCP Server
@@ -1278,7 +1278,7 @@ export default function Home() {
               lineHeight: 1.5,
               whiteSpace: 'pre',
               overflowX: 'auto',
-            }}>{'{ "url": "https://ui-kit-mcp.frontier-labs.workers.dev/sse" }'}</code>
+            }}>{'{ "url": "https://ui.frontier-labs.in/sse" }'}</code>
             <p style={{ margin: '0.5rem 0 0', fontSize: '0.75rem', color: 'oklch(55% 0 0)' }}>
               Add to Claude, Cursor, or any MCP client config. No npm install needed for AI access.
             </p>

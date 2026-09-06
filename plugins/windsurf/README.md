@@ -10,7 +10,7 @@ Add to your Windsurf MCP configuration:
 {
   "mcpServers": {
     "ui-kit": {
-      "serverUrl": "https://ui-kit-mcp.frontier-labs.workers.dev/sse"
+      "serverUrl": "https://ui.frontier-labs.in/sse"
     }
   }
 }

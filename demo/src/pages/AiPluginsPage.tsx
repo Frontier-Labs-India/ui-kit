@@ -723,7 +723,7 @@ export default function AiPluginsPage() {
             color: 'oklch(85% 0 0)',
             lineHeight: 1.5,
             wordBreak: 'break-all' as const,
-          }}>https://ui-kit-mcp.frontier-labs.workers.dev/sse</code>
+          }}>https://ui.frontier-labs.in/sse</code>
           <p style={{ margin: '0.5rem 0 0', fontSize: '0.75rem', color: 'oklch(55% 0 0)' }}>
             Add this URL to any MCP client config. No npm install needed. Works with Claude Code, Cursor, VS Code, Windsurf, Codex.
           </p>
