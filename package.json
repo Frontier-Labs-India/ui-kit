@@ -1,6 +1,6 @@
 {
-  "name": "@annondeveloper/ui-kit",
-  "version": "2.9.0",
+  "name": "@frontier-labs/ui-kit",
+  "version": "3.0.0",
   "type": "module",
   "description": "A zero-dependency React component library with built-in theming, motion, and accessibility.",
   "main": "dist/esm/index.js",
@@ -113,7 +113,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/annondeveloper/ui-kit.git"
+    "url": "https://github.com/Frontier-Labs-India/ui-kit.git"
   },
   "license": "MIT",
   "keywords": [
