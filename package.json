@@ -74,6 +74,7 @@
     "test:watch": "vitest",
     "test:a11y": "vitest run src/__tests__/core/a11y",
     "test:bundle-size": "node scripts/check-bundle-size.js",
+    "test:counts": "node scripts/check-counts.js",
     "changelog": "node scripts/generate-changelog.js",
     "build:report": "node scripts/generate-bundle-report.js",
     "storybook": "storybook dev -p 6006",
