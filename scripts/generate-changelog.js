@@ -77,13 +77,24 @@ function getCommits(from, to) {
   }
 }
 
-function parseCommit(commit) {
-  // Match: type(scope): description  OR  type: description
-  const match = commit.subject.match(/^(\w+)(?:\(([^)]*)\))?:\s*(.+)$/);
+export function parseCommit(commit) {
+  // Match: type(scope)!: description — the trailing "!" is the Conventional
+  // Commits breaking-change marker. It was missing from this pattern, and
+  // because \w+ cannot match "feat!", every breaking change was returned as
+  // null and dropped from the changelog entirely. The one category that most
+  // needs to appear was the only one guaranteed not to.
+  const match = commit.subject.match(/^(\w+)(?:\(([^)]*)\))?(!)?:\s*(.+)$/);
   if (!match) return null;
-  const [, type, scope, description] = match;
+  const [, type, scope, bang, description] = match;
   if (!TYPE_LABELS[type]) return null;
-  return { type, scope: scope || null, description, hash: commit.hash, date: commit.date };
+  return {
+    type,
+    scope: scope || null,
+    breaking: Boolean(bang),
+    description,
+    hash: commit.hash,
+    date: commit.date,
+  };
 }
 
 function groupByType(parsed) {
@@ -97,6 +108,19 @@ function groupByType(parsed) {
 
 function formatSection(groups) {
   const lines = [];
+
+  // Breaking changes lead, regardless of their type. A reader deciding whether
+  // an upgrade is safe should never have to scan for them.
+  const breaking = Object.values(groups).flat().filter((e) => e.breaking);
+  if (breaking.length > 0) {
+    lines.push('### ⚠ BREAKING CHANGES\n');
+    for (const e of breaking) {
+      const scope = e.scope ? `**${e.scope}:** ` : '';
+      lines.push(`- ${scope}${e.description} (\`${e.hash.slice(0, 7)}\`)`);
+    }
+    lines.push('');
+  }
+
   for (const type of TYPE_ORDER) {
     const entries = groups[type];
     if (!entries || entries.length === 0) continue;
@@ -155,4 +179,8 @@ function generate() {
   console.log(`Changelog written to ${outPath}`);
 }
 
-generate();
+// Only run when invoked directly, so the parser can be unit-tested without
+// this script overwriting CHANGELOG.md as an import side effect.
+if (process.argv[1] && process.argv[1].endsWith('generate-changelog.js')) {
+  generate();
+}

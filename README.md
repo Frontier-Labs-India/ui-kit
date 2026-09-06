@@ -11,6 +11,51 @@
 >
 > Every count on this page is derived from build output by `npm run test:counts`, which fails the build if a number here stops matching the code.
 
+## Migrating from `@annondeveloper/ui-kit`
+
+This library was previously published as `@annondeveloper/ui-kit`. It is now
+maintained by **Frontier Labs Private Limited** and published as
+`@frontier-labs/ui-kit`. Same code, same MIT licence, same author history —
+only the name and the maintainer changed.
+
+**There are no API changes.** `3.0.0` is a major version solely because the
+import path moved, which is a breaking change and should be stated as one
+rather than slipped into a minor.
+
+```diff
+- npm install @annondeveloper/ui-kit
++ npm install @frontier-labs/ui-kit
+```
+
+```diff
+- import { Button } from '@annondeveloper/ui-kit'
+- import '@annondeveloper/ui-kit/css/theme.css'
+- import '@annondeveloper/ui-kit/css/all.css'
++ import { Button } from '@frontier-labs/ui-kit'
++ import '@frontier-labs/ui-kit/css/theme.css'
++ import '@frontier-labs/ui-kit/css/all.css'
+```
+
+A find-and-replace of `@annondeveloper/ui-kit` → `@frontier-labs/ui-kit` across
+your source is the whole migration.
+
+`@annondeveloper/ui-kit` is deprecated on npm and will receive no further
+releases. It stays published so existing installs keep resolving.
+
+### Also fixed in 3.0.0
+
+Two defects that predate the rename and affected anyone using the MCP server:
+
+- **`ui-kit-mcp --sse` could not start.** The MCP SDK was bundled into an ESM
+  build alongside its CJS dependencies, so it threw
+  `Dynamic require of "path" is not supported` on launch. The bundle went from
+  1.84 MB to 42 KB.
+- **The hosted MCP endpoint is no longer on Cloudflare Workers.** The SDK's SSE
+  transport needs a Node `ServerResponse`, which Workers does not have, so the
+  endpoint returned HTTP 500 on every request. It is now self-hosted on Node at
+  `https://ui.frontier-labs.in/sse`, and you can run the identical server
+  yourself with `npx @frontier-labs/ui-kit mcp --sse`.
+
 ## How It Works
 
 **Step 1.** Install the library

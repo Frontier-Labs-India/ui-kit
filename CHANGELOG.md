@@ -4,23 +4,240 @@ All notable changes to this project will be documented in this file.
 
 This changelog is auto-generated from [conventional commits](https://www.conventionalcommits.org/).
 
-## 2.8.0 (2026-04-02)
+## Unreleased (2026-09-06)
+
+### ⚠ BREAKING CHANGES
+
+- rebrand source, docs, demo and editor plugins to Frontier Labs (`739aee1`)
+- rename to @frontier-labs/ui-kit, v3.0.0 (`8bcc949`)
 
 ### Features
 
-- **feat:** NetworkInterfaceGrid — Grid visualization of network interfaces with status, speed, traffic sparklines
-- **feat:** VlanBusBar — SVG bus diagram showing VLAN membership across ports with color-coded segments
-- **feat:** TopologyGraph — Interactive network topology with SVG + Canvas renderers, pan/zoom, minimap, 10K+ node support
-- **feat:** PipelineDAG — SVG DAG visualization for data pipelines with animated flow and status indicators
-- **feat:** DashboardTemplate — Composable dashboard layout with metric strip, content grid, collapsible sidebar, auto-refresh
-- **feat:** PluginDashboard — Declarative dashboard builder with 8 built-in configs (PostgreSQL, MySQL, Redis, Kafka, K8s, Docker, Nginx, Elasticsearch)
-- **feat:** Graph layout engine — Zero-dependency force-directed, Sugiyama DAG, circular, and grid layout algorithms with Barnes-Hut quadtree
-- **feat:** TimeSeriesChart enhancements — brush selection, scroll-to-zoom, toggleable series, chart annotations
+- rebrand source, docs, demo and editor plugins to Frontier Labs (`739aee1`)
+- rename to @frontier-labs/ui-kit, v3.0.0 (`8bcc949`)
+
+### Bug Fixes
+
+- the MCP SSE server could not start from its own bundle (`55b5415`)
+- the worker registry was a hand-copy, five months stale (`4ef1fa7`)
+- JSR version desync root cause + fail-loud guard + CI concurrency (`8ca93dc`)
 
 ### Documentation
 
-- Demo pages for all 7 new components with interactive playgrounds
-- All components registered in MCP server with categories and related groups
+- security policy, code of conduct and contributor invariants (`b68b3f3`)
+- document the self-hosted MCP endpoint, mark the Worker unsupported (`96bc23a`)
+
+### Tests
+
+- gate component counts against build output (`1d6584b`)
+
+### CI
+
+- point trusted publishing at the @frontier-labs scope (`dfcbb1f`)
+
+## 2.9.0 (2026-06-07)
+
+### Features
+
+- lite tier self-injects scoped CSS — fully styled on import, no CSS wiring (`9657b8d`)
+- ship all documented APIs — theme utils, perf hooks, AI generator, motion exports (`a8f0ffd`)
+- MCP get_adaptive_info tool + adaptive notes in all responses (`1e29abf`)
+- adaptive tier is now DEFAULT + CSS layer + dev debug overlay (`41746dc`)
+- standalone adaptive test page — 12KB, loads on GPRS in 2s (`1030d6e`)
+- tier structural parity audit script (`666094d`)
+- adaptive tier rendering MVP — auto-detect bandwidth, adjust motion (`b15f605`)
+
+### Bug Fixes
+
+- bugs surfaced by full visual sweep across all 148 components × 3 tiers (`4affdf3`)
+- adaptive detection is instant — probe runs in background (`1eb45dc`)
+- adaptive detection uses latency probe instead of bandwidth measurement (`0723178`)
+- adaptive detection uses real speed probe — works with DevTools throttling (`0e9c025`)
+- recalibrate adaptive tier detection — much more generous thresholds (`b0bdb7f`)
+- 159/159 components achieve structural parity across all tiers (`ae28300`)
+- add root wrangler.toml for Cloudflare deployment (`84128d1`)
+- sync Cloudflare worker with 8 MCP tools + design guide (`4ff62e9`)
+
+### Documentation
+
+- adaptive tier implementation plan — 10 tasks (`2a60095`)
+- updated adaptive tier spec — all phases approved (`668bf80`)
+- adaptive tier rendering design spec (`1f382ca`)
+- add SSR guide to Getting Started + MCP SSR safety note (`c62fb24`)
+- update README, Getting Started guide, MCP docs for v2.8.x (`26836e4`)
+
+## 2.8.1 (2026-04-05)
+
+### Features
+
+- add design guide to MCP responses for world-class output (`bd863f9`)
+- Issue #17 — MCP get_page_template tool for complete page scaffolds (`8c56999`)
+
+### Bug Fixes
+
+- Issue #16 — spacing & padding revamp across all components (`fed5595`)
+
+### Chores
+
+- v2.8.1 — spacing revamp, design guide, MCP page templates (`775936a`)
+- update Cloudflare worker registry to v2.8.0 (`d9764e4`)
+
+## 2.8.0 (2026-04-05)
+
+### Features
+
+- ListLayoutPage demo + MCP novice user enhancements (`8f996cf`)
+- Issue #14 — page layout primitives (6/7 demo pages) (`18e9767`)
+- add lite/premium wrappers for NativeTooltip (`74f9b99`)
+- PLAN-110 + automated audit script for 110/110 target (`11afa4b`)
+- prop/tier drift detection script (`d345ee8`)
+- single source of truth — extract-component-meta.ts (`0fc5f59`)
+- tier support on 26 pages + quality audit framework (`ab7f4a6`)
+- split AI Plugins page, fix navigation bug, optimize Home performance (`9eb43fb`)
+
+### Bug Fixes
+
+- update tests for v2.8.0 — MCP 7 tools, lite class name (`dddec30`)
+- add missing layout component source files (`3cb1535`)
+- Issue #15 — CSS import DX prevents silent styling failure (`e5a5479`)
+- final 3 pages to 110/110 — ALL 152 pages now perfect (`ca116dc`)
+- P3 — rebuild 25 stub pages to 110/110 (151/152 complete) (`ea98abf`)
+- P1 batch 2 — 114 component pages to 110/110 audit score (`07b244a`)
+- P1 batch 1 — 13 core pages to 110/110 (`9c0cb96`)
+- Tier 2 audit — Rating(61), SearchInput(59), DatePicker(67), InlineEdit(74) (`50ed8d9`)
+- Tier 2 audit — RadioGroup(75), FormInput(81), ComboBox(81), ColorInput(72), OtpInput(66) (`21bbd31`)
+- critical bugs — FileUpload URL leak, Slider NaN, maxFiles logic (`b713a10`)
+- Tier 1 audit — Button(86), Card(84), Badge(83), Dialog(88) + in-progress audits (`4a8ed7a`)
+
+### Chores
+
+- bump version to v2.8.0 (`259cead`)
+
+## 2.7.3 (2026-04-04)
+
+### Features
+
+- AI Plugins showcase — assistant setup cards, skill demos, use case gallery (`157cf57`)
+- update MCP page with AI integrations, hosted URL, plugin features (`5bb959d`)
+
+### Bug Fixes
+
+- inject 'use client' into all build chunks, not just entry points (`7719396`)
+- comprehensive SSR audit + last 2 demo pages (closes #13) (`299f0e9`)
+- GitHub Pages SPA routing — add 404.html redirect (`bdaa174`)
+
+### Documentation
+
+- Claude plugin submission guide with 7 use cases + Dockerfile for Glama (`c4c5ddf`)
+- marketplace submission tracker and status (`8630bd0`)
+
+## 2.7.2 (2026-04-04)
+
+### Features
+
+- Tabs + DropdownMenu composed children API, Next.js docs (closes #10, #11, #12) (`7e6de6e`)
+- AI integrations — Claude Code, Cursor, VS Code, Windsurf, Codex (`67444cf`)
+- Claude Code plugin — skills, agents, hooks, hosted MCP (`b882d83`)
+- hosted MCP — update README, demo homepage, Worker landing page (`df8e83d`)
+- Cloudflare Worker for hosted MCP server (`c22afb2`)
+
+### Bug Fixes
+
+- add explicit return types to 162 exported functions (JSR slow types) (`12608fe`)
+
+### Chores
+
+- deduplicate CI workflows + fix 4 slow types + keep --allow-slow-types (`7021b46`)
+
+## 2.7.1 (2026-04-04)
+
+### Features
+
+- add global MCP error handlers at entry point (closes #6) (`e947235`)
+- enhance VlanBusBar, DashboardTemplate, PluginDashboard (`b6d4137`)
+- 7 netrak infrastructure components + graph engine + TimeSeriesChart enhancements (`ae174b2`)
+- **lite:** add missing props to remaining 21 Lite wrappers (`88b3421`)
+- **lite:** add missing props to Button, Badge, Card, Checkbox, Divider, FormInput, Progress, Skeleton, ToggleSwitch, Slider (`6a516c4`)
+- **lite:** add missing props to Select, Combobox, Dialog, ConfirmDialog, Drawer, DropdownMenu, Sheet, Tabs, Sidebar, Navbar (`537daa9`)
+- AI-native GTM — MCP server polish, CLI setup, demo improvements (`bea2297`)
+
+### Bug Fixes
+
+- SSR hydration — deterministic CSS IDs via content hash (fixes #9) (`40fe549`)
+- topology/pipeline rendering, NIG grid layout, chart tooltip portal (`dd8229b`)
+- TimeSeriesChart tooltip clamped to chart bounds, JsonViewer tier cards clickable (`be5e9f5`)
+- TimeSeriesChart tooltip uses imperative viewport-clamped positioning (`5ef8ae2`)
+- MetricCard restore min-inline-size:160px, fix playground wrapper width (`752be08`)
+- AnimatedCounter formatters, CopyBlock java/csharp/php/swift/kotlin, TimeSeriesChart fixed tooltip (`dece34f`)
+- Sparkline tooltip positioning, CoreChart randomize button (`0bb0c9f`)
+- Progress Lite severity colors, ThresholdGauge text overlap (`25ddcfe`)
+- CopyBlock languages, NumberTicker visibility, MetricCard overflow, TimeSeriesChart tooltip (`371cf02`)
+- update Lite tests for new wrapper structures + fix Skeleton/Checkbox/ToggleSwitch (`808554c`)
+- resolve TS errors in tier comparison sections (`0730d6e`)
+- add missing props to Lite tier wrappers for full API parity (`457e75b`)
+- Figma dropdown styling, Home card deep links, Embed preview (`1f6bb5d`)
+- mobile polish — icons toolbar, perf stats grid, code overflow (`22e455e`)
+- mobile responsiveness + performance optimizations (`78512e8`)
+
+### Documentation
+
+- add Cursor MCP setup guide (from PR #7 by @SahilKumar75) (`2cdaea3`)
+- update README — correct bundle size, premium count, add Cursor guide link (`1aa2a81`)
+- update utility pages and verify accuracy (`9f67183`)
+- update remaining 15 component pages to match source-of-truth (`3553b3c`)
+- update component pages PropsTable to match source-of-truth (batch 1) (`5bc79a1`)
+- update Infrastructure & Monitoring pages to match source-of-truth (`5c5bc0b`)
+- update Monitoring Additional pages to match source-of-truth (`6dcd874`)
+- update remaining component pages to match source-of-truth (`27f2330`)
+- update Data Visualization pages to match source-of-truth (`309fb64`)
+- update Magic Effects pages to match source-of-truth (`2ffd77e`)
+- update Text & Code display pages to match source-of-truth (`f282edc`)
+- update Navigation pages to match source-of-truth (`f25127d`)
+- update Data Tables & Trees pages to match source-of-truth (`a179d3e`)
+- update Content display pages to match source-of-truth (`95fbae1`)
+- update Overlay pages to match source-of-truth (`de565d2`)
+- update Spotlight, CommandBar & Tour pages to match source-of-truth (`f2f0463`)
+- update Badge & Status display pages to match source-of-truth (`aa16cda`)
+- update Form Input (text/selection) pages to match source-of-truth (`6097447`)
+- update Form Controls pages to match source-of-truth (`efdce95`)
+- update specialized Form Input pages to match source-of-truth (`51366fa`)
+- update Actions & Buttons pages to match source-of-truth (`1e37981`)
+
+### Performance
+
+- **styles:** batch adoptedStyleSheets mutations, memoize css tag (`4d8c9da`)
+
+### Refactoring
+
+- **lite:** convert 38 Lite wrappers to proxy pattern for full API parity (`710497e`)
+
+### Chores
+
+- improve JSR score — description, module docs, exports, compat (`7711267`)
+- bump bundle budget to 400KB for netrak infrastructure components (`335c1f6`)
+
+### Tests
+
+- add comprehensive prop coverage for Card, Alert, Badge, Select (`8800489`)
+
+## 2.7.0 (2026-03-29)
+
+### Features
+
+- **v2:** Showcase ALL hidden features across 10 component demo pages (`0788930`)
+- **v2:** AI DataTable suggestions + RSC support + Web Components wrapper (`2b0248a`)
+- **v2:** 7 improvements — Storybook, embeds, search, shortcuts, polish (`53ccf8c`)
+
+### Bug Fixes
+
+- **v2:** Generator mobile overflow + tier visual effects on preview (`634a66a`)
+- **v2:** Tier Comparison — real component rendering + different sizes per tier (`90479cd`)
+- **v2:** Select trigger visible in light mode + Figma page dropdown (`262c970`)
+- **v2:** Theme Playground respects site light/dark mode (`20db239`)
+
+### Chores
+
+- bump to v2.7.0 — AI DataTable, RSC, Web Components, feature showcase (`c6939f9`)
 
 ## 2.6.0 (2026-03-28)
 
@@ -30,6 +247,8 @@ This changelog is auto-generated from [conventional commits](https://www.convent
 
 ### Bug Fixes
 
+- exclude visual tests from tsconfig (Playwright types not in main build) (`2349771`)
+- Publish workflow — full git history for changelog + resilience (`887a508`)
 - CI failures — a11y script + storybook build resilience (`a0e7ea9`)
 
 ### Chores
