@@ -2,13 +2,13 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Cross-reference every demo page and docs section against `full_context.md` (7,258-line source-of-truth) to ensure 100% accuracy of props, types, defaults, code examples, and documentation.
+**Goal:** Cross-reference every demo page and docs section against a local `full_context.md` (7,258-line source-of-truth file, never part of this repository) (7,258-line source-of-truth) to ensure 100% accuracy of props, types, defaults, code examples, and documentation.
 
 **Architecture:** Each component page has a PropsTable and code examples. The source-of-truth document defines the exact props, types, defaults, CSS variables, data attributes, ARIA attributes, keyboard interactions, classNames, sub-types, and tier differences for every component. We systematically update each page's PropsTable to match the source exactly, then update code examples to demonstrate all significant props.
 
 **Tech Stack:** React, TypeScript, Vite demo app
 
-**Source of Truth:** `full_context.md`
+**Source of Truth:** a local `full_context.md` (7,258-line source-of-truth file, never part of this repository)
 
 ---
 
@@ -662,7 +662,7 @@ For each page:
 
 ### Parallel Execution
 Tasks 1-20 are completely independent and can be dispatched to parallel subagents. Each agent needs:
-1. Access to `full_context.md` (the source of truth)
+1. Access to a local `full_context.md` (7,258-line source-of-truth file, never part of this repository) (the source of truth)
 2. Access to the specific component page files
 3. Understanding of the PropsTable format from `demo/src/components/PropsTable.tsx`
 
