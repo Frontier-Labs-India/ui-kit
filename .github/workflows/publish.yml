@@ -14,6 +14,20 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+      # A tag is an irreversible publish trigger. This repo carried 20 local
+      # v2.* tags from before the rename that were never pushed; `git push
+      # --tags`, or the old `postversion` script, would have fired this
+      # workflow 20 times and published ancient code under the new name.
+      # Refuse any tag that does not name the version in package.json.
+      - name: Verify tag matches package.json version
+        run: |
+          PKG=$(node -p "require('./package.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$PKG" != "$TAG" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $PKG — refusing to publish."
+            exit 1
+          fi
+          echo "Tag $GITHUB_REF_NAME matches package.json $PKG"
       - uses: actions/setup-node@v4
         with:
           node-version: 22

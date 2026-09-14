@@ -81,7 +81,7 @@
     "build:storybook": "storybook build -o storybook-static",
     "test:visual": "playwright test",
     "version": "node scripts/sync-versions.js && git add jsr.json",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push origin v$npm_package_version"
   },
   "peerDependencies": {
     "react": "^19.0.0",
