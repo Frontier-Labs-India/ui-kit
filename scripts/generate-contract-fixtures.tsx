@@ -13,7 +13,7 @@
  * Derived, never hand-written: regenerate with `npm run build:contract`. */
 import { renderToStaticMarkup } from 'react-dom/server'
 import React from 'react'
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 
 import { Badge } from '../src/components/badge'
@@ -62,8 +62,22 @@ for (const suite of SUITES) {
 }
 
 const OUT = resolve(import.meta.dirname, '../packages/svelte/src/__tests__/fixtures/contract.json')
-mkdirSync(dirname(OUT), { recursive: true })
-writeFileSync(OUT, JSON.stringify(fixture, null, 2) + '\n')
-
+const next = JSON.stringify(fixture, null, 2) + '\n'
 const total = Object.values(fixture).reduce((n, s) => n + Object.keys(s).length, 0)
-console.log(`[contract] ${Object.keys(fixture).length} component(s), ${total} case(s) -> ${OUT}`)
+
+// --check: fail if the committed fixture is stale. Without this the Svelte
+// tests happily assert yesterday's contract after a React change and stay
+// green — the same silent-drift shape as the hand-copied worker registry.
+if (process.argv.includes('--check')) {
+  const current = existsSync(OUT) ? readFileSync(OUT, 'utf8') : ''
+  if (current !== next) {
+    console.error('[contract] STALE: packages/svelte/.../contract.json does not match the React components.')
+    console.error('[contract] Run `npm run build:contract` and commit the result.')
+    process.exit(1)
+  }
+  console.log(`[contract] fresh: ${Object.keys(fixture).length} component(s), ${total} case(s)`)
+} else {
+  mkdirSync(dirname(OUT), { recursive: true })
+  writeFileSync(OUT, next)
+  console.log(`[contract] ${Object.keys(fixture).length} component(s), ${total} case(s) -> ${OUT}`)
+}

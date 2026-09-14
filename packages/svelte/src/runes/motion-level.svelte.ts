@@ -13,9 +13,13 @@ export function setMotionLevel(get: () => MotionLevel) {
  *    2. then the prop
  *    3. then context, whose default is 3
  *
- *  Returns a getter so the value is read at use time, which is what makes the
- *  media query re-evaluate the way React's re-render does. */
-export function getMotionLevel(override?: MotionLevel): () => MotionLevel {
+ *  The override is a GETTER, not a value. A component's <script> body runs once,
+ *  so `getMotionLevel(motion)` would snapshot the prop at init and a later
+ *  change would never reach the DOM — where React re-runs the hook every
+ *  render. Taking `() => motion` keeps the read inside the reactive graph, and
+ *  makes this symmetric with the context side, which is already a getter.
+ */
+export function getMotionLevel(override?: () => MotionLevel | undefined): () => MotionLevel {
   const fromContext = hasContext(MOTION_KEY)
     ? getContext<() => MotionLevel>(MOTION_KEY)
     : null
@@ -28,6 +32,6 @@ export function getMotionLevel(override?: MotionLevel): () => MotionLevel {
       return 0
     }
     // `??` not `||` — an override of 0 means "no motion", not "unset".
-    return override ?? fromContext?.() ?? DEFAULT_MOTION_LEVEL
+    return override?.() ?? fromContext?.() ?? DEFAULT_MOTION_LEVEL
   }
 }

@@ -50,7 +50,7 @@
   }: Props = $props()
 
   const cls = makeCls('badge')
-  const motionLevel = getMotionLevel(motion)
+  const motionLevel = getMotionLevel(() => motion)
 
   // `count !== undefined`, not `count ?` — a count of 0 must render as "0".
   const displayCount = $derived(

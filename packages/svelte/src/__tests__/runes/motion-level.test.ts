@@ -53,6 +53,16 @@ describe('getMotionLevel', () => {
     unmount(app)
   })
 
+  it('tracks a later change to the override, as React re-running the hook does', async () => {
+    // The override is a getter for exactly this reason: a component's <script>
+    // body runs once, so passing the value would snapshot it at init.
+    const { render: tlRender } = await import('@testing-library/svelte')
+    const { container, rerender } = tlRender(MotionProbe, { props: { override: 1 } })
+    expect(container.textContent).toBe('1')
+    await rerender({ override: 0 })
+    expect(container.textContent).toBe('0')
+  })
+
   it('ignores the media query when it does not match', () => {
     setReducedMotion(false)
     const { target, app } = render({})

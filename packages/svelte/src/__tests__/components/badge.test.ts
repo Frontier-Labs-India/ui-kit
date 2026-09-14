@@ -74,6 +74,13 @@ describe('Badge', () => {
     expect(el.getAttribute('title')).toBe('hi')
   })
 
+  it('reflects a motion prop change after mount', async () => {
+    const { container, rerender } = render(Badge, { props: { motion: 1 } })
+    expect(container.querySelector('.ui-badge')!.getAttribute('data-motion')).toBe('1')
+    await rerender({ motion: 0 })
+    expect(container.querySelector('.ui-badge')!.getAttribute('data-motion')).toBe('0')
+  })
+
   it('carries no style attribute — CSP forbids one', () => {
     const { container } = render(Badge, { props: { variant: 'primary', dot: true, pulse: true } })
     expect(container.querySelector('[style]')).toBeNull()
