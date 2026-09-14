@@ -17,10 +17,40 @@ import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 
 import { Badge } from '../src/components/badge'
+import { Accordion } from '../src/components/accordion'
+import { Checkbox } from '../src/components/checkbox'
 
 type Case = { name: string; props: Record<string, unknown> }
 
+/* Attributes whose values differ between the two frameworks by construction
+ * and carry no contract. React's useId and Svelte's $props.id() both generate
+ * unique strings; the contract is that the label points at the input, which
+ * the component's own tests assert. Comparing the literal value would fail
+ * against two correct implementations. */
+const IGNORED_ATTRS = ['id', 'aria-describedby']
+
 const SUITES: { component: string; render: (p: Record<string, unknown>) => string; cases: Case[] }[] = [
+  {
+    component: 'Accordion',
+    render: p => renderToStaticMarkup(React.createElement(Accordion, p as never)),
+    cases: [
+      { name: 'defaults', props: { items: [] } },
+      { name: 'variant+size', props: { items: [], variant: 'bordered', size: 'lg' } },
+      { name: 'motion override 0', props: { items: [], motion: 0 } },
+    ],
+  },
+  {
+    component: 'Checkbox',
+    render: p => renderToStaticMarkup(React.createElement(Checkbox, p as never)),
+    cases: [
+      { name: 'defaults', props: {} },
+      { name: 'size', props: { size: 'xl' } },
+      { name: 'indeterminate', props: { indeterminate: true } },
+      { name: 'disabled', props: { disabled: true } },
+      { name: 'error', props: { error: 'Required' } },
+      { name: 'motion override 0', props: { motion: 0 } },
+    ],
+  },
   {
     component: 'Badge',
     render: p => renderToStaticMarkup(React.createElement(Badge, p)),
@@ -43,7 +73,9 @@ function rootAttrs(html: string): Record<string, string> {
   const out: Record<string, string> = {}
   for (const pair of m[1].match(/[a-zA-Z-]+="[^"]*"/g) || []) {
     const i = pair.indexOf('=')
-    out[pair.slice(0, i)] = pair.slice(i + 2, -1)
+    const key = pair.slice(0, i)
+    if (IGNORED_ATTRS.includes(key)) continue
+    out[key] = pair.slice(i + 2, -1)
   }
   return out
 }

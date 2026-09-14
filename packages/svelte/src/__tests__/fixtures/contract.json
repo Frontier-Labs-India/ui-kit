@@ -1,4 +1,86 @@
 {
+  "Accordion": {
+    "defaults": {
+      "attrs": {
+        "class": "ui-accordion",
+        "data-motion": "3",
+        "data-variant": "default",
+        "data-size": "md"
+      },
+      "text": ""
+    },
+    "variant+size": {
+      "attrs": {
+        "class": "ui-accordion",
+        "data-motion": "3",
+        "data-variant": "bordered",
+        "data-size": "lg"
+      },
+      "text": ""
+    },
+    "motion override 0": {
+      "attrs": {
+        "class": "ui-accordion",
+        "data-motion": "0",
+        "data-variant": "default",
+        "data-size": "md"
+      },
+      "text": ""
+    }
+  },
+  "Checkbox": {
+    "defaults": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": ""
+    },
+    "size": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "xl",
+        "data-motion": "3"
+      },
+      "text": ""
+    },
+    "indeterminate": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "md",
+        "data-motion": "3",
+        "data-indeterminate": ""
+      },
+      "text": ""
+    },
+    "disabled": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "md",
+        "data-motion": "3",
+        "data-disabled": ""
+      },
+      "text": ""
+    },
+    "error": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "md",
+        "data-motion": "3",
+        "data-error": ""
+      },
+      "text": "Required"
+    },
+    "motion override 0": {
+      "attrs": {
+        "class": "ui-checkbox",
+        "data-size": "md",
+        "data-motion": "0"
+      },
+      "text": ""
+    }
+  },
   "Badge": {
     "defaults": {
       "attrs": {
