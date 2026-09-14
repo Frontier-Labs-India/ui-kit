@@ -1,0 +1,77 @@
+{
+  "Badge": {
+    "defaults": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": ""
+    },
+    "variant+size": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "danger",
+        "data-size": "xl",
+        "data-motion": "3"
+      },
+      "text": ""
+    },
+    "outline": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3",
+        "data-outline": "true"
+      },
+      "text": ""
+    },
+    "dot+pulse": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": ""
+    },
+    "count over max": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": "99+"
+    },
+    "count zero": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": "0"
+    },
+    "motion override 0": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "0"
+      },
+      "text": ""
+    },
+    "removable": {
+      "attrs": {
+        "class": "ui-badge",
+        "data-variant": "default",
+        "data-size": "md",
+        "data-motion": "3"
+      },
+      "text": ""
+    }
+  }
+}

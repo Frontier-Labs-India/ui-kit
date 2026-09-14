@@ -69,6 +69,7 @@
   "scripts": {
     "build": "tsup && tsup --config tsup.cli.config.ts && tsup --config tsup.mcp.config.ts && node scripts/extract-css.js && npx tsx scripts/extract-component-meta.ts && npm run build:registry && npm run sync:registry",
     "build:meta": "npx tsx scripts/extract-component-meta.ts",
+    "build:contract": "npx tsx scripts/generate-contract-fixtures.tsx",
     "build:registry": "node dist/mcp/scripts/build-registry.js",
     "sync:registry": "node scripts/sync-worker-registry.js",
     "build:mcp": "tsup --config tsup.mcp.config.ts && npm run build:registry",
