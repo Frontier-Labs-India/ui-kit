@@ -18,8 +18,20 @@ import fixture from '../fixtures/contract.json'
 
 const IGNORED_ATTRS = ['id', 'aria-describedby']
 
+/* Drawer and Tooltip are deliberately absent from the fixture.
+ *
+ * The generator captures React's output with renderToStaticMarkup, and neither
+ * component has a server-rendered root to capture: Drawer returns null unless
+ * `open` AND `typeof document !== 'undefined'`, and Tooltip's root is a
+ * fragment whose panel only exists once hover state is set — which SSR never
+ * runs. Their DOM contracts are asserted directly in drawer.test.ts and
+ * tooltip.test.ts instead, against the attributes read from the React source.
+ *
+ * Moving the generator into jsdom would let both join this fixture. Worth
+ * doing before the count grows; not worth blocking 0.1.0 on. */
+
 type FixtureCase = { attrs: Record<string, string>; text: string }
-const f = fixture as Record<string, Record<string, FixtureCase>>
+const f = (fixture as { components: Record<string, Record<string, FixtureCase>> }).components
 
 const SUITES: { name: string; component: Component<any>; root: string; cases: Record<string, Record<string, unknown>> }[] = [
   {

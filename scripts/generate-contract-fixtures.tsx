@@ -19,6 +19,8 @@ import { resolve, dirname } from 'node:path'
 import { Badge } from '../src/components/badge'
 import { Accordion } from '../src/components/accordion'
 import { Checkbox } from '../src/components/checkbox'
+import { useStyles } from '../src/core/styles/use-styles'
+import { css } from '../src/core/styles/css-tag'
 
 type Case = { name: string; props: Record<string, unknown> }
 
@@ -82,6 +84,41 @@ function rootAttrs(html: string): Record<string, string> {
 
 const fixture: Record<string, Record<string, { attrs: Record<string, string>; text: string }>> = {}
 
+/* The class builder's output, captured from React's useStyles for the part
+ * combinations the components themselves never produce. The Svelte package
+ * copies those nine pure lines rather than importing them — importing would put
+ * React in a Svelte bundle — so this is what keeps the copy honest.
+ *
+ * Captured through the fixture rather than by importing across packages,
+ * because tsconfig's rootDir is src/ and a cross-package import breaks the
+ * typecheck. Derived either way; this way it compiles. */
+const CLS_PARTS: (string | false | null | undefined | 0 | '')[][] = [
+  ['root'],
+  ['dot'],
+  ['root', 'dot'],
+  ['root', false, 'icon'],
+  [''],
+  [0],
+  ['root', null, undefined, 0, '', 'remove'],
+  ['icon', 'dot', 'remove'],
+]
+
+const noop = css`.x{}`
+
+// Rendered through SSR rather than renderHook: this script runs in plain Node
+// with no DOM, and renderToStaticMarkup runs useCallback fine (only effects are
+// skipped, and the class builder does not use one).
+function ClsProbe({ parts }: { parts: (string | false | null | undefined | 0 | '')[] }) {
+  const cls = useStyles('badge', noop)
+  return React.createElement('i', null, cls(...parts))
+}
+
+const clsFixture: { parts: unknown[]; expected: string }[] = []
+for (const parts of CLS_PARTS) {
+  const html = renderToStaticMarkup(React.createElement(ClsProbe, { parts }))
+  clsFixture.push({ parts, expected: html.replace(/<[^>]*>/g, '') })
+}
+
 for (const suite of SUITES) {
   fixture[suite.component] = {}
   for (const c of suite.cases) {
@@ -94,7 +131,7 @@ for (const suite of SUITES) {
 }
 
 const OUT = resolve(import.meta.dirname, '../packages/svelte/src/__tests__/fixtures/contract.json')
-const next = JSON.stringify(fixture, null, 2) + '\n'
+const next = JSON.stringify({ components: fixture, cls: clsFixture }, null, 2) + '\n'
 const total = Object.values(fixture).reduce((n, s) => n + Object.keys(s).length, 0)
 
 // --check: fail if the committed fixture is stale. Without this the Svelte
