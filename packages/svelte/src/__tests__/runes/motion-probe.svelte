@@ -1,0 +1,6 @@
+<script lang="ts">
+  import { getMotionLevel } from '../../runes/motion-level.svelte'
+  let { override }: { override?: 0 | 1 | 2 | 3 } = $props()
+  const level = getMotionLevel(override)
+</script>
+<span>{level()}</span>
