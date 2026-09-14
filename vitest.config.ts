@@ -8,6 +8,9 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/__tests__/setup.ts'],
     css: true,
-    exclude: ['**/node_modules/**', '**/dist/**', '**/visual/**', '**/*.spec.ts'],
+    // packages/* are workspaces with their own vitest configs and their own
+    // plugins. Without this the root run globs packages/svelte's tests and
+    // fails to transform .svelte files, having no svelte plugin loaded.
+    exclude: ['**/node_modules/**', '**/dist/**', '**/visual/**', '**/*.spec.ts', '**/packages/**'],
   },
 })

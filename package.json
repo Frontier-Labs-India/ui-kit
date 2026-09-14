@@ -2,6 +2,9 @@
   "name": "@frontier-labs/ui-kit",
   "version": "3.0.0",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "A zero-dependency React component library with built-in theming, motion, and accessibility.",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
