@@ -108,6 +108,30 @@ function kebabToPascal(name: string): string {
   return name.replace(/(^|-)([a-z])/g, (_, __, c: string) => c.toUpperCase())
 }
 
+/* The component's name is what its file EXPORTS, not a transformation of the
+ * file name. Deriving it from the file name produced names that were not
+ * exports — card-3d became `Card-3d` (a digit after the hyphen defeats the
+ * case rule), and pipeline-dag, csv-export and toast became PipelineDag,
+ * CsvExport and Toast where the exports are PipelineDAG, CSVExportButton and
+ * ToastProvider — so the documented import line did not compile.
+ *
+ * Rule: among the file's exported PascalCase values (hooks excluded), take the
+ * one equal to the file name ignoring case and hyphens; failing that, the only
+ * one there is. Anything else is ambiguous and fails the build rather than
+ * guessing. */
+function componentNameFor(filePath: string, fileName: string): string {
+  const src = readFileSync(filePath, 'utf8')
+  const exported = [...src.matchAll(/^export\s+(?:const|function|class)\s+([A-Z][A-Za-z0-9_]*)/gm)].map(m => m[1])
+  const key = fileName.replace(/-/g, '').toLowerCase()
+  const exact = exported.filter(n => n.toLowerCase() === key)
+  if (exact.length === 1) return exact[0]
+  if (exported.length === 1) return exported[0]
+  throw new Error(
+    `[extract-component-meta] cannot determine the component exported by ${fileName}.tsx — ` +
+    `PascalCase exports: ${exported.join(', ') || 'none'}; derived guess was ${kebabToPascal(fileName)}`
+  )
+}
+
 function discoverComponents(): ComponentMeta[] {
   const components: ComponentMeta[] = []
 
@@ -119,8 +143,8 @@ function discoverComponents(): ComponentMeta[] {
       const fileName = basename(file, '.tsx')
       if (fileName === 'index' || fileName === 'ui-provider') continue
 
-      const componentName = kebabToPascal(fileName)
       const filePath = resolve(dir, file)
+      const componentName = componentNameFor(filePath, fileName)
 
       const tiers: ('lite' | 'standard' | 'premium')[] = ['standard']
       if (existsSync(resolve(LITE_DIR, file))) tiers.unshift('lite')
