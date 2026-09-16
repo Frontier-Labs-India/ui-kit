@@ -14,7 +14,7 @@
 
 export type CssPropValue = string | number | null | undefined
 
-export function cssProps(node: HTMLElement, props: Record<string, CssPropValue>) {
+export function cssProps(node: HTMLElement | SVGElement, props: Record<string, CssPropValue>) {
   let applied: Record<string, CssPropValue> = {}
 
   const apply = (next: Record<string, CssPropValue> = {}) => {

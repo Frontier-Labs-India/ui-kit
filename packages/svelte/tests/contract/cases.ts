@@ -253,4 +253,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller style': { style: { width: 300 }, children: ['x'] },
     'motion 0': { motion: 0, children: ['x'] },
   },
+  BackgroundBeams: {
+    few: { count: 3 },
+    'color, content, style': { count: 1, color: 'cyan', style: { minHeight: 120 }, children: { $el: 'hero' } },
+    'no style at all': { count: 2 },
+    'motion 0': { count: 1, motion: 0 },
+  },
+  WavyBackground: {
+    two: { waveCount: 2 },
+    'color speed content': { waveCount: 1, speed: 4, color: 'teal', children: { $el: 'hero' } },
+    'caller style': { waveCount: 1, style: { height: 240 } },
+    'motion 0': { waveCount: 1, motion: 0 },
+  },
 }

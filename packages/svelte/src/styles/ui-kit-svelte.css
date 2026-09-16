@@ -318,6 +318,89 @@
   }
 /* end app-shell */
 
+/* background-beams */
+@layer components {
+    @scope (.ui-background-beams) {
+      :scope {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .ui-background-beams--beam {
+        position: absolute;
+        inset: 0;
+        inline-size: 2px;
+        block-size: 200%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--beam-color, oklch(75% 0.15 270 / 0.3)),
+          transparent
+        );
+        transform-origin: center center;
+        transform: rotate(var(--beam-angle, 30deg))
+          translate(var(--beam-start-x, 0px), var(--beam-start-y, -100%));
+        animation: ui-beam-sweep var(--beam-duration, 8s) linear infinite;
+        animation-delay: var(--beam-delay, 0s);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .ui-background-beams--content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Motion 0: no beams */
+      :scope[data-motion="0"] .ui-background-beams--beam {
+        display: none;
+      }
+
+      @keyframes ui-beam-sweep {
+        0% {
+          opacity: 0;
+          transform: rotate(var(--beam-angle, 30deg))
+            translate(var(--beam-start-x, -200px), -120%);
+        }
+        10% {
+          opacity: 0.8;
+        }
+        80% {
+          opacity: 0.8;
+        }
+        100% {
+          opacity: 0;
+          transform: rotate(var(--beam-angle, 30deg))
+            translate(var(--beam-end-x, 200px), 120%);
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-background-beams--beam {
+          display: none;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-background-beams--beam {
+          display: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-background-beams--beam {
+          display: none;
+        }
+      }
+    }
+  }
+/* end background-beams */
+
 /* background-boxes */
 @layer components {
     @scope (.ui-background-boxes) {
@@ -4020,6 +4103,72 @@
     }
   }
 /* end view-transition-link */
+
+/* wavy-background */
+@layer components {
+    @scope (.ui-wavy-background) {
+      :scope {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .ui-wavy-background--svg {
+        position: absolute;
+        inset: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .ui-wavy-background--wave {
+        animation: ui-wave-shift var(--wave-speed, 10s) linear infinite;
+        animation-delay: var(--wave-delay, 0s);
+      }
+
+      .ui-wavy-background--content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Motion 0: static waves */
+      :scope[data-motion="0"] .ui-wavy-background--wave {
+        animation: none;
+      }
+
+      @keyframes ui-wave-shift {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-wavy-background--wave {
+          animation: none;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-wavy-background--svg {
+          display: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-wavy-background--svg {
+          display: none;
+        }
+      }
+    }
+  }
+/* end wavy-background */
 
 /* svelte-only */
 /* Rules the Svelte package needs and the React package does not.

@@ -6,7 +6,6 @@
   "Avatar",
   "AvatarUpload",
   "BackToTop",
-  "BackgroundBeams",
   "Breadcrumbs",
   "Button",
   "CSVExportButton",
@@ -124,6 +123,5 @@
   "UpstreamDashboard",
   "UptimeTracker",
   "UtilizationBar",
-  "VlanBusBar",
-  "WavyBackground"
+  "VlanBusBar"
 ]
