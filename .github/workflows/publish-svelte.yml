@@ -42,6 +42,7 @@ jobs:
       - run: npm run test:contract-fresh
       - run: npm run test:vendor-fresh
       - run: npm run test:svelte-css-fresh
+      - run: npm run test:unitless-fresh
       - uses: actions/upload-artifact@v4
         with:
           name: svelte-dist

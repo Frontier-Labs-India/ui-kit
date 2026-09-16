@@ -79,8 +79,31 @@ const cls = CLS_PARTS.map(parts => ({
   expected: renderToStaticMarkup(React.createElement(ClsProbe, { parts })).replace(/<[^>]*>/g, ''),
 }))
 
+/* React's style-object serialisation, for lib/react-style.ts to be checked
+ * against. Every unitless property with a number, a spread of unit-taking ones,
+ * custom properties, 0, trimming, skipped values and vendor prefixes. The
+ * Svelte side compares declaration text, not a jsdom style object — jsdom
+ * drops properties it does not know, which would test jsdom, not the helper. */
+const unitlessSrc = readFileSync(resolve(ROOT, 'packages/svelte/src/lib/unitless.generated.ts'), 'utf8')
+const unitless: string[] = JSON.parse(unitlessSrc.slice(unitlessSrc.indexOf('['), unitlessSrc.lastIndexOf(']') + 1))
+const STYLE_OBJECTS: Record<string, unknown>[] = [
+  ...unitless.map(name => ({ [name]: 2 })),
+  { width: 50, height: 0, marginInlineStart: 12.5, inlineSize: -4, borderTopLeftRadius: 3 },
+  { '--custom': 7, '--gap': ' 1rem ', '--zero': 0 },
+  { width: '50%', color: '  red  ', transform: 'translateX(4px) scale(1.2)' },
+  { opacity: 0, zIndex: 10, lineHeight: 1.5, flexGrow: 1, fontWeight: 600 },
+  { width: null, height: undefined, color: false, opacity: true, margin: '', padding: 4 },
+  { msTransform: 'none', WebkitLineClamp: 3, MozAppearance: 'none', WebkitTransition: 'none' },
+  { backgroundColor: 'oklch(65% 0.2 270)', gridTemplateColumns: 'repeat(3, 1fr)' },
+]
+const styles = STYLE_OBJECTS.map(obj => {
+  const html = renderToStaticMarkup(React.createElement('i', { style: obj }))
+  const m = html.match(/style="([^"]*)"/)
+  return { obj, css: m ? m[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&') : '' }
+})
+
 const OUT = resolve(ROOT, 'packages/svelte/tests/fixtures/contract.json')
-const next = JSON.stringify({ version: 2, components, cls }, null, 2) + '\n'
+const next = JSON.stringify({ version: 2, components, cls, styles }, null, 2) + '\n'
 const total = Object.values(components).reduce((n, s) => n + Object.keys(s).length, 0)
 const summary = `${Object.keys(components).length} component(s), ${total} case(s)`
 

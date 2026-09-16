@@ -69,7 +69,9 @@
   "scripts": {
     "build": "tsup && tsup --config tsup.cli.config.ts && tsup --config tsup.mcp.config.ts && node scripts/extract-css.js && npx tsx scripts/extract-component-meta.ts && npm run build:registry && npm run sync:registry",
     "build:meta": "npx tsx scripts/extract-component-meta.ts",
-    "build:svelte": "npm run vendor:core && npm run build:svelte-css && npm -w @frontier-labs/ui-kit-svelte run build",
+    "build:unitless": "node scripts/extract-react-unitless.js",
+    "test:unitless-fresh": "node scripts/extract-react-unitless.js --check",
+    "build:svelte": "npm run build:unitless && npm run vendor:core && npm run build:svelte-css && npm -w @frontier-labs/ui-kit-svelte run build",
     "test:svelte": "npm -w @frontier-labs/ui-kit-svelte run test",
     "check:svelte": "npm -w @frontier-labs/ui-kit-svelte run check",
     "test:svelte-no-react": "node scripts/check-svelte-no-react.js",
