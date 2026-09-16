@@ -9,6 +9,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    // Same as the fixture generator: local-time formatting must not depend on
+    // the machine running the tests.
+    env: { TZ: 'UTC' },
     setupFiles: ['./tests/setup.ts'],
     include: ['tests/**/*.test.ts'],
   },

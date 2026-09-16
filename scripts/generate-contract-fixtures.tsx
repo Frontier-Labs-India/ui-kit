@@ -12,6 +12,10 @@
  * Cases:     packages/svelte/tests/contract/cases.ts
  * Fixture:   packages/svelte/tests/fixtures/contract.json
  * Derived, never hand-written: `npm run build:contract`; `--check` fails if stale. */
+// Pinned so components that format dates in local time (TimeRangeSelector)
+// render the same fixture on every machine; the Svelte suite pins it too.
+process.env.TZ = 'UTC'
+
 import { renderToStaticMarkup } from 'react-dom/server'
 import React from 'react'
 import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'

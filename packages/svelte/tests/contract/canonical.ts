@@ -12,6 +12,10 @@
  *   - how a checkbox's checked state is carried: server HTML has a `checked`
  *     attribute, a client render sets the `.checked` property and no attribute.
  *     Both mean the same, so an input's checked state is read from either.
+ *   - likewise a text-like input's value: server HTML has `value="…"` (even
+ *     `value=""`), a client render sets .value. Read from the property, and an
+ *     empty value is the same as none. Checkbox and radio keep the attribute —
+ *     there `value` is the submitted value, meaningful even when unchecked.
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -66,6 +70,12 @@ export function canonical(root: ParentNode): string {
         .map(a => [a.name.toLowerCase(), a.value] as const)
         .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement))
       if (el instanceof HTMLInputElement && (el.checked || el.hasAttribute('checked'))) raw.push(['checked', ''])
+      if (el instanceof HTMLInputElement && !['checkbox', 'radio'].includes(el.type)) {
+        const i = raw.findIndex(([n]) => n === 'value')
+        if (i >= 0) raw.splice(i, 1)
+        const v = el.value || el.getAttribute('value') || ''
+        if (v) raw.push(['value', v])
+      }
       // id first, so a reference later on the same element resolves consistently
       const attrs = raw
         .sort(([a], [b]) => (a === 'id' ? -1 : b === 'id' ? 1 : a < b ? -1 : a > b ? 1 : 0))

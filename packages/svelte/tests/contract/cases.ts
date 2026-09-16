@@ -329,4 +329,32 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'explicit id and rest to input': { label: 'Wi-Fi', id: 'wifi', name: 'wifi' },
     'motion 0': { label: 'x', motion: 0 },
   },
+  Breadcrumbs: {
+    three: { items: [{ label: 'Home', href: '/' }, { label: 'Docs', href: '/docs' }, { label: 'Now' }] },
+    'custom separator, icons, element label': {
+      separator: '/',
+      items: [{ label: 'Home', href: '/', icon: { $el: 'h' } }, { label: { $el: 'Docs' } }, { label: 'Now', icon: 'x' }],
+    },
+    'collapsed to maxVisible 3': {
+      maxVisible: 3,
+      items: [{ label: 'A', href: '/a' }, { label: 'B', href: '/b' }, { label: 'C', href: '/c' }, { label: 'D', href: '/d' }, { label: 'E' }],
+    },
+    'maxVisible not exceeded': { maxVisible: 5, items: [{ label: 'A', href: '/a' }, { label: 'B' }] },
+    'item without href gets #': { items: [{ label: 'A' }, { label: 'B' }] },
+    single: { items: [{ label: 'Only' }] },
+  },
+  TimeRangeSelector: {
+    'default presets': {},
+    'custom presets, one active': {
+      presets: [{ label: 'Day', value: 'd', range: [0, 86400000] }, { label: 'Week', value: 'w', range: [0, 604800000] }],
+      value: [0, 86400000],
+    },
+    'show custom with value (UTC)': {
+      presets: [{ label: 'Day', value: 'd', range: [0, 86400000] }],
+      value: [1767225600000, 1767312000000],
+      showCustom: true,
+    },
+    'show custom without value': { presets: [], showCustom: true },
+    'motion 0': { presets: [], motion: 0 },
+  },
 }
