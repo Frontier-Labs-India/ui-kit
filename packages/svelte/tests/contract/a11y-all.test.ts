@@ -1,0 +1,71 @@
+import { describe, it, expect } from 'vitest'
+import { render } from '@testing-library/svelte'
+import { createRawSnippet, type Component } from 'svelte'
+import { axe } from 'jest-axe'
+import * as pkg from '../../src/index.js'
+import fixture from '../fixtures/contract.json'
+
+/* jest-axe over every case of every contract-tested component — not a
+ * hand-picked few — so each new port is checked without writing a test.
+ *
+ * Because the contract test proves these trees equal React's, a violation here
+ * is present in the React package too. Such a violation is recorded in
+ * INHERITED with its reason rather than hidden; fixing it belongs in both
+ * packages at once, or the contract would break. */
+
+type Fx = { components: Record<string, Record<string, { props: unknown; html: string }>> }
+const f = fixture as unknown as Fx
+
+function hydrate(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(hydrate)
+  if (value && typeof value === 'object') {
+    const v = value as Record<string, unknown>
+    if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
+    if ('$fn' in v) return () => {}
+    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
+  }
+  return value
+}
+
+const CALLER_MUST_NAME =
+  'case deliberately omits the accessible name, which only the caller can supply — ' +
+  'the contract cases exercise markup, including this unlabelled form'
+const PULSE_DEFECT =
+  'DEFECT in both packages: StatusPulse hard-codes role="img" but `label` is optional, so every ' +
+  'unlabelled use is an image with no name. Fix together (require label, or drop the role without one) ' +
+  'or the DOM contract breaks'
+
+/** `Component/case/rule-id` -> why it is accepted for now. */
+const INHERITED: Record<string, string> = {
+  'Checkbox/defaults/label': CALLER_MUST_NAME,
+  'Checkbox/disabled/label': CALLER_MUST_NAME,
+  'Checkbox/indeterminate/label': CALLER_MUST_NAME,
+  'Checkbox/motion 0/label': CALLER_MUST_NAME,
+  'Link/external defaults/link-name': CALLER_MUST_NAME,
+  'Link/external keeps caller target and rel/link-name': CALLER_MUST_NAME,
+  'Link/not external passes target through/link-name': CALLER_MUST_NAME,
+  'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
+  'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
+  'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,
+}
+
+describe('accessibility — every contract case', () => {
+  const seen = new Set<string>()
+
+  for (const [name, cases] of Object.entries(f.components)) {
+    for (const [caseName, { props }] of Object.entries(cases)) {
+      it(`${name} / ${caseName}`, async () => {
+        const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
+        const { container } = render(Comp, { props: hydrate(props) as Record<string, unknown> })
+        expect(container.innerHTML.length).toBeGreaterThan(0)
+        const found = (await axe(container)).violations.map(v => `${name}/${caseName}/${v.id}`)
+        found.forEach(k => seen.add(k))
+        expect(found.filter(k => !(k in INHERITED))).toEqual([])
+      })
+    }
+  }
+
+  it('has no stale INHERITED entries', () => {
+    expect(Object.keys(INHERITED).filter(k => !seen.has(k))).toEqual([])
+  })
+})
