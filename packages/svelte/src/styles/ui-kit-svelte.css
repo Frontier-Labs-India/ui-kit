@@ -857,6 +857,109 @@
   }
 /* end checkbox */
 
+/* confidence-bar */
+@layer components {
+    @scope (.ui-confidence-bar) {
+      :scope {
+        display: flex;
+        min-inline-size: 200px;
+        flex-direction: column;
+        gap: var(--space-2xs, 0.25rem);
+      }
+
+      .ui-confidence-bar__header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: var(--space-xs, 0.5rem);
+      }
+
+      .ui-confidence-bar__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      .ui-confidence-bar__value {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-confidence-bar__track {
+        position: relative;
+        block-size: 8px;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--bg-inset, oklch(18% 0.01 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.06));
+        overflow: hidden;
+      }
+
+      :scope[data-size="sm"] .ui-confidence-bar__track {
+        block-size: 4px;
+      }
+      :scope[data-size="lg"] .ui-confidence-bar__track {
+        block-size: 12px;
+      }
+
+      .ui-confidence-bar__fill {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: 0;
+        border-radius: inherit;
+        transition: inline-size 0.3s var(--ease-out, ease-out);
+      }
+
+      :scope[data-motion="0"] .ui-confidence-bar__fill {
+        transition: none;
+      }
+
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-confidence-bar__fill {
+        transition: inline-size 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      /* Level colors */
+      :scope[data-level="low"] .ui-confidence-bar__fill {
+        background: oklch(62% 0.22 25);
+      }
+      :scope[data-level="medium"] .ui-confidence-bar__fill {
+        background: oklch(80% 0.18 85);
+      }
+      :scope[data-level="high"] .ui-confidence-bar__fill {
+        background: oklch(72% 0.19 155);
+      }
+
+      /* Aurora glow on fill */
+      .ui-confidence-bar__fill::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(
+          to right,
+          transparent,
+          oklch(100% 0 0 / 0.15)
+        );
+        pointer-events: none;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-confidence-bar__track {
+          border: 1px solid ButtonText;
+        }
+        .ui-confidence-bar__fill {
+          background: Highlight;
+        }
+        .ui-confidence-bar__fill::after {
+          display: none;
+        }
+      }
+    }
+  }
+/* end confidence-bar */
+
 /* divider */
 @layer components {
     @scope (.ui-divider) {
@@ -1162,6 +1265,148 @@
     }
   }
 /* end drawer */
+
+/* indicator */
+@layer components {
+    @scope (.ui-indicator) {
+      :scope {
+        position: relative;
+        display: inline-flex;
+      }
+
+      :scope[data-inline="true"] {
+        display: inline-flex;
+      }
+
+      /* Indicator dot/badge */
+      .ui-indicator__dot {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--radius-full, 9999px);
+        z-index: 1;
+        pointer-events: none;
+        line-height: 1;
+        font-size: var(--text-xs, 0.6875rem);
+        font-weight: 700;
+        font-family: inherit;
+        white-space: nowrap;
+      }
+
+      /* Position — top-end (default) */
+      :scope[data-position="top-end"] .ui-indicator__dot {
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        translate: 50% -50%;
+      }
+      :scope[data-position="top-start"] .ui-indicator__dot {
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        translate: -50% -50%;
+      }
+      :scope[data-position="bottom-end"] .ui-indicator__dot {
+        inset-block-end: 0;
+        inset-inline-end: 0;
+        translate: 50% 50%;
+      }
+      :scope[data-position="bottom-start"] .ui-indicator__dot {
+        inset-block-end: 0;
+        inset-inline-start: 0;
+        translate: -50% 50%;
+      }
+
+      /* Colors */
+      :scope[data-color="primary"] .ui-indicator__dot {
+        background: var(--brand, oklch(65% 0.2 270));
+        color: var(--text-on-brand, oklch(100% 0 0));
+      }
+      :scope[data-color="success"] .ui-indicator__dot {
+        background: var(--status-ok, oklch(72% 0.19 155));
+        color: oklch(20% 0 0);
+      }
+      :scope[data-color="warning"] .ui-indicator__dot {
+        background: var(--status-warning, oklch(80% 0.18 85));
+        color: oklch(20% 0 0);
+      }
+      :scope[data-color="danger"] .ui-indicator__dot {
+        background: var(--status-critical, oklch(65% 0.25 25));
+        color: oklch(100% 0 0);
+      }
+      :scope[data-color="info"] .ui-indicator__dot {
+        background: var(--status-info, oklch(65% 0.2 240));
+        color: oklch(100% 0 0);
+      }
+
+      /* Border for contrast */
+      .ui-indicator__dot[data-bordered="true"] {
+        border: 2px solid var(--bg-base, oklch(15% 0 0));
+      }
+
+      /* Label inside indicator — needs min width */
+      .ui-indicator__dot[data-has-label="true"] {
+        padding-inline: 0.35em;
+        min-inline-size: 1.25em;
+      }
+
+      /* Pulse animation — processing */
+      .ui-indicator__dot[data-processing="true"] {
+        position: absolute;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-indicator__dot[data-processing="true"]::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: var(--radius-full, 9999px);
+        background: inherit;
+        opacity: 0;
+        animation: ui-indicator-pulse 1.5s var(--ease-out, ease-out) infinite;
+      }
+
+      /* Disabled — hide indicator */
+      :scope[data-disabled="true"] .ui-indicator__dot {
+        display: none;
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        :scope {
+          min-block-size: 28px;
+          min-inline-size: 28px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-indicator__dot {
+          border: 2px solid ButtonText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-indicator__dot {
+          border: 1px solid;
+          box-shadow: none;
+        }
+        .ui-indicator__dot[data-processing="true"]::after {
+          animation: none;
+        }
+      }
+    }
+
+    @keyframes ui-indicator-pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(2.5);
+        opacity: 0;
+      }
+    }
+  }
+/* end indicator */
 
 /* kbd */
 @layer components {
@@ -1597,6 +1842,178 @@
     }
   }
 /* end page-shell */
+
+/* progress */
+@layer components {
+    @scope (.ui-progress) {
+      :scope {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        inline-size: 100%;
+      }
+
+      /* Track */
+      .ui-progress__track {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--bg-surface, oklch(25% 0.02 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      /* Track sizes */
+      :scope[data-size="xs"] .ui-progress__track {
+        block-size: 2px;
+      }
+      :scope[data-size="sm"] .ui-progress__track {
+        block-size: 4px;
+      }
+      :scope[data-size="md"] .ui-progress__track {
+        block-size: 8px;
+      }
+      :scope[data-size="lg"] .ui-progress__track {
+        block-size: 12px;
+      }
+      :scope[data-size="xl"] .ui-progress__track {
+        block-size: 16px;
+      }
+
+      /* Fill */
+      .ui-progress__fill {
+        block-size: 100%;
+        border-radius: inherit;
+        position: relative;
+        overflow: hidden;
+        transition: inline-size 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Spring easing for motion level 2+ */
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-progress__fill {
+        transition: inline-size 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Shimmer on indeterminate — motion level 1+ */
+      :scope[data-indeterminate]:not([data-motion="0"]) .ui-progress__fill::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          oklch(100% 0 0 / 0.15) 50%,
+          transparent 100%
+        );
+        animation: ui-progress-shimmer 1.5s ease-in-out infinite;
+      }
+
+      /* Variant colors */
+      :scope[data-variant="default"] .ui-progress__fill {
+        background: linear-gradient(
+          90deg,
+          var(--brand, oklch(65% 0.2 270)),
+          oklch(from var(--brand, oklch(65% 0.2 270)) calc(l + 0.08) c h)
+        );
+      }
+      :scope[data-variant="success"] .ui-progress__fill {
+        background: linear-gradient(
+          90deg,
+          var(--status-ok, oklch(72% 0.19 155)),
+          oklch(from var(--status-ok, oklch(72% 0.19 155)) calc(l + 0.08) c h)
+        );
+      }
+      :scope[data-variant="warning"] .ui-progress__fill {
+        background: linear-gradient(
+          90deg,
+          var(--status-warning, oklch(80% 0.18 85)),
+          oklch(from var(--status-warning, oklch(80% 0.18 85)) calc(l + 0.08) c h)
+        );
+      }
+      :scope[data-variant="danger"] .ui-progress__fill {
+        background: linear-gradient(
+          90deg,
+          var(--status-critical, oklch(65% 0.25 25)),
+          oklch(from var(--status-critical, oklch(65% 0.25 25)) calc(l + 0.08) c h)
+        );
+      }
+
+      /* Indeterminate animation */
+      :scope[data-indeterminate] .ui-progress__fill {
+        inline-size: 40% !important;
+        animation: ui-progress-indeterminate 1.5s var(--ease-in-out, ease-in-out) infinite;
+      }
+
+      :scope[data-indeterminate][data-motion="0"] .ui-progress__fill {
+        animation: none;
+        inline-size: 100% !important;
+        opacity: 0.3;
+      }
+
+      /* Value text */
+      .ui-progress__value {
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 600;
+        color: var(--text-secondary, oklch(70% 0 0));
+        white-space: nowrap;
+        min-inline-size: 3ch;
+        text-align: end;
+        font-family: inherit;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-progress__fill {
+          transition: none !important;
+          animation: none !important;
+        }
+        .ui-progress__fill::after {
+          animation: none !important;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-progress__track {
+          border: 2px solid ButtonText;
+        }
+        .ui-progress__fill {
+          background: Highlight;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-progress__track {
+          border: 1px solid;
+        }
+        .ui-progress__fill {
+          animation: none;
+          background: currentColor;
+          opacity: 0.5;
+        }
+      }
+
+      /* Reduced data */
+      @media (prefers-reduced-data: reduce) {
+        .ui-progress__fill {
+          animation: none;
+        }
+      }
+    }
+
+    @keyframes ui-progress-indeterminate {
+      0% { margin-inline-start: -40%; }
+      100% { margin-inline-start: 100%; }
+    }
+
+    @keyframes ui-progress-shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  }
+/* end progress */
 
 /* section-header */
 @layer components {

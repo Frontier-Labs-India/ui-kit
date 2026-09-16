@@ -227,6 +227,56 @@
         "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"0\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
       }
     },
+    "ConfidenceBar": {
+      "medium": {
+        "props": {
+          "value": 0.5
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"medium\" role=\"meter\" aria-valuenow=\"0.5\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">50%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:50%\"></div></div></div>"
+      },
+      "low string label lg": {
+        "props": {
+          "value": 0.12,
+          "label": "Match",
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"lg\" data-level=\"low\" role=\"meter\" aria-valuenow=\"0.12\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Match\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__label\">Match</span><span class=\"ui-confidence-bar__value\">12%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:12%\"></div></div></div>"
+      },
+      "high element label, no value": {
+        "props": {
+          "value": 0.93,
+          "label": {
+            "$el": "Score"
+          },
+          "showValue": false
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"0.93\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__label\"><b>Score</b></span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:93%\"></div></div></div>"
+      },
+      "no header": {
+        "props": {
+          "value": 0.7,
+          "showValue": false
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"0.7\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:70%\"></div></div></div>"
+      },
+      "custom thresholds": {
+        "props": {
+          "value": 0.4,
+          "thresholds": {
+            "low": 0.5,
+            "medium": 0.9
+          }
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"low\" role=\"meter\" aria-valuenow=\"0.4\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">40%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:40%\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"0\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">100%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:100%\"></div></div></div>"
+      }
+    },
     "Divider": {
       "defaults": {
         "props": {},
@@ -266,6 +316,65 @@
           "title": "split"
         },
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "Indicator": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "avatar"
+          }
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span><b>avatar</b></div>"
+      },
+      "numeric label bottom-start offset": {
+        "props": {
+          "label": 3,
+          "position": "bottom-start",
+          "offset": 4,
+          "children": {
+            "$el": "avatar"
+          }
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"bottom-start\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" style=\"margin-inline-start:4px;margin-block-end:4px\" aria-hidden=\"true\">3</span><b>avatar</b></div>"
+      },
+      "zero label": {
+        "props": {
+          "label": 0
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" aria-hidden=\"true\">0</span></div>"
+      },
+      "size and flags": {
+        "props": {
+          "size": 14,
+          "processing": true,
+          "disabled": true,
+          "inline": true,
+          "withBorder": true,
+          "color": "danger"
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"danger\" data-position=\"top-end\" data-motion=\"3\" data-inline=\"true\" data-disabled=\"true\"><span class=\"ui-indicator__dot\" data-processing=\"true\" data-bordered=\"true\" style=\"inline-size:14px;block-size:14px\" aria-hidden=\"true\"></span></div>"
+      },
+      "top-start offset": {
+        "props": {
+          "position": "top-start",
+          "offset": 2
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-start\" data-motion=\"3\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px;margin-inline-start:2px;margin-block-start:2px\" aria-hidden=\"true\"></span></div>"
+      },
+      "bottom-end offset, labelled": {
+        "props": {
+          "position": "bottom-end",
+          "offset": 6,
+          "label": "new"
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"bottom-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" style=\"margin-inline-end:6px;margin-block-end:6px\" aria-hidden=\"true\">new</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"0\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span></div>"
       }
     },
     "Kbd": {
@@ -423,6 +532,49 @@
           "id": "shell"
         },
         "html": "<div class=\"ui-page-shell\" data-max-width=\"full\" data-padding=\"lg\" id=\"shell\"></div>"
+      }
+    },
+    "Progress": {
+      "indeterminate": {
+        "props": {},
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-indeterminate=\"\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\"></div></div></div>"
+      },
+      "half with value": {
+        "props": {
+          "value": 50,
+          "showValue": true,
+          "label": "Upload"
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-label=\"Upload\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:50%\"></div></div><span class=\"ui-progress__value\">50%</span></div>"
+      },
+      "zero": {
+        "props": {
+          "value": 0,
+          "showValue": true
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:0%\"></div></div><span class=\"ui-progress__value\">0%</span></div>"
+      },
+      "clamped over max": {
+        "props": {
+          "value": 250,
+          "max": 200,
+          "variant": "danger",
+          "size": "xl"
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"200\" aria-valuemin=\"0\" aria-valuemax=\"200\" data-size=\"xl\" data-variant=\"danger\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:100%\"></div></div></div>"
+      },
+      "clamped negative": {
+        "props": {
+          "value": -5
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:0%\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 10,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:10%\"></div></div></div>"
       }
     },
     "SectionHeader": {
