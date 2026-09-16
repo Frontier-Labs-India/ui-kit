@@ -396,4 +396,35 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'numeric size, class, rest': { name: 'x', size: 30, className: 'k', 'data-x': '1' },
     'unknown name renders nothing': { name: 'no-such-icon' },
   },
+  Pagination: {
+    'fits without truncation': { page: 2, totalPages: 7, onChange: { $fn: true } },
+    'right ellipsis only': { page: 2, totalPages: 20, onChange: { $fn: true } },
+    'left ellipsis only': { page: 19, totalPages: 20, onChange: { $fn: true } },
+    'both ellipses': { page: 10, totalPages: 20, onChange: { $fn: true }, showFirst: true },
+    'wider siblings, no prev/next': { page: 10, totalPages: 30, siblingCount: 2, showPrevNext: false, onChange: { $fn: true } },
+    'first page disables back': { page: 1, totalPages: 3, showFirst: true, onChange: { $fn: true }, size: 'xs' },
+    'last page disables forward': { page: 3, totalPages: 3, showFirst: true, onChange: { $fn: true } },
+    'no pages': { page: 1, totalPages: 0, onChange: { $fn: true } },
+    'motion 0': { page: 1, totalPages: 1, onChange: { $fn: true }, motion: 0 },
+  },
+  Stepper: {
+    'horizontal middle active': {
+      activeStep: 1,
+      steps: [
+        { id: 'a', label: 'Account', description: 'Sign up' },
+        { id: 'b', label: { $el: 'Plan' }, optional: true },
+        { id: 'c', label: 'Pay', icon: { $el: '$' } },
+      ],
+    },
+    'completed step with custom icon keeps the icon': {
+      activeStep: 2,
+      steps: [{ id: 'a', label: 'A', icon: 'i' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+    },
+    'vertical dots lg clickable': {
+      orientation: 'vertical', variant: 'dots', size: 'lg', activeStep: 0, onStepClick: { $fn: true },
+      steps: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B', description: 'desc' }],
+    },
+    'all complete': { activeStep: 5, steps: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }] },
+    'motion 0': { activeStep: 0, motion: 0, steps: [{ id: 'a', label: 'A' }] },
+  },
 }

@@ -1244,6 +1244,105 @@
         "html": "<div class=\"ui-page-shell\" data-max-width=\"full\" data-padding=\"lg\" id=\"shell\"></div>"
       }
     },
+    "Pagination": {
+      "fits without truncation": {
+        "props": {
+          "page": 2,
+          "totalPages": 7,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Page 4\">4</button><button type=\"button\" aria-label=\"Page 5\">5</button><button type=\"button\" aria-label=\"Page 6\">6</button><button type=\"button\" aria-label=\"Page 7\">7</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "right ellipsis only": {
+        "props": {
+          "page": 2,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Page 4\">4</button><button type=\"button\" aria-label=\"Page 5\">5</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "left ellipsis only": {
+        "props": {
+          "page": 19,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 16\">16</button><button type=\"button\" aria-label=\"Page 17\">17</button><button type=\"button\" aria-label=\"Page 18\">18</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 19\">19</button><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "both ellipses": {
+        "props": {
+          "page": 10,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          },
+          "showFirst": true
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 9\">9</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 10\">10</button><button type=\"button\" aria-label=\"Page 11\">11</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "wider siblings, no prev/next": {
+        "props": {
+          "page": 10,
+          "totalPages": 30,
+          "siblingCount": 2,
+          "showPrevNext": false,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 8\">8</button><button type=\"button\" aria-label=\"Page 9\">9</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 10\">10</button><button type=\"button\" aria-label=\"Page 11\">11</button><button type=\"button\" aria-label=\"Page 12\">12</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 30\">30</button></nav>"
+      },
+      "first page disables back": {
+        "props": {
+          "page": 1,
+          "totalPages": 3,
+          "showFirst": true,
+          "onChange": {
+            "$fn": true
+          },
+          "size": "xs"
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"xs\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "last page disables forward": {
+        "props": {
+          "page": 3,
+          "totalPages": 3,
+          "showFirst": true,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "no pages": {
+        "props": {
+          "page": 1,
+          "totalPages": 0,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "motion 0": {
+        "props": {
+          "page": 1,
+          "totalPages": 1,
+          "onChange": {
+            "$fn": true
+          },
+          "motion": 0
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"0\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      }
+    },
     "PipelineStage": {
       "all statuses": {
         "props": {
@@ -1766,6 +1865,108 @@
           "motion": 0
         },
         "html": "<span class=\"ui-status-pulse\" data-status=\"info\" data-size=\"md\" data-motion=\"0\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      }
+    },
+    "Stepper": {
+      "horizontal middle active": {
+        "props": {
+          "activeStep": 1,
+          "steps": [
+            {
+              "id": "a",
+              "label": "Account",
+              "description": "Sign up"
+            },
+            {
+              "id": "b",
+              "label": {
+                "$el": "Plan"
+              },
+              "optional": true
+            },
+            {
+              "id": "c",
+              "label": "Pay",
+              "icon": {
+                "$el": "$"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">Account</span><span class=\"ui-stepper__description\">Sign up</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">2</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\"><b>Plan</b></span><span class=\"ui-stepper__optional\">Optional</span></div></div><div class=\"ui-stepper__connector\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"pending\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><b>$</b></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">Pay</span></div></div></div></div>"
+      },
+      "completed step with custom icon keeps the icon": {
+        "props": {
+          "activeStep": 2,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A",
+              "icon": "i"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">i</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">3</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">C</span></div></div></div></div>"
+      },
+      "vertical dots lg clickable": {
+        "props": {
+          "orientation": "vertical",
+          "variant": "dots",
+          "size": "lg",
+          "activeStep": 0,
+          "onStepClick": {
+            "$fn": true
+          },
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B",
+              "description": "desc"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"vertical\" data-variant=\"dots\" data-size=\"lg\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"active\" data-clickable=\"true\" role=\"button\" tabindex=\"0\" aria-current=\"step\"><div class=\"ui-stepper__step-wrapper\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">1</span></span><div class=\"ui-stepper__connector\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__step\" data-status=\"pending\" data-clickable=\"true\" role=\"button\" tabindex=\"0\"><div class=\"ui-stepper__step-wrapper\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">2</span></span></div><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span><span class=\"ui-stepper__description\">desc</span></div></div></div>"
+      },
+      "all complete": {
+        "props": {
+          "activeStep": 5,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "activeStep": 0,
+          "motion": 0,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"0\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">1</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div></div></div>"
       }
     },
     "SuccessCheckmark": {
