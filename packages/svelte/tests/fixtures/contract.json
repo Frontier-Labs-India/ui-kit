@@ -175,6 +175,42 @@
         "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"0\"></div>"
       }
     },
+    "CardGrid": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\"><b>card</b></div>"
+      },
+      "min child width": {
+        "props": {
+          "minChildWidth": "14rem",
+          "columns": 4,
+          "gap": "lg"
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"4\" data-gap=\"lg\" style=\"--card-grid-min-child-width:14rem\"></div>"
+      },
+      "caller style object merged": {
+        "props": {
+          "style": {
+            "padding": 8,
+            "opacity": 0.5
+          },
+          "minChildWidth": "10rem"
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\" style=\"padding:8px;opacity:0.5;--card-grid-min-child-width:10rem\"></div>"
+      },
+      "caller style without min width": {
+        "props": {
+          "style": {
+            "marginTop": 4
+          }
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\" style=\"margin-top:4px\"></div>"
+      }
+    },
     "Checkbox": {
       "defaults": {
         "props": {},
@@ -620,6 +656,82 @@
         "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
       }
     },
+    "Skeleton": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      },
+      "sized numbers and strings": {
+        "props": {
+          "variant": "rounded",
+          "width": 120,
+          "height": "2rem",
+          "radius": 6
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"rounded\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:120px;block-size:2rem;border-radius:6px\"></div>"
+      },
+      "three lines": {
+        "props": {
+          "lines": 3,
+          "lineHeight": 14,
+          "lineGap": "0.5rem"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" data-lines=\"\" aria-hidden=\"true\" style=\"--skeleton-line-height:14px;--skeleton-line-gap:0.5rem\"><span class=\"ui-skeleton__line\"></span><span class=\"ui-skeleton__line\" style=\"inline-size:78%\"></span><span class=\"ui-skeleton__line\" style=\"inline-size:45%\"></span></div>"
+      },
+      "one line": {
+        "props": {
+          "lines": 1
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" data-lines=\"\" aria-hidden=\"true\"><span class=\"ui-skeleton__line\"></span></div>"
+      },
+      "lines ignored when not text": {
+        "props": {
+          "variant": "circular",
+          "lines": 4,
+          "width": 40,
+          "height": 40
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"circular\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:40px;block-size:40px\"></div>"
+      },
+      "animate false pulse slow": {
+        "props": {
+          "animate": false,
+          "animation": "pulse",
+          "speed": "slow"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"false\" data-animation=\"pulse\" data-motion=\"3\" data-speed=\"slow\" aria-hidden=\"true\"></div>"
+      },
+      "count row": {
+        "props": {
+          "count": 3,
+          "width": 60,
+          "direction": "column",
+          "motion": 1
+        },
+        "html": "<div class=\"ui-skeleton__count-wrapper\" data-direction=\"column\" aria-hidden=\"true\"><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div></div>"
+      },
+      "count one renders single": {
+        "props": {
+          "count": 1
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "marginInlineStart": 10
+          },
+          "width": "50%"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"margin-inline-start:10px;inline-size:50%\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"0\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      }
+    },
     "StatsGrid": {
       "defaults": {
         "props": {
@@ -762,6 +874,77 @@
           "motion": 0
         },
         "html": "<div class=\"ui-typing-indicator\" data-motion=\"0\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      }
+    },
+    "Typography": {
+      "body": {
+        "props": {
+          "children": {
+            "$el": "text"
+          }
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\"><b>text</b></p>"
+      },
+      "h2 brand weight center": {
+        "props": {
+          "variant": "h2",
+          "color": "brand",
+          "weight": 700,
+          "align": "center",
+          "children": {
+            "$el": "Title"
+          }
+        },
+        "html": "<h2 class=\"ui-typography\" data-variant=\"h2\" data-color=\"brand\" data-align=\"center\" data-motion=\"3\" style=\"font-weight:700\"><b>Title</b></h2>"
+      },
+      "truncate true": {
+        "props": {
+          "truncate": true
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\" data-truncate=\"1\"></p>"
+      },
+      "truncate 1": {
+        "props": {
+          "truncate": 1,
+          "variant": "caption"
+        },
+        "html": "<span class=\"ui-typography\" data-variant=\"caption\" data-motion=\"3\" data-truncate=\"1\"></span>"
+      },
+      "truncate 3 lines": {
+        "props": {
+          "truncate": 3,
+          "variant": "body-sm"
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body-sm\" data-motion=\"3\" data-truncate-lines=\"\" style=\"-webkit-line-clamp:3\"></p>"
+      },
+      "as label, code variant": {
+        "props": {
+          "as": "label",
+          "variant": "code"
+        },
+        "html": "<label class=\"ui-typography\" data-variant=\"code\" data-motion=\"3\"></label>"
+      },
+      "caller style merged with weight": {
+        "props": {
+          "style": {
+            "letterSpacing": 2,
+            "color": "red"
+          },
+          "weight": 300
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\" style=\"letter-spacing:2px;color:red;font-weight:300\"></p>"
+      },
+      "unknown variant falls back to span": {
+        "props": {
+          "variant": "nope"
+        },
+        "html": "<span class=\"ui-typography\" data-variant=\"nope\" data-motion=\"3\"></span>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"0\"></p>"
       }
     }
   },
