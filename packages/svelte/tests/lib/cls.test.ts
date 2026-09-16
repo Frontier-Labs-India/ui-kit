@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { makeCls, cn } from '../../lib/cls'
+import { makeCls, cn } from '../../src/lib/cls'
 
 describe('makeCls', () => {
   it('maps "root" to the bare prefix', () => {

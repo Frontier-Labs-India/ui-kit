@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
-  import { cssProps } from '../actions/css-props'
-  import { getMotionLevel } from '../runes/motion-level.svelte'
-  import type { MotionLevel } from '../runes/context'
-  import { computeAnchorPosition } from '../../../../src/core/a11y/anchor-position'
+  import { cssProps } from '../actions/css-props.js'
+  import { getMotionLevel } from '../runes/motion-level.svelte.js'
+  import type { MotionLevel } from '../runes/context.js'
+  import { computeAnchorPosition } from '../vendor/core/a11y/compute-anchor-position.js'
 
   interface Props {
     /** The tooltip content to display. */
@@ -45,6 +45,9 @@
   let visible = $state(false)
   let trigger = $state<HTMLElement | null>(null)
   let floating = $state<HTMLElement | null>(null)
+  // Only the initial placement is read here; the positioning effect below reads
+  // `placement` reactively and overwrites this on every show.
+  // svelte-ignore state_referenced_locally
   let position = $state({ x: 0, y: 0, width: 0, placement })
 
   let showTimer: ReturnType<typeof setTimeout> | null = null

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { makeCls } from '../../lib/cls'
+import { makeCls } from '../../src/lib/cls'
 import fixture from '../fixtures/contract.json'
 
 /* The Svelte package copies the nine pure lines of React's useStyles rather

@@ -130,7 +130,7 @@ for (const suite of SUITES) {
   }
 }
 
-const OUT = resolve(import.meta.dirname, '../packages/svelte/src/__tests__/fixtures/contract.json')
+const OUT = resolve(import.meta.dirname, '../packages/svelte/tests/fixtures/contract.json')
 const next = JSON.stringify({ components: fixture, cls: clsFixture }, null, 2) + '\n'
 const total = Object.values(fixture).reduce((n, s) => n + Object.keys(s).length, 0)
 

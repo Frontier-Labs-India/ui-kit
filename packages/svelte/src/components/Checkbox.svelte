@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
   import type { HTMLInputAttributes } from 'svelte/elements'
-  import { makeCls, cn } from '../lib/cls'
-  import { getMotionLevel } from '../runes/motion-level.svelte'
-  import type { MotionLevel } from '../runes/context'
+  import { makeCls, cn } from '../lib/cls.js'
+  import { getMotionLevel } from '../runes/motion-level.svelte.js'
+  import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLInputAttributes, 'type' | 'size'> {
     /** Label content rendered beside the box. */
@@ -56,7 +56,6 @@
   data-indeterminate={indeterminate ? '' : undefined}
   data-disabled={disabled ? '' : undefined}
   data-error={error ? '' : undefined}
-  {...rest}
 >
   <!-- React sets this layout with style={{display:'inline-flex',…}}, which is a
        setProperty call and CSP-safe there. Transcribed into Svelte markup it
@@ -72,6 +71,7 @@
       {disabled}
       aria-invalid={error ? true : undefined}
       aria-describedby={errorId}
+      {...rest}
     />
     <span class="ui-checkbox__box">
       <svg class="ui-checkbox__check" viewBox="0 0 16 16" fill="none" aria-hidden="true">

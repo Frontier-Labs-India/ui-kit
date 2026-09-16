@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
   import type { HTMLAttributes } from 'svelte/elements'
-  import { cn } from '../lib/cls'
-  import { portal } from '../actions/portal'
-  import { getMotionLevel } from '../runes/motion-level.svelte'
-  import type { MotionLevel } from '../runes/context'
+  import { cn } from '../lib/cls.js'
+  import { portal } from '../actions/portal.js'
+  import { getMotionLevel } from '../runes/motion-level.svelte.js'
+  import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
     /** Controls whether the drawer is visible. */

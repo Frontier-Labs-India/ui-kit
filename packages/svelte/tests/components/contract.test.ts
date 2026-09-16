@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/svelte'
 import type { Component } from 'svelte'
-import Accordion from '../../components/Accordion.svelte'
-import Badge from '../../components/Badge.svelte'
-import Checkbox from '../../components/Checkbox.svelte'
+import Accordion from '../../src/components/Accordion.svelte'
+import Badge from '../../src/components/Badge.svelte'
+import Checkbox from '../../src/components/Checkbox.svelte'
 import fixture from '../fixtures/contract.json'
 
 /* Asserts every ported Svelte component emits the same root class and data-*

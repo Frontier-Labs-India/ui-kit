@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { cssProps } from '../../actions/css-props'
+import { cssProps } from '../../src/actions/css-props'
 
 describe('cssProps', () => {
   it('sets properties via setProperty, never cssText', () => {

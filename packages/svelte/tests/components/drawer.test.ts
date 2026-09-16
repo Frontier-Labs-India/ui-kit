@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
-import Drawer from '../../components/Drawer.svelte'
+import Drawer from '../../src/components/Drawer.svelte'
 
 afterEach(() => {
   document.body.querySelectorAll('.ui-drawer').forEach(n => n.remove())

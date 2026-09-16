@@ -1,5 +1,5 @@
 import { getContext, setContext, hasContext } from 'svelte'
-import { MOTION_KEY, DEFAULT_MOTION_LEVEL, type MotionLevel } from './context'
+import { MOTION_KEY, DEFAULT_MOTION_LEVEL, type MotionLevel } from './context.js'
 
 /** Provider side — mirrors React's MotionProvider. */
 export function setMotionLevel(get: () => MotionLevel) {

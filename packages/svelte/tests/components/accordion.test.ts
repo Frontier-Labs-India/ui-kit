@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
-import Accordion from '../../components/Accordion.svelte'
+import Accordion from '../../src/components/Accordion.svelte'
 
 const items = [
   { id: 'a', trigger: 'First', content: 'Body A' },

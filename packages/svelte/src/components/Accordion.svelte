@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
   import type { HTMLAttributes } from 'svelte/elements'
-  import { makeCls, cn } from '../lib/cls'
-  import { getMotionLevel } from '../runes/motion-level.svelte'
-  import type { MotionLevel } from '../runes/context'
+  import { makeCls, cn } from '../lib/cls.js'
+  import { getMotionLevel } from '../runes/motion-level.svelte.js'
+  import type { MotionLevel } from '../runes/context.js'
 
   /** A single item definition for the Accordion. */
   export interface AccordionItem {
@@ -54,6 +54,9 @@
   const motionLevel = getMotionLevel(() => motion)
 
   // Spread, not a reference: $state(defaultOpen) would alias the caller's array.
+  // Reading only the initial value is intended — defaultOpen is an uncontrolled
+  // default, exactly as React's useState(defaultOpen) reads it once.
+  // svelte-ignore state_referenced_locally
   let openIds = $state<string[]>([...defaultOpen])
 
   function toggle(item: AccordionItem, e: Event) {

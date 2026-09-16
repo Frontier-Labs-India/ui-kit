@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { Snippet } from 'svelte'
   import type { HTMLAttributes } from 'svelte/elements'
-  import { makeCls, cn } from '../lib/cls'
-  import { getMotionLevel } from '../runes/motion-level.svelte'
-  import type { MotionLevel } from '../runes/context'
+  import { makeCls, cn } from '../lib/cls.js'
+  import { getMotionLevel } from '../runes/motion-level.svelte.js'
+  import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
     /** Semantic color variant (default: 'default') */

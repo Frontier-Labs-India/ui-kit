@@ -1,0 +1,6 @@
+{
+  "_note": "Gzipped bytes, measured from the build by check-svelte-size.js --record. Derived, not chosen.",
+  "components": 7484,
+  "runtime": 3686,
+  "css": 4510
+}

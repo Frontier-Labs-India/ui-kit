@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
-import Checkbox from '../../components/Checkbox.svelte'
+import Checkbox from '../../src/components/Checkbox.svelte'
 
 describe('Checkbox', () => {
   it('renders an input[type=checkbox]', () => {
@@ -95,6 +95,17 @@ describe('Checkbox', () => {
     expect(container.querySelector('.ui-checkbox')!.getAttribute('data-motion')).toBe('1')
     await rerender({ label: 'A', motion: 0 })
     expect(container.querySelector('.ui-checkbox')!.getAttribute('data-motion')).toBe('0')
+  })
+
+  it('forwards extra attributes to the input, not the root — as React does', () => {
+    const { container } = render(Checkbox, { props: { label: 'A', name: 'terms', value: 'yes', 'data-testid': 'cb' } })
+    const input = container.querySelector('input')!
+    const root = container.querySelector('.ui-checkbox')!
+    expect(input.getAttribute('name')).toBe('terms')
+    expect(input.getAttribute('value')).toBe('yes')
+    expect(input.getAttribute('data-testid')).toBe('cb')
+    expect(root.hasAttribute('name')).toBe(false)
+    expect(root.hasAttribute('data-testid')).toBe(false)
   })
 
   it('uses a class for layout, never a style attribute', () => {

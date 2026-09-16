@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { portal } from '../../actions/portal'
+import { portal } from '../../src/actions/portal'
 
 describe('portal', () => {
   it('moves the node to document.body', () => {
