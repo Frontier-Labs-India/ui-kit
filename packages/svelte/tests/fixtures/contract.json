@@ -159,6 +159,135 @@
         },
         "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"0\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
       }
+    },
+    "Divider": {
+      "defaults": {
+        "props": {},
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\"/>"
+      },
+      "vertical dashed lg": {
+        "props": {
+          "orientation": "vertical",
+          "variant": "dashed",
+          "spacing": "lg"
+        },
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"vertical\" data-variant=\"dashed\" data-spacing=\"lg\" aria-orientation=\"vertical\"/>"
+      },
+      "label string": {
+        "props": {
+          "label": "or"
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\">or</span></div>"
+      },
+      "label element": {
+        "props": {
+          "label": {
+            "$el": "section"
+          }
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\"><b>section</b></span></div>"
+      },
+      "label empty string": {
+        "props": {
+          "label": ""
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\"></span></div>"
+      },
+      "rest attrs": {
+        "props": {
+          "id": "d1",
+          "title": "split"
+        },
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "Kbd": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "K"
+          }
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"3\"><b>K</b></kbd>"
+      },
+      "xs ghost": {
+        "props": {
+          "size": "xs",
+          "variant": "ghost",
+          "children": {
+            "$el": "Ctrl"
+          }
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"xs\" data-variant=\"ghost\" data-motion=\"3\"><b>Ctrl</b></kbd>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"0\"></kbd>"
+      },
+      "no children": {
+        "props": {},
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"3\"></kbd>"
+      }
+    },
+    "StatusPulse": {
+      "ok": {
+        "props": {
+          "status": "ok"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"ok\" data-size=\"md\" data-motion=\"3\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "critical lg label": {
+        "props": {
+          "status": "critical",
+          "size": "lg",
+          "label": "Down"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"critical\" data-size=\"lg\" data-motion=\"3\" role=\"img\" aria-label=\"Down\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "warning": {
+        "props": {
+          "status": "warning",
+          "size": "sm"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"warning\" data-size=\"sm\" data-motion=\"3\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "info motion 0": {
+        "props": {
+          "status": "info",
+          "motion": 0
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"info\" data-size=\"md\" data-motion=\"0\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      }
+    },
+    "TypingIndicator": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      },
+      "avatar string sm": {
+        "props": {
+          "avatar": "AB",
+          "size": "sm",
+          "label": "Ada is typing"
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"sm\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__avatar\">AB</span><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Ada is typing</span></div>"
+      },
+      "avatar element": {
+        "props": {
+          "avatar": {
+            "$el": "img"
+          }
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__avatar\"><b>img</b></span><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"0\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      }
     }
   },
   "cls": [

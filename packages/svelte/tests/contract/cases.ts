@@ -50,4 +50,30 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'rest to input': { label: 'Accept', name: 'terms', value: 'yes' },
     'motion 0': { motion: 0 },
   },
+  Divider: {
+    defaults: {},
+    'vertical dashed lg': { orientation: 'vertical', variant: 'dashed', spacing: 'lg' },
+    'label string': { label: 'or' },
+    'label element': { label: { $el: 'section' } },
+    'label empty string': { label: '' },
+    'rest attrs': { id: 'd1', title: 'split' },
+  },
+  Kbd: {
+    defaults: { children: { $el: 'K' } },
+    'xs ghost': { size: 'xs', variant: 'ghost', children: { $el: 'Ctrl' } },
+    'motion 0': { motion: 0 },
+    'no children': {},
+  },
+  StatusPulse: {
+    ok: { status: 'ok' },
+    'critical lg label': { status: 'critical', size: 'lg', label: 'Down' },
+    warning: { status: 'warning', size: 'sm' },
+    'info motion 0': { status: 'info', motion: 0 },
+  },
+  TypingIndicator: {
+    defaults: {},
+    'avatar string sm': { avatar: 'AB', size: 'sm', label: 'Ada is typing' },
+    'avatar element': { avatar: { $el: 'img' } },
+    'motion 0': { motion: 0 },
+  },
 }

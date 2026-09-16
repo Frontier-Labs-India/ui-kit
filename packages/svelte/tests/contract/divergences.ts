@@ -30,6 +30,7 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * The contract test fails for any exported component missing from both the
  * fixture and this list, so a new port cannot skip the contract silently. */
 export const NO_SSR_CONTRACT: Record<string, string> = {
+  ComponentErrorBoundary: 'not a component in component-meta — renders its children unchanged; failure path asserted in tests/lib/error-boundary.test.ts',
   Drawer: 'returns null on the server (needs `document` to portal); contract asserted in drawer.test.ts',
   Tooltip: 'its panel exists only after hover state, which SSR never runs; contract asserted in tooltip.test.ts',
 }

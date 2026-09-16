@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/svelte'
+import { flushSync } from 'svelte'
 import { createRawSnippet, type Component } from 'svelte'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
@@ -55,6 +56,26 @@ describe('React DOM contract', () => {
     expect(stale).toEqual([])
   })
 
+  /* Generic: the getter rule. A Svelte <script> body runs once, so a rune fed a
+   * prop VALUE snapshots it and later changes never reach the DOM — the bug
+   * Badge shipped with in PR #1. Checked here for every component whose
+   * React markup carries data-motion, rather than copied into each test file. */
+  for (const [name, cases] of Object.entries(f.components)) {
+    const withMotion = Object.entries(cases).find(([, c]) => c.html.includes('data-motion'))
+    if (!withMotion) continue
+    it(`${name}: data-motion follows a motion prop change after mount`, async () => {
+      const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
+      const base = hydrate(withMotion[1].props) as Record<string, unknown>
+      const { container, rerender } = render(Comp, { props: { ...base, motion: 1 } })
+      const read = () => Array.from(container.querySelectorAll('[data-motion]')).map(e => e.getAttribute('data-motion'))
+      expect(read().length).toBeGreaterThan(0)
+      expect(new Set(read())).toEqual(new Set(['1']))
+      await rerender({ ...base, motion: 0 })
+      flushSync()
+      expect(new Set(read())).toEqual(new Set(['0']))
+    })
+  }
+
   for (const [name, cases] of Object.entries(f.components)) {
     describe(name, () => {
       it('is exported by the package', () => {
@@ -65,6 +86,10 @@ describe('React DOM contract', () => {
         it(caseName, () => {
           const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
           const { container } = render(Comp, { props: hydrate(props) as Record<string, unknown> })
+          // CSP: where React's markup has no inline style at all, Svelte must
+          // not either. Checked before divergences, which may add style to
+          // mirror React's shape.
+          if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]')).toBeNull()
           for (const d of DIVERGENCES[name] ?? []) d.apply(container)
           expect(canonical(container)).toBe(canonical(fromHtml(html)))
         })

@@ -616,6 +616,127 @@
   }
 /* end checkbox */
 
+/* divider */
+@layer components {
+    @scope (.ui-divider) {
+      :scope {
+        margin: 0;
+        padding: 0;
+        border: none;
+        flex-shrink: 0;
+      }
+
+      /* Horizontal */
+      :scope[data-orientation="horizontal"] {
+        inline-size: 100%;
+        block-size: 1px;
+        background: var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      /* Vertical */
+      :scope[data-orientation="vertical"] {
+        inline-size: 1px;
+        block-size: 100%;
+        min-block-size: 1rem;
+        background: var(--border-subtle, oklch(100% 0 0 / 0.08));
+        display: inline-block;
+      }
+
+      /* Variants */
+      :scope[data-variant="dashed"] {
+        background: none;
+        border-block-start: 1px dashed var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+      :scope[data-variant="dotted"] {
+        background: none;
+        border-block-start: 1px dotted var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+      :scope[data-orientation="vertical"][data-variant="dashed"] {
+        border-block-start: none;
+        border-inline-start: 1px dashed var(--border-subtle, oklch(100% 0 0 / 0.08));
+        background: none;
+      }
+      :scope[data-orientation="vertical"][data-variant="dotted"] {
+        border-block-start: none;
+        border-inline-start: 1px dotted var(--border-subtle, oklch(100% 0 0 / 0.08));
+        background: none;
+      }
+
+      /* Spacing */
+      :scope[data-orientation="horizontal"][data-spacing="sm"] {
+        margin-block: var(--space-xs, 0.25rem);
+      }
+      :scope[data-orientation="horizontal"][data-spacing="md"] {
+        margin-block: var(--space-md, 0.75rem);
+      }
+      :scope[data-orientation="horizontal"][data-spacing="lg"] {
+        margin-block: var(--space-lg, 1.25rem);
+      }
+      :scope[data-orientation="vertical"][data-spacing="sm"] {
+        margin-inline: var(--space-xs, 0.25rem);
+      }
+      :scope[data-orientation="vertical"][data-spacing="md"] {
+        margin-inline: var(--space-md, 0.75rem);
+      }
+      :scope[data-orientation="vertical"][data-spacing="lg"] {
+        margin-inline: var(--space-lg, 1.25rem);
+      }
+
+      /* Label variant — uses div, not hr */
+      :scope[data-has-label="true"] {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md, 0.75rem);
+        block-size: auto;
+        background: none;
+      }
+
+      :scope[data-has-label="true"]::before,
+      :scope[data-has-label="true"]::after {
+        content: '';
+        flex: 1;
+        block-size: 1px;
+        background: var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      .ui-divider__label {
+        font-size: var(--text-xs, 0.75rem);
+        line-height: 1;
+        color: var(--text-secondary, oklch(70% 0 0));
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        :scope {
+          background: ButtonText;
+        }
+        :scope[data-variant="dashed"],
+        :scope[data-variant="dotted"] {
+          border-color: ButtonText;
+        }
+        :scope[data-has-label="true"]::before,
+        :scope[data-has-label="true"]::after {
+          background: ButtonText;
+        }
+        .ui-divider__label {
+          color: CanvasText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        :scope {
+          background: #000;
+        }
+      }
+    }
+  }
+/* end divider */
+
 /* drawer */
 @layer components {
     @scope (.ui-drawer) {
@@ -801,6 +922,266 @@
   }
 /* end drawer */
 
+/* kbd */
+@layer components {
+    @scope (.ui-kbd) {
+      :scope {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono, ui-monospace, 'Cascadia Code', 'Fira Code', monospace);
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+        user-select: none;
+        vertical-align: baseline;
+        border-radius: var(--radius-sm, 4px);
+        transition:
+          transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Sizes */
+      :scope[data-size="xs"] {
+        font-size: 0.625rem;
+        padding-block: 0.0625rem;
+        padding-inline: 0.25rem;
+        min-inline-size: 1.125rem;
+        min-block-size: 1.125rem;
+        border-radius: var(--radius-xs, 3px);
+      }
+      :scope[data-size="sm"] {
+        font-size: 0.75rem;
+        padding-block: 0.125rem;
+        padding-inline: 0.3125rem;
+        min-inline-size: 1.375rem;
+        min-block-size: 1.375rem;
+      }
+      :scope[data-size="md"] {
+        font-size: 0.875rem;
+        padding-block: 0.1875rem;
+        padding-inline: 0.375rem;
+        min-inline-size: 1.625rem;
+        min-block-size: 1.625rem;
+      }
+
+      /* Variants */
+      :scope[data-variant="default"] {
+        background: var(--surface-elevated, oklch(25% 0.01 270 / 0.5));
+        color: var(--text-secondary, oklch(70% 0 0));
+        border: 1px solid var(--border-default, oklch(50% 0 0 / 0.2));
+        box-shadow:
+          0 1px 0 0 oklch(0% 0 0 / 0.15),
+          inset 0 1px 0 0 var(--border-subtle);
+      }
+      :scope[data-variant="ghost"] {
+        background: transparent;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        border: 1px solid transparent;
+        box-shadow: none;
+      }
+
+      /* Hover lift — motion level 2+ */
+      @media (hover: hover) {
+        :scope:not([data-motion="0"]):not([data-motion="1"]):hover {
+          transform: translateY(-1px);
+          box-shadow:
+            0 2px 2px 0 oklch(0% 0 0 / 0.12),
+            inset 0 1px 0 0 var(--border-subtle);
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        :scope {
+          transition: none;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        :scope {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        :scope {
+          box-shadow: none;
+          border: 1px solid;
+        }
+      }
+    }
+  }
+/* end kbd */
+
+/* status-pulse */
+@layer components {
+    @scope (.ui-status-pulse) {
+      :scope {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Sizes — define the outer bounding box to contain rings */
+      :scope[data-size="sm"] {
+        inline-size: 0.75rem;
+        block-size: 0.75rem;
+      }
+      :scope[data-size="md"] {
+        inline-size: 1rem;
+        block-size: 1rem;
+      }
+      :scope[data-size="lg"] {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+      }
+
+      /* Central dot */
+      .ui-status-pulse__dot {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        translate: -50% -50%;
+        border-radius: var(--radius-full, 9999px);
+      }
+      :scope[data-size="sm"] .ui-status-pulse__dot {
+        inline-size: 0.375rem;
+        block-size: 0.375rem;
+      }
+      :scope[data-size="md"] .ui-status-pulse__dot {
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+      }
+      :scope[data-size="lg"] .ui-status-pulse__dot {
+        inline-size: 0.75rem;
+        block-size: 0.75rem;
+      }
+
+      /* Radiating rings */
+      .ui-status-pulse__ring {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        translate: -50% -50%;
+        border-radius: var(--radius-full, 9999px);
+        border: 1.5px solid currentColor;
+        opacity: 0;
+        pointer-events: none;
+      }
+      :scope[data-size="sm"] .ui-status-pulse__ring {
+        inline-size: 0.375rem;
+        block-size: 0.375rem;
+      }
+      :scope[data-size="md"] .ui-status-pulse__ring {
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+      }
+      :scope[data-size="lg"] .ui-status-pulse__ring {
+        inline-size: 0.75rem;
+        block-size: 0.75rem;
+      }
+
+      /* Status colors */
+      :scope[data-status="ok"] {
+        color: var(--status-ok, oklch(72% 0.19 145));
+      }
+      :scope[data-status="ok"] .ui-status-pulse__dot {
+        background: var(--status-ok, oklch(72% 0.19 145));
+      }
+      :scope[data-status="warning"] {
+        color: var(--status-warning, oklch(80% 0.15 75));
+      }
+      :scope[data-status="warning"] .ui-status-pulse__dot {
+        background: var(--status-warning, oklch(80% 0.15 75));
+      }
+      :scope[data-status="critical"] {
+        color: var(--status-critical, oklch(63% 0.24 25));
+      }
+      :scope[data-status="critical"] .ui-status-pulse__dot {
+        background: var(--status-critical, oklch(63% 0.24 25));
+      }
+      :scope[data-status="info"] {
+        color: var(--status-info, oklch(65% 0.2 270));
+      }
+      :scope[data-status="info"] .ui-status-pulse__dot {
+        background: var(--status-info, oklch(65% 0.2 270));
+      }
+
+      /* Motion level 0: static dot, no rings */
+      :scope[data-motion="0"] .ui-status-pulse__ring {
+        display: none;
+      }
+
+      /* Motion level 1: subtle opacity pulse on dot */
+      :scope[data-motion="1"] .ui-status-pulse__dot {
+        animation: ui-status-pulse-opacity 2s ease-in-out infinite;
+      }
+      :scope[data-motion="1"] .ui-status-pulse__ring {
+        display: none;
+      }
+
+      /* Motion level 2+: full radiating rings */
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-status-pulse__ring:nth-child(1) {
+        animation: ui-status-pulse-radiate 2.4s ease-out infinite;
+        animation-delay: 0s;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-status-pulse__ring:nth-child(2) {
+        animation: ui-status-pulse-radiate 2.4s ease-out infinite;
+        animation-delay: 0.8s;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-status-pulse__ring:nth-child(3) {
+        animation: ui-status-pulse-radiate 2.4s ease-out infinite;
+        animation-delay: 1.6s;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-status-pulse__dot {
+          background: ButtonText;
+        }
+        .ui-status-pulse__ring {
+          border-color: ButtonText;
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-status-pulse__dot {
+          animation: none;
+        }
+        .ui-status-pulse__ring {
+          animation: none;
+          display: none;
+        }
+      }
+    }
+
+    @keyframes ui-status-pulse-radiate {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    @keyframes ui-status-pulse-opacity {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.4;
+      }
+    }
+  }
+/* end status-pulse */
+
 /* tooltip */
 @layer components {
     @scope (.ui-tooltip) {
@@ -952,6 +1333,121 @@
   }
 /* end tooltip */
 
+/* typing-indicator */
+@layer components {
+    @scope (.ui-typing-indicator) {
+      :scope {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs, 0.5rem);
+      }
+
+      .ui-typing-indicator__avatar {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ui-typing-indicator__dots {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        padding: var(--space-xs, 0.375rem) var(--space-sm, 0.625rem);
+        border-radius: var(--radius-full, 9999px);
+        background: var(--bg-surface, oklch(22% 0.02 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      :scope[data-size="sm"] .ui-typing-indicator__dots {
+        gap: 2px;
+        padding: var(--space-2xs, 0.25rem) var(--space-xs, 0.5rem);
+      }
+
+      .ui-typing-indicator__dot {
+        display: block;
+        inline-size: 6px;
+        block-size: 6px;
+        border-radius: 50%;
+        background: var(--text-secondary, oklch(65% 0 0));
+      }
+
+      :scope[data-size="sm"] .ui-typing-indicator__dot {
+        inline-size: 4px;
+        block-size: 4px;
+      }
+
+      /* Motion 0: static dots */
+      :scope[data-motion="0"] .ui-typing-indicator__dot {
+        animation: none;
+      }
+
+      /* Motion 1: simple CSS bounce */
+      :scope[data-motion="1"] .ui-typing-indicator__dot {
+        animation: ui-typing-bounce 1.4s ease-in-out infinite;
+      }
+      :scope[data-motion="1"] .ui-typing-indicator__dot:nth-child(1) {
+        animation-delay: 0s;
+      }
+      :scope[data-motion="1"] .ui-typing-indicator__dot:nth-child(2) {
+        animation-delay: 0.16s;
+      }
+      :scope[data-motion="1"] .ui-typing-indicator__dot:nth-child(3) {
+        animation-delay: 0.32s;
+      }
+
+      /* Motion 2+: spring-like bounce with overshoot */
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-typing-indicator__dot {
+        animation: ui-typing-spring 1.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-typing-indicator__dot:nth-child(1) {
+        animation-delay: 0s;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-typing-indicator__dot:nth-child(2) {
+        animation-delay: 0.16s;
+      }
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-typing-indicator__dot:nth-child(3) {
+        animation-delay: 0.32s;
+      }
+
+      @keyframes ui-typing-bounce {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-4px); }
+      }
+
+      @keyframes ui-typing-spring {
+        0%, 60%, 100% { transform: translateY(0); }
+        20% { transform: translateY(-6px); }
+        35% { transform: translateY(1px); }
+        45% { transform: translateY(-2px); }
+      }
+
+      /* Visually hidden label */
+      .ui-typing-indicator__label {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-typing-indicator__dots {
+          border: 1px solid ButtonText;
+        }
+        .ui-typing-indicator__dot {
+          background: ButtonText;
+        }
+      }
+    }
+  }
+/* end typing-indicator */
+
 /* svelte-only */
 /* Rules the Svelte package needs and the React package does not.
  * Each one exists because a React idiom has no Svelte equivalent. */
@@ -971,5 +1467,38 @@
  * it from generating a box, so layout matches React's. */
 .ui-tooltip-trigger {
   display: contents;
+}
+
+/* ComponentErrorBoundary fallback: React styles these with inline style
+ * objects (CSP-safe there via setProperty). Same values, as classes. */
+.ui-error-boundary {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid oklch(62% 0.22 25 / 0.2);
+  background: oklch(62% 0.22 25 / 0.05);
+  color: oklch(70% 0 0);
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.ui-error-boundary__title {
+  font-weight: 600;
+  color: oklch(62% 0.22 25);
+}
+.ui-error-boundary__message {
+  color: oklch(50% 0 0);
+  font-size: 0.8125rem;
+}
+.ui-error-boundary__retry {
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid oklch(100% 0 0 / 0.08);
+  background: oklch(100% 0 0 / 0.04);
+  color: oklch(70% 0 0);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
 }
 /* end svelte-only */
