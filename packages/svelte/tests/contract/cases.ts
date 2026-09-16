@@ -217,4 +217,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller style merged': { href: '/a', transitionName: 'card', style: { display: 'block' }, children: { $el: 'A' } },
     'no href': { children: { $el: 'Nowhere' } },
   },
+  Card3D: {
+    defaults: { children: { $el: 'card' } },
+    'perspective, no glare': { perspective: 600, glare: false, children: { $el: 'card' } },
+    'caller style': { style: { borderRadius: 16 } },
+    'motion 0': { motion: 0 },
+  },
+  GlowCard: {
+    defaults: { children: { $el: 'card' } },
+    color: { glowColor: 'oklch(70% 0.2 150)', children: { $el: 'card' } },
+    'caller style, no color': { style: { padding: 12 } },
+    'motion 0': { motion: 0 },
+  },
+  SpotlightCard: {
+    defaults: { children: { $el: 'card' } },
+    color: { spotlightColor: 'white', children: { $el: 'card' } },
+    'caller style with color': { style: { padding: 12 }, spotlightColor: 'gold' },
+    'motion 0': { motion: 0 },
+  },
 }

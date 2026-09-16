@@ -210,6 +210,40 @@
         "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"0\"></div>"
       }
     },
+    "Card3D": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"><b>card</b></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      },
+      "perspective, no glare": {
+        "props": {
+          "perspective": 600,
+          "glare": false,
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"--card-3d-perspective:600px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"><b>card</b></div></div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "borderRadius": 16
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"border-radius:16px;--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"0\" style=\"--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      }
+    },
     "CardGrid": {
       "defaults": {
         "props": {
@@ -387,6 +421,39 @@
           "title": "split"
         },
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "GlowCard": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\"><div class=\"ui-glow-card--content\"><b>card</b></div></div>"
+      },
+      "color": {
+        "props": {
+          "glowColor": "oklch(70% 0.2 150)",
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\" style=\"--glow-card-color:oklch(70% 0.2 150)\"><div class=\"ui-glow-card--content\"><b>card</b></div></div>"
+      },
+      "caller style, no color": {
+        "props": {
+          "style": {
+            "padding": 12
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\" style=\"padding:12px\"><div class=\"ui-glow-card--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"0\"><div class=\"ui-glow-card--content\"></div></div>"
       }
     },
     "Highlight": {
@@ -878,6 +945,40 @@
           "motion": 0
         },
         "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"0\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      }
+    },
+    "SpotlightCard": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\"><div class=\"ui-spotlight-card--content\"><b>card</b></div></div>"
+      },
+      "color": {
+        "props": {
+          "spotlightColor": "white",
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\" style=\"--spotlight-card-color:white\"><div class=\"ui-spotlight-card--content\"><b>card</b></div></div>"
+      },
+      "caller style with color": {
+        "props": {
+          "style": {
+            "padding": 12
+          },
+          "spotlightColor": "gold"
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\" style=\"padding:12px;--spotlight-card-color:gold\"><div class=\"ui-spotlight-card--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"0\"><div class=\"ui-spotlight-card--content\"></div></div>"
       }
     },
     "StatsGrid": {
