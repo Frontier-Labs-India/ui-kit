@@ -10,7 +10,7 @@ import fixture from '../fixtures/contract.json'
  * The expected values come from the fixture, captured by rendering React's
  * useStyles; they are not written here by hand. */
 
-const cls = (fixture as { cls: { parts: (string | false | null | undefined | 0 | '')[]; expected: string }[] }).cls
+const cls = (fixture as { version: number; cls: { parts: (string | false | null | undefined | 0 | '')[]; expected: string }[] }).cls
 
 describe('cls parity with React\'s useStyles builder', () => {
   it('has cases to check', () => {

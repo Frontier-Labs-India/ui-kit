@@ -1,160 +1,163 @@
 {
+  "version": 2,
   "components": {
     "Accordion": {
-      "defaults": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "3",
-          "data-variant": "default",
-          "data-size": "md"
+      "empty": {
+        "props": {
+          "items": []
         },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"default\" data-size=\"md\"></div>"
       },
       "variant+size": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "3",
-          "data-variant": "bordered",
-          "data-size": "lg"
+        "props": {
+          "items": [],
+          "variant": "bordered",
+          "size": "lg"
         },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"bordered\" data-size=\"lg\"></div>"
       },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "0",
-          "data-variant": "default",
-          "data-size": "md"
+      "motion 0": {
+        "props": {
+          "items": [],
+          "motion": 0
         },
-        "text": ""
-      }
-    },
-    "Checkbox": {
-      "defaults": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3"
-        },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"0\" data-variant=\"default\" data-size=\"md\"></div>"
       },
-      "size": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "xl",
-          "data-motion": "3"
+      "items": {
+        "props": {
+          "items": [
+            {
+              "id": "a",
+              "trigger": "First",
+              "content": "Body A"
+            },
+            {
+              "id": "b",
+              "trigger": {
+                "$el": "Second"
+              },
+              "content": {
+                "$el": "Body B"
+              },
+              "disabled": true
+            }
+          ],
+          "defaultOpen": [
+            "a"
+          ]
         },
-        "text": ""
-      },
-      "indeterminate": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-indeterminate": ""
-        },
-        "text": ""
-      },
-      "disabled": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-disabled": ""
-        },
-        "text": ""
-      },
-      "error": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-error": ""
-        },
-        "text": "Required"
-      },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "0"
-        },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"default\" data-size=\"md\"><details open=\"\"><summary><span>First</span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\">Body A</div></div></div></details><details><summary aria-disabled=\"true\"><span><b>Second</b></span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\"><b>Body B</b></div></div></div></details></div>"
       }
     },
     "Badge": {
       "defaults": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
-        },
-        "text": ""
+        "props": {},
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"></span>"
       },
       "variant+size": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "danger",
-          "data-size": "xl",
-          "data-motion": "3"
+        "props": {
+          "variant": "danger",
+          "size": "xl"
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"danger\" data-size=\"xl\" data-motion=\"3\"></span>"
       },
       "outline": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-outline": "true"
+        "props": {
+          "outline": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" data-outline=\"true\"></span>"
       },
       "dot+pulse": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "dot": true,
+          "pulse": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><span class=\"ui-badge__dot\" data-pulse=\"true\"></span></span>"
       },
       "count over max": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "count": 150,
+          "maxCount": 99
         },
-        "text": "99+"
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\">99+</span>"
       },
       "count zero": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "count": 0
         },
-        "text": "0"
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\">0</span>"
       },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "0"
+      "motion 0": {
+        "props": {
+          "motion": 0
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"0\"></span>"
       },
       "removable": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "removable": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" class=\"ui-badge__remove\" aria-label=\"Remove\"><svg width=\"8\" height=\"8\" viewBox=\"0 0 8 8\" fill=\"none\"><path d=\"M1.5 1.5l5 5m0-5l-5 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></span>"
+      },
+      "children": {
+        "props": {
+          "children": {
+            "$el": "Label"
+          }
+        },
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><b>Label</b></span>"
+      }
+    },
+    "Checkbox": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "label": {
+        "props": {
+          "label": "Accept"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "size": {
+        "props": {
+          "size": "xl",
+          "label": "Accept"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"xl\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "indeterminate": {
+        "props": {
+          "indeterminate": true
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-indeterminate=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "disabled": {
+        "props": {
+          "disabled": true
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" disabled=\"\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "error": {
+        "props": {
+          "label": "Accept",
+          "error": "Required"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-error=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" aria-invalid=\"true\" aria-describedby=\"checkbox-_R_0_-error\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div><span id=\"checkbox-_R_0_-error\" class=\"ui-checkbox__error\" role=\"alert\">Required</span></div>"
+      },
+      "rest to input": {
+        "props": {
+          "label": "Accept",
+          "name": "terms",
+          "value": "yes"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" name=\"terms\" value=\"yes\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"0\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
       }
     }
   },
