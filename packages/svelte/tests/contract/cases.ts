@@ -235,4 +235,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller style with color': { style: { padding: 12 }, spotlightColor: 'gold' },
     'motion 0': { motion: 0 },
   },
+  BackgroundBoxes: {
+    'small grid': { rows: 2, cols: 3 },
+    'with content and style': { rows: 1, cols: 2, style: { minHeight: 200 }, children: { $el: 'hero' } },
+    'motion 0': { rows: 1, cols: 1, motion: 0 },
+  },
+  MeteorShower: {
+    few: { count: 4 },
+    'with content': { count: 2, children: { $el: 'hero' } },
+    none: { count: 0 },
+    'motion 0': { count: 1, motion: 0 },
+  },
+  OrbitingCircles: {
+    three: { children: [{ $el: 'a' }, { $el: 'b' }, { $el: 'c' }] },
+    'reverse radius duration': { radius: 60, duration: 8, reverse: true, children: [{ $el: 'a' }, 'b'] },
+    'null and false dropped, 0 kept': { children: [{ $el: 'a' }, null, false, 'b', 0] },
+    'caller style': { style: { width: 300 }, children: ['x'] },
+    'motion 0': { motion: 0, children: ['x'] },
+  },
 }

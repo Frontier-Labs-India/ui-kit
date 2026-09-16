@@ -85,6 +85,36 @@
         "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
       }
     },
+    "BackgroundBoxes": {
+      "small grid": {
+        "props": {
+          "rows": 2,
+          "cols": 3
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"3\" style=\"--boxes-rows:repeat(2, 1fr);--boxes-cols:repeat(3, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:2.685850353562273s;--box-duration:7.867871614987962s;--box-intensity:0.1272528617977514\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.45874715549871325s;--box-duration:5.866425123393128s;--box-intensity:0.16080162227390246\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:7.090178256621584s;--box-duration:4.59581679981784s;--box-intensity:0.07620810775697465\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.8663961517158896s;--box-duration:5.6251556436182s;--box-intensity:0.1392207250770298\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:3.9058855529874563s;--box-duration:6.9373272949887905s;--box-intensity:0.11029668475675862\"></div></div></div>"
+      },
+      "with content and style": {
+        "props": {
+          "rows": 1,
+          "cols": 2,
+          "style": {
+            "minHeight": 200
+          },
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"3\" style=\"min-height:200px;--boxes-rows:repeat(1, 1fr);--boxes-cols:repeat(2, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:2.685850353562273s;--box-duration:7.867871614987962s;--box-intensity:0.1272528617977514\"></div></div><div class=\"ui-background-boxes--content\"><b>hero</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "rows": 1,
+          "cols": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"0\" style=\"--boxes-rows:repeat(1, 1fr);--boxes-cols:repeat(1, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div></div></div>"
+      }
+    },
     "Badge": {
       "defaults": {
         "props": {},
@@ -675,6 +705,102 @@
           "dividers": false
         },
         "html": "<div class=\"ui-list-layout\" data-gap=\"md\" data-padding=\"none\"></div>"
+      }
+    },
+    "MeteorShower": {
+      "few": {
+        "props": {
+          "count": 4
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:33.573129419528414%;--meteor-delay:4.867871614987962s;--meteor-duration:2.530038157303352s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:5.734339443733916%;--meteor-delay:2.866425123393128s;--meteor-duration:2.977354963652033s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:88.6272282077698%;--meteor-delay:1.5958167998178396s;--meteor-duration:1.8494414367596619s\"></div></div>"
+      },
+      "with content": {
+        "props": {
+          "count": 2,
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:33.573129419528414%;--meteor-delay:4.867871614987962s;--meteor-duration:2.530038157303352s\"></div><div class=\"ui-meteor-shower--content\"><b>hero</b></div></div>"
+      },
+      "none": {
+        "props": {
+          "count": 0
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "count": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"0\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div></div>"
+      }
+    },
+    "OrbitingCircles": {
+      "three": {
+        "props": {
+          "children": [
+            {
+              "$el": "a"
+            },
+            {
+              "$el": "b"
+            },
+            {
+              "$el": "c"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:120deg;--orbit-delay:-5s\"><b>b</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:240deg;--orbit-delay:-10s\"><b>c</b></div></div>"
+      },
+      "reverse radius duration": {
+        "props": {
+          "radius": 60,
+          "duration": 8,
+          "reverse": true,
+          "children": [
+            {
+              "$el": "a"
+            },
+            "b"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:60px;--orbit-duration:8s;--orbit-direction:reverse\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:180deg;--orbit-delay:-4s\">b</div></div>"
+      },
+      "null and false dropped, 0 kept": {
+        "props": {
+          "children": [
+            {
+              "$el": "a"
+            },
+            null,
+            false,
+            "b",
+            0
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:120deg;--orbit-delay:-5s\">b</div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:240deg;--orbit-delay:-10s\">0</div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "width": 300
+          },
+          "children": [
+            "x"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"width:300px;--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\">x</div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": [
+            "x"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"0\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\">x</div></div>"
       }
     },
     "PageHeader": {

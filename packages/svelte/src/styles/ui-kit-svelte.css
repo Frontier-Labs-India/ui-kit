@@ -318,6 +318,78 @@
   }
 /* end app-shell */
 
+/* background-boxes */
+@layer components {
+    @scope (.ui-background-boxes) {
+      :scope {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .ui-background-boxes--grid {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-rows: var(--boxes-rows);
+        grid-template-columns: var(--boxes-cols);
+        gap: 1px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .ui-background-boxes--box {
+        background: oklch(75% 0.15 270 / 0);
+        animation: ui-box-pulse var(--box-duration, 4s) ease-in-out infinite;
+        animation-delay: var(--box-delay, 0s);
+        border-radius: 1px;
+      }
+
+      .ui-background-boxes--content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Motion 0: no animation */
+      :scope[data-motion="0"] .ui-background-boxes--box {
+        animation: none;
+        background: oklch(75% 0.15 270 / 0.03);
+      }
+
+      @keyframes ui-box-pulse {
+        0%, 100% {
+          background: oklch(75% 0.15 270 / 0);
+        }
+        50% {
+          background: oklch(75% 0.15 270 / var(--box-intensity, 0.12));
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-background-boxes--box {
+          animation: none;
+          background: oklch(75% 0.15 270 / 0.03);
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-background-boxes--grid {
+          display: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-background-boxes--grid {
+          display: none;
+        }
+      }
+    }
+  }
+/* end background-boxes */
+
 /* badge */
 @layer components {
     @scope (.ui-badge) {
@@ -2047,6 +2119,190 @@
     }
   }
 /* end list-layout */
+
+/* meteor-shower */
+@layer components {
+    @scope (.ui-meteor-shower) {
+      :scope {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ui-meteor-shower--meteor {
+        position: absolute;
+        inset-block-start: -5%;
+        inline-size: 1px;
+        block-size: clamp(2rem, 4vw, 4rem);
+        background: linear-gradient(
+          to bottom,
+          oklch(100% 0 0 / 0.6),
+          oklch(100% 0 0 / 0.2),
+          transparent
+        );
+        border-radius: 9999px;
+        transform: rotate(-45deg);
+        animation: ui-meteor-fall var(--meteor-duration, 2s) linear infinite;
+        animation-delay: var(--meteor-delay, 0s);
+        inset-inline-start: var(--meteor-left, 50%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Meteor tail glow */
+      .ui-meteor-shower--meteor::after {
+        content: '';
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+        inline-size: 3px;
+        block-size: 8px;
+        border-radius: 50%;
+        background: oklch(95% 0.05 270 / 0.8);
+        box-shadow: 0 0 6px 2px oklch(75% 0.15 270 / 0.3);
+      }
+
+      /* Content layer */
+      .ui-meteor-shower--content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Motion 0: no meteors */
+      :scope[data-motion="0"] .ui-meteor-shower--meteor {
+        display: none;
+      }
+
+      @keyframes ui-meteor-fall {
+        0% {
+          opacity: 0;
+          transform: rotate(-45deg) translateY(-100%);
+        }
+        5% {
+          opacity: 1;
+        }
+        70% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: rotate(-45deg) translateY(calc(100vh + 100%));
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-meteor-shower--meteor {
+          display: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-meteor-shower--meteor {
+          display: none;
+        }
+      }
+    }
+  }
+/* end meteor-shower */
+
+/* orbiting-circles */
+@layer components {
+    @scope (.ui-orbiting-circles) {
+      :scope {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: calc(var(--orbit-radius, 100px) * 2 + 4rem);
+        block-size: calc(var(--orbit-radius, 100px) * 2 + 4rem);
+      }
+
+      /* Orbit track (visual guide) */
+      :scope::before {
+        content: '';
+        position: absolute;
+        inset: 50%;
+        inline-size: calc(var(--orbit-radius, 100px) * 2);
+        block-size: calc(var(--orbit-radius, 100px) * 2);
+        transform: translate(-50%, -50%);
+        border: 1px solid var(--border-subtle);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .ui-orbiting-circles--item {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: -1rem;
+        inline-size: 2rem;
+        block-size: 2rem;
+        animation: ui-orbit var(--orbit-duration, 15s) linear infinite;
+        animation-direction: var(--orbit-direction, normal);
+        animation-delay: var(--orbit-delay, 0s);
+      }
+
+      /* Counter-rotate children so they stay upright */
+      .ui-orbiting-circles--item > * {
+        animation: ui-orbit-counter var(--orbit-duration, 15s) linear infinite;
+        animation-direction: var(--orbit-direction, normal);
+        animation-delay: var(--orbit-delay, 0s);
+      }
+
+      /* Motion 0: static placement */
+      :scope[data-motion="0"] .ui-orbiting-circles--item {
+        animation: none;
+        transform: rotate(var(--orbit-start-angle, 0deg)) translateX(var(--orbit-radius, 100px));
+      }
+
+      :scope[data-motion="0"] .ui-orbiting-circles--item > * {
+        animation: none;
+      }
+
+      @keyframes ui-orbit {
+        from {
+          transform: rotate(var(--orbit-start-angle, 0deg)) translateX(var(--orbit-radius, 100px)) rotate(calc(-1 * var(--orbit-start-angle, 0deg)));
+        }
+        to {
+          transform: rotate(calc(var(--orbit-start-angle, 0deg) + 360deg)) translateX(var(--orbit-radius, 100px)) rotate(calc(-1 * var(--orbit-start-angle, 0deg) - 360deg));
+        }
+      }
+
+      @keyframes ui-orbit-counter {
+        /* Children stay upright via parent counter-rotation in the orbit keyframes */
+        from { transform: rotate(0deg); }
+        to { transform: rotate(0deg); }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-orbiting-circles--item {
+          animation: none;
+          transform: rotate(var(--orbit-start-angle, 0deg)) translateX(var(--orbit-radius, 100px));
+        }
+        .ui-orbiting-circles--item > * {
+          animation: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-orbiting-circles--item {
+          animation: none;
+          transform: rotate(var(--orbit-start-angle, 0deg)) translateX(var(--orbit-radius, 100px));
+        }
+        .ui-orbiting-circles--item > * {
+          animation: none;
+        }
+      }
+    }
+  }
+/* end orbiting-circles */
 
 /* page-header */
 @layer components {

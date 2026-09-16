@@ -30,6 +30,15 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */
 export const PROP_RENAMES: Record<string, { from: string; to: string; reason: string }[]> = {
+  OrbitingCircles: [
+    {
+      from: 'children',
+      to: 'items',
+      reason:
+        'React takes an array of children and wraps each with Children.toArray. A Svelte snippet cannot ' +
+        'be split into children, so the Svelte component takes the array as `items`.',
+    },
+  ],
   Highlight: [
     {
       from: 'children',
