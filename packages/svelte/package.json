@@ -2,13 +2,29 @@
   "name": "@frontier-labs/ui-kit-svelte",
   "version": "0.1.0",
   "description": "Svelte 5 components sharing the @frontier-labs/ui-kit design system",
-  "type": "module",
-  "license": "MIT",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "runes",
+    "components",
+    "ui-kit",
+    "design-system",
+    "csp",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/Frontier-Labs-India/ui-kit/tree/main/packages/svelte#readme",
+  "bugs": {
+    "url": "https://github.com/Frontier-Labs-India/ui-kit/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Frontier-Labs-India/ui-kit.git",
     "directory": "packages/svelte"
   },
+  "license": "MIT",
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -19,7 +35,14 @@
     "./theme": "./dist/styles/theme.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "!dist/styles/svelte-only.css",
+    "NOT_PORTED.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "peerDependencies": {
     "svelte": "^5"
@@ -37,9 +60,8 @@
     "build": "svelte-package -i src -o dist",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
-  "svelte": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "sideEffects": [
-    "**/*.css"
-  ]
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
 }

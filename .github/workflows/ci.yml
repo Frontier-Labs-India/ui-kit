@@ -29,3 +29,16 @@ jobs:
       - run: npm run test:a11y
       - run: npm run test:bundle-size
       - run: npm run test:counts
+      # ── Svelte package ─────────────────────────────────────────────
+      # Runs after the React build because the stylesheet and parity gates
+      # read dist/component-meta.json and dist/css.
+      - run: npm run build:svelte
+      - run: npm run test:svelte
+      - run: npm run check:svelte
+      - run: npm run test:svelte-no-react
+      - run: npm run test:svelte-parity
+      - run: npm run test:svelte-csp
+      - run: npm run test:svelte-size
+      - run: npm run test:contract-fresh
+      - run: npm run test:vendor-fresh
+      - run: npm run test:svelte-css-fresh
