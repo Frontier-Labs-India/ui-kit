@@ -92,6 +92,87 @@
         "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"0\" aria-label=\"x\"></button>"
       }
     },
+    "Alert": {
+      "info": {
+        "props": {
+          "variant": "info",
+          "children": {
+            "$el": "Heads up"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"info\" data-size=\"md\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"><b>Heads up</b></div></div></div>"
+      },
+      "success title sm": {
+        "props": {
+          "variant": "success",
+          "title": "Saved",
+          "size": "sm",
+          "children": {
+            "$el": "All good"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"success\" data-size=\"sm\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__title\">Saved</div><div class=\"ui-alert__body\"><b>All good</b></div></div></div>"
+      },
+      "warning banner compact": {
+        "props": {
+          "variant": "warning",
+          "banner": true,
+          "compact": true,
+          "children": {
+            "$el": "Careful"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"warning\" data-size=\"md\" data-banner=\"true\" data-compact=\"true\" data-motion=\"3\" role=\"alert\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"></line><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"><b>Careful</b></div></div></div>"
+      },
+      "error dismissible with action": {
+        "props": {
+          "variant": "error",
+          "title": {
+            "$el": "Failed"
+          },
+          "dismissible": true,
+          "action": {
+            "label": "Retry",
+            "onClick": {
+              "$fn": true
+            }
+          },
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"error\" data-size=\"md\" data-motion=\"3\" role=\"alert\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__title\"><b>Failed</b></div><div class=\"ui-alert__body\"><b>x</b></div><div class=\"ui-alert__actions\"><button type=\"button\" class=\"ui-alert__action-btn\">Retry</button></div></div><button type=\"button\" class=\"ui-alert__dismiss\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "custom icon and classNames": {
+        "props": {
+          "variant": "info",
+          "icon": {
+            "$el": "i"
+          },
+          "dismissible": true,
+          "classNames": {
+            "root": "r",
+            "icon": "ic",
+            "content": "co",
+            "title": "ti",
+            "body": "bo",
+            "dismiss": "di"
+          },
+          "title": "T",
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-alert r\" data-variant=\"info\" data-size=\"md\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon ic\" aria-hidden=\"true\"><b>i</b></span><div class=\"ui-alert__content co\"><div class=\"ui-alert__title ti\">T</div><div class=\"ui-alert__body bo\"><b>x</b></div></div><button type=\"button\" class=\"ui-alert__dismiss di\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "motion 0": {
+        "props": {
+          "variant": "info",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"info\" data-size=\"md\" data-motion=\"0\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"></div></div></div>"
+      }
+    },
     "AppShell": {
       "main only": {
         "props": {
@@ -639,6 +720,91 @@
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
       }
     },
+    "FilterPill": {
+      "plain": {
+        "props": {
+          "label": "Region"
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">Region</span></button>"
+      },
+      "active count icon sm": {
+        "props": {
+          "label": "Region",
+          "active": true,
+          "count": 3,
+          "icon": {
+            "$el": "globe"
+          },
+          "size": "sm"
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"sm\" data-motion=\"3\" data-active=\"\" aria-pressed=\"true\"><span class=\"ui-filter-pill__icon\" aria-hidden=\"true\"><b>globe</b></span><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">3</span></button>"
+      },
+      "count zero": {
+        "props": {
+          "label": "Region",
+          "count": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">0</span></button>"
+      },
+      "removable": {
+        "props": {
+          "label": "Region",
+          "onRemove": {
+            "$fn": true
+          },
+          "active": true,
+          "count": 2
+        },
+        "html": "<span class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" data-active=\"\" role=\"group\" aria-label=\"Region filter\"><button type=\"button\" class=\"ui-filter-pill__main\" aria-pressed=\"true\"><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">2</span></button><button type=\"button\" class=\"ui-filter-pill__remove\" aria-label=\"Remove Region\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></button></span>"
+      },
+      "rest to the main button": {
+        "props": {
+          "label": "Region",
+          "onRemove": {
+            "$fn": true
+          },
+          "title": "filter by region"
+        },
+        "html": "<span class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Region filter\"><button type=\"button\" class=\"ui-filter-pill__main\" aria-pressed=\"false\" title=\"filter by region\"><span class=\"ui-filter-pill__label\">Region</span></button><button type=\"button\" class=\"ui-filter-pill__remove\" aria-label=\"Remove Region\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></button></span>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "x",
+          "motion": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"0\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">x</span></button>"
+      }
+    },
+    "FilterPillGroup": {
+      "children only": {
+        "props": {
+          "children": {
+            "$el": "pills"
+          }
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><b>pills</b></div>"
+      },
+      "clear all": {
+        "props": {
+          "onClearAll": {
+            "$fn": true
+          },
+          "children": {
+            "$el": "pills"
+          }
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><b>pills</b><button type=\"button\" class=\"ui-filter-pill-group__clear\">Clear all</button></div>"
+      },
+      "custom clear label": {
+        "props": {
+          "onClearAll": {
+            "$fn": true
+          },
+          "clearLabel": "Reset"
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><button type=\"button\" class=\"ui-filter-pill-group__clear\">Reset</button></div>"
+      }
+    },
     "GlowCard": {
       "defaults": {
         "props": {
@@ -733,6 +899,37 @@
           "highlightClassName": "hit"
         },
         "html": "<span class=\"ui-highlight\" style=\"--ui-highlight-color:gold\"><span>find </span><mark class=\"hit\">me</mark></span>"
+      }
+    },
+    "Icon": {
+      "chevron-down": {
+        "props": {
+          "name": "chevron-down"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg>"
+      },
+      "labelled lg": {
+        "props": {
+          "name": "x",
+          "size": "lg",
+          "label": "Close"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" role=\"img\" aria-label=\"Close\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg>"
+      },
+      "numeric size, class, rest": {
+        "props": {
+          "name": "x",
+          "size": 30,
+          "className": "k",
+          "data-x": "1"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"k\" aria-hidden=\"true\" data-x=\"1\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg>"
+      },
+      "unknown name renders nothing": {
+        "props": {
+          "name": "no-such-icon"
+        },
+        "html": ""
       }
     },
     "Indicator": {

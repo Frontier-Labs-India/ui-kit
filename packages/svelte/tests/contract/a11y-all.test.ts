@@ -4,7 +4,7 @@ import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
-import { PROP_RENAMES } from './divergences.js'
+import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* jest-axe over every case of every contract-tested component — not a
  * hand-picked few — so each new port is checked without writing a test.
@@ -19,7 +19,7 @@ const f = fixture as unknown as Fx
 
 function renamed(name: string, props: unknown): Record<string, unknown> {
   const out = { ...(props as Record<string, unknown>) }
-  for (const { from, to } of PROP_RENAMES[name] ?? []) {
+  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
     if (from in out) { out[to] = out[from]; delete out[from] }
   }
   return out

@@ -22,7 +22,7 @@ import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-import { CASES } from '../packages/svelte/tests/contract/cases'
+import { CASES, SOURCES } from '../packages/svelte/tests/contract/cases'
 import { useStyles } from '../src/core/styles/use-styles'
 import { css } from '../src/core/styles/css-tag'
 
@@ -42,6 +42,11 @@ function hydrate(value: unknown): unknown {
 }
 
 async function load(name: string) {
+  if (SOURCES[name]) {
+    const mod = await import(pathToFileURL(resolve(ROOT, SOURCES[name])).href)
+    if (!mod[name]) throw new Error(`${SOURCES[name]} does not export ${name}`)
+    return mod[name]
+  }
   const file = fileOf[name]
   if (!file) throw new Error(`${name} is not in component-meta.json`)
   for (const dir of ['src/components', 'src/domain']) {
@@ -61,8 +66,13 @@ for (const name of Object.keys(CASES).sort()) {
   components[name] = {}
   for (const [caseName, props] of Object.entries(CASES[name])) {
     const html = renderToStaticMarkup(React.createElement(Component, hydrate(props) as never))
-    if (!html) throw new Error(`${name} / ${caseName} rendered nothing on the server — it cannot join this fixture`)
     components[name][caseName] = { props, html }
+  }
+  // A case may legitimately render nothing (an unknown icon name). A component
+  // whose EVERY case renders nothing cannot be server-rendered at all (Drawer
+  // needs document) — its fixture would be empty and prove nothing, so refuse it.
+  if (Object.values(components[name]).every(c => c.html === '')) {
+    throw new Error(`${name}: every case rendered nothing on the server — it cannot join this fixture; list it in NO_SSR_CONTRACT`)
   }
 }
 

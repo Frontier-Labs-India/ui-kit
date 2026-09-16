@@ -43,6 +43,12 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
 /* Props whose NAME differs between the packages, applied to a case's props
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */
+/* Applies to every component: React's className is Svelte's class. Cases are
+ * written in React's shape, so this is renamed before every Svelte render. */
+export const UNIVERSAL_RENAMES: { from: string; to: string; reason: string }[] = [
+  { from: 'className', to: 'class', reason: "JSX spells the class attribute className; Svelte uses class." },
+]
+
 export const PROP_RENAMES: Record<string, { from: string; to: string; reason: string }[]> = {
   OrbitingCircles: [
     {

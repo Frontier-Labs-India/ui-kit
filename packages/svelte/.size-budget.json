@@ -2,6 +2,7 @@
   "_note": "Gzipped bytes per shipped unit, measured by check-svelte-size.js --record. Derived, not chosen. See the script header before editing.",
   "component:Accordion": 1645,
   "component:ActionIcon": 655,
+  "component:Alert": 1298,
   "component:AppShell": 612,
   "component:BackgroundBeams": 720,
   "component:BackgroundBoxes": 760,
@@ -15,6 +16,8 @@
   "component:ConfidenceBar": 846,
   "component:Divider": 673,
   "component:Drawer": 1083,
+  "component:FilterPill": 827,
+  "component:FilterPillGroup": 415,
   "component:GlowCard": 941,
   "component:Highlight": 828,
   "component:Indicator": 996,
@@ -48,6 +51,7 @@
   "component:WavyBackground": 1117,
   "css:accordion": 1308,
   "css:action-icon": 1842,
+  "css:alert": 1694,
   "css:app-shell": 651,
   "css:background-beams": 586,
   "css:background-boxes": 517,
@@ -61,6 +65,7 @@
   "css:confidence-bar": 835,
   "css:divider": 759,
   "css:drawer": 1102,
+  "css:filter-pill": 1392,
   "css:glow-card": 717,
   "css:highlight": 333,
   "css:indicator": 1039,
@@ -95,5 +100,6 @@
   "css:wavy-background": 447,
   "lib:Content": 331,
   "lib:ErrorBoundary": 692,
-  "runtime": 4656
+  "lib:Icon": 731,
+  "runtime": 6851
 }

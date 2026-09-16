@@ -16,6 +16,14 @@
  * nothing. */
 
 export type CaseProps = Record<string, unknown>
+
+/* Exports that component-meta does not list (it lists one component per file),
+ * mapped to the React source that exports them, so their cases can be rendered. */
+export const SOURCES: Record<string, string> = {
+  Icon: 'src/core/icons/icon.tsx',
+  FilterPillGroup: 'src/components/filter-pill.tsx',
+}
+
 export const CASES: Record<string, Record<string, CaseProps>> = {
   Accordion: {
     empty: { items: [] },
@@ -356,5 +364,36 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'show custom without value': { presets: [], showCustom: true },
     'motion 0': { presets: [], motion: 0 },
+  },
+  Alert: {
+    info: { variant: 'info', children: { $el: 'Heads up' } },
+    'success title sm': { variant: 'success', title: 'Saved', size: 'sm', children: { $el: 'All good' } },
+    'warning banner compact': { variant: 'warning', banner: true, compact: true, children: { $el: 'Careful' } },
+    'error dismissible with action': { variant: 'error', title: { $el: 'Failed' }, dismissible: true, action: { label: 'Retry', onClick: { $fn: true } }, children: { $el: 'x' } },
+    'custom icon and classNames': {
+      variant: 'info', icon: { $el: 'i' }, dismissible: true,
+      classNames: { root: 'r', icon: 'ic', content: 'co', title: 'ti', body: 'bo', dismiss: 'di' }, title: 'T',
+      children: { $el: 'x' },
+    },
+    'motion 0': { variant: 'info', motion: 0 },
+  },
+  FilterPill: {
+    plain: { label: 'Region' },
+    'active count icon sm': { label: 'Region', active: true, count: 3, icon: { $el: 'globe' }, size: 'sm' },
+    'count zero': { label: 'Region', count: 0 },
+    removable: { label: 'Region', onRemove: { $fn: true }, active: true, count: 2 },
+    'rest to the main button': { label: 'Region', onRemove: { $fn: true }, title: 'filter by region' },
+    'motion 0': { label: 'x', motion: 0 },
+  },
+  FilterPillGroup: {
+    'children only': { children: { $el: 'pills' } },
+    'clear all': { onClearAll: { $fn: true }, children: { $el: 'pills' } },
+    'custom clear label': { onClearAll: { $fn: true }, clearLabel: 'Reset' },
+  },
+  Icon: {
+    'chevron-down': { name: 'chevron-down' },
+    'labelled lg': { name: 'x', size: 'lg', label: 'Close' },
+    'numeric size, class, rest': { name: 'x', size: 30, className: 'k', 'data-x': '1' },
+    'unknown name renders nothing': { name: 'no-such-icon' },
   },
 }

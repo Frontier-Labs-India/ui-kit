@@ -1,6 +1,5 @@
 [
   "Affix",
-  "Alert",
   "AnimatedCounter",
   "Avatar",
   "AvatarUpload",
@@ -39,7 +38,6 @@
   "EntityCard",
   "EvervaultCard",
   "FileUpload",
-  "FilterPill",
   "FlipWords",
   "FormInput",
   "GeoMap",

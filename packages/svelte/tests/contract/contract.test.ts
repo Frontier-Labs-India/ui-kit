@@ -6,7 +6,7 @@ import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES } from './divergences.js'
+import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -19,7 +19,7 @@ const f = fixture as Fixture
 
 function renamed(name: string, props: unknown): Record<string, unknown> {
   const out = { ...(props as Record<string, unknown>) }
-  for (const { from, to } of PROP_RENAMES[name] ?? []) {
+  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
     if (from in out) { out[to] = out[from]; delete out[from] }
   }
   return out

@@ -47,6 +47,10 @@ const parts = [
 ]
 let failed = false
 for (const name of ported) {
+  // A companion export (not in component-meta) has no CSS file of its own: its
+  // rules are extracted into its main component's file, e.g. FilterPillGroup's
+  // live in filter-pill.css. The parity gate checks such names are real exports.
+  if (!(name in fileByName)) continue
   const file = fileByName[name]
   const css = file && resolve(CSS_DIR, `${file}.css`)
   if (!css || !existsSync(css)) {
