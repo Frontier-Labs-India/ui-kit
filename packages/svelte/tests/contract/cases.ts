@@ -479,4 +479,38 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty href is a button': { label: 'X', href: '' },
     'rest attrs': { label: 'X', id: 'i', 'aria-label': 'x item' },
   },
+  ConnectionTestPanel: {
+    'every status': {
+      steps: [
+        { id: 'a', label: 'DNS', status: 'passed', duration: 12 },
+        { id: 'b', label: 'TLS', status: 'failed', duration: 1234, message: 'expired' },
+        { id: 'c', label: 'Auth', status: 'skipped' },
+        { id: 'd', label: 'Query', status: 'running' },
+        { id: 'e', label: 'Close', status: 'pending', duration: 999 },
+      ],
+      onRetry: { $fn: true },
+    },
+    'running shows cancel, hides retry': { running: true, onRetry: { $fn: true }, onCancel: { $fn: true }, title: 'LDAP', size: 'lg', steps: [] },
+    'no failures or skips': { steps: [{ id: 'a', label: 'Ping', status: 'passed', duration: 1000 }] },
+    'motion 0': { motion: 0, steps: [] },
+  },
+  GeoMap: {
+    'points only': { points: [{ id: 'a', lat: 51.5, lng: -0.12 }] },
+    'values, statuses, labels, connections': {
+      showLabels: true,
+      points: [
+        { id: 'lon', lat: 51.5, lng: -0.12, value: 40, status: 'ok', label: 'London' },
+        { id: 'nyc', lat: 40.7, lng: -74, value: 100, status: 'critical', label: 'New York' },
+        { id: 'syd', lat: -33.9, lng: 151.2, status: 'warning' },
+      ],
+      connections: [
+        { from: 'lon', to: 'nyc', status: 'warning' },
+        { from: 'nyc', to: 'syd' },
+        { from: 'lon', to: 'missing' },
+      ],
+    },
+    'interactive, height number, style': { interactive: true, height: 300, style: { border: '1px solid' }, points: [{ id: 'a', lat: 0, lng: 0 }] },
+    'height string beats caller style height': { height: '50vh', style: { height: 10 }, points: [] },
+    'motion 0': { motion: 0, points: [] },
+  },
 }

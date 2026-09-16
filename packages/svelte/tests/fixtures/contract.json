@@ -679,6 +679,82 @@
         "html": "<div class=\"ui-confidence-bar\" data-motion=\"0\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">100%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:100%\"></div></div></div>"
       }
     },
+    "ConnectionTestPanel": {
+      "every status": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "DNS",
+              "status": "passed",
+              "duration": 12
+            },
+            {
+              "id": "b",
+              "label": "TLS",
+              "status": "failed",
+              "duration": 1234,
+              "message": "expired"
+            },
+            {
+              "id": "c",
+              "label": "Auth",
+              "status": "skipped"
+            },
+            {
+              "id": "d",
+              "label": "Query",
+              "status": "running"
+            },
+            {
+              "id": "e",
+              "label": "Close",
+              "status": "pending",
+              "duration": 999
+            }
+          ],
+          "onRetry": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"3\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"><button type=\"button\" class=\"ui-connection-test-panel__btn\">↻ Retry</button></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"><li class=\"ui-connection-test-panel__step\" data-status=\"passed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"passed\" aria-hidden=\"true\">✓</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">DNS</span><span class=\"ui-connection-test-panel__badge\" data-status=\"passed\">passed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">12ms</span></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"failed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"failed\" aria-hidden=\"true\">✗</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">TLS</span><span class=\"ui-connection-test-panel__badge\" data-status=\"failed\">failed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">1.23s</span></div><span class=\"ui-connection-test-panel__message\">expired</span></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"skipped\"><span class=\"ui-connection-test-panel__icon\" data-status=\"skipped\" aria-hidden=\"true\">−</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Auth</span><span class=\"ui-connection-test-panel__badge\" data-status=\"skipped\">skipped</span></div><div class=\"ui-connection-test-panel__row\"></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"running\"><span class=\"ui-connection-test-panel__icon\" data-status=\"running\" aria-hidden=\"true\">◦</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Query</span><span class=\"ui-connection-test-panel__badge\" data-status=\"running\">running</span></div><div class=\"ui-connection-test-panel__row\"></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"pending\"><span class=\"ui-connection-test-panel__icon\" data-status=\"pending\" aria-hidden=\"true\">•</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Close</span><span class=\"ui-connection-test-panel__badge\" data-status=\"pending\">pending</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">999ms</span></div></div></li></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">1 passed</span><span class=\"ui-connection-test-panel__count--failed\">1 failed</span><span>1 skipped</span></div><span>5 total</span></div></div>"
+      },
+      "running shows cancel, hides retry": {
+        "props": {
+          "running": true,
+          "onRetry": {
+            "$fn": true
+          },
+          "onCancel": {
+            "$fn": true
+          },
+          "title": "LDAP",
+          "size": "lg",
+          "steps": []
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"lg\" data-motion=\"3\" role=\"region\" aria-label=\"LDAP\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">LDAP</span><div class=\"ui-connection-test-panel__actions\"><button type=\"button\" class=\"ui-connection-test-panel__btn ui-connection-test-panel__btn--cancel\">Cancel</button></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
+      },
+      "no failures or skips": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "Ping",
+              "status": "passed",
+              "duration": 1000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"3\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"><li class=\"ui-connection-test-panel__step\" data-status=\"passed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"passed\" aria-hidden=\"true\">✓</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Ping</span><span class=\"ui-connection-test-panel__badge\" data-status=\"passed\">passed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">1.00s</span></div></div></li></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">1 passed</span></div><span>1 total</span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "steps": []
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"0\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
+      }
+    },
     "Divider": {
       "defaults": {
         "props": {},
@@ -803,6 +879,99 @@
           "clearLabel": "Reset"
         },
         "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><button type=\"button\" class=\"ui-filter-pill-group__clear\">Reset</button></div>"
+      }
+    },
+    "GeoMap": {
+      "points only": {
+        "props": {
+          "points": [
+            {
+              "id": "a",
+              "lat": 51.5,
+              "lng": -0.12
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 1 point\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><circle class=\"ui-geo-map__point\" cx=\"179.88\" cy=\"38.5\" r=\"3\"></circle></svg></div>"
+      },
+      "values, statuses, labels, connections": {
+        "props": {
+          "showLabels": true,
+          "points": [
+            {
+              "id": "lon",
+              "lat": 51.5,
+              "lng": -0.12,
+              "value": 40,
+              "status": "ok",
+              "label": "London"
+            },
+            {
+              "id": "nyc",
+              "lat": 40.7,
+              "lng": -74,
+              "value": 100,
+              "status": "critical",
+              "label": "New York"
+            },
+            {
+              "id": "syd",
+              "lat": -33.9,
+              "lng": 151.2,
+              "status": "warning"
+            }
+          ],
+          "connections": [
+            {
+              "from": "lon",
+              "to": "nyc",
+              "status": "warning"
+            },
+            {
+              "from": "nyc",
+              "to": "syd"
+            },
+            {
+              "from": "lon",
+              "to": "missing"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 3 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><path class=\"ui-geo-map__connection\" d=\"M 179.88 38.5 Q 142.94 32.818, 106 49.3\" data-status=\"warning\"></path><path class=\"ui-geo-map__connection\" d=\"M 106 49.3 Q 218.6 52.82, 331.2 123.9\"></path><circle class=\"ui-geo-map__point\" cx=\"179.88\" cy=\"38.5\" r=\"3.9000000000000004\" data-status=\"ok\"></circle><circle class=\"ui-geo-map__point\" cx=\"106\" cy=\"49.3\" r=\"6\" data-status=\"critical\"></circle><circle class=\"ui-geo-map__point\" cx=\"331.2\" cy=\"123.9\" r=\"3\" data-status=\"warning\"></circle><text class=\"ui-geo-map__label\" x=\"179.88\" y=\"44.5\">London</text><text class=\"ui-geo-map__label\" x=\"106\" y=\"55.3\">New York</text></svg></div>"
+      },
+      "interactive, height number, style": {
+        "props": {
+          "interactive": true,
+          "height": 300,
+          "style": {
+            "border": "1px solid"
+          },
+          "points": [
+            {
+              "id": "a",
+              "lat": 0,
+              "lng": 0
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\" style=\"border:1px solid;height:300px\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 1 point\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><circle class=\"ui-geo-map__point\" cx=\"180\" cy=\"90\" r=\"3\" data-interactive=\"\"></circle></svg></div>"
+      },
+      "height string beats caller style height": {
+        "props": {
+          "height": "50vh",
+          "style": {
+            "height": 10
+          },
+          "points": []
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\" style=\"height:50vh\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 0 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "points": []
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"0\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 0 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g></svg></div>"
       }
     },
     "GlowCard": {

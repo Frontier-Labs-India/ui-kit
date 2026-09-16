@@ -14,10 +14,12 @@
   "component:CardGrid": 508,
   "component:Checkbox": 1388,
   "component:ConfidenceBar": 846,
+  "component:ConnectionTestPanel": 1167,
   "component:Divider": 673,
   "component:Drawer": 1083,
   "component:FilterPill": 827,
   "component:FilterPillGroup": 415,
+  "component:GeoMap": 2168,
   "component:GlowCard": 941,
   "component:Highlight": 828,
   "component:Indicator": 996,
@@ -71,9 +73,11 @@
   "css:card-grid": 484,
   "css:checkbox": 1393,
   "css:confidence-bar": 835,
+  "css:connection-test-panel": 1735,
   "css:divider": 759,
   "css:drawer": 1102,
   "css:filter-pill": 1392,
+  "css:geo-map": 935,
   "css:glow-card": 717,
   "css:highlight": 333,
   "css:indicator": 1039,
@@ -113,5 +117,5 @@
   "lib:Content": 331,
   "lib:ErrorBoundary": 692,
   "lib:Icon": 731,
-  "runtime": 6851
+  "runtime": 7549
 }
