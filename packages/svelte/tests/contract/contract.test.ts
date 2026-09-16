@@ -6,7 +6,7 @@ import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, NO_SSR_CONTRACT } from './divergences.js'
+import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES } from './divergences.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -16,6 +16,14 @@ import { DIVERGENCES, NO_SSR_CONTRACT } from './divergences.js'
 
 type Fixture = { version: number; components: Record<string, Record<string, { props: unknown; html: string }>> }
 const f = fixture as Fixture
+
+function renamed(name: string, props: unknown): Record<string, unknown> {
+  const out = { ...(props as Record<string, unknown>) }
+  for (const { from, to } of PROP_RENAMES[name] ?? []) {
+    if (from in out) { out[to] = out[from]; delete out[from] }
+  }
+  return out
+}
 
 function hydrate(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(hydrate)
@@ -65,7 +73,7 @@ describe('React DOM contract', () => {
     if (!withMotion) continue
     it(`${name}: data-motion follows a motion prop change after mount`, async () => {
       const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-      const base = hydrate(withMotion[1].props) as Record<string, unknown>
+      const base = hydrate(renamed(name, withMotion[1].props)) as Record<string, unknown>
       const { container, rerender } = render(Comp, { props: { ...base, motion: 1 } })
       const read = () => Array.from(container.querySelectorAll('[data-motion]')).map(e => e.getAttribute('data-motion'))
       expect(read().length).toBeGreaterThan(0)
@@ -85,7 +93,7 @@ describe('React DOM contract', () => {
       for (const [caseName, { props, html }] of Object.entries(cases)) {
         it(caseName, () => {
           const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-          const { container } = render(Comp, { props: hydrate(props) as Record<string, unknown> })
+          const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
           // CSP: where React's markup has no inline style at all, Svelte must
           // not either. Checked before divergences, which may add style to
           // mirror React's shape.

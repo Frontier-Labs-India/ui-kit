@@ -4,6 +4,7 @@ import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
+import { PROP_RENAMES } from './divergences.js'
 
 /* jest-axe over every case of every contract-tested component — not a
  * hand-picked few — so each new port is checked without writing a test.
@@ -15,6 +16,14 @@ import fixture from '../fixtures/contract.json'
 
 type Fx = { components: Record<string, Record<string, { props: unknown; html: string }>> }
 const f = fixture as unknown as Fx
+
+function renamed(name: string, props: unknown): Record<string, unknown> {
+  const out = { ...(props as Record<string, unknown>) }
+  for (const { from, to } of PROP_RENAMES[name] ?? []) {
+    if (from in out) { out[to] = out[from]; delete out[from] }
+  }
+  return out
+}
 
 function hydrate(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(hydrate)
@@ -61,7 +70,7 @@ describe('accessibility — every contract case', () => {
     for (const [caseName, { props }] of Object.entries(cases)) {
       it(`${name} / ${caseName}`, async () => {
         const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-        const { container } = render(Comp, { props: hydrate(props) as Record<string, unknown> })
+        const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
         expect(container.innerHTML.length).toBeGreaterThan(0)
         const found = (await axe(container)).violations.map(v => `${name}/${caseName}/${v.id}`)
         found.forEach(k => seen.add(k))

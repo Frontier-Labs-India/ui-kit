@@ -26,6 +26,21 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
   ],
 }
 
+/* Props whose NAME differs between the packages, applied to a case's props
+ * before the Svelte render — the case file stays in React's shape, and the
+ * rename is stated here with its reason. */
+export const PROP_RENAMES: Record<string, { from: string; to: string; reason: string }[]> = {
+  Highlight: [
+    {
+      from: 'children',
+      to: 'text',
+      reason:
+        'React reads children as a string and splits it into <mark> runs. A Svelte snippet is opaque — ' +
+        'its text cannot be read back — so the Svelte component takes the string as `text`.',
+    },
+  ],
+}
+
 /* Exported components that cannot join the SSR-generated contract, and why.
  * The contract test fails for any exported component missing from both the
  * fixture and this list, so a new port cannot skip the contract silently. */

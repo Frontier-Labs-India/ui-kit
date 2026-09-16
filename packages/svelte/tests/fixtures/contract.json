@@ -144,6 +144,41 @@
         "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><b>Label</b></span>"
       }
     },
+    "BorderBeam": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "panel"
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"><b>panel</b></div></div>"
+      },
+      "duration size color": {
+        "props": {
+          "duration": 2.5,
+          "size": 120,
+          "color": "oklch(70% 0.2 200)",
+          "children": {
+            "$el": "panel"
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"--border-beam-duration:2.5s;--border-beam-size:120px;--border-beam-color:oklch(70% 0.2 200)\"><div class=\"ui-border-beam--content\"><b>panel</b></div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "borderRadius": 12
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"border-radius:12px;--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"0\" style=\"--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"></div></div>"
+      }
+    },
     "ButtonGroup": {
       "defaults": {
         "props": {
@@ -352,6 +387,69 @@
           "title": "split"
         },
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "Highlight": {
+      "single term, case-insensitive": {
+        "props": {
+          "children": "The quick brown fox",
+          "highlight": "QUICK"
+        },
+        "html": "<span class=\"ui-highlight\"><span>The </span><mark>quick</mark><span> brown fox</span></span>"
+      },
+      "several terms": {
+        "props": {
+          "children": "alpha beta gamma beta",
+          "highlight": [
+            "beta",
+            "gamma"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>alpha </span><mark>beta</mark><span> </span><mark>gamma</mark><span> </span><mark>beta</mark></span>"
+      },
+      "case sensitive miss": {
+        "props": {
+          "children": "Alpha alpha",
+          "highlight": "alpha",
+          "caseSensitive": true
+        },
+        "html": "<span class=\"ui-highlight\"><span>Alpha </span><mark>alpha</mark></span>"
+      },
+      "regex metacharacters are literal": {
+        "props": {
+          "children": "cost is $5.00 (net)",
+          "highlight": [
+            "$5.00",
+            "(net)"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>cost is </span><mark>$5.00</mark><span> </span><mark>(net)</mark></span>"
+      },
+      "no valid terms": {
+        "props": {
+          "children": "nothing here",
+          "highlight": [
+            "",
+            ""
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>nothing here</span></span>"
+      },
+      "term at both ends": {
+        "props": {
+          "children": "xx mid xx",
+          "highlight": "xx"
+        },
+        "html": "<span class=\"ui-highlight\"><mark>xx</mark><span> mid </span><mark>xx</mark></span>"
+      },
+      "color and mark class": {
+        "props": {
+          "children": "find me",
+          "highlight": "me",
+          "color": "gold",
+          "highlightClassName": "hit"
+        },
+        "html": "<span class=\"ui-highlight\" style=\"--ui-highlight-color:gold\"><span>find </span><mark class=\"hit\">me</mark></span>"
       }
     },
     "Indicator": {
@@ -656,6 +754,56 @@
         "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
       }
     },
+    "ShimmerButton": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"3\"><b>Go</b></button>"
+      },
+      "color lg disabled": {
+        "props": {
+          "shimmerColor": "white",
+          "size": "lg",
+          "disabled": true,
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"lg\" data-motion=\"3\" disabled=\"\" style=\"--shimmer-button-color:white\"><b>Go</b></button>"
+      },
+      "no style at all": {
+        "props": {
+          "size": "sm",
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"sm\" data-motion=\"3\"><b>Go</b></button>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "minWidth": 120
+          },
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"3\" style=\"min-width:120px\"><b>Go</b></button>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"0\"><b>Go</b></button>"
+      }
+    },
     "Skeleton": {
       "defaults": {
         "props": {},
@@ -945,6 +1093,48 @@
           "motion": 0
         },
         "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"0\"></p>"
+      }
+    },
+    "ViewTransitionLink": {
+      "defaults": {
+        "props": {
+          "href": "/next",
+          "children": {
+            "$el": "Next"
+          }
+        },
+        "html": "<a href=\"/next\" class=\"ui-view-transition-link\"><b>Next</b></a>"
+      },
+      "transition name": {
+        "props": {
+          "href": "/hero",
+          "transitionName": "hero",
+          "children": {
+            "$el": "Hero"
+          }
+        },
+        "html": "<a href=\"/hero\" class=\"ui-view-transition-link\" style=\"view-transition-name:hero\"><b>Hero</b></a>"
+      },
+      "caller style merged": {
+        "props": {
+          "href": "/a",
+          "transitionName": "card",
+          "style": {
+            "display": "block"
+          },
+          "children": {
+            "$el": "A"
+          }
+        },
+        "html": "<a href=\"/a\" class=\"ui-view-transition-link\" style=\"display:block;view-transition-name:card\"><b>A</b></a>"
+      },
+      "no href": {
+        "props": {
+          "children": {
+            "$el": "Nowhere"
+          }
+        },
+        "html": "<a class=\"ui-view-transition-link\"><b>Nowhere</b></a>"
       }
     }
   },

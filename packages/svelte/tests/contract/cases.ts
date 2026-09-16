@@ -189,4 +189,32 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'unknown variant falls back to span': { variant: 'nope' },
     'motion 0': { motion: 0 },
   },
+  BorderBeam: {
+    defaults: { children: { $el: 'panel' } },
+    'duration size color': { duration: 2.5, size: 120, color: 'oklch(70% 0.2 200)', children: { $el: 'panel' } },
+    'caller style': { style: { borderRadius: 12 } },
+    'motion 0': { motion: 0 },
+  },
+  Highlight: {
+    'single term, case-insensitive': { children: 'The quick brown fox', highlight: 'QUICK' },
+    'several terms': { children: 'alpha beta gamma beta', highlight: ['beta', 'gamma'] },
+    'case sensitive miss': { children: 'Alpha alpha', highlight: 'alpha', caseSensitive: true },
+    'regex metacharacters are literal': { children: 'cost is $5.00 (net)', highlight: ['$5.00', '(net)'] },
+    'no valid terms': { children: 'nothing here', highlight: ['', ''] },
+    'term at both ends': { children: 'xx mid xx', highlight: 'xx' },
+    'color and mark class': { children: 'find me', highlight: 'me', color: 'gold', highlightClassName: 'hit' },
+  },
+  ShimmerButton: {
+    defaults: { children: { $el: 'Go' } },
+    'color lg disabled': { shimmerColor: 'white', size: 'lg', disabled: true, children: { $el: 'Go' } },
+    'no style at all': { size: 'sm', children: { $el: 'Go' } },
+    'caller style': { style: { minWidth: 120 }, children: { $el: 'Go' } },
+    'motion 0': { motion: 0, children: { $el: 'Go' } },
+  },
+  ViewTransitionLink: {
+    defaults: { href: '/next', children: { $el: 'Next' } },
+    'transition name': { href: '/hero', transitionName: 'hero', children: { $el: 'Hero' } },
+    'caller style merged': { href: '/a', transitionName: 'card', style: { display: 'block' }, children: { $el: 'A' } },
+    'no href': { children: { $el: 'Nowhere' } },
+  },
 }

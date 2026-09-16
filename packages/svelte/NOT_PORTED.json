@@ -8,7 +8,6 @@
   "BackToTop",
   "BackgroundBeams",
   "BackgroundBoxes",
-  "BorderBeam",
   "Breadcrumbs",
   "Button",
   "Calendar",
@@ -52,7 +51,6 @@
   "GlowCard",
   "HeatmapCalendar",
   "HeroHighlight",
-  "Highlight",
   "InfiniteScroll",
   "InlineEdit",
   "JsonViewer",
@@ -95,7 +93,6 @@
   "ServiceStrip",
   "SeverityTimeline",
   "Sheet",
-  "ShimmerButton",
   "Sidebar",
   "Slider",
   "SmartTable",
@@ -133,7 +130,6 @@
   "UpstreamDashboard",
   "UptimeTracker",
   "UtilizationBar",
-  "ViewTransitionLink",
   "VlanBusBar",
   "WavyBackground"
 ]
