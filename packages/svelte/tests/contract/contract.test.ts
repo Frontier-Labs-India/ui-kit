@@ -1,10 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { flushSync } from 'svelte'
 import { createRawSnippet, type Component } from 'svelte'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
-import { CASES } from './cases.js'
+import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
 import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
@@ -45,6 +45,11 @@ const exported = Object.entries(pkg)
   .sort()
 
 describe('React DOM contract', () => {
+  // Same clock as the generator, so relative times render identically. Only
+  // Date is faked — timers stay real, so Svelte's scheduling is untouched.
+  beforeAll(() => { vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(CONTRACT_NOW) })
+  afterAll(() => { vi.useRealTimers() })
+
   it('uses the v2 full-tree fixture', () => {
     expect(f.version).toBe(2)
   })

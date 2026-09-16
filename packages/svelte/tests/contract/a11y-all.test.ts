@@ -1,9 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
+import { CONTRACT_NOW } from './cases.js'
 import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* jest-axe over every case of every contract-tested component — not a
@@ -68,6 +69,11 @@ const INHERITED: Record<string, string> = {
 }
 
 describe('accessibility — every contract case', () => {
+  // Same clock as the generator, so relative times render identically. Only
+  // Date is faked — timers stay real, so Svelte's scheduling is untouched.
+  beforeAll(() => { vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(CONTRACT_NOW) })
+  afterAll(() => { vi.useRealTimers() })
+
   const seen = new Set<string>()
 
   for (const [name, cases] of Object.entries(f.components)) {

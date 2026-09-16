@@ -25,6 +25,7 @@ const DEST = resolve(ROOT, 'packages/svelte/src/vendor')
 const ALLOWLIST = [
   'src/core/a11y/compute-anchor-position.ts',
   'src/core/icons/paths.ts',
+  'src/core/utils/format.ts',
 ]
 
 const FRAMEWORK_IMPORT = /from\s+['"](react|react-dom|react\/[^'"]*|svelte|svelte\/[^'"]*)['"]/

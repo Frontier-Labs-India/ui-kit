@@ -1120,6 +1120,150 @@
         "html": "<div class=\"ui-meteor-shower\" data-motion=\"0\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div></div>"
       }
     },
+    "NotificationStack": {
+      "empty": {
+        "props": {
+          "notifications": []
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">No notifications</div></div></div>"
+      },
+      "custom empty message": {
+        "props": {
+          "notifications": [],
+          "emptyMessage": "All caught up",
+          "onDismissAll": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">All caught up</div></div></div>"
+      },
+      "mixed with relative times": {
+        "props": {
+          "onDismiss": {
+            "$fn": true
+          },
+          "onDismissAll": {
+            "$fn": true
+          },
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "Deploy done",
+              "timestamp": 1768478370000,
+              "variant": "success",
+              "description": "v3.0.0",
+              "action": {
+                "label": "View",
+                "onClick": {
+                  "$fn": true
+                }
+              }
+            },
+            {
+              "id": "b",
+              "title": "Disk 90%",
+              "timestamp": 1768478100000,
+              "variant": "warning",
+              "icon": {
+                "$el": "!"
+              },
+              "read": true
+            },
+            {
+              "id": "c",
+              "title": "Backup",
+              "timestamp": 1768467600000
+            },
+            {
+              "id": "d",
+              "title": "Invoice",
+              "timestamp": 1768305600000,
+              "read": false
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"><button type=\"button\" class=\"ui-notification-stack__action-btn\">Mark all read</button><button type=\"button\" class=\"ui-notification-stack__action-btn\">Clear all</button></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"success\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Deploy done</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">30 seconds ago</span></div><p class=\"ui-notification__description\">v3.0.0</p><button type=\"button\" class=\"ui-notification__action\">View</button></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"warning\"><span class=\"ui-notification__icon\"><b>!</b></span><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Disk 90%</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">5 minutes ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Backup</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">3 hours ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Invoice</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">2 days ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article></div></div>"
+      },
+      "grouped": {
+        "props": {
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "group": "Today"
+            },
+            {
+              "id": "b",
+              "title": "B",
+              "timestamp": 1768478400000,
+              "group": "Today"
+            },
+            {
+              "id": "c",
+              "title": "C",
+              "timestamp": 1768478400000,
+              "group": "Earlier",
+              "read": true
+            },
+            {
+              "id": "d",
+              "title": "D",
+              "timestamp": 1768478400000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__group-header\">Today</div><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">B</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><div class=\"ui-notification-stack__group-header\">Earlier</div><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">C</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">D</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "maxVisible cuts, unread still counted from all": {
+        "props": {
+          "maxVisible": 1,
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "read": true
+            },
+            {
+              "id": "b",
+              "title": "B",
+              "timestamp": 1768478400000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"><button type=\"button\" class=\"ui-notification-stack__action-btn\">Mark all read</button></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "all read hides mark-all": {
+        "props": {
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "read": true
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "notifications": []
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"0\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">No notifications</div></div></div>"
+      }
+    },
     "OrbitingCircles": {
       "three": {
         "props": {
@@ -1665,6 +1809,108 @@
           }
         },
         "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"0\"><b>Go</b></button>"
+      }
+    },
+    "Sidebar": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "nav"
+          }
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"3\" style=\"--sidebar-width:240px;--sidebar-collapsed-width:64px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><b>nav</b></aside>"
+      },
+      "collapsed right string widths": {
+        "props": {
+          "collapsed": true,
+          "position": "right",
+          "width": "18rem",
+          "collapsedWidth": "4rem"
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"true\" data-position=\"right\" data-motion=\"3\" style=\"--sidebar-width:18rem;--sidebar-collapsed-width:4rem\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Expand sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      },
+      "caller style wins over width vars": {
+        "props": {
+          "width": 300,
+          "style": {
+            "--sidebar-width": "10px",
+            "padding": 4
+          }
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"3\" style=\"--sidebar-width:10px;--sidebar-collapsed-width:64px;padding:4px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"0\" style=\"--sidebar-width:240px;--sidebar-collapsed-width:64px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      }
+    },
+    "SidebarContent": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "className": "c",
+          "id": "sc"
+        },
+        "html": "<div class=\"ui-sidebar__content c\" id=\"sc\"><b>x</b></div>"
+      }
+    },
+    "SidebarFooter": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-sidebar__footer\"><b>x</b></div>"
+      }
+    },
+    "SidebarHeader": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "title": "h"
+        },
+        "html": "<div class=\"ui-sidebar__header\" title=\"h\"><b>x</b></div>"
+      }
+    },
+    "SidebarItem": {
+      "button": {
+        "props": {
+          "label": "Settings"
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\"><span class=\"ui-sidebar__item-label\">Settings</span></button>"
+      },
+      "link active icon": {
+        "props": {
+          "label": "Home",
+          "href": "/",
+          "active": true,
+          "icon": {
+            "$el": "h"
+          }
+        },
+        "html": "<a class=\"ui-sidebar__item\" data-active=\"true\" href=\"/\"><span class=\"ui-sidebar__item-icon\"><b>h</b></span><span class=\"ui-sidebar__item-label\">Home</span></a>"
+      },
+      "empty href is a button": {
+        "props": {
+          "label": "X",
+          "href": ""
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\"><span class=\"ui-sidebar__item-label\">X</span></button>"
+      },
+      "rest attrs": {
+        "props": {
+          "label": "X",
+          "id": "i",
+          "aria-label": "x item"
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\" id=\"i\" aria-label=\"x item\"><span class=\"ui-sidebar__item-label\">X</span></button>"
       }
     },
     "Skeleton": {

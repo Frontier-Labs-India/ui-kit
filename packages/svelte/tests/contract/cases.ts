@@ -17,11 +17,21 @@
 
 export type CaseProps = Record<string, unknown>
 
+/* The clock every contract render sees. Components that format time relative
+ * to now (NotificationStack's "5 minutes ago") would otherwise produce a fixture
+ * that is right when generated and wrong a minute later. The generator pins
+ * Date.now to this; the Svelte contract tests fake Date — and only Date — to it. */
+export const CONTRACT_NOW = Date.UTC(2026, 0, 15, 12, 0, 0)
+
 /* Exports that component-meta does not list (it lists one component per file),
  * mapped to the React source that exports them, so their cases can be rendered. */
 export const SOURCES: Record<string, string> = {
   Icon: 'src/core/icons/icon.tsx',
   FilterPillGroup: 'src/components/filter-pill.tsx',
+  SidebarHeader: 'src/components/sidebar.tsx',
+  SidebarContent: 'src/components/sidebar.tsx',
+  SidebarFooter: 'src/components/sidebar.tsx',
+  SidebarItem: 'src/components/sidebar.tsx',
 }
 
 export const CASES: Record<string, Record<string, CaseProps>> = {
@@ -426,5 +436,47 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'all complete': { activeStep: 5, steps: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }] },
     'motion 0': { activeStep: 0, motion: 0, steps: [{ id: 'a', label: 'A' }] },
+  },
+  NotificationStack: {
+    empty: { notifications: [] },
+    'custom empty message': { notifications: [], emptyMessage: 'All caught up', onDismissAll: { $fn: true } },
+    'mixed with relative times': {
+      onDismiss: { $fn: true }, onDismissAll: { $fn: true }, onMarkAllRead: { $fn: true },
+      notifications: [
+        { id: 'a', title: 'Deploy done', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) - 30000, variant: 'success', description: 'v3.0.0', action: { label: 'View', onClick: { $fn: true } } },
+        { id: 'b', title: 'Disk 90%', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) - 5 * 60000, variant: 'warning', icon: { $el: '!' }, read: true },
+        { id: 'c', title: 'Backup', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) - 3 * 3600000 },
+        { id: 'd', title: 'Invoice', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) - 2 * 86400000, read: false },
+      ],
+    },
+    grouped: {
+      notifications: [
+        { id: 'a', title: 'A', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0), group: 'Today' },
+        { id: 'b', title: 'B', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0), group: 'Today' },
+        { id: 'c', title: 'C', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0), group: 'Earlier', read: true },
+        { id: 'd', title: 'D', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) },
+      ],
+    },
+    'maxVisible cuts, unread still counted from all': {
+      maxVisible: 1, onMarkAllRead: { $fn: true },
+      notifications: [{ id: 'a', title: 'A', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0), read: true }, { id: 'b', title: 'B', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0) }],
+    },
+    'all read hides mark-all': { onMarkAllRead: { $fn: true }, notifications: [{ id: 'a', title: 'A', timestamp: Date.UTC(2026, 0, 15, 12, 0, 0), read: true }] },
+    'motion 0': { motion: 0, notifications: [] },
+  },
+  Sidebar: {
+    defaults: { children: { $el: 'nav' } },
+    'collapsed right string widths': { collapsed: true, position: 'right', width: '18rem', collapsedWidth: '4rem' },
+    'caller style wins over width vars': { width: 300, style: { '--sidebar-width': '10px', padding: 4 } },
+    'motion 0': { motion: 0 },
+  },
+  SidebarContent: { basic: { children: { $el: 'x' }, className: 'c', id: 'sc' } },
+  SidebarFooter: { basic: { children: { $el: 'x' } } },
+  SidebarHeader: { basic: { children: { $el: 'x' }, title: 'h' } },
+  SidebarItem: {
+    button: { label: 'Settings' },
+    'link active icon': { label: 'Home', href: '/', active: true, icon: { $el: 'h' } },
+    'empty href is a button': { label: 'X', href: '' },
+    'rest attrs': { label: 'X', id: 'i', 'aria-label': 'x item' },
   },
 }

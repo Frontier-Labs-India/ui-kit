@@ -22,7 +22,7 @@ import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-import { CASES, SOURCES } from '../packages/svelte/tests/contract/cases'
+import { CASES, SOURCES, CONTRACT_NOW } from '../packages/svelte/tests/contract/cases'
 import { useStyles } from '../src/core/styles/use-styles'
 import { css } from '../src/core/styles/css-tag'
 
@@ -59,6 +59,9 @@ async function load(name: string) {
   }
   throw new Error(`no source file for ${name} (${file}.tsx)`)
 }
+
+// Freeze the clock for every render — see CONTRACT_NOW in cases.ts.
+Date.now = () => CONTRACT_NOW
 
 const components: Record<string, Record<string, { props: unknown; html: string }>> = {}
 for (const name of Object.keys(CASES).sort()) {
