@@ -9,6 +9,9 @@
  *   - comment nodes (React SSR separates adjacent text with <!-- -->), and
  *     whitespace-only text; adjacent text is merged and whitespace collapsed
  *   - generated id VALUES
+ *   - how a checkbox's checked state is carried: server HTML has a `checked`
+ *     attribute, a client render sets the `.checked` property and no attribute.
+ *     Both mean the same, so an input's checked state is read from either.
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -59,9 +62,12 @@ export function canonical(root: ParentNode): string {
       if (child.nodeType !== 1) continue
       flush()
       const el = child as Element
-      // id first, so a reference later on the same element resolves consistently
-      const attrs = Array.from(el.attributes)
+      const raw = Array.from(el.attributes)
         .map(a => [a.name.toLowerCase(), a.value] as const)
+        .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement))
+      if (el instanceof HTMLInputElement && (el.checked || el.hasAttribute('checked'))) raw.push(['checked', ''])
+      // id first, so a reference later on the same element resolves consistently
+      const attrs = raw
         .sort(([a], [b]) => (a === 'id' ? -1 : b === 'id' ? 1 : a < b ? -1 : a > b ? 1 : 0))
         .map(([n, v]) => [n, attrValue(n, v)] as const)
         .filter(([n, v]) => !(n === 'class' && v === '') && !(n === 'style' && v === ''))

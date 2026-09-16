@@ -1,5 +1,4 @@
 [
-  "ActionIcon",
   "Affix",
   "Alert",
   "AnimatedCounter",
@@ -106,7 +105,6 @@
   "TimeSeriesChart",
   "Timeline",
   "ToastProvider",
-  "ToggleSwitch",
   "TopologyGraph",
   "TopologyGraphCanvas",
   "TopologyGraphSVG",

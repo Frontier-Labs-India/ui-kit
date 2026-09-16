@@ -49,6 +49,49 @@
         "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"default\" data-size=\"md\"><details open=\"\"><summary><span>First</span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\">Body A</div></div></div></details><details><summary aria-disabled=\"true\"><span><b>Second</b></span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\"><b>Body B</b></div></div></div></details></div>"
       }
     },
+    "ActionIcon": {
+      "defaults": {
+        "props": {
+          "aria-label": "Edit",
+          "children": {
+            "$el": "pencil"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-label=\"Edit\"><b>pencil</b></button>"
+      },
+      "filled danger xl full loading": {
+        "props": {
+          "aria-label": "Delete",
+          "variant": "filled",
+          "color": "danger",
+          "size": "xl",
+          "radius": "full",
+          "loading": true
+        },
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"filled\" data-color=\"danger\" data-size=\"xl\" data-radius=\"full\" data-loading=\"true\" data-motion=\"3\" aria-busy=\"true\" aria-label=\"Delete\"></button>"
+      },
+      "disabled": {
+        "props": {
+          "aria-label": "Save",
+          "disabled": true
+        },
+        "html": "<button type=\"button\" disabled=\"\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-disabled=\"true\" aria-label=\"Save\"></button>"
+      },
+      "type submit": {
+        "props": {
+          "aria-label": "Send",
+          "type": "submit"
+        },
+        "html": "<button type=\"submit\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-label=\"Send\"></button>"
+      },
+      "motion 0": {
+        "props": {
+          "aria-label": "x",
+          "motion": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"0\" aria-label=\"x\"></button>"
+      }
+    },
     "AppShell": {
       "main only": {
         "props": {
@@ -1519,6 +1562,61 @@
           "motion": 0
         },
         "html": "<div class=\"ui-threshold-gauge\" data-motion=\"0\" data-size=\"md\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 58.24099749162482 115.97236738048096 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      }
+    },
+    "ToggleSwitch": {
+      "label": {
+        "props": {
+          "label": "Wi-Fi"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "controlled on": {
+        "props": {
+          "label": "Wi-Fi",
+          "checked": true
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" aria-checked=\"true\" checked=\"\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "controlled off": {
+        "props": {
+          "label": "Wi-Fi",
+          "checked": false
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" aria-checked=\"false\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "uncontrolled default on": {
+        "props": {
+          "label": "Wi-Fi",
+          "defaultChecked": true
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" checked=\"\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "disabled error xl": {
+        "props": {
+          "label": {
+            "$el": "Bluetooth"
+          },
+          "disabled": true,
+          "error": "Unavailable",
+          "size": "xl"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"xl\" data-motion=\"3\" data-disabled=\"\" data-error=\"\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" disabled=\"\" aria-invalid=\"true\" aria-describedby=\"toggle-switch-_R_0_-error\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\"><b>Bluetooth</b></span></label><span id=\"toggle-switch-_R_0_-error\" class=\"ui-toggle-switch__error\" role=\"alert\">Unavailable</span></div>"
+      },
+      "explicit id and rest to input": {
+        "props": {
+          "label": "Wi-Fi",
+          "id": "wifi",
+          "name": "wifi"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"wifi\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"wifi\" class=\"ui-toggle-switch__input\" name=\"wifi\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "x",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"0\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">x</span></label></div>"
       }
     },
     "Toolbar": {

@@ -313,4 +313,20 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'compact string parts': { title: 'Lite', description: { $el: 'Solo' }, variant: 'compact' },
     'motion 0': { title: 'x', motion: 0 },
   },
+  ActionIcon: {
+    defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
+    'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
+    disabled: { 'aria-label': 'Save', disabled: true },
+    'type submit': { 'aria-label': 'Send', type: 'submit' },
+    'motion 0': { 'aria-label': 'x', motion: 0 },
+  },
+  ToggleSwitch: {
+    label: { label: 'Wi-Fi' },
+    'controlled on': { label: 'Wi-Fi', checked: true },
+    'controlled off': { label: 'Wi-Fi', checked: false },
+    'uncontrolled default on': { label: 'Wi-Fi', defaultChecked: true },
+    'disabled error xl': { label: { $el: 'Bluetooth' }, disabled: true, error: 'Unavailable', size: 'xl' },
+    'explicit id and rest to input': { label: 'Wi-Fi', id: 'wifi', name: 'wifi' },
+    'motion 0': { label: 'x', motion: 0 },
+  },
 }
