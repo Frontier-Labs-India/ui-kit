@@ -18,4 +18,16 @@ describe('worker registry freshness', () => {
     expect(worker.componentCount).toBe(built.componentCount)
     expect(worker.version).toBe(built.version)
   })
+
+  it('matches the build in full, apart from the build timestamp', () => {
+    // Count and version alone miss a stale registry with the same number of
+    // components — a renamed or re-documented one. generatedAt is the only
+    // field allowed to differ; sync-worker-registry.js ignores it for the same
+    // reason, so a rebuild does not rewrite an unchanged committed file.
+    const strip = (t: string) => {
+      const { generatedAt: _ignored, ...rest } = JSON.parse(t)
+      return rest
+    }
+    expect(strip(readFileSync(WORKER, 'utf8'))).toEqual(strip(readFileSync(BUILT, 'utf8')))
+  })
 })
