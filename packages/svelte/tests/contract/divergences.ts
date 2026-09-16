@@ -9,6 +9,20 @@
 export type Divergence = { reason: string; apply: (root: ParentNode) => void }
 
 export const DIVERGENCES: Record<string, Divergence[]> = {
+  PipelineStage: [
+    {
+      reason:
+        "React renders each step as <li style={{display:'contents'}}> (setProperty, CSP-safe). In Svelte " +
+        "markup that is a blocked static style attribute, so Svelte uses .ui-pipeline-stage__li.",
+      apply(root) {
+        for (const el of Array.from(root.querySelectorAll('li.ui-pipeline-stage__li'))) {
+          el.classList.remove('ui-pipeline-stage__li')
+          if (!el.classList.length) el.removeAttribute('class')
+          el.setAttribute('style', 'display:contents')
+        }
+      },
+    },
+  ],
   Checkbox: [
     {
       reason:

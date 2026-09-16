@@ -50,3 +50,10 @@
   font-size: 0.8125rem;
   font-weight: 500;
 }
+
+/* PipelineStage: React renders each step as <li style={{display:'contents'}}>,
+ * applied by setProperty and CSP-safe there. A static style attribute would be
+ * blocked here, so the same rule is a class. */
+.ui-pipeline-stage__li {
+  display: contents;
+}

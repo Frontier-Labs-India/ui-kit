@@ -9,7 +9,7 @@
  *   component:<Name>   its .svelte source
  *   lib:<Name>         shared .svelte pieces (e.g. ErrorBoundary)
  *   css:<file>         its block in ui-kit-svelte.css
- *   runtime            all shipped .js (actions, runes, vendored core)
+ *   runtime            shipped .js except the barrel (actions, runes, lib, vendored core)
  *   css:svelte-only    the Svelte-specific rules
  *
  * An existing entry growing more than 10% fails. A unit with no budget entry
@@ -48,7 +48,12 @@ for (const f of all.filter(f => f.endsWith('.svelte'))) {
   const kind = f.includes('/components/') ? 'component' : 'lib'
   measured[`${kind}:${basename(f, '.svelte')}`] = gz(readFileSync(f))
 }
-measured.runtime = gz(Buffer.concat(all.filter(f => f.endsWith('.js')).sort().map(f => readFileSync(f))))
+// The barrel (dist/index.js) is excluded: it is one re-export line per
+// component, so it grows with every port by design, and consumers' bundlers
+// tree-shake it away. Budgeting it would fail every few ports and teach the
+// habit of re-baselining — exactly what per-unit budgets exist to avoid.
+const BARREL = resolve(DIST, 'index.js')
+measured.runtime = gz(Buffer.concat(all.filter(f => f.endsWith('.js') && f !== BARREL).sort().map(f => readFileSync(f))))
 
 const sheet = readFileSync(resolve(DIST, 'styles/ui-kit-svelte.css'), 'utf8')
 for (const m of sheet.matchAll(/\/\* ([a-z0-9-]+) \*\/\n([\s\S]*?)\n\/\* end \1 \*\//g)) {

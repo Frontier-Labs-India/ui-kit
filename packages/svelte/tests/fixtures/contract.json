@@ -895,6 +895,85 @@
         "html": "<div class=\"ui-page-shell\" data-max-width=\"full\" data-padding=\"lg\" id=\"shell\"></div>"
       }
     },
+    "PipelineStage": {
+      "all statuses": {
+        "props": {
+          "stages": [
+            {
+              "id": "a",
+              "label": "Build",
+              "status": "success",
+              "duration": 42
+            },
+            {
+              "id": "b",
+              "label": "Test",
+              "status": "running",
+              "duration": 125
+            },
+            {
+              "id": "c",
+              "label": "Deploy",
+              "status": "pending",
+              "duration": 120
+            },
+            {
+              "id": "d",
+              "label": "Notify",
+              "status": "skipped"
+            },
+            {
+              "id": "e",
+              "label": "Audit",
+              "status": "failed",
+              "duration": 0
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"success\"><span class=\"ui-pipeline-stage__icon\">✓</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Build</span><span class=\"ui-pipeline-stage__duration\">42s</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"running\"><span class=\"ui-pipeline-stage__icon\">▶</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Test</span><span class=\"ui-pipeline-stage__duration\">2m 5s</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"pending\"><span class=\"ui-pipeline-stage__icon\">•</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Deploy</span><span class=\"ui-pipeline-stage__duration\">2m</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"skipped\"><span class=\"ui-pipeline-stage__icon\">−</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Notify</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"failed\"><span class=\"ui-pipeline-stage__icon\">✗</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Audit</span><span class=\"ui-pipeline-stage__duration\">0s</span></div></div></li></ol></div>"
+      },
+      "vertical, clickable": {
+        "props": {
+          "orientation": "vertical",
+          "onStageClick": {
+            "$fn": true
+          },
+          "stages": [
+            {
+              "id": "a",
+              "label": "Build",
+              "status": "success"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"vertical\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"success\"><span class=\"ui-pipeline-stage__icon\">✓</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\"><button class=\"ui-pipeline-stage__label-btn\">Build</button></span></div></div></li></ol></div>"
+      },
+      "single stage has no connector": {
+        "props": {
+          "stages": [
+            {
+              "id": "a",
+              "label": "Only",
+              "status": "pending"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"pending\"><span class=\"ui-pipeline-stage__icon\">•</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Only</span></div></div></li></ol></div>"
+      },
+      "empty": {
+        "props": {
+          "stages": []
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "stages": []
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"0\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
+      }
+    },
     "Progress": {
       "indeterminate": {
         "props": {},
@@ -936,6 +1015,48 @@
           "motion": 0
         },
         "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:10%\"></div></div></div>"
+      }
+    },
+    "ResponsiveCard": {
+      "title only": {
+        "props": {
+          "title": "Plan"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">Plan</h3></div></article>"
+      },
+      "everything": {
+        "props": {
+          "title": {
+            "$el": "Pro"
+          },
+          "description": "For teams",
+          "actions": {
+            "$el": "Buy"
+          },
+          "badge": "New",
+          "image": {
+            "$el": "img"
+          },
+          "variant": "horizontal"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"horizontal\" data-motion=\"3\"><div class=\"ui-responsive-card__badge\">New</div><div class=\"ui-responsive-card__image\"><b>img</b></div><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\"><b>Pro</b></h3><p class=\"ui-responsive-card__description\">For teams</p></div><div class=\"ui-responsive-card__actions\"><b>Buy</b></div></article>"
+      },
+      "compact string parts": {
+        "props": {
+          "title": "Lite",
+          "description": {
+            "$el": "Solo"
+          },
+          "variant": "compact"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"compact\" data-motion=\"3\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">Lite</h3><p class=\"ui-responsive-card__description\"><b>Solo</b></p></div></article>"
+      },
+      "motion 0": {
+        "props": {
+          "title": "x",
+          "motion": 0
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">x</h3></div></article>"
       }
     },
     "RingChart": {

@@ -292,4 +292,25 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'clamped negative': { value: -10 },
     'motion 0': { value: 1, motion: 0 },
   },
+  PipelineStage: {
+    'all statuses': {
+      stages: [
+        { id: 'a', label: 'Build', status: 'success', duration: 42 },
+        { id: 'b', label: 'Test', status: 'running', duration: 125 },
+        { id: 'c', label: 'Deploy', status: 'pending', duration: 120 },
+        { id: 'd', label: 'Notify', status: 'skipped' },
+        { id: 'e', label: 'Audit', status: 'failed', duration: 0 },
+      ],
+    },
+    'vertical, clickable': { orientation: 'vertical', onStageClick: { $fn: true }, stages: [{ id: 'a', label: 'Build', status: 'success' }] },
+    'single stage has no connector': { stages: [{ id: 'a', label: 'Only', status: 'pending' }] },
+    empty: { stages: [] },
+    'motion 0': { motion: 0, stages: [] },
+  },
+  ResponsiveCard: {
+    'title only': { title: 'Plan' },
+    everything: { title: { $el: 'Pro' }, description: 'For teams', actions: { $el: 'Buy' }, badge: 'New', image: { $el: 'img' }, variant: 'horizontal' },
+    'compact string parts': { title: 'Lite', description: { $el: 'Solo' }, variant: 'compact' },
+    'motion 0': { title: 'x', motion: 0 },
+  },
 }
