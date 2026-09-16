@@ -6,7 +6,7 @@ import fixture from '../fixtures/contract.json'
 /* reactStyle must serialise a style object exactly as React does. The expected
  * text is React's own server output for the same object, from the fixture. */
 
-const cases = (fixture as { styles: { obj: Record<string, never>; css: string }[] }).styles
+const cases = (fixture as unknown as { styles: { obj: Record<string, never>; css: string }[] }).styles
 
 const text = (decls: Record<string, string>) =>
   Object.entries(decls).map(([k, v]) => `${k}:${v}`).join(';')
