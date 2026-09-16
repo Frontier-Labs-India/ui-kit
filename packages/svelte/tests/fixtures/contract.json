@@ -938,6 +938,73 @@
         "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:10%\"></div></div></div>"
       }
     },
+    "RingChart": {
+      "value": {
+        "props": {
+          "value": 42
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"42\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"105.68317686676065\"></circle></svg></div>"
+      },
+      "show value lg thickness color": {
+        "props": {
+          "value": 75,
+          "showValue": true,
+          "size": "lg",
+          "thickness": 12,
+          "color": "teal"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"lg\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:96px;height:96px\"><svg class=\"ui-ring-chart__svg\" width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"48\" cy=\"48\" r=\"42\" stroke-width=\"12\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"48\" cy=\"48\" r=\"42\" stroke-width=\"12\" stroke=\"teal\" stroke-dasharray=\"263.89378290154264\" stroke-dashoffset=\"65.97344572538566\"></circle></svg><div class=\"ui-ring-chart__center\">75%</div></div>"
+      },
+      "string label names the meter": {
+        "props": {
+          "value": 10,
+          "max": 40,
+          "label": "CPU"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"40\" aria-label=\"CPU\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"136.659280431156\"></circle></svg><div class=\"ui-ring-chart__center\">CPU</div></div>"
+      },
+      "element label": {
+        "props": {
+          "value": 5,
+          "label": {
+            "$el": "5 GB"
+          }
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"5\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"173.1017552127976\"></circle></svg><div class=\"ui-ring-chart__center\"><b>5 GB</b></div></div>"
+      },
+      "empty-string label renders empty centre": {
+        "props": {
+          "value": 50,
+          "label": "",
+          "showValue": true
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"91.106186954104\"></circle></svg><div class=\"ui-ring-chart__center\"></div></div>"
+      },
+      "clamped": {
+        "props": {
+          "value": 140,
+          "max": 120,
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"sm\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"120\" aria-valuemin=\"0\" aria-valuemax=\"120\" aria-label=\"Ring chart\" style=\"width:48px;height:48px\"><svg class=\"ui-ring-chart__svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"24\" cy=\"24\" r=\"22\" stroke-width=\"4\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"24\" cy=\"24\" r=\"22\" stroke-width=\"4\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"138.23007675795088\" stroke-dashoffset=\"0\"></circle></svg></div>"
+      },
+      "caller style wins over size": {
+        "props": {
+          "value": 1,
+          "style": {
+            "width": 200
+          }
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:200px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"180.39025016912592\"></circle></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"0\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"180.39025016912592\"></circle></svg></div>"
+      }
+    },
     "SectionHeader": {
       "title only": {
         "props": {
@@ -1229,6 +1296,108 @@
           "motion": 0
         },
         "html": "<span class=\"ui-status-pulse\" data-status=\"info\" data-size=\"md\" data-motion=\"0\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      }
+    },
+    "SuccessCheckmark": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"3\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span></div>"
+      },
+      "lg not animated custom label": {
+        "props": {
+          "size": "lg",
+          "animated": false,
+          "label": "Saved"
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"lg\" data-animated=\"false\" data-motion=\"3\" role=\"img\" aria-label=\"Saved\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      },
+      "motion 2 has no particles": {
+        "props": {
+          "motion": 2
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"2\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      },
+      "motion 3 has particles": {
+        "props": {
+          "motion": 3
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"3\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"0\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      }
+    },
+    "ThresholdGauge": {
+      "value": {
+        "props": {
+          "value": 30
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"30\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 14.69504831500295 92.91597412837851 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "ok warning critical": {
+        "props": {
+          "value": 55,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          },
+          "showValue": true
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" data-status=\"warning\" role=\"meter\" aria-valuenow=\"55\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 4.689452926672288 51.23966995774708 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><text class=\"ui-threshold-gauge__value-text\" x=\"60\" y=\"56\">55</text></svg></div>"
+      },
+      "critical": {
+        "props": {
+          "value": 95,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          },
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"lg\" data-status=\"critical\" role=\"meter\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"160\" height=\"90\" viewBox=\"0 0 160 90\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 79.99999999999999 5 A 75 75 0 0 0 80 155\" stroke-width=\"10\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 68.26741512198268 5.92337445536468 A 75 75 0 0 0 80 155\" stroke-width=\"10\"></path></svg></div>"
+      },
+      "zero has no fill": {
+        "props": {
+          "value": 0,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          }
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" data-status=\"ok\" role=\"meter\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "full, labelled": {
+        "props": {
+          "value": 100,
+          "label": "Disk",
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"sm\" role=\"meter\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Disk\"><svg class=\"ui-threshold-gauge__svg\" width=\"80\" height=\"46\" viewBox=\"0 0 80 46\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 39.99999999999999 3 A 37 37 0 0 0 40 77\" stroke-width=\"6\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 39.99999999999999 3 A 37 37 0 0 0 40 77\" stroke-width=\"6\"></path></svg><div class=\"ui-threshold-gauge__label\">Disk</div></div>"
+      },
+      "element label": {
+        "props": {
+          "value": 12,
+          "label": {
+            "$el": "Load"
+          }
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"12\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 39.38502504965805 112.06748320974208 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg><div class=\"ui-threshold-gauge__label\"><b>Load</b></div></div>"
+      },
+      "clamped negative": {
+        "props": {
+          "value": -10
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"0\" data-size=\"md\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 58.24099749162482 115.97236738048096 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
       }
     },
     "Toolbar": {

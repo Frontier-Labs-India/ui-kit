@@ -58,6 +58,10 @@ const INHERITED: Record<string, string> = {
   'Progress/clamped over max/aria-progressbar-name': CALLER_MUST_NAME,
   'Progress/clamped negative/aria-progressbar-name': CALLER_MUST_NAME,
   'Progress/motion 0/aria-progressbar-name': CALLER_MUST_NAME,
+  'RingChart/empty-string label renders empty centre/aria-meter-name':
+    'inherited from React: aria-label uses `typeof label === "string"`, so an explicit empty label ' +
+    'yields aria-label="" instead of the "Ring chart" fallback. Minor — needs a caller to pass "" — ' +
+    'and fixable only in both packages together',
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,
