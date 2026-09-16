@@ -76,4 +76,63 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'avatar element': { avatar: { $el: 'img' } },
     'motion 0': { motion: 0 },
   },
+  ListLayout: {
+    defaults: { children: { $el: 'row' } },
+    'gap lg dividers padding sm': { gap: 'lg', dividers: true, padding: 'sm', children: { $el: 'row' } },
+    'dividers false': { dividers: false },
+  },
+  PageShell: {
+    defaults: { children: { $el: 'page' } },
+    'xl none': { maxWidth: 'xl', padding: 'none', children: { $el: 'page' } },
+    'full lg rest': { maxWidth: 'full', padding: 'lg', id: 'shell' },
+  },
+  SectionHeader: {
+    'title only': { title: 'Usage' },
+    'description action sm': { title: 'Usage', description: 'Last 30 days', action: { $el: 'Export' }, size: 'sm' },
+    'action string lg': { title: 'Usage', action: 'Export', size: 'lg' },
+    'empty description': { title: 'Usage', description: '' },
+    'children are dropped': { title: 'Usage', children: { $el: 'ignored' } },
+  },
+  StatsGrid: {
+    defaults: { children: { $el: 'stat' } },
+    'columns 6 gap sm': { columns: 6, gap: 'sm', children: { $el: 'stat' } },
+    'role override': { role: 'list' },
+  },
+  Toolbar: {
+    defaults: { children: { $el: 'tools' } },
+    'between wrap sticky lg': { justify: 'between', wrap: true, sticky: true, gap: 'lg' },
+    'wrap false': { wrap: false, sticky: false },
+  },
+  AppShell: {
+    'main only': { children: { $el: 'main' } },
+    'all regions right collapsed': {
+      navbar: { $el: 'nav' }, sidebar: 'side', footer: { $el: 'foot' },
+      sidebarCollapsed: true, sidebarPosition: 'right', children: { $el: 'main' },
+    },
+    'empty-string sidebar reports true, renders nothing': { sidebar: '', children: { $el: 'main' } },
+  },
+  ButtonGroup: {
+    defaults: { children: { $el: 'btns' } },
+    'vertical xl ghost attached': { orientation: 'vertical', size: 'xl', variant: 'ghost', attached: true },
+    'role override': { role: 'toolbar' },
+    'motion 0': { motion: 0 },
+  },
+  Link: {
+    defaults: { href: '/docs', children: { $el: 'Docs' } },
+    'external defaults': { href: 'https://x.test', external: true },
+    'external keeps caller target and rel': { href: 'https://x.test', external: true, target: '_self', rel: 'me' },
+    'not external passes target through': { href: '/a', target: '_top' },
+    'brand always xl': { variant: 'brand', underline: 'always', size: 'xl' },
+  },
+  PageHeader: {
+    'title only': { title: 'Billing' },
+    everything: { title: 'Billing', description: 'Invoices', actions: { $el: 'New' }, breadcrumbs: { $el: 'Home / Billing' }, size: 'lg' },
+    'string actions': { title: 'Billing', actions: 'New', size: 'sm' },
+  },
+  StatusBadge: {
+    ok: { status: 'ok' },
+    'label icon pulse lg': { status: 'critical', label: 'Down', icon: { $el: '!' }, pulse: true, size: 'lg' },
+    'maintenance empty label': { status: 'maintenance', label: '' },
+    'motion 0': { status: 'info', motion: 0 },
+  },
 }
