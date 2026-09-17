@@ -128,8 +128,8 @@ describe('React DOM contract', () => {
           // not either. An empty style attribute — left behind when an entrance
           // animation clears the properties it set — carries no CSS. Checked
           // before divergences, which may add style to mirror React's shape.
-          // Removed from BOTH trees: the server HTML may carry the property's
-          // initial value (TracingBeam's 0%) that the effect then changes.
+          // Effect-written state is removed from BOTH trees: the server HTML may
+          // carry its initial value (TracingBeam's 0%, SortableList's tabindex).
           const reactTree = fromHtml(html)
           for (const { selector, properties } of EFFECT_STYLES[name] ?? []) {
             for (const root of [container, reactTree]) {
@@ -140,7 +140,9 @@ describe('React DOM contract', () => {
             }
           }
           for (const { selector, attributes } of EFFECT_ATTRS[name] ?? []) {
-            for (const el of Array.from(container.querySelectorAll(selector))) for (const a of attributes) el.removeAttribute(a)
+            for (const root of [container, reactTree]) {
+              for (const el of Array.from(root.querySelectorAll(selector))) for (const a of attributes) el.removeAttribute(a)
+            }
           }
           for (const { selector } of EFFECT_VALUES[name] ?? []) {
             for (const el of Array.from(container.querySelectorAll<HTMLInputElement>(selector))) {

@@ -142,9 +142,17 @@ export function canonical(root: ParentNode): string {
   return out.join('\n')
 }
 
-/** Parses server HTML into a detached tree for canonical(). */
+/** Parses server HTML into a detached tree for canonical().
+ *
+ * React 19's server renderer emits `<link rel="preload" as="image" href>` for
+ * each <img> it renders — a resource hint for the document head, which a
+ * client render never produces and which is not the component's markup. Only
+ * that exact form is removed, and only at the top level where React emits it. */
 export function fromHtml(html: string): ParentNode {
   const t = document.createElement('template')
   t.innerHTML = html
+  for (const link of Array.from(t.content.children)) {
+    if (link.tagName === 'LINK' && link.getAttribute('rel') === 'preload' && link.getAttribute('as') === 'image') link.remove()
+  }
   return t.content
 }

@@ -263,6 +263,47 @@
         "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
       }
     },
+    "AvatarUpload": {
+      "empty": {
+        "props": {},
+        "html": "<div class=\"ui-avatar-upload\" data-shape=\"circle\" data-motion=\"3\"><label class=\"ui-avatar-upload__container\" aria-label=\"Upload avatar\" style=\"inline-size:120px;block-size:120px\"><input type=\"file\" class=\"ui-avatar-upload__input\" accept=\"image/*\" aria-label=\"Upload avatar file\"/><div class=\"ui-avatar-upload__placeholder\"><svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"12\" cy=\"13\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg><span>Upload</span></div></label></div>"
+      },
+      "value with remove, square, size, caller attrs": {
+        "props": {
+          "value": "https://example.com/a.png",
+          "onRemove": {
+            "$fn": true
+          },
+          "shape": "square",
+          "size": 64,
+          "className": "mine",
+          "id": "au"
+        },
+        "html": "<link rel=\"preload\" as=\"image\" href=\"https://example.com/a.png\"/><div class=\"ui-avatar-upload mine\" data-shape=\"square\" data-motion=\"3\" id=\"au\"><label class=\"ui-avatar-upload__container\" aria-label=\"Upload avatar\" style=\"inline-size:64px;block-size:64px\"><input type=\"file\" class=\"ui-avatar-upload__input\" accept=\"image/*\" aria-label=\"Upload avatar file\"/><img src=\"https://example.com/a.png\" alt=\"Avatar\" class=\"ui-avatar-upload__image\"/><div class=\"ui-avatar-upload__overlay\" aria-hidden=\"true\"><span class=\"ui-avatar-upload__overlay-icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"12\" cy=\"13\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></span><span>Change</span></div></label><button type=\"button\" class=\"ui-avatar-upload__remove\" aria-label=\"Remove avatar\"><svg width=\"8\" height=\"8\" viewBox=\"0 0 8 8\" fill=\"none\"><path d=\"M1.5 1.5l5 5m0-5l-5 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></div>"
+      },
+      "custom placeholder, disabled, accept": {
+        "props": {
+          "placeholder": {
+            "$el": "Add photo"
+          },
+          "disabled": true,
+          "accept": "image/png"
+        },
+        "html": "<div class=\"ui-avatar-upload\" data-shape=\"circle\" data-disabled=\"true\" data-motion=\"3\"><label class=\"ui-avatar-upload__container\" aria-label=\"Upload avatar\" aria-disabled=\"true\" style=\"inline-size:120px;block-size:120px\"><input type=\"file\" class=\"ui-avatar-upload__input\" accept=\"image/png\" disabled=\"\" aria-label=\"Upload avatar file\"/><div class=\"ui-avatar-upload__placeholder\"><b>Add photo</b></div></label></div>"
+      },
+      "value without onRemove has no remove button": {
+        "props": {
+          "value": "https://example.com/a.png"
+        },
+        "html": "<link rel=\"preload\" as=\"image\" href=\"https://example.com/a.png\"/><div class=\"ui-avatar-upload\" data-shape=\"circle\" data-motion=\"3\"><label class=\"ui-avatar-upload__container\" aria-label=\"Upload avatar\" style=\"inline-size:120px;block-size:120px\"><input type=\"file\" class=\"ui-avatar-upload__input\" accept=\"image/*\" aria-label=\"Upload avatar file\"/><img src=\"https://example.com/a.png\" alt=\"Avatar\" class=\"ui-avatar-upload__image\"/><div class=\"ui-avatar-upload__overlay\" aria-hidden=\"true\"><span class=\"ui-avatar-upload__overlay-icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"12\" cy=\"13\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></span><span>Change</span></div></label></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-avatar-upload\" data-shape=\"circle\" data-motion=\"0\"><label class=\"ui-avatar-upload__container\" aria-label=\"Upload avatar\" style=\"inline-size:120px;block-size:120px\"><input type=\"file\" class=\"ui-avatar-upload__input\" accept=\"image/*\" aria-label=\"Upload avatar file\"/><div class=\"ui-avatar-upload__placeholder\"><svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"12\" cy=\"13\" r=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg><span>Upload</span></div></label></div>"
+      }
+    },
     "BackToTop": {
       "defaults": {
         "props": {},
@@ -6486,6 +6527,58 @@
           "aria-label": "x"
         },
         "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"0\" aria-label=\"x\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"0\" max=\"100\" step=\"1\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"0\"/></div></div>"
+      }
+    },
+    "SortableList": {
+      "items": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "aria-label": "Tasks",
+          "items": [
+            {
+              "id": "a",
+              "content": "Write"
+            },
+            {
+              "id": "b",
+              "content": {
+                "$el": "Review"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-sortable-list\" data-motion=\"3\" data-orientation=\"vertical\"><div role=\"listbox\" aria-label=\"Tasks\" aria-orientation=\"vertical\"><div role=\"option\" aria-selected=\"false\" aria-roledescription=\"sortable item\" data-item-id=\"a\" class=\"ui-sortable-list__item\" tabindex=\"-1\" draggable=\"true\"><span class=\"ui-sortable-list__handle\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"5.5\" cy=\"3\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"3\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"5.5\" cy=\"8\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"8\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"5.5\" cy=\"13\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"13\" r=\"1\" fill=\"currentColor\"></circle></svg></span><span class=\"ui-sortable-list__content\">Write</span></div><div role=\"option\" aria-selected=\"false\" aria-roledescription=\"sortable item\" data-item-id=\"b\" class=\"ui-sortable-list__item\" tabindex=\"-1\" draggable=\"true\"><span class=\"ui-sortable-list__handle\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"5.5\" cy=\"3\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"3\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"5.5\" cy=\"8\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"8\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"5.5\" cy=\"13\" r=\"1\" fill=\"currentColor\"></circle><circle cx=\"10.5\" cy=\"13\" r=\"1\" fill=\"currentColor\"></circle></svg></span><span class=\"ui-sortable-list__content\"><b>Review</b></span></div></div></div>"
+      },
+      "horizontal, no handle, disabled, caller attrs": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "handle": false,
+          "disabled": true,
+          "orientation": "horizontal",
+          "className": "mine",
+          "id": "sl",
+          "items": [
+            {
+              "id": "a",
+              "content": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-sortable-list mine\" data-motion=\"3\" data-orientation=\"horizontal\" id=\"sl\"><div role=\"listbox\" aria-label=\"Sortable list\" aria-orientation=\"horizontal\"><div role=\"option\" aria-selected=\"false\" aria-disabled=\"true\" aria-roledescription=\"sortable item\" data-item-id=\"a\" class=\"ui-sortable-list__item\" tabindex=\"-1\" draggable=\"false\"><span class=\"ui-sortable-list__content\">A</span></div></div></div>"
+      },
+      "motion 0 empty": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "motion": 0,
+          "items": []
+        },
+        "html": "<div class=\"ui-sortable-list\" data-motion=\"0\" data-orientation=\"vertical\"><div role=\"listbox\" aria-label=\"Sortable list\" aria-orientation=\"vertical\"></div></div>"
       }
     },
     "Sparkline": {

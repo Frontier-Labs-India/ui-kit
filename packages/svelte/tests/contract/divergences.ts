@@ -90,10 +90,18 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
 }
 
 /* Attributes an effect sets after mount (e.g. progress through a reveal).
- * React's server HTML has none of them; the listed attributes are removed from
- * matching elements before comparison, and a behaviour test named in `reason`
- * asserts what the effect sets. */
+ * React's server HTML has them missing or at their initial value; the listed
+ * attributes are removed from matching elements in both trees before
+ * comparison, and a behaviour test named in `reason` asserts what the effect
+ * sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  SortableList: [
+    {
+      selector: '[role="option"]',
+      attributes: ['tabindex'],
+      reason: 'An effect makes the first option the tab stop (roving tabindex); the server HTML has -1 on all (sortable-avatar.test.ts).',
+    },
+  ],
   ScrollReveal: [
     {
       selector: '.ui-scroll-reveal',

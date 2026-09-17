@@ -901,6 +901,18 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'compact dotted empty': { items: [], variant: 'compact', connectorStyle: 'dotted', 'aria-label': 'Events' },
     'motion 0': { items: [], motion: 0 },
   },
+  SortableList: {
+    items: { onChange: { $fn: true }, 'aria-label': 'Tasks', items: [{ id: 'a', content: 'Write' }, { id: 'b', content: { $el: 'Review' } }] },
+    'horizontal, no handle, disabled, caller attrs': { onChange: { $fn: true }, handle: false, disabled: true, orientation: 'horizontal', className: 'mine', id: 'sl', items: [{ id: 'a', content: 'A' }] },
+    'motion 0 empty': { onChange: { $fn: true }, motion: 0, items: [] },
+  },
+  AvatarUpload: {
+    empty: {},
+    'value with remove, square, size, caller attrs': { value: 'https://example.com/a.png', onRemove: { $fn: true }, shape: 'square', size: 64, className: 'mine', id: 'au' },
+    'custom placeholder, disabled, accept': { placeholder: { $el: 'Add photo' }, disabled: true, accept: 'image/png' },
+    'value without onRemove has no remove button': { value: 'https://example.com/a.png' },
+    'motion 0': { motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

@@ -949,6 +949,251 @@
   }
 /* end app-shell */
 
+/* avatar-upload */
+@layer components {
+    @scope (.ui-avatar-upload) {
+      :scope {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+      }
+
+      :scope[data-disabled="true"] {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      /* ── Container ──────────────────────────────────── */
+
+      .ui-avatar-upload__container {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        border: 2px solid oklch(100% 0 0 / 0.08);
+        background: oklch(25% 0.01 270);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+        outline: none;
+      }
+
+      :scope[data-shape="circle"] .ui-avatar-upload__container {
+        border-radius: var(--radius-full, 9999px);
+      }
+      :scope[data-shape="square"] .ui-avatar-upload__container {
+        border-radius: var(--radius-lg, 0.75rem);
+      }
+
+      .ui-avatar-upload__container:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      .ui-avatar-upload__container:hover:not([data-disabled="true"]) {
+        border-color: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.4);
+        box-shadow: 0 0 20px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+      }
+
+      :scope:not([data-motion="0"]) .ui-avatar-upload__container:active:not([data-disabled="true"]) {
+        transform: scale(0.97);
+      }
+
+      .ui-avatar-upload__container[data-drag-over="true"] {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 24px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.25);
+        border-style: dashed;
+      }
+
+      /* ── Image ──────────────────────────────────────── */
+
+      .ui-avatar-upload__image {
+        position: absolute;
+        inset: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+      }
+
+      :scope[data-shape="circle"] .ui-avatar-upload__image {
+        border-radius: var(--radius-full, 9999px);
+      }
+      :scope[data-shape="square"] .ui-avatar-upload__image {
+        border-radius: calc(var(--radius-lg, 0.75rem) - 2px);
+      }
+
+      /* ── Overlay ────────────────────────────────────── */
+
+      .ui-avatar-upload__overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        background: oklch(0% 0 0 / 0.5);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.2s;
+        color: oklch(95% 0 0);
+        font-size: 0.75rem;
+        font-weight: 500;
+        font-family: inherit;
+      }
+
+      :scope[data-shape="circle"] .ui-avatar-upload__overlay {
+        border-radius: var(--radius-full, 9999px);
+      }
+      :scope[data-shape="square"] .ui-avatar-upload__overlay {
+        border-radius: calc(var(--radius-lg, 0.75rem) - 2px);
+      }
+
+      .ui-avatar-upload__container:hover .ui-avatar-upload__overlay,
+      .ui-avatar-upload__container:focus-visible .ui-avatar-upload__overlay {
+        opacity: 1;
+      }
+
+      :scope[data-motion="0"] .ui-avatar-upload__overlay {
+        transition: none;
+      }
+
+      .ui-avatar-upload__overlay-icon svg {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+      }
+
+      /* ── Placeholder ────────────────────────────────── */
+
+      .ui-avatar-upload__placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-size: 0.75rem;
+        font-family: inherit;
+      }
+
+      .ui-avatar-upload__placeholder svg {
+        inline-size: 2rem;
+        block-size: 2rem;
+        opacity: 0.5;
+      }
+
+      /* ── Hidden input ───────────────────────────────── */
+
+      .ui-avatar-upload__input {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        pointer-events: none;
+      }
+
+      /* ── Remove button ──────────────────────────────── */
+
+      .ui-avatar-upload__remove {
+        position: absolute;
+        inset-block-start: -4px;
+        inset-inline-end: -4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        border-radius: var(--radius-full, 9999px);
+        border: 2px solid oklch(20% 0 0);
+        background: var(--status-critical, oklch(65% 0.25 25));
+        color: oklch(100% 0 0);
+        cursor: pointer;
+        font-size: 0.625rem;
+        padding: 0;
+        z-index: 2;
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+
+      .ui-avatar-upload__remove:hover {
+        transform: scale(1.1);
+        box-shadow: 0 2px 8px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.4);
+      }
+
+      .ui-avatar-upload__remove:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      :scope[data-motion="0"] .ui-avatar-upload__remove {
+        transition: none;
+      }
+
+      /* ── Error message ──────────────────────────────── */
+
+      .ui-avatar-upload__error {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+        text-align: center;
+        max-inline-size: 200px;
+      }
+
+      /* ── Touch targets ──────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-avatar-upload__remove {
+          inline-size: 2rem;
+          block-size: 2rem;
+        }
+        .ui-avatar-upload__container {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* ── Forced colors ──────────────────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-avatar-upload__container {
+          border: 2px solid ButtonText;
+        }
+        .ui-avatar-upload__remove {
+          background: ButtonText;
+          color: ButtonFace;
+          border-color: ButtonFace;
+        }
+        .ui-avatar-upload__overlay {
+          background: Canvas;
+          color: CanvasText;
+          border: 1px solid Highlight;
+        }
+      }
+
+      /* ── Print ──────────────────────────────────────── */
+
+      @media print {
+        .ui-avatar-upload__overlay {
+          display: none;
+        }
+        .ui-avatar-upload__remove {
+          display: none;
+        }
+        .ui-avatar-upload__container {
+          border: 2px solid;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+/* end avatar-upload */
+
 /* back-to-top */
 @layer components {
     @scope (.ui-back-to-top) {
@@ -16686,6 +16931,175 @@
     }
   }
 /* end slider */
+
+/* sortable-list */
+@layer components {
+    @scope (.ui-sortable-list) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+      }
+
+      :scope[data-orientation="horizontal"] {
+        flex-direction: row;
+      }
+
+      /* ── Item ────────────────────────────────────────── */
+
+      .ui-sortable-list__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-md, 0.5rem);
+        background: var(--bg-surface, oklch(18% 0.01 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-sm, 0.875rem);
+        cursor: grab;
+        user-select: none;
+        touch-action: none;
+        min-block-size: 2.25rem;
+        outline: none;
+        position: relative;
+        transition: background 0.1s, box-shadow 0.1s, transform 0.15s;
+      }
+
+      .ui-sortable-list__item:focus-visible {
+        box-shadow: 0 0 0 2px var(--brand, oklch(65% 0.2 270));
+      }
+
+      .ui-sortable-list__item:hover:not([aria-disabled="true"]) {
+        background: var(--bg-hover);
+      }
+
+      .ui-sortable-list__item[data-grabbed="true"] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.08);
+        box-shadow:
+          0 0 0 2px var(--brand, oklch(65% 0.2 270)),
+          var(--shadow-md, 0 4px 12px oklch(0% 0 0 / 0.25));
+        cursor: grabbing;
+        z-index: 10;
+      }
+
+      /* Drag-in-progress visual feedback */
+      .ui-sortable-list__item--dragging {
+        opacity: 0.5;
+        box-shadow:
+          0 0 0 2px var(--brand, oklch(65% 0.2 270)),
+          0 8px 24px oklch(0% 0 0 / 0.3);
+        transform: scale(1.02);
+      }
+
+      /* Drop indicator line */
+      .ui-sortable-list__drop-indicator {
+        block-size: 2px;
+        background: var(--brand, oklch(65% 0.2 270));
+        border-radius: 1px;
+        box-shadow: 0 0 6px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.4);
+        margin-block: -1px;
+        pointer-events: none;
+      }
+
+      :scope[data-orientation="horizontal"] .ui-sortable-list__drop-indicator {
+        inline-size: 2px;
+        block-size: auto;
+        align-self: stretch;
+        margin-inline: -1px;
+        margin-block: 0;
+      }
+
+      .ui-sortable-list__item[aria-disabled="true"] {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      /* ── Drag handle ─────────────────────────────────── */
+
+      .ui-sortable-list__handle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: grab;
+        touch-action: none;
+      }
+
+      .ui-sortable-list__handle svg {
+        inline-size: 1em;
+        block-size: 1em;
+      }
+
+      [data-grabbed="true"] .ui-sortable-list__handle {
+        cursor: grabbing;
+      }
+
+      /* ── Content ─────────────────────────────────────── */
+
+      .ui-sortable-list__content {
+        flex: 1;
+        min-inline-size: 0;
+      }
+
+      /* ── Drop placeholder ────────────────────────────── */
+
+      .ui-sortable-list__placeholder {
+        border: 2px dashed var(--brand, oklch(65% 0.2 270));
+        border-radius: var(--radius-md, 0.5rem);
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.04);
+        min-block-size: 2.25rem;
+      }
+
+      /* ── Reduced motion ──────────────────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        .ui-sortable-list__item {
+          transition: none;
+        }
+      }
+
+      /* ── Touch targets ───────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-sortable-list__item {
+          min-block-size: 44px;
+        }
+        .ui-sortable-list__handle {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* ── Forced colors ───────────────────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-sortable-list__item {
+          border: 1px solid ButtonText;
+        }
+        .ui-sortable-list__item[data-grabbed="true"] {
+          outline: 2px solid Highlight;
+        }
+        .ui-sortable-list__item:focus-visible {
+          outline: 2px solid Highlight;
+        }
+        .ui-sortable-list__placeholder {
+          border: 2px dashed Highlight;
+        }
+      }
+
+      /* ── Print ───────────────────────────────────────── */
+
+      @media print {
+        .ui-sortable-list__handle {
+          display: none;
+        }
+      }
+    }
+  }
+/* end sortable-list */
 
 /* sparkline */
 @layer components {

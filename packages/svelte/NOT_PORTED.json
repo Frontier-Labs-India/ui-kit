@@ -1,6 +1,5 @@
 [
   "Avatar",
-  "AvatarUpload",
   "Carousel",
   "CodeEditor",
   "ColorInput",
@@ -16,7 +15,6 @@
   "Popover",
   "RichTextEditor",
   "SmartTable",
-  "SortableList",
   "StepWizard",
   "Tabs",
   "TimeSeriesChart",
