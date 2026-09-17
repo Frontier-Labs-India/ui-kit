@@ -16,9 +16,11 @@
  *     `value=""`), a client render sets .value. Read from the property, and an
  *     empty value is the same as none. Checkbox and radio keep the attribute —
  *     there `value` is the submitted value, meaningful even when unchecked.
- *   - a zero length written `0px` vs `0`: React serialises the number 0 as "0",
- *     the CSSOM (browsers and jsdom alike) reports a zero length as "0px". A
- *     standalone 0px token is read as 0; any other length is compared as-is.
+ *   - how a style value is spelled. Both trees' inline styles are read back
+ *     through the same CSSOM rather than compared as text, so `0` vs `0px`,
+ *     `oklch(65% 0.150 155)` vs `oklch(0.65 0.15 155)`, and spacing all
+ *     normalise identically. Strictness holds: a value the CSSOM rejects on
+ *     one side (a bare `width: 50`) is missing there and still fails.
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -32,6 +34,21 @@ const REF_ATTRS = new Set([
   'aria-activedescendant', 'aria-details', 'aria-errormessage', 'aria-flowto', 'headers', 'list', 'form',
 ])
 
+/* Reads declarations back through a CSSOM so both trees normalise the same
+ * way. A fresh element of the page's document is used — template content
+ * lives in an inert document, but parsing is identical either way. */
+function styleText(raw: string): string {
+  const probe = document.createElement('div')
+  probe.setAttribute('style', raw)
+  const out: string[] = []
+  for (let i = 0; i < probe.style.length; i++) {
+    const prop = probe.style.item(i)
+    const priority = probe.style.getPropertyPriority(prop)
+    out.push(`${prop}:${probe.style.getPropertyValue(prop)}${priority ? ' !' + priority : ''}`)
+  }
+  return out.sort().join(';')
+}
+
 export function canonical(root: ParentNode): string {
   const ids = new Map<string, string>()
   const token = (v: string) => {
@@ -44,16 +61,7 @@ export function canonical(root: ParentNode): string {
     if (name === 'id') return token(value)
     if (REF_ATTRS.has(name)) return value.trim().split(/\s+/).filter(Boolean).map(token).join(' ')
     if (name === 'class') return [...new Set(value.trim().split(/\s+/).filter(Boolean))].sort().join(' ')
-    if (name === 'style') {
-      return value.split(';')
-        .map(d => d.trim()).filter(Boolean)
-        .map(d => {
-          const i = d.indexOf(':')
-          const value = d.slice(i + 1).trim().replace(/\s+/g, ' ').replace(/(^|[\s(,])0px(?=$|[\s),])/g, '$10')
-          return `${d.slice(0, i).trim().toLowerCase()}:${value}`
-        })
-        .sort().join(';')
-    }
+    if (name === 'style') return styleText(value)
     return value
   }
 

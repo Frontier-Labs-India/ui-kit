@@ -18,7 +18,6 @@
   "ContainerQuery",
   "CopyBlock",
   "CopyButton",
-  "CoreChart",
   "Cropper",
   "DashboardGrid",
   "DashboardTemplate",
@@ -56,7 +55,6 @@
   "PipelineDAG",
   "PluginDashboard",
   "Popover",
-  "PortStatusGrid",
   "RadioGroup",
   "Rating",
   "RealtimeValue",
@@ -94,7 +92,6 @@
   "TransferList",
   "TreeView",
   "UpstreamDashboard",
-  "UptimeTracker",
   "UtilizationBar",
   "VlanBusBar"
 ]

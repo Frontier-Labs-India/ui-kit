@@ -616,4 +616,23 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'three lines expandable': { text: 'A long description', lines: 3, expandable: true },
     'no tooltip': { text: 'x', showTooltip: false, id: 't1' },
   },
+  CoreChart: {
+    'green-red auto columns': { cores: [0, 25, 50, 75, 100, 130].map((usage, id) => ({ id, usage })) },
+    'blue-red labels lg columns': { colorScale: 'blue-red', showLabels: true, size: 'lg', columns: 2, cores: [{ id: 0, usage: -5 }, { id: 1, usage: 60 }] },
+    brand: { colorScale: 'brand', cores: [{ id: 0, usage: 33 }] },
+    empty: { cores: [] },
+    'motion 0': { cores: [], motion: 0 },
+  },
+  PortStatusGrid: {
+    basic: { ports: [{ port: 22, status: 'ok', label: 'ssh' }, { port: 443, status: 'critical' }] },
+    'clickable sm columns': { size: 'sm', columns: 4, onPortClick: { $fn: true }, ports: [{ port: 22, status: 'ok', label: 'ssh' }, { port: 80, status: 'unknown' }] },
+    'motion 0': { ports: [], motion: 0 },
+  },
+  UptimeTracker: {
+    basic: { days: [{ date: '2026-09-01', status: 'up', uptime: 1 }, { date: '2026-09-02', status: 'down', uptime: 0.5 }] },
+    'sla with target': { showSla: true, slaTarget: 0.999, days: [{ date: 'a', status: 'up', uptime: 0.99951 }, { date: 'b', status: 'degraded' }] },
+    'sla all 100 percent': { showSla: true, days: [{ date: 'a', status: 'up', uptime: 1 }] },
+    'sla with no uptime data': { showSla: true, days: [{ date: 'a', status: 'unknown' }] },
+    'motion 0': { days: [], motion: 0 },
+  },
 }

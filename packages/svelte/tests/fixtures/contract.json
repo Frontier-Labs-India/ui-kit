@@ -869,6 +869,83 @@
         "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"0\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
       }
     },
+    "CoreChart": {
+      "green-red auto columns": {
+        "props": {
+          "cores": [
+            {
+              "id": 0,
+              "usage": 0
+            },
+            {
+              "id": 1,
+              "usage": 25
+            },
+            {
+              "id": 2,
+              "usage": 50
+            },
+            {
+              "id": 3,
+              "usage": 75
+            },
+            {
+              "id": 4,
+              "usage": 100
+            },
+            {
+              "id": 5,
+              "usage": 130
+            }
+          ]
+        },
+        "html": "<div class=\"ui-core-chart\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"CPU core utilization: 6 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(3, var(--cell-size, 24px))\"><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.150 155)\"></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.167 123)\"></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.185 90)\"></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.203 58)\"></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.220 25)\"></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(65% 0.220 25)\"></div></div></div>"
+      },
+      "blue-red labels lg columns": {
+        "props": {
+          "colorScale": "blue-red",
+          "showLabels": true,
+          "size": "lg",
+          "columns": 2,
+          "cores": [
+            {
+              "id": 0,
+              "usage": -5
+            },
+            {
+              "id": 1,
+              "usage": 60
+            }
+          ]
+        },
+        "html": "<div class=\"ui-core-chart\" data-size=\"lg\" data-motion=\"3\" role=\"img\" aria-label=\"CPU core utilization: 2 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(2, var(--cell-size, 24px))\"><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(60% 0.120 250)\"><span class=\"ui-core-chart__cell-label\">0</span></div><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(60% 0.180 115)\"><span class=\"ui-core-chart__cell-label\">1</span></div></div></div>"
+      },
+      "brand": {
+        "props": {
+          "colorScale": "brand",
+          "cores": [
+            {
+              "id": 0,
+              "usage": 33
+            }
+          ]
+        },
+        "html": "<div class=\"ui-core-chart\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"CPU core utilization: 1 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(1, var(--cell-size, 24px))\"><div class=\"ui-core-chart__cell\" style=\"background-color:oklch(57% 0.2 270)\"></div></div></div>"
+      },
+      "empty": {
+        "props": {
+          "cores": []
+        },
+        "html": "<div class=\"ui-core-chart\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"CPU core utilization: 0 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(0, var(--cell-size, 24px))\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "cores": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-core-chart\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"CPU core utilization: 0 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(0, var(--cell-size, 24px))\"></div></div>"
+      }
+    },
     "Divider": {
       "defaults": {
         "props": {},
@@ -2212,6 +2289,52 @@
         "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"0\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
       }
     },
+    "PortStatusGrid": {
+      "basic": {
+        "props": {
+          "ports": [
+            {
+              "port": 22,
+              "status": "ok",
+              "label": "ssh"
+            },
+            {
+              "port": 443,
+              "status": "critical"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-port-status-grid\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"Port status\"><div class=\"ui-port-status-grid__grid\" style=\"--columns:8\"><div class=\"ui-port-status-grid__item\" data-status=\"ok\">22</div><div class=\"ui-port-status-grid__item\" data-status=\"critical\">443</div></div></div>"
+      },
+      "clickable sm columns": {
+        "props": {
+          "size": "sm",
+          "columns": 4,
+          "onPortClick": {
+            "$fn": true
+          },
+          "ports": [
+            {
+              "port": 22,
+              "status": "ok",
+              "label": "ssh"
+            },
+            {
+              "port": 80,
+              "status": "unknown"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-port-status-grid\" data-motion=\"3\" data-size=\"sm\" role=\"group\" aria-label=\"Port status\"><div class=\"ui-port-status-grid__grid\" style=\"--columns:4\"><div class=\"ui-port-status-grid__item\" data-status=\"ok\"><button class=\"ui-port-status-grid__item-btn\" aria-label=\"Port 22 (ssh): ok\">22</button></div><div class=\"ui-port-status-grid__item\" data-status=\"unknown\"><button class=\"ui-port-status-grid__item-btn\" aria-label=\"Port 80: unknown\">80</button></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "ports": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-port-status-grid\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Port status\"><div class=\"ui-port-status-grid__grid\" style=\"--columns:8\"></div></div>"
+      }
+    },
     "Progress": {
       "indeterminate": {
         "props": {},
@@ -3465,6 +3588,75 @@
           "motion": 0
         },
         "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"0\"></p>"
+      }
+    },
+    "UptimeTracker": {
+      "basic": {
+        "props": {
+          "days": [
+            {
+              "date": "2026-09-01",
+              "status": "up",
+              "uptime": 1
+            },
+            {
+              "date": "2026-09-02",
+              "status": "down",
+              "uptime": 0.5
+            }
+          ]
+        },
+        "html": "<div class=\"ui-uptime-tracker\" data-motion=\"3\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"><div class=\"ui-uptime-tracker__day\" data-day-status=\"up\" role=\"img\" aria-label=\"2026-09-01: up (100.0%)\"></div><div class=\"ui-uptime-tracker__day\" data-day-status=\"down\" role=\"img\" aria-label=\"2026-09-02: down (50.0%)\"></div></div></div>"
+      },
+      "sla with target": {
+        "props": {
+          "showSla": true,
+          "slaTarget": 0.999,
+          "days": [
+            {
+              "date": "a",
+              "status": "up",
+              "uptime": 0.99951
+            },
+            {
+              "date": "b",
+              "status": "degraded"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-uptime-tracker\" data-motion=\"3\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"><div class=\"ui-uptime-tracker__day\" data-day-status=\"up\" role=\"img\" aria-label=\"a: up (100.0%)\"></div><div class=\"ui-uptime-tracker__day\" data-day-status=\"degraded\" role=\"img\" aria-label=\"b: degraded\"></div></div><div class=\"ui-uptime-tracker__sla\"><span><span class=\"ui-uptime-tracker__sla-value\">99.95%</span> uptime</span><span class=\"ui-uptime-tracker__sla-target\">Target: 99.9%</span></div></div>"
+      },
+      "sla all 100 percent": {
+        "props": {
+          "showSla": true,
+          "days": [
+            {
+              "date": "a",
+              "status": "up",
+              "uptime": 1
+            }
+          ]
+        },
+        "html": "<div class=\"ui-uptime-tracker\" data-motion=\"3\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"><div class=\"ui-uptime-tracker__day\" data-day-status=\"up\" role=\"img\" aria-label=\"a: up (100.0%)\"></div></div><div class=\"ui-uptime-tracker__sla\"><span><span class=\"ui-uptime-tracker__sla-value\">100%</span> uptime</span></div></div>"
+      },
+      "sla with no uptime data": {
+        "props": {
+          "showSla": true,
+          "days": [
+            {
+              "date": "a",
+              "status": "unknown"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-uptime-tracker\" data-motion=\"3\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"><div class=\"ui-uptime-tracker__day\" data-day-status=\"unknown\" role=\"img\" aria-label=\"a: unknown\"></div></div><div class=\"ui-uptime-tracker__sla\"><span><span class=\"ui-uptime-tracker__sla-value\">N/A</span> uptime</span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "days": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-uptime-tracker\" data-motion=\"0\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"></div></div>"
       }
     },
     "ViewTransitionLink": {

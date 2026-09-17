@@ -6,17 +6,22 @@ import { canonical, fromHtml } from './canonical.js'
  * must still tell apart. */
 const c = (html: string) => canonical(fromHtml(html))
 
-describe('canonical — zero lengths', () => {
-  it('equates 0px with 0, alone and inside lists and functions', () => {
+describe('canonical — style values', () => {
+  /* Equality of style values is defined by the CSSOM, not by hand-written
+   * rules: both trees are read back through the same parser. These pin that
+   * spellings it normalises compare equal, and that real differences survive. */
+  it('equates spellings the CSSOM normalises', () => {
     expect(c('<i style="margin:0px"></i>')).toBe(c('<i style="margin:0"></i>'))
-    expect(c('<i style="inset:0px 0px 0px 0px"></i>')).toBe(c('<i style="inset:0 0 0 0"></i>'))
-    expect(c('<i style="width:calc(100% - 0px)"></i>')).toBe(c('<i style="width:calc(100% - 0)"></i>'))
+    expect(c('<i style="background-color:oklch(65% 0.150 155)"></i>')).toBe(c('<i style="background-color:oklch(0.65 0.15 155)"></i>'))
+    expect(c('<i style="color: red ;  width : 1px"></i>')).toBe(c('<i style="width:1px;color:red"></i>'))
   })
 
-  it('still tells real lengths apart', () => {
+  it('still tells real differences apart', () => {
     expect(c('<i style="margin:10px"></i>')).not.toBe(c('<i style="margin:0"></i>'))
     expect(c('<i style="margin:0.5px"></i>')).toContain('0.5px')
-    expect(c('<i style="margin:100px"></i>')).toContain('100px')
+    expect(c('<i style="background-color:oklch(65% 0.15 155)"></i>')).not.toBe(c('<i style="background-color:oklch(65% 0.15 156)"></i>'))
+    expect(c('<i style="width:50px"></i>')).not.toBe(c('<i style="width:50"></i>')) // the CSSOM drops the bare number
+    expect(c('<i style="--x:1"></i>')).not.toBe(c('<i style="--x:2"></i>'))
   })
 })
 
