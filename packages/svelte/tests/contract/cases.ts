@@ -553,6 +553,18 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'multiple empty shows placeholder': { name: 'tags', label: 'T', multiple: true, options: [] },
     'motion 0': { name: 's', label: 'S', motion: 0, options: [] },
   },
+  MultiSelect: {
+    'placeholder, no name': { label: 'Tags', options: [{ value: 'a', label: 'A' }] },
+    'selected tags, hidden inputs, clearable, lg': {
+      label: 'Tags', name: 'tags', size: 'lg', clearable: true, defaultValue: ['b', 'a', 'missing'],
+      options: [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }],
+    },
+    'disabled hides remove and clear; error; not searchable is readonly': {
+      label: 'Tags', value: ['a'], disabled: true, clearable: true, error: 'Too many', searchable: false, className: 'mine', id: 'ms',
+      options: [{ value: 'a', label: 'Alpha' }],
+    },
+    'motion 0': { label: 'M', motion: 0, options: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

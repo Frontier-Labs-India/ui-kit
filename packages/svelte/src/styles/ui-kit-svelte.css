@@ -8045,6 +8045,423 @@
   }
 /* end metric-card */
 
+/* multi-select */
+@layer components {
+    @scope (.ui-multi-select) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      .ui-multi-select__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      /* ── Trigger ─────────────────────────────────────── */
+
+      .ui-multi-select__trigger {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        inline-size: 100%;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        cursor: pointer;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-multi-select__trigger:focus-within {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      .ui-multi-select__trigger:hover:not(:focus-within) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+      }
+
+      /* Sizes */
+      :scope[data-size="sm"] .ui-multi-select__trigger {
+        min-block-size: 32px;
+        padding-block: 0.125rem;
+        padding-inline: 0.5rem;
+      }
+      :scope[data-size="md"] .ui-multi-select__trigger {
+        min-block-size: 36px;
+        padding-block: 0.25rem;
+        padding-inline: 0.75rem;
+      }
+      :scope[data-size="lg"] .ui-multi-select__trigger {
+        min-block-size: 44px;
+        padding-block: 0.375rem;
+        padding-inline: 1rem;
+      }
+
+      /* ── Tags ────────────────────────────────────────── */
+
+      .ui-multi-select__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding-block: 0.125rem;
+        padding-inline: 0.5rem;
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 500;
+        line-height: 1.4;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+        color: var(--text-primary, oklch(90% 0 0));
+        white-space: nowrap;
+        max-inline-size: 10rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ui-multi-select__tag-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1rem;
+        block-size: 1rem;
+        border: none;
+        background: none;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        border-radius: var(--radius-sm, 0.25rem);
+        padding: 0;
+        flex-shrink: 0;
+        transition: color 0.1s, background 0.1s;
+      }
+
+      .ui-multi-select__tag-remove:hover {
+        background: oklch(100% 0 0 / 0.08);
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-multi-select__tag-remove svg {
+        inline-size: 0.625em;
+        block-size: 0.625em;
+      }
+
+      /* ── Search input ────────────────────────────────── */
+
+      .ui-multi-select__input {
+        flex: 1;
+        min-inline-size: 4rem;
+        border: none;
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        outline: none;
+        padding: 0;
+      }
+
+      .ui-multi-select__input::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      :scope[data-size="sm"] .ui-multi-select__input {
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="lg"] .ui-multi-select__input {
+        font-size: var(--text-base, 1rem);
+      }
+
+      /* ── Actions (clear, chevron) ────────────────────── */
+
+      .ui-multi-select__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-inline-start: auto;
+        flex-shrink: 0;
+      }
+
+      .ui-multi-select__clear {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+        border: none;
+        background: none;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        border-radius: var(--radius-sm, 0.25rem);
+        padding: 0;
+        transition: color 0.1s, background 0.1s;
+      }
+
+      .ui-multi-select__clear:hover {
+        background: oklch(100% 0 0 / 0.08);
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-multi-select__chevron {
+        flex-shrink: 0;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        transition: transform 0.2s var(--ease-out, ease-out);
+        cursor: pointer;
+      }
+
+      :scope[data-open] .ui-multi-select__chevron {
+        transform: rotate(180deg);
+      }
+
+      :scope[data-motion="0"] .ui-multi-select__chevron {
+        transition: none;
+      }
+
+      /* ── Dropdown ────────────────────────────────────── */
+
+      .ui-multi-select__dropdown {
+        z-index: 50;
+        min-inline-size: 100%;
+        max-block-size: 15rem;
+        overflow: auto;
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-lg, 0.5rem);
+        background: var(--surface-elevated, oklch(22% 0.01 270));
+        box-shadow: var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3));
+        padding-block: 0.25rem;
+        outline: none;
+      }
+
+      :scope:not([data-motion="0"]) .ui-multi-select__dropdown {
+        animation: ui-multi-select-dropdown-in 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-multi-select__options {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Group header ────────────────────────────────── */
+
+      .ui-multi-select__group-header {
+        padding-block: 0.25rem;
+        padding-inline: 0.75rem;
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 600;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        user-select: none;
+        margin-block-start: 0.25rem;
+      }
+
+      .ui-multi-select__group-header:first-child {
+        margin-block-start: 0;
+      }
+
+      /* ── Option ──────────────────────────────────────── */
+
+      .ui-multi-select__option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-block: 0.375rem;
+        padding-inline: 0.75rem;
+        cursor: pointer;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        color: var(--text-primary, oklch(90% 0 0));
+        transition: background 0.1s var(--ease-out, ease-out);
+        user-select: none;
+        min-block-size: 2rem;
+      }
+
+      .ui-multi-select__option[data-active] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      .ui-multi-select__option[data-disabled] {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .ui-multi-select__option:not([data-disabled]):hover {
+        background: var(--bg-hover);
+      }
+
+      .ui-multi-select__option[data-active]:not([data-disabled]):hover {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      /* ── Checkbox ────────────────────────────────────── */
+
+      .ui-multi-select__checkbox {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1rem;
+        block-size: 1rem;
+        border: 1.5px solid var(--border-default, oklch(100% 0 0 / 0.2));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        flex-shrink: 0;
+        transition: background 0.1s, border-color 0.1s;
+      }
+
+      .ui-multi-select__checkbox[data-checked] {
+        background: var(--brand, oklch(65% 0.2 270));
+        border-color: var(--brand, oklch(65% 0.2 270));
+      }
+
+      .ui-multi-select__checkbox svg {
+        inline-size: 0.75em;
+        block-size: 0.75em;
+        color: var(--text-on-brand, oklch(100% 0 0));
+        opacity: 0;
+      }
+
+      .ui-multi-select__checkbox[data-checked] svg {
+        opacity: 1;
+      }
+
+      /* ── Option label ────────────────────────────────── */
+
+      .ui-multi-select__option-label {
+        flex: 1;
+        min-inline-size: 0;
+      }
+
+      /* ── Empty ───────────────────────────────────────── */
+
+      .ui-multi-select__empty {
+        padding-block: 0.75rem;
+        padding-inline: 0.75rem;
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        text-align: center;
+      }
+
+      /* ── Disabled ────────────────────────────────────── */
+
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      :scope[data-disabled] .ui-multi-select__trigger {
+        cursor: not-allowed;
+      }
+
+      /* ── Error ───────────────────────────────────────── */
+
+      :scope[data-invalid] .ui-multi-select__trigger {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 1px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.2);
+      }
+
+      :scope[data-invalid] .ui-multi-select__trigger:focus-within {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      .ui-multi-select__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-multi-select__error {
+        animation: ui-multi-select-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      /* ── Touch targets ─────────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-multi-select__trigger {
+          min-block-size: 44px;
+        }
+        .ui-multi-select__option {
+          min-block-size: 44px;
+        }
+      }
+
+      /* ── Forced colors ─────────────────────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-multi-select__trigger {
+          border: 2px solid ButtonText;
+        }
+        .ui-multi-select__trigger:focus-within {
+          outline: 2px solid Highlight;
+        }
+        :scope[data-invalid] .ui-multi-select__trigger {
+          border-color: LinkText;
+        }
+        .ui-multi-select__dropdown {
+          border: 2px solid ButtonText;
+        }
+        .ui-multi-select__option[data-active] {
+          outline: 2px solid Highlight;
+        }
+        .ui-multi-select__checkbox {
+          border-color: ButtonText;
+        }
+        .ui-multi-select__checkbox[data-checked] {
+          background: Highlight;
+          border-color: Highlight;
+        }
+        .ui-multi-select__tag {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* ── Print ──────────────────────────────────────────── */
+
+      @media print {
+        .ui-multi-select__trigger {
+          box-shadow: none;
+          border: 1px solid;
+        }
+        .ui-multi-select__dropdown {
+          box-shadow: none;
+          border: 1px solid;
+        }
+      }
+    }
+
+    @keyframes ui-multi-select-dropdown-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes ui-multi-select-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end multi-select */
+
 /* navbar */
 @layer components {
     @scope (.ui-navbar) {

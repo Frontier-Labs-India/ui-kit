@@ -2869,6 +2869,73 @@
         "html": "<div class=\"ui-metric-card\" data-motion=\"0\" role=\"group\" aria-label=\"x\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">x</h3></div><div class=\"ui-metric-card__value\">1</div></div>"
       }
     },
+    "MultiSelect": {
+      "placeholder, no name": {
+        "props": {
+          "label": "Tags",
+          "options": [
+            {
+              "value": "a",
+              "label": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-multi-select\" data-size=\"md\" data-motion=\"3\"><label class=\"ui-multi-select__label\" id=\"multi-select-_R_0_-label\">Tags</label><div class=\"ui-multi-select__trigger\"><input class=\"ui-multi-select__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"multi-select-_R_0_-label\" placeholder=\"Select...\" value=\"\"/><span class=\"ui-multi-select__actions\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-multi-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></span></div></div>"
+      },
+      "selected tags, hidden inputs, clearable, lg": {
+        "props": {
+          "label": "Tags",
+          "name": "tags",
+          "size": "lg",
+          "clearable": true,
+          "defaultValue": [
+            "b",
+            "a",
+            "missing"
+          ],
+          "options": [
+            {
+              "value": "a",
+              "label": "Alpha"
+            },
+            {
+              "value": "b",
+              "label": "Beta"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-multi-select\" data-size=\"lg\" data-motion=\"3\"><label class=\"ui-multi-select__label\" id=\"multi-select-_R_0_-label\">Tags</label><input type=\"hidden\" name=\"tags\" value=\"b\"/><input type=\"hidden\" name=\"tags\" value=\"a\"/><input type=\"hidden\" name=\"tags\" value=\"missing\"/><div class=\"ui-multi-select__trigger\"><span class=\"ui-multi-select__tag\"><span>Beta</span><button type=\"button\" class=\"ui-multi-select__tag-remove\" aria-label=\"Remove Beta\" tabindex=\"-1\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\"><path d=\"M2 2l6 6m0-6l-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></span><span class=\"ui-multi-select__tag\"><span>Alpha</span><button type=\"button\" class=\"ui-multi-select__tag-remove\" aria-label=\"Remove Alpha\" tabindex=\"-1\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\"><path d=\"M2 2l6 6m0-6l-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></span><input class=\"ui-multi-select__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"multi-select-_R_0_-label\" value=\"\"/><span class=\"ui-multi-select__actions\"><button type=\"button\" class=\"ui-multi-select__clear\" aria-label=\"Clear all selections\" tabindex=\"-1\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\"><path d=\"M3 3l6 6m0-6l-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-multi-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></span></div></div>"
+      },
+      "disabled hides remove and clear; error; not searchable is readonly": {
+        "props": {
+          "label": "Tags",
+          "value": [
+            "a"
+          ],
+          "disabled": true,
+          "clearable": true,
+          "error": "Too many",
+          "searchable": false,
+          "className": "mine",
+          "id": "ms",
+          "options": [
+            {
+              "value": "a",
+              "label": "Alpha"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-multi-select mine\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\" data-disabled=\"\" id=\"ms\"><label class=\"ui-multi-select__label\" id=\"multi-select-_R_0_-label\">Tags</label><div class=\"ui-multi-select__trigger\"><span class=\"ui-multi-select__tag\"><span>Alpha</span></span><input class=\"ui-multi-select__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"multi-select-_R_0_-label\" aria-invalid=\"true\" aria-describedby=\"multi-select-_R_0_-error\" disabled=\"\" readOnly=\"\" value=\"\"/><span class=\"ui-multi-select__actions\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-multi-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></span></div><div class=\"ui-multi-select__error\" id=\"multi-select-_R_0_-error\" role=\"alert\">Too many</div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "M",
+          "motion": 0,
+          "options": []
+        },
+        "html": "<div class=\"ui-multi-select\" data-size=\"md\" data-motion=\"0\"><label class=\"ui-multi-select__label\" id=\"multi-select-_R_0_-label\">M</label><div class=\"ui-multi-select__trigger\"><input class=\"ui-multi-select__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"multi-select-_R_0_-label\" placeholder=\"Select...\" value=\"\"/><span class=\"ui-multi-select__actions\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-multi-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></span></div></div>"
+      }
+    },
     "Navbar": {
       "logo only": {
         "props": {
