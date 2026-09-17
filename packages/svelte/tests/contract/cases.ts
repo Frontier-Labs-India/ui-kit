@@ -503,6 +503,13 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     children: { children: { $el: 'content' } },
     'caller style merges after container-type, class and attrs': { children: { $el: 'c' }, style: { padding: 8, containerType: 'size' }, className: 'mine', id: 'cq' },
   },
+  Sheet: {
+    'body only': { open: false, onClose: { $fn: true }, children: { $el: 'Body' } },
+    'left lg with title and description': { open: false, onClose: { $fn: true }, side: 'left', size: 'lg', title: 'Filters', description: 'Narrow results', children: { $el: 'Body' } },
+    'bottom, element title, no close': { open: false, onClose: { $fn: true }, side: 'bottom', title: { $el: 'T' }, showClose: false, children: { $el: 'Body' } },
+    'no title and no close: no header; caller attrs': { open: false, onClose: { $fn: true }, showClose: false, className: 'mine', 'aria-label': 'Panel', children: { $el: 'Body' } },
+    'motion 0': { open: false, onClose: { $fn: true }, motion: 0, children: { $el: 'Body' } },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

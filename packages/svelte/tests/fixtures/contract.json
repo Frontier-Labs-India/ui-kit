@@ -4336,6 +4336,81 @@
         "html": "<div class=\"ui-severity-timeline\" data-orientation=\"vertical\" data-motion=\"0\"><ol class=\"ui-severity-timeline__list\"></ol></div>"
       }
     },
+    "Sheet": {
+      "body only": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-sheet\"><dialog data-side=\"right\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-sheet__swipe\"></div><div class=\"ui-sheet__header\"><div class=\"ui-sheet__header-text\"></div><button type=\"button\" class=\"ui-sheet__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-sheet__body\"><b>Body</b></div></dialog></div>"
+      },
+      "left lg with title and description": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "side": "left",
+          "size": "lg",
+          "title": "Filters",
+          "description": "Narrow results",
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-sheet\"><dialog data-side=\"left\" data-size=\"lg\" data-motion=\"3\" aria-labelledby=\"sheet-title-_R_0_\" aria-describedby=\"sheet-desc-_R_0H1_\"><div class=\"ui-sheet__swipe\"></div><div class=\"ui-sheet__header\"><div class=\"ui-sheet__header-text\"><h2 class=\"ui-sheet__title\" id=\"sheet-title-_R_0_\">Filters</h2><p class=\"ui-sheet__description\" id=\"sheet-desc-_R_0H1_\">Narrow results</p></div><button type=\"button\" class=\"ui-sheet__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-sheet__body\"><b>Body</b></div></dialog></div>"
+      },
+      "bottom, element title, no close": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "side": "bottom",
+          "title": {
+            "$el": "T"
+          },
+          "showClose": false,
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-sheet\"><dialog data-side=\"bottom\" data-size=\"md\" data-motion=\"3\" aria-labelledby=\"sheet-title-_R_0_\"><div class=\"ui-sheet__swipe\"></div><div class=\"ui-sheet__header\"><div class=\"ui-sheet__header-text\"><h2 class=\"ui-sheet__title\" id=\"sheet-title-_R_0_\"><b>T</b></h2></div></div><div class=\"ui-sheet__body\"><b>Body</b></div></dialog></div>"
+      },
+      "no title and no close: no header; caller attrs": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "showClose": false,
+          "className": "mine",
+          "aria-label": "Panel",
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-sheet mine\"><dialog data-side=\"right\" data-size=\"md\" data-motion=\"3\" aria-label=\"Panel\"><div class=\"ui-sheet__swipe\"></div><div class=\"ui-sheet__body\"><b>Body</b></div></dialog></div>"
+      },
+      "motion 0": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "motion": 0,
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-sheet\"><dialog data-side=\"right\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-sheet__swipe\"></div><div class=\"ui-sheet__header\"><div class=\"ui-sheet__header-text\"></div><button type=\"button\" class=\"ui-sheet__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-sheet__body\"><b>Body</b></div></dialog></div>"
+      }
+    },
     "ShimmerButton": {
       "defaults": {
         "props": {
