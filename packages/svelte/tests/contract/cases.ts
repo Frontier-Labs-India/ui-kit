@@ -477,6 +477,28 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'disabled': { label: 'N', value: 3, disabled: true },
     'motion 0': { label: 'M', motion: 0 },
   },
+  Spotlight: {
+    closed: { actions: [] },
+    'open, no actions': { open: true, actions: [], onOpenChange: { $fn: true } },
+    'open with grouped actions and icons': {
+      open: true,
+      actions: [
+        { id: 'home', title: 'Home', description: 'Go home', group: 'Navigation', icon: { $el: 'h' }, onClick: { $fn: true } },
+        { id: 'docs', title: 'Docs', group: 'Navigation', onClick: { $fn: true } },
+        { id: 'theme', title: 'Toggle theme', group: 'Settings', keywords: ['dark'], onClick: { $fn: true } },
+      ],
+    },
+    'ungrouped, limit, custom shortcut and placeholder, caller attrs': {
+      open: true, limit: 2, shortcut: 'ctrl+shift+p', placeholder: 'Type a command', className: 'mine', id: 'spot',
+      actions: [
+        { id: 'a', title: 'Alpha', onClick: { $fn: true } },
+        { id: 'b', title: 'Beta', onClick: { $fn: true } },
+        { id: 'c', title: 'Gamma', onClick: { $fn: true } },
+      ],
+    },
+    'alt shortcut glyphs': { open: true, shortcut: 'cmd+alt+k', actions: [{ id: 'a', title: 'Alpha', onClick: { $fn: true } }] },
+    'motion 0': { open: true, motion: 0, actions: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

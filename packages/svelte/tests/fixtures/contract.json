@@ -4643,6 +4643,121 @@
         "html": "<div class=\"ui-sparkline\" data-motion=\"0\" style=\"--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"></svg></div>"
       }
     },
+    "Spotlight": {
+      "closed": {
+        "props": {
+          "actions": []
+        },
+        "html": ""
+      },
+      "open, no actions": {
+        "props": {
+          "open": true,
+          "actions": [],
+          "onOpenChange": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-spotlight\"><div class=\"ui-spotlight__overlay\" data-motion=\"3\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Spotlight search\"><div class=\"ui-spotlight__dialog\" data-motion=\"3\"><div class=\"ui-spotlight__search\"><span class=\"ui-spotlight__search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-spotlight__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"spotlight-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><span class=\"ui-spotlight__shortcut-badge\"><kbd class=\"ui-spotlight__kbd\">⌘</kbd><kbd class=\"ui-spotlight__kbd\">K</kbd></span></div><div class=\"ui-spotlight__list\" role=\"listbox\" id=\"spotlight-_R_0_-listbox\"></div><div class=\"ui-spotlight__footer\"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span></div></div></div></div>"
+      },
+      "open with grouped actions and icons": {
+        "props": {
+          "open": true,
+          "actions": [
+            {
+              "id": "home",
+              "title": "Home",
+              "description": "Go home",
+              "group": "Navigation",
+              "icon": {
+                "$el": "h"
+              },
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "docs",
+              "title": "Docs",
+              "group": "Navigation",
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "theme",
+              "title": "Toggle theme",
+              "group": "Settings",
+              "keywords": [
+                "dark"
+              ],
+              "onClick": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-spotlight\"><div class=\"ui-spotlight__overlay\" data-motion=\"3\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Spotlight search\"><div class=\"ui-spotlight__dialog\" data-motion=\"3\"><div class=\"ui-spotlight__search\"><span class=\"ui-spotlight__search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-spotlight__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"spotlight-_R_0_-listbox\" aria-activedescendant=\"spotlight-_R_0_-action-home\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><span class=\"ui-spotlight__shortcut-badge\"><kbd class=\"ui-spotlight__kbd\">⌘</kbd><kbd class=\"ui-spotlight__kbd\">K</kbd></span></div><div class=\"ui-spotlight__list\" role=\"listbox\" id=\"spotlight-_R_0_-listbox\"><div class=\"ui-spotlight__section-header\" role=\"presentation\">Navigation</div><div role=\"option\" id=\"spotlight-_R_0_-action-home\" aria-selected=\"true\" class=\"ui-spotlight__action\" data-active=\"\"><span class=\"ui-spotlight__action-icon\"><b>h</b></span><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Home</span><span class=\"ui-spotlight__action-description\">Go home</span></span></div><div role=\"option\" id=\"spotlight-_R_0_-action-docs\" aria-selected=\"false\" class=\"ui-spotlight__action\"><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Docs</span></span></div><div class=\"ui-spotlight__section-header\" role=\"presentation\">Settings</div><div role=\"option\" id=\"spotlight-_R_0_-action-theme\" aria-selected=\"false\" class=\"ui-spotlight__action\"><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Toggle theme</span></span></div></div><div class=\"ui-spotlight__footer\"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span></div></div></div></div>"
+      },
+      "ungrouped, limit, custom shortcut and placeholder, caller attrs": {
+        "props": {
+          "open": true,
+          "limit": 2,
+          "shortcut": "ctrl+shift+p",
+          "placeholder": "Type a command",
+          "className": "mine",
+          "id": "spot",
+          "actions": [
+            {
+              "id": "a",
+              "title": "Alpha",
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "b",
+              "title": "Beta",
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "c",
+              "title": "Gamma",
+              "onClick": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-spotlight mine\" id=\"spot\"><div class=\"ui-spotlight__overlay\" data-motion=\"3\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Spotlight search\"><div class=\"ui-spotlight__dialog\" data-motion=\"3\"><div class=\"ui-spotlight__search\"><span class=\"ui-spotlight__search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-spotlight__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"spotlight-_R_0_-listbox\" aria-activedescendant=\"spotlight-_R_0_-action-a\" aria-autocomplete=\"list\" placeholder=\"Type a command\" value=\"\"/><span class=\"ui-spotlight__shortcut-badge\"><kbd class=\"ui-spotlight__kbd\">Ctrl</kbd><kbd class=\"ui-spotlight__kbd\">⇧</kbd><kbd class=\"ui-spotlight__kbd\">P</kbd></span></div><div class=\"ui-spotlight__list\" role=\"listbox\" id=\"spotlight-_R_0_-listbox\"><div role=\"option\" id=\"spotlight-_R_0_-action-a\" aria-selected=\"true\" class=\"ui-spotlight__action\" data-active=\"\"><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Alpha</span></span></div><div role=\"option\" id=\"spotlight-_R_0_-action-b\" aria-selected=\"false\" class=\"ui-spotlight__action\"><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Beta</span></span></div></div><div class=\"ui-spotlight__footer\"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span></div></div></div></div>"
+      },
+      "alt shortcut glyphs": {
+        "props": {
+          "open": true,
+          "shortcut": "cmd+alt+k",
+          "actions": [
+            {
+              "id": "a",
+              "title": "Alpha",
+              "onClick": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-spotlight\"><div class=\"ui-spotlight__overlay\" data-motion=\"3\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Spotlight search\"><div class=\"ui-spotlight__dialog\" data-motion=\"3\"><div class=\"ui-spotlight__search\"><span class=\"ui-spotlight__search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-spotlight__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"spotlight-_R_0_-listbox\" aria-activedescendant=\"spotlight-_R_0_-action-a\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><span class=\"ui-spotlight__shortcut-badge\"><kbd class=\"ui-spotlight__kbd\">⌘</kbd><kbd class=\"ui-spotlight__kbd\">⌥</kbd><kbd class=\"ui-spotlight__kbd\">K</kbd></span></div><div class=\"ui-spotlight__list\" role=\"listbox\" id=\"spotlight-_R_0_-listbox\"><div role=\"option\" id=\"spotlight-_R_0_-action-a\" aria-selected=\"true\" class=\"ui-spotlight__action\" data-active=\"\"><span class=\"ui-spotlight__action-content\"><span class=\"ui-spotlight__action-title\">Alpha</span></span></div></div><div class=\"ui-spotlight__footer\"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "open": true,
+          "motion": 0,
+          "actions": []
+        },
+        "html": "<div class=\"ui-spotlight\"><div class=\"ui-spotlight__overlay\" data-motion=\"0\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Spotlight search\"><div class=\"ui-spotlight__dialog\" data-motion=\"0\"><div class=\"ui-spotlight__search\"><span class=\"ui-spotlight__search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-spotlight__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"spotlight-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><span class=\"ui-spotlight__shortcut-badge\"><kbd class=\"ui-spotlight__kbd\">⌘</kbd><kbd class=\"ui-spotlight__kbd\">K</kbd></span></div><div class=\"ui-spotlight__list\" role=\"listbox\" id=\"spotlight-_R_0_-listbox\"></div><div class=\"ui-spotlight__footer\"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span></div></div></div></div>"
+      }
+    },
     "SpotlightCard": {
       "defaults": {
         "props": {
