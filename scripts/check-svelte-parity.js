@@ -59,6 +59,53 @@ for (const n of expected) {
 for (const n of notPorted) if (!expected.includes(n)) fail(`${n} is in NOT_PORTED.json but is not a React component`)
 if (new Set(notPorted).size !== notPorted.length) fail('NOT_PORTED.json contains duplicates')
 
+/* Public names must mean the same component in both packages. React's barrels
+ * (src/components/index.ts, src/domain/index.ts) say which source file each
+ * public name comes from, renames included (`Highlight as TextHighlight`). Every
+ * component the Svelte package exports must come from the React file that
+ * exports that public name — checking only that the name exists would not have
+ * caught batch 2 exporting the text highlighter as `Highlight`, a name React
+ * uses for a different component. */
+const publicSource = new Map()
+for (const barrel of ['src/components/index.ts', 'src/domain/index.ts']) {
+  const src = readFileSync(resolve(ROOT, barrel), 'utf8')
+  for (const m of src.matchAll(/export\s*\{([^}]*)\}\s*from\s*'\.\/([^']+)'/g)) {
+    for (let part of m[1].split(',')) {
+      part = part.trim()
+      if (!part || part.startsWith('type ')) continue
+      const [, as] = part.split(/\s+as\s+/)
+      const name = (as ?? part).trim()
+      if (/^[A-Z]/.test(name)) publicSource.set(name, m[2])
+    }
+  }
+}
+if (publicSource.size < 100) fail(`read only ${publicSource.size} public component names from React's barrels — refusing to trust the name check`)
+const fileByName = Object.fromEntries(meta.components.map(c => [c.name, c.fileName]))
+// Svelte components kept outside components/ (not counted as ports) but exported
+// under a React public name: public name -> React source file.
+const LIB_COMPONENTS = { Highlight: 'hero-highlight' }
+const svelteIndex = readFileSync(resolve(ROOT, 'packages/svelte/src/index.ts'), 'utf8')
+for (const m of svelteIndex.matchAll(/export\s*\{\s*default as (\w+)[^}]*\}\s*from\s*'\.\/(components|lib)\/(\w+)\.svelte'/g)) {
+  const [, name, dir, file] = m
+  if (!publicSource.has(name)) {
+    if (dir === 'components' || name in LIB_COMPONENTS) fail(`Svelte exports ${name}, which is not a public React component name`)
+    continue
+  }
+  const want = publicSource.get(name)
+  let have
+  if (dir === 'lib') have = LIB_COMPONENTS[name]
+  else if (fileByName[file]) have = fileByName[file]
+  else {
+    // A companion: the React file that exports `file` as a value.
+    for (const d of ['src/components', 'src/domain']) {
+      for (const f of readdirSync(resolve(ROOT, d)).filter(f => f.endsWith('.tsx'))) {
+        if (new RegExp(`^export\\s+(?:const|function|class)\\s+${file}\\b`, 'm').test(readFileSync(resolve(ROOT, d, f), 'utf8'))) have = f.slice(0, -4)
+      }
+    }
+  }
+  if (have !== want) fail(`Svelte exports ${dir}/${file}.svelte as ${name}, but React's public ${name} comes from ${want}.tsx (this is ${have ?? 'unknown'})`)
+}
+
 const done = expected.filter(n => ported.includes(n)).length
 const extra = companions.length ? ` Companion exports: ${companions.join(', ')}.` : ''
 console.log(`${done}/${expected.length} components ported (${expected.length - done} remaining).${extra}`)

@@ -45,6 +45,12 @@ const parts = [
   ' * Component rules are copied verbatim from @frontier-labs/ui-kit\'s extracted CSS. */',
   '',
 ]
+function definesCss(file) {
+  const src = ['src/components', 'src/domain'].map(d => resolve(ROOT, d, `${file}.tsx`)).find(existsSync)
+  if (!src) return true // unknown source: assume styles exist, so the missing file fails
+  return /\bcss`/.test(readFileSync(src, 'utf8'))
+}
+
 let failed = false
 for (const name of ported) {
   // A companion export (not in component-meta) has no CSS file of its own: its
@@ -53,6 +59,11 @@ for (const name of ported) {
   if (!(name in fileByName)) continue
   const file = fileByName[name]
   const css = file && resolve(CSS_DIR, `${file}.css`)
+  /* A component whose React source defines no css`` template has no rules to
+   * extract (TopologyGraphSVG and TopologyGraphCanvas are styled by
+   * TopologyGraph's). Decided from the source, not a list, so a component that
+   * does have styles still fails here if its extracted file is missing. */
+  if (file && !(css && existsSync(css)) && !definesCss(file)) continue
   if (!css || !existsSync(css)) {
     console.error(`[svelte-css] FAIL: ${name} has no extracted CSS (looked for ${file}.css)`)
     failed = true

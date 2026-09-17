@@ -7,35 +7,11 @@
 
 import { useReducer, useCallback, useRef, useMemo } from 'react'
 import type { FieldConfig, FormDefinition } from './create-form'
+import type { FieldProps, FormState } from './form-types'
 
 // ─── Public types ───────────────────────────────────────────────────────────
 
-export interface FieldProps {
-  value: unknown
-  onChange: (value: unknown) => void
-  onBlur: () => void
-  error: string | undefined
-  touched: boolean
-}
-
-export interface FormState<T extends Record<string, FieldConfig>> {
-  values: { [K in keyof T]: T[K]['initial'] }
-  errors: Partial<Record<keyof T, string>>
-  touched: Partial<Record<keyof T, boolean>>
-  dirty: boolean
-  valid: boolean
-  submitting: boolean
-  submitCount: number
-
-  setValue: (name: keyof T, value: unknown) => void
-  setError: (name: keyof T, message: string | undefined) => void
-  setTouched: (name: keyof T, touched?: boolean) => void
-  validateField: (name: keyof T) => string | undefined
-  validateAll: () => boolean
-  handleSubmit: () => Promise<void>
-  reset: (name?: keyof T) => void
-  getFieldProps: (name: keyof T) => FieldProps
-}
+export type { FieldProps, FormState } from './form-types'
 
 // ─── Internal types ─────────────────────────────────────────────────────────
 

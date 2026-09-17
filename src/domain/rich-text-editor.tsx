@@ -497,10 +497,12 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
       if (isControlled && editorRef.current) {
         // Skip sync while editor is focused to preserve cursor position
         if (isFocusedRef.current) return
-        const currentHtml = editorRef.current.innerHTML
-        if (value !== currentHtml) {
-          editorRef.current.innerHTML = value ?? ''
-          lastHtmlRef.current = value ?? ''
+        // Incoming HTML is sanitized like outgoing HTML: stored markup with a
+        // <script> or an onerror handler must not run when it is shown.
+        const clean = sanitize(value ?? '')
+        if (clean !== editorRef.current.innerHTML) {
+          editorRef.current.innerHTML = clean
+          lastHtmlRef.current = clean
         }
       }
     }, [value, isControlled])
@@ -508,8 +510,8 @@ export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>(
     // ── Set default value ─────────────────────────────────────────────
     useEffect(() => {
       if (!isControlled && defaultValue && editorRef.current) {
-        editorRef.current.innerHTML = defaultValue
-        lastHtmlRef.current = defaultValue
+        editorRef.current.innerHTML = sanitize(defaultValue)
+        lastHtmlRef.current = editorRef.current.innerHTML
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

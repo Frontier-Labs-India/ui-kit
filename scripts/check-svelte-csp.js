@@ -41,6 +41,15 @@ export function violations(source) {
     if (node.type === 'Attribute' && node.name === 'style' && onElement) {
       found.push([lineOf(node.start), 'style attribute on an element — use a class, or use:cssProps for dynamic values'])
     }
+    // An inline <style> ELEMENT in markup is blocked as surely as a style
+    // attribute. (A component's own top-level <style> is compiled to the
+    // stylesheet and lives in ast.css, not the fragment, so it never reaches here.)
+    if (node.type === 'RegularElement' && node.name === 'style') {
+      found.push([lineOf(node.start), 'inline <style> element — move the rules to the component CSS'])
+    }
+    if (node.type === 'SvelteElement' && node.tag?.type === 'Literal' && node.tag.value === 'style') {
+      found.push([lineOf(node.start), 'inline <style> via <svelte:element> — move the rules to the component CSS'])
+    }
     const isDomElement = node.type === 'RegularElement' || node.type === 'SvelteElement'
     for (const [k, v] of Object.entries(node)) {
       if (k === 'parent' || k === 'metadata') continue
@@ -59,20 +68,39 @@ if (files.length === 0) {
   process.exit(1)
 }
 
+/* Inline <style> elements reproduced from React for the DOM contract. Each is
+ * a CSP defect in BOTH packages, stated here with its reason; an entry whose
+ * file no longer has one fails, so the list cannot go stale. */
+const INHERITED_INLINE_STYLE = {
+  'components/TopologyGraphSVG.svelte':
+    'React renders @keyframes ui-topo-dash in an inline <style> at motion >= 2 and defines it nowhere ' +
+    'else, so animated edges do not animate under style-src \'self\' in either package. Fix together.',
+}
+
 // Positive and negative controls on the analyser itself.
-const control = violations('<div style="color:red"></div><span style:color={c}></span><svelte:element this={t} style="x"></svelte:element>')
-const clean = violations('<Skeleton style={{ position: "absolute" }} /><div use:cssProps={{ a: 1 }}></div>')
-if (control.length !== 3 || clean.length !== 0) {
-  console.error(`FAIL: analyser controls wrong (expected 3 and 0, got ${control.length} and ${clean.length}) — the gate is broken.`)
+const control = violations(
+  '<div style="color:red"></div><span style:color={c}></span><svelte:element this={t} style="x"></svelte:element>' +
+  '<svg><style>a{}</style></svg><svelte:element this={"style"}>{k}</svelte:element>',
+)
+const clean = violations('<Skeleton style={{ position: "absolute" }} /><div use:cssProps={{ a: 1 }}></div><style>.a{color:red}</style>')
+if (control.length !== 5 || clean.length !== 0) {
+  console.error(`FAIL: analyser controls wrong (expected 5 and 0, got ${control.length} and ${clean.length}) — the gate is broken.`)
   process.exit(1)
 }
 
 let bad = 0
+const inheritedSeen = new Set()
 for (const f of files) {
+  const rel = relative(SRC, f)
   for (const [line, msg] of violations(readFileSync(f, 'utf8'))) {
+    if (msg.startsWith('inline <style>') && rel in INHERITED_INLINE_STYLE) { inheritedSeen.add(rel); continue }
     console.error(`FAIL: ${relative(ROOT, f)}:${line} ${msg}`)
     bad++
   }
 }
+for (const rel of Object.keys(INHERITED_INLINE_STYLE)) {
+  if (!inheritedSeen.has(rel)) { console.error(`FAIL: INHERITED_INLINE_STYLE lists ${rel}, which has no inline <style> — remove the entry`); bad++ }
+}
 if (bad) process.exit(1)
-console.log(`OK: ${files.length} .svelte files, no style: directives, no style attributes on elements.`)
+console.log(`OK: ${files.length} .svelte files, no style: directives, no style attributes or inline <style> elements on elements` +
+  ` (inherited from React: ${Object.keys(INHERITED_INLINE_STYLE).join(', ')}).`)

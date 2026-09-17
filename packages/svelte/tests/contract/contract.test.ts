@@ -6,7 +6,7 @@ import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -34,6 +34,7 @@ function hydrate(value: unknown): unknown {
       return createRawSnippet(() => ({ render: () => `<b>${text}</b>` }))
     }
     if ('$fn' in v) return () => {}
+    if ('$date' in v) return new Date(String(v.$date))
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
   return value
@@ -75,20 +76,35 @@ describe('React DOM contract', () => {
   /* Generic: the getter rule. A Svelte <script> body runs once, so a rune fed a
    * prop VALUE snapshots it and later changes never reach the DOM — the bug
    * Badge shipped with in PR #1. Checked here for every component whose
-   * React markup carries data-motion, rather than copied into each test file. */
+   * React markup carries data-motion, rather than copied into each test file.
+   *
+   * Which elements follow the prop is read from React, not assumed: in a
+   * composite such as ConfirmDialog only the Dialog receives `motion`, and its
+   * Buttons keep the context default. The React render of the component's
+   * `motion: 0` case says which elements carry the prop's value; those must
+   * track every change, and the rest must keep React's value. */
+  const motions = (html: string) => Array.from(html.matchAll(/data-motion="([^"]*)"/g), m => m[1])
   for (const [name, cases] of Object.entries(f.components)) {
     const withMotion = Object.entries(cases).find(([, c]) => c.html.includes('data-motion'))
     if (!withMotion) continue
+    const zeroCase = Object.values(cases).find(c => (c.props as { motion?: unknown }).motion === 0 && c.html.includes('data-motion'))
     it(`${name}: data-motion follows a motion prop change after mount`, async () => {
       const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-      const base = hydrate(renamed(name, withMotion[1].props)) as Record<string, unknown>
+      const base = hydrate(renamed(name, (zeroCase ?? withMotion[1]).props)) as Record<string, unknown>
+      const react = zeroCase ? motions(zeroCase.html) : null
+      const expected = (level: number) =>
+        react ? react.map(v => (v === '0' ? String(level) : v)) : null
       const { container, rerender } = render(Comp, { props: { ...base, motion: 1 } })
       const read = () => Array.from(container.querySelectorAll('[data-motion]')).map(e => e.getAttribute('data-motion'))
       expect(read().length).toBeGreaterThan(0)
-      expect(new Set(read())).toEqual(new Set(['1']))
+      if (react) {
+        expect(react).toContain('0')
+        expect(read()).toEqual(expected(1))
+      } else expect(new Set(read())).toEqual(new Set(['1']))
       await rerender({ ...base, motion: 0 })
       flushSync()
-      expect(new Set(read())).toEqual(new Set(['0']))
+      if (react) expect(read()).toEqual(expected(0))
+      else expect(new Set(read())).toEqual(new Set(['0']))
     })
   }
 
@@ -112,9 +128,34 @@ describe('React DOM contract', () => {
           // not either. An empty style attribute — left behind when an entrance
           // animation clears the properties it set — carries no CSS. Checked
           // before divergences, which may add style to mirror React's shape.
+          // Effect-written state is removed from BOTH trees: the server HTML may
+          // carry its initial value (TracingBeam's 0%, SortableList's tabindex).
+          const reactTree = fromHtml(html)
+          for (const { selector, properties } of EFFECT_STYLES[name] ?? []) {
+            for (const root of [container, reactTree]) {
+              for (const el of Array.from(root.querySelectorAll<HTMLElement>(selector))) {
+                for (const p of properties) el.style.removeProperty(p)
+                if (el.getAttribute('style') === '') el.removeAttribute('style')
+              }
+            }
+          }
+          for (const { selector } of EFFECT_NODES[name] ?? []) {
+            for (const root of [container, reactTree]) for (const el of Array.from(root.querySelectorAll(selector))) el.remove()
+          }
+          for (const { selector, attributes } of EFFECT_ATTRS[name] ?? []) {
+            for (const root of [container, reactTree]) {
+              for (const el of Array.from(root.querySelectorAll(selector))) for (const a of attributes) el.removeAttribute(a)
+            }
+          }
+          for (const { selector } of EFFECT_VALUES[name] ?? []) {
+            for (const el of Array.from(container.querySelectorAll<HTMLInputElement>(selector))) {
+              el.value = ''
+              el.removeAttribute('value')
+            }
+          }
           if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]:not([style=""])')).toBeNull()
           for (const d of DIVERGENCES[name] ?? []) d.apply(container)
-          expect(canonical(container)).toBe(canonical(fromHtml(html)))
+          expect(canonical(container)).toBe(canonical(reactTree))
         })
       }
     })

@@ -60,3 +60,24 @@ describe('canonical — ordering and text', () => {
     expect(c('<b>a</b>')).not.toBe(c('<b>b</b>'))
   })
 })
+
+describe('canonical — textarea value', () => {
+  it('equates server text content with a client .value, and tells values apart', () => {
+    const client = document.createElement('div')
+    const ta = document.createElement('textarea')
+    ta.value = 'hello'
+    client.append(ta)
+    expect(canonical(client)).toBe(c('<textarea>hello</textarea>'))
+    expect(c('<textarea>hello</textarea>')).not.toBe(c('<textarea>bye</textarea>'))
+    expect(c('<textarea></textarea>')).not.toBe(c('<textarea>x</textarea>'))
+  })
+})
+
+describe('fromHtml — React 19 image preload hints', () => {
+  it('drops a top-level <link rel=preload as=image>, and nothing else', () => {
+    expect(c('<link rel="preload" as="image" href="a.png"><img src="a.png">')).toBe(c('<img src="a.png">'))
+    expect(c('<link rel="preload" as="font" href="f.woff2"><i></i>')).not.toBe(c('<i></i>'))
+    expect(c('<link rel="stylesheet" href="s.css"><i></i>')).not.toBe(c('<i></i>'))
+    expect(c('<div><link rel="preload" as="image" href="a.png"></div>')).not.toBe(c('<div></div>'))
+  })
+})

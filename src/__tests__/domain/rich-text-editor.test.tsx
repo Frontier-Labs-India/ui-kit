@@ -273,6 +273,31 @@ describe('RichTextEditor', () => {
     })
   })
 
+  // ─── Incoming HTML is sanitized ────────────────────────────────────
+
+  describe('sanitizing incoming HTML', () => {
+    const hostile =
+      '<p>hi<script>alert(1)</script><img src=x onerror="alert(2)"><a href="javascript:alert(3)">x</a></p>'
+
+    it('strips scripts, handlers and javascript: links from value', () => {
+      render(<RichTextEditor value={hostile} />)
+      const editor = screen.getByRole('textbox')
+      expect(editor.innerHTML).not.toMatch(/script|onerror|javascript:/)
+      expect(editor.innerHTML).toBe('<p>hi<a>x</a></p>')
+    })
+
+    it('strips them from a changed value too', () => {
+      const { rerender } = render(<RichTextEditor value="<p>safe</p>" />)
+      rerender(<RichTextEditor value={hostile} />)
+      expect(screen.getByRole('textbox').innerHTML).toBe('<p>hi<a>x</a></p>')
+    })
+
+    it('strips them from defaultValue', () => {
+      render(<RichTextEditor defaultValue={hostile} />)
+      expect(screen.getByRole('textbox').innerHTML).toBe('<p>hi<a>x</a></p>')
+    })
+  })
+
   // ─── minHeight / maxHeight ─────────────────────────────────────────
 
   describe('height constraints', () => {

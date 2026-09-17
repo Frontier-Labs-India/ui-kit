@@ -9,6 +9,9 @@
  *   { $el: 'text' }  a rendered child — React <b>text</b>, Svelte a snippet of the same
  *   { $fn: true }    a callback — a no-op on both sides; some markup exists only
  *                    when a handler is passed (e.g. a close button)
+ *   { $date: '2026-01-20T00:00' }  a Date — `new Date(string)` on both sides. Omit
+ *                    the zone: both run with TZ=UTC, so it is the local midnight
+ *                    a caller's date picker would produce
  *
  * Choose cases that change the MARKUP: every variant/size value that is an
  * attribute, every boolean that adds or removes an element, and the edge values
@@ -23,9 +26,15 @@ export type CaseProps = Record<string, unknown>
  * Date.now to this; the Svelte contract tests fake Date — and only Date — to it. */
 export const CONTRACT_NOW = Date.UTC(2026, 0, 15, 12, 0, 0)
 
-/* Exports that component-meta does not list (it lists one component per file),
- * mapped to the React source that exports them, so their cases can be rendered. */
+/* Case keys are the PUBLIC export names both packages share. Exports that
+ * component-meta does not list (it lists one component per file), or whose
+ * public name differs from their file's export, are mapped to their React
+ * source here — `file#Export` for the latter. React's components barrel
+ * exports highlight.tsx's Highlight as TextHighlight, and the public Highlight
+ * is hero-highlight.tsx's. */
 export const SOURCES: Record<string, string> = {
+  TextHighlight: 'src/components/highlight.tsx#Highlight',
+  Highlight: 'src/domain/hero-highlight.tsx',
   Icon: 'src/core/icons/icon.tsx',
   FilterPillGroup: 'src/components/filter-pill.tsx',
   SidebarHeader: 'src/components/sidebar.tsx',
@@ -214,7 +223,7 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller style': { style: { borderRadius: 12 } },
     'motion 0': { motion: 0 },
   },
-  Highlight: {
+  TextHighlight: {
     'single term, case-insensitive': { children: 'The quick brown fox', highlight: 'QUICK' },
     'several terms': { children: 'alpha beta gamma beta', highlight: ['beta', 'gamma'] },
     'case sensitive miss': { children: 'Alpha alpha', highlight: 'alpha', caseSensitive: true },
@@ -331,6 +340,766 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     everything: { title: { $el: 'Pro' }, description: 'For teams', actions: { $el: 'Buy' }, badge: 'New', image: { $el: 'img' }, variant: 'horizontal' },
     'compact string parts': { title: 'Lite', description: { $el: 'Solo' }, variant: 'compact' },
     'motion 0': { title: 'x', motion: 0 },
+  },
+  Button: {
+    defaults: { children: { $el: 'Save' } },
+    'secondary xs full width': { variant: 'secondary', size: 'xs', fullWidth: true, children: { $el: 'Save' } },
+    'danger xl submit': { variant: 'danger', size: 'xl', type: 'submit', children: { $el: 'Delete' } },
+    'ghost disabled': { variant: 'ghost', disabled: true, children: { $el: 'Off' } },
+    'link with classNames': { variant: 'link', className: 'mine', classNames: { root: 'r', icon: 'i', iconEnd: 'e' }, icon: { $el: 'L' }, iconEnd: 'R', children: { $el: 'Go' } },
+    'loading without text keeps children': { loading: true, children: { $el: 'Save' } },
+    'loading text replaces children': { loading: true, loadingText: 'Saving…', children: { $el: 'Save' } },
+    'loading text ignored when not loading': { loadingText: 'Saving…', children: { $el: 'Save' } },
+    'icon only': { iconOnly: true, icon: { $el: 'x' }, 'aria-label': 'Close' },
+    shortcuts: { shortcuts: { activate: 'Ctrl+S' }, children: { $el: 'Save' } },
+    'motion 0': { motion: 0, children: { $el: 'Save' } },
+  },
+  Dialog: {
+    'body only': { open: false, onClose: { $fn: true }, children: { $el: 'Body' } },
+    'title and description': { open: false, onClose: { $fn: true }, title: 'Delete file', description: 'This cannot be undone.', children: { $el: 'Body' } },
+    'no title, no close: no header': { open: false, onClose: { $fn: true }, showClose: false, children: { $el: 'Body' } },
+    'description without title': { open: false, onClose: { $fn: true }, description: 'Only a description', children: { $el: 'Body' } },
+    'element title, footer, size, classNames': {
+      open: false, onClose: { $fn: true }, title: { $el: 'Rich' }, footer: { $el: 'Footer' }, size: 'full', className: 'mine',
+      classNames: { root: 'r', header: 'h', title: 't', description: 'd', body: 'b', close: 'c', footer: 'f' },
+      description: 'Desc', children: { $el: 'Body' },
+    },
+    'caller attributes on the dialog': { open: false, onClose: { $fn: true }, 'aria-label': 'Settings', showClose: false, children: { $el: 'Body' } },
+    'motion 0': { open: false, onClose: { $fn: true }, motion: 0, children: { $el: 'Body' } },
+  },
+  ConfirmDialog: {
+    defaults: { open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: 'Are you sure?' },
+    'danger loading with description and labels': {
+      open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: { $el: 'Delete' }, description: { $el: 'Gone forever' },
+      variant: 'danger', loading: true, confirmLabel: 'Delete', cancelLabel: 'Keep',
+    },
+    'motion 0': { open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: 'Sure?', motion: 0 },
+  },
+  TopologyGraph: {
+    empty: { nodes: [], edges: [] },
+    'every node type and edge feature': {
+      nodes: [
+        { id: 'fw', label: 'Firewall', type: 'firewall', status: 'ok' },
+        { id: 'rt', label: 'Router', type: 'router', status: 'warning' },
+        { id: 'sw', label: 'Switch', type: 'switch', status: 'critical' },
+        { id: 'sv', label: 'Server', type: 'server', status: 'maintenance' },
+        { id: 'db', label: 'DB', type: 'database' },
+        { id: 'lb', label: 'LB', type: 'loadbalancer', width: 60, height: 40 },
+        { id: 'cl', label: 'Cloud', type: 'cloud' },
+        // A string icon: an { $el } <b> inside <svg> is an HTML breakout tag, so parsing
+        // React's server HTML would close the <svg> early. Snippet icons: topology-graph.test.ts.
+        { id: 'cu', label: 'Custom', type: 'custom', icon: 'i' },
+      ],
+      edges: [
+        { source: 'cl', target: 'fw', label: 'WAN', status: 'ok', bandwidth: 1000, animated: true },
+        { source: 'fw', target: 'rt', bidirectional: true, status: 'warning' },
+        { source: 'rt', target: 'sw', bandwidth: 50, status: 'critical' },
+        { source: 'sw', target: 'sv' },
+        { source: 'sw', target: 'db', animated: true },
+        { source: 'lb', target: 'sv' },
+        { source: 'ghost', target: 'sv' },
+      ],
+      selectedNodes: ['rt', 'lb'],
+      onNodeClick: { $fn: true },
+      onEdgeClick: { $fn: true },
+      onNodeHover: { $fn: true },
+      showLegend: true,
+      showMinimap: true,
+    },
+    'dagre, pinned positions, no controls, string height': {
+      nodes: [{ id: 'a', label: 'A', x: 50, y: 60 }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+      edges: [{ source: 'a', target: 'b' }, { source: 'b', target: 'c', label: 'x' }],
+      layout: 'dagre', showControls: false, height: '100%', className: 'mine',
+    },
+    circular: { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }], edges: [{ source: 'a', target: 'c' }], layout: 'circular', height: 300 },
+    grid: { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }, { id: 'd', label: 'D' }], edges: [], layout: 'grid' },
+    'caller style replaces height': { nodes: [{ id: 'a', label: 'A' }], edges: [], style: { minHeight: 200 } },
+    'minimap with no nodes renders nothing': { nodes: [], edges: [], showMinimap: true },
+    'canvas renderer': { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b' }], renderer: 'canvas', height: 240 },
+    'motion 0 has no keyframes and no dash': {
+      nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b', animated: true }], motion: 0,
+    },
+  },
+  Calendar: {
+    // CONTRACT_NOW is 2026-01-15, so "today" is inside January 2026.
+    'today, no value': {},
+    'uncontrolled defaultValue in another month': { defaultValue: { $date: '2025-11-03T00:00' } },
+    'controlled value, min/max and disabled list': {
+      value: { $date: '2026-01-20T00:00' }, minDate: { $date: '2026-01-05T09:30' }, maxDate: { $date: '2026-01-28T00:00' },
+      disabledDates: [{ $date: '2026-01-21T00:00' }, { $date: '2026-01-22T00:00' }],
+    },
+    'value null is controlled-empty': { value: null, defaultValue: { $date: '2026-01-10T00:00' } },
+    'monday start, week numbers, no outside days, lg': { value: { $date: '2026-03-10T00:00' }, firstDayOfWeek: 1, showWeekNumbers: true, showOutsideDays: false, size: 'lg' },
+    'three months across a year boundary, no today highlight': { defaultValue: { $date: '2025-11-15T00:00' }, numberOfMonths: 3, highlightToday: false },
+    'range display with hover end': { value: { $date: '2026-01-08T00:00' }, _rangeStart: { $date: '2026-01-08T00:00' }, _hoverDate: { $date: '2026-01-02T00:00' } },
+    'range with explicit end beats hover': { _rangeStart: { $date: '2026-01-10T00:00' }, _rangeEnd: { $date: '2026-01-12T00:00' }, _hoverDate: { $date: '2026-01-25T00:00' } },
+    'de-DE locale, caller attributes': { locale: 'de-DE', className: 'mine', id: 'cal', value: { $date: '2026-01-15T00:00' } },
+    'motion 0': { motion: 0 },
+  },
+  FormInput: {
+    'name only': { name: 'email' },
+    'label, required, description, placeholder': { name: 'email', label: 'Email', required: true, description: 'We never share it', placeholder: 'you@example.com' },
+    'error sets invalid and describedby order': { name: 'email', label: { $el: 'Email' }, description: 'Help', error: 'Required' },
+    'controlled value with counter at limit, clearable': { name: 'code', 'aria-label': 'Code', value: 'ABCDE', maxLength: 5, clearable: true, onClear: { $fn: true } },
+    'showCount without max, numeric value': { name: 'n', 'aria-label': 'N', value: 42, showCount: true },
+    'clearable but empty shows no button': { name: 'q', 'aria-label': 'Q', value: '', clearable: true },
+    'icons, filled xl, disabled, caller id and attrs': {
+      name: 'search', 'aria-label': 'Search', icon: { $el: 's' }, iconEnd: { $el: 'k' }, variant: 'filled', size: 'xl', disabled: true, id: 'mine', type: 'search', autoComplete: 'off',
+    },
+    'classNames everywhere': {
+      name: 'x', label: 'L', description: 'D', error: 'E', icon: 'i', iconEnd: 'j', className: 'root-extra',
+      classNames: { root: 'r', label: 'l', field: 'f', icon: 'ic', iconEnd: 'ie', description: 'd', error: 'e' },
+    },
+    'motion 0': { name: 'x', 'aria-label': 'X', motion: 0 },
+  },
+  Textarea: {
+    labelled: { label: 'Notes', name: 'notes' },
+    'uncontrolled defaultValue with count': { label: 'Bio', defaultValue: 'Hello there', showCount: true },
+    'controlled at limit, error, description, required, placeholder': {
+      label: 'Bio', value: 'abcde', maxLength: 5, error: 'Too long', description: 'Short bio', required: true, placeholder: 'Type…',
+    },
+    'resize none, minRows, lg disabled, caller id and attrs': { label: 'X', resize: 'none', minRows: 6, size: 'lg', disabled: true, id: 'ta', className: 'mine', 'data-x': '1' },
+    'autoResize forces data-resize none': { label: 'Auto', autoResize: true, resize: 'both', minRows: 2, maxRows: 4 },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  PasswordInput: {
+    labelled: { label: 'Password', name: 'pw' },
+    'no toggle, placeholder, required, description': { label: 'Password', visibilityToggle: false, placeholder: '••••', required: true, description: 'At least 8' },
+    'strength meter empty': { label: 'Password', showStrengthMeter: true, value: '' },
+    'strength meter strong with error': { label: 'Password', showStrengthMeter: true, value: 'Abcdef1!', error: 'Reused', onStrengthChange: { $fn: true } },
+    'strength meter fair, custom labels, sm disabled, caller id': {
+      label: 'Password', showStrengthMeter: true, value: 'abc1', strengthLabels: ['none', 'w', 'f', 'g', 's'], size: 'sm', disabled: true, id: 'pw', className: 'mine',
+    },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  NumberInput: {
+    labelled: { label: 'Qty', name: 'qty' },
+    'default value formatted with separator, prefix, suffix, precision': {
+      label: 'Price', defaultValue: 1234567.5, thousandSeparator: true, prefix: '$', suffix: ' USD', precision: 2,
+    },
+    'controlled at max and min bounds': { label: 'N', value: 10, min: 0, max: 10 },
+    'at min with error, description, required, placeholder': { label: 'N', value: 0, min: 0, error: 'Low', description: 'd', required: true, placeholder: '0' },
+    'null value, hide controls, readOnly xl, caller id': { label: 'N', value: null, hideControls: true, readOnly: true, size: 'xl', id: 'num', className: 'mine' },
+    'disabled': { label: 'N', value: 3, disabled: true },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  Spotlight: {
+    closed: { actions: [] },
+    'open, no actions': { open: true, actions: [], onOpenChange: { $fn: true } },
+    'open with grouped actions and icons': {
+      open: true,
+      actions: [
+        { id: 'home', title: 'Home', description: 'Go home', group: 'Navigation', icon: { $el: 'h' }, onClick: { $fn: true } },
+        { id: 'docs', title: 'Docs', group: 'Navigation', onClick: { $fn: true } },
+        { id: 'theme', title: 'Toggle theme', group: 'Settings', keywords: ['dark'], onClick: { $fn: true } },
+      ],
+    },
+    'ungrouped, limit, custom shortcut and placeholder, caller attrs': {
+      open: true, limit: 2, shortcut: 'ctrl+shift+p', placeholder: 'Type a command', className: 'mine', id: 'spot',
+      actions: [
+        { id: 'a', title: 'Alpha', onClick: { $fn: true } },
+        { id: 'b', title: 'Beta', onClick: { $fn: true } },
+        { id: 'c', title: 'Gamma', onClick: { $fn: true } },
+      ],
+    },
+    'alt shortcut glyphs': { open: true, shortcut: 'cmd+alt+k', actions: [{ id: 'a', title: 'Alpha', onClick: { $fn: true } }] },
+    'motion 0': { open: true, motion: 0, actions: [] },
+  },
+  ContainerQuery: {
+    children: { children: { $el: 'content' } },
+    'caller style merges after container-type, class and attrs': { children: { $el: 'c' }, style: { padding: 8, containerType: 'size' }, className: 'mine', id: 'cq' },
+  },
+  Sheet: {
+    'body only': { open: false, onClose: { $fn: true }, children: { $el: 'Body' } },
+    'left lg with title and description': { open: false, onClose: { $fn: true }, side: 'left', size: 'lg', title: 'Filters', description: 'Narrow results', children: { $el: 'Body' } },
+    'bottom, element title, no close': { open: false, onClose: { $fn: true }, side: 'bottom', title: { $el: 'T' }, showClose: false, children: { $el: 'Body' } },
+    'no title and no close: no header; caller attrs': { open: false, onClose: { $fn: true }, showClose: false, className: 'mine', 'aria-label': 'Panel', children: { $el: 'Body' } },
+    'motion 0': { open: false, onClose: { $fn: true }, motion: 0, children: { $el: 'Body' } },
+  },
+  SegmentedControl: {
+    'strings, first is active by default': { data: ['Day', 'Week', 'Month'], 'aria-label': 'Range' },
+    'objects with icons, disabled option, controlled': {
+      'aria-label': 'View', value: 'grid',
+      data: [{ value: 'list', label: 'List', icon: { $el: 'l' } }, { value: 'grid', label: { $el: 'Grid' } }, { value: 'map', label: 'Map', disabled: true }],
+    },
+    'vertical xl full width, color, caller style and class': {
+      'aria-label': 'V', data: ['A', 'B'], defaultValue: 'B', orientation: 'vertical', size: 'xl', fullWidth: true, color: 'red', style: { margin: 4 }, className: 'mine',
+    },
+    'disabled and readOnly': { 'aria-label': 'D', data: ['A', 'B'], disabled: true, readOnly: true },
+    'empty data': { 'aria-label': 'E', data: [] },
+    'motion 0': { 'aria-label': 'M', data: ['A'], motion: 0 },
+  },
+  Combobox: {
+    'closed, no selection': { name: 'fw', options: [{ value: 'svelte', label: 'Svelte' }], 'aria-label': 'Framework' },
+    'label, uncontrolled default shows its label, lg': { name: 'fw', label: 'Framework', size: 'lg', defaultValue: 'react', options: [{ value: 'svelte', label: 'Svelte' }, { value: 'react', label: 'React' }] },
+    'controlled, error, disabled, placeholder, caller attrs': {
+      name: 'fw', label: { $el: 'FW' }, value: 'svelte', error: 'Pick one', disabled: true, placeholder: 'Find…', className: 'mine', id: 'cb',
+      options: [{ value: 'svelte', label: 'Svelte' }],
+    },
+    'value not in options leaves the input empty': { name: 'fw', 'aria-label': 'F', value: 'vue', options: [{ value: 'svelte', label: 'Svelte' }] },
+    'motion 0': { name: 'fw', 'aria-label': 'F', motion: 0, options: [] },
+  },
+  Select: {
+    'no label (unnamed trigger)': { name: 's', options: [{ value: 'a', label: 'A' }] },
+    'label, selected with icon, clearable, xl': {
+      name: 's', label: 'Size', size: 'xl', clearable: true, defaultValue: 'm',
+      options: [{ value: 's', label: 'Small' }, { value: 'm', label: 'Medium', icon: { $el: 'i' } }],
+    },
+    'controlled, error, disabled, custom placeholder, caller attrs': {
+      name: 's', label: { $el: 'L' }, value: '', error: 'Required', disabled: true, placeholder: 'Pick…', className: 'mine', id: 'sel', options: [],
+    },
+    'multiple with two tags and hidden inputs': {
+      name: 'tags', label: 'T', multiple: true, clearable: true, value: ['a', 'b'],
+      options: [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }, { value: 'c', label: 'Gamma' }],
+    },
+    'multiple with four collapses to +2 more': {
+      name: 'tags', label: 'T', multiple: true, value: ['a', 'b', 'c', 'd'],
+      options: ['a', 'b', 'c', 'd'].map(v => ({ value: v, label: v.toUpperCase() })),
+    },
+    'multiple empty shows placeholder': { name: 'tags', label: 'T', multiple: true, options: [] },
+    'motion 0': { name: 's', label: 'S', motion: 0, options: [] },
+  },
+  MultiSelect: {
+    'placeholder, no name': { label: 'Tags', options: [{ value: 'a', label: 'A' }] },
+    'selected tags, hidden inputs, clearable, lg': {
+      label: 'Tags', name: 'tags', size: 'lg', clearable: true, defaultValue: ['b', 'a', 'missing'],
+      options: [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }],
+    },
+    'disabled hides remove and clear; error; not searchable is readonly': {
+      label: 'Tags', value: ['a'], disabled: true, clearable: true, error: 'Too many', searchable: false, className: 'mine', id: 'ms',
+      options: [{ value: 'a', label: 'Alpha' }],
+    },
+    'motion 0': { label: 'M', motion: 0, options: [] },
+  },
+  DatePicker: {
+    empty: { 'aria-label': 'Date' },
+    'label, uncontrolled default, placeholder, lg': { label: 'Start', defaultValue: '2026-03-09', placeholder: 'Pick a date', size: 'lg' },
+    'controlled, error, disabled, caller attrs': { label: { $el: 'Due' }, value: '2025-12-31', error: 'In the past', disabled: true, className: 'mine', id: 'dp' },
+    'motion 0': { 'aria-label': 'D', motion: 0 },
+  },
+  TimePicker: {
+    'label, placeholder': { label: 'Start' },
+    'value with clear, lg, name': { label: 'Start', value: '2:30 PM', clearable: true, size: 'lg', name: 'start' },
+    '24h value, error, disabled, custom placeholder, caller attrs': { label: 'At', format: '24h', value: '14:05', error: 'Closed', disabled: true, placeholder: 'hh:mm', className: 'mine', id: 'tp' },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  DateRangePicker: {
+    'label, placeholder': { label: 'Period' },
+    'start only shows one date and clear': { label: 'Period', value: [{ $date: '2026-01-05T00:00' }, null] },
+    'full range, lg, error, caller attrs': {
+      label: 'Period', size: 'lg', error: 'Too long', className: 'mine', id: 'drp', name: 'period',
+      value: [{ $date: '2026-01-05T00:00' }, { $date: '2026-02-14T00:00' }],
+    },
+    'disabled, custom placeholder': { label: 'Period', disabled: true, placeholder: 'Any time' },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  FlipWords: {
+    words: { words: ['fast', 'safe', 'small'] },
+    'empty words, interval, caller attrs': { words: [], interval: 1000, className: 'mine', id: 'fw' },
+    'motion 0': { words: ['a', 'b'], motion: 0 },
+  },
+  TextReveal: {
+    'mount with a space': { text: 'Hi there' },
+    'inView, speed, caller class': { text: 'Go', trigger: 'inView', speed: 60, className: 'mine' },
+    'motion 0 reveals everything': { text: 'Now', motion: 0 },
+  },
+  AnimatedCounter: {
+    defaults: { value: 1234.6 },
+    'custom format, caller attrs': { value: 42, format: { $fn: true }, className: 'mine', id: 'ac' },
+    'motion 0': { value: 0, motion: 0 },
+  },
+  HeroHighlight: {
+    children: { children: { $el: 'Build faster' } },
+    'caller attrs': { children: { $el: 'x' }, className: 'mine', id: 'hh' },
+    'motion 0': { children: { $el: 'x' }, motion: 0 },
+  },
+  Highlight: {
+    children: { children: { $el: 'fast' } },
+    'color and caller style': { children: { $el: 'fast' }, color: 'oklch(70% 0.2 150)', style: { fontWeight: 700 }, className: 'mine' },
+    'motion 0 is active at once': { children: { $el: 'fast' }, motion: 0 },
+  },
+  CopyButton: {
+    defaults: { value: 'npm i @frontier-labs/ui-kit', children: { $fn: true } },
+    'size, caller class': { value: 'x', size: 'xs', className: 'mine', children: { $fn: true } },
+    'motion 0': { value: 'x', motion: 0, children: { $fn: true } },
+  },
+  NumberTicker: {
+    // React's server render shows "0" until an effect sets the value, so only
+    // zero matches; other values' digits are asserted in number-ticker.test.ts.
+    zero: { value: 0 },
+    'zero, down, delay, caller class': { value: 0, direction: 'down', delay: 200, className: 'mine' },
+    'motion 0': { value: 0, motion: 0 },
+  },
+  EncryptedText: {
+    // React's server render has no character spans until an effect scrambles
+    // the text, so only empty text matches; the rest is encrypted-text.test.ts.
+    'empty text': { text: '' },
+    'empty, hover trigger, caller class': { text: '', trigger: 'hover', speed: 4, className: 'mine' },
+    'motion 0': { text: '', motion: 0 },
+  },
+  TracingBeam: {
+    children: { children: { $el: 'Story' } },
+    'color, caller style and class': { children: { $el: 'Story' }, color: 'red', style: { paddingLeft: 24 }, className: 'mine' },
+    'motion 0': { children: { $el: 'Story' }, motion: 0 },
+  },
+  CSVExportButton: {
+    defaults: { data: [{ a: 1 }] },
+    'children, size, disabled, caller attrs': { data: [], children: { $el: 'Download' }, size: 'xl', disabled: true, className: 'mine', id: 'csv' },
+    'motion 0': { data: [], motion: 0 },
+  },
+  RealtimeValue: {
+    defaults: { value: 1234.567 },
+    'positive delta': { value: 12, previousValue: 10, showDelta: true },
+    'negative delta, custom format, caller attrs': { value: 8, previousValue: 10, showDelta: true, format: { $fn: true }, className: 'mine', id: 'rv' },
+    'zero delta': { value: 10, previousValue: 10, showDelta: true },
+    'delta hidden without showDelta': { value: 12, previousValue: 10 },
+    'motion 0': { value: 1, motion: 0 },
+  },
+  ScrollReveal: {
+    defaults: { children: { $el: 'Card' } },
+    'scale, delay, stagger, threshold, caller style': { children: { $el: 'Card' }, animation: 'scale', delay: 150, stagger: 50, threshold: 0.5, once: false, style: { margin: 4 }, className: 'mine' },
+    'motion 0': { children: { $el: 'Card' }, motion: 0 },
+  },
+  EvervaultCard: {
+    children: { children: { $el: 'Secure' } },
+    'caller attrs': { children: { $el: 'x' }, className: 'mine', id: 'ev' },
+    'motion 0': { children: { $el: 'x' }, motion: 0 },
+  },
+  Spoiler: {
+    // jsdom measures scrollHeight as 0, as a server render never measures: no toggle.
+    defaults: { maxHeight: 100, children: { $el: 'Long text' } },
+    'visible, labels, no gradient, duration, caller style': {
+      maxHeight: 50, initialState: 'visible', showLabel: 'More', hideLabel: 'Less', gradient: false, transitionDuration: 200,
+      style: { padding: 8 }, className: 'mine', children: { $el: 'Text' },
+    },
+    'motion 0': { maxHeight: 10, motion: 0, children: { $el: 'x' } },
+  },
+  InfiniteScroll: {
+    'has more': { onLoadMore: { $fn: true }, hasMore: true, children: { $el: 'Items' } },
+    'loading with default spinner': { onLoadMore: { $fn: true }, hasMore: true, loading: true, children: { $el: 'Items' } },
+    'loading up with custom loader, pull to refresh, caller attrs': {
+      onLoadMore: { $fn: true }, hasMore: true, loading: true, loader: { $el: 'Wait' }, direction: 'up', pullToRefresh: true, onRefresh: { $fn: true },
+      className: 'mine', id: 'is', children: { $el: 'Items' },
+    },
+    'end message when exhausted': { onLoadMore: { $fn: true }, hasMore: false, endMessage: 'All caught up', children: { $el: 'Items' } },
+    'pull to refresh needs onRefresh': { onLoadMore: { $fn: true }, hasMore: false, pullToRefresh: true, children: { $el: 'Items' } },
+  },
+  Affix: {
+    defaults: { children: { $el: 'Help' } },
+    'top-left, zIndex, caller style overrides': { position: { top: 0, left: 16 }, zIndex: 5, style: { zIndex: 9, opacity: 0.9 }, className: 'mine', children: { $el: 'x' } },
+  },
+  BackToTop: {
+    defaults: {},
+    'progress ring, lg, caller style and class': { showProgress: true, size: 'lg', style: { right: 24 }, className: 'mine' },
+    'sm, visibleFrom, not smooth': { size: 'sm', visibleFrom: 100, smooth: false },
+    'motion 0': { motion: 0 },
+  },
+  StreamingText: {
+    plain: { text: 'Hello world' },
+    'code blocks with and without language': { text: 'Run:\n```bash\nnpm i\n```\nthen ```x``` done' },
+    'streaming shows the cursor and aria-busy': { text: 'Thinking', streaming: true },
+    'cursor forced off while streaming, caller attrs': { text: 'x', streaming: true, showCursor: false, className: 'mine', id: 'st' },
+    'cursor forced on': { text: 'x', showCursor: true },
+    'with speed starts empty': { text: 'Typing', speed: 2 },
+    'motion 0': { text: 'x', motion: 0 },
+  },
+  LiveFeed: {
+    empty: { items: [] },
+    'custom empty, height, caller attrs': { items: [], emptyMessage: { $el: 'Quiet' }, height: '240px', className: 'mine', id: 'lf' },
+    'items truncated to maxItems, types, status and paused': {
+      maxItems: 2, connectionStatus: 'reconnecting', paused: true,
+      items: [
+        { id: '1', content: 'boot', timestamp: 1768478400000 },
+        { id: '2', content: { $el: 'deploy' }, timestamp: { $date: '2026-01-15T12:00:05' }, type: 'info' },
+        { id: '3', content: 'error', timestamp: 1768478410000, type: 'error' },
+      ],
+    },
+    'connected only': { items: [], connectionStatus: 'connected' },
+    'motion 0': { items: [], motion: 0 },
+  },
+  LogViewer: {
+    empty: { lines: [] },
+    'timestamps, levels, wrap, height, autoTail, caller attrs': {
+      showTimestamp: true, showLevel: true, wrap: true, height: '200px', autoTail: true, className: 'mine', id: 'lv',
+      lines: [
+        { id: 1, timestamp: 1768478400000, level: 'info', message: 'started' },
+        { id: 2, level: 'error', message: 'failed' },
+        { id: 3, timestamp: { $date: '2026-01-15T12:00:03' }, message: 'no level' },
+      ],
+    },
+    'search highlights across repeated matches': { search: 'ab', lines: [{ id: 1, message: 'ab x AB y ab ab' }, { id: 2, message: 'nothing' }] },
+    'search with regex metacharacters': { search: '(1)', lines: [{ id: 1, message: 'call (1) and (1)' }] },
+    'filterLevel and maxLines': { filterLevel: ['warn', 'error'], maxLines: 1, lines: [{ id: 1, level: 'warn', message: 'w' }, { id: 2, level: 'error', message: 'e' }, { id: 3, message: 'x' }] },
+    'virtual above 100 lines with a height': { height: '105px', lines: [
+        { id: 0, level: 'debug', message: 'line 0' },
+        { id: 1, level: 'info', message: 'line 1' },
+        { id: 2, level: 'warn', message: 'line 2' },
+        { id: 3, level: 'error', message: 'line 3' },
+        { id: 4, level: 'debug', message: 'line 4' },
+        { id: 5, level: 'info', message: 'line 5' },
+        { id: 6, level: 'warn', message: 'line 6' },
+        { id: 7, level: 'error', message: 'line 7' },
+        { id: 8, level: 'debug', message: 'line 8' },
+        { id: 9, level: 'info', message: 'line 9' },
+        { id: 10, level: 'warn', message: 'line 10' },
+        { id: 11, level: 'error', message: 'line 11' },
+        { id: 12, level: 'debug', message: 'line 12' },
+        { id: 13, level: 'info', message: 'line 13' },
+        { id: 14, level: 'warn', message: 'line 14' },
+        { id: 15, level: 'error', message: 'line 15' },
+        { id: 16, level: 'debug', message: 'line 16' },
+        { id: 17, level: 'info', message: 'line 17' },
+        { id: 18, level: 'warn', message: 'line 18' },
+        { id: 19, level: 'error', message: 'line 19' },
+        { id: 20, level: 'debug', message: 'line 20' },
+        { id: 21, level: 'info', message: 'line 21' },
+        { id: 22, level: 'warn', message: 'line 22' },
+        { id: 23, level: 'error', message: 'line 23' },
+        { id: 24, level: 'debug', message: 'line 24' },
+        { id: 25, level: 'info', message: 'line 25' },
+        { id: 26, level: 'warn', message: 'line 26' },
+        { id: 27, level: 'error', message: 'line 27' },
+        { id: 28, level: 'debug', message: 'line 28' },
+        { id: 29, level: 'info', message: 'line 29' },
+        { id: 30, level: 'warn', message: 'line 30' },
+        { id: 31, level: 'error', message: 'line 31' },
+        { id: 32, level: 'debug', message: 'line 32' },
+        { id: 33, level: 'info', message: 'line 33' },
+        { id: 34, level: 'warn', message: 'line 34' },
+        { id: 35, level: 'error', message: 'line 35' },
+        { id: 36, level: 'debug', message: 'line 36' },
+        { id: 37, level: 'info', message: 'line 37' },
+        { id: 38, level: 'warn', message: 'line 38' },
+        { id: 39, level: 'error', message: 'line 39' },
+        { id: 40, level: 'debug', message: 'line 40' },
+        { id: 41, level: 'info', message: 'line 41' },
+        { id: 42, level: 'warn', message: 'line 42' },
+        { id: 43, level: 'error', message: 'line 43' },
+        { id: 44, level: 'debug', message: 'line 44' },
+        { id: 45, level: 'info', message: 'line 45' },
+        { id: 46, level: 'warn', message: 'line 46' },
+        { id: 47, level: 'error', message: 'line 47' },
+        { id: 48, level: 'debug', message: 'line 48' },
+        { id: 49, level: 'info', message: 'line 49' },
+        { id: 50, level: 'warn', message: 'line 50' },
+        { id: 51, level: 'error', message: 'line 51' },
+        { id: 52, level: 'debug', message: 'line 52' },
+        { id: 53, level: 'info', message: 'line 53' },
+        { id: 54, level: 'warn', message: 'line 54' },
+        { id: 55, level: 'error', message: 'line 55' },
+        { id: 56, level: 'debug', message: 'line 56' },
+        { id: 57, level: 'info', message: 'line 57' },
+        { id: 58, level: 'warn', message: 'line 58' },
+        { id: 59, level: 'error', message: 'line 59' },
+        { id: 60, level: 'debug', message: 'line 60' },
+        { id: 61, level: 'info', message: 'line 61' },
+        { id: 62, level: 'warn', message: 'line 62' },
+        { id: 63, level: 'error', message: 'line 63' },
+        { id: 64, level: 'debug', message: 'line 64' },
+        { id: 65, level: 'info', message: 'line 65' },
+        { id: 66, level: 'warn', message: 'line 66' },
+        { id: 67, level: 'error', message: 'line 67' },
+        { id: 68, level: 'debug', message: 'line 68' },
+        { id: 69, level: 'info', message: 'line 69' },
+        { id: 70, level: 'warn', message: 'line 70' },
+        { id: 71, level: 'error', message: 'line 71' },
+        { id: 72, level: 'debug', message: 'line 72' },
+        { id: 73, level: 'info', message: 'line 73' },
+        { id: 74, level: 'warn', message: 'line 74' },
+        { id: 75, level: 'error', message: 'line 75' },
+        { id: 76, level: 'debug', message: 'line 76' },
+        { id: 77, level: 'info', message: 'line 77' },
+        { id: 78, level: 'warn', message: 'line 78' },
+        { id: 79, level: 'error', message: 'line 79' },
+        { id: 80, level: 'debug', message: 'line 80' },
+        { id: 81, level: 'info', message: 'line 81' },
+        { id: 82, level: 'warn', message: 'line 82' },
+        { id: 83, level: 'error', message: 'line 83' },
+        { id: 84, level: 'debug', message: 'line 84' },
+        { id: 85, level: 'info', message: 'line 85' },
+        { id: 86, level: 'warn', message: 'line 86' },
+        { id: 87, level: 'error', message: 'line 87' },
+        { id: 88, level: 'debug', message: 'line 88' },
+        { id: 89, level: 'info', message: 'line 89' },
+        { id: 90, level: 'warn', message: 'line 90' },
+        { id: 91, level: 'error', message: 'line 91' },
+        { id: 92, level: 'debug', message: 'line 92' },
+        { id: 93, level: 'info', message: 'line 93' },
+        { id: 94, level: 'warn', message: 'line 94' },
+        { id: 95, level: 'error', message: 'line 95' },
+        { id: 96, level: 'debug', message: 'line 96' },
+        { id: 97, level: 'info', message: 'line 97' },
+        { id: 98, level: 'warn', message: 'line 98' },
+        { id: 99, level: 'error', message: 'line 99' },
+        { id: 100, level: 'debug', message: 'line 100' },
+        { id: 101, level: 'info', message: 'line 101' },
+        { id: 102, level: 'warn', message: 'line 102' },
+        { id: 103, level: 'error', message: 'line 103' },
+        { id: 104, level: 'debug', message: 'line 104' }
+    ] },
+    'motion 0': { lines: [], motion: 0 },
+  },
+  ColumnVisibilityToggle: {
+    columns: { columns: [{ id: 'a', label: 'Name', visible: true }, { id: 'b', label: 'Owner', visible: false }] },
+    'reset, caller attrs': { columns: [{ id: 'a', label: 'Name', visible: true }], onReset: { $fn: true }, className: 'mine', id: 'cvt' },
+    'motion 0': { columns: [], motion: 0 },
+  },
+  OtpInput: {
+    defaults: { 'aria-label': 'Code' },
+    'controlled partial, text, 4, error, lg, disabled': { 'aria-label': 'Code', value: '12', type: 'text', length: 4, error: 'Wrong code', size: 'lg', disabled: true },
+    'motion 0': { 'aria-label': 'Code', motion: 0, length: 2 },
+  },
+  SearchInput: {
+    empty: {},
+    'uncontrolled default shows clear': { defaultValue: 'svelte' },
+    'controlled, loading, xl, placeholder, caller attrs on the input': { value: 'x', loading: true, size: 'xl', placeholder: 'Find…', 'aria-label': 'Find users', id: 'q', className: 'mine' },
+    'disabled hides clear; not clearable': { value: 'x', disabled: true },
+    'clearable off': { value: 'x', clearable: false },
+    'motion 0': { motion: 0 },
+  },
+  RadioGroup: {
+    'label, default selected': { name: 'plan', label: 'Plan', defaultValue: 'pro', options: [{ value: 'free', label: 'Free' }, { value: 'pro', label: { $el: 'Pro' } }] },
+    'nothing selected, horizontal, error, disabled option, caller attrs': {
+      name: 'plan', label: 'Plan', orientation: 'horizontal', size: 'xl', error: 'Pick one', className: 'mine', id: 'rg',
+      options: [{ value: 'a', label: 'A' }, { value: 'b', label: 'B', disabled: true }],
+    },
+    'controlled': { name: 'p', label: 'P', value: 'b', options: [{ value: 'a', label: 'A' }, { value: 'b', label: 'B' }] },
+    'motion 0': { name: 'p', label: 'P', motion: 0, options: [] },
+  },
+  InlineEdit: {
+    value: { value: 'Project name', onChange: { $fn: true } },
+    'empty with placeholder, lg, caller attrs': { value: '', placeholder: 'Untitled', size: 'lg', onChange: { $fn: true }, className: 'mine', id: 'ie' },
+    'empty without placeholder, disabled': { value: '', disabled: true, onChange: { $fn: true } },
+    'motion 0': { value: 'x', motion: 0, onChange: { $fn: true } },
+  },
+  TableOfContents: {
+    'nested, none active': {
+      items: [
+        { id: 'intro', label: 'Intro', level: 1 },
+        { id: 'api', label: 'API', level: 1, children: [{ id: 'props', label: 'Props', level: 2, children: [{ id: 'deep', label: 'Deep', level: 3 }] }, { id: 'events', label: 'Events', level: 2 }] },
+        { id: 'empty-kids', label: 'Empty', level: 1, children: [] },
+      ],
+    },
+    'controlled active nested item, filled lg, caller attrs': {
+      activeId: 'props', variant: 'filled', size: 'lg', className: 'mine', id: 'toc',
+      items: [{ id: 'api', label: 'API', level: 1, children: [{ id: 'props', label: 'Props', level: 2 }] }],
+    },
+    'default variant with an active item': { activeId: 'intro', items: [{ id: 'intro', label: 'Intro', level: 1 }] },
+    dots: { variant: 'dots', items: [{ id: 'a', label: 'A', level: 1 }] },
+    'motion 0': { motion: 0, items: [] },
+  },
+  Timeline: {
+    items: {
+      items: [
+        { id: '1', title: 'Created', timestamp: '09:00', status: 'completed', icon: { $el: '✓' } },
+        { id: '2', title: { $el: 'Building' }, description: 'In progress', status: 'active' },
+        { id: '3', title: 'Deploy', description: { $el: 'Waiting' } },
+        { id: '4', title: 'Failed', status: 'error' },
+      ],
+    },
+    'alternate lg dashed, caller attrs': { items: [{ id: 'a', title: 'A' }], variant: 'alternate', size: 'lg', connectorStyle: 'dashed', className: 'mine', id: 'tl' },
+    'compact dotted empty': { items: [], variant: 'compact', connectorStyle: 'dotted', 'aria-label': 'Events' },
+    'motion 0': { items: [], motion: 0 },
+  },
+  SortableList: {
+    items: { onChange: { $fn: true }, 'aria-label': 'Tasks', items: [{ id: 'a', content: 'Write' }, { id: 'b', content: { $el: 'Review' } }] },
+    'horizontal, no handle, disabled, caller attrs': { onChange: { $fn: true }, handle: false, disabled: true, orientation: 'horizontal', className: 'mine', id: 'sl', items: [{ id: 'a', content: 'A' }] },
+    'motion 0 empty': { onChange: { $fn: true }, motion: 0, items: [] },
+  },
+  AvatarUpload: {
+    empty: {},
+    'value with remove, square, size, caller attrs': { value: 'https://example.com/a.png', onRemove: { $fn: true }, shape: 'square', size: 64, className: 'mine', id: 'au' },
+    'custom placeholder, disabled, accept': { placeholder: { $el: 'Add photo' }, disabled: true, accept: 'image/png' },
+    'value without onRemove has no remove button': { value: 'https://example.com/a.png' },
+    'motion 0': { motion: 0 },
+  },
+  FileUpload: {
+    defaults: { name: 'files' },
+    'label, description, accept, multiple, error, caller attrs': {
+      name: 'docs', label: { $el: 'Documents' }, description: 'PDF up to 5MB', accept: '.pdf,image/*', multiple: true, error: 'Required', className: 'mine', id: 'fu',
+    },
+    disabled: { name: 'f', disabled: true },
+    'motion 0': { name: 'f', motion: 0 },
+  },
+  Tour: {
+    closed: { steps: [{ target: 'body', title: 'Hi', description: 'x' }] },
+    // `body` always exists, so the target is found on both sides.
+    'first of three, progress and skip': {
+      open: true, steps: [{ target: 'body', title: 'Welcome', description: 'Start here' }, { target: 'body', title: 'Two', description: { $el: 'More' } }, { target: 'body', title: 'Three', description: 'End' }],
+    },
+    'controlled middle step without progress or skip': {
+      open: true, currentStep: 1, showProgress: false, showSkip: false,
+      steps: [{ target: 'body', title: 'One', description: 'a' }, { target: 'body', title: 'Two', description: 'b' }, { target: 'body', title: 'Three', description: 'c' }],
+    },
+    'last step finishes': { open: true, currentStep: 1, steps: [{ target: 'body', title: 'One', description: 'a' }, { target: 'body', title: 'Last', description: 'b' }] },
+    'step out of range renders nothing': { open: true, currentStep: 5, steps: [{ target: 'body', title: 'One', description: 'a' }] },
+    'motion 0': { open: true, motion: 0, steps: [{ target: 'body', title: 'One', description: 'a' }] },
+  },
+  KanbanColumn: {
+    'cards with every part': {
+      columnId: 'todo', title: 'To do',
+      cards: [
+        { id: 'c1', title: 'Write docs', description: { $el: 'README' }, tags: ['docs', 'p1'], assignee: 'Ana', priority: 'high' },
+        { id: 'c2', title: { $el: 'Fix bug' }, assignee: { $el: 'Raj' } },
+        { id: 'c3', title: 'No footer' },
+      ],
+    },
+    // `tags.length || assignee` is undefined here (0 || undefined), so no footer and no stray "0".
+    'empty tags array renders no footer': { columnId: 'x', title: 'X', cards: [{ id: 'c', title: 'T', tags: [] }] },
+    'interactive: wip exceeded, click and move handlers, collapse button, caller attrs': {
+      columnId: 'doing', title: { $el: 'Doing' }, wipLimit: 1, onCardClick: { $fn: true }, onCardMove: { $fn: true }, onCollapse: { $fn: true },
+      className: 'mine', id: 'kc', cards: [{ id: 'a', title: 'A' }],
+    },
+    collapsed: { columnId: 'done', title: 'Done', collapsed: true, onCollapse: { $fn: true }, cards: [{ id: 'a', title: 'A' }] },
+    'motion 0': { columnId: 'm', title: 'M', motion: 0, cards: [] },
+  },
+  TransferList: {
+    lists: { onChange: { $fn: true }, value: [[{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }], [{ value: 'c', label: 'Gamma' }]] },
+    'groups, searchable, titles, numeric height, no transfer-all, lg, caller attrs': {
+      onChange: { $fn: true }, searchable: true, titles: ['Available', 'Chosen'], listHeight: 200, showTransferAll: false, size: 'lg', className: 'mine', id: 'tl',
+      value: [[{ value: 'a', label: 'A', group: 'G1' }, { value: 'b', label: 'B', group: 'G2' }, { value: 'c', label: 'C' }], []],
+    },
+    'empty sides, string height': { onChange: { $fn: true }, listHeight: '50vh', value: [[], []] },
+    'motion 0': { onChange: { $fn: true }, motion: 0, value: [[], []] },
+  },
+  CommandBar: {
+    closed: { items: [], open: false, onOpenChange: { $fn: true }, className: 'mine' },
+    'open with sections, icons, shortcuts, disabled': {
+      open: true, onOpenChange: { $fn: true },
+      items: [
+        { id: 'new', label: 'New file', description: 'Create', icon: { $el: '+' }, shortcut: ['⌘', 'N'], section: 'File', onSelect: { $fn: true } },
+        { id: 'open', label: 'Open', section: 'File', disabled: true, onSelect: { $fn: true } },
+        { id: 'theme', label: 'Toggle theme', section: 'View', keywords: ['dark'], onSelect: { $fn: true } },
+      ],
+    },
+    'open without sections, placeholder, caller attrs': {
+      open: true, onOpenChange: { $fn: true }, placeholder: 'Run…', id: 'cb', items: [{ id: 'a', label: 'Alpha', onSelect: { $fn: true } }],
+    },
+    'open and empty': { open: true, onOpenChange: { $fn: true }, emptyMessage: 'Nothing', items: [] },
+    'motion 0': { open: false, onOpenChange: { $fn: true }, motion: 0, items: [] },
+  },
+  CodeEditor: {
+    empty: {},
+    'typescript with every token kind': {
+      language: 'typescript', defaultValue: "// greet\nconst n: number = 0x1F + 2.5e3 /* inline */\nexport function hi(name = 'world') { return `hi ${name}` }\n",
+    },
+    'python and bash comments, sql, word wrap hides numbers': { language: 'python', value: "def f():\n    return True  # done", wordWrap: true },
+    'sql with comment, line numbers from 10, no active highlight, heights, readOnly, placeholder, caller attrs': {
+      language: 'sql', value: "SELECT * FROM t -- all\nwhere id = 1", lineNumberStart: 10, highlightActiveLine: false, minHeight: 120, maxHeight: '50vh',
+      readOnly: true, placeholder: 'Query', tabSize: 4, className: 'mine', id: 'ce',
+    },
+    'bash and json': { language: 'bash', value: 'echo "hi" # say' },
+    'no line numbers': { showLineNumbers: false, value: 'x' },
+    'motion 0': { motion: 0 },
+  },
+  ColorInput: {
+    defaults: { name: 'color' },
+    'label, uncontrolled default, lg, swatches': { name: 'brand', label: 'Brand', defaultValue: '#3366ff', size: 'lg', swatches: ['#ff0000', '#0f0'] },
+    'controlled, error, disabled, no text input, caller attrs': { name: 'c', label: { $el: 'C' }, value: '#abcdef', error: 'Too dark', disabled: true, showInput: false, className: 'mine', id: 'ci' },
+    'motion 0': { name: 'c', motion: 0 },
+  },
+  Cropper: {
+    // An image never loads in either render, so the crop UI is behaviour-tested.
+    defaults: { src: 'https://example.com/photo.jpg' },
+    'rounded, zoom only, caller attrs': { src: 'a.png', rounded: true, showRotate: false, className: 'mine', id: 'cr' },
+    'no controls': { src: 'a.png', showZoom: false, showRotate: false },
+    'motion 0': { src: 'a.png', motion: 0 },
+  },
+  RichTextEditor: {
+    defaults: {},
+    'label, error, heights, placeholder, caller attrs': { label: 'Notes', error: 'Required', minHeight: '10rem', maxHeight: 400, placeholder: 'Write…', className: 'mine', id: 'rte' },
+    'custom toolbar order makes separators, lg': { toolbar: ['link', 'bold', 'heading', 'italic', 'clearFormatting'], size: 'lg' },
+    'readOnly and disabled': { readOnly: true, disabled: true, toolbar: ['bold'] },
+    'motion 0': { motion: 0, toolbar: [] },
+  },
+  TimeSeriesChart: {
+    empty: { series: [] },
+    'two series with legend and annotations': {
+      series: [
+        { id: 'cpu', label: 'CPU', data: [{ timestamp: 1768478400000, value: 20 }, { timestamp: 1768478460000, value: 1500 }, { timestamp: 1768478520000, value: 35.5 }] },
+        { id: 'mem', label: 'Memory', color: 'oklch(70% 0.1 100)', data: [{ timestamp: 1768478400000, value: 2e6 }, { timestamp: 1768478520000, value: 50 }] },
+      ],
+      annotations: [{ type: 'horizontal', value: 1000, label: 'Limit' }, { type: 'vertical', value: 1768478460000, color: 'red', dashed: false }],
+      toggleableSeries: true, zoomable: true, brushable: true,
+    },
+    'single point, fixed y range, no axes/grid/legend, height, caller style': {
+      series: [{ id: 'a', label: 'A', data: [{ timestamp: 1768478400000, value: 5 }] }], yMin: 0, yMax: 10,
+      showXAxis: false, showYAxis: false, showGrid: false, showLegend: false, height: 120, style: { maxWidth: 600 }, className: 'mine',
+    },
+    'motion 0': { series: [], motion: 0 },
+  },
+  DashboardTemplate: {
+    empty: {},
+    'full header, status bar, metrics and sections with right sidebar': {
+      title: 'Production', subtitle: 'eu-west', status: 'warning', lastUpdated: 1768478275000, actions: { $el: 'Refresh' }, showBreadcrumb: { $el: 'Home / Prod' },
+      showStatusBar: true, autoRefresh: 30000, onRefresh: { $fn: true }, headerHeight: 64, sidebarWidth: 300, stickyHeader: true, variant: 'compact', columns: 3,
+      metrics: [
+        { id: 'rps', title: 'RPS', value: '1.2K', change: { value: -4.5, period: 'vs 1h' }, trend: 'down', status: 'ok', sparkline: [1, 3, 2, 5], icon: { $el: 'r' } },
+        { id: 'err', title: 'Errors', value: { $el: '0.2%' }, change: { value: 1 }, trend: 'up' },
+        { id: 'lat', title: 'Latency', value: 120, trend: 'flat', change: { value: 0 }, sparkline: [4] },
+      ],
+      sections: [
+        { id: 's1', title: 'Traffic', description: 'Last hour', collapsible: true, content: { $el: 'chart' }, span: 2 },
+        { id: 's2', title: 'Hosts', collapsible: true, defaultCollapsed: true, content: 'list' },
+      ],
+      sidebar: { $el: 'Alerts' },
+    },
+    'clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style': {
+      onMetricClick: { $fn: true }, metricsLayout: 'grid', metricsScrollable: false, sidebarPosition: 'left', sidebarCollapsible: true, sidebar: 'Side',
+      showStatusBar: true, statusBarContent: { $el: 'Custom' }, style: { padding: 16 }, className: 'mine', title: { $el: 'Rich title' },
+      metrics: [{ id: 'a', title: 'A', value: 'ok' }, { id: 'b', title: 'B', value: { $el: 'x' } }],
+    },
+    'lastUpdated and autoRefresh of 0 render a stray 0': { status: 'unknown', lastUpdated: 0, autoRefresh: 0, onRefresh: { $fn: true }, showStatusBar: true },
+    'children only, days ago': { children: { $el: 'Body' }, lastUpdated: 1768219200000, title: 'Old' },
+    'motion 0': { motion: 0 },
+  },
+  PluginDashboard: {
+    'every widget type, charts, properties, status': {
+      config: {
+        name: 'Postgres', statusKey: 'connections', layout: '2-col',
+        metrics: [
+          { key: 'connections', label: 'Connections', format: 'number', thresholds: { warning: 80, critical: 95 }, sparkline: true },
+          { key: 'cache', label: 'Cache', format: 'percent', thresholds: { warning: 90, critical: 80 } },
+          { key: 'mem', label: 'Memory', format: 'bytes' },
+          { key: 'lag', label: 'Lag', format: 'duration' },
+          { key: 'qps', label: 'QPS', format: 'rate' },
+          { key: 'missing', label: 'Missing' },
+        ],
+        charts: [{ id: 'c1', title: 'QPS', series: [{ key: 'qps', label: 'QPS' }, { key: 'max', label: 'Max' }], height: 90 }],
+        properties: [
+          { key: 'host', label: 'Host', format: 'code', copyable: true },
+          { key: 'docs', label: 'Docs', format: 'link' },
+          { key: 'role', label: 'Role', format: 'badge' },
+          { key: 'uptime', label: 'Uptime', format: 'duration' },
+          { key: 'started', label: 'Started', format: 'timestamp' },
+          { key: 'none', label: 'None' },
+        ],
+        widgets: [
+          { id: 'w1', type: 'metric', title: 'Conns', metricKey: 'connections', metricThresholds: { warning: 80, critical: 95 }, metricSparkline: true, metricTrend: true },
+          { id: 'w2', type: 'chart', title: 'Chart', span: 2, chartSeries: [{ key: 'a', label: 'A', color: 'red' }, { key: 'b', label: 'B' }], chartType: 'area', height: 200 },
+          { id: 'w3', type: 'gauge', title: 'Pool', gaugeKey: 'connections', gaugeMax: 100, gaugeThresholds: { warning: 80, critical: 95 } },
+          { id: 'w4', type: 'table', title: 'Queries', span: 3, tableDataKey: 'queries', tableColumns: [{ key: 'pid', label: 'PID' }, { key: 'd', label: 'Dur', format: 'duration' }] },
+          { id: 'w5', type: 'table', title: 'Empty', tableDataKey: 'nothing' },
+          { id: 'w6', type: 'status', title: 'Repl', statusKey: 'repl', statusLabels: { streaming: 'Streaming' } },
+          { id: 'w7', type: 'status', title: 'Other', statusKey: 'nope' },
+          { id: 'w7a', type: 'status', title: 'Healthy', statusKey: 's_ok' },
+          { id: 'w7b', type: 'status', title: 'Degraded', statusKey: 's_warn' },
+          { id: 'w7c', type: 'status', title: 'Down', statusKey: 's_crit' },
+          { id: 'w8', type: 'list', title: 'Keys', listKey: 'keys', listItemFormat: 'badge' },
+          { id: 'w9', type: 'list', title: 'Links', listKey: 'links', listItemFormat: 'link' },
+          { id: 'w10', type: 'list', title: 'None', listKey: 'nothing' },
+        ],
+      },
+      data: {
+        connections: 88, cache: 75.5, mem: 3000000, lag: 90061000, qps: 1500, host: 'db.local', docs: 'https://example.com', role: 'primary',
+        uptime: 5400000, started: 1768478400000, queries: [{ pid: 1, d: 1500 }], repl: 'streaming', s_ok: 'running', s_warn: 'degraded', s_crit: 'down', keys: ['a', 'b'], links: ['https://x.dev'],
+      },
+      timeSeries: { connections: [{ timestamp: 1, value: 50 }, { timestamp: 2, value: 88 }] },
+      onRefresh: { $fn: true }, autoRefresh: 5000, className: 'mine', id: 'pd',
+    },
+    loading: { loading: true, config: { name: 'X', metrics: [], charts: [], properties: [] }, data: {} },
+    error: { error: 'Connection refused', config: { name: 'X', metrics: [], charts: [], properties: [] }, data: {} },
+    'motion 0': { motion: 0, config: { name: 'X', metrics: [], charts: [], properties: [] }, data: {} },
   },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },

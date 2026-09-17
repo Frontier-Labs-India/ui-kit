@@ -4,7 +4,7 @@ import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
-import { CONTRACT_NOW } from './cases.js'
+import { CASES, CONTRACT_NOW } from './cases.js'
 import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* jest-axe over every case of every contract-tested component — not a
@@ -32,6 +32,7 @@ function hydrate(value: unknown): unknown {
     const v = value as Record<string, unknown>
     if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
     if ('$fn' in v) return () => {}
+    if ('$date' in v) return new Date(String(v.$date))
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
   return value
@@ -54,12 +55,29 @@ const SLIDER_NAME =
   CALLER_MUST_NAME + '. Slider-specific, inherited: a caller aria-label lands on the wrapper div, not ' +
   'the range input, so the `label` prop is the only way to name the slider'
 
+const PASSWORD_METER_DEFECT =
+  'DEFECT in both packages: PasswordInput\'s strength bar is role="meter" with no accessible name. ' +
+  'Fix together (aria-label, or aria-labelledby the strength label) or the contract breaks'
+
+const CLEAR_IN_TRIGGER_DEFECT =
+  'DEFECT in both packages: the clear control is a role="button" span inside the trigger <button>, whose ' +
+  'children are presentational, so it is unreachable to assistive technology (TimePicker, DateRangePicker). ' +
+  'Fix together (move the clear control beside the trigger) or the contract breaks'
+
+const CALENDAR_DEFECT =
+  'DEFECT in both packages: Calendar puts role="gridcell" day buttons directly inside role="grid", ' +
+  'laid out by CSS grid with no role="row" wrappers, so the grid has no rows and the cells no row ' +
+  'parent. Fix together (row wrappers with display:contents, or drop the grid roles) or the contract breaks'
+
 /** `Component/case/rule-id` -> why it is accepted for now. */
 const INHERITED: Record<string, string> = {
   'Checkbox/defaults/label': CALLER_MUST_NAME,
   'Checkbox/disabled/label': CALLER_MUST_NAME,
   'Checkbox/indeterminate/label': CALLER_MUST_NAME,
   'Checkbox/motion 0/label': CALLER_MUST_NAME,
+  'FormInput/name only/label': CALLER_MUST_NAME,
+  'Select/no label (unnamed trigger)/button-name':
+    CALLER_MUST_NAME + '. Select-specific, inherited: a caller aria-label lands on the root div, so `label` is the only way to name the trigger',
   'Link/external defaults/link-name': CALLER_MUST_NAME,
   'Link/external keeps caller target and rel/link-name': CALLER_MUST_NAME,
   'Link/not external passes target through/link-name': CALLER_MUST_NAME,
@@ -80,6 +98,26 @@ const INHERITED: Record<string, string> = {
   'Slider/min equals max/label': SLIDER_NAME,
   'Slider/ticks capped at 101/label': SLIDER_NAME,
   'Slider/motion 0/label': SLIDER_NAME,
+  // Every Calendar case renders the grid, so every case carries the defect; the
+  // stale-entry check below still fails if a case stops producing it.
+  ...Object.fromEntries(Object.keys(CASES.Calendar).flatMap(c =>
+    ['aria-required-children', 'aria-required-parent'].map(rule => [`Calendar/${c}/${rule}`, CALENDAR_DEFECT]))),
+  'PasswordInput/strength meter empty/aria-meter-name': PASSWORD_METER_DEFECT,
+  'PasswordInput/strength meter strong with error/aria-meter-name': PASSWORD_METER_DEFECT,
+  'PasswordInput/strength meter fair, custom labels, sm disabled, caller id/aria-meter-name': PASSWORD_METER_DEFECT,
+  'TimePicker/value with clear, lg, name/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  'DateRangePicker/start only shows one date and clear/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  'DateRangePicker/full range, lg, error, caller attrs/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  ...Object.fromEntries(Object.keys(CASES.EncryptedText).map(c => [`EncryptedText/${c}/role-img-alt`,
+    'EncryptedText is role="img" named by aria-label={text}; these cases must use empty text (React\'s server ' +
+    'render has no character spans otherwise), which leaves the image unnamed — as it would in React'])),
+  ...Object.fromEntries(['columns', 'reset, caller attrs'].map(c => [`ColumnVisibilityToggle/${c}/aria-required-children`,
+    'DEFECT in both packages: ColumnVisibilityToggle\'s dropdown is role="listbox" but holds labelled checkboxes ' +
+    '(and a reset button), not role="option" children. Fix together (a group of checkboxes, no listbox role) or ' +
+    'the contract breaks'])),
+  'DashboardTemplate/clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style/aria-required-children':
+    'DEFECT in both packages: with onMetricClick each metric becomes role="button" but stays a child of the ' +
+    'role="list" strip, so the list has no listitems. Fix together (listitem wrapper around the button) or the contract breaks',
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

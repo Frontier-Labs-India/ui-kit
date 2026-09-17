@@ -40,6 +40,117 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
   ],
 }
 
+/* Inline styles an effect writes after mount. React's server render runs no
+ * effects, so its HTML has them missing or at their initial value; a React
+ * client render writes the same ones. They are set through style properties,
+ * which style-src 'self' allows. Only the listed properties on matching
+ * elements are removed, from both trees, before the CSP check and the
+ * comparison — any other inline style still fails both. */
+export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  Tour: [
+    {
+      selector: '.ui-tour__tooltip',
+      properties: ['top', 'left'],
+      reason: 'The tooltip is placed beside the measured target in an effect; the server HTML has 0,0 (tour.test.ts).',
+    },
+  ],
+  TableOfContents: [
+    {
+      selector: '.ui-toc__indicator',
+      properties: ['opacity', 'transform', 'block-size'],
+      reason: 'The indicator is measured against the active link in an effect; the server HTML has only its initial opacity:0 (toc-timeline.test.ts).',
+    },
+  ],
+  TracingBeam: [
+    {
+      selector: '.ui-tracing-beam--progress, .ui-tracing-beam--dot',
+      properties: ['--beam-progress'],
+      reason: 'Scroll progress is measured in an effect; the server HTML has its initial 0% (tracing-beam.test.ts).',
+    },
+  ],
+  SegmentedControl: [
+    {
+      selector: '.ui-segmented__indicator',
+      properties: ['transform', 'inline-size', 'block-size'],
+      reason: 'The indicator is measured against the active item in a layout effect and moved with style properties.',
+    },
+  ],
+  Textarea: [
+    {
+      selector: 'textarea[data-auto-resize]',
+      properties: ['height', 'overflow'],
+      reason: 'autoResize measures the field in an effect and writes height/overflow, as React does after hydration.',
+    },
+  ],
+}
+
+/* Input values an effect fills in after mount, which React's server HTML
+ * therefore lacks. The value on matching inputs is cleared before comparison;
+ * what the effect writes is asserted by a behaviour test named in `reason`. */
+export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[]> = {
+  Combobox: [
+    {
+      selector: 'input.ui-combobox__input',
+      reason: "An effect shows the selected option's label while closed (combobox.test.ts: 'shows the selected label').",
+    },
+  ],
+}
+
+/* Attributes an effect sets after mount (e.g. progress through a reveal).
+ * React's server HTML has them missing or at their initial value; the listed
+ * attributes are removed from matching elements in both trees before
+ * comparison, and a behaviour test named in `reason` asserts what the effect
+ * sets. */
+export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  CommandBar: [
+    {
+      selector: 'dialog',
+      attributes: ['open'],
+      reason: 'showModal() in an effect sets `open`; the server renders the dialog without it (command-bar.test.ts).',
+    },
+  ],
+  SortableList: [
+    {
+      selector: '[role="option"]',
+      attributes: ['tabindex'],
+      reason: 'An effect makes the first option the tab stop (roving tabindex); the server HTML has -1 on all (sortable-avatar.test.ts).',
+    },
+  ],
+  ScrollReveal: [
+    {
+      selector: '.ui-scroll-reveal',
+      attributes: ['data-revealed'],
+      reason: 'Set on intersection, at once at motion 0 or with CSS scroll timelines, by an effect (scroll-reveal.test.ts).',
+    },
+  ],
+  Highlight: [
+    {
+      selector: '.ui-highlight',
+      attributes: ['data-active'],
+      reason: 'Set once in view, or at once at motion 0, by an effect (hero-highlight.test.ts).',
+    },
+  ],
+  TextReveal: [
+    {
+      selector: '.ui-text-reveal--char',
+      attributes: ['data-revealed'],
+      reason: 'Characters are revealed by effect timers, or all at once at motion 0 (text-reveal.test.ts).',
+    },
+  ],
+}
+
+/* Elements an effect adds after mount, from a measurement a server render
+ * never makes. Matching elements are removed from both trees before
+ * comparison; a behaviour test named in `reason` asserts them. */
+export const EFFECT_NODES: Record<string, { selector: string; reason: string }[]> = {
+  Tour: [
+    {
+      selector: '.ui-tour__spotlight',
+      reason: 'The spotlight cut-out is measured from the target in an effect (tour.test.ts).',
+    },
+  ],
+}
+
 /* Props whose NAME differs between the packages, applied to a case's props
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */
@@ -67,7 +178,7 @@ export const PROP_RENAMES: Record<string, { from: string; to: string; reason: st
         'be split into children, so the Svelte component takes the array as `items`.',
     },
   ],
-  Highlight: [
+  TextHighlight: [
     {
       from: 'children',
       to: 'text',

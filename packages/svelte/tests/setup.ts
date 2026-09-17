@@ -12,3 +12,30 @@ if (typeof globalThis.ResizeObserver === 'undefined') {
     disconnect() {}
   } as unknown as typeof ResizeObserver
 }
+
+/* jsdom has HTMLDialogElement but not showModal/close. The React suite stubs
+ * them per file (confirm-dialog.test.tsx, sheet.test.tsx) with the same
+ * attribute semantics; Dialog, Sheet and CommandBar all call them from an
+ * effect, so without this an open dialog throws on mount. */
+if (typeof HTMLDialogElement !== 'undefined' && !HTMLDialogElement.prototype.showModal) {
+  HTMLDialogElement.prototype.showModal = function (this: HTMLDialogElement) {
+    this.setAttribute('open', '')
+  }
+  HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) {
+    this.removeAttribute('open')
+    this.dispatchEvent(new Event('close'))
+  }
+}
+
+/* jsdom lacks IntersectionObserver. A no-op, as for ResizeObserver: components
+ * that reveal on scroll never fire here, and tests that need an intersection
+ * stub the global with a controllable one. */
+if (typeof globalThis.IntersectionObserver === 'undefined') {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor(_callback: IntersectionObserverCallback, _options?: IntersectionObserverInit) {}
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() { return [] }
+  } as unknown as typeof IntersectionObserver
+}

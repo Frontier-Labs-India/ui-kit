@@ -51,36 +51,60 @@ Built to run under `style-src 'self'` with no `unsafe-inline`:
   that policy blocks, so it would be silently dead on first paint;
 - dynamic values (Tooltip's position) are written with `style.setProperty`,
   which CSP permits, through the exported `cssProps` action;
-- no `<style>` elements are created.
+- no `<style>` elements are created, with one exception inherited from React:
+  TopologyGraph's SVG renderer emits its edge-dash `@keyframes` in an inline
+  `<style>` at motion level 2 or above, which that policy blocks (animated
+  edges then do not animate). CI allows that one file by name.
 
 ## Differences from the React package
 
 Each exists because the React idiom has no Svelte equivalent, and each is
 declared in the contract tests rather than hidden.
 
-- **Refs** — use `bind:this`; there is no `forwardRef`.
+- **Refs** — components do not expose their DOM element; React's forwarded
+  refs have no equivalent yet (`bind:this` on a component gives the component
+  instance, not its element).
 - **`className` is `class`.**
 - **`ReactNode` props** (`icon`, `label`, `title`, `trigger`, `content`, …)
   accept a string or a snippet.
-- **Form values are bindable.** `checked` (Checkbox, ToggleSwitch, Chip),
-  `value` (PinInput, Slider) and `tags` (TagInput) support `bind:`; omit them
-  for an uncontrolled component that keeps its own state (from
-  `defaultChecked` / `defaultValue` where those exist). `onChange` still
-  fires. React's strict controlled inputs — snapping back when a parent ignores
-  `onChange` — are not reproduced: a component cannot tell a bound prop from a
-  one-way one, and reproducing it would make `bind:` impossible.
+- **Form values are bindable.** `checked` (Checkbox, ToggleSwitch, Chip), `tags`
+  (TagInput) and `value` on every value-holding component — FormInput,
+  Textarea, PasswordInput, NumberInput, SearchInput, OtpInput, PinInput, Slider,
+  SegmentedControl, RadioGroup, Combobox, Select, MultiSelect, Calendar,
+  DatePicker, TimePicker, DateRangePicker, ColorInput, CodeEditor, InlineEdit,
+  TransferList — support `bind:`; omit them for an uncontrolled component that
+  keeps its own state (from `defaultChecked` / `defaultValue` where those
+  exist). `onChange` still fires. React's strict controlled inputs — snapping
+  back when a parent ignores `onChange` — are not reproduced: a component cannot
+  tell a bound prop from a one-way one, and reproducing it would make `bind:`
+  impossible. One consequence: FormInput's counter and clear button follow
+  typing even without a `value`, where React's only read the `value` prop.
 - **`style` accepts a CSS string or a React-style object**, and is applied
   through `setProperty` — so a caller's own style is CSP-safe too. Objects
   follow React's rules, including `px` on numbers except unitless properties.
 - **DOM handlers are lowercase** (`onclick`, `onmouseenter`); named callback
   props keep their React names (`onChange`, `onDismiss`, `onNodeClick`).
 - **`as`** (Typography, Card) takes a tag name; React also accepts a component.
-- **Highlight** takes its searchable text as `text` — a snippet's text cannot
-  be read back, which React's `children: string` relies on.
+- **TextHighlight** takes its searchable text as `text` — a snippet's text cannot
+  be read back, which React's `children: string` relies on. (As in React,
+  `Highlight` is the hero-section span and the text highlighter is `TextHighlight`.)
 - **OrbitingCircles** takes `items: []` — a snippet cannot be split into children.
 - **Tooltip** wraps its trigger in a `display: contents` span. React attaches
   handlers to the child with `cloneElement`; Svelte cannot, so the wrapper
   carries them without adding a box.
+- **Render props are snippet parameters.** ContainerQuery's `children`
+  receives the size, CopyButton's `children` receives `{ copied, copy }`, a
+  PluginDashboard custom widget's `render` receives the data, and a
+  DashboardTemplate section's `content` snippet receives its section.
+- **Form context** — fields read the nearest form through
+  `setFormContext(form)` / `getFormContext()`, with React's `FormState` shape.
+  React's form engine itself (`createForm`, `useForm`, `Form`, `FieldArray`)
+  is not ported.
+- **Select**'s search box handles each key once; React's handles it twice
+  (one ArrowDown moves two options).
+- **Spotlight** and **CommandBar** always show a current Recent list; React's
+  updates only when `items`/`actions` change identity.
+- **TopologyGraph**'s SVG and canvas renderers are not exported, as in React.
 - **Motion context** — `setMotionLevel(() => level)` takes a getter.
 - **JsonViewer** `theme="auto"` falls back to dark where `matchMedia` is
   missing, where React would throw.
@@ -91,12 +115,21 @@ declared in the contract tests rather than hidden.
   — every tag, class, attribute and text node, id relationships included —
   across a set of prop cases generated from React's own server output, with the
   clock, time zone and locale pinned so the comparison is deterministic.
+  State a server render cannot produce is excluded explicitly and narrowly —
+  values an effect measures or writes after mount are listed per component
+  with a reason (`tests/contract/divergences.ts`) and asserted by behaviour
+  tests. States reached only by interaction (an open dropdown, a dragged
+  crop) are covered by behaviour tests, not yet compared with React.
 - Every case is also run through axe. Accessibility defects found in the React
   package (and therefore present here) are recorded with their reason in
   `tests/contract/a11y-all.test.ts`, to be fixed in both packages together.
 - The stylesheet is generated from the React package's extracted CSS — every
   component's rules are byte-identical between the two packages.
-- Positioning maths is one shared framework-neutral function, not two copies.
+- Positioning maths is one shared framework-neutral function, not two copies;
+  other framework-neutral logic (tokenizers, colour maths, dashboard configs)
+  is copied from the React source by script and drift-tested, so it cannot
+  diverge silently.
+- Public export names map to the same React source files — checked in CI.
 - CI fails if React ever appears in the shipped output.
 
 ## License

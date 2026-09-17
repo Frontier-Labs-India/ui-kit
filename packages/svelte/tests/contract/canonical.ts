@@ -16,6 +16,8 @@
  *     `value=""`), a client render sets .value. Read from the property, and an
  *     empty value is the same as none. Checkbox and radio keep the attribute —
  *     there `value` is the submitted value, meaningful even when unchecked.
+ *   - a textarea's value: text content in server HTML, .value in a client
+ *     render. Compared as a value on both sides.
  *   - how a style value is spelled. Both trees' inline styles are read back
  *     through the same CSSOM rather than compared as text, so `0` vs `0px`,
  *     `oklch(65% 0.150 155)` vs `oklch(0.65 0.15 155)`, and spacing all
@@ -118,6 +120,11 @@ export function canonical(root: ParentNode): string {
         const v = el.value || el.getAttribute('value') || ''
         if (v) raw.push(['value', v])
       }
+      // A textarea's value: server HTML carries it as the element's text, a
+      // client render sets .value and has no text. Read .value on both (for
+      // parsed HTML it is the text) and do not walk the children.
+      const isTextarea = el instanceof HTMLTextAreaElement
+      if (isTextarea && el.value) raw.push(['value', el.value])
       // id first, so a reference later on the same element resolves consistently
       const attrs = raw
         .sort(([a], [b]) => (a === 'id' ? -1 : b === 'id' ? 1 : a < b ? -1 : a > b ? 1 : 0))
@@ -126,7 +133,7 @@ export function canonical(root: ParentNode): string {
         .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
         .map(([n, v]) => (v === '' ? n : `${n}="${v}"`))
       out.push(`${'  '.repeat(depth)}<${el.tagName.toLowerCase()}${attrs.length ? ' ' + attrs.join(' ') : ''}>`)
-      walk(el, depth + 1)
+      if (!isTextarea) walk(el, depth + 1)
     }
     flush()
   }
@@ -135,9 +142,17 @@ export function canonical(root: ParentNode): string {
   return out.join('\n')
 }
 
-/** Parses server HTML into a detached tree for canonical(). */
+/** Parses server HTML into a detached tree for canonical().
+ *
+ * React 19's server renderer emits `<link rel="preload" as="image" href>` for
+ * each <img> it renders — a resource hint for the document head, which a
+ * client render never produces and which is not the component's markup. Only
+ * that exact form is removed, and only at the top level where React emits it. */
 export function fromHtml(html: string): ParentNode {
   const t = document.createElement('template')
   t.innerHTML = html
+  for (const link of Array.from(t.content.children)) {
+    if (link.tagName === 'LINK' && link.getAttribute('rel') === 'preload' && link.getAttribute('as') === 'image') link.remove()
+  }
   return t.content
 }
