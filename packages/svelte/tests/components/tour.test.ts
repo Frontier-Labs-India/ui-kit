@@ -38,6 +38,19 @@ describe('Tour', () => {
     expect(tip().style.left).toBe('84px')
   })
 
+  it('clamps the tooltip 8px inside the viewport', () => {
+    vi.stubGlobal('innerWidth', 1000)
+    vi.stubGlobal('innerHeight', 800)
+    vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(300)
+    vi.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(100)
+    // Near the top-left corner: "left" would be off-screen left, "top" off-screen top.
+    target({ top: 5, left: 10, width: 20, height: 20, right: 30, bottom: 25 })
+    const a = render(Tour, { props: { open: true, steps: [{ target: '.target', title: 'T', description: 'd', placement: 'left' }] } })
+    expect(a.container.querySelector<HTMLElement>('.ui-tour__tooltip')!.style.left).toBe('8px')
+    const b = render(Tour, { props: { open: true, steps: [{ target: '.target', title: 'T', description: 'd', placement: 'top' }] } })
+    expect(b.container.querySelector<HTMLElement>('.ui-tour__tooltip')!.style.top).toBe('8px')
+  })
+
   it('centres the tooltip with a notice when the target is missing', () => {
     vi.stubGlobal('innerWidth', 1000)
     vi.stubGlobal('innerHeight', 800)
