@@ -1028,6 +1028,31 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { series: [], motion: 0 },
   },
+  DashboardTemplate: {
+    empty: {},
+    'full header, status bar, metrics and sections with right sidebar': {
+      title: 'Production', subtitle: 'eu-west', status: 'warning', lastUpdated: 1768478275000, actions: { $el: 'Refresh' }, showBreadcrumb: { $el: 'Home / Prod' },
+      showStatusBar: true, autoRefresh: 30000, onRefresh: { $fn: true }, headerHeight: 64, sidebarWidth: 300, stickyHeader: true, variant: 'compact', columns: 3,
+      metrics: [
+        { id: 'rps', title: 'RPS', value: '1.2K', change: { value: -4.5, period: 'vs 1h' }, trend: 'down', status: 'ok', sparkline: [1, 3, 2, 5], icon: { $el: 'r' } },
+        { id: 'err', title: 'Errors', value: { $el: '0.2%' }, change: { value: 1 }, trend: 'up' },
+        { id: 'lat', title: 'Latency', value: 120, trend: 'flat', change: { value: 0 }, sparkline: [4] },
+      ],
+      sections: [
+        { id: 's1', title: 'Traffic', description: 'Last hour', collapsible: true, content: { $el: 'chart' }, span: 2 },
+        { id: 's2', title: 'Hosts', collapsible: true, defaultCollapsed: true, content: 'list' },
+      ],
+      sidebar: { $el: 'Alerts' },
+    },
+    'clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style': {
+      onMetricClick: { $fn: true }, metricsLayout: 'grid', metricsScrollable: false, sidebarPosition: 'left', sidebarCollapsible: true, sidebar: 'Side',
+      showStatusBar: true, statusBarContent: { $el: 'Custom' }, style: { padding: 16 }, className: 'mine', title: { $el: 'Rich title' },
+      metrics: [{ id: 'a', title: 'A', value: 'ok' }, { id: 'b', title: 'B', value: { $el: 'x' } }],
+    },
+    'lastUpdated and autoRefresh of 0 render a stray 0': { status: 'unknown', lastUpdated: 0, autoRefresh: 0, onRefresh: { $fn: true }, showStatusBar: true },
+    'children only, days ago': { children: { $el: 'Body' }, lastUpdated: 1768219200000, title: 'Old' },
+    'motion 0': { motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

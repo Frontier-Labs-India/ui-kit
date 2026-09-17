@@ -1970,6 +1970,170 @@
         "html": "<div class=\"ui-dashboard-grid\" data-motion=\"0\" data-columns=\"auto\" data-gap=\"md\"><div class=\"ui-dashboard-grid__grid\"></div></div>"
       }
     },
+    "DashboardTemplate": {
+      "empty": {
+        "props": {},
+        "html": "<div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard\"></div>"
+      },
+      "full header, status bar, metrics and sections with right sidebar": {
+        "props": {
+          "title": "Production",
+          "subtitle": "eu-west",
+          "status": "warning",
+          "lastUpdated": 1768478275000,
+          "actions": {
+            "$el": "Refresh"
+          },
+          "showBreadcrumb": {
+            "$el": "Home / Prod"
+          },
+          "showStatusBar": true,
+          "autoRefresh": 30000,
+          "onRefresh": {
+            "$fn": true
+          },
+          "headerHeight": 64,
+          "sidebarWidth": 300,
+          "stickyHeader": true,
+          "variant": "compact",
+          "columns": 3,
+          "metrics": [
+            {
+              "id": "rps",
+              "title": "RPS",
+              "value": "1.2K",
+              "change": {
+                "value": -4.5,
+                "period": "vs 1h"
+              },
+              "trend": "down",
+              "status": "ok",
+              "sparkline": [
+                1,
+                3,
+                2,
+                5
+              ],
+              "icon": {
+                "$el": "r"
+              }
+            },
+            {
+              "id": "err",
+              "title": "Errors",
+              "value": {
+                "$el": "0.2%"
+              },
+              "change": {
+                "value": 1
+              },
+              "trend": "up"
+            },
+            {
+              "id": "lat",
+              "title": "Latency",
+              "value": 120,
+              "trend": "flat",
+              "change": {
+                "value": 0
+              },
+              "sparkline": [
+                4
+              ]
+            }
+          ],
+          "sections": [
+            {
+              "id": "s1",
+              "title": "Traffic",
+              "description": "Last hour",
+              "collapsible": true,
+              "content": {
+                "$el": "chart"
+              },
+              "span": 2
+            },
+            {
+              "id": "s2",
+              "title": "Hosts",
+              "collapsible": true,
+              "defaultCollapsed": true,
+              "content": "list"
+            }
+          ],
+          "sidebar": {
+            "$el": "Alerts"
+          }
+        },
+        "html": "<div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"3\" data-variant=\"compact\" data-sticky-header=\"\" role=\"group\" aria-label=\"Dashboard: Production\" style=\"--dt-sidebar-w:300px\"><div class=\"ui-dashboard-template__header\" style=\"min-block-size:64px\"><div class=\"ui-dashboard-template__title-group\"><div class=\"ui-dashboard-template__breadcrumb\"><b>Home / Prod</b></div><h2 class=\"ui-dashboard-template__title\">Production</h2><p class=\"ui-dashboard-template__subtitle\">eu-west</p></div><span class=\"ui-dashboard-template__status-badge\" data-status=\"warning\"><span class=\"ui-dashboard-template__status-dot\"></span>warning</span><div class=\"ui-dashboard-template__header-meta\"><span class=\"ui-dashboard-template__last-updated\">Updated 2m ago</span><span class=\"ui-dashboard-template__refresh-indicator\"><span class=\"ui-dashboard-template__refresh-dot\"></span></span></div><div class=\"ui-dashboard-template__actions\"><b>Refresh</b></div></div><div class=\"ui-dashboard-template__status-bar\" role=\"status\"><span>Some systems degraded</span></div><div class=\"ui-dashboard-template__metrics\" role=\"list\" aria-label=\"Key metrics\" data-layout=\"row\" data-scrollable=\"\"><div class=\"ui-dashboard-template__metric\" data-status=\"ok\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-icon\"><b>r</b></span><span class=\"ui-dashboard-template__metric-title\">RPS</span></div><span class=\"ui-dashboard-template__metric-value\">1.2K</span><div class=\"ui-dashboard-template__metric-footer\"><span class=\"ui-dashboard-template__metric-change\" data-trend=\"down\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 8L2 4H8L5 8Z\" fill=\"currentColor\"></path></svg>4.5%</span><span class=\"ui-dashboard-template__metric-period\">vs 1h</span><svg class=\"ui-dashboard-template__metric-sparkline\" width=\"48\" height=\"24\" viewBox=\"0 0 48 24\" fill=\"none\" aria-hidden=\"true\"><polyline points=\"0,24 16,12 32,18 48,0\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.5\"></polyline></svg></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Errors</span></div><span class=\"ui-dashboard-template__metric-value\"><b>0.2%</b></span><div class=\"ui-dashboard-template__metric-footer\"><span class=\"ui-dashboard-template__metric-change\" data-trend=\"up\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 2L8 6H2L5 2Z\" fill=\"currentColor\"></path></svg>1%</span></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Latency</span></div><span class=\"ui-dashboard-template__metric-value\">120</span><div class=\"ui-dashboard-template__metric-footer\"><span class=\"ui-dashboard-template__metric-change\" data-trend=\"flat\"><span aria-hidden=\"true\">–</span>0%</span></div></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"right\" style=\"grid-template-columns:1fr var(--dt-sidebar-w, 280px)\"><div class=\"ui-dashboard-template__main\"><section class=\"ui-dashboard-template__section\" style=\"grid-column:span 2\" data-span=\"2\"><div class=\"ui-dashboard-template__section-header\"><button type=\"button\" class=\"ui-dashboard-template__section-toggle\" aria-expanded=\"true\" aria-label=\"Collapse Traffic\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><h3 class=\"ui-dashboard-template__section-title\">Traffic</h3><p class=\"ui-dashboard-template__section-desc\">Last hour</p></div><div class=\"ui-dashboard-template__section-content\"><b>chart</b></div></section><section class=\"ui-dashboard-template__section\"><div class=\"ui-dashboard-template__section-header\"><button type=\"button\" class=\"ui-dashboard-template__section-toggle\" aria-expanded=\"false\" aria-label=\"Expand Hosts\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><h3 class=\"ui-dashboard-template__section-title\">Hosts</h3></div><div class=\"ui-dashboard-template__section-content\" data-collapsed=\"\">list</div></section></div><aside class=\"ui-dashboard-template__sidebar\"><b>Alerts</b></aside></div></div>"
+      },
+      "clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style": {
+        "props": {
+          "onMetricClick": {
+            "$fn": true
+          },
+          "metricsLayout": "grid",
+          "metricsScrollable": false,
+          "sidebarPosition": "left",
+          "sidebarCollapsible": true,
+          "sidebar": "Side",
+          "showStatusBar": true,
+          "statusBarContent": {
+            "$el": "Custom"
+          },
+          "style": {
+            "padding": 16
+          },
+          "className": "mine",
+          "title": {
+            "$el": "Rich title"
+          },
+          "metrics": [
+            {
+              "id": "a",
+              "title": "A",
+              "value": "ok"
+            },
+            {
+              "id": "b",
+              "title": "B",
+              "value": {
+                "$el": "x"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-dashboard-template mine\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard\" style=\"padding:16px\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\"><b>Rich title</b></h2></div><div class=\"ui-dashboard-template__header-meta\"></div></div><div class=\"ui-dashboard-template__status-bar\" role=\"status\"><b>Custom</b></div><div class=\"ui-dashboard-template__metrics\" role=\"list\" aria-label=\"Key metrics\" data-layout=\"grid\"><div class=\"ui-dashboard-template__metric\" data-clickable=\"\" role=\"button\" tabindex=\"0\" aria-label=\"A: ok\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">A</span></div><span class=\"ui-dashboard-template__metric-value\">ok</span><div class=\"ui-dashboard-template__metric-footer\"></div></div><div class=\"ui-dashboard-template__metric\" data-clickable=\"\" role=\"button\" tabindex=\"0\" aria-label=\"B: \"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">B</span></div><span class=\"ui-dashboard-template__metric-value\"><b>x</b></span><div class=\"ui-dashboard-template__metric-footer\"></div></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"left\"><aside class=\"ui-dashboard-template__sidebar\"><button type=\"button\" class=\"ui-dashboard-template__sidebar-toggle\" aria-expanded=\"true\" aria-label=\"Collapse sidebar\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button>Side</aside><div class=\"ui-dashboard-template__main\"></div></div></div>"
+      },
+      "lastUpdated and autoRefresh of 0 render a stray 0": {
+        "props": {
+          "status": "unknown",
+          "lastUpdated": 0,
+          "autoRefresh": 0,
+          "onRefresh": {
+            "$fn": true
+          },
+          "showStatusBar": true
+        },
+        "html": "<div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"></div><span class=\"ui-dashboard-template__status-badge\" data-status=\"unknown\"><span class=\"ui-dashboard-template__status-dot\"></span>unknown</span><div class=\"ui-dashboard-template__header-meta\">00</div></div><div class=\"ui-dashboard-template__status-bar\" role=\"status\"><span>Status unknown</span></div></div>"
+      },
+      "children only, days ago": {
+        "props": {
+          "children": {
+            "$el": "Body"
+          },
+          "lastUpdated": 1768219200000,
+          "title": "Old"
+        },
+        "html": "<div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: Old\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">Old</h2></div><div class=\"ui-dashboard-template__header-meta\"><span class=\"ui-dashboard-template__last-updated\">Updated 3d ago</span></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"none\"><div class=\"ui-dashboard-template__main\"><b>Body</b></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-dashboard-template\" data-motion=\"0\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard\"></div>"
+      }
+    },
     "DataTableSuggestions": {
       "basic": {
         "props": {

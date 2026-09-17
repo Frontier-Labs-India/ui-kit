@@ -115,6 +115,9 @@ const INHERITED: Record<string, string> = {
     'DEFECT in both packages: ColumnVisibilityToggle\'s dropdown is role="listbox" but holds labelled checkboxes ' +
     '(and a reset button), not role="option" children. Fix together (a group of checkboxes, no listbox role) or ' +
     'the contract breaks'])),
+  'DashboardTemplate/clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style/aria-required-children':
+    'DEFECT in both packages: with onMetricClick each metric becomes role="button" but stays a child of the ' +
+    'role="list" strip, so the list has no listitems. Fix together (listitem wrapper around the button) or the contract breaks',
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,
