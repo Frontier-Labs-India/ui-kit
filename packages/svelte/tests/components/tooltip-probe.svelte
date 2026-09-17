@@ -4,5 +4,5 @@
 </script>
 
 <Tooltip {content} {...rest}>
-  <button type="button">Trigger</button>
+  {#snippet children(props)}<button type="button" {...props}>Trigger</button>{/snippet}
 </Tooltip>

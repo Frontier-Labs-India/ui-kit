@@ -8965,6 +8965,35 @@
         "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"md\" data-justify=\"start\"></div>"
       }
     },
+    "Tooltip": {
+      "defaults": {
+        "props": {
+          "content": "Hint",
+          "children": {
+            "$el": "Hover me"
+          }
+        },
+        "html": "<b>Hover me</b>"
+      },
+      "snippet content, every option": {
+        "props": {
+          "content": {
+            "$el": "Rich"
+          },
+          "children": {
+            "$el": "T"
+          },
+          "placement": "left",
+          "delay": 0,
+          "offset": 4,
+          "disabled": true,
+          "interactive": true,
+          "maxWidth": 200,
+          "motion": 0
+        },
+        "html": "<b>T</b>"
+      }
+    },
     "TopologyGraph": {
       "empty": {
         "props": {

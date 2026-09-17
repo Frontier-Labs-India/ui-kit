@@ -3682,6 +3682,10 @@
    "nth": 0
   }
  },
+ "Tooltip": {
+  "defaults": null,
+  "snippet content, every option": null
+ },
  "TopologyGraph": {
   "empty": {
    "tag": "div",

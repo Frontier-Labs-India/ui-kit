@@ -6,7 +6,7 @@ import TooltipProbe from './tooltip-probe.svelte'
 afterEach(() => vi.useRealTimers())
 
 const hoverTrigger = async (container: Element) => {
-  await userEvent.hover(container.querySelector('.ui-tooltip-trigger')!)
+  await userEvent.hover(container.querySelector('button')!)
 }
 
 describe('Tooltip', () => {
@@ -38,14 +38,32 @@ describe('Tooltip', () => {
     const { container } = render(TooltipProbe, { props: { content: 'Help', delay: 0 } })
     await hoverTrigger(container)
     await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).not.toBeNull())
-    const described = container.querySelector('.ui-tooltip-trigger')!.getAttribute('aria-describedby')
+    const described = container.querySelector('button')!.getAttribute('aria-describedby')
     expect(described).toBe(container.querySelector('[role="tooltip"]')!.id)
     expect(described).not.toBeNull()
   })
 
   it('has no aria-describedby while hidden', () => {
     const { container } = render(TooltipProbe, { props: { content: 'Help' } })
-    expect(container.querySelector('.ui-tooltip-trigger')!.hasAttribute('aria-describedby')).toBe(false)
+    expect(container.querySelector('button')!.hasAttribute('aria-describedby')).toBe(false)
+  })
+
+  it('anchors to the caller\'s own trigger element, not a wrapper', async () => {
+    // The old display:contents wrapper had an all-zero rect in real browsers,
+    // placing the panel at the viewport origin. The trigger is now measured.
+    vi.spyOn(Element.prototype, 'getBoundingClientRect').mockImplementation(function (this: Element) {
+      if (this.tagName === 'BUTTON') return { top: 300, bottom: 330, left: 100, right: 180, width: 80, height: 30, x: 100, y: 300 } as DOMRect
+      return { top: 0, bottom: 20, left: 0, right: 60, width: 60, height: 20, x: 0, y: 0 } as DOMRect
+    })
+    const { container } = render(TooltipProbe, { props: { content: 'Help', delay: 0 } })
+    const button = container.querySelector('button')!
+    expect(button.parentElement).toBe(container)
+    await hoverTrigger(container)
+    await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).not.toBeNull())
+    const tip = container.querySelector('.ui-tooltip') as HTMLElement
+    await vi.waitFor(() => expect(tip.style.getPropertyValue('top')).toBe('272px'))
+    expect(tip.style.getPropertyValue('left')).toBe('110px')
+    vi.restoreAllMocks()
   })
 
   it('positions via setProperty', async () => {
@@ -101,7 +119,7 @@ describe('Tooltip', () => {
     const { container } = render(TooltipProbe, { props: { content: 'Help', delay: 0 } })
     await hoverTrigger(container)
     await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).not.toBeNull())
-    await userEvent.unhover(container.querySelector('.ui-tooltip-trigger')!)
+    await userEvent.unhover(container.querySelector('button')!)
     await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).toBeNull())
   })
 
@@ -113,7 +131,7 @@ describe('Tooltip', () => {
     await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).not.toBeNull())
     const added = addSpy.mock.calls.filter(c => c[0] === 'scroll' || c[0] === 'resize').length
     expect(added).toBeGreaterThan(0)
-    await userEvent.unhover(container.querySelector('.ui-tooltip-trigger')!)
+    await userEvent.unhover(container.querySelector('button')!)
     await vi.waitFor(() => expect(container.querySelector('.ui-tooltip')).toBeNull())
     const removed = removeSpy.mock.calls.filter(c => c[0] === 'scroll' || c[0] === 'resize').length
     expect(removed).toBe(added)

@@ -1528,6 +1528,15 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'controlled closed wins over defaultOpen': { content: 'x', children: { $el: 'T' }, open: false, defaultOpen: true, modal: true },
   },
+  // Rule 1 trigger. The server renders only the trigger (the panel needs hover),
+  // with nothing added while hidden; tooltip.test.ts covers the visible state.
+  Tooltip: {
+    defaults: { content: 'Hint', children: { $el: 'Hover me' } },
+    'snippet content, every option': {
+      content: { $el: 'Rich' }, children: { $el: 'T' }, placement: 'left', delay: 0, offset: 4, disabled: true,
+      interactive: true, maxWidth: 200, motion: 0,
+    },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

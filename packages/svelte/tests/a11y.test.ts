@@ -56,7 +56,7 @@ describe('accessibility', () => {
 
   it('Tooltip has no violations while visible', async () => {
     const { container } = render(TooltipProbe, { props: { content: 'Help', delay: 0 } })
-    await userEvent.hover(container.querySelector('.ui-tooltip-trigger')!)
+    await userEvent.hover(container.querySelector('button')!)
     await new Promise(r => setTimeout(r, 10))
     expect(container.querySelector('[role="tooltip"]')).not.toBeNull()
     expect(await violations(container)).toEqual([])

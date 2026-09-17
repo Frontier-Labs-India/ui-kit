@@ -209,5 +209,4 @@ export const PROP_RENAMES: Record<string, { from: string; to: string; reason: st
 export const NO_SSR_CONTRACT: Record<string, string> = {
   ComponentErrorBoundary: 'not a component in component-meta — renders its children unchanged; failure path asserted in tests/lib/error-boundary.test.ts',
   Drawer: 'returns null on the server (needs `document` to portal); contract asserted in drawer.test.ts',
-  Tooltip: 'its panel exists only after hover state, which SSR never runs; contract asserted in tooltip.test.ts',
 }

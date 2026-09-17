@@ -34,7 +34,7 @@ Requires `svelte@^5.29.0` (trigger snippets use attachments). No runtime depende
 <Checkbox label="I accept" bind:checked={accepted} />
 
 <Tooltip content="Copies the link">
-  <button>Share</button>
+  {#snippet children(props)}<button {...props}>Share</button>{/snippet}
 </Tooltip>
 ```
 
@@ -103,9 +103,6 @@ declared in the contract tests rather than hidden.
   spreads them (`mergeProps` chains your own handlers); a children list is
   either registered parts (AvatarGroup, TabPanel) or an `items` prop; parts
   share state through Svelte context, and `useToast()` is `getToast()`.
-  Tooltip still wraps its trigger in a `display: contents` span until it moves
-  to the first rule. That span has no box, so the tooltip is positioned
-  against the viewport origin.
 - **Render props are snippet parameters.** ContainerQuery's `children`
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a

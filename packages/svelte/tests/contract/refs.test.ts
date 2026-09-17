@@ -21,6 +21,7 @@ const EXTENSIONS: Record<string, string> = {
   DataTableSuggestions: 'its root, null while no insight is shown',
   NativeTooltip: 'the caller\'s trigger element, through the attachment in its props',
   Popover: 'the caller\'s trigger element, through the attachment in its props',
+  Tooltip: 'the caller\'s trigger element, through the attachment in its props',
   TopologyGraphCanvas: 'its <canvas>',
   TopologyGraphSVG: 'its <svg>',
   Tour: 'its overlay root, null while closed',
@@ -84,10 +85,12 @@ describe('bindable ref — declared by every exported component', () => {
   for (const [, name, file] of files) {
     if (name in NO_REF) continue
     it(name, () => {
+      // Comments stripped first: the prop's doc comment itself says `bind:ref`.
       const src = readFileSync(resolve(import.meta.dirname, '../../src', file), 'utf8')
+        .replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
       expect(src).toMatch(/\bref = \$bindable\(null\)/)
       // bound to an element, forwarded to a child, or captured by a rule-1 attachment
-      expect(src).toMatch(/bind:(?:this=\{ref\}|ref\b)|captureElement\(el => \{ ref = el \}\)/)
+      expect(src).toMatch(/bind:this=\{ref\}|bind:ref\b|captureElement\(el => \{[^}]*\bref = el\b/)
     })
   }
 })

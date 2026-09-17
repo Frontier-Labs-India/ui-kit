@@ -4,14 +4,15 @@
   import { getMotionLevel } from '../runes/motion-level.svelte.js'
   import type { MotionLevel } from '../runes/context.js'
   import { useAnchorPosition } from '../runes/anchor-position.svelte.js'
+  import { captureElement, type TriggerProps } from '../lib/trigger-props.js'
 
   interface Props {
-    /** The trigger wrapper element (React's Tooltip takes no ref). Read it with `bind:ref`. */
-    ref?: HTMLElement | null
+    /** The caller's trigger element (React's Tooltip takes no ref). Read it with `bind:ref`. */
+    ref?: Element | null
     /** The tooltip content to display. */
     content: string | Snippet
-    /** The trigger element the tooltip attaches to. */
-    children: Snippet
+    /** The trigger. Spread the props onto its element: `<button {...props}>`. */
+    children: Snippet<[TriggerProps]>
     /** Preferred placement relative to the trigger element. */
     placement?: 'top' | 'bottom' | 'left' | 'right'
     /** Delay in milliseconds before the tooltip appears on hover. */
@@ -46,7 +47,7 @@
   const tooltipId = `tooltip-${uid}`
 
   let visible = $state(false)
-  const trigger = $derived(ref)
+  let trigger = $state<Element | null>(null)
   let floating = $state<HTMLElement | null>(null)
   let showTimer: ReturnType<typeof setTimeout> | null = null
   let hideTimer: ReturnType<typeof setTimeout> | null = null
@@ -96,29 +97,26 @@
   function onTouchEnd() {
     if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null }
   }
+
+  // React's onFocus/onBlur bubble, so they are focusin/focusout here.
+  const capture = captureElement(el => { trigger = el; ref = el })
+  const triggerProps = $derived({
+    ...capture,
+    'aria-describedby': visible ? tooltipId : undefined,
+    onmouseenter: show,
+    onmouseleave: hide,
+    onfocusin: show,
+    onfocusout: hide,
+    onkeydown: onKeyDown,
+    ontouchstart: onTouchStart,
+    ontouchend: onTouchEnd,
+  })
 </script>
 
-<!-- React attaches these handlers to the child via cloneElement, which Svelte
-     has no equivalent for. The wrapper carries them instead; it is
-     display:contents in the stylesheet so it adds no box. The tooltip panel
-     itself — the styled part — keeps exact DOM parity with React. -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<span
-  class="ui-tooltip-trigger"
-  bind:this={ref}
-  aria-describedby={visible ? tooltipId : undefined}
-  onmouseenter={show}
-  onmouseleave={hide}
-  onfocusin={show}
-  onfocusout={hide}
-  onkeydown={onKeyDown}
-  ontouchstart={onTouchStart}
-  ontouchend={onTouchEnd}
->
-  {@render children()}
-</span>
-
-{#if visible}
+<!-- One line with the panel: a line break would be a text node React does not render.
+     The handlers React clones onto the child are trigger props (COMPONENT-API.md rule 1),
+     so the anchor is the caller's own element. -->
+{@render children(triggerProps)}{#if visible}
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     bind:this={floating}

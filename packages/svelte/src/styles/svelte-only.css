@@ -11,13 +11,6 @@
   gap: inherit;
 }
 
-/* Tooltip: React attaches trigger handlers to the child with cloneElement.
- * Svelte has no equivalent, so a wrapper carries them; display:contents keeps
- * it from generating a box, so layout matches React's. */
-.ui-tooltip-trigger {
-  display: contents;
-}
-
 /* ComponentErrorBoundary fallback: React styles these with inline style
  * objects (CSP-safe there via setProperty). Same values, as classes. */
 .ui-error-boundary {
