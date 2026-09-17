@@ -1,7 +1,7 @@
 {
   "version": "3.0.0",
-  "generatedAt": "2026-09-16T21:21:05.747Z",
-  "componentCount": 185,
+  "generatedAt": "2026-09-17T09:52:29.126Z",
+  "componentCount": 187,
   "components": {
     "Button": {
       "name": "Button",
@@ -13825,6 +13825,181 @@
         "GeoMap"
       ]
     },
+    "TopologyGraphSVG": {
+      "name": "TopologyGraphSVG",
+      "description": "TopologyGraphSVG component — domain-specific component",
+      "category": "domain-other",
+      "tier": [
+        "standard"
+      ],
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TopologyGraphSVG } from '@frontier-labs/ui-kit'",
+      "sourceFile": "src/domain/topology-graph-svg.tsx",
+      "props": [
+        {
+          "name": "layout",
+          "type": "LayoutResult",
+          "required": true,
+          "description": "The layout property"
+        },
+        {
+          "name": "nodes",
+          "type": "TopologyNode[]",
+          "required": true,
+          "description": "The nodes property"
+        },
+        {
+          "name": "edges",
+          "type": "TopologyEdge[]",
+          "required": true,
+          "description": "The edges property"
+        },
+        {
+          "name": "selectedNodes",
+          "type": "string[]",
+          "required": false,
+          "description": "The selectedNodes property",
+          "default": "[]"
+        },
+        {
+          "name": "onNodeClick",
+          "type": "(node: TopologyNode) => void",
+          "required": false,
+          "description": "The onNodeClick property"
+        },
+        {
+          "name": "onNodeHover",
+          "type": "(node: TopologyNode | null) => void",
+          "required": false,
+          "description": "The onNodeHover property"
+        },
+        {
+          "name": "onEdgeClick",
+          "type": "(edge: TopologyEdge) => void",
+          "required": false,
+          "description": "The onEdgeClick property"
+        },
+        {
+          "name": "motionLevel",
+          "type": "number",
+          "required": true,
+          "description": "The motionLevel property"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": true,
+          "description": "The width property"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": true,
+          "description": "The height property"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { TopologyGraphSVG } from '@frontier-labs/ui-kit'\n\n<TopologyGraphSVG layout={value} nodes={[]} edges={[]} motionLevel={0} width={0} height={0}/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "topology",
+        "graph",
+        "domain other"
+      ],
+      "relatedComponents": []
+    },
+    "TopologyGraphCanvas": {
+      "name": "TopologyGraphCanvas",
+      "description": "TopologyGraphCanvas component — domain-specific component",
+      "category": "domain-other",
+      "tier": [
+        "standard"
+      ],
+      "importPath": "@frontier-labs/ui-kit",
+      "importStatement": "import { TopologyGraphCanvas } from '@frontier-labs/ui-kit'",
+      "sourceFile": "src/domain/topology-graph-canvas.tsx",
+      "props": [
+        {
+          "name": "layout",
+          "type": "LayoutResult",
+          "required": true,
+          "description": "The layout property"
+        },
+        {
+          "name": "nodes",
+          "type": "TopologyNode[]",
+          "required": true,
+          "description": "The nodes property"
+        },
+        {
+          "name": "edges",
+          "type": "TopologyEdge[]",
+          "required": true,
+          "description": "The edges property"
+        },
+        {
+          "name": "selectedNodes",
+          "type": "string[]",
+          "required": false,
+          "description": "The selectedNodes property",
+          "default": "[]"
+        },
+        {
+          "name": "onNodeClick",
+          "type": "(node: TopologyNode) => void",
+          "required": false,
+          "description": "The onNodeClick property"
+        },
+        {
+          "name": "onNodeHover",
+          "type": "(node: TopologyNode | null) => void",
+          "required": false,
+          "description": "The onNodeHover property"
+        },
+        {
+          "name": "onEdgeClick",
+          "type": "(edge: TopologyEdge) => void",
+          "required": false,
+          "description": "The onEdgeClick property"
+        },
+        {
+          "name": "motionLevel",
+          "type": "number",
+          "required": true,
+          "description": "The motionLevel property"
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": true,
+          "description": "The width property"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": true,
+          "description": "The height property"
+        }
+      ],
+      "examples": [
+        {
+          "title": "Basic usage",
+          "code": "import { TopologyGraphCanvas } from '@frontier-labs/ui-kit'\n\n<TopologyGraphCanvas layout={value} nodes={[]} edges={[]} motionLevel={0} width={0} height={0}/>"
+        }
+      ],
+      "accessibility": "Follows WAI-ARIA best practices. Keyboard accessible. Screen reader compatible.",
+      "keywords": [
+        "topology",
+        "graph",
+        "canvas",
+        "domain other"
+      ],
+      "relatedComponents": []
+    },
     "PipelineDAG": {
       "name": "PipelineDAG",
       "description": "PipelineDAG component — data visualization and charting",
@@ -15601,6 +15776,8 @@
     ],
     "domain-other": [
       "DataTableSuggestions",
+      "TopologyGraphSVG",
+      "TopologyGraphCanvas",
       "POSTGRES_DASHBOARD",
       "MYSQL_DASHBOARD",
       "REDIS_DASHBOARD",

@@ -698,7 +698,7 @@ export default function AiPluginsPage() {
         <h1 className="ai-hero__title">AI Plugins &amp; Integrations</h1>
         <p className="ai-hero__desc">
           The first React component library your AI can use natively. Connect Claude, Cursor, Copilot,
-          Windsurf, or Codex to 185 components via MCP — the AI reads ground truth (every prop, type,
+          Windsurf, or Codex to 187 components via MCP — the AI reads ground truth (every prop, type,
           default, example, theme token) and generates correct, working code.
         </p>
 
@@ -751,7 +751,7 @@ export default function AiPluginsPage() {
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
           {[
-            { cmd: '/ui-kit:component-finder', desc: 'Search 185 components by name or use case' },
+            { cmd: '/ui-kit:component-finder', desc: 'Search 187 components by name or use case' },
             { cmd: '/ui-kit:generate-component', desc: 'Produce working TSX with correct imports' },
             { cmd: '/ui-kit:design-system', desc: 'Learn OKLCH, motion levels, Aurora Fluid' },
             { cmd: '/ui-kit:tier-guide', desc: 'Choose Lite / Standard / Premium' },
@@ -776,7 +776,7 @@ export default function AiPluginsPage() {
         </div>
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1rem', lineHeight: 1.6 }}>
           One-click configuration for every major AI coding assistant. Each card shows the exact config
-          you need -- copy it and you are connected to 185 components in seconds.
+          you need -- copy it and you are connected to 187 components in seconds.
         </p>
         <div className="ai-assistant-grid">
           {ASSISTANT_CONFIGS.map(a => (
@@ -820,7 +820,7 @@ export default function AiPluginsPage() {
             <div className="ai-skill__cmd">/ui-kit:component-finder</div>
             <div className="ai-skill__title">Component Finder</div>
             <div className="ai-skill__desc">
-              Search 185 components by name or natural language use case. Try typing a query.
+              Search 187 components by name or natural language use case. Try typing a query.
             </div>
             <div className="ai-skill__demo">
               <FormInput

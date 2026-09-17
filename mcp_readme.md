@@ -1,6 +1,6 @@
 # UI Kit MCP Server
 
-Model Context Protocol server for `@frontier-labs/ui-kit` — gives AI assistants (Claude, Cursor, Windsurf, Copilot) full knowledge of all 185 components, 15 themes, and 50 icons so they generate correct, working code using your library.
+Model Context Protocol server for `@frontier-labs/ui-kit` — gives AI assistants (Claude, Cursor, Windsurf, Copilot) full knowledge of all 187 components, 15 themes, and 50 icons so they generate correct, working code using your library.
 
 **No other React UI library ships an MCP server.** This is a first-mover differentiator.
 
@@ -10,7 +10,7 @@ Model Context Protocol server for `@frontier-labs/ui-kit` — gives AI assistant
 
 When an AI assistant connects to this MCP server, it can:
 
-- **Browse** all 185 components with descriptions and categories
+- **Browse** all 187 components with descriptions and categories
 - **Get full API docs** for any component — every prop, type, default, example
 - **Search by use-case** — "I need a date picker with range" returns ranked results
 - **Generate working code** — correct imports, correct props, ready to paste
@@ -348,7 +348,7 @@ npm run build:mcp
 node dist/mcp/scripts/build-registry.js
 ```
 
-Output: `dist/mcp/registry.json` with 185 components, 15 themes, 50 icons.
+Output: `dist/mcp/registry.json` with 187 components, 15 themes, 50 icons.
 
 The registry is generated at build time by scanning actual source files. It extracts:
 - Component names from `src/components/index.ts` and `src/domain/index.ts`
@@ -524,7 +524,7 @@ The SSE transport uses Node.js built-in `http` module — no Express or other HT
 | File | Size | Description |
 |------|------|-------------|
 | `dist/mcp/index.js` | 565 KB | Server + MCP SDK bundled |
-| `dist/mcp/registry.json` | ~200 KB | Component metadata (185 components) |
+| `dist/mcp/registry.json` | ~200 KB | Component metadata (187 components) |
 | `dist/mcp/scripts/build-registry.js` | 27 KB | Registry generator (build-time only) |
 
 These are NOT included in the main library bundle. They are separate entry points that only load when the MCP server is started. Users who `import { Button } from '@frontier-labs/ui-kit'` never download or execute the MCP code.

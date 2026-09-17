@@ -5,8 +5,8 @@
  * it at all instead of assuming the root: React 19 passes `ref` to function
  * components as a prop, so where it lands depends on where each component
  * spreads its props — the <input> for Checkbox and FormInput, the <dialog> for
- * Dialog, nothing for ConfirmDialog. A probe found 13 components where the
- * root-element assumption is wrong.
+ * Dialog, nothing for ConfirmDialog. A probe found the root-element
+ * assumption wrong for over a dozen of them.
  *
  * An element is described as { tag, classes, nth }: its tag, its class set and
  * its position among the container's elements with that same tag and class set.
