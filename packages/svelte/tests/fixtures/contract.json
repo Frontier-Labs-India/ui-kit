@@ -1409,10 +1409,9 @@
           "value": "npm i @frontier-labs/ui-kit",
           "children": {
             "$fn": true
-          },
-          "aria-describedby": "x"
+          }
         },
-        "html": "<button type=\"button\" class=\"ui-copy-button\" data-size=\"md\" data-motion=\"3\" aria-label=\"Copy to clipboard\" aria-describedby=\"x\"></button>"
+        "html": "<button type=\"button\" class=\"ui-copy-button\" data-size=\"md\" data-motion=\"3\" aria-label=\"Copy to clipboard\"></button>"
       },
       "size, caller class": {
         "props": {
