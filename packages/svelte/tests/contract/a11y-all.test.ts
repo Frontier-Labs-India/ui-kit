@@ -71,6 +71,8 @@ const INHERITED: Record<string, string> = {
   'Checkbox/indeterminate/label': CALLER_MUST_NAME,
   'Checkbox/motion 0/label': CALLER_MUST_NAME,
   'FormInput/name only/label': CALLER_MUST_NAME,
+  'Select/no label (unnamed trigger)/button-name':
+    CALLER_MUST_NAME + '. Select-specific, inherited: a caller aria-label lands on the root div, so `label` is the only way to name the trigger',
   'Link/external defaults/link-name': CALLER_MUST_NAME,
   'Link/external keeps caller target and rel/link-name': CALLER_MUST_NAME,
   'Link/not external passes target through/link-name': CALLER_MUST_NAME,

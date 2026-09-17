@@ -4342,6 +4342,136 @@
         "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"0\" aria-label=\"M\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"true\" data-active=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\">A</span></button></div>"
       }
     },
+    "Select": {
+      "no label (unnamed trigger)": {
+        "props": {
+          "name": "s",
+          "options": [
+            {
+              "value": "a",
+              "label": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-select\" data-size=\"md\" data-motion=\"3\"><input type=\"hidden\" name=\"s\" value=\"\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\"><span class=\"ui-select__value\"><span class=\"ui-select__placeholder\">Select...</span></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      },
+      "label, selected with icon, clearable, xl": {
+        "props": {
+          "name": "s",
+          "label": "Size",
+          "size": "xl",
+          "clearable": true,
+          "defaultValue": "m",
+          "options": [
+            {
+              "value": "s",
+              "label": "Small"
+            },
+            {
+              "value": "m",
+              "label": "Medium",
+              "icon": {
+                "$el": "i"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-select\" data-size=\"xl\" data-motion=\"3\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\">Size</label><input type=\"hidden\" name=\"s\" value=\"m\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\"><span class=\"ui-select__value\"><b>i</b>Medium</span><span class=\"ui-select__clear\" role=\"button\" tabindex=\"-1\" aria-label=\"Clear selection\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      },
+      "controlled, error, disabled, custom placeholder, caller attrs": {
+        "props": {
+          "name": "s",
+          "label": {
+            "$el": "L"
+          },
+          "value": "",
+          "error": "Required",
+          "disabled": true,
+          "placeholder": "Pick…",
+          "className": "mine",
+          "id": "sel",
+          "options": []
+        },
+        "html": "<div class=\"ui-select mine\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\" data-disabled=\"\" id=\"sel\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\"><b>L</b></label><input type=\"hidden\" name=\"s\" value=\"\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\" aria-invalid=\"true\" aria-describedby=\"select-_R_0_-error\" disabled=\"\"><span class=\"ui-select__value\"><span class=\"ui-select__placeholder\">Pick…</span></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button><div class=\"ui-select__error\" id=\"select-_R_0_-error\" role=\"alert\">Required</div></div>"
+      },
+      "multiple with two tags and hidden inputs": {
+        "props": {
+          "name": "tags",
+          "label": "T",
+          "multiple": true,
+          "clearable": true,
+          "value": [
+            "a",
+            "b"
+          ],
+          "options": [
+            {
+              "value": "a",
+              "label": "Alpha"
+            },
+            {
+              "value": "b",
+              "label": "Beta"
+            },
+            {
+              "value": "c",
+              "label": "Gamma"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-select\" data-size=\"md\" data-motion=\"3\" data-multiple=\"\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\">T</label><input type=\"hidden\" name=\"tags\" value=\"a\"/><input type=\"hidden\" name=\"tags\" value=\"b\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\"><span class=\"ui-select__value\"><span class=\"ui-select__multi-value\"><span class=\"ui-select__tag\">Alpha</span><span class=\"ui-select__tag\">Beta</span></span></span><span class=\"ui-select__clear\" role=\"button\" tabindex=\"-1\" aria-label=\"Clear selection\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      },
+      "multiple with four collapses to +2 more": {
+        "props": {
+          "name": "tags",
+          "label": "T",
+          "multiple": true,
+          "value": [
+            "a",
+            "b",
+            "c",
+            "d"
+          ],
+          "options": [
+            {
+              "value": "a",
+              "label": "A"
+            },
+            {
+              "value": "b",
+              "label": "B"
+            },
+            {
+              "value": "c",
+              "label": "C"
+            },
+            {
+              "value": "d",
+              "label": "D"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-select\" data-size=\"md\" data-motion=\"3\" data-multiple=\"\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\">T</label><input type=\"hidden\" name=\"tags\" value=\"a\"/><input type=\"hidden\" name=\"tags\" value=\"b\"/><input type=\"hidden\" name=\"tags\" value=\"c\"/><input type=\"hidden\" name=\"tags\" value=\"d\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\"><span class=\"ui-select__value\"><span class=\"ui-select__multi-value\"><span class=\"ui-select__tag\">A</span><span class=\"ui-select__tag\">B</span><span class=\"ui-select__multi-count\">+2 more</span></span></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      },
+      "multiple empty shows placeholder": {
+        "props": {
+          "name": "tags",
+          "label": "T",
+          "multiple": true,
+          "options": []
+        },
+        "html": "<div class=\"ui-select\" data-size=\"md\" data-motion=\"3\" data-multiple=\"\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\">T</label><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\"><span class=\"ui-select__value\"><span class=\"ui-select__placeholder\">Select...</span></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "s",
+          "label": "S",
+          "motion": 0,
+          "options": []
+        },
+        "html": "<div class=\"ui-select\" data-size=\"md\" data-motion=\"0\"><label class=\"ui-select__label\" id=\"select-_R_0_-label\">S</label><input type=\"hidden\" name=\"s\" value=\"\"/><button type=\"button\" class=\"ui-select__trigger\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"select-_R_0_-label\"><span class=\"ui-select__value\"><span class=\"ui-select__placeholder\">Select...</span></span><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></button></div>"
+      }
+    },
     "ServiceStrip": {
       "basic": {
         "props": {

@@ -533,6 +533,26 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'value not in options leaves the input empty': { name: 'fw', 'aria-label': 'F', value: 'vue', options: [{ value: 'svelte', label: 'Svelte' }] },
     'motion 0': { name: 'fw', 'aria-label': 'F', motion: 0, options: [] },
   },
+  Select: {
+    'no label (unnamed trigger)': { name: 's', options: [{ value: 'a', label: 'A' }] },
+    'label, selected with icon, clearable, xl': {
+      name: 's', label: 'Size', size: 'xl', clearable: true, defaultValue: 'm',
+      options: [{ value: 's', label: 'Small' }, { value: 'm', label: 'Medium', icon: { $el: 'i' } }],
+    },
+    'controlled, error, disabled, custom placeholder, caller attrs': {
+      name: 's', label: { $el: 'L' }, value: '', error: 'Required', disabled: true, placeholder: 'Pick…', className: 'mine', id: 'sel', options: [],
+    },
+    'multiple with two tags and hidden inputs': {
+      name: 'tags', label: 'T', multiple: true, clearable: true, value: ['a', 'b'],
+      options: [{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }, { value: 'c', label: 'Gamma' }],
+    },
+    'multiple with four collapses to +2 more': {
+      name: 'tags', label: 'T', multiple: true, value: ['a', 'b', 'c', 'd'],
+      options: ['a', 'b', 'c', 'd'].map(v => ({ value: v, label: v.toUpperCase() })),
+    },
+    'multiple empty shows placeholder': { name: 'tags', label: 'T', multiple: true, options: [] },
+    'motion 0': { name: 's', label: 'S', motion: 0, options: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
