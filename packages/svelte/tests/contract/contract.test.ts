@@ -75,20 +75,35 @@ describe('React DOM contract', () => {
   /* Generic: the getter rule. A Svelte <script> body runs once, so a rune fed a
    * prop VALUE snapshots it and later changes never reach the DOM — the bug
    * Badge shipped with in PR #1. Checked here for every component whose
-   * React markup carries data-motion, rather than copied into each test file. */
+   * React markup carries data-motion, rather than copied into each test file.
+   *
+   * Which elements follow the prop is read from React, not assumed: in a
+   * composite such as ConfirmDialog only the Dialog receives `motion`, and its
+   * Buttons keep the context default. The React render of the component's
+   * `motion: 0` case says which elements carry the prop's value; those must
+   * track every change, and the rest must keep React's value. */
+  const motions = (html: string) => Array.from(html.matchAll(/data-motion="([^"]*)"/g), m => m[1])
   for (const [name, cases] of Object.entries(f.components)) {
     const withMotion = Object.entries(cases).find(([, c]) => c.html.includes('data-motion'))
     if (!withMotion) continue
+    const zeroCase = Object.values(cases).find(c => (c.props as { motion?: unknown }).motion === 0 && c.html.includes('data-motion'))
     it(`${name}: data-motion follows a motion prop change after mount`, async () => {
       const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-      const base = hydrate(renamed(name, withMotion[1].props)) as Record<string, unknown>
+      const base = hydrate(renamed(name, (zeroCase ?? withMotion[1]).props)) as Record<string, unknown>
+      const react = zeroCase ? motions(zeroCase.html) : null
+      const expected = (level: number) =>
+        react ? react.map(v => (v === '0' ? String(level) : v)) : null
       const { container, rerender } = render(Comp, { props: { ...base, motion: 1 } })
       const read = () => Array.from(container.querySelectorAll('[data-motion]')).map(e => e.getAttribute('data-motion'))
       expect(read().length).toBeGreaterThan(0)
-      expect(new Set(read())).toEqual(new Set(['1']))
+      if (react) {
+        expect(react).toContain('0')
+        expect(read()).toEqual(expected(1))
+      } else expect(new Set(read())).toEqual(new Set(['1']))
       await rerender({ ...base, motion: 0 })
       flushSync()
-      expect(new Set(read())).toEqual(new Set(['0']))
+      if (react) expect(read()).toEqual(expected(0))
+      else expect(new Set(read())).toEqual(new Set(['0']))
     })
   }
 

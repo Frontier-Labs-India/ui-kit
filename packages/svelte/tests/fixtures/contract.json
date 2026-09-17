@@ -973,6 +973,57 @@
         "html": "<div class=\"ui-confidence-bar\" data-motion=\"0\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">100%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:100%\"></div></div></div>"
       }
     },
+    "ConfirmDialog": {
+      "defaults": {
+        "props": {
+          "open": false,
+          "onConfirm": {
+            "$fn": true
+          },
+          "onCancel": {
+            "$fn": true
+          },
+          "title": "Are you sure?"
+        },
+        "html": "<div class=\"ui-confirm-dialog\"><div class=\"ui-dialog\"><dialog data-size=\"sm\" data-motion=\"3\" aria-labelledby=\"dialog-title-_R_0_\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"><h2 class=\"ui-dialog__title\" id=\"dialog-title-_R_0_\">Are you sure?</h2></div></div><div class=\"ui-dialog__body\"><div class=\"ui-confirm-dialog__actions\"><button type=\"button\" class=\"ui-button\" data-variant=\"secondary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\">Cancel</button><button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\">Confirm</button></div></div></dialog></div></div>"
+      },
+      "danger loading with description and labels": {
+        "props": {
+          "open": false,
+          "onConfirm": {
+            "$fn": true
+          },
+          "onCancel": {
+            "$fn": true
+          },
+          "title": {
+            "$el": "Delete"
+          },
+          "description": {
+            "$el": "Gone forever"
+          },
+          "variant": "danger",
+          "loading": true,
+          "confirmLabel": "Delete",
+          "cancelLabel": "Keep"
+        },
+        "html": "<div class=\"ui-confirm-dialog\"><div class=\"ui-dialog\"><dialog data-size=\"sm\" data-motion=\"3\" aria-labelledby=\"dialog-title-_R_0_\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"><h2 class=\"ui-dialog__title\" id=\"dialog-title-_R_0_\"><b>Delete</b></h2></div></div><div class=\"ui-dialog__body\"><div class=\"ui-confirm-dialog__description\"><b>Gone forever</b></div><div class=\"ui-confirm-dialog__actions\"><button type=\"button\" disabled=\"\" class=\"ui-button\" data-variant=\"secondary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\" aria-disabled=\"true\">Keep</button><button type=\"button\" disabled=\"\" class=\"ui-button\" data-variant=\"danger\" data-size=\"md\" data-loading=\"true\" data-motion=\"3\" aria-busy=\"true\" aria-disabled=\"true\">Delete</button></div></div></dialog></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "open": false,
+          "onConfirm": {
+            "$fn": true
+          },
+          "onCancel": {
+            "$fn": true
+          },
+          "title": "Sure?",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-confirm-dialog\"><div class=\"ui-dialog\"><dialog data-size=\"sm\" data-motion=\"0\" aria-labelledby=\"dialog-title-_R_0_\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"><h2 class=\"ui-dialog__title\" id=\"dialog-title-_R_0_\">Sure?</h2></div></div><div class=\"ui-dialog__body\"><div class=\"ui-confirm-dialog__actions\"><button type=\"button\" class=\"ui-button\" data-variant=\"secondary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\">Cancel</button><button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\">Confirm</button></div></div></dialog></div></div>"
+      }
+    },
     "ConnectionTestPanel": {
       "every status": {
         "props": {
@@ -1313,6 +1364,117 @@
           "motion": 0
         },
         "html": "<div role=\"radiogroup\" aria-label=\"UI density\" class=\"ui-density-selector\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-density-selector__indicator\" style=\"inset-inline-start:calc(1 * (100% / 3) + 3px);inline-size:calc(100% / 3 - 4px)\"></div><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"compact\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"3\" x2=\"14\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"6.5\" x2=\"14\" y2=\"6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"10\" x2=\"14\" y2=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"13.5\" x2=\"14\" y2=\"13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>compact</button><button type=\"button\" role=\"radio\" aria-checked=\"true\" aria-label=\"comfortable\" data-active=\"true\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"3\" x2=\"14\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"8\" x2=\"14\" y2=\"8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"13\" x2=\"14\" y2=\"13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>comfortable</button><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"spacious\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"4.5\" x2=\"14\" y2=\"4.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"11.5\" x2=\"14\" y2=\"11.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>spacious</button></div>"
+      }
+    },
+    "Dialog": {
+      "body only": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"3\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"></div><button type=\"button\" class=\"ui-dialog__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
+      },
+      "title and description": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "title": "Delete file",
+          "description": "This cannot be undone.",
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"3\" aria-labelledby=\"dialog-title-_R_0_\" aria-describedby=\"dialog-desc-_R_0H1_\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"><h2 class=\"ui-dialog__title\" id=\"dialog-title-_R_0_\">Delete file</h2><p class=\"ui-dialog__description\" id=\"dialog-desc-_R_0H1_\">This cannot be undone.</p></div><button type=\"button\" class=\"ui-dialog__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
+      },
+      "no title, no close: no header": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "showClose": false,
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"3\"><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
+      },
+      "description without title": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "description": "Only a description",
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"3\" aria-describedby=\"dialog-desc-_R_0H1_\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"><p class=\"ui-dialog__description\" id=\"dialog-desc-_R_0H1_\">Only a description</p></div><button type=\"button\" class=\"ui-dialog__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
+      },
+      "element title, footer, size, classNames": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "title": {
+            "$el": "Rich"
+          },
+          "footer": {
+            "$el": "Footer"
+          },
+          "size": "full",
+          "className": "mine",
+          "classNames": {
+            "root": "r",
+            "header": "h",
+            "title": "t",
+            "description": "d",
+            "body": "b",
+            "close": "c",
+            "footer": "f"
+          },
+          "description": "Desc",
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog r mine\"><dialog data-size=\"full\" data-motion=\"3\" aria-labelledby=\"dialog-title-_R_0_\" aria-describedby=\"dialog-desc-_R_0H1_\"><div class=\"ui-dialog__header h\"><div class=\"ui-dialog__header-text\"><h2 class=\"ui-dialog__title t\" id=\"dialog-title-_R_0_\"><b>Rich</b></h2><p class=\"ui-dialog__description d\" id=\"dialog-desc-_R_0H1_\">Desc</p></div><button type=\"button\" class=\"ui-dialog__close c\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-dialog__body b\"><b>Body</b></div><div class=\"ui-dialog__footer f\"><b>Footer</b></div></dialog></div>"
+      },
+      "caller attributes on the dialog": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "aria-label": "Settings",
+          "showClose": false,
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"3\" aria-label=\"Settings\"><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
+      },
+      "motion 0": {
+        "props": {
+          "open": false,
+          "onClose": {
+            "$fn": true
+          },
+          "motion": 0,
+          "children": {
+            "$el": "Body"
+          }
+        },
+        "html": "<div class=\"ui-dialog\"><dialog data-size=\"md\" data-motion=\"0\"><div class=\"ui-dialog__header\"><div class=\"ui-dialog__header-text\"></div><button type=\"button\" class=\"ui-dialog__close\" aria-label=\"Close\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><div class=\"ui-dialog__body\"><b>Body</b></div></dialog></div>"
       }
     },
     "DiffViewer": {

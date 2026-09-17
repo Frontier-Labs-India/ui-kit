@@ -345,6 +345,27 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     shortcuts: { shortcuts: { activate: 'Ctrl+S' }, children: { $el: 'Save' } },
     'motion 0': { motion: 0, children: { $el: 'Save' } },
   },
+  Dialog: {
+    'body only': { open: false, onClose: { $fn: true }, children: { $el: 'Body' } },
+    'title and description': { open: false, onClose: { $fn: true }, title: 'Delete file', description: 'This cannot be undone.', children: { $el: 'Body' } },
+    'no title, no close: no header': { open: false, onClose: { $fn: true }, showClose: false, children: { $el: 'Body' } },
+    'description without title': { open: false, onClose: { $fn: true }, description: 'Only a description', children: { $el: 'Body' } },
+    'element title, footer, size, classNames': {
+      open: false, onClose: { $fn: true }, title: { $el: 'Rich' }, footer: { $el: 'Footer' }, size: 'full', className: 'mine',
+      classNames: { root: 'r', header: 'h', title: 't', description: 'd', body: 'b', close: 'c', footer: 'f' },
+      description: 'Desc', children: { $el: 'Body' },
+    },
+    'caller attributes on the dialog': { open: false, onClose: { $fn: true }, 'aria-label': 'Settings', showClose: false, children: { $el: 'Body' } },
+    'motion 0': { open: false, onClose: { $fn: true }, motion: 0, children: { $el: 'Body' } },
+  },
+  ConfirmDialog: {
+    defaults: { open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: 'Are you sure?' },
+    'danger loading with description and labels': {
+      open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: { $el: 'Delete' }, description: { $el: 'Gone forever' },
+      variant: 'danger', loading: true, confirmLabel: 'Delete', cancelLabel: 'Keep',
+    },
+    'motion 0': { open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: 'Sure?', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
