@@ -476,6 +476,125 @@
         "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">Only</span></li></ol></nav>"
       }
     },
+    "Button": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\"><b>Save</b></button>"
+      },
+      "secondary xs full width": {
+        "props": {
+          "variant": "secondary",
+          "size": "xs",
+          "fullWidth": true,
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"secondary\" data-size=\"xs\" data-loading=\"false\" data-full-width=\"true\" data-motion=\"3\"><b>Save</b></button>"
+      },
+      "danger xl submit": {
+        "props": {
+          "variant": "danger",
+          "size": "xl",
+          "type": "submit",
+          "children": {
+            "$el": "Delete"
+          }
+        },
+        "html": "<button type=\"submit\" class=\"ui-button\" data-variant=\"danger\" data-size=\"xl\" data-loading=\"false\" data-motion=\"3\"><b>Delete</b></button>"
+      },
+      "ghost disabled": {
+        "props": {
+          "variant": "ghost",
+          "disabled": true,
+          "children": {
+            "$el": "Off"
+          }
+        },
+        "html": "<button type=\"button\" disabled=\"\" class=\"ui-button\" data-variant=\"ghost\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\" aria-disabled=\"true\"><b>Off</b></button>"
+      },
+      "link with classNames": {
+        "props": {
+          "variant": "link",
+          "className": "mine",
+          "classNames": {
+            "root": "r",
+            "icon": "i",
+            "iconEnd": "e"
+          },
+          "icon": {
+            "$el": "L"
+          },
+          "iconEnd": "R",
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button r mine\" data-variant=\"link\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\"><span class=\"ui-button__icon i\"><b>L</b></span><b>Go</b><span class=\"ui-button__icon-end e\">R</span></button>"
+      },
+      "loading without text keeps children": {
+        "props": {
+          "loading": true,
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"true\" data-motion=\"3\" aria-busy=\"true\"><b>Save</b></button>"
+      },
+      "loading text replaces children": {
+        "props": {
+          "loading": true,
+          "loadingText": "Saving…",
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"true\" data-has-loading-text=\"true\" data-motion=\"3\" aria-busy=\"true\">Saving…</button>"
+      },
+      "loading text ignored when not loading": {
+        "props": {
+          "loadingText": "Saving…",
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\"><b>Save</b></button>"
+      },
+      "icon only": {
+        "props": {
+          "iconOnly": true,
+          "icon": {
+            "$el": "x"
+          },
+          "aria-label": "Close"
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-icon-only=\"true\" data-motion=\"3\" aria-label=\"Close\"><span class=\"ui-button__icon\"><b>x</b></span></button>"
+      },
+      "shortcuts": {
+        "props": {
+          "shortcuts": {
+            "activate": "Ctrl+S"
+          },
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"3\" aria-keyshortcuts=\"Ctrl+S\"><b>Save</b></button>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": {
+            "$el": "Save"
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-button\" data-variant=\"primary\" data-size=\"md\" data-loading=\"false\" data-motion=\"0\"><b>Save</b></button>"
+      }
+    },
     "ButtonGroup": {
       "defaults": {
         "props": {

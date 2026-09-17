@@ -29,6 +29,7 @@ const ALLOWLIST = [
   'src/core/graph/types.ts',
   'src/core/graph/quadtree.ts',
   'src/core/graph/layout.ts',
+  'src/core/input/haptics.ts',
 ]
 
 const FRAMEWORK_IMPORT = /from\s+['"](react|react-dom|react\/[^'"]*|svelte|svelte\/[^'"]*)['"]/

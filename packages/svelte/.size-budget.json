@@ -9,6 +9,7 @@
   "component:Badge": 1224,
   "component:BorderBeam": 552,
   "component:Breadcrumbs": 1006,
+  "component:Button": 1382,
   "component:ButtonGroup": 542,
   "component:Card": 1913,
   "component:Card3D": 1090,
@@ -103,6 +104,7 @@
   "css:badge": 1319,
   "css:border-beam": 751,
   "css:breadcrumbs": 721,
+  "css:button": 2008,
   "css:button-group": 856,
   "css:card": 1918,
   "css:card-3d": 667,
@@ -209,5 +211,6 @@
   "module:vendor/core/graph/quadtree": 1424,
   "module:vendor/core/graph/types": 149,
   "module:vendor/core/icons/paths": 2242,
+  "module:vendor/core/input/haptics": 317,
   "module:vendor/core/utils/format": 728
 }
