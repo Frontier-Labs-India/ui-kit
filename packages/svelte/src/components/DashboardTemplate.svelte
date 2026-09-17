@@ -18,7 +18,8 @@
     description?: string
     collapsible?: boolean
     defaultCollapsed?: boolean
-    content: string | Snippet
+    /** A string, or a snippet — rendered with this section as its argument, so one snippet can serve many sections. */
+    content: string | Snippet | Snippet<[DashboardSection]>
     span?: 1 | 2 | 3
   }
 </script>
@@ -201,7 +202,7 @@
                 <h3 class="ui-dashboard-template__section-title">{section.title}</h3>
                 {#if section.description}<p class="ui-dashboard-template__section-desc">{section.description}</p>{/if}
               </div>
-              <div class="ui-dashboard-template__section-content" data-collapsed={collapsed ? '' : undefined}><Content value={section.content} /></div>
+              <div class="ui-dashboard-template__section-content" data-collapsed={collapsed ? '' : undefined}>{#if typeof section.content === 'function'}{@render (section.content as Snippet<[DashboardSection]>)(section)}{:else}{section.content}{/if}</div>
             </section>
           {/each}
           {#if children}{@render children()}{/if}

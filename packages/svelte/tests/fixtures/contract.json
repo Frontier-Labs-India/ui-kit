@@ -5692,6 +5692,314 @@
         "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"0\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
       }
     },
+    "PluginDashboard": {
+      "every widget type, charts, properties, status": {
+        "props": {
+          "config": {
+            "name": "Postgres",
+            "statusKey": "connections",
+            "layout": "2-col",
+            "metrics": [
+              {
+                "key": "connections",
+                "label": "Connections",
+                "format": "number",
+                "thresholds": {
+                  "warning": 80,
+                  "critical": 95
+                },
+                "sparkline": true
+              },
+              {
+                "key": "cache",
+                "label": "Cache",
+                "format": "percent",
+                "thresholds": {
+                  "warning": 90,
+                  "critical": 80
+                }
+              },
+              {
+                "key": "mem",
+                "label": "Memory",
+                "format": "bytes"
+              },
+              {
+                "key": "lag",
+                "label": "Lag",
+                "format": "duration"
+              },
+              {
+                "key": "qps",
+                "label": "QPS",
+                "format": "rate"
+              },
+              {
+                "key": "missing",
+                "label": "Missing"
+              }
+            ],
+            "charts": [
+              {
+                "id": "c1",
+                "title": "QPS",
+                "series": [
+                  {
+                    "key": "qps",
+                    "label": "QPS"
+                  },
+                  {
+                    "key": "max",
+                    "label": "Max"
+                  }
+                ],
+                "height": 90
+              }
+            ],
+            "properties": [
+              {
+                "key": "host",
+                "label": "Host",
+                "format": "code",
+                "copyable": true
+              },
+              {
+                "key": "docs",
+                "label": "Docs",
+                "format": "link"
+              },
+              {
+                "key": "role",
+                "label": "Role",
+                "format": "badge"
+              },
+              {
+                "key": "uptime",
+                "label": "Uptime",
+                "format": "duration"
+              },
+              {
+                "key": "started",
+                "label": "Started",
+                "format": "timestamp"
+              },
+              {
+                "key": "none",
+                "label": "None"
+              }
+            ],
+            "widgets": [
+              {
+                "id": "w1",
+                "type": "metric",
+                "title": "Conns",
+                "metricKey": "connections",
+                "metricThresholds": {
+                  "warning": 80,
+                  "critical": 95
+                },
+                "metricSparkline": true,
+                "metricTrend": true
+              },
+              {
+                "id": "w2",
+                "type": "chart",
+                "title": "Chart",
+                "span": 2,
+                "chartSeries": [
+                  {
+                    "key": "a",
+                    "label": "A",
+                    "color": "red"
+                  },
+                  {
+                    "key": "b",
+                    "label": "B"
+                  }
+                ],
+                "chartType": "area",
+                "height": 200
+              },
+              {
+                "id": "w3",
+                "type": "gauge",
+                "title": "Pool",
+                "gaugeKey": "connections",
+                "gaugeMax": 100,
+                "gaugeThresholds": {
+                  "warning": 80,
+                  "critical": 95
+                }
+              },
+              {
+                "id": "w4",
+                "type": "table",
+                "title": "Queries",
+                "span": 3,
+                "tableDataKey": "queries",
+                "tableColumns": [
+                  {
+                    "key": "pid",
+                    "label": "PID"
+                  },
+                  {
+                    "key": "d",
+                    "label": "Dur",
+                    "format": "duration"
+                  }
+                ]
+              },
+              {
+                "id": "w5",
+                "type": "table",
+                "title": "Empty",
+                "tableDataKey": "nothing"
+              },
+              {
+                "id": "w6",
+                "type": "status",
+                "title": "Repl",
+                "statusKey": "repl",
+                "statusLabels": {
+                  "streaming": "Streaming"
+                }
+              },
+              {
+                "id": "w7",
+                "type": "status",
+                "title": "Other",
+                "statusKey": "nope"
+              },
+              {
+                "id": "w7a",
+                "type": "status",
+                "title": "Healthy",
+                "statusKey": "s_ok"
+              },
+              {
+                "id": "w7b",
+                "type": "status",
+                "title": "Degraded",
+                "statusKey": "s_warn"
+              },
+              {
+                "id": "w7c",
+                "type": "status",
+                "title": "Down",
+                "statusKey": "s_crit"
+              },
+              {
+                "id": "w8",
+                "type": "list",
+                "title": "Keys",
+                "listKey": "keys",
+                "listItemFormat": "badge"
+              },
+              {
+                "id": "w9",
+                "type": "list",
+                "title": "Links",
+                "listKey": "links",
+                "listItemFormat": "link"
+              },
+              {
+                "id": "w10",
+                "type": "list",
+                "title": "None",
+                "listKey": "nothing"
+              }
+            ]
+          },
+          "data": {
+            "connections": 88,
+            "cache": 75.5,
+            "mem": 3000000,
+            "lag": 90061000,
+            "qps": 1500,
+            "host": "db.local",
+            "docs": "https://example.com",
+            "role": "primary",
+            "uptime": 5400000,
+            "started": 1768478400000,
+            "queries": [
+              {
+                "pid": 1,
+                "d": 1500
+              }
+            ],
+            "repl": "streaming",
+            "s_ok": "running",
+            "s_warn": "degraded",
+            "s_crit": "down",
+            "keys": [
+              "a",
+              "b"
+            ],
+            "links": [
+              "https://x.dev"
+            ]
+          },
+          "timeSeries": {
+            "connections": [
+              {
+                "timestamp": 1,
+                "value": 50
+              },
+              {
+                "timestamp": 2,
+                "value": 88
+              }
+            ]
+          },
+          "onRefresh": {
+            "$fn": true
+          },
+          "autoRefresh": 5000,
+          "className": "mine",
+          "id": "pd"
+        },
+        "html": "<div class=\"ui-plugin-dashboard mine\" data-motion=\"3\" id=\"pd\"><div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: Postgres\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">Postgres</h2></div><span class=\"ui-dashboard-template__status-badge\" data-status=\"warning\"><span class=\"ui-dashboard-template__status-dot\"></span>warning</span><div class=\"ui-dashboard-template__header-meta\"><span class=\"ui-dashboard-template__refresh-indicator\"><span class=\"ui-dashboard-template__refresh-dot\"></span></span></div></div><div class=\"ui-dashboard-template__metrics\" role=\"list\" aria-label=\"Key metrics\" data-layout=\"row\" data-scrollable=\"\"><div class=\"ui-dashboard-template__metric\" data-status=\"warning\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Connections</span></div><span class=\"ui-dashboard-template__metric-value\">88</span><div class=\"ui-dashboard-template__metric-footer\"><svg class=\"ui-dashboard-template__metric-sparkline\" width=\"48\" height=\"24\" viewBox=\"0 0 48 24\" fill=\"none\" aria-hidden=\"true\"><polyline points=\"0,24 48,0\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" opacity=\"0.5\"></polyline></svg></div></div><div class=\"ui-dashboard-template__metric\" data-status=\"critical\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Cache</span></div><span class=\"ui-dashboard-template__metric-value\">75.5%</span><div class=\"ui-dashboard-template__metric-footer\"></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Memory</span></div><span class=\"ui-dashboard-template__metric-value\">2.9 MB</span><div class=\"ui-dashboard-template__metric-footer\"></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Lag</span></div><span class=\"ui-dashboard-template__metric-value\">1d 1h</span><div class=\"ui-dashboard-template__metric-footer\"></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">QPS</span></div><span class=\"ui-dashboard-template__metric-value\">1.5K/s</span><div class=\"ui-dashboard-template__metric-footer\"></div></div><div class=\"ui-dashboard-template__metric\" role=\"listitem\"><div class=\"ui-dashboard-template__metric-header\"><span class=\"ui-dashboard-template__metric-title\">Missing</span></div><span class=\"ui-dashboard-template__metric-value\">—</span><div class=\"ui-dashboard-template__metric-footer\"></div></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"right\"><div class=\"ui-dashboard-template__main\"><section class=\"ui-dashboard-template__section\"><div class=\"ui-dashboard-template__section-header\"><h3 class=\"ui-dashboard-template__section-title\">QPS</h3></div><div class=\"ui-dashboard-template__section-content\"><div class=\"ui-plugin-dashboard__chart-placeholder\" style=\"min-block-size:90px\">QPS, Max chart</div></div></section><section class=\"ui-dashboard-template__section\" style=\"grid-column:span 3\" data-span=\"3\"><div class=\"ui-dashboard-template__section-header\"><h3 class=\"ui-dashboard-template__section-title\">Widgets</h3></div><div class=\"ui-dashboard-template__section-content\"><div class=\"ui-plugin-dashboard__widget-grid ui-plugin-dashboard__widget-grid--2-col\" role=\"region\" aria-label=\"Dashboard widgets\"><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Conns</h4><div class=\"ui-plugin-dashboard__widget-metric-row\"><span class=\"ui-plugin-dashboard__widget-metric-value\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--warning\"></span>88</span><span class=\"ui-plugin-dashboard__widget-trend ui-plugin-dashboard__widget-trend--up\">↑</span></div><svg viewBox=\"0 0 1 20\" preserveAspectRatio=\"none\" width=\"100%\" height=\"24\" aria-hidden=\"true\" style=\"display:block\"><polyline fill=\"none\" stroke=\"oklch(65% 0.2 270)\" stroke-width=\"1.5\" points=\"0,20 1,2\"></polyline></svg></div><div class=\"ui-plugin-dashboard__widget ui-plugin-dashboard__widget--span-2\" style=\"min-block-size:200px\"><h4 class=\"ui-plugin-dashboard__widget-title\">Chart</h4><div class=\"ui-plugin-dashboard__chart-placeholder\" style=\"min-block-size:120px\"><span style=\"color:red;margin-inline-end:0.75rem\">A</span><span style=\"color:oklch(65% 0.2 270);margin-inline-end:0\">B</span> (area)</div></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Pool</h4><div class=\"ui-plugin-dashboard__gauge-wrap\"><svg viewBox=\"0 0 100 60\" width=\"120\" height=\"72\" aria-hidden=\"true\"><path class=\"ui-plugin-dashboard__gauge-track\" d=\"M 10 50 A 40 40 0 0 1 90 50\" stroke-width=\"8\"></path><path class=\"ui-plugin-dashboard__gauge-fill\" d=\"M 10 50 A 40 40 0 0 1 90 50\" stroke-width=\"8\" stroke=\"oklch(80% 0.18 85)\" stroke-dasharray=\"125.66370614359172\" stroke-dashoffset=\"15.079644737231007\"></path><text x=\"50\" y=\"45\" class=\"ui-plugin-dashboard__gauge-label\">88%</text></svg></div></div><div class=\"ui-plugin-dashboard__widget ui-plugin-dashboard__widget--span-3\"><h4 class=\"ui-plugin-dashboard__widget-title\">Queries</h4><table class=\"ui-plugin-dashboard__widget-table\"><thead><tr><th>PID</th><th>Dur</th></tr></thead><tbody><tr><td>1</td><td>1.5s</td></tr></tbody></table></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Empty</h4><span style=\"color:var(--text-tertiary);font-size:var(--text-sm)\">No data</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Repl</h4><span class=\"ui-plugin-dashboard__widget-status-badge ui-plugin-dashboard__widget-status-badge--unknown\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--unknown\"></span>Streaming</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Other</h4><span class=\"ui-plugin-dashboard__widget-status-badge ui-plugin-dashboard__widget-status-badge--unknown\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--unknown\"></span>unknown</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Healthy</h4><span class=\"ui-plugin-dashboard__widget-status-badge ui-plugin-dashboard__widget-status-badge--ok\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--ok\"></span>running</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Degraded</h4><span class=\"ui-plugin-dashboard__widget-status-badge ui-plugin-dashboard__widget-status-badge--warning\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--warning\"></span>degraded</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Down</h4><span class=\"ui-plugin-dashboard__widget-status-badge ui-plugin-dashboard__widget-status-badge--critical\"><span class=\"ui-plugin-dashboard__widget-status-indicator ui-plugin-dashboard__widget-status-indicator--critical\"></span>down</span></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Keys</h4><ul class=\"ui-plugin-dashboard__widget-list\"><li class=\"ui-plugin-dashboard__widget-list-item\"><span class=\"ui-plugin-dashboard__widget-list-badge\">a</span></li><li class=\"ui-plugin-dashboard__widget-list-item\"><span class=\"ui-plugin-dashboard__widget-list-badge\">b</span></li></ul></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">Links</h4><ul class=\"ui-plugin-dashboard__widget-list\"><li class=\"ui-plugin-dashboard__widget-list-item\"><a class=\"ui-plugin-dashboard__widget-list-link\" href=\"https://x.dev\" target=\"_blank\" rel=\"noopener noreferrer\">https://x.dev</a></li></ul></div><div class=\"ui-plugin-dashboard__widget\"><h4 class=\"ui-plugin-dashboard__widget-title\">None</h4><span style=\"color:var(--text-tertiary);font-size:var(--text-sm)\">No items</span></div></div></div></section></div><aside class=\"ui-dashboard-template__sidebar\"><div class=\"ui-plugin-dashboard__properties\" role=\"list\" aria-label=\"Properties\"><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">Host</span><span class=\"ui-plugin-dashboard__prop-value\"><code class=\"ui-plugin-dashboard__prop-code\">db.local</code><button type=\"button\" class=\"ui-plugin-dashboard__prop-copy\" aria-label=\"Copy db.local\">copy</button></span></div><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">Docs</span><span class=\"ui-plugin-dashboard__prop-value\"><a class=\"ui-plugin-dashboard__prop-link\" href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">https://example.com</a></span></div><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">Role</span><span class=\"ui-plugin-dashboard__prop-value\"><span class=\"ui-plugin-dashboard__prop-badge\">primary</span></span></div><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">Uptime</span><span class=\"ui-plugin-dashboard__prop-value\">1h 30m</span></div><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">Started</span><span class=\"ui-plugin-dashboard__prop-value\">1/15/2026, 12:00:00 PM</span></div><div class=\"ui-plugin-dashboard__prop\" role=\"listitem\"><span class=\"ui-plugin-dashboard__prop-label\">None</span><span class=\"ui-plugin-dashboard__prop-value\">—</span></div></div></aside></div></div></div>"
+      },
+      "loading": {
+        "props": {
+          "loading": true,
+          "config": {
+            "name": "X",
+            "metrics": [],
+            "charts": [],
+            "properties": []
+          },
+          "data": {}
+        },
+        "html": "<div class=\"ui-plugin-dashboard\" data-motion=\"3\"><div class=\"ui-plugin-dashboard__loading-overlay\" role=\"status\" aria-label=\"Loading\"><div class=\"ui-plugin-dashboard__loading-spinner\"></div></div><div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: X\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">X</h2></div><div class=\"ui-dashboard-template__header-meta\"></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"none\"><div class=\"ui-dashboard-template__main\"></div></div></div></div>"
+      },
+      "error": {
+        "props": {
+          "error": "Connection refused",
+          "config": {
+            "name": "X",
+            "metrics": [],
+            "charts": [],
+            "properties": []
+          },
+          "data": {}
+        },
+        "html": "<div class=\"ui-plugin-dashboard\" data-motion=\"3\"><div class=\"ui-dashboard-template\" data-motion=\"3\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: X\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">X</h2></div><span class=\"ui-dashboard-template__status-badge\" data-status=\"unknown\"><span class=\"ui-dashboard-template__status-dot\"></span>unknown</span><div class=\"ui-dashboard-template__header-meta\"></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"none\"><div class=\"ui-dashboard-template__main\"><div class=\"ui-plugin-dashboard__error\" role=\"alert\">Connection refused</div></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "config": {
+            "name": "X",
+            "metrics": [],
+            "charts": [],
+            "properties": []
+          },
+          "data": {}
+        },
+        "html": "<div class=\"ui-plugin-dashboard\" data-motion=\"0\"><div class=\"ui-dashboard-template\" data-motion=\"0\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: X\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">X</h2></div><div class=\"ui-dashboard-template__header-meta\"></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"none\"><div class=\"ui-dashboard-template__main\"></div></div></div></div>"
+      }
+    },
     "PortStatusGrid": {
       "basic": {
         "props": {
