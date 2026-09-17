@@ -812,4 +812,26 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     python: { language: 'python', code: 'def f(x):\n    return x + 1  # inc' },
     'motion 0': { code: 'x', motion: 0 },
   },
+  PipelineDAG: {
+    empty: { nodes: [], edges: [], height: '20rem' },
+    'left to right': {
+      nodes: [
+        { id: 'src', label: 'Kafka', type: 'source', status: 'running' },
+        { id: 'tx', label: 'Parse', type: 'transform', status: 'success' },
+        { id: 'sink', label: 'Warehouse', type: 'sink', status: 'failed' },
+      ],
+      edges: [{ source: 'src', target: 'tx', label: 'events' }, { source: 'tx', target: 'sink', animated: false }],
+    },
+    'top to bottom, metrics, throughput, selected, clickable': {
+      direction: 'TB', showMetrics: true, showThroughput: true, selectedNode: 'b', height: 420,
+      onNodeClick: { $fn: true }, onEdgeClick: { $fn: true },
+      nodes: [
+        { id: 'a', label: 'In', type: 'custom', metrics: { throughput: 1500000, latency: 12, errorRate: 0.5, dropped: 3 } },
+        { id: 'b', label: 'Filter', type: 'filter', status: 'skipped', metrics: { throughput: 900 } },
+        { id: 'c', label: 'Agg', type: 'aggregate' },
+      ],
+      edges: [{ source: 'a', target: 'b', throughput: 2500 }, { source: 'b', target: 'c', throughput: 10 }],
+    },
+    'motion 0': { nodes: [], edges: [], motion: 0 },
+  },
 }

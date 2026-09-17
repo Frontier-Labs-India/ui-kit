@@ -2883,6 +2883,116 @@
         "html": "<div class=\"ui-pin-input\" data-size=\"md\" data-motion=\"0\" role=\"group\" aria-label=\"PIN input\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 1 of 1\" value=\"\"/></div></div>"
       }
     },
+    "PipelineDAG": {
+      "empty": {
+        "props": {
+          "nodes": [],
+          "edges": [],
+          "height": "20rem"
+        },
+        "html": "<div class=\"ui-pipeline-dag\" data-motion=\"3\" role=\"img\" aria-label=\"Empty pipeline DAG\"><svg class=\"ui-pipeline-dag__svg\" viewBox=\"0 0 400 100\" style=\"height:20rem\"><text x=\"200\" y=\"50\" text-anchor=\"middle\" fill=\"var(--text-tertiary, oklch(55% 0 0))\" font-size=\"13\">No pipeline data</text></svg></div>"
+      },
+      "left to right": {
+        "props": {
+          "nodes": [
+            {
+              "id": "src",
+              "label": "Kafka",
+              "type": "source",
+              "status": "running"
+            },
+            {
+              "id": "tx",
+              "label": "Parse",
+              "type": "transform",
+              "status": "success"
+            },
+            {
+              "id": "sink",
+              "label": "Warehouse",
+              "type": "sink",
+              "status": "failed"
+            }
+          ],
+          "edges": [
+            {
+              "source": "src",
+              "target": "tx",
+              "label": "events"
+            },
+            {
+              "source": "tx",
+              "target": "sink",
+              "animated": false
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-dag\" data-motion=\"3\" role=\"img\" aria-label=\"Pipeline DAG with 3 nodes and 2 edges\"><svg class=\"ui-pipeline-dag__svg\" viewBox=\"-70 116 573.3299999999999 136\" style=\"height:300px\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ui-dag-arrow\" viewBox=\"0 0 10 10\" refX=\"10\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M 0 0 L 10 5 L 0 10 Z\" fill=\"oklch(70% 0 0 / 0.5)\"></path></marker></defs><g class=\"ui-pipeline-dag__edges\"><g class=\"ui-pipeline-dag__edge\"><path class=\"ui-pipeline-dag__edge-path ui-pipeline-dag__edge-path--animated\" d=\"M 50 184 C 116.66799999999999 184, 150.002 184, 216.67 184\" stroke-width=\"1.5\" marker-end=\"url(#ui-dag-arrow)\"></path><text class=\"ui-pipeline-dag__edge-label\" x=\"133.33499999999998\" y=\"176\">events</text></g><g class=\"ui-pipeline-dag__edge\"><path class=\"ui-pipeline-dag__edge-path\" d=\"M 216.67 184 C 283.334 184, 316.666 184, 383.33 184\" stroke-width=\"1.5\" marker-end=\"url(#ui-dag-arrow)\"></path></g></g><g class=\"ui-pipeline-dag__nodes\"><g class=\"ui-pipeline-dag__node ui-pipeline-dag__node--running\" data-status=\"running\" data-node-id=\"src\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"-30\" y=\"156\" width=\"160\" height=\"56\" fill=\"oklch(65% 0.2 270 / 0.08)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"-30\" y=\"156\" width=\"4\" height=\"56\" fill=\"oklch(65% 0.2 270)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"-16\" y=\"174\">Kafka</text><text class=\"ui-pipeline-dag__node-type\" x=\"-16\" y=\"190\" fill=\"oklch(65% 0.2 270)\">Source</text></g><g class=\"ui-pipeline-dag__node\" data-status=\"success\" data-node-id=\"tx\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"136.67\" y=\"156\" width=\"160\" height=\"56\" fill=\"oklch(72% 0.19 155 / 0.08)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"136.67\" y=\"156\" width=\"4\" height=\"56\" fill=\"oklch(72% 0.19 155)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"150.67\" y=\"174\">Parse</text><text class=\"ui-pipeline-dag__node-type\" x=\"150.67\" y=\"190\" fill=\"oklch(72% 0.19 155)\">Transform</text></g><g class=\"ui-pipeline-dag__node\" data-status=\"failed\" data-node-id=\"sink\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"303.33\" y=\"156\" width=\"160\" height=\"56\" fill=\"oklch(62% 0.22 25 / 0.08)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"303.33\" y=\"156\" width=\"4\" height=\"56\" fill=\"oklch(62% 0.22 25)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"317.33\" y=\"174\">Warehouse</text><text class=\"ui-pipeline-dag__node-type\" x=\"317.33\" y=\"190\" fill=\"oklch(62% 0.22 25)\">Sink</text></g></g></svg></div>"
+      },
+      "top to bottom, metrics, throughput, selected, clickable": {
+        "props": {
+          "direction": "TB",
+          "showMetrics": true,
+          "showThroughput": true,
+          "selectedNode": "b",
+          "height": 420,
+          "onNodeClick": {
+            "$fn": true
+          },
+          "onEdgeClick": {
+            "$fn": true
+          },
+          "nodes": [
+            {
+              "id": "a",
+              "label": "In",
+              "type": "custom",
+              "metrics": {
+                "throughput": 1500000,
+                "latency": 12,
+                "errorRate": 0.5,
+                "dropped": 3
+              }
+            },
+            {
+              "id": "b",
+              "label": "Filter",
+              "type": "filter",
+              "status": "skipped",
+              "metrics": {
+                "throughput": 900
+              }
+            },
+            {
+              "id": "c",
+              "label": "Agg",
+              "type": "aggregate"
+            }
+          ],
+          "edges": [
+            {
+              "source": "a",
+              "target": "b",
+              "throughput": 2500
+            },
+            {
+              "source": "b",
+              "target": "c",
+              "throughput": 10
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-dag\" data-motion=\"3\" role=\"figure\" aria-label=\"Pipeline DAG with 3 nodes and 2 edges\"><svg class=\"ui-pipeline-dag__svg\" viewBox=\"250 -28 240 356\" style=\"height:420px\" xmlns=\"http://www.w3.org/2000/svg\"><defs><marker id=\"ui-dag-arrow\" viewBox=\"0 0 10 10\" refX=\"10\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M 0 0 L 10 5 L 0 10 Z\" fill=\"oklch(70% 0 0 / 0.5)\"></path></marker></defs><g class=\"ui-pipeline-dag__edges\"><g class=\"ui-pipeline-dag__edge ui-pipeline-dag__edge--clickable\"><path class=\"ui-pipeline-dag__edge-hit\" d=\"M 370 50 C 370 90, 370 110, 370 150\"></path><path class=\"ui-pipeline-dag__edge-path\" d=\"M 370 50 C 370 90, 370 110, 370 150\" stroke-width=\"4.5\" marker-end=\"url(#ui-dag-arrow)\"></path><text class=\"ui-pipeline-dag__edge-label\" x=\"370\" y=\"110\">2.5K/s</text></g><g class=\"ui-pipeline-dag__edge ui-pipeline-dag__edge--clickable\"><path class=\"ui-pipeline-dag__edge-hit\" d=\"M 370 150 C 370 190, 370 210, 370 250\"></path><path class=\"ui-pipeline-dag__edge-path\" d=\"M 370 150 C 370 190, 370 210, 370 250\" stroke-width=\"1.512\" marker-end=\"url(#ui-dag-arrow)\"></path><text class=\"ui-pipeline-dag__edge-label\" x=\"370\" y=\"210\">10/s</text></g></g><g class=\"ui-pipeline-dag__nodes\"><g class=\"ui-pipeline-dag__node ui-pipeline-dag__node--clickable\" data-status=\"pending\" data-node-id=\"a\" tabindex=\"0\" role=\"button\" aria-label=\"In: pending\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"290\" y=\"12\" width=\"160\" height=\"76\" fill=\"oklch(70% 0 0 / 0.08)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"290\" y=\"12\" width=\"4\" height=\"76\" fill=\"oklch(70% 0 0)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"304\" y=\"30\">In</text><text class=\"ui-pipeline-dag__node-type\" x=\"304\" y=\"46\" fill=\"oklch(70% 0 0)\">Custom</text><text class=\"ui-pipeline-dag__node-metric\" x=\"304\" y=\"64\">1.5M/s 12ms 0.5% err -3</text></g><g class=\"ui-pipeline-dag__node ui-pipeline-dag__node--clickable ui-pipeline-dag__node--selected\" data-status=\"skipped\" data-node-id=\"b\" tabindex=\"0\" role=\"button\" aria-label=\"Filter: skipped\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"290\" y=\"112\" width=\"160\" height=\"76\" fill=\"oklch(55% 0 0 / 0.06)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"290\" y=\"112\" width=\"4\" height=\"76\" fill=\"oklch(55% 0 0)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"304\" y=\"130\">Filter</text><text class=\"ui-pipeline-dag__node-type\" x=\"304\" y=\"146\" fill=\"oklch(55% 0 0)\">Filter</text><text class=\"ui-pipeline-dag__node-metric\" x=\"304\" y=\"164\">900/s</text></g><g class=\"ui-pipeline-dag__node ui-pipeline-dag__node--clickable\" data-status=\"pending\" data-node-id=\"c\" tabindex=\"0\" role=\"button\" aria-label=\"Agg: pending\"><rect class=\"ui-pipeline-dag__node-bg\" x=\"290\" y=\"212\" width=\"160\" height=\"76\" fill=\"oklch(70% 0 0 / 0.08)\"></rect><rect class=\"ui-pipeline-dag__node-accent\" x=\"290\" y=\"212\" width=\"4\" height=\"76\" fill=\"oklch(70% 0 0)\" rx=\"2\"></rect><text class=\"ui-pipeline-dag__node-label\" x=\"304\" y=\"230\">Agg</text><text class=\"ui-pipeline-dag__node-type\" x=\"304\" y=\"246\" fill=\"oklch(70% 0 0)\">Aggregate</text></g></g></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "nodes": [],
+          "edges": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-pipeline-dag\" data-motion=\"0\" role=\"img\" aria-label=\"Empty pipeline DAG\"><svg class=\"ui-pipeline-dag__svg\" viewBox=\"0 0 400 100\" style=\"height:300px\"><text x=\"200\" y=\"50\" text-anchor=\"middle\" fill=\"var(--text-tertiary, oklch(55% 0 0))\" font-size=\"13\">No pipeline data</text></svg></div>"
+      }
+    },
     "PipelineStage": {
       "all statuses": {
         "props": {

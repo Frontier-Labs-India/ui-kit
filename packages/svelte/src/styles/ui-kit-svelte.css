@@ -8067,6 +8067,169 @@
   }
 /* end pin-input */
 
+/* pipeline-dag */
+@layer components {
+    @scope (.ui-pipeline-dag) {
+      :scope {
+        position: relative;
+        display: block;
+        container-type: inline-size;
+        container-name: pipeline-dag;
+      }
+
+      .ui-pipeline-dag__svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* ── Node ──────────────────────────── */
+
+      .ui-pipeline-dag__node {
+        cursor: default;
+      }
+
+      .ui-pipeline-dag__node--clickable {
+        cursor: pointer;
+      }
+
+      .ui-pipeline-dag__node--clickable:hover .ui-pipeline-dag__node-bg {
+        filter: brightness(1.15);
+      }
+
+      .ui-pipeline-dag__node--clickable:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      .ui-pipeline-dag__node-bg {
+        rx: 8;
+        ry: 8;
+        fill: var(--bg-surface, oklch(20% 0.01 270));
+        stroke: var(--border-default, oklch(100% 0 0 / 0.08));
+        stroke-width: 1;
+        transition: filter 0.15s ease;
+      }
+
+      .ui-pipeline-dag__node-accent {
+        rx: 8;
+        ry: 0;
+      }
+
+      .ui-pipeline-dag__node--selected .ui-pipeline-dag__node-bg {
+        stroke-width: 2;
+        stroke: var(--brand, oklch(65% 0.2 270));
+        filter: drop-shadow(0 0 6px oklch(65% 0.2 270 / 0.3));
+      }
+
+      .ui-pipeline-dag__node-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        fill: var(--text-primary, oklch(90% 0 0));
+        dominant-baseline: central;
+      }
+
+      .ui-pipeline-dag__node-type {
+        font-size: 0.5625rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        dominant-baseline: central;
+      }
+
+      .ui-pipeline-dag__node-metric {
+        font-size: 0.5625rem;
+        font-family: var(--font-mono, ui-monospace, monospace);
+        dominant-baseline: central;
+        fill: var(--text-tertiary, oklch(55% 0 0));
+      }
+
+      /* ── Edge ──────────────────────────── */
+
+      .ui-pipeline-dag__edge {
+        cursor: default;
+      }
+
+      .ui-pipeline-dag__edge--clickable {
+        cursor: pointer;
+      }
+
+      .ui-pipeline-dag__edge-path {
+        fill: none;
+        stroke: var(--border-strong, oklch(70% 0 0 / 0.5));
+        stroke-width: 1.5;
+        stroke-linecap: round;
+      }
+
+      .ui-pipeline-dag__edge-hit {
+        fill: none;
+        stroke: transparent;
+        stroke-width: 12;
+        cursor: pointer;
+      }
+
+      .ui-pipeline-dag__edge-label {
+        font-size: 9px;
+        fill: var(--text-tertiary, oklch(55% 0 0));
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+
+      /* ── Animated flow ─────────────────── */
+
+      :scope:not([data-motion="0"]) .ui-pipeline-dag__edge-path--animated {
+        stroke-dasharray: 6 4;
+        animation: ui-dag-flow 0.8s linear infinite;
+      }
+
+      @keyframes ui-dag-flow {
+        to { stroke-dashoffset: -10; }
+      }
+
+      /* ── Running pulse ─────────────────── */
+
+      :scope:not([data-motion="0"]):not([data-motion="1"]) .ui-pipeline-dag__node--running .ui-pipeline-dag__node-accent {
+        animation: ui-dag-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes ui-dag-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      /* ── Reduced motion ────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        .ui-pipeline-dag__edge-path--animated { animation: none; }
+        .ui-pipeline-dag__node--running .ui-pipeline-dag__node-accent { animation: none; }
+      }
+
+      /* ── Forced colors ─────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-pipeline-dag__node-bg {
+          forced-color-adjust: none;
+          stroke: ButtonText;
+          fill: Canvas;
+        }
+        .ui-pipeline-dag__edge-path {
+          stroke: ButtonText;
+        }
+        .ui-pipeline-dag__node-label {
+          fill: ButtonText;
+        }
+      }
+
+      /* ── Container responsive ──────────── */
+
+      @container pipeline-dag (max-width: 400px) {
+        .ui-pipeline-dag__node-metric { display: none; }
+        .ui-pipeline-dag__edge-label { display: none; }
+      }
+    }
+  }
+/* end pipeline-dag */
+
 /* pipeline-stage */
 @layer components {
     @scope (.ui-pipeline-stage) {

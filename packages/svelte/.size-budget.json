@@ -50,6 +50,7 @@
   "component:PageShell": 381,
   "component:Pagination": 1338,
   "component:PinInput": 1627,
+  "component:PipelineDAG": 3293,
   "component:PipelineStage": 1043,
   "component:PortStatusGrid": 808,
   "component:Progress": 796,
@@ -141,6 +142,7 @@
   "css:page-shell": 388,
   "css:pagination": 885,
   "css:pin-input": 1148,
+  "css:pipeline-dag": 1084,
   "css:pipeline-stage": 1093,
   "css:port-status-grid": 964,
   "css:progress": 1210,
@@ -201,6 +203,9 @@
   "module:runes/entrance.svelte": 1029,
   "module:runes/motion-level.svelte": 720,
   "module:vendor/core/a11y/compute-anchor-position": 848,
+  "module:vendor/core/graph/layout": 4488,
+  "module:vendor/core/graph/quadtree": 1424,
+  "module:vendor/core/graph/types": 149,
   "module:vendor/core/icons/paths": 2242,
   "module:vendor/core/utils/format": 728
 }
