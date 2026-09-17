@@ -55,6 +55,10 @@ const SLIDER_NAME =
   CALLER_MUST_NAME + '. Slider-specific, inherited: a caller aria-label lands on the wrapper div, not ' +
   'the range input, so the `label` prop is the only way to name the slider'
 
+const PASSWORD_METER_DEFECT =
+  'DEFECT in both packages: PasswordInput\'s strength bar is role="meter" with no accessible name. ' +
+  'Fix together (aria-label, or aria-labelledby the strength label) or the contract breaks'
+
 const CALENDAR_DEFECT =
   'DEFECT in both packages: Calendar puts role="gridcell" day buttons directly inside role="grid", ' +
   'laid out by CSS grid with no role="row" wrappers, so the grid has no rows and the cells no row ' +
@@ -91,6 +95,9 @@ const INHERITED: Record<string, string> = {
   // stale-entry check below still fails if a case stops producing it.
   ...Object.fromEntries(Object.keys(CASES.Calendar).flatMap(c =>
     ['aria-required-children', 'aria-required-parent'].map(rule => [`Calendar/${c}/${rule}`, CALENDAR_DEFECT]))),
+  'PasswordInput/strength meter empty/aria-meter-name': PASSWORD_METER_DEFECT,
+  'PasswordInput/strength meter strong with error/aria-meter-name': PASSWORD_METER_DEFECT,
+  'PasswordInput/strength meter fair, custom labels, sm disabled, caller id/aria-meter-name': PASSWORD_METER_DEFECT,
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

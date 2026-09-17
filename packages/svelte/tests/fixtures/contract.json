@@ -3121,6 +3121,74 @@
         "html": "<div class=\"ui-notification-stack\" data-motion=\"0\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">No notifications</div></div></div>"
       }
     },
+    "NumberInput": {
+      "labelled": {
+        "props": {
+          "label": "Qty",
+          "name": "qty"
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"3\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">Qty</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" name=\"qty\" value=\"\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      },
+      "default value formatted with separator, prefix, suffix, precision": {
+        "props": {
+          "label": "Price",
+          "defaultValue": 1234567.5,
+          "thousandSeparator": true,
+          "prefix": "$",
+          "suffix": " USD",
+          "precision": 2
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"3\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">Price</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" aria-valuenow=\"1234567.5\" value=\"$1,234,567.50 USD\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      },
+      "controlled at max and min bounds": {
+        "props": {
+          "label": "N",
+          "value": 10,
+          "min": 0,
+          "max": 10
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"3\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">N</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" aria-valuemin=\"0\" aria-valuemax=\"10\" aria-valuenow=\"10\" value=\"10\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" disabled=\"\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      },
+      "at min with error, description, required, placeholder": {
+        "props": {
+          "label": "N",
+          "value": 0,
+          "min": 0,
+          "error": "Low",
+          "description": "d",
+          "required": true,
+          "placeholder": "0"
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">N<span class=\"ui-number-input__required\" aria-hidden=\"true\">*</span></label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" placeholder=\"0\" aria-invalid=\"true\" aria-describedby=\"number-input-_R_0_-description number-input-_R_0_-error\" aria-valuemin=\"0\" aria-valuenow=\"0\" required=\"\" value=\"0\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" disabled=\"\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div><span id=\"number-input-_R_0_-description\" class=\"ui-number-input__description\">d</span><span id=\"number-input-_R_0_-error\" class=\"ui-number-input__error\" role=\"alert\">Low</span></div>"
+      },
+      "null value, hide controls, readOnly xl, caller id": {
+        "props": {
+          "label": "N",
+          "value": null,
+          "hideControls": true,
+          "readOnly": true,
+          "size": "xl",
+          "id": "num",
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-number-input mine\" data-size=\"xl\" data-motion=\"3\" data-hide-controls=\"\"><label for=\"num\" class=\"ui-number-input__label\">N</label><div class=\"ui-number-input__field-wrapper\"><input id=\"num\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" readOnly=\"\" value=\"\"/></div></div>"
+      },
+      "disabled": {
+        "props": {
+          "label": "N",
+          "value": 3,
+          "disabled": true
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">N</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" disabled=\"\" aria-valuenow=\"3\" value=\"3\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" disabled=\"\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" disabled=\"\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "M",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"0\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">M</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" value=\"\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      }
+    },
     "OrbitingCircles": {
       "three": {
         "props": {
@@ -3342,6 +3410,71 @@
           "motion": 0
         },
         "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"0\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      }
+    },
+    "PasswordInput": {
+      "labelled": {
+        "props": {
+          "label": "Password",
+          "name": "pw"
+        },
+        "html": "<div class=\"ui-password-input\" data-size=\"md\" data-motion=\"3\"><label for=\"password-input-_R_0_\" class=\"ui-password-input__label\">Password</label><div class=\"ui-password-input__field-wrapper\"><input id=\"password-input-_R_0_\" type=\"password\" class=\"ui-password-input__field\" name=\"pw\"/><button type=\"button\" class=\"ui-password-input__toggle\" aria-label=\"Show password\" tabindex=\"-1\"><svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1 8C1 8 3.5 3 8 3C12.5 3 15 8 15 8C15 8 12.5 13 8 13C3.5 13 1 8 1 8Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"8\" cy=\"8\" r=\"2.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></button></div></div>"
+      },
+      "no toggle, placeholder, required, description": {
+        "props": {
+          "label": "Password",
+          "visibilityToggle": false,
+          "placeholder": "••••",
+          "required": true,
+          "description": "At least 8"
+        },
+        "html": "<div class=\"ui-password-input\" data-size=\"md\" data-motion=\"3\"><label for=\"password-input-_R_0_\" class=\"ui-password-input__label\">Password<span class=\"ui-password-input__required\" aria-hidden=\"true\">*</span></label><div class=\"ui-password-input__field-wrapper\"><input id=\"password-input-_R_0_\" type=\"password\" class=\"ui-password-input__field\" placeholder=\"••••\" aria-describedby=\"password-input-_R_0_-description\" required=\"\"/></div><span id=\"password-input-_R_0_-description\" class=\"ui-password-input__description\">At least 8</span></div>"
+      },
+      "strength meter empty": {
+        "props": {
+          "label": "Password",
+          "showStrengthMeter": true,
+          "value": ""
+        },
+        "html": "<div class=\"ui-password-input\" data-size=\"md\" data-motion=\"3\"><label for=\"password-input-_R_0_\" class=\"ui-password-input__label\">Password</label><div class=\"ui-password-input__field-wrapper\"><input id=\"password-input-_R_0_\" type=\"password\" class=\"ui-password-input__field\" aria-describedby=\"password-input-_R_0_-strength\" value=\"\"/><button type=\"button\" class=\"ui-password-input__toggle\" aria-label=\"Show password\" tabindex=\"-1\"><svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1 8C1 8 3.5 3 8 3C12.5 3 15 8 15 8C15 8 12.5 13 8 13C3.5 13 1 8 1 8Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"8\" cy=\"8\" r=\"2.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></button></div><div id=\"password-input-_R_0_-strength\" class=\"ui-password-input__strength\" aria-live=\"polite\"><div class=\"ui-password-input__strength-bar\" role=\"meter\" aria-valuemin=\"0\" aria-valuemax=\"4\" aria-valuenow=\"0\"><div class=\"ui-password-input__strength-segment\" data-level=\"0\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"0\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"0\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"0\"></div></div></div></div>"
+      },
+      "strength meter strong with error": {
+        "props": {
+          "label": "Password",
+          "showStrengthMeter": true,
+          "value": "Abcdef1!",
+          "error": "Reused",
+          "onStrengthChange": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-password-input\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\"><label for=\"password-input-_R_0_\" class=\"ui-password-input__label\">Password</label><div class=\"ui-password-input__field-wrapper\"><input id=\"password-input-_R_0_\" type=\"password\" class=\"ui-password-input__field\" aria-invalid=\"true\" aria-describedby=\"password-input-_R_0_-strength password-input-_R_0_-error\" value=\"Abcdef1!\"/><button type=\"button\" class=\"ui-password-input__toggle\" aria-label=\"Show password\" tabindex=\"-1\"><svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1 8C1 8 3.5 3 8 3C12.5 3 15 8 15 8C15 8 12.5 13 8 13C3.5 13 1 8 1 8Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"8\" cy=\"8\" r=\"2.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></button></div><span id=\"password-input-_R_0_-error\" class=\"ui-password-input__error\" role=\"alert\">Reused</span><div id=\"password-input-_R_0_-strength\" class=\"ui-password-input__strength\" aria-live=\"polite\"><div class=\"ui-password-input__strength-bar\" role=\"meter\" aria-valuemin=\"0\" aria-valuemax=\"4\" aria-valuenow=\"4\"><div class=\"ui-password-input__strength-segment\" data-level=\"4\" data-active=\"\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"4\" data-active=\"\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"4\" data-active=\"\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"4\" data-active=\"\"></div></div><span class=\"ui-password-input__strength-label\">Strong</span></div></div>"
+      },
+      "strength meter fair, custom labels, sm disabled, caller id": {
+        "props": {
+          "label": "Password",
+          "showStrengthMeter": true,
+          "value": "abc1",
+          "strengthLabels": [
+            "none",
+            "w",
+            "f",
+            "g",
+            "s"
+          ],
+          "size": "sm",
+          "disabled": true,
+          "id": "pw",
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-password-input mine\" data-size=\"sm\" data-motion=\"3\" data-disabled=\"\"><label for=\"pw\" class=\"ui-password-input__label\">Password</label><div class=\"ui-password-input__field-wrapper\"><input id=\"pw\" type=\"password\" class=\"ui-password-input__field\" disabled=\"\" aria-describedby=\"pw-strength\" value=\"abc1\"/><button type=\"button\" class=\"ui-password-input__toggle\" aria-label=\"Show password\" tabindex=\"-1\"><svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1 8C1 8 3.5 3 8 3C12.5 3 15 8 15 8C15 8 12.5 13 8 13C3.5 13 1 8 1 8Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"8\" cy=\"8\" r=\"2.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></button></div><div id=\"pw-strength\" class=\"ui-password-input__strength\" aria-live=\"polite\"><div class=\"ui-password-input__strength-bar\" role=\"meter\" aria-valuemin=\"0\" aria-valuemax=\"4\" aria-valuenow=\"2\"><div class=\"ui-password-input__strength-segment\" data-level=\"2\" data-active=\"\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"2\" data-active=\"\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"2\"></div><div class=\"ui-password-input__strength-segment\" data-level=\"2\"></div></div><span class=\"ui-password-input__strength-label\">f</span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "M",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-password-input\" data-size=\"md\" data-motion=\"0\"><label for=\"password-input-_R_0_\" class=\"ui-password-input__label\">M</label><div class=\"ui-password-input__field-wrapper\"><input id=\"password-input-_R_0_\" type=\"password\" class=\"ui-password-input__field\"/><button type=\"button\" class=\"ui-password-input__toggle\" aria-label=\"Show password\" tabindex=\"-1\"><svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M1 8C1 8 3.5 3 8 3C12.5 3 15 8 15 8C15 8 12.5 13 8 13C3.5 13 1 8 1 8Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><circle cx=\"8\" cy=\"8\" r=\"2.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></svg></button></div></div>"
       }
     },
     "PinInput": {
@@ -4983,6 +5116,65 @@
           "aria-label": "Tags"
         },
         "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      }
+    },
+    "Textarea": {
+      "labelled": {
+        "props": {
+          "label": "Notes",
+          "name": "notes"
+        },
+        "html": "<div class=\"ui-textarea\" data-size=\"md\" data-motion=\"3\" data-resize=\"vertical\"><label for=\"textarea-_R_0_\" class=\"ui-textarea__label\">Notes</label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"textarea-_R_0_\" name=\"notes\" class=\"ui-textarea__field\" rows=\"3\"></textarea></div></div>"
+      },
+      "uncontrolled defaultValue with count": {
+        "props": {
+          "label": "Bio",
+          "defaultValue": "Hello there",
+          "showCount": true
+        },
+        "html": "<div class=\"ui-textarea\" data-size=\"md\" data-motion=\"3\" data-resize=\"vertical\"><label for=\"textarea-_R_0_\" class=\"ui-textarea__label\">Bio</label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"textarea-_R_0_\" class=\"ui-textarea__field\" rows=\"3\">Hello there</textarea></div><div class=\"ui-textarea__footer\"><span class=\"ui-textarea__counter\">11</span></div></div>"
+      },
+      "controlled at limit, error, description, required, placeholder": {
+        "props": {
+          "label": "Bio",
+          "value": "abcde",
+          "maxLength": 5,
+          "error": "Too long",
+          "description": "Short bio",
+          "required": true,
+          "placeholder": "Type…"
+        },
+        "html": "<div class=\"ui-textarea\" data-size=\"md\" data-motion=\"3\" data-resize=\"vertical\" data-invalid=\"\"><label for=\"textarea-_R_0_\" class=\"ui-textarea__label\">Bio<span class=\"ui-textarea__required\" aria-hidden=\"true\">*</span></label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"textarea-_R_0_\" class=\"ui-textarea__field\" placeholder=\"Type…\" aria-invalid=\"true\" aria-describedby=\"textarea-_R_0_-description textarea-_R_0_-error\" required=\"\" maxLength=\"5\" rows=\"3\">abcde</textarea></div><span id=\"textarea-_R_0_-description\" class=\"ui-textarea__description\">Short bio</span><span id=\"textarea-_R_0_-error\" class=\"ui-textarea__error\" role=\"alert\">Too long</span><div class=\"ui-textarea__footer\"><span class=\"ui-textarea__counter\" data-at-limit=\"\">5/5</span></div></div>"
+      },
+      "resize none, minRows, lg disabled, caller id and attrs": {
+        "props": {
+          "label": "X",
+          "resize": "none",
+          "minRows": 6,
+          "size": "lg",
+          "disabled": true,
+          "id": "ta",
+          "className": "mine",
+          "data-x": "1"
+        },
+        "html": "<div class=\"ui-textarea mine\" data-size=\"lg\" data-motion=\"3\" data-resize=\"none\" data-disabled=\"\" data-x=\"1\"><label for=\"ta\" class=\"ui-textarea__label\">X</label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"ta\" class=\"ui-textarea__field\" disabled=\"\" rows=\"6\"></textarea></div></div>"
+      },
+      "autoResize forces data-resize none": {
+        "props": {
+          "label": "Auto",
+          "autoResize": true,
+          "resize": "both",
+          "minRows": 2,
+          "maxRows": 4
+        },
+        "html": "<div class=\"ui-textarea\" data-size=\"md\" data-motion=\"3\" data-resize=\"none\"><label for=\"textarea-_R_0_\" class=\"ui-textarea__label\">Auto</label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"textarea-_R_0_\" class=\"ui-textarea__field\" rows=\"2\" data-auto-resize=\"\"></textarea></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "M",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-textarea\" data-size=\"md\" data-motion=\"0\" data-resize=\"vertical\"><label for=\"textarea-_R_0_\" class=\"ui-textarea__label\">M</label><div class=\"ui-textarea__field-wrapper\"><textarea id=\"textarea-_R_0_\" class=\"ui-textarea__field\" rows=\"3\"></textarea></div></div>"
       }
     },
     "ThresholdGauge": {

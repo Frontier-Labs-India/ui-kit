@@ -6,7 +6,7 @@ import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { DIVERGENCES, EFFECT_STYLES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -128,6 +128,12 @@ describe('React DOM contract', () => {
           // not either. An empty style attribute — left behind when an entrance
           // animation clears the properties it set — carries no CSS. Checked
           // before divergences, which may add style to mirror React's shape.
+          for (const { selector, properties } of EFFECT_STYLES[name] ?? []) {
+            for (const el of Array.from(container.querySelectorAll<HTMLElement>(selector))) {
+              for (const p of properties) el.style.removeProperty(p)
+              if (el.getAttribute('style') === '') el.removeAttribute('style')
+            }
+          }
           if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]:not([style=""])')).toBeNull()
           for (const d of DIVERGENCES[name] ?? []) d.apply(container)
           expect(canonical(container)).toBe(canonical(fromHtml(html)))

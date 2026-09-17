@@ -446,6 +446,37 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { name: 'x', 'aria-label': 'X', motion: 0 },
   },
+  Textarea: {
+    labelled: { label: 'Notes', name: 'notes' },
+    'uncontrolled defaultValue with count': { label: 'Bio', defaultValue: 'Hello there', showCount: true },
+    'controlled at limit, error, description, required, placeholder': {
+      label: 'Bio', value: 'abcde', maxLength: 5, error: 'Too long', description: 'Short bio', required: true, placeholder: 'Type…',
+    },
+    'resize none, minRows, lg disabled, caller id and attrs': { label: 'X', resize: 'none', minRows: 6, size: 'lg', disabled: true, id: 'ta', className: 'mine', 'data-x': '1' },
+    'autoResize forces data-resize none': { label: 'Auto', autoResize: true, resize: 'both', minRows: 2, maxRows: 4 },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  PasswordInput: {
+    labelled: { label: 'Password', name: 'pw' },
+    'no toggle, placeholder, required, description': { label: 'Password', visibilityToggle: false, placeholder: '••••', required: true, description: 'At least 8' },
+    'strength meter empty': { label: 'Password', showStrengthMeter: true, value: '' },
+    'strength meter strong with error': { label: 'Password', showStrengthMeter: true, value: 'Abcdef1!', error: 'Reused', onStrengthChange: { $fn: true } },
+    'strength meter fair, custom labels, sm disabled, caller id': {
+      label: 'Password', showStrengthMeter: true, value: 'abc1', strengthLabels: ['none', 'w', 'f', 'g', 's'], size: 'sm', disabled: true, id: 'pw', className: 'mine',
+    },
+    'motion 0': { label: 'M', motion: 0 },
+  },
+  NumberInput: {
+    labelled: { label: 'Qty', name: 'qty' },
+    'default value formatted with separator, prefix, suffix, precision': {
+      label: 'Price', defaultValue: 1234567.5, thousandSeparator: true, prefix: '$', suffix: ' USD', precision: 2,
+    },
+    'controlled at max and min bounds': { label: 'N', value: 10, min: 0, max: 10 },
+    'at min with error, description, required, placeholder': { label: 'N', value: 0, min: 0, error: 'Low', description: 'd', required: true, placeholder: '0' },
+    'null value, hide controls, readOnly xl, caller id': { label: 'N', value: null, hideControls: true, readOnly: true, size: 'xl', id: 'num', className: 'mine' },
+    'disabled': { label: 'N', value: 3, disabled: true },
+    'motion 0': { label: 'M', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

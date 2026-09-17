@@ -40,6 +40,21 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
   ],
 }
 
+/* Inline styles an effect writes after mount. React's server render runs no
+ * effects, so its HTML never has them; a React client render writes the same
+ * ones. They are set through style properties, which style-src 'self' allows.
+ * Only the listed properties on matching elements are removed before the CSP
+ * check and the comparison — any other inline style still fails both. */
+export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  Textarea: [
+    {
+      selector: 'textarea[data-auto-resize]',
+      properties: ['height', 'overflow'],
+      reason: 'autoResize measures the field in an effect and writes height/overflow, as React does after hydration.',
+    },
+  ],
+}
+
 /* Props whose NAME differs between the packages, applied to a case's props
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */

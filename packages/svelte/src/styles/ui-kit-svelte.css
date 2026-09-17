@@ -8676,6 +8676,267 @@
   }
 /* end notification-stack */
 
+/* number-input */
+@layer components {
+    @scope (.ui-number-input) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      .ui-number-input__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      .ui-number-input__field-wrapper {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .ui-number-input__field {
+        display: block;
+        inline-size: 100%;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        outline: none;
+        box-shadow: inset 0 2px 4px oklch(0% 0 0 / 0.06), inset 0 1px 0 oklch(100% 0 0 / 0.04);
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+        -moz-appearance: textfield;
+      }
+
+      .ui-number-input__field::-webkit-inner-spin-button,
+      .ui-number-input__field::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Sizes */
+      :scope[data-size="xs"] .ui-number-input__field {
+        min-block-size: 28px;
+        padding-block: 0.125rem;
+        padding-inline: 0.375rem;
+        font-size: var(--text-xs, 0.6875rem);
+      }
+      :scope[data-size="sm"] .ui-number-input__field {
+        min-block-size: 32px;
+        padding-block: 0.25rem;
+        padding-inline: 0.5rem;
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="md"] .ui-number-input__field {
+        min-block-size: 36px;
+        padding-block: 0.375rem;
+        padding-inline: 0.75rem;
+        font-size: var(--text-sm, 0.875rem);
+      }
+      :scope[data-size="lg"] .ui-number-input__field {
+        min-block-size: 44px;
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
+        font-size: var(--text-base, 1rem);
+      }
+      :scope[data-size="xl"] .ui-number-input__field {
+        min-block-size: 48px;
+        padding-block: 0.625rem;
+        padding-inline: 1.25rem;
+        font-size: var(--text-lg, 1.125rem);
+      }
+
+      /* Controls padding */
+      :scope:not([data-hide-controls]) .ui-number-input__field {
+        padding-inline-end: 2rem;
+      }
+
+      /* Focus glow */
+      .ui-number-input__field:focus {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15),
+                    0 0 16px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1),
+                    inset 0 2px 4px oklch(0% 0 0 / 0.06);
+      }
+
+      /* Hover */
+      .ui-number-input__field:hover:not(:focus):not(:disabled) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+      }
+
+      /* Disabled */
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .ui-number-input__field:disabled {
+        cursor: not-allowed;
+      }
+
+      /* Placeholder */
+      .ui-number-input__field::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      /* Stepper controls */
+      .ui-number-input__controls {
+        position: absolute;
+        inset-inline-end: 1px;
+        inset-block: 1px;
+        display: flex;
+        flex-direction: column;
+        border-inline-start: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-start-end-radius: calc(var(--radius-md, 0.375rem) - 1px);
+        border-end-end-radius: calc(var(--radius-md, 0.375rem) - 1px);
+        overflow: hidden;
+        background: linear-gradient(to right, transparent, oklch(100% 0 0 / 0.02));
+      }
+
+      .ui-number-input__stepper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        cursor: pointer;
+        padding: 0;
+        inline-size: 1.75rem;
+        min-block-size: 0;
+        font-size: 0.625rem;
+        line-height: 1;
+        user-select: none;
+        transition: background 0.1s var(--ease-out, ease-out),
+                    color 0.1s var(--ease-out, ease-out),
+                    box-shadow 0.1s var(--ease-out, ease-out);
+      }
+
+      .ui-number-input__stepper:hover {
+        background: var(--bg-hover, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+        transform: translateY(-1px);
+        box-shadow: 0 0 8px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      .ui-number-input__stepper:active {
+        background: var(--bg-active, oklch(100% 0 0 / 0.1));
+        transform: scale(0.94);
+        transition: transform 0.06s ease-out;
+      }
+
+      .ui-number-input__stepper + .ui-number-input__stepper {
+        border-block-start: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+      }
+
+      .ui-number-input__stepper:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      /* Description */
+      .ui-number-input__description {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1.4;
+      }
+
+      /* Error state */
+      :scope[data-invalid] .ui-number-input__field {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 1px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.2);
+      }
+      :scope[data-invalid] .ui-number-input__field:focus {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      .ui-number-input__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-number-input__error {
+        animation: ui-number-input-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      /* Focus visible ring */
+      .ui-number-input__field:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Required indicator */
+      .ui-number-input__required {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        margin-inline-start: 0.25rem;
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-number-input__field {
+          min-block-size: 44px;
+        }
+        .ui-number-input__stepper {
+          min-block-size: 22px;
+          inline-size: 2.5rem;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-number-input__field {
+          border: 2px solid ButtonText;
+        }
+        .ui-number-input__field:focus {
+          outline: 2px solid Highlight;
+        }
+        :scope[data-invalid] .ui-number-input__field {
+          border-color: LinkText;
+        }
+        .ui-number-input__stepper {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-number-input__field {
+          box-shadow: none;
+          border: 1px solid;
+        }
+        .ui-number-input__controls {
+          display: none;
+        }
+      }
+    }
+
+    @keyframes ui-number-input-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end number-input */
+
 /* orbiting-circles */
 @layer components {
     @scope (.ui-orbiting-circles) {
@@ -9051,6 +9312,270 @@
     }
   }
 /* end pagination */
+
+/* password-input */
+@layer components {
+    @scope (.ui-password-input) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      .ui-password-input__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      .ui-password-input__field-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .ui-password-input__field {
+        display: block;
+        inline-size: 100%;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        outline: none;
+        box-shadow: inset 0 2px 4px oklch(0% 0 0 / 0.06), inset 0 1px 0 oklch(100% 0 0 / 0.04);
+        padding-inline-end: 2.5rem;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      /* Sizes */
+      :scope[data-size="xs"] .ui-password-input__field {
+        min-block-size: 28px;
+        padding-block: 0.125rem;
+        padding-inline-start: 0.375rem;
+        font-size: var(--text-xs, 0.6875rem);
+      }
+      :scope[data-size="sm"] .ui-password-input__field {
+        min-block-size: 32px;
+        padding-block: 0.25rem;
+        padding-inline-start: 0.5rem;
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="md"] .ui-password-input__field {
+        min-block-size: 36px;
+        padding-block: 0.375rem;
+        padding-inline-start: 0.75rem;
+        font-size: var(--text-sm, 0.875rem);
+      }
+      :scope[data-size="lg"] .ui-password-input__field {
+        min-block-size: 44px;
+        padding-block: 0.5rem;
+        padding-inline-start: 1rem;
+        font-size: var(--text-base, 1rem);
+      }
+      :scope[data-size="xl"] .ui-password-input__field {
+        min-block-size: 48px;
+        padding-block: 0.625rem;
+        padding-inline-start: 1.25rem;
+        font-size: var(--text-lg, 1.125rem);
+      }
+
+      /* Focus glow */
+      .ui-password-input__field:focus {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15),
+                    0 0 16px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1),
+                    inset 0 2px 4px oklch(0% 0 0 / 0.06);
+      }
+
+      /* Hover */
+      .ui-password-input__field:hover:not(:focus):not(:disabled) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+      }
+
+      /* Disabled */
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .ui-password-input__field:disabled {
+        cursor: not-allowed;
+      }
+
+      /* Placeholder */
+      .ui-password-input__field::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      /* Visibility toggle */
+      .ui-password-input__toggle {
+        position: absolute;
+        inset-inline-end: 0.5rem;
+        inset-block: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: var(--radius-sm, 0.25rem);
+        transition: color 0.15s var(--ease-out, ease-out),
+                    background 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-password-input__toggle:hover {
+        color: var(--text-primary, oklch(90% 0 0));
+        background: oklch(100% 0 0 / 0.06);
+      }
+
+      .ui-password-input__toggle:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Description */
+      .ui-password-input__description {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1.4;
+      }
+
+      /* Error state */
+      :scope[data-invalid] .ui-password-input__field {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 1px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.2);
+      }
+      :scope[data-invalid] .ui-password-input__field:focus {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      .ui-password-input__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-password-input__error {
+        animation: ui-password-input-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      /* Focus visible ring */
+      .ui-password-input__field:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Required indicator */
+      .ui-password-input__required {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        margin-inline-start: 0.25rem;
+      }
+
+      /* Strength meter */
+      .ui-password-input__strength {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .ui-password-input__strength-bar {
+        display: flex;
+        gap: 0.25rem;
+        block-size: 4px;
+      }
+
+      .ui-password-input__strength-segment {
+        flex: 1;
+        border-radius: 2px;
+        background: var(--bg-hover, oklch(50% 0 0 / 0.2));
+        transition: background 0.3s var(--ease-out, ease-out);
+      }
+
+      .ui-password-input__strength-segment[data-active][data-level="1"] {
+        background: oklch(60% 0.25 25);
+      }
+      .ui-password-input__strength-segment[data-active][data-level="2"] {
+        background: oklch(70% 0.18 60);
+      }
+      .ui-password-input__strength-segment[data-active][data-level="3"] {
+        background: oklch(75% 0.18 130);
+      }
+      .ui-password-input__strength-segment[data-active][data-level="4"] {
+        background: oklch(70% 0.2 145);
+      }
+
+      .ui-password-input__strength-label {
+        font-size: var(--text-xs, 0.75rem);
+        line-height: 1.4;
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-password-input__field {
+          min-block-size: 44px;
+        }
+        .ui-password-input__toggle {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-password-input__field {
+          border: 2px solid ButtonText;
+        }
+        .ui-password-input__field:focus {
+          outline: 2px solid Highlight;
+        }
+        :scope[data-invalid] .ui-password-input__field {
+          border-color: LinkText;
+        }
+        .ui-password-input__strength-segment {
+          border: 1px solid ButtonText;
+        }
+        .ui-password-input__strength-segment[data-active] {
+          background: Highlight;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-password-input__field {
+          box-shadow: none;
+          border: 1px solid;
+        }
+        .ui-password-input__toggle {
+          display: none;
+        }
+      }
+    }
+
+    @keyframes ui-password-input-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end password-input */
 
 /* pin-input */
 @layer components {
@@ -13305,6 +13830,222 @@
     }
   }
 /* end tag-input */
+
+/* textarea */
+@layer components {
+    @scope (.ui-textarea) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      .ui-textarea__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      .ui-textarea__field-wrapper {
+        position: relative;
+        display: flex;
+      }
+
+      .ui-textarea__field {
+        display: block;
+        inline-size: 100%;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        outline: none;
+        box-shadow: inset 0 2px 4px oklch(0% 0 0 / 0.06), inset 0 1px 0 oklch(100% 0 0 / 0.04);
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      /* Auto-resize smooth transition */
+      :scope:not([data-motion="0"]) .ui-textarea__field[data-auto-resize] {
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out),
+                    block-size 0.15s var(--ease-out, ease-out);
+      }
+
+      /* Sizes */
+      :scope[data-size="xs"] .ui-textarea__field {
+        padding-block: 0.25rem;
+        padding-inline: 0.375rem;
+        font-size: var(--text-xs, 0.6875rem);
+      }
+      :scope[data-size="sm"] .ui-textarea__field {
+        padding-block: 0.375rem;
+        padding-inline: 0.5rem;
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="md"] .ui-textarea__field {
+        padding-block: 0.5rem;
+        padding-inline: 0.75rem;
+        font-size: var(--text-sm, 0.875rem);
+      }
+      :scope[data-size="lg"] .ui-textarea__field {
+        padding-block: 0.625rem;
+        padding-inline: 1rem;
+        font-size: var(--text-base, 1rem);
+      }
+      :scope[data-size="xl"] .ui-textarea__field {
+        padding-block: 0.75rem;
+        padding-inline: 1.25rem;
+        font-size: var(--text-lg, 1.125rem);
+      }
+
+      /* Focus glow */
+      .ui-textarea__field:focus {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15),
+                    0 0 16px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1),
+                    inset 0 2px 4px oklch(0% 0 0 / 0.06);
+      }
+
+      /* Hover */
+      .ui-textarea__field:hover:not(:focus):not(:disabled) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+        background: oklch(100% 0 0 / 0.02);
+      }
+
+      /* Disabled */
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .ui-textarea__field:disabled {
+        cursor: not-allowed;
+      }
+
+      /* Placeholder */
+      .ui-textarea__field::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      /* Resize control */
+      :scope[data-resize="none"] .ui-textarea__field { resize: none; }
+      :scope[data-resize="vertical"] .ui-textarea__field { resize: vertical; }
+      :scope[data-resize="horizontal"] .ui-textarea__field { resize: horizontal; }
+      :scope[data-resize="both"] .ui-textarea__field { resize: both; }
+
+      /* Auto resize disables manual resize */
+      .ui-textarea__field[data-auto-resize] {
+        resize: none;
+        overflow: hidden;
+      }
+
+      /* Description */
+      .ui-textarea__description {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1.4;
+      }
+
+      /* Error state */
+      :scope[data-invalid] .ui-textarea__field {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 1px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.2);
+      }
+      :scope[data-invalid] .ui-textarea__field:focus {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      .ui-textarea__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-textarea__error {
+        animation: ui-textarea-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      /* Focus visible ring */
+      .ui-textarea__field:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Required indicator */
+      .ui-textarea__required {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        margin-inline-start: 0.25rem;
+      }
+
+      /* Character counter */
+      .ui-textarea__footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .ui-textarea__counter {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        text-align: end;
+        line-height: 1.4;
+      }
+      .ui-textarea__counter[data-at-limit] {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        font-weight: 600;
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-textarea__field {
+          min-block-size: 44px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-textarea__field {
+          border: 2px solid ButtonText;
+        }
+        .ui-textarea__field:focus {
+          outline: 2px solid Highlight;
+        }
+        :scope[data-invalid] .ui-textarea__field {
+          border-color: LinkText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-textarea__field {
+          box-shadow: none;
+          border: 1px solid;
+          resize: none;
+        }
+      }
+    }
+
+    @keyframes ui-textarea-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end textarea */
 
 /* threshold-gauge */
 @layer components {
