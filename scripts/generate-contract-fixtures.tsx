@@ -24,46 +24,12 @@ import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-import { CASES, SOURCES, CONTRACT_NOW } from '../packages/svelte/tests/contract/cases'
+import { CASES, CONTRACT_NOW } from '../packages/svelte/tests/contract/cases'
+import { loadComponent, loadParts, caseElement } from './contract-react'
 import { useStyles } from '../src/core/styles/use-styles'
 import { css } from '../src/core/styles/css-tag'
 
 const ROOT = resolve(import.meta.dirname, '..')
-const meta = JSON.parse(readFileSync(resolve(ROOT, 'dist/component-meta.json'), 'utf8'))
-const fileOf: Record<string, string> = Object.fromEntries(meta.components.map((c: { name: string; fileName: string }) => [c.name, c.fileName]))
-
-function hydrate(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(hydrate)
-  if (value && typeof value === 'object') {
-    const v = value as Record<string, unknown>
-    if ('$el' in v) return React.createElement('b', null, String(v.$el))
-    if ('$date' in v) return new Date(String(v.$date))
-    if ('$fn' in v) return () => {}
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
-  }
-  return value
-}
-
-async function load(name: string) {
-  if (SOURCES[name]) {
-    // `file#Export` when the public name differs from the file's own export name.
-    const [file, exportName = name] = SOURCES[name].split('#')
-    const mod = await import(pathToFileURL(resolve(ROOT, file)).href)
-    if (!mod[exportName]) throw new Error(`${file} does not export ${exportName}`)
-    return mod[exportName]
-  }
-  const file = fileOf[name]
-  if (!file) throw new Error(`${name} is not in component-meta.json`)
-  for (const dir of ['src/components', 'src/domain']) {
-    const p = resolve(ROOT, dir, `${file}.tsx`)
-    if (existsSync(p)) {
-      const mod = await import(pathToFileURL(p).href)
-      if (!mod[name]) throw new Error(`${p} does not export ${name}`)
-      return mod[name]
-    }
-  }
-  throw new Error(`no source file for ${name} (${file}.tsx)`)
-}
 
 // Freeze the clock for every render — see CONTRACT_NOW in cases.ts. Both
 // Date.now and the zero-argument constructor: `new Date()` reads the real clock
@@ -80,11 +46,12 @@ class PinnedDate extends RealDate {
 globalThis.Date = PinnedDate as DateConstructor
 
 const components: Record<string, Record<string, { props: unknown; html: string }>> = {}
+const parts = await loadParts(CASES)
 for (const name of Object.keys(CASES).sort()) {
-  const Component = await load(name)
+  const Component = await loadComponent(name)
   components[name] = {}
   for (const [caseName, props] of Object.entries(CASES[name])) {
-    const html = renderToStaticMarkup(React.createElement(Component, hydrate(props) as never))
+    const html = renderToStaticMarkup(caseElement(Component, props, parts))
     components[name][caseName] = { props, html }
   }
   // A case may legitimately render nothing (an unknown icon name). A component

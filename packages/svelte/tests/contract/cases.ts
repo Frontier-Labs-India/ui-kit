@@ -38,6 +38,11 @@ export const SOURCES: Record<string, string> = {
   Icon: 'src/core/icons/icon.tsx',
   FilterPillGroup: 'src/components/filter-pill.tsx',
   SidebarHeader: 'src/components/sidebar.tsx',
+  DropdownMenuTrigger: 'src/components/dropdown-menu.tsx',
+  DropdownMenuContent: 'src/components/dropdown-menu.tsx',
+  DropdownMenuItem: 'src/components/dropdown-menu.tsx',
+  DropdownMenuSeparator: 'src/components/dropdown-menu.tsx',
+  DropdownMenuLabel: 'src/components/dropdown-menu.tsx',
   SidebarContent: 'src/components/sidebar.tsx',
   SidebarFooter: 'src/components/sidebar.tsx',
   SidebarItem: 'src/components/sidebar.tsx',
@@ -1537,6 +1542,55 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
       interactive: true, maxWidth: 200, motion: 0,
     },
   },
+  // Rule 1 trigger for `items`; rule 3 parts for the composed API. Open cases
+  // compare the panel; its position is effect state (EFFECT_STYLES).
+  DropdownMenu: {
+    'items, closed': {
+      items: [{ label: 'Edit' }], children: { $el: 'Menu' },
+    },
+    'items, open, every entry kind, top-end, motion 0': {
+      items: [
+        { type: 'label', label: 'Actions' },
+        { label: 'Edit', icon: { $el: 'e' }, shortcut: '⌘E', onClick: { $fn: true } },
+        { label: { $el: 'Rich' }, disabled: true },
+        { type: 'separator' },
+        { label: 'Delete', danger: true, icon: '' },
+      ],
+      children: { $el: 'Menu' }, open: true, placement: 'top-end', motion: 0,
+    },
+    'composed, closed': {
+      children: [
+        { $part: 'DropdownMenuTrigger', props: { children: { $el: 'Menu' } } },
+        { $part: 'DropdownMenuContent', props: { children: [{ $part: 'DropdownMenuItem', props: { children: 'One' } }] } },
+      ],
+    },
+    'composed, open, every part': {
+      open: true,
+      children: [
+        { $part: 'DropdownMenuTrigger', props: { children: { $el: 'Menu' } } },
+        {
+          $part: 'DropdownMenuContent',
+          props: {
+            children: [
+              { $part: 'DropdownMenuLabel', props: { children: 'Group' } },
+              { $part: 'DropdownMenuItem', props: { children: 'One', icon: 'i', shortcut: 'K', onClick: { $fn: true } } },
+              { $part: 'DropdownMenuSeparator' },
+              { $part: 'DropdownMenuItem', props: { children: { $el: 'Two' }, disabled: true, danger: true } },
+            ],
+          },
+        },
+      ],
+    },
+  },
+  // The parts outside a menu render as React's do with no context.
+  DropdownMenuTrigger: { 'outside a menu': { children: { $el: 'T' } } },
+  DropdownMenuContent: { 'outside a menu': { children: { $el: 'loose' } } },
+  DropdownMenuItem: {
+    'outside a menu': { children: 'Plain' },
+    'icon, shortcut, disabled, danger': { children: { $el: 'Rich' }, icon: { $el: 'i' }, shortcut: '⌘K', disabled: true, danger: true },
+  },
+  DropdownMenuSeparator: { 'outside a menu': {} },
+  DropdownMenuLabel: { 'outside a menu': { children: 'Group' } },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

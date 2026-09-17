@@ -1,4 +1,5 @@
-import { createRawSnippet } from 'svelte'
+import { createRawSnippet, type Component } from 'svelte'
+import Compose from './Compose.svelte'
 import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* The one Svelte-side reading of the case encoding in cases.ts (React's side is
@@ -68,4 +69,26 @@ function applySpread(node: Element, props: SpreadProps): () => void {
     }
   }
   return () => cleanups.forEach(c => c())
+}
+
+export type PartNode = { $part: string; props?: Record<string, unknown> }
+
+export function isPartList(value: unknown): value is PartNode[] {
+  return Array.isArray(value) && value.some(v => v && typeof v === 'object' && '$part' in v)
+}
+
+/**
+ * What to render for a case: the component with hydrated props, or, when the
+ * case's `children` is a list of `{ $part }` nodes (COMPONENT-API.md rules 2-3),
+ * Compose rendering the component with those parts inside. `target` receives
+ * the component's bindable `ref`.
+ */
+export function caseRender(Comp: Component<any>, name: string, raw: unknown, target: { ref: unknown } = { ref: null }): { component: Component<any>; props: Record<string, unknown> } {
+  const { children, ...rest } = renamed(name, raw)
+  if (isPartList(children)) {
+    return { component: Compose, props: { component: Comp, rootProps: hydrate(rest), parts: children, target } }
+  }
+  const props = hydrate({ ...rest, ...(children === undefined ? {} : { children }) }) as Record<string, unknown>
+  Object.defineProperty(props, 'ref', { get: () => target.ref, set: v => { target.ref = v }, enumerable: true, configurable: true })
+  return { component: Comp, props }
 }

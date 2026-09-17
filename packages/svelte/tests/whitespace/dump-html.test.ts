@@ -5,7 +5,7 @@ import { writeFileSync } from 'node:fs'
 import * as pkg from '../../src/index.js'
 import contract from '../fixtures/contract.json'
 import { CONTRACT_NOW } from '../contract/cases.js'
-import { hydrate, renamed } from '../contract/hydrate.svelte.js'
+import { caseRender, hydrate, renamed } from '../contract/hydrate.svelte.js'
 
 /* Input for scripts/check-svelte-whitespace.mjs, which sets WHITESPACE_DUMP to
  * an output path; skipped otherwise. Writes React's server HTML and Svelte's
@@ -23,7 +23,8 @@ describe.skipIf(!OUT)('whitespace dump', () => {
         vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] })
         vi.setSystemTime(CONTRACT_NOW)
         const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-        const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+        const { component, props: p } = caseRender(Comp, name, props)
+        const { container } = render(component, { props: p })
         flushSync()
         vi.runAllTimers()
         vi.useRealTimers()

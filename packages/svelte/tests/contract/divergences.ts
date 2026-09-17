@@ -47,6 +47,13 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * elements are removed, from both trees, before the CSP check and the
  * comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  DropdownMenu: [
+    {
+      selector: '.ui-dropdown-menu',
+      properties: ['left', 'top'],
+      reason: 'The menu is placed beside the measured trigger in an effect; the server HTML has 0,0 (dropdown-menu.test.ts).',
+    },
+  ],
   Popover: [
     {
       selector: '.ui-popover',

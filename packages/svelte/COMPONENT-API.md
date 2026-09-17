@@ -106,7 +106,10 @@ gate refuses.
 
 Where parts find their parent through React context, they do the same through
 Svelte's `setContext`/`getContext`, under the same exported names. The parts
-render in place, in the order the caller writes them, as in React.
+render in place, in the order the caller writes them. React's DropdownMenu is
+the exception: it lifts `DropdownMenuContent` into its panel wherever it is
+written, and treats a stray non-part child as content. Here, write the Content
+after the Trigger (as React's examples do), and the markup is identical.
 
 - **Tabs** composed API: `TabList`, `TabTrigger`, `TabContent`.
 - **DropdownMenu** composed API: `DropdownMenuTrigger` (Rule 1 for its

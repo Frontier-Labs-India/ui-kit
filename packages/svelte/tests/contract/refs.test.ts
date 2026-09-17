@@ -8,7 +8,7 @@ import contract from '../fixtures/contract.json'
 import refs from '../fixtures/refs.json'
 import { CONTRACT_NOW } from './cases.js'
 import { describeElement, type RefTarget } from './ref-target.js'
-import { hydrate, renamed } from './hydrate.svelte.js'
+import { caseRender, hydrate, renamed } from './hydrate.svelte.js'
 
 /* Every component takes a bindable `ref`: the element React's `ref` receives
  * (tests/fixtures/refs.json, derived from React by scripts/generate-ref-fixtures.tsx),
@@ -19,6 +19,12 @@ import { hydrate, renamed } from './hydrate.svelte.js'
 const EXTENSIONS: Record<string, string> = {
   ConfirmDialog: 'the <dialog> of the Dialog it renders',
   DataTableSuggestions: 'its root, null while no insight is shown',
+  DropdownMenu: 'the caller\'s trigger element, through the attachment in its props',
+  DropdownMenuContent: 'the open panel\'s outer element, null while closed or outside a menu',
+  DropdownMenuItem: 'its button',
+  DropdownMenuLabel: 'its root',
+  DropdownMenuSeparator: 'its root',
+  DropdownMenuTrigger: 'the caller\'s trigger element, through the attachment in its props',
   NativeTooltip: 'the caller\'s trigger element, through the attachment in its props',
   Popover: 'the caller\'s trigger element, through the attachment in its props',
   Tooltip: 'the caller\'s trigger element, through the attachment in its props',
@@ -50,12 +56,11 @@ describe('bindable ref — every contract case', () => {
     for (const caseName of Object.keys(byCase)) {
       it(`${name} / ${caseName}`, () => {
         const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-        let ref: unknown = null
-        const props = hydrate(renamed(name, byCase[caseName].props)) as Record<string, unknown>
-        Object.defineProperty(props, 'ref', { get: () => ref, set: v => { ref = v }, enumerable: true, configurable: true })
+        const target = { ref: null as unknown }
+        const { component, props } = caseRender(Comp, name, byCase[caseName].props, target)
         vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] })
         vi.setSystemTime(CONTRACT_NOW)
-        const { container } = render(Comp, { props })
+        const { container } = render(component, { props })
         flushSync()
         vi.useRealTimers()
 
@@ -64,9 +69,9 @@ describe('bindable ref — every contract case', () => {
 
         const react = expected[name][caseName]
         if (react === null && name in EXTENSIONS) {
-          if (ref !== null) expect(container.contains(ref as Node)).toBe(true)
+          if (target.ref !== null) expect(container.contains(target.ref as Node)).toBe(true)
         } else {
-          expect(describeElement(container, ref)).toEqual(react)
+          expect(describeElement(container, target.ref)).toEqual(react)
         }
       })
     }
@@ -90,7 +95,7 @@ describe('bindable ref — declared by every exported component', () => {
         .replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '')
       expect(src).toMatch(/\bref = \$bindable\(null\)/)
       // bound to an element, forwarded to a child, or captured by a rule-1 attachment
-      expect(src).toMatch(/bind:this=\{ref\}|bind:ref\b|captureElement\(el => \{[^}]*\bref = el\b/)
+      expect(src).toMatch(/bind:this=\{ref\}|bind:ref\b|captureElement\(el => \{[^}]*\bref = el\b|\$effect\(\(\) => \{ ref = /)
     })
   }
 })

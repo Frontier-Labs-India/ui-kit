@@ -103,6 +103,8 @@ declared in the contract tests rather than hidden.
   spreads them (`mergeProps` chains your own handlers); a children list is
   either registered parts (AvatarGroup, TabPanel) or an `items` prop; parts
   share state through Svelte context, and `useToast()` is `getToast()`.
+  DropdownMenu's composed parts render where written, so put
+  `DropdownMenuContent` after `DropdownMenuTrigger`.
 - **Render props are snippet parameters.** ContainerQuery's `children`
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a

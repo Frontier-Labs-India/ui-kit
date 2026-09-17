@@ -7,7 +7,7 @@ import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
 import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT } from './divergences.js'
-import { hydrate, renamed } from './hydrate.svelte.js'
+import { caseRender, hydrate, renamed } from './hydrate.svelte.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -99,7 +99,8 @@ describe('React DOM contract', () => {
           // runs, so without this the clock drifts across cases and relative
           // times ("30 seconds ago") stop matching.
           vi.setSystemTime(CONTRACT_NOW)
-          const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+          const { component, props: p } = caseRender(Comp, name, props)
+          const { container } = render(component, { props: p })
           vi.runAllTimers()
           flushSync()
           // CSP: where React's markup has no inline style at all, Svelte must

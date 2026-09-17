@@ -5,7 +5,7 @@ import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
-import { hydrate, renamed } from './hydrate.svelte.js'
+import { caseRender, hydrate, renamed } from './hydrate.svelte.js'
 
 /* jest-axe over every case of every contract-tested component — not a
  * hand-picked few — so each new port is checked without writing a test.
@@ -54,7 +54,18 @@ const STAND_IN_TRIGGER =
   'the case\'s trigger is the contract\'s <b> stand-in, where aria-expanded/aria-haspopup are not allowed; ' +
   'on the <button> a caller spreads the trigger props onto they are (popover.test.ts runs axe on that)'
 
+const PART_ALONE =
+  'the case renders the part on its own, as React\'s does without a menu; a menuitem needs the role="menu" ' +
+  'panel that the enclosing DropdownMenu supplies (the composed case checks them together)'
+
 const INHERITED: Record<string, string> = {
+  'DropdownMenu/items, closed/aria-allowed-attr': STAND_IN_TRIGGER,
+  'DropdownMenu/items, open, every entry kind, top-end, motion 0/aria-allowed-attr': STAND_IN_TRIGGER,
+  'DropdownMenu/composed, closed/aria-allowed-attr': STAND_IN_TRIGGER,
+  'DropdownMenu/composed, open, every part/aria-allowed-attr': STAND_IN_TRIGGER,
+  'DropdownMenuTrigger/outside a menu/aria-allowed-attr': STAND_IN_TRIGGER,
+  'DropdownMenuItem/outside a menu/aria-required-parent': PART_ALONE,
+  'DropdownMenuItem/icon, shortcut, disabled, danger/aria-required-parent': PART_ALONE,
   'Popover/closed/aria-allowed-attr': STAND_IN_TRIGGER,
   'Popover/default open with snippet content/aria-allowed-attr': STAND_IN_TRIGGER,
   'Popover/controlled open, top, no arrow, class, label, motion 0/aria-allowed-attr': STAND_IN_TRIGGER,
@@ -130,7 +141,8 @@ describe('accessibility — every contract case', () => {
         const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
         vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] })
         vi.setSystemTime(CONTRACT_NOW)
-        const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+        const { component, props: p } = caseRender(Comp, name, props)
+        const { container } = render(component, { props: p })
         vi.runAllTimers()
         vi.useRealTimers()
         expect(container.innerHTML.length).toBeGreaterThan(0)

@@ -20,38 +20,12 @@ import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { CASES, SOURCES, CONTRACT_NOW } from '../packages/svelte/tests/contract/cases'
+import { CASES, CONTRACT_NOW } from '../packages/svelte/tests/contract/cases'
+import { loadComponent, loadParts, caseElement } from './contract-react'
 import { describeElement, type RefTarget } from '../packages/svelte/tests/contract/ref-target'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const OUT = resolve(ROOT, 'packages/svelte/tests/fixtures/refs.json')
-const meta = JSON.parse(readFileSync(resolve(ROOT, 'dist/component-meta.json'), 'utf8'))
-const fileOf: Record<string, string> = Object.fromEntries(meta.components.map((c: { name: string; fileName: string }) => [c.name, c.fileName]))
-
-function hydrate(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(hydrate)
-  if (value && typeof value === 'object') {
-    const v = value as Record<string, unknown>
-    if ('$el' in v) return React.createElement('b', null, String(v.$el))
-    if ('$date' in v) return new Date(String(v.$date))
-    if ('$fn' in v) return () => {}
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
-  }
-  return value
-}
-
-async function load(name: string): Promise<React.ComponentType> {
-  if (SOURCES[name]) {
-    const [file, exportName = name] = SOURCES[name].split('#')
-    return (await import(resolve(ROOT, file)))[exportName]
-  }
-  for (const dir of ['src/components', 'src/domain']) {
-    const p = resolve(ROOT, dir, `${fileOf[name]}.tsx`)
-    if (existsSync(p)) return (await import(p))[name]
-  }
-  throw new Error(`no source file for ${name}`)
-}
-
 it('ref targets', async () => {
   // jsdom lacks these; the Svelte suite stubs the same ones (tests/setup.ts).
   HTMLDialogElement.prototype.showModal ??= function (this: HTMLDialogElement) { this.setAttribute('open', '') }
@@ -61,12 +35,13 @@ it('ref targets', async () => {
   vi.setSystemTime(CONTRACT_NOW)
 
   const out: Record<string, Record<string, RefTarget>> = {}
+  const parts = await loadParts(CASES)
   for (const name of Object.keys(CASES).sort()) {
-    const Component = await load(name)
+    const Component = await loadComponent(name)
     out[name] = {}
     for (const [caseName, props] of Object.entries(CASES[name])) {
       const ref = React.createRef<Element>()
-      const { container } = render(React.createElement(Component, { ...(hydrate(props) as object), ref } as never))
+      const { container } = render(caseElement(Component, props, parts, { ref }))
       out[name][caseName] = describeElement(container, ref.current)
       cleanup()
     }

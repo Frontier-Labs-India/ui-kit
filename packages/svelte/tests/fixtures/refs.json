@@ -1185,6 +1185,28 @@
    "nth": 0
   }
  },
+ "DropdownMenu": {
+  "items, closed": null,
+  "items, open, every entry kind, top-end, motion 0": null,
+  "composed, closed": null,
+  "composed, open, every part": null
+ },
+ "DropdownMenuContent": {
+  "outside a menu": null
+ },
+ "DropdownMenuItem": {
+  "outside a menu": null,
+  "icon, shortcut, disabled, danger": null
+ },
+ "DropdownMenuLabel": {
+  "outside a menu": null
+ },
+ "DropdownMenuSeparator": {
+  "outside a menu": null
+ },
+ "DropdownMenuTrigger": {
+  "outside a menu": null
+ },
  "EmptyState": {
   "title only": {
    "tag": "div",

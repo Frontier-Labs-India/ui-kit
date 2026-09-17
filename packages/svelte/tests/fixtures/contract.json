@@ -2566,6 +2566,199 @@
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
       }
     },
+    "DropdownMenu": {
+      "items, closed": {
+        "props": {
+          "items": [
+            {
+              "label": "Edit"
+            }
+          ],
+          "children": {
+            "$el": "Menu"
+          }
+        },
+        "html": "<b aria-expanded=\"false\" aria-haspopup=\"menu\">Menu</b>"
+      },
+      "items, open, every entry kind, top-end, motion 0": {
+        "props": {
+          "items": [
+            {
+              "type": "label",
+              "label": "Actions"
+            },
+            {
+              "label": "Edit",
+              "icon": {
+                "$el": "e"
+              },
+              "shortcut": "⌘E",
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "label": {
+                "$el": "Rich"
+              },
+              "disabled": true
+            },
+            {
+              "type": "separator"
+            },
+            {
+              "label": "Delete",
+              "danger": true,
+              "icon": ""
+            }
+          ],
+          "children": {
+            "$el": "Menu"
+          },
+          "open": true,
+          "placement": "top-end",
+          "motion": 0
+        },
+        "html": "<b aria-expanded=\"true\" aria-haspopup=\"menu\" aria-controls=\"dropdown-menu-_R_0_\">Menu</b><div class=\"ui-dropdown-menu\" data-placement=\"top-end\" data-motion=\"0\" style=\"position:fixed;left:0px;top:0px\"><div class=\"ui-dropdown-menu__panel\" id=\"dropdown-menu-_R_0_\" role=\"menu\" tabindex=\"-1\"><div role=\"presentation\" class=\"ui-dropdown-menu__group-label\">Actions</div><button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\"><span class=\"ui-dropdown-menu__icon\"><b>e</b></span><span class=\"ui-dropdown-menu__label-text\">Edit</span><span class=\"ui-dropdown-menu__shortcut\">⌘E</span></button><button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\" aria-disabled=\"true\"><span class=\"ui-dropdown-menu__label-text\"><b>Rich</b></span></button><div role=\"separator\" class=\"ui-dropdown-menu__separator\"></div><button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\" data-danger=\"true\"><span class=\"ui-dropdown-menu__label-text\">Delete</span></button></div></div>"
+      },
+      "composed, closed": {
+        "props": {
+          "children": [
+            {
+              "$part": "DropdownMenuTrigger",
+              "props": {
+                "children": {
+                  "$el": "Menu"
+                }
+              }
+            },
+            {
+              "$part": "DropdownMenuContent",
+              "props": {
+                "children": [
+                  {
+                    "$part": "DropdownMenuItem",
+                    "props": {
+                      "children": "One"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "html": "<b aria-expanded=\"false\" aria-haspopup=\"menu\">Menu</b>"
+      },
+      "composed, open, every part": {
+        "props": {
+          "open": true,
+          "children": [
+            {
+              "$part": "DropdownMenuTrigger",
+              "props": {
+                "children": {
+                  "$el": "Menu"
+                }
+              }
+            },
+            {
+              "$part": "DropdownMenuContent",
+              "props": {
+                "children": [
+                  {
+                    "$part": "DropdownMenuLabel",
+                    "props": {
+                      "children": "Group"
+                    }
+                  },
+                  {
+                    "$part": "DropdownMenuItem",
+                    "props": {
+                      "children": "One",
+                      "icon": "i",
+                      "shortcut": "K",
+                      "onClick": {
+                        "$fn": true
+                      }
+                    }
+                  },
+                  {
+                    "$part": "DropdownMenuSeparator"
+                  },
+                  {
+                    "$part": "DropdownMenuItem",
+                    "props": {
+                      "children": {
+                        "$el": "Two"
+                      },
+                      "disabled": true,
+                      "danger": true
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "html": "<b aria-expanded=\"true\" aria-haspopup=\"menu\" aria-controls=\"dropdown-menu-_R_0_\">Menu</b><div class=\"ui-dropdown-menu\" data-placement=\"bottom-start\" data-motion=\"3\" style=\"position:fixed;left:0px;top:0px\"><div class=\"ui-dropdown-menu__panel\" id=\"dropdown-menu-_R_0_\" role=\"menu\" tabindex=\"-1\"><div role=\"presentation\" class=\"ui-dropdown-menu__group-label\">Group</div><button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\"><span class=\"ui-dropdown-menu__icon\">i</span><span class=\"ui-dropdown-menu__label-text\">One</span><span class=\"ui-dropdown-menu__shortcut\">K</span></button><div role=\"separator\" class=\"ui-dropdown-menu__separator\"></div><button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\" aria-disabled=\"true\" data-danger=\"true\"><span class=\"ui-dropdown-menu__label-text\"><b>Two</b></span></button></div></div>"
+      }
+    },
+    "DropdownMenuContent": {
+      "outside a menu": {
+        "props": {
+          "children": {
+            "$el": "loose"
+          }
+        },
+        "html": "<b>loose</b>"
+      }
+    },
+    "DropdownMenuItem": {
+      "outside a menu": {
+        "props": {
+          "children": "Plain"
+        },
+        "html": "<button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\"><span class=\"ui-dropdown-menu__label-text\">Plain</span></button>"
+      },
+      "icon, shortcut, disabled, danger": {
+        "props": {
+          "children": {
+            "$el": "Rich"
+          },
+          "icon": {
+            "$el": "i"
+          },
+          "shortcut": "⌘K",
+          "disabled": true,
+          "danger": true
+        },
+        "html": "<button type=\"button\" role=\"menuitem\" class=\"ui-dropdown-menu__item\" tabindex=\"-1\" aria-disabled=\"true\" data-danger=\"true\"><span class=\"ui-dropdown-menu__icon\"><b>i</b></span><span class=\"ui-dropdown-menu__label-text\"><b>Rich</b></span><span class=\"ui-dropdown-menu__shortcut\">⌘K</span></button>"
+      }
+    },
+    "DropdownMenuLabel": {
+      "outside a menu": {
+        "props": {
+          "children": "Group"
+        },
+        "html": "<div role=\"presentation\" class=\"ui-dropdown-menu__group-label\">Group</div>"
+      }
+    },
+    "DropdownMenuSeparator": {
+      "outside a menu": {
+        "props": {},
+        "html": "<div role=\"separator\" class=\"ui-dropdown-menu__separator\"></div>"
+      }
+    },
+    "DropdownMenuTrigger": {
+      "outside a menu": {
+        "props": {
+          "children": {
+            "$el": "T"
+          }
+        },
+        "html": "<b aria-expanded=\"false\" aria-haspopup=\"menu\">T</b>"
+      }
+    },
     "EmptyState": {
       "title only": {
         "props": {
