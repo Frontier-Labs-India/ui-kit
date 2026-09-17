@@ -565,6 +565,12 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { label: 'M', motion: 0, options: [] },
   },
+  DatePicker: {
+    empty: { 'aria-label': 'Date' },
+    'label, uncontrolled default, placeholder, lg': { label: 'Start', defaultValue: '2026-03-09', placeholder: 'Pick a date', size: 'lg' },
+    'controlled, error, disabled, caller attrs': { label: { $el: 'Due' }, value: '2025-12-31', error: 'In the past', disabled: true, className: 'mine', id: 'dp' },
+    'motion 0': { 'aria-label': 'D', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

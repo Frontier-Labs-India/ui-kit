@@ -1555,6 +1555,43 @@
         "html": ""
       }
     },
+    "DatePicker": {
+      "empty": {
+        "props": {
+          "aria-label": "Date"
+        },
+        "html": "<div class=\"ui-date-picker\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-date-picker__input-wrapper\"><input id=\"date-picker-_R_0_-input\" type=\"text\" role=\"combobox\" class=\"ui-date-picker__input\" readOnly=\"\" aria-label=\"Date\" aria-haspopup=\"dialog\" aria-expanded=\"false\" value=\"\"/><button type=\"button\" class=\"ui-date-picker__trigger\" aria-label=\"Open calendar\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg></button></div></div>"
+      },
+      "label, uncontrolled default, placeholder, lg": {
+        "props": {
+          "label": "Start",
+          "defaultValue": "2026-03-09",
+          "placeholder": "Pick a date",
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-date-picker\" data-size=\"lg\" data-motion=\"3\"><label for=\"date-picker-_R_0_-input\" class=\"ui-date-picker__label\">Start</label><div class=\"ui-date-picker__input-wrapper\"><input id=\"date-picker-_R_0_-input\" type=\"text\" role=\"combobox\" class=\"ui-date-picker__input\" placeholder=\"Pick a date\" readOnly=\"\" aria-haspopup=\"dialog\" aria-expanded=\"false\" value=\"Mar 9, 2026\"/><button type=\"button\" class=\"ui-date-picker__trigger\" aria-label=\"Open calendar\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg></button></div></div>"
+      },
+      "controlled, error, disabled, caller attrs": {
+        "props": {
+          "label": {
+            "$el": "Due"
+          },
+          "value": "2025-12-31",
+          "error": "In the past",
+          "disabled": true,
+          "className": "mine",
+          "id": "dp"
+        },
+        "html": "<div class=\"ui-date-picker mine\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\" id=\"dp\"><label for=\"date-picker-_R_0_-input\" class=\"ui-date-picker__label\"><b>Due</b></label><div class=\"ui-date-picker__input-wrapper\"><input id=\"date-picker-_R_0_-input\" type=\"text\" role=\"combobox\" class=\"ui-date-picker__input\" disabled=\"\" readOnly=\"\" aria-invalid=\"true\" aria-describedby=\"date-picker-_R_0_-error\" aria-haspopup=\"dialog\" aria-expanded=\"false\" value=\"Dec 31, 2025\"/><button type=\"button\" class=\"ui-date-picker__trigger\" disabled=\"\" aria-label=\"Open calendar\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg></button></div><span id=\"date-picker-_R_0_-error\" class=\"ui-date-picker__error\" role=\"alert\">In the past</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "aria-label": "D",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-date-picker\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-date-picker__input-wrapper\"><input id=\"date-picker-_R_0_-input\" type=\"text\" role=\"combobox\" class=\"ui-date-picker__input\" readOnly=\"\" aria-label=\"D\" aria-haspopup=\"dialog\" aria-expanded=\"false\" value=\"\"/><button type=\"button\" class=\"ui-date-picker__trigger\" aria-label=\"Open calendar\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\" ry=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg></button></div></div>"
+      }
+    },
     "DensitySelector": {
       "defaults": {
         "props": {},
