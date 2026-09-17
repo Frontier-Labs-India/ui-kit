@@ -3788,6 +3788,10 @@
    "nth": 0
   }
  },
+ "ToastProvider": {
+  "defaults": null,
+  "bottom-center, max 2, motion 0": null
+ },
  "ToggleSwitch": {
   "label": {
    "tag": "input",

@@ -27,6 +27,7 @@ const EXTENSIONS: Record<string, string> = {
   DropdownMenuTrigger: 'the caller\'s trigger element, through the attachment in its props',
   NativeTooltip: 'the caller\'s trigger element, through the attachment in its props',
   Popover: 'the caller\'s trigger element, through the attachment in its props',
+  ToastProvider: 'its toast container',
   Tooltip: 'the caller\'s trigger element, through the attachment in its props',
   TopologyGraphCanvas: 'its <canvas>',
   TopologyGraphSVG: 'its <svg>',

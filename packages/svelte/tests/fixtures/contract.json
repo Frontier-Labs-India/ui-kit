@@ -9589,6 +9589,25 @@
         "html": "<div class=\"ui-timeline\" data-variant=\"default\" data-size=\"md\" data-connector=\"solid\" data-motion=\"0\" role=\"list\"></div>"
       }
     },
+    "ToastProvider": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "app"
+          }
+        },
+        "html": "<b>app</b><div class=\"ui-toast-container\" data-position=\"top-right\" data-motion=\"3\"></div>"
+      },
+      "bottom-center, max 2, motion 0": {
+        "props": {
+          "children": "app",
+          "position": "bottom-center",
+          "maxVisible": 2,
+          "motion": 0
+        },
+        "html": "app<div class=\"ui-toast-container\" data-position=\"bottom-center\" data-motion=\"0\"></div>"
+      }
+    },
     "ToggleSwitch": {
       "label": {
         "props": {

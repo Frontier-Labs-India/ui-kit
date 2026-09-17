@@ -1722,6 +1722,11 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
       nodes: [{ id: 'p', label: 'Parent', children: [{ id: 'c', label: 'Child' }] }], selected: 'p',
     },
   },
+  // Toasts exist only after toast() calls (toast.test.ts); the server renders the container.
+  ToastProvider: {
+    defaults: { children: { $el: 'app' } },
+    'bottom-center, max 2, motion 0': { children: 'app', position: 'bottom-center', maxVisible: 2, motion: 0 },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },
