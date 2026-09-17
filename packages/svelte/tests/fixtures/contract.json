@@ -2991,6 +2991,62 @@
         "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"0\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
       }
     },
+    "Sparkline": {
+      "basic": {
+        "props": {
+          "data": [
+            3,
+            7,
+            2,
+            9
+          ]
+        },
+        "html": "<div class=\"ui-sparkline\" data-motion=\"3\" style=\"--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"><defs><linearGradient id=\"sparkline-grad-4\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0.3\"></stop><stop offset=\"100%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0\"></stop></linearGradient></defs><path class=\"ui-sparkline__area\" d=\"M 0 26 Q 16.666666666666664 26, 33.33333333333333 10 Q 49.99999999999999 10, 66.66666666666666 30 Q 83.33333333333333 30, 100 2 L 100 32 L 0 32 Z\" fill=\"url(#sparkline-grad-4)\"></path><path class=\"ui-sparkline__line\" d=\"M 0 26 Q 16.666666666666664 26, 33.33333333333333 10 Q 49.99999999999999 10, 66.66666666666666 30 Q 83.33333333333333 30, 100 2\" stroke=\"oklch(65% 0.2 270)\"></path></svg></div>"
+      },
+      "width number, colour, tooltip, no gradient": {
+        "props": {
+          "data": [
+            1,
+            2
+          ],
+          "width": 120,
+          "height": 20,
+          "color": "teal",
+          "gradient": false,
+          "showTooltip": true
+        },
+        "html": "<div class=\"ui-sparkline\" data-motion=\"3\" style=\"width:120px;--sparkline-color:teal\"><svg viewBox=\"0 0 100 20\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:20px\"><path class=\"ui-sparkline__line\" d=\"M 0 18 Q 50 18, 100 2\" stroke=\"teal\"></path><rect class=\"ui-sparkline__hit-area\" x=\"-25\" y=\"0\" width=\"50\" height=\"20\"></rect><rect class=\"ui-sparkline__hit-area\" x=\"75\" y=\"0\" width=\"50\" height=\"20\"></rect></svg></div>"
+      },
+      "width string, caller style": {
+        "props": {
+          "data": [
+            5,
+            5,
+            5
+          ],
+          "width": "50%",
+          "style": {
+            "opacity": 0.8
+          }
+        },
+        "html": "<div class=\"ui-sparkline\" data-motion=\"3\" style=\"opacity:0.8;width:50%;--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"><defs><linearGradient id=\"sparkline-grad-3\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0.3\"></stop><stop offset=\"100%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0\"></stop></linearGradient></defs><path class=\"ui-sparkline__area\" d=\"M 0 30 Q 25 30, 50 30 Q 75 30, 100 30 L 100 32 L 0 32 Z\" fill=\"url(#sparkline-grad-3)\"></path><path class=\"ui-sparkline__line\" d=\"M 0 30 Q 25 30, 50 30 Q 75 30, 100 30\" stroke=\"oklch(65% 0.2 270)\"></path></svg></div>"
+      },
+      "too few points": {
+        "props": {
+          "data": [
+            4
+          ]
+        },
+        "html": "<div class=\"ui-sparkline\" data-motion=\"3\" style=\"--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "data": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-sparkline\" data-motion=\"0\" style=\"--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"></svg></div>"
+      }
+    },
     "SpotlightCard": {
       "defaults": {
         "props": {
@@ -3215,6 +3271,88 @@
           ]
         },
         "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"0\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">1</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div></div></div>"
+      }
+    },
+    "StorageBar": {
+      "basic": {
+        "props": {
+          "total": 1000,
+          "segments": [
+            {
+              "label": "System",
+              "value": 120
+            },
+            {
+              "label": "Apps",
+              "value": 300,
+              "color": "gold"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-storage-bar\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"Storage: 420.0 GB of 1000.0 GB used\"><div class=\"ui-storage-bar__track\"><div class=\"ui-storage-bar__segment\" style=\"inline-size:12%;background-color:oklch(65% 0.2 270)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:30%;background-color:gold\"></div></div></div>"
+      },
+      "labels, legend, TB, lg": {
+        "props": {
+          "total": 4096,
+          "showLabels": true,
+          "showLegend": true,
+          "size": "lg",
+          "segments": [
+            {
+              "label": "Media",
+              "value": 2048
+            },
+            {
+              "label": "Docs",
+              "value": 1.5
+            }
+          ]
+        },
+        "html": "<div class=\"ui-storage-bar\" data-size=\"lg\" data-motion=\"3\" role=\"img\" aria-label=\"Storage: 2.0 TB of 4.0 TB used\"><div class=\"ui-storage-bar__track\"><div class=\"ui-storage-bar__segment\" style=\"inline-size:50%;background-color:oklch(65% 0.2 270)\"><span class=\"ui-storage-bar__segment-label\">Media</span></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:0.03662109375%;background-color:oklch(72% 0.19 155)\"><span class=\"ui-storage-bar__segment-label\">Docs</span></div></div><div class=\"ui-storage-bar__legend\"><span class=\"ui-storage-bar__legend-item\"><span class=\"ui-storage-bar__legend-swatch\" style=\"background-color:oklch(65% 0.2 270)\"></span>Media: 2.0 TB</span><span class=\"ui-storage-bar__legend-item\"><span class=\"ui-storage-bar__legend-swatch\" style=\"background-color:oklch(72% 0.19 155)\"></span>Docs: 1.5 GB</span><span class=\"ui-storage-bar__legend-item\">Free: 2.0 TB</span></div></div>"
+      },
+      "seven segments wrap default colours": {
+        "props": {
+          "total": 70,
+          "segments": [
+            {
+              "label": "s1",
+              "value": 1
+            },
+            {
+              "label": "s2",
+              "value": 2
+            },
+            {
+              "label": "s3",
+              "value": 3
+            },
+            {
+              "label": "s4",
+              "value": 4
+            },
+            {
+              "label": "s5",
+              "value": 5
+            },
+            {
+              "label": "s6",
+              "value": 6
+            },
+            {
+              "label": "s7",
+              "value": 7
+            }
+          ]
+        },
+        "html": "<div class=\"ui-storage-bar\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"Storage: 28.0 GB of 70.0 GB used\"><div class=\"ui-storage-bar__track\"><div class=\"ui-storage-bar__segment\" style=\"inline-size:1.4285714285714286%;background-color:oklch(65% 0.2 270)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:2.857142857142857%;background-color:oklch(72% 0.19 155)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:4.285714285714286%;background-color:oklch(78% 0.17 85)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:5.714285714285714%;background-color:oklch(62% 0.22 25)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:7.142857142857142%;background-color:oklch(70% 0.16 200)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:8.571428571428571%;background-color:oklch(68% 0.18 320)\"></div><div class=\"ui-storage-bar__segment\" style=\"inline-size:10%;background-color:oklch(65% 0.2 270)\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "total": 1,
+          "segments": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-storage-bar\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"Storage: 0.0 GB of 1.0 GB used\"><div class=\"ui-storage-bar__track\"></div></div>"
       }
     },
     "SuccessCheckmark": {
@@ -3657,6 +3795,66 @@
           "motion": 0
         },
         "html": "<div class=\"ui-uptime-tracker\" data-motion=\"0\" role=\"group\" aria-label=\"Uptime history\"><div class=\"ui-uptime-tracker__bar\"></div></div>"
+      }
+    },
+    "UtilizationBar": {
+      "basic": {
+        "props": {
+          "segments": [
+            {
+              "value": 30
+            },
+            {
+              "value": 25,
+              "color": "red"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-utilization-bar\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"Utilization\"><div class=\"ui-utilization-bar__track\"><div class=\"ui-utilization-bar__segment\" style=\"width:30%;background:oklch(65% 0.2 270)\" role=\"presentation\"></div><div class=\"ui-utilization-bar__segment\" style=\"width:25%;background:red\" role=\"presentation\"></div></div></div>"
+      },
+      "thresholds, labels, max, sm": {
+        "props": {
+          "max": 200,
+          "size": "sm",
+          "showLabels": true,
+          "thresholds": {
+            "warning": 70,
+            "critical": 90
+          },
+          "segments": [
+            {
+              "value": 50,
+              "label": "CPU"
+            },
+            {
+              "value": 20
+            },
+            {
+              "value": 10,
+              "label": "IO",
+              "color": ""
+            }
+          ]
+        },
+        "html": "<div class=\"ui-utilization-bar\" data-motion=\"3\" data-size=\"sm\" role=\"group\" aria-label=\"Utilization\"><div class=\"ui-utilization-bar__track\"><div class=\"ui-utilization-bar__segment\" style=\"width:25%;background:oklch(65% 0.2 270)\" role=\"presentation\"></div><div class=\"ui-utilization-bar__segment\" style=\"width:10%;background:oklch(72% 0.19 155)\" role=\"presentation\"></div><div class=\"ui-utilization-bar__segment\" style=\"width:5%;background:oklch(80% 0.18 85)\" role=\"presentation\"></div><div class=\"ui-utilization-bar__threshold\" data-level=\"warning\" style=\"inset-inline-start:70%\"></div><div class=\"ui-utilization-bar__threshold\" data-level=\"critical\" style=\"inset-inline-start:90%\"></div></div><div class=\"ui-utilization-bar__labels\"><span class=\"ui-utilization-bar__label-item\"><span class=\"ui-utilization-bar__label-dot\" style=\"background:oklch(65% 0.2 270)\"></span>CPU</span><span class=\"ui-utilization-bar__label-item\"><span class=\"ui-utilization-bar__label-dot\" style=\"background:oklch(80% 0.18 85)\"></span>IO</span></div></div>"
+      },
+      "labels hidden when none labelled": {
+        "props": {
+          "showLabels": true,
+          "segments": [
+            {
+              "value": 5
+            }
+          ]
+        },
+        "html": "<div class=\"ui-utilization-bar\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"Utilization\"><div class=\"ui-utilization-bar__track\"><div class=\"ui-utilization-bar__segment\" style=\"width:5%;background:oklch(65% 0.2 270)\" role=\"presentation\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "segments": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-utilization-bar\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Utilization\"><div class=\"ui-utilization-bar__track\"></div></div>"
       }
     },
     "ViewTransitionLink": {

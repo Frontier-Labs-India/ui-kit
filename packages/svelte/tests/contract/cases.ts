@@ -635,4 +635,23 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'sla with no uptime data': { showSla: true, days: [{ date: 'a', status: 'unknown' }] },
     'motion 0': { days: [], motion: 0 },
   },
+  Sparkline: {
+    basic: { data: [3, 7, 2, 9] },
+    'width number, colour, tooltip, no gradient': { data: [1, 2], width: 120, height: 20, color: 'teal', gradient: false, showTooltip: true },
+    'width string, caller style': { data: [5, 5, 5], width: '50%', style: { opacity: 0.8 } },
+    'too few points': { data: [4] },
+    'motion 0': { data: [], motion: 0 },
+  },
+  StorageBar: {
+    basic: { total: 1000, segments: [{ label: 'System', value: 120 }, { label: 'Apps', value: 300, color: 'gold' }] },
+    'labels, legend, TB, lg': { total: 4096, showLabels: true, showLegend: true, size: 'lg', segments: [{ label: 'Media', value: 2048 }, { label: 'Docs', value: 1.5 }] },
+    'seven segments wrap default colours': { total: 70, segments: [1, 2, 3, 4, 5, 6, 7].map(n => ({ label: 's' + n, value: n })) },
+    'motion 0': { total: 1, segments: [], motion: 0 },
+  },
+  UtilizationBar: {
+    basic: { segments: [{ value: 30 }, { value: 25, color: 'red' }] },
+    'thresholds, labels, max, sm': { max: 200, size: 'sm', showLabels: true, thresholds: { warning: 70, critical: 90 }, segments: [{ value: 50, label: 'CPU' }, { value: 20 }, { value: 10, label: 'IO', color: '' }] },
+    'labels hidden when none labelled': { showLabels: true, segments: [{ value: 5 }] },
+    'motion 0': { segments: [], motion: 0 },
+  },
 }
