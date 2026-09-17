@@ -366,6 +366,51 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { open: false, onConfirm: { $fn: true }, onCancel: { $fn: true }, title: 'Sure?', motion: 0 },
   },
+  TopologyGraph: {
+    empty: { nodes: [], edges: [] },
+    'every node type and edge feature': {
+      nodes: [
+        { id: 'fw', label: 'Firewall', type: 'firewall', status: 'ok' },
+        { id: 'rt', label: 'Router', type: 'router', status: 'warning' },
+        { id: 'sw', label: 'Switch', type: 'switch', status: 'critical' },
+        { id: 'sv', label: 'Server', type: 'server', status: 'maintenance' },
+        { id: 'db', label: 'DB', type: 'database' },
+        { id: 'lb', label: 'LB', type: 'loadbalancer', width: 60, height: 40 },
+        { id: 'cl', label: 'Cloud', type: 'cloud' },
+        // A string icon: an { $el } <b> inside <svg> is an HTML breakout tag, so parsing
+        // React's server HTML would close the <svg> early. Snippet icons: topology-graph.test.ts.
+        { id: 'cu', label: 'Custom', type: 'custom', icon: 'i' },
+      ],
+      edges: [
+        { source: 'cl', target: 'fw', label: 'WAN', status: 'ok', bandwidth: 1000, animated: true },
+        { source: 'fw', target: 'rt', bidirectional: true, status: 'warning' },
+        { source: 'rt', target: 'sw', bandwidth: 50, status: 'critical' },
+        { source: 'sw', target: 'sv' },
+        { source: 'sw', target: 'db', animated: true },
+        { source: 'lb', target: 'sv' },
+        { source: 'ghost', target: 'sv' },
+      ],
+      selectedNodes: ['rt', 'lb'],
+      onNodeClick: { $fn: true },
+      onEdgeClick: { $fn: true },
+      onNodeHover: { $fn: true },
+      showLegend: true,
+      showMinimap: true,
+    },
+    'dagre, pinned positions, no controls, string height': {
+      nodes: [{ id: 'a', label: 'A', x: 50, y: 60 }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+      edges: [{ source: 'a', target: 'b' }, { source: 'b', target: 'c', label: 'x' }],
+      layout: 'dagre', showControls: false, height: '100%', className: 'mine',
+    },
+    circular: { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }], edges: [{ source: 'a', target: 'c' }], layout: 'circular', height: 300 },
+    grid: { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }, { id: 'd', label: 'D' }], edges: [], layout: 'grid' },
+    'caller style replaces height': { nodes: [{ id: 'a', label: 'A' }], edges: [], style: { minHeight: 200 } },
+    'minimap with no nodes renders nothing': { nodes: [], edges: [], showMinimap: true },
+    'canvas renderer': { nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b' }], renderer: 'canvas', height: 240 },
+    'motion 0 has no keyframes and no dash': {
+      nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b', animated: true }], motion: 0,
+    },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

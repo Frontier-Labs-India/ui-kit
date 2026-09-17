@@ -4983,6 +4983,280 @@
         "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"md\" data-justify=\"start\"></div>"
       }
     },
+    "TopologyGraph": {
+      "empty": {
+        "props": {
+          "nodes": [],
+          "edges": []
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"></g></svg></div>"
+      },
+      "every node type and edge feature": {
+        "props": {
+          "nodes": [
+            {
+              "id": "fw",
+              "label": "Firewall",
+              "type": "firewall",
+              "status": "ok"
+            },
+            {
+              "id": "rt",
+              "label": "Router",
+              "type": "router",
+              "status": "warning"
+            },
+            {
+              "id": "sw",
+              "label": "Switch",
+              "type": "switch",
+              "status": "critical"
+            },
+            {
+              "id": "sv",
+              "label": "Server",
+              "type": "server",
+              "status": "maintenance"
+            },
+            {
+              "id": "db",
+              "label": "DB",
+              "type": "database"
+            },
+            {
+              "id": "lb",
+              "label": "LB",
+              "type": "loadbalancer",
+              "width": 60,
+              "height": 40
+            },
+            {
+              "id": "cl",
+              "label": "Cloud",
+              "type": "cloud"
+            },
+            {
+              "id": "cu",
+              "label": "Custom",
+              "type": "custom",
+              "icon": "i"
+            }
+          ],
+          "edges": [
+            {
+              "source": "cl",
+              "target": "fw",
+              "label": "WAN",
+              "status": "ok",
+              "bandwidth": 1000,
+              "animated": true
+            },
+            {
+              "source": "fw",
+              "target": "rt",
+              "bidirectional": true,
+              "status": "warning"
+            },
+            {
+              "source": "rt",
+              "target": "sw",
+              "bandwidth": 50,
+              "status": "critical"
+            },
+            {
+              "source": "sw",
+              "target": "sv"
+            },
+            {
+              "source": "sw",
+              "target": "db",
+              "animated": true
+            },
+            {
+              "source": "lb",
+              "target": "sv"
+            },
+            {
+              "source": "ghost",
+              "target": "sv"
+            }
+          ],
+          "selectedNodes": [
+            "rt",
+            "lb"
+          ],
+          "onNodeClick": {
+            "$fn": true
+          },
+          "onEdgeClick": {
+            "$fn": true
+          },
+          "onNodeHover": {
+            "$fn": true
+          },
+          "showLegend": true,
+          "showMinimap": true
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M399.09,287.79 Q407.1146013690356,243.4594584139265 403.26,189.45\" fill=\"none\" stroke=\"oklch(72% 0.19 155)\" stroke-width=\"5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" style=\"stroke-dasharray:6 4;animation:ui-topo-dash 0.8s linear infinite\" cursor=\"pointer\"></path><text x=\"401.17499999999995\" y=\"232.62\" text-anchor=\"middle\" font-size=\"9\" fill=\"oklch(70% 0 0)\" class=\"ui-topology-graph__edge-label\">WAN</text></g><g class=\"ui-topology-graph__edge\"><path d=\"M403.26,189.45 Q396.94503602161296,236.3485714285714 402.51,288.39\" fill=\"none\" stroke=\"oklch(80% 0.18 85)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" cursor=\"pointer\"></path><path d=\"M403.26,189.45 Q396.94503602161296,236.3485714285714 402.51,288.39\" fill=\"none\" stroke=\"none\" marker-start=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__edge\"><path d=\"M402.51,288.39 Q393.06720565149135,235.3039168765743 371.75,193.84\" fill=\"none\" stroke=\"oklch(62% 0.22 25)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" cursor=\"pointer\"></path></g><g class=\"ui-topology-graph__edge\"><path d=\"M371.75,193.84 Q360.35007208650376,237.783355704698 360.83,292.72\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" cursor=\"pointer\"></path></g><g class=\"ui-topology-graph__edge\"><path d=\"M371.75,193.84 Q397.0630031201248,237.7054671498346 434.22,269.76\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" style=\"stroke-dasharray:6 4;animation:ui-topo-dash 0.8s linear infinite\" cursor=\"pointer\"></path></g><g class=\"ui-topology-graph__edge\"><path d=\"M423.17,216.49 Q386.07769001683283,248.69972687085573 360.83,292.72\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\" cursor=\"pointer\"></path></g><g class=\"ui-topology-graph__node\" transform=\"translate(403.26,189.45)\" cursor=\"pointer\" data-status=\"ok\" data-testid=\"topology-node-fw\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(72% 0.19 155)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(72% 0.19 155)\" transform=\"translate(0, -2)\"><path d=\"M0,-7 L7,-2.1 L7,3.5 L0,7 L-7,3.5 L-7,-2.1 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Firewall</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(402.51,288.39)\" cursor=\"pointer\" data-status=\"warning\" data-selected=\"true\" data-testid=\"topology-node-rt\"><rect x=\"-23\" y=\"-18\" width=\"46\" height=\"36\" rx=\"8\" fill=\"none\" stroke=\"oklch(80% 0.18 85)\" stroke-width=\"2\" stroke-opacity=\"0.4\" class=\"ui-topology-graph__node-glow\"></rect><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(80% 0.18 85)\" stroke-width=\"2.5\"></rect><g style=\"color:oklch(80% 0.18 85)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"7\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Router</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(371.75,193.84)\" cursor=\"pointer\" data-status=\"critical\" data-testid=\"topology-node-sw\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(62% 0.22 25)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(62% 0.22 25)\" transform=\"translate(0, -2)\"><polygon points=\"0,-7 7,0 0,7 -7,0\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></polygon></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Switch</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(360.83,292.72)\" cursor=\"pointer\" data-status=\"maintenance\" data-testid=\"topology-node-sv\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(65% 0.15 270)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(65% 0.15 270)\" transform=\"translate(0, -2)\"><rect x=\"-7\" y=\"-7\" width=\"14\" height=\"14\" rx=\"2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></rect></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Server</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(434.22,269.76)\" cursor=\"pointer\" data-status=\"unknown\" data-testid=\"topology-node-db\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><g><ellipse cx=\"0\" cy=\"-2.8000000000000003\" rx=\"7\" ry=\"2.4499999999999997\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></ellipse><line x1=\"-7\" y1=\"-2.8000000000000003\" x2=\"-7\" y2=\"2.8000000000000003\" stroke=\"currentColor\" stroke-width=\"1.5\"></line><line x1=\"7\" y1=\"-2.8000000000000003\" x2=\"7\" y2=\"2.8000000000000003\" stroke=\"currentColor\" stroke-width=\"1.5\"></line><ellipse cx=\"0\" cy=\"2.8000000000000003\" rx=\"7\" ry=\"2.4499999999999997\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></ellipse></g></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">DB</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(423.17,216.49)\" cursor=\"pointer\" data-status=\"unknown\" data-selected=\"true\" data-testid=\"topology-node-lb\"><rect x=\"-33\" y=\"-23\" width=\"66\" height=\"46\" rx=\"8\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"2\" stroke-opacity=\"0.4\" class=\"ui-topology-graph__node-glow\"></rect><rect x=\"-30\" y=\"-20\" width=\"60\" height=\"40\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"2.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><g><rect x=\"-7\" y=\"-7\" width=\"14\" height=\"14\" rx=\"2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></rect><line x1=\"-3.5\" y1=\"0\" x2=\"3.5\" y2=\"0\" stroke=\"currentColor\" stroke-width=\"1.5\"></line></g></g><text y=\"32\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">LB</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(399.09,287.79)\" cursor=\"pointer\" data-status=\"unknown\" data-testid=\"topology-node-cl\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><path d=\"M-7,1.4000000000000001 a3.5,3.5 0 0,1 3.5,-4.8999999999999995 a4.2,4.2 0 0,1 6.3,0 a2.8000000000000003,2.8000000000000003 0 0,1 0.7000000000000001,4.8999999999999995 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></path></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Cloud</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(399.02,237.58)\" cursor=\"pointer\" data-status=\"unknown\" data-testid=\"topology-node-cu\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\">i</g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">Custom</text></g></g></svg><div class=\"ui-topology-graph__legend\" data-testid=\"topology-legend\"><div class=\"ui-topology-graph__legend-item\"><span class=\"ui-topology-graph__legend-dot\" style=\"background:oklch(72% 0.19 155)\"></span>OK</div><div class=\"ui-topology-graph__legend-item\"><span class=\"ui-topology-graph__legend-dot\" style=\"background:oklch(80% 0.18 85)\"></span>Warning</div><div class=\"ui-topology-graph__legend-item\"><span class=\"ui-topology-graph__legend-dot\" style=\"background:oklch(62% 0.22 25)\"></span>Critical</div><div class=\"ui-topology-graph__legend-item\"><span class=\"ui-topology-graph__legend-dot\" style=\"background:oklch(55% 0 0)\"></span>Unknown</div><div class=\"ui-topology-graph__legend-item\"><span class=\"ui-topology-graph__legend-dot\" style=\"background:oklch(65% 0.15 270)\"></span>Maintenance</div></div><div class=\"ui-topology-graph__minimap\" data-testid=\"topology-minimap\"><svg viewBox=\"0 0 800 500\"><line x1=\"399.09\" y1=\"287.79\" x2=\"403.26\" y2=\"189.45\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><line x1=\"403.26\" y1=\"189.45\" x2=\"402.51\" y2=\"288.39\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><line x1=\"402.51\" y1=\"288.39\" x2=\"371.75\" y2=\"193.84\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><line x1=\"371.75\" y1=\"193.84\" x2=\"360.83\" y2=\"292.72\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><line x1=\"371.75\" y1=\"193.84\" x2=\"434.22\" y2=\"269.76\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><line x1=\"423.17\" y1=\"216.49\" x2=\"360.83\" y2=\"292.72\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1\" stroke-opacity=\"0.4\"></line><circle cx=\"403.26\" cy=\"189.45\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"402.51\" cy=\"288.39\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"371.75\" cy=\"193.84\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"360.83\" cy=\"292.72\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"434.22\" cy=\"269.76\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"423.17\" cy=\"216.49\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"399.09\" cy=\"287.79\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle><circle cx=\"399.02\" cy=\"237.58\" r=\"3\" fill=\"oklch(65% 0.15 270)\"></circle></svg></div></div>"
+      },
+      "dagre, pinned positions, no controls, string height": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A",
+              "x": 50,
+              "y": 60
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            }
+          ],
+          "edges": [
+            {
+              "source": "a",
+              "target": "b"
+            },
+            {
+              "source": "b",
+              "target": "c",
+              "label": "x"
+            }
+          ],
+          "layout": "dagre",
+          "showControls": false,
+          "height": "100%",
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-topology-graph mine\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:100%\"><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M400,50 Q394.0446661207474,116.665 400,183.33\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__edge\"><path d=\"M400,183.33 Q394.04466279589104,250 400,316.67\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path><text x=\"400\" y=\"244\" text-anchor=\"middle\" font-size=\"9\" fill=\"oklch(70% 0 0)\" class=\"ui-topology-graph__edge-label\">x</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(400,50)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(400,183.33)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(400,316.67)\" data-status=\"unknown\" data-testid=\"topology-node-c\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">C</text></g></g></svg></div>"
+      },
+      "circular": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            }
+          ],
+          "edges": [
+            {
+              "source": "a",
+              "target": "c"
+            }
+          ],
+          "layout": "circular",
+          "height": 300
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:300px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"300\" viewBox=\"0 0 800 300\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M400,60 Q433.01411764705887,133.42399290600457 477.94,195\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__node\" transform=\"translate(400,60)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(477.94,195)\" data-status=\"unknown\" data-testid=\"topology-node-c\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">C</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(322.06,195)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g></g></svg></div>"
+      },
+      "grid": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            },
+            {
+              "id": "d",
+              "label": "D"
+            }
+          ],
+          "edges": [],
+          "layout": "grid"
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__node\" transform=\"translate(266.67,166.67)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(533.33,166.67)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(266.67,333.33)\" data-status=\"unknown\" data-testid=\"topology-node-c\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">C</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(533.33,333.33)\" data-status=\"unknown\" data-testid=\"topology-node-d\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">D</text></g></g></svg></div>"
+      },
+      "caller style replaces height": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A"
+            }
+          ],
+          "edges": [],
+          "style": {
+            "minHeight": 200
+          }
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"min-height:200px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__node\" transform=\"translate(400,250)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g></g></svg></div>"
+      },
+      "minimap with no nodes renders nothing": {
+        "props": {
+          "nodes": [],
+          "edges": [],
+          "showMinimap": true
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker><style>\n            @keyframes ui-topo-dash {\n              to { stroke-dashoffset: -20; }\n            }\n          </style></defs><g transform=\"translate(0,0) scale(1)\"></g></svg></div>"
+      },
+      "canvas renderer": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ],
+          "edges": [
+            {
+              "source": "a",
+              "target": "b"
+            }
+          ],
+          "renderer": "canvas",
+          "height": 240
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"3\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:240px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><canvas width=\"800\" height=\"240\" style=\"width:800px;height:240px;cursor:grab\" class=\"ui-topology-graph__canvas\" data-testid=\"topology-canvas\"></canvas></div>"
+      },
+      "motion 0 has no keyframes and no dash": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ],
+          "edges": [
+            {
+              "source": "a",
+              "target": "b",
+              "animated": true
+            }
+          ],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-topology-graph\" data-motion=\"0\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M434.29,215.31 Q394.0852514919011,244.0862316757689 365.71,284.69\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__node\" transform=\"translate(434.29,215.31)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(365.71,284.69)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g></g></svg></div>"
+      }
+    },
     "TruncatedText": {
       "defaults": {
         "props": {
