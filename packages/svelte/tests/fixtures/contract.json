@@ -1837,6 +1837,96 @@
         "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"0\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span></div>"
       }
     },
+    "JsonViewer": {
+      "nested": {
+        "props": {
+          "data": {
+            "name": "api",
+            "port": 8080,
+            "tls": true,
+            "tags": [
+              "a",
+              "b"
+            ],
+            "owner": null,
+            "limits": {
+              "cpu": 2,
+              "mem": {
+                "gb": 4
+              }
+            }
+          }
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{6}</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">name</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;api&quot;</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">port</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">8080</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">tls</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"boolean\">true</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">tags</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">[</span><span class=\"ui-json-viewer__size\">[2]</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:4ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;a&quot;</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:4ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;b&quot;</span></div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">],</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">owner</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"null\">null</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">limits</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{2}</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:4ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">cpu</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">2</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:4ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Expand\" aria-expanded=\"false\">▶</button><span class=\"ui-json-viewer__key\">mem</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span><span class=\"ui-json-viewer__ellipsis\" role=\"button\" tabindex=\"0\">...</span><span class=\"ui-json-viewer__bracket\">}</span></div><div class=\"ui-json-viewer__children\" data-collapsed=\"\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:6ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">gb</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">4</span></div></div></div></div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">}</span></div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">}</span></div></div></div>"
+      },
+      "collapsed, sorted, types, no sizes, root name": {
+        "props": {
+          "data": {
+            "b": 1,
+            "a": "x"
+          },
+          "collapsed": true,
+          "sortKeys": true,
+          "displayDataTypes": true,
+          "displayObjectSize": false,
+          "rootName": "cfg"
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: cfg\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Expand\" aria-expanded=\"false\">▶</button><span class=\"ui-json-viewer__key\">cfg</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__ellipsis\" role=\"button\" tabindex=\"0\">...</span><span class=\"ui-json-viewer__bracket\">}</span></div><div class=\"ui-json-viewer__children\" data-collapsed=\"\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">a</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;x&quot;</span><span class=\"ui-json-viewer__type\">string</span><span class=\"ui-json-viewer__bracket\">,</span></div></div><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">b</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">1</span><span class=\"ui-json-viewer__type\">number</span></div></div></div></div></div></div>"
+      },
+      "depth 1, indent 4, light, clipboard": {
+        "props": {
+          "data": {
+            "a": {
+              "b": {
+                "c": 1
+              }
+            }
+          },
+          "initialExpandDepth": 1,
+          "indentWidth": 4,
+          "theme": "light",
+          "enableClipboard": true
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"light\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:4ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Expand\" aria-expanded=\"false\">▶</button><span class=\"ui-json-viewer__key\">a</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span><span class=\"ui-json-viewer__ellipsis\" role=\"button\" tabindex=\"0\">...</span><span class=\"ui-json-viewer__bracket\">}</span></div><div class=\"ui-json-viewer__children\" data-collapsed=\"\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:8ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Expand\" aria-expanded=\"false\">▶</button><span class=\"ui-json-viewer__key\">b</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span><span class=\"ui-json-viewer__ellipsis\" role=\"button\" tabindex=\"0\">...</span><span class=\"ui-json-viewer__bracket\">}</span></div><div class=\"ui-json-viewer__children\" data-collapsed=\"\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:12ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">c</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\" role=\"button\" tabindex=\"0\" aria-label=\"Copy value 1\">1</span></div></div></div></div></div></div></div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">}</span></div></div></div>"
+      },
+      "truncated string": {
+        "props": {
+          "data": {
+            "s": "a long string value"
+          },
+          "maxStringLength": 6
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">s</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;a long...&quot;</span><span class=\"ui-json-viewer__ellipsis\" role=\"button\" tabindex=\"0\" aria-label=\"Expand string\"> show more</span></div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">}</span></div></div></div>"
+      },
+      "maxStringLength 0 renders a stray 0 (inherited)": {
+        "props": {
+          "data": {
+            "s": "abc"
+          },
+          "maxStringLength": 0
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">{</span><span class=\"ui-json-viewer__size\">{1}</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:2ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">s</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;abc&quot;</span>0</div></div></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">}</span></div></div></div>"
+      },
+      "primitive root": {
+        "props": {
+          "data": "just text"
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"string\">&quot;just text&quot;</span></div></div></div>"
+      },
+      "empty array": {
+        "props": {
+          "data": []
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"3\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><button class=\"ui-json-viewer__chevron\" aria-label=\"Collapse\" aria-expanded=\"true\" data-expanded=\"\">▶</button><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__bracket\">[</span><span class=\"ui-json-viewer__size\">[0]</span></div><div class=\"ui-json-viewer__children\"><div class=\"ui-json-viewer__children-inner\"></div></div><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__bracket\">]</span></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "data": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-json-viewer\" data-motion=\"0\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">1</span></div></div></div>"
+      }
+    },
     "Kbd": {
       "defaults": {
         "props": {

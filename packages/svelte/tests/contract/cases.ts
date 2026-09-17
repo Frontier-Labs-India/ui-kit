@@ -792,4 +792,14 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'identical input': { oldValue: 'same', newValue: 'same', foldThreshold: 0 },
     'motion 0': { oldValue: '', newValue: '', motion: 0 },
   },
+  JsonViewer: {
+    nested: { data: { name: 'api', port: 8080, tls: true, tags: ['a', 'b'], owner: null, limits: { cpu: 2, mem: { gb: 4 } } } },
+    'collapsed, sorted, types, no sizes, root name': { data: { b: 1, a: 'x' }, collapsed: true, sortKeys: true, displayDataTypes: true, displayObjectSize: false, rootName: 'cfg' },
+    'depth 1, indent 4, light, clipboard': { data: { a: { b: { c: 1 } } }, initialExpandDepth: 1, indentWidth: 4, theme: 'light', enableClipboard: true },
+    'truncated string': { data: { s: 'a long string value' }, maxStringLength: 6 },
+    'maxStringLength 0 renders a stray 0 (inherited)': { data: { s: 'abc' }, maxStringLength: 0 },
+    'primitive root': { data: 'just text' },
+    'empty array': { data: [] },
+    'motion 0': { data: 1, motion: 0 },
+  },
 }
