@@ -1927,6 +1927,11 @@
    "nth": 0
   }
  },
+ "NativeTooltip": {
+  "text": null,
+  "quotes and ampersand": null,
+  "empty content": null
+ },
  "Navbar": {
   "logo only": {
    "tag": "header",

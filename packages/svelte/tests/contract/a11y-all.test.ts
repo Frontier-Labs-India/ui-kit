@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
-import { createRawSnippet, type Component } from 'svelte'
+import type { Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
-import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { hydrate, renamed } from './hydrate.svelte.js'
 
 /* jest-axe over every case of every contract-tested component — not a
  * hand-picked few — so each new port is checked without writing a test.
@@ -17,26 +17,6 @@ import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 type Fx = { components: Record<string, Record<string, { props: unknown; html: string }>> }
 const f = fixture as unknown as Fx
-
-function renamed(name: string, props: unknown): Record<string, unknown> {
-  const out = { ...(props as Record<string, unknown>) }
-  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
-    if (from in out) { out[to] = out[from]; delete out[from] }
-  }
-  return out
-}
-
-function hydrate(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(hydrate)
-  if (value && typeof value === 'object') {
-    const v = value as Record<string, unknown>
-    if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
-    if ('$fn' in v) return () => {}
-    if ('$date' in v) return new Date(String(v.$date))
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
-  }
-  return value
-}
 
 const CALLER_MUST_NAME =
   'case deliberately omits the accessible name, which only the caller can supply — ' +

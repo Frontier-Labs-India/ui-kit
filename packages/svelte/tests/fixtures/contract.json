@@ -4701,6 +4701,35 @@
         "html": "<div class=\"ui-multi-select\" data-size=\"md\" data-motion=\"0\"><label class=\"ui-multi-select__label\" id=\"multi-select-_R_0_-label\">M</label><div class=\"ui-multi-select__trigger\"><input class=\"ui-multi-select__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-labelledby=\"multi-select-_R_0_-label\" placeholder=\"Select...\" value=\"\"/><span class=\"ui-multi-select__actions\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-multi-select__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></span></div></div>"
       }
     },
+    "NativeTooltip": {
+      "text": {
+        "props": {
+          "content": "Copied to clipboard",
+          "children": {
+            "$el": "Copy"
+          }
+        },
+        "html": "<b title=\"Copied to clipboard\">Copy</b>"
+      },
+      "quotes and ampersand": {
+        "props": {
+          "content": "Say \"hi\" & <wave>",
+          "children": {
+            "$el": "Hi"
+          }
+        },
+        "html": "<b title=\"Say &quot;hi&quot; &amp; &lt;wave&gt;\">Hi</b>"
+      },
+      "empty content": {
+        "props": {
+          "content": "",
+          "children": {
+            "$el": "Nothing"
+          }
+        },
+        "html": "<b title=\"\">Nothing</b>"
+      }
+    },
     "Navbar": {
       "logo only": {
         "props": {

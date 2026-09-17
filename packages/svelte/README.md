@@ -16,7 +16,7 @@ exported from the package is ported and contract-tested against React.
 npm install @frontier-labs/ui-kit-svelte
 ```
 
-Requires `svelte@^5`. No runtime dependencies.
+Requires `svelte@^5.29.0` (trigger snippets use attachments). No runtime dependencies.
 
 ## Use
 

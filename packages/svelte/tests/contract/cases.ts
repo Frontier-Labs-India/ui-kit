@@ -1511,6 +1511,13 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'icon shown when unchecked, disabled': { icon: 'i', disabled: true, children: { $el: 'Tag' } },
     'motion 0': { motion: 0, children: { $el: 'x' } },
   },
+  // COMPONENT-API.md rule 1: React clones the child with `title`; the Svelte
+  // snippet receives it as props and spreads it onto the same <b>.
+  NativeTooltip: {
+    text: { content: 'Copied to clipboard', children: { $el: 'Copy' } },
+    'quotes and ampersand': { content: 'Say "hi" & <wave>', children: { $el: 'Hi' } },
+    'empty content': { content: '', children: { $el: 'Nothing' } },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

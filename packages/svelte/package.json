@@ -46,7 +46,7 @@
     "**/*.css"
   ],
   "peerDependencies": {
-    "svelte": "^5"
+    "svelte": "^5.29.0"
   },
   "devDependencies": {
     "@sveltejs/package": "^2.5.8",

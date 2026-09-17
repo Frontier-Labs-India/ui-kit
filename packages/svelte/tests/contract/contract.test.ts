@@ -1,12 +1,13 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { flushSync } from 'svelte'
-import { createRawSnippet, type Component } from 'svelte'
+import type { Component } from 'svelte'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT } from './divergences.js'
+import { hydrate, renamed } from './hydrate.svelte.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -16,29 +17,6 @@ import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, 
 
 type Fixture = { version: number; components: Record<string, Record<string, { props: unknown; html: string }>> }
 const f = fixture as Fixture
-
-function renamed(name: string, props: unknown): Record<string, unknown> {
-  const out = { ...(props as Record<string, unknown>) }
-  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
-    if (from in out) { out[to] = out[from]; delete out[from] }
-  }
-  return out
-}
-
-function hydrate(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(hydrate)
-  if (value && typeof value === 'object') {
-    const v = value as Record<string, unknown>
-    if ('$el' in v) {
-      const text = String(v.$el).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!)
-      return createRawSnippet(() => ({ render: () => `<b>${text}</b>` }))
-    }
-    if ('$fn' in v) return () => {}
-    if ('$date' in v) return new Date(String(v.$date))
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
-  }
-  return value
-}
 
 const exported = Object.entries(pkg)
   .filter(([name, v]) => /^[A-Z]/.test(name) && typeof v === 'function')

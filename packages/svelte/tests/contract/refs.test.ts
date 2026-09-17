@@ -1,14 +1,14 @@
 import { describe, it, expect, vi, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
-import { createRawSnippet, flushSync, type Component } from 'svelte'
+import { flushSync, type Component } from 'svelte'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import * as pkg from '../../src/index.js'
 import contract from '../fixtures/contract.json'
 import refs from '../fixtures/refs.json'
 import { CONTRACT_NOW } from './cases.js'
-import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 import { describeElement, type RefTarget } from './ref-target.js'
+import { hydrate, renamed } from './hydrate.svelte.js'
 
 /* Every component takes a bindable `ref`: the element React's `ref` receives
  * (tests/fixtures/refs.json, derived from React by scripts/generate-ref-fixtures.tsx),
@@ -19,6 +19,7 @@ import { describeElement, type RefTarget } from './ref-target.js'
 const EXTENSIONS: Record<string, string> = {
   ConfirmDialog: 'the <dialog> of the Dialog it renders',
   DataTableSuggestions: 'its root, null while no insight is shown',
+  NativeTooltip: 'the caller\'s trigger element, through the attachment in its props',
   TopologyGraphCanvas: 'its <canvas>',
   TopologyGraphSVG: 'its <svg>',
   Tour: 'its overlay root, null while closed',
@@ -33,26 +34,6 @@ const NO_REF: Record<string, string> = {
 type Fx = { components: Record<string, Record<string, { props: unknown }>> }
 const cases = (contract as unknown as Fx).components
 const expected = refs as unknown as Record<string, Record<string, RefTarget>>
-
-function renamed(name: string, props: unknown): Record<string, unknown> {
-  const out = { ...(props as Record<string, unknown>) }
-  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
-    if (from in out) { out[to] = out[from]; delete out[from] }
-  }
-  return out
-}
-
-function hydrate(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(hydrate)
-  if (value && typeof value === 'object') {
-    const v = value as Record<string, unknown>
-    if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
-    if ('$fn' in v) return () => {}
-    if ('$date' in v) return new Date(String(v.$date))
-    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
-  }
-  return value
-}
 
 describe('bindable ref — every contract case', () => {
   afterAll(() => { vi.useRealTimers() })
@@ -104,7 +85,8 @@ describe('bindable ref — declared by every exported component', () => {
     it(name, () => {
       const src = readFileSync(resolve(import.meta.dirname, '../../src', file), 'utf8')
       expect(src).toMatch(/\bref = \$bindable\(null\)/)
-      expect(src).toMatch(/bind:(?:this=\{ref\}|ref\b)/)
+      // bound to an element, forwarded to a child, or captured by a rule-1 attachment
+      expect(src).toMatch(/bind:(?:this=\{ref\}|ref\b)|captureElement\(el => \{ ref = el \}\)/)
     })
   }
 })
