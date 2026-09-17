@@ -35,7 +35,21 @@ const notPorted = JSON.parse(readFileSync(LIST, 'utf8'))
 let failed = false
 const fail = msg => { console.error(`FAIL: ${msg}`); failed = true }
 
-for (const n of ported) if (!expected.includes(n)) fail(`${n}.svelte has no React counterpart in component-meta — misnamed?`)
+/* A .svelte component not in component-meta is allowed only as a companion
+ * export: a name that some React component file actually exports alongside its
+ * main component (FilterPill's file also exports FilterPillGroup). Checked
+ * against the source rather than a hand-kept list, so a typo still fails. */
+const reactExports = new Set()
+for (const dir of ['src/components', 'src/domain']) {
+  for (const f of readdirSync(resolve(ROOT, dir)).filter(f => f.endsWith('.tsx'))) {
+    const src = readFileSync(resolve(ROOT, dir, f), 'utf8')
+    for (const m of src.matchAll(/^export\s+(?:const|function|class)\s+([A-Z][A-Za-z0-9_]*)/gm)) reactExports.add(m[1])
+  }
+}
+const companions = ported.filter(n => !expected.includes(n) && reactExports.has(n))
+for (const n of ported) {
+  if (!expected.includes(n) && !reactExports.has(n)) fail(`${n}.svelte is neither in component-meta nor exported by any React component file — misnamed?`)
+}
 for (const n of expected) {
   const isPorted = ported.includes(n)
   const listed = notPorted.includes(n)
@@ -46,5 +60,6 @@ for (const n of notPorted) if (!expected.includes(n)) fail(`${n} is in NOT_PORTE
 if (new Set(notPorted).size !== notPorted.length) fail('NOT_PORTED.json contains duplicates')
 
 const done = expected.filter(n => ported.includes(n)).length
-console.log(`${done}/${expected.length} components ported (${expected.length - done} remaining).`)
+const extra = companions.length ? ` Companion exports: ${companions.join(', ')}.` : ''
+console.log(`${done}/${expected.length} components ported (${expected.length - done} remaining).${extra}`)
 if (failed) process.exit(1)

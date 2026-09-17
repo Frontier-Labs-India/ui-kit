@@ -1,160 +1,2813 @@
 {
+  "version": 2,
   "components": {
     "Accordion": {
-      "defaults": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "3",
-          "data-variant": "default",
-          "data-size": "md"
+      "empty": {
+        "props": {
+          "items": []
         },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"default\" data-size=\"md\"></div>"
       },
       "variant+size": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "3",
-          "data-variant": "bordered",
-          "data-size": "lg"
+        "props": {
+          "items": [],
+          "variant": "bordered",
+          "size": "lg"
         },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"bordered\" data-size=\"lg\"></div>"
       },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-accordion",
-          "data-motion": "0",
-          "data-variant": "default",
-          "data-size": "md"
+      "motion 0": {
+        "props": {
+          "items": [],
+          "motion": 0
         },
-        "text": ""
+        "html": "<div class=\"ui-accordion\" data-motion=\"0\" data-variant=\"default\" data-size=\"md\"></div>"
+      },
+      "items": {
+        "props": {
+          "items": [
+            {
+              "id": "a",
+              "trigger": "First",
+              "content": "Body A"
+            },
+            {
+              "id": "b",
+              "trigger": {
+                "$el": "Second"
+              },
+              "content": {
+                "$el": "Body B"
+              },
+              "disabled": true
+            }
+          ],
+          "defaultOpen": [
+            "a"
+          ]
+        },
+        "html": "<div class=\"ui-accordion\" data-motion=\"3\" data-variant=\"default\" data-size=\"md\"><details open=\"\"><summary><span>First</span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\">Body A</div></div></div></details><details><summary aria-disabled=\"true\"><span><b>Second</b></span><svg class=\"ui-accordion__chevron\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6L8 10L12 6\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></summary><div class=\"ui-accordion__content-wrapper\"><div class=\"ui-accordion__content\"><div class=\"ui-accordion__content-inner\"><b>Body B</b></div></div></div></details></div>"
       }
     },
-    "Checkbox": {
+    "ActionIcon": {
       "defaults": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "aria-label": "Edit",
+          "children": {
+            "$el": "pencil"
+          }
         },
-        "text": ""
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-label=\"Edit\"><b>pencil</b></button>"
       },
-      "size": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "xl",
-          "data-motion": "3"
+      "filled danger xl full loading": {
+        "props": {
+          "aria-label": "Delete",
+          "variant": "filled",
+          "color": "danger",
+          "size": "xl",
+          "radius": "full",
+          "loading": true
         },
-        "text": ""
-      },
-      "indeterminate": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-indeterminate": ""
-        },
-        "text": ""
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"filled\" data-color=\"danger\" data-size=\"xl\" data-radius=\"full\" data-loading=\"true\" data-motion=\"3\" aria-busy=\"true\" aria-label=\"Delete\"></button>"
       },
       "disabled": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-disabled": ""
+        "props": {
+          "aria-label": "Save",
+          "disabled": true
         },
-        "text": ""
+        "html": "<button type=\"button\" disabled=\"\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-disabled=\"true\" aria-label=\"Save\"></button>"
       },
-      "error": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-error": ""
+      "type submit": {
+        "props": {
+          "aria-label": "Send",
+          "type": "submit"
         },
-        "text": "Required"
+        "html": "<button type=\"submit\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"3\" aria-label=\"Send\"></button>"
       },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-checkbox",
-          "data-size": "md",
-          "data-motion": "0"
+      "motion 0": {
+        "props": {
+          "aria-label": "x",
+          "motion": 0
         },
-        "text": ""
+        "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"0\" aria-label=\"x\"></button>"
+      }
+    },
+    "Alert": {
+      "info": {
+        "props": {
+          "variant": "info",
+          "children": {
+            "$el": "Heads up"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"info\" data-size=\"md\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"><b>Heads up</b></div></div></div>"
+      },
+      "success title sm": {
+        "props": {
+          "variant": "success",
+          "title": "Saved",
+          "size": "sm",
+          "children": {
+            "$el": "All good"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"success\" data-size=\"sm\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__title\">Saved</div><div class=\"ui-alert__body\"><b>All good</b></div></div></div>"
+      },
+      "warning banner compact": {
+        "props": {
+          "variant": "warning",
+          "banner": true,
+          "compact": true,
+          "children": {
+            "$el": "Careful"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"warning\" data-size=\"md\" data-banner=\"true\" data-compact=\"true\" data-motion=\"3\" role=\"alert\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"></line><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"><b>Careful</b></div></div></div>"
+      },
+      "error dismissible with action": {
+        "props": {
+          "variant": "error",
+          "title": {
+            "$el": "Failed"
+          },
+          "dismissible": true,
+          "action": {
+            "label": "Retry",
+            "onClick": {
+              "$fn": true
+            }
+          },
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"error\" data-size=\"md\" data-motion=\"3\" role=\"alert\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"15\" y1=\"9\" x2=\"9\" y2=\"15\"></line><line x1=\"9\" y1=\"9\" x2=\"15\" y2=\"15\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__title\"><b>Failed</b></div><div class=\"ui-alert__body\"><b>x</b></div><div class=\"ui-alert__actions\"><button type=\"button\" class=\"ui-alert__action-btn\">Retry</button></div></div><button type=\"button\" class=\"ui-alert__dismiss\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "custom icon and classNames": {
+        "props": {
+          "variant": "info",
+          "icon": {
+            "$el": "i"
+          },
+          "dismissible": true,
+          "classNames": {
+            "root": "r",
+            "icon": "ic",
+            "content": "co",
+            "title": "ti",
+            "body": "bo",
+            "dismiss": "di"
+          },
+          "title": "T",
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-alert r\" data-variant=\"info\" data-size=\"md\" data-motion=\"3\" role=\"status\"><span class=\"ui-alert__icon ic\" aria-hidden=\"true\"><b>i</b></span><div class=\"ui-alert__content co\"><div class=\"ui-alert__title ti\">T</div><div class=\"ui-alert__body bo\"><b>x</b></div></div><button type=\"button\" class=\"ui-alert__dismiss di\" aria-label=\"Dismiss\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "motion 0": {
+        "props": {
+          "variant": "info",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-alert\" data-variant=\"info\" data-size=\"md\" data-motion=\"0\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"></div></div></div>"
+      }
+    },
+    "AppShell": {
+      "main only": {
+        "props": {
+          "children": {
+            "$el": "main"
+          }
+        },
+        "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"false\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
+      },
+      "all regions right collapsed": {
+        "props": {
+          "navbar": {
+            "$el": "nav"
+          },
+          "sidebar": "side",
+          "footer": {
+            "$el": "foot"
+          },
+          "sidebarCollapsed": true,
+          "sidebarPosition": "right",
+          "children": {
+            "$el": "main"
+          }
+        },
+        "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"right\" data-sidebar-collapsed=\"true\"><div class=\"ui-app-shell__navbar\"><b>nav</b></div><div class=\"ui-app-shell__sidebar\">side</div><div class=\"ui-app-shell__main\"><b>main</b></div><div class=\"ui-app-shell__footer\"><b>foot</b></div></div>"
+      },
+      "empty-string sidebar reports true, renders nothing": {
+        "props": {
+          "sidebar": "",
+          "children": {
+            "$el": "main"
+          }
+        },
+        "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
+      }
+    },
+    "BackgroundBeams": {
+      "few": {
+        "props": {
+          "count": 3
+        },
+        "html": "<div class=\"ui-background-beams\" data-motion=\"3\"><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-48.767205162439495deg;--beam-delay:0.8990836644661613s;--beam-duration:8.776704454387072s;--beam-start-x:241.47602859302424px;--beam-end-x:-185.98111653118394px\"></div><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-19.712244696565904deg;--beam-delay:0.5117161422385834s;--beam-duration:11.841445937985554s;--beam-start-x:240.8057737746276px;--beam-end-x:9.011447191005573px\"></div><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-53.1187926675193deg;--beam-delay:3.2193773070612224s;--beam-duration:9.439710148071754s;--beam-start-x:41.37170463727671px;--beam-end-x:143.20648909560987px\"></div></div>"
+      },
+      "color, content, style": {
+        "props": {
+          "count": 1,
+          "color": "cyan",
+          "style": {
+            "minHeight": 120
+          },
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-background-beams\" data-motion=\"3\" style=\"min-height:120px;--beam-color:cyan\"><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-48.767205162439495deg;--beam-delay:0.8990836644661613s;--beam-duration:8.776704454387072s;--beam-start-x:241.47602859302424px;--beam-end-x:-185.98111653118394px\"></div><div class=\"ui-background-beams--content\"><b>hero</b></div></div>"
+      },
+      "no style at all": {
+        "props": {
+          "count": 2
+        },
+        "html": "<div class=\"ui-background-beams\" data-motion=\"3\"><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-48.767205162439495deg;--beam-delay:0.8990836644661613s;--beam-duration:8.776704454387072s;--beam-start-x:241.47602859302424px;--beam-end-x:-185.98111653118394px\"></div><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-19.712244696565904deg;--beam-delay:0.5117161422385834s;--beam-duration:11.841445937985554s;--beam-start-x:240.8057737746276px;--beam-end-x:9.011447191005573px\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "count": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-background-beams\" data-motion=\"0\"><div class=\"ui-background-beams--beam\" aria-hidden=\"true\" style=\"--beam-angle:-48.767205162439495deg;--beam-delay:0.8990836644661613s;--beam-duration:8.776704454387072s;--beam-start-x:241.47602859302424px;--beam-end-x:-185.98111653118394px\"></div></div>"
+      }
+    },
+    "BackgroundBoxes": {
+      "small grid": {
+        "props": {
+          "rows": 2,
+          "cols": 3
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"3\" style=\"--boxes-rows:repeat(2, 1fr);--boxes-cols:repeat(3, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:2.685850353562273s;--box-duration:7.867871614987962s;--box-intensity:0.1272528617977514\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.45874715549871325s;--box-duration:5.866425123393128s;--box-intensity:0.16080162227390246\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:7.090178256621584s;--box-duration:4.59581679981784s;--box-intensity:0.07620810775697465\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.8663961517158896s;--box-duration:5.6251556436182s;--box-intensity:0.1392207250770298\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:3.9058855529874563s;--box-duration:6.9373272949887905s;--box-intensity:0.11029668475675862\"></div></div></div>"
+      },
+      "with content and style": {
+        "props": {
+          "rows": 1,
+          "cols": 2,
+          "style": {
+            "minHeight": 200
+          },
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"3\" style=\"min-height:200px;--boxes-rows:repeat(1, 1fr);--boxes-cols:repeat(2, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div><div class=\"ui-background-boxes--box\" style=\"--box-delay:2.685850353562273s;--box-duration:7.867871614987962s;--box-intensity:0.1272528617977514\"></div></div><div class=\"ui-background-boxes--content\"><b>hero</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "rows": 1,
+          "cols": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-background-boxes\" data-motion=\"0\" style=\"--boxes-rows:repeat(1, 1fr);--boxes-cols:repeat(1, 1fr)\"><div class=\"ui-background-boxes--grid\" aria-hidden=\"true\"><div class=\"ui-background-boxes--box\" style=\"--box-delay:0.7488529891707003s;--box-duration:5.313920378655894s;--box-intensity:0.07850472086720402\"></div></div></div>"
       }
     },
     "Badge": {
       "defaults": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
-        },
-        "text": ""
+        "props": {},
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"></span>"
       },
       "variant+size": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "danger",
-          "data-size": "xl",
-          "data-motion": "3"
+        "props": {
+          "variant": "danger",
+          "size": "xl"
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"danger\" data-size=\"xl\" data-motion=\"3\"></span>"
       },
       "outline": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3",
-          "data-outline": "true"
+        "props": {
+          "outline": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" data-outline=\"true\"></span>"
       },
       "dot+pulse": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "dot": true,
+          "pulse": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><span class=\"ui-badge__dot\" data-pulse=\"true\"></span></span>"
       },
       "count over max": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "count": 150,
+          "maxCount": 99
         },
-        "text": "99+"
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\">99+</span>"
       },
       "count zero": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "count": 0
         },
-        "text": "0"
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\">0</span>"
       },
-      "motion override 0": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "0"
+      "motion 0": {
+        "props": {
+          "motion": 0
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"0\"></span>"
       },
       "removable": {
-        "attrs": {
-          "class": "ui-badge",
-          "data-variant": "default",
-          "data-size": "md",
-          "data-motion": "3"
+        "props": {
+          "removable": true
         },
-        "text": ""
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" class=\"ui-badge__remove\" aria-label=\"Remove\"><svg width=\"8\" height=\"8\" viewBox=\"0 0 8 8\" fill=\"none\"><path d=\"M1.5 1.5l5 5m0-5l-5 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></span>"
+      },
+      "children": {
+        "props": {
+          "children": {
+            "$el": "Label"
+          }
+        },
+        "html": "<span class=\"ui-badge\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\"><b>Label</b></span>"
+      }
+    },
+    "BorderBeam": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "panel"
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"><b>panel</b></div></div>"
+      },
+      "duration size color": {
+        "props": {
+          "duration": 2.5,
+          "size": 120,
+          "color": "oklch(70% 0.2 200)",
+          "children": {
+            "$el": "panel"
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"--border-beam-duration:2.5s;--border-beam-size:120px;--border-beam-color:oklch(70% 0.2 200)\"><div class=\"ui-border-beam--content\"><b>panel</b></div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "borderRadius": 12
+          }
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"3\" style=\"border-radius:12px;--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-border-beam\" data-motion=\"0\" style=\"--border-beam-duration:5s;--border-beam-size:80px\"><div class=\"ui-border-beam--content\"></div></div>"
+      }
+    },
+    "Breadcrumbs": {
+      "three": {
+        "props": {
+          "items": [
+            {
+              "label": "Home",
+              "href": "/"
+            },
+            {
+              "label": "Docs",
+              "href": "/docs"
+            },
+            {
+              "label": "Now"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><a href=\"/\">Home</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><a href=\"/docs\">Docs</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">Now</span></li></ol></nav>"
+      },
+      "custom separator, icons, element label": {
+        "props": {
+          "separator": "/",
+          "items": [
+            {
+              "label": "Home",
+              "href": "/",
+              "icon": {
+                "$el": "h"
+              }
+            },
+            {
+              "label": {
+                "$el": "Docs"
+              }
+            },
+            {
+              "label": "Now",
+              "icon": "x"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><a href=\"/\"><b>h</b>Home</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\">/</span><a href=\"#\"><b>Docs</b></a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\">/</span><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">xNow</span></li></ol></nav>"
+      },
+      "collapsed to maxVisible 3": {
+        "props": {
+          "maxVisible": 3,
+          "items": [
+            {
+              "label": "A",
+              "href": "/a"
+            },
+            {
+              "label": "B",
+              "href": "/b"
+            },
+            {
+              "label": "C",
+              "href": "/c"
+            },
+            {
+              "label": "D",
+              "href": "/d"
+            },
+            {
+              "label": "E"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><a href=\"/a\">A</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-breadcrumbs__ellipsis\">…</span><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><a href=\"/d\">D</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">E</span></li></ol></nav>"
+      },
+      "maxVisible not exceeded": {
+        "props": {
+          "maxVisible": 5,
+          "items": [
+            {
+              "label": "A",
+              "href": "/a"
+            },
+            {
+              "label": "B"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><a href=\"/a\">A</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">B</span></li></ol></nav>"
+      },
+      "item without href gets #": {
+        "props": {
+          "items": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "B"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><a href=\"#\">A</a></li><li><span class=\"ui-breadcrumbs__separator\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">B</span></li></ol></nav>"
+      },
+      "single": {
+        "props": {
+          "items": [
+            {
+              "label": "Only"
+            }
+          ]
+        },
+        "html": "<nav class=\"ui-breadcrumbs\" aria-label=\"Breadcrumb\"><ol><li><span class=\"ui-breadcrumbs__current\" aria-current=\"page\">Only</span></li></ol></nav>"
+      }
+    },
+    "ButtonGroup": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "btns"
+          }
+        },
+        "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"3\"><b>btns</b></div>"
+      },
+      "vertical xl ghost attached": {
+        "props": {
+          "orientation": "vertical",
+          "size": "xl",
+          "variant": "ghost",
+          "attached": true
+        },
+        "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"vertical\" data-size=\"xl\" data-variant=\"ghost\" data-attached=\"true\" data-motion=\"3\"></div>"
+      },
+      "role override": {
+        "props": {
+          "role": "toolbar"
+        },
+        "html": "<div role=\"toolbar\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"3\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"0\"></div>"
+      }
+    },
+    "Card3D": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"><b>card</b></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      },
+      "perspective, no glare": {
+        "props": {
+          "perspective": 600,
+          "glare": false,
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"--card-3d-perspective:600px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"><b>card</b></div></div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "borderRadius": 16
+          }
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"3\" style=\"border-radius:16px;--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-card-3d\" data-motion=\"0\" style=\"--card-3d-perspective:1000px\"><div class=\"ui-card-3d--inner\"><div class=\"ui-card-3d--content\"></div><div class=\"ui-card-3d--glare\" aria-hidden=\"true\"></div></div></div>"
+      }
+    },
+    "CardGrid": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\"><b>card</b></div>"
+      },
+      "min child width": {
+        "props": {
+          "minChildWidth": "14rem",
+          "columns": 4,
+          "gap": "lg"
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"4\" data-gap=\"lg\" style=\"--card-grid-min-child-width:14rem\"></div>"
+      },
+      "caller style object merged": {
+        "props": {
+          "style": {
+            "padding": 8,
+            "opacity": 0.5
+          },
+          "minChildWidth": "10rem"
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\" style=\"padding:8px;opacity:0.5;--card-grid-min-child-width:10rem\"></div>"
+      },
+      "caller style without min width": {
+        "props": {
+          "style": {
+            "marginTop": 4
+          }
+        },
+        "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\" style=\"margin-top:4px\"></div>"
+      }
+    },
+    "Checkbox": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "label": {
+        "props": {
+          "label": "Accept"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "size": {
+        "props": {
+          "size": "xl",
+          "label": "Accept"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"xl\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "indeterminate": {
+        "props": {
+          "indeterminate": true
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-indeterminate=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "disabled": {
+        "props": {
+          "disabled": true
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" disabled=\"\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      },
+      "error": {
+        "props": {
+          "label": "Accept",
+          "error": "Required"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\" data-error=\"\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" aria-invalid=\"true\" aria-describedby=\"checkbox-_R_0_-error\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div><span id=\"checkbox-_R_0_-error\" class=\"ui-checkbox__error\" role=\"alert\">Required</span></div>"
+      },
+      "rest to input": {
+        "props": {
+          "label": "Accept",
+          "name": "terms",
+          "value": "yes"
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" name=\"terms\" value=\"yes\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"0\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
+      }
+    },
+    "ConfidenceBar": {
+      "medium": {
+        "props": {
+          "value": 0.5
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"medium\" role=\"meter\" aria-valuenow=\"0.5\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">50%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:50%\"></div></div></div>"
+      },
+      "low string label lg": {
+        "props": {
+          "value": 0.12,
+          "label": "Match",
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"lg\" data-level=\"low\" role=\"meter\" aria-valuenow=\"0.12\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Match\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__label\">Match</span><span class=\"ui-confidence-bar__value\">12%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:12%\"></div></div></div>"
+      },
+      "high element label, no value": {
+        "props": {
+          "value": 0.93,
+          "label": {
+            "$el": "Score"
+          },
+          "showValue": false
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"0.93\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__label\"><b>Score</b></span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:93%\"></div></div></div>"
+      },
+      "no header": {
+        "props": {
+          "value": 0.7,
+          "showValue": false
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"0.7\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:70%\"></div></div></div>"
+      },
+      "custom thresholds": {
+        "props": {
+          "value": 0.4,
+          "thresholds": {
+            "low": 0.5,
+            "medium": 0.9
+          }
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"3\" data-size=\"md\" data-level=\"low\" role=\"meter\" aria-valuenow=\"0.4\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">40%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:40%\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-confidence-bar\" data-motion=\"0\" data-size=\"md\" data-level=\"high\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"1\" aria-label=\"Confidence\"><div class=\"ui-confidence-bar__header\"><span class=\"ui-confidence-bar__value\">100%</span></div><div class=\"ui-confidence-bar__track\"><div class=\"ui-confidence-bar__fill\" style=\"inline-size:100%\"></div></div></div>"
+      }
+    },
+    "ConnectionTestPanel": {
+      "every status": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "DNS",
+              "status": "passed",
+              "duration": 12
+            },
+            {
+              "id": "b",
+              "label": "TLS",
+              "status": "failed",
+              "duration": 1234,
+              "message": "expired"
+            },
+            {
+              "id": "c",
+              "label": "Auth",
+              "status": "skipped"
+            },
+            {
+              "id": "d",
+              "label": "Query",
+              "status": "running"
+            },
+            {
+              "id": "e",
+              "label": "Close",
+              "status": "pending",
+              "duration": 999
+            }
+          ],
+          "onRetry": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"3\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"><button type=\"button\" class=\"ui-connection-test-panel__btn\">↻ Retry</button></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"><li class=\"ui-connection-test-panel__step\" data-status=\"passed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"passed\" aria-hidden=\"true\">✓</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">DNS</span><span class=\"ui-connection-test-panel__badge\" data-status=\"passed\">passed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">12ms</span></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"failed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"failed\" aria-hidden=\"true\">✗</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">TLS</span><span class=\"ui-connection-test-panel__badge\" data-status=\"failed\">failed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">1.23s</span></div><span class=\"ui-connection-test-panel__message\">expired</span></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"skipped\"><span class=\"ui-connection-test-panel__icon\" data-status=\"skipped\" aria-hidden=\"true\">−</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Auth</span><span class=\"ui-connection-test-panel__badge\" data-status=\"skipped\">skipped</span></div><div class=\"ui-connection-test-panel__row\"></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"running\"><span class=\"ui-connection-test-panel__icon\" data-status=\"running\" aria-hidden=\"true\">◦</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Query</span><span class=\"ui-connection-test-panel__badge\" data-status=\"running\">running</span></div><div class=\"ui-connection-test-panel__row\"></div></div></li><li class=\"ui-connection-test-panel__step\" data-status=\"pending\"><span class=\"ui-connection-test-panel__icon\" data-status=\"pending\" aria-hidden=\"true\">•</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Close</span><span class=\"ui-connection-test-panel__badge\" data-status=\"pending\">pending</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">999ms</span></div></div></li></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">1 passed</span><span class=\"ui-connection-test-panel__count--failed\">1 failed</span><span>1 skipped</span></div><span>5 total</span></div></div>"
+      },
+      "running shows cancel, hides retry": {
+        "props": {
+          "running": true,
+          "onRetry": {
+            "$fn": true
+          },
+          "onCancel": {
+            "$fn": true
+          },
+          "title": "LDAP",
+          "size": "lg",
+          "steps": []
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"lg\" data-motion=\"3\" role=\"region\" aria-label=\"LDAP\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">LDAP</span><div class=\"ui-connection-test-panel__actions\"><button type=\"button\" class=\"ui-connection-test-panel__btn ui-connection-test-panel__btn--cancel\">Cancel</button></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
+      },
+      "no failures or skips": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "Ping",
+              "status": "passed",
+              "duration": 1000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"3\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"><li class=\"ui-connection-test-panel__step\" data-status=\"passed\"><span class=\"ui-connection-test-panel__icon\" data-status=\"passed\" aria-hidden=\"true\">✓</span><div class=\"ui-connection-test-panel__content\"><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__label\">Ping</span><span class=\"ui-connection-test-panel__badge\" data-status=\"passed\">passed</span></div><div class=\"ui-connection-test-panel__row\"><span class=\"ui-connection-test-panel__duration\">1.00s</span></div></div></li></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">1 passed</span></div><span>1 total</span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "steps": []
+        },
+        "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"0\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
+      }
+    },
+    "Divider": {
+      "defaults": {
+        "props": {},
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\"/>"
+      },
+      "vertical dashed lg": {
+        "props": {
+          "orientation": "vertical",
+          "variant": "dashed",
+          "spacing": "lg"
+        },
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"vertical\" data-variant=\"dashed\" data-spacing=\"lg\" aria-orientation=\"vertical\"/>"
+      },
+      "label string": {
+        "props": {
+          "label": "or"
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\">or</span></div>"
+      },
+      "label element": {
+        "props": {
+          "label": {
+            "$el": "section"
+          }
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\"><b>section</b></span></div>"
+      },
+      "label empty string": {
+        "props": {
+          "label": ""
+        },
+        "html": "<div role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" data-has-label=\"true\"><span class=\"ui-divider__label\"></span></div>"
+      },
+      "rest attrs": {
+        "props": {
+          "id": "d1",
+          "title": "split"
+        },
+        "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "FilterPill": {
+      "plain": {
+        "props": {
+          "label": "Region"
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">Region</span></button>"
+      },
+      "active count icon sm": {
+        "props": {
+          "label": "Region",
+          "active": true,
+          "count": 3,
+          "icon": {
+            "$el": "globe"
+          },
+          "size": "sm"
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"sm\" data-motion=\"3\" data-active=\"\" aria-pressed=\"true\"><span class=\"ui-filter-pill__icon\" aria-hidden=\"true\"><b>globe</b></span><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">3</span></button>"
+      },
+      "count zero": {
+        "props": {
+          "label": "Region",
+          "count": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">0</span></button>"
+      },
+      "removable": {
+        "props": {
+          "label": "Region",
+          "onRemove": {
+            "$fn": true
+          },
+          "active": true,
+          "count": 2
+        },
+        "html": "<span class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" data-active=\"\" role=\"group\" aria-label=\"Region filter\"><button type=\"button\" class=\"ui-filter-pill__main\" aria-pressed=\"true\"><span class=\"ui-filter-pill__label\">Region</span><span class=\"ui-filter-pill__count\">2</span></button><button type=\"button\" class=\"ui-filter-pill__remove\" aria-label=\"Remove Region\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></button></span>"
+      },
+      "rest to the main button": {
+        "props": {
+          "label": "Region",
+          "onRemove": {
+            "$fn": true
+          },
+          "title": "filter by region"
+        },
+        "html": "<span class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Region filter\"><button type=\"button\" class=\"ui-filter-pill__main\" aria-pressed=\"false\" title=\"filter by region\"><span class=\"ui-filter-pill__label\">Region</span></button><button type=\"button\" class=\"ui-filter-pill__remove\" aria-label=\"Remove Region\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg></button></span>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "x",
+          "motion": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-filter-pill\" data-size=\"md\" data-motion=\"0\" aria-pressed=\"false\"><span class=\"ui-filter-pill__label\">x</span></button>"
+      }
+    },
+    "FilterPillGroup": {
+      "children only": {
+        "props": {
+          "children": {
+            "$el": "pills"
+          }
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><b>pills</b></div>"
+      },
+      "clear all": {
+        "props": {
+          "onClearAll": {
+            "$fn": true
+          },
+          "children": {
+            "$el": "pills"
+          }
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><b>pills</b><button type=\"button\" class=\"ui-filter-pill-group__clear\">Clear all</button></div>"
+      },
+      "custom clear label": {
+        "props": {
+          "onClearAll": {
+            "$fn": true
+          },
+          "clearLabel": "Reset"
+        },
+        "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><button type=\"button\" class=\"ui-filter-pill-group__clear\">Reset</button></div>"
+      }
+    },
+    "GeoMap": {
+      "points only": {
+        "props": {
+          "points": [
+            {
+              "id": "a",
+              "lat": 51.5,
+              "lng": -0.12
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 1 point\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><circle class=\"ui-geo-map__point\" cx=\"179.88\" cy=\"38.5\" r=\"3\"></circle></svg></div>"
+      },
+      "values, statuses, labels, connections": {
+        "props": {
+          "showLabels": true,
+          "points": [
+            {
+              "id": "lon",
+              "lat": 51.5,
+              "lng": -0.12,
+              "value": 40,
+              "status": "ok",
+              "label": "London"
+            },
+            {
+              "id": "nyc",
+              "lat": 40.7,
+              "lng": -74,
+              "value": 100,
+              "status": "critical",
+              "label": "New York"
+            },
+            {
+              "id": "syd",
+              "lat": -33.9,
+              "lng": 151.2,
+              "status": "warning"
+            }
+          ],
+          "connections": [
+            {
+              "from": "lon",
+              "to": "nyc",
+              "status": "warning"
+            },
+            {
+              "from": "nyc",
+              "to": "syd"
+            },
+            {
+              "from": "lon",
+              "to": "missing"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 3 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><path class=\"ui-geo-map__connection\" d=\"M 179.88 38.5 Q 142.94 32.818, 106 49.3\" data-status=\"warning\"></path><path class=\"ui-geo-map__connection\" d=\"M 106 49.3 Q 218.6 52.82, 331.2 123.9\"></path><circle class=\"ui-geo-map__point\" cx=\"179.88\" cy=\"38.5\" r=\"3.9000000000000004\" data-status=\"ok\"></circle><circle class=\"ui-geo-map__point\" cx=\"106\" cy=\"49.3\" r=\"6\" data-status=\"critical\"></circle><circle class=\"ui-geo-map__point\" cx=\"331.2\" cy=\"123.9\" r=\"3\" data-status=\"warning\"></circle><text class=\"ui-geo-map__label\" x=\"179.88\" y=\"44.5\">London</text><text class=\"ui-geo-map__label\" x=\"106\" y=\"55.3\">New York</text></svg></div>"
+      },
+      "interactive, height number, style": {
+        "props": {
+          "interactive": true,
+          "height": 300,
+          "style": {
+            "border": "1px solid"
+          },
+          "points": [
+            {
+              "id": "a",
+              "lat": 0,
+              "lng": 0
+            }
+          ]
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\" style=\"border:1px solid;height:300px\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 1 point\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g><circle class=\"ui-geo-map__point\" cx=\"180\" cy=\"90\" r=\"3\" data-interactive=\"\"></circle></svg></div>"
+      },
+      "height string beats caller style height": {
+        "props": {
+          "height": "50vh",
+          "style": {
+            "height": 10
+          },
+          "points": []
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"3\" style=\"height:50vh\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 0 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "points": []
+        },
+        "html": "<div class=\"ui-geo-map\" data-motion=\"0\"><svg viewBox=\"0 0 360 180\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-label=\"Geographic map with 0 points\"><g class=\"ui-geo-map__world\"><path d=\"M 30 25 L 55 15 L 75 18 L 95 22 L 110 28 L 115 35 L 110 40 L 100 45 L 92 50 L 85 55 L 80 60 L 70 62 L 60 58 L 55 52 L 48 48 L 40 42 L 32 35 Z\"></path><path d=\"M 95 75 L 105 70 L 115 72 L 120 78 L 118 85 L 120 95 L 118 105 L 115 115 L 110 125 L 105 130 L 100 140 L 95 145 L 90 140 L 88 130 L 90 120 L 88 110 L 85 100 L 88 90 L 90 82 Z\"></path><path d=\"M 170 22 L 175 18 L 185 20 L 195 22 L 200 28 L 198 32 L 195 35 L 190 38 L 185 40 L 180 42 L 175 40 L 170 35 L 168 30 Z\"></path><path d=\"M 170 52 L 180 48 L 190 50 L 200 52 L 205 58 L 210 65 L 208 75 L 205 85 L 200 95 L 195 105 L 190 115 L 185 120 L 180 118 L 175 110 L 172 100 L 170 90 L 168 80 L 165 70 L 165 60 Z\"></path><path d=\"M 200 22 L 215 18 L 230 15 L 250 18 L 265 20 L 280 25 L 290 22 L 305 25 L 315 30 L 320 35 L 315 40 L 310 45 L 300 48 L 290 50 L 280 52 L 270 55 L 260 52 L 250 48 L 240 45 L 230 42 L 220 40 L 210 38 L 205 35 L 200 30 Z\"></path><path d=\"M 290 100 L 305 95 L 320 98 L 328 105 L 325 112 L 318 118 L 310 120 L 300 118 L 292 112 L 288 105 Z\"></path></g></svg></div>"
+      }
+    },
+    "GlowCard": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\"><div class=\"ui-glow-card--content\"><b>card</b></div></div>"
+      },
+      "color": {
+        "props": {
+          "glowColor": "oklch(70% 0.2 150)",
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\" style=\"--glow-card-color:oklch(70% 0.2 150)\"><div class=\"ui-glow-card--content\"><b>card</b></div></div>"
+      },
+      "caller style, no color": {
+        "props": {
+          "style": {
+            "padding": 12
+          }
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"3\" style=\"padding:12px\"><div class=\"ui-glow-card--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-glow-card\" data-motion=\"0\"><div class=\"ui-glow-card--content\"></div></div>"
+      }
+    },
+    "Highlight": {
+      "single term, case-insensitive": {
+        "props": {
+          "children": "The quick brown fox",
+          "highlight": "QUICK"
+        },
+        "html": "<span class=\"ui-highlight\"><span>The </span><mark>quick</mark><span> brown fox</span></span>"
+      },
+      "several terms": {
+        "props": {
+          "children": "alpha beta gamma beta",
+          "highlight": [
+            "beta",
+            "gamma"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>alpha </span><mark>beta</mark><span> </span><mark>gamma</mark><span> </span><mark>beta</mark></span>"
+      },
+      "case sensitive miss": {
+        "props": {
+          "children": "Alpha alpha",
+          "highlight": "alpha",
+          "caseSensitive": true
+        },
+        "html": "<span class=\"ui-highlight\"><span>Alpha </span><mark>alpha</mark></span>"
+      },
+      "regex metacharacters are literal": {
+        "props": {
+          "children": "cost is $5.00 (net)",
+          "highlight": [
+            "$5.00",
+            "(net)"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>cost is </span><mark>$5.00</mark><span> </span><mark>(net)</mark></span>"
+      },
+      "no valid terms": {
+        "props": {
+          "children": "nothing here",
+          "highlight": [
+            "",
+            ""
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>nothing here</span></span>"
+      },
+      "term at both ends": {
+        "props": {
+          "children": "xx mid xx",
+          "highlight": "xx"
+        },
+        "html": "<span class=\"ui-highlight\"><mark>xx</mark><span> mid </span><mark>xx</mark></span>"
+      },
+      "color and mark class": {
+        "props": {
+          "children": "find me",
+          "highlight": "me",
+          "color": "gold",
+          "highlightClassName": "hit"
+        },
+        "html": "<span class=\"ui-highlight\" style=\"--ui-highlight-color:gold\"><span>find </span><mark class=\"hit\">me</mark></span>"
+      }
+    },
+    "Icon": {
+      "chevron-down": {
+        "props": {
+          "name": "chevron-down"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg>"
+      },
+      "labelled lg": {
+        "props": {
+          "name": "x",
+          "size": "lg",
+          "label": "Close"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" role=\"img\" aria-label=\"Close\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg>"
+      },
+      "numeric size, class, rest": {
+        "props": {
+          "name": "x",
+          "size": 30,
+          "className": "k",
+          "data-x": "1"
+        },
+        "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"k\" aria-hidden=\"true\" data-x=\"1\"><path d=\"M18 6L6 18\"></path><path d=\"M6 6l12 12\"></path></svg>"
+      },
+      "unknown name renders nothing": {
+        "props": {
+          "name": "no-such-icon"
+        },
+        "html": ""
+      }
+    },
+    "Indicator": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "avatar"
+          }
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span><b>avatar</b></div>"
+      },
+      "numeric label bottom-start offset": {
+        "props": {
+          "label": 3,
+          "position": "bottom-start",
+          "offset": 4,
+          "children": {
+            "$el": "avatar"
+          }
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"bottom-start\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" style=\"margin-inline-start:4px;margin-block-end:4px\" aria-hidden=\"true\">3</span><b>avatar</b></div>"
+      },
+      "zero label": {
+        "props": {
+          "label": 0
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" aria-hidden=\"true\">0</span></div>"
+      },
+      "size and flags": {
+        "props": {
+          "size": 14,
+          "processing": true,
+          "disabled": true,
+          "inline": true,
+          "withBorder": true,
+          "color": "danger"
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"danger\" data-position=\"top-end\" data-motion=\"3\" data-inline=\"true\" data-disabled=\"true\"><span class=\"ui-indicator__dot\" data-processing=\"true\" data-bordered=\"true\" style=\"inline-size:14px;block-size:14px\" aria-hidden=\"true\"></span></div>"
+      },
+      "top-start offset": {
+        "props": {
+          "position": "top-start",
+          "offset": 2
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-start\" data-motion=\"3\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px;margin-inline-start:2px;margin-block-start:2px\" aria-hidden=\"true\"></span></div>"
+      },
+      "bottom-end offset, labelled": {
+        "props": {
+          "position": "bottom-end",
+          "offset": 6,
+          "label": "new"
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"bottom-end\" data-motion=\"3\"><span class=\"ui-indicator__dot\" data-has-label=\"true\" style=\"margin-inline-end:6px;margin-block-end:6px\" aria-hidden=\"true\">new</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"0\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span></div>"
+      }
+    },
+    "Kbd": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "K"
+          }
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"3\"><b>K</b></kbd>"
+      },
+      "xs ghost": {
+        "props": {
+          "size": "xs",
+          "variant": "ghost",
+          "children": {
+            "$el": "Ctrl"
+          }
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"xs\" data-variant=\"ghost\" data-motion=\"3\"><b>Ctrl</b></kbd>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"0\"></kbd>"
+      },
+      "no children": {
+        "props": {},
+        "html": "<kbd class=\"ui-kbd\" data-size=\"sm\" data-variant=\"default\" data-motion=\"3\"></kbd>"
+      }
+    },
+    "Link": {
+      "defaults": {
+        "props": {
+          "href": "/docs",
+          "children": {
+            "$el": "Docs"
+          }
+        },
+        "html": "<a class=\"ui-link\" data-variant=\"default\" data-underline=\"hover\" data-size=\"md\" data-motion=\"3\" href=\"/docs\"><b>Docs</b></a>"
+      },
+      "external defaults": {
+        "props": {
+          "href": "https://x.test",
+          "external": true
+        },
+        "html": "<a class=\"ui-link\" data-variant=\"default\" data-underline=\"hover\" data-size=\"md\" data-motion=\"3\" data-external=\"true\" target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://x.test\"></a>"
+      },
+      "external keeps caller target and rel": {
+        "props": {
+          "href": "https://x.test",
+          "external": true,
+          "target": "_self",
+          "rel": "me"
+        },
+        "html": "<a class=\"ui-link\" data-variant=\"default\" data-underline=\"hover\" data-size=\"md\" data-motion=\"3\" data-external=\"true\" target=\"_self\" rel=\"me\" href=\"https://x.test\"></a>"
+      },
+      "not external passes target through": {
+        "props": {
+          "href": "/a",
+          "target": "_top"
+        },
+        "html": "<a class=\"ui-link\" data-variant=\"default\" data-underline=\"hover\" data-size=\"md\" data-motion=\"3\" target=\"_top\" href=\"/a\"></a>"
+      },
+      "brand always xl": {
+        "props": {
+          "variant": "brand",
+          "underline": "always",
+          "size": "xl"
+        },
+        "html": "<a class=\"ui-link\" data-variant=\"brand\" data-underline=\"always\" data-size=\"xl\" data-motion=\"3\"></a>"
+      }
+    },
+    "ListLayout": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "row"
+          }
+        },
+        "html": "<div class=\"ui-list-layout\" data-gap=\"md\" data-padding=\"none\"><b>row</b></div>"
+      },
+      "gap lg dividers padding sm": {
+        "props": {
+          "gap": "lg",
+          "dividers": true,
+          "padding": "sm",
+          "children": {
+            "$el": "row"
+          }
+        },
+        "html": "<div class=\"ui-list-layout\" data-gap=\"lg\" data-dividers=\"true\" data-padding=\"sm\"><b>row</b></div>"
+      },
+      "dividers false": {
+        "props": {
+          "dividers": false
+        },
+        "html": "<div class=\"ui-list-layout\" data-gap=\"md\" data-padding=\"none\"></div>"
+      }
+    },
+    "MeteorShower": {
+      "few": {
+        "props": {
+          "count": 4
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:33.573129419528414%;--meteor-delay:4.867871614987962s;--meteor-duration:2.530038157303352s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:5.734339443733916%;--meteor-delay:2.866425123393128s;--meteor-duration:2.977354963652033s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:88.6272282077698%;--meteor-delay:1.5958167998178396s;--meteor-duration:1.8494414367596619s\"></div></div>"
+      },
+      "with content": {
+        "props": {
+          "count": 2,
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:33.573129419528414%;--meteor-delay:4.867871614987962s;--meteor-duration:2.530038157303352s\"></div><div class=\"ui-meteor-shower--content\"><b>hero</b></div></div>"
+      },
+      "none": {
+        "props": {
+          "count": 0
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"3\" aria-hidden=\"true\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "count": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-meteor-shower\" data-motion=\"0\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div></div>"
+      }
+    },
+    "NotificationStack": {
+      "empty": {
+        "props": {
+          "notifications": []
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">No notifications</div></div></div>"
+      },
+      "custom empty message": {
+        "props": {
+          "notifications": [],
+          "emptyMessage": "All caught up",
+          "onDismissAll": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">All caught up</div></div></div>"
+      },
+      "mixed with relative times": {
+        "props": {
+          "onDismiss": {
+            "$fn": true
+          },
+          "onDismissAll": {
+            "$fn": true
+          },
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "Deploy done",
+              "timestamp": 1768478370000,
+              "variant": "success",
+              "description": "v3.0.0",
+              "action": {
+                "label": "View",
+                "onClick": {
+                  "$fn": true
+                }
+              }
+            },
+            {
+              "id": "b",
+              "title": "Disk 90%",
+              "timestamp": 1768478100000,
+              "variant": "warning",
+              "icon": {
+                "$el": "!"
+              },
+              "read": true
+            },
+            {
+              "id": "c",
+              "title": "Backup",
+              "timestamp": 1768467600000
+            },
+            {
+              "id": "d",
+              "title": "Invoice",
+              "timestamp": 1768305600000,
+              "read": false
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"><button type=\"button\" class=\"ui-notification-stack__action-btn\">Mark all read</button><button type=\"button\" class=\"ui-notification-stack__action-btn\">Clear all</button></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"success\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Deploy done</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">30 seconds ago</span></div><p class=\"ui-notification__description\">v3.0.0</p><button type=\"button\" class=\"ui-notification__action\">View</button></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"warning\"><span class=\"ui-notification__icon\"><b>!</b></span><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Disk 90%</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">5 minutes ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Backup</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">3 hours ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">Invoice</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">2 days ago</span></div></div><button type=\"button\" class=\"ui-notification__dismiss\" aria-label=\"Dismiss notification\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></article></div></div>"
+      },
+      "grouped": {
+        "props": {
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "group": "Today"
+            },
+            {
+              "id": "b",
+              "title": "B",
+              "timestamp": 1768478400000,
+              "group": "Today"
+            },
+            {
+              "id": "c",
+              "title": "C",
+              "timestamp": 1768478400000,
+              "group": "Earlier",
+              "read": true
+            },
+            {
+              "id": "d",
+              "title": "D",
+              "timestamp": 1768478400000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__group-header\">Today</div><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">B</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><div class=\"ui-notification-stack__group-header\">Earlier</div><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">C</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article><article class=\"ui-notification\" data-variant=\"default\" data-unread=\"\"><div class=\"ui-notification__unread-dot\"></div><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">D</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "maxVisible cuts, unread still counted from all": {
+        "props": {
+          "maxVisible": 1,
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "read": true
+            },
+            {
+              "id": "b",
+              "title": "B",
+              "timestamp": 1768478400000
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"><button type=\"button\" class=\"ui-notification-stack__action-btn\">Mark all read</button></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "all read hides mark-all": {
+        "props": {
+          "onMarkAllRead": {
+            "$fn": true
+          },
+          "notifications": [
+            {
+              "id": "a",
+              "title": "A",
+              "timestamp": 1768478400000,
+              "read": true
+            }
+          ]
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"3\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><article class=\"ui-notification\" data-variant=\"default\"><div class=\"ui-notification__content\"><div class=\"ui-notification__header-row\"><p class=\"ui-notification__title\">A</p><span class=\"ui-notification__time\" data-testid=\"notification-time\">now</span></div></div></article></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "notifications": []
+        },
+        "html": "<div class=\"ui-notification-stack\" data-motion=\"0\"><div class=\"ui-notification-stack__header\"><h3 class=\"ui-notification-stack__title\">Notifications</h3><div class=\"ui-notification-stack__actions\"></div></div><div class=\"ui-notification-stack__list\"><div class=\"ui-notification-stack__empty\">No notifications</div></div></div>"
+      }
+    },
+    "OrbitingCircles": {
+      "three": {
+        "props": {
+          "children": [
+            {
+              "$el": "a"
+            },
+            {
+              "$el": "b"
+            },
+            {
+              "$el": "c"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:120deg;--orbit-delay:-5s\"><b>b</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:240deg;--orbit-delay:-10s\"><b>c</b></div></div>"
+      },
+      "reverse radius duration": {
+        "props": {
+          "radius": 60,
+          "duration": 8,
+          "reverse": true,
+          "children": [
+            {
+              "$el": "a"
+            },
+            "b"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:60px;--orbit-duration:8s;--orbit-direction:reverse\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:180deg;--orbit-delay:-4s\">b</div></div>"
+      },
+      "null and false dropped, 0 kept": {
+        "props": {
+          "children": [
+            {
+              "$el": "a"
+            },
+            null,
+            false,
+            "b",
+            0
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\"><b>a</b></div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:120deg;--orbit-delay:-5s\">b</div><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:240deg;--orbit-delay:-10s\">0</div></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "width": 300
+          },
+          "children": [
+            "x"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"3\" style=\"width:300px;--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\">x</div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": [
+            "x"
+          ]
+        },
+        "html": "<div class=\"ui-orbiting-circles\" data-motion=\"0\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\">x</div></div>"
+      }
+    },
+    "PageHeader": {
+      "title only": {
+        "props": {
+          "title": "Billing"
+        },
+        "html": "<header class=\"ui-page-header\" data-size=\"md\"><div class=\"ui-page-header__row\"><div class=\"ui-page-header__content\"><h1 class=\"ui-page-header__title\">Billing</h1></div></div></header>"
+      },
+      "everything": {
+        "props": {
+          "title": "Billing",
+          "description": "Invoices",
+          "actions": {
+            "$el": "New"
+          },
+          "breadcrumbs": {
+            "$el": "Home / Billing"
+          },
+          "size": "lg"
+        },
+        "html": "<header class=\"ui-page-header\" data-size=\"lg\"><nav class=\"ui-page-header__breadcrumbs\" aria-label=\"Breadcrumb\"><b>Home / Billing</b></nav><div class=\"ui-page-header__row\"><div class=\"ui-page-header__content\"><h1 class=\"ui-page-header__title\">Billing</h1><p class=\"ui-page-header__description\">Invoices</p></div><div class=\"ui-page-header__actions\"><b>New</b></div></div></header>"
+      },
+      "string actions": {
+        "props": {
+          "title": "Billing",
+          "actions": "New",
+          "size": "sm"
+        },
+        "html": "<header class=\"ui-page-header\" data-size=\"sm\"><div class=\"ui-page-header__row\"><div class=\"ui-page-header__content\"><h1 class=\"ui-page-header__title\">Billing</h1></div><div class=\"ui-page-header__actions\">New</div></div></header>"
+      }
+    },
+    "PageShell": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "page"
+          }
+        },
+        "html": "<div class=\"ui-page-shell\" data-max-width=\"lg\" data-padding=\"md\"><b>page</b></div>"
+      },
+      "xl none": {
+        "props": {
+          "maxWidth": "xl",
+          "padding": "none",
+          "children": {
+            "$el": "page"
+          }
+        },
+        "html": "<div class=\"ui-page-shell\" data-max-width=\"xl\" data-padding=\"none\"><b>page</b></div>"
+      },
+      "full lg rest": {
+        "props": {
+          "maxWidth": "full",
+          "padding": "lg",
+          "id": "shell"
+        },
+        "html": "<div class=\"ui-page-shell\" data-max-width=\"full\" data-padding=\"lg\" id=\"shell\"></div>"
+      }
+    },
+    "Pagination": {
+      "fits without truncation": {
+        "props": {
+          "page": 2,
+          "totalPages": 7,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Page 4\">4</button><button type=\"button\" aria-label=\"Page 5\">5</button><button type=\"button\" aria-label=\"Page 6\">6</button><button type=\"button\" aria-label=\"Page 7\">7</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "right ellipsis only": {
+        "props": {
+          "page": 2,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Page 4\">4</button><button type=\"button\" aria-label=\"Page 5\">5</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "left ellipsis only": {
+        "props": {
+          "page": 19,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 16\">16</button><button type=\"button\" aria-label=\"Page 17\">17</button><button type=\"button\" aria-label=\"Page 18\">18</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 19\">19</button><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "both ellipses": {
+        "props": {
+          "page": 10,
+          "totalPages": 20,
+          "onChange": {
+            "$fn": true
+          },
+          "showFirst": true
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 9\">9</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 10\">10</button><button type=\"button\" aria-label=\"Page 11\">11</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 20\">20</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "wider siblings, no prev/next": {
+        "props": {
+          "page": 10,
+          "totalPages": 30,
+          "siblingCount": 2,
+          "showPrevNext": false,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Page 1\">1</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 8\">8</button><button type=\"button\" aria-label=\"Page 9\">9</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 10\">10</button><button type=\"button\" aria-label=\"Page 11\">11</button><button type=\"button\" aria-label=\"Page 12\">12</button><span class=\"ui-pagination__ellipsis\" aria-hidden=\"true\">…</span><button type=\"button\" aria-label=\"Page 30\">30</button></nav>"
+      },
+      "first page disables back": {
+        "props": {
+          "page": 1,
+          "totalPages": 3,
+          "showFirst": true,
+          "onChange": {
+            "$fn": true
+          },
+          "size": "xs"
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"xs\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Next page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "last page disables forward": {
+        "props": {
+          "page": 3,
+          "totalPages": 3,
+          "showFirst": true,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"First page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 3L3 7L7 11M11 3L7 7L11 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Previous page\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Page 2\">2</button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 3\">3</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Last page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 3L7 7L3 11M7 3L11 7L7 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "no pages": {
+        "props": {
+          "page": 1,
+          "totalPages": 0,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"3\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      },
+      "motion 0": {
+        "props": {
+          "page": 1,
+          "totalPages": 1,
+          "onChange": {
+            "$fn": true
+          },
+          "motion": 0
+        },
+        "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"0\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
+      }
+    },
+    "PipelineStage": {
+      "all statuses": {
+        "props": {
+          "stages": [
+            {
+              "id": "a",
+              "label": "Build",
+              "status": "success",
+              "duration": 42
+            },
+            {
+              "id": "b",
+              "label": "Test",
+              "status": "running",
+              "duration": 125
+            },
+            {
+              "id": "c",
+              "label": "Deploy",
+              "status": "pending",
+              "duration": 120
+            },
+            {
+              "id": "d",
+              "label": "Notify",
+              "status": "skipped"
+            },
+            {
+              "id": "e",
+              "label": "Audit",
+              "status": "failed",
+              "duration": 0
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"success\"><span class=\"ui-pipeline-stage__icon\">✓</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Build</span><span class=\"ui-pipeline-stage__duration\">42s</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"running\"><span class=\"ui-pipeline-stage__icon\">▶</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Test</span><span class=\"ui-pipeline-stage__duration\">2m 5s</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"pending\"><span class=\"ui-pipeline-stage__icon\">•</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Deploy</span><span class=\"ui-pipeline-stage__duration\">2m</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"skipped\"><span class=\"ui-pipeline-stage__icon\">−</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Notify</span></div></div><div class=\"ui-pipeline-stage__connector\" aria-hidden=\"true\"></div></li><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"failed\"><span class=\"ui-pipeline-stage__icon\">✗</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Audit</span><span class=\"ui-pipeline-stage__duration\">0s</span></div></div></li></ol></div>"
+      },
+      "vertical, clickable": {
+        "props": {
+          "orientation": "vertical",
+          "onStageClick": {
+            "$fn": true
+          },
+          "stages": [
+            {
+              "id": "a",
+              "label": "Build",
+              "status": "success"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"vertical\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"success\"><span class=\"ui-pipeline-stage__icon\">✓</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\"><button class=\"ui-pipeline-stage__label-btn\">Build</button></span></div></div></li></ol></div>"
+      },
+      "single stage has no connector": {
+        "props": {
+          "stages": [
+            {
+              "id": "a",
+              "label": "Only",
+              "status": "pending"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"><li style=\"display:contents\"><div class=\"ui-pipeline-stage__item\"><div class=\"ui-pipeline-stage__indicator\" data-status=\"pending\"><span class=\"ui-pipeline-stage__icon\">•</span></div><div class=\"ui-pipeline-stage__content\"><span class=\"ui-pipeline-stage__label\">Only</span></div></div></li></ol></div>"
+      },
+      "empty": {
+        "props": {
+          "stages": []
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "stages": []
+        },
+        "html": "<div class=\"ui-pipeline-stage\" data-orientation=\"horizontal\" data-motion=\"0\"><ol class=\"ui-pipeline-stage__list\"></ol></div>"
+      }
+    },
+    "Progress": {
+      "indeterminate": {
+        "props": {},
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-indeterminate=\"\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\"></div></div></div>"
+      },
+      "half with value": {
+        "props": {
+          "value": 50,
+          "showValue": true,
+          "label": "Upload"
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-label=\"Upload\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:50%\"></div></div><span class=\"ui-progress__value\">50%</span></div>"
+      },
+      "zero": {
+        "props": {
+          "value": 0,
+          "showValue": true
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:0%\"></div></div><span class=\"ui-progress__value\">0%</span></div>"
+      },
+      "clamped over max": {
+        "props": {
+          "value": 250,
+          "max": 200,
+          "variant": "danger",
+          "size": "xl"
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"200\" aria-valuemin=\"0\" aria-valuemax=\"200\" data-size=\"xl\" data-variant=\"danger\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:100%\"></div></div></div>"
+      },
+      "clamped negative": {
+        "props": {
+          "value": -5
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:0%\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 10,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:10%\"></div></div></div>"
+      }
+    },
+    "ResponsiveCard": {
+      "title only": {
+        "props": {
+          "title": "Plan"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">Plan</h3></div></article>"
+      },
+      "everything": {
+        "props": {
+          "title": {
+            "$el": "Pro"
+          },
+          "description": "For teams",
+          "actions": {
+            "$el": "Buy"
+          },
+          "badge": "New",
+          "image": {
+            "$el": "img"
+          },
+          "variant": "horizontal"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"horizontal\" data-motion=\"3\"><div class=\"ui-responsive-card__badge\">New</div><div class=\"ui-responsive-card__image\"><b>img</b></div><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\"><b>Pro</b></h3><p class=\"ui-responsive-card__description\">For teams</p></div><div class=\"ui-responsive-card__actions\"><b>Buy</b></div></article>"
+      },
+      "compact string parts": {
+        "props": {
+          "title": "Lite",
+          "description": {
+            "$el": "Solo"
+          },
+          "variant": "compact"
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"compact\" data-motion=\"3\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">Lite</h3><p class=\"ui-responsive-card__description\"><b>Solo</b></p></div></article>"
+      },
+      "motion 0": {
+        "props": {
+          "title": "x",
+          "motion": 0
+        },
+        "html": "<article class=\"ui-responsive-card\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-responsive-card__content\"><h3 class=\"ui-responsive-card__title\">x</h3></div></article>"
+      }
+    },
+    "RingChart": {
+      "value": {
+        "props": {
+          "value": 42
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"42\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"105.68317686676065\"></circle></svg></div>"
+      },
+      "show value lg thickness color": {
+        "props": {
+          "value": 75,
+          "showValue": true,
+          "size": "lg",
+          "thickness": 12,
+          "color": "teal"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"lg\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:96px;height:96px\"><svg class=\"ui-ring-chart__svg\" width=\"96\" height=\"96\" viewBox=\"0 0 96 96\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"48\" cy=\"48\" r=\"42\" stroke-width=\"12\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"48\" cy=\"48\" r=\"42\" stroke-width=\"12\" stroke=\"teal\" stroke-dasharray=\"263.89378290154264\" stroke-dashoffset=\"65.97344572538566\"></circle></svg><div class=\"ui-ring-chart__center\">75%</div></div>"
+      },
+      "string label names the meter": {
+        "props": {
+          "value": 10,
+          "max": 40,
+          "label": "CPU"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"40\" aria-label=\"CPU\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"136.659280431156\"></circle></svg><div class=\"ui-ring-chart__center\">CPU</div></div>"
+      },
+      "element label": {
+        "props": {
+          "value": 5,
+          "label": {
+            "$el": "5 GB"
+          }
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"5\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"173.1017552127976\"></circle></svg><div class=\"ui-ring-chart__center\"><b>5 GB</b></div></div>"
+      },
+      "empty-string label renders empty centre": {
+        "props": {
+          "value": 50,
+          "label": "",
+          "showValue": true
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"91.106186954104\"></circle></svg><div class=\"ui-ring-chart__center\"></div></div>"
+      },
+      "clamped": {
+        "props": {
+          "value": 140,
+          "max": 120,
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"sm\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"120\" aria-valuemin=\"0\" aria-valuemax=\"120\" aria-label=\"Ring chart\" style=\"width:48px;height:48px\"><svg class=\"ui-ring-chart__svg\" width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"24\" cy=\"24\" r=\"22\" stroke-width=\"4\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"24\" cy=\"24\" r=\"22\" stroke-width=\"4\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"138.23007675795088\" stroke-dashoffset=\"0\"></circle></svg></div>"
+      },
+      "caller style wins over size": {
+        "props": {
+          "value": 1,
+          "style": {
+            "width": 200
+          }
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"3\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:200px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"180.39025016912592\"></circle></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"0\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"180.39025016912592\"></circle></svg></div>"
+      }
+    },
+    "SectionHeader": {
+      "title only": {
+        "props": {
+          "title": "Usage"
+        },
+        "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
+      },
+      "description action sm": {
+        "props": {
+          "title": "Usage",
+          "description": "Last 30 days",
+          "action": {
+            "$el": "Export"
+          },
+          "size": "sm"
+        },
+        "html": "<header class=\"ui-section-header\" data-size=\"sm\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2><p class=\"ui-section-header__description\">Last 30 days</p></div><div class=\"ui-section-header__action\"><b>Export</b></div></header>"
+      },
+      "action string lg": {
+        "props": {
+          "title": "Usage",
+          "action": "Export",
+          "size": "lg"
+        },
+        "html": "<header class=\"ui-section-header\" data-size=\"lg\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div><div class=\"ui-section-header__action\">Export</div></header>"
+      },
+      "empty description": {
+        "props": {
+          "title": "Usage",
+          "description": ""
+        },
+        "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
+      },
+      "children are dropped": {
+        "props": {
+          "title": "Usage",
+          "children": {
+            "$el": "ignored"
+          }
+        },
+        "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
+      }
+    },
+    "ShimmerButton": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"3\"><b>Go</b></button>"
+      },
+      "color lg disabled": {
+        "props": {
+          "shimmerColor": "white",
+          "size": "lg",
+          "disabled": true,
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"lg\" data-motion=\"3\" disabled=\"\" style=\"--shimmer-button-color:white\"><b>Go</b></button>"
+      },
+      "no style at all": {
+        "props": {
+          "size": "sm",
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"sm\" data-motion=\"3\"><b>Go</b></button>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "minWidth": 120
+          },
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"3\" style=\"min-width:120px\"><b>Go</b></button>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": {
+            "$el": "Go"
+          }
+        },
+        "html": "<button class=\"ui-shimmer-button\" data-size=\"md\" data-motion=\"0\"><b>Go</b></button>"
+      }
+    },
+    "Sidebar": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "nav"
+          }
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"3\" style=\"--sidebar-width:240px;--sidebar-collapsed-width:64px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><b>nav</b></aside>"
+      },
+      "collapsed right string widths": {
+        "props": {
+          "collapsed": true,
+          "position": "right",
+          "width": "18rem",
+          "collapsedWidth": "4rem"
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"true\" data-position=\"right\" data-motion=\"3\" style=\"--sidebar-width:18rem;--sidebar-collapsed-width:4rem\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Expand sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L7.5 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      },
+      "caller style wins over width vars": {
+        "props": {
+          "width": 300,
+          "style": {
+            "--sidebar-width": "10px",
+            "padding": 4
+          }
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"3\" style=\"--sidebar-width:10px;--sidebar-collapsed-width:64px;padding:4px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<aside class=\"ui-sidebar\" data-collapsed=\"false\" data-position=\"left\" data-motion=\"0\" style=\"--sidebar-width:240px;--sidebar-collapsed-width:64px\"><button type=\"button\" class=\"ui-sidebar__toggle\" aria-label=\"Collapse sidebar\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7.5 2.5L4.5 6L7.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></aside>"
+      }
+    },
+    "SidebarContent": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "className": "c",
+          "id": "sc"
+        },
+        "html": "<div class=\"ui-sidebar__content c\" id=\"sc\"><b>x</b></div>"
+      }
+    },
+    "SidebarFooter": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-sidebar__footer\"><b>x</b></div>"
+      }
+    },
+    "SidebarHeader": {
+      "basic": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "title": "h"
+        },
+        "html": "<div class=\"ui-sidebar__header\" title=\"h\"><b>x</b></div>"
+      }
+    },
+    "SidebarItem": {
+      "button": {
+        "props": {
+          "label": "Settings"
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\"><span class=\"ui-sidebar__item-label\">Settings</span></button>"
+      },
+      "link active icon": {
+        "props": {
+          "label": "Home",
+          "href": "/",
+          "active": true,
+          "icon": {
+            "$el": "h"
+          }
+        },
+        "html": "<a class=\"ui-sidebar__item\" data-active=\"true\" href=\"/\"><span class=\"ui-sidebar__item-icon\"><b>h</b></span><span class=\"ui-sidebar__item-label\">Home</span></a>"
+      },
+      "empty href is a button": {
+        "props": {
+          "label": "X",
+          "href": ""
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\"><span class=\"ui-sidebar__item-label\">X</span></button>"
+      },
+      "rest attrs": {
+        "props": {
+          "label": "X",
+          "id": "i",
+          "aria-label": "x item"
+        },
+        "html": "<button class=\"ui-sidebar__item\" type=\"button\" id=\"i\" aria-label=\"x item\"><span class=\"ui-sidebar__item-label\">X</span></button>"
+      }
+    },
+    "Skeleton": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      },
+      "sized numbers and strings": {
+        "props": {
+          "variant": "rounded",
+          "width": 120,
+          "height": "2rem",
+          "radius": 6
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"rounded\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:120px;block-size:2rem;border-radius:6px\"></div>"
+      },
+      "three lines": {
+        "props": {
+          "lines": 3,
+          "lineHeight": 14,
+          "lineGap": "0.5rem"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" data-lines=\"\" aria-hidden=\"true\" style=\"--skeleton-line-height:14px;--skeleton-line-gap:0.5rem\"><span class=\"ui-skeleton__line\"></span><span class=\"ui-skeleton__line\" style=\"inline-size:78%\"></span><span class=\"ui-skeleton__line\" style=\"inline-size:45%\"></span></div>"
+      },
+      "one line": {
+        "props": {
+          "lines": 1
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" data-lines=\"\" aria-hidden=\"true\"><span class=\"ui-skeleton__line\"></span></div>"
+      },
+      "lines ignored when not text": {
+        "props": {
+          "variant": "circular",
+          "lines": 4,
+          "width": 40,
+          "height": 40
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"circular\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:40px;block-size:40px\"></div>"
+      },
+      "animate false pulse slow": {
+        "props": {
+          "animate": false,
+          "animation": "pulse",
+          "speed": "slow"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"false\" data-animation=\"pulse\" data-motion=\"3\" data-speed=\"slow\" aria-hidden=\"true\"></div>"
+      },
+      "count row": {
+        "props": {
+          "count": 3,
+          "width": 60,
+          "direction": "column",
+          "motion": 1
+        },
+        "html": "<div class=\"ui-skeleton__count-wrapper\" data-direction=\"column\" aria-hidden=\"true\"><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div><div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"1\" data-speed=\"normal\" aria-hidden=\"true\" style=\"inline-size:60px\"></div></div>"
+      },
+      "count one renders single": {
+        "props": {
+          "count": 1
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      },
+      "caller style": {
+        "props": {
+          "style": {
+            "marginInlineStart": 10
+          },
+          "width": "50%"
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"margin-inline-start:10px;inline-size:50%\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"0\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      }
+    },
+    "SpotlightCard": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\"><div class=\"ui-spotlight-card--content\"><b>card</b></div></div>"
+      },
+      "color": {
+        "props": {
+          "spotlightColor": "white",
+          "children": {
+            "$el": "card"
+          }
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\" style=\"--spotlight-card-color:white\"><div class=\"ui-spotlight-card--content\"><b>card</b></div></div>"
+      },
+      "caller style with color": {
+        "props": {
+          "style": {
+            "padding": 12
+          },
+          "spotlightColor": "gold"
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"3\" style=\"padding:12px;--spotlight-card-color:gold\"><div class=\"ui-spotlight-card--content\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-spotlight-card\" data-motion=\"0\"><div class=\"ui-spotlight-card--content\"></div></div>"
+      }
+    },
+    "StatsGrid": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "stat"
+          }
+        },
+        "html": "<div class=\"ui-stats-grid\" data-columns=\"4\" data-gap=\"md\" role=\"region\"><b>stat</b></div>"
+      },
+      "columns 6 gap sm": {
+        "props": {
+          "columns": 6,
+          "gap": "sm",
+          "children": {
+            "$el": "stat"
+          }
+        },
+        "html": "<div class=\"ui-stats-grid\" data-columns=\"6\" data-gap=\"sm\" role=\"region\"><b>stat</b></div>"
+      },
+      "role override": {
+        "props": {
+          "role": "list"
+        },
+        "html": "<div class=\"ui-stats-grid\" data-columns=\"4\" data-gap=\"md\" role=\"list\"></div>"
+      }
+    },
+    "StatusBadge": {
+      "ok": {
+        "props": {
+          "status": "ok"
+        },
+        "html": "<span role=\"status\" class=\"ui-status-badge\" data-status=\"ok\" data-size=\"sm\" data-motion=\"3\"><span class=\"ui-status-badge__dot\" aria-hidden=\"true\"></span></span>"
+      },
+      "label icon pulse lg": {
+        "props": {
+          "status": "critical",
+          "label": "Down",
+          "icon": {
+            "$el": "!"
+          },
+          "pulse": true,
+          "size": "lg"
+        },
+        "html": "<span role=\"status\" class=\"ui-status-badge\" data-status=\"critical\" data-size=\"lg\" data-motion=\"3\"><span class=\"ui-status-badge__dot\" data-pulse=\"true\" aria-hidden=\"true\"></span><span class=\"ui-status-badge__icon\" aria-hidden=\"true\"><b>!</b></span><span class=\"ui-status-badge__label\">Down</span></span>"
+      },
+      "maintenance empty label": {
+        "props": {
+          "status": "maintenance",
+          "label": ""
+        },
+        "html": "<span role=\"status\" class=\"ui-status-badge\" data-status=\"maintenance\" data-size=\"sm\" data-motion=\"3\"><span class=\"ui-status-badge__dot\" aria-hidden=\"true\"></span></span>"
+      },
+      "motion 0": {
+        "props": {
+          "status": "info",
+          "motion": 0
+        },
+        "html": "<span role=\"status\" class=\"ui-status-badge\" data-status=\"info\" data-size=\"sm\" data-motion=\"0\"><span class=\"ui-status-badge__dot\" aria-hidden=\"true\"></span></span>"
+      }
+    },
+    "StatusPulse": {
+      "ok": {
+        "props": {
+          "status": "ok"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"ok\" data-size=\"md\" data-motion=\"3\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "critical lg label": {
+        "props": {
+          "status": "critical",
+          "size": "lg",
+          "label": "Down"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"critical\" data-size=\"lg\" data-motion=\"3\" role=\"img\" aria-label=\"Down\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "warning": {
+        "props": {
+          "status": "warning",
+          "size": "sm"
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"warning\" data-size=\"sm\" data-motion=\"3\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      },
+      "info motion 0": {
+        "props": {
+          "status": "info",
+          "motion": 0
+        },
+        "html": "<span class=\"ui-status-pulse\" data-status=\"info\" data-size=\"md\" data-motion=\"0\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
+      }
+    },
+    "Stepper": {
+      "horizontal middle active": {
+        "props": {
+          "activeStep": 1,
+          "steps": [
+            {
+              "id": "a",
+              "label": "Account",
+              "description": "Sign up"
+            },
+            {
+              "id": "b",
+              "label": {
+                "$el": "Plan"
+              },
+              "optional": true
+            },
+            {
+              "id": "c",
+              "label": "Pay",
+              "icon": {
+                "$el": "$"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">Account</span><span class=\"ui-stepper__description\">Sign up</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">2</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\"><b>Plan</b></span><span class=\"ui-stepper__optional\">Optional</span></div></div><div class=\"ui-stepper__connector\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"pending\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><b>$</b></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">Pay</span></div></div></div></div>"
+      },
+      "completed step with custom icon keeps the icon": {
+        "props": {
+          "activeStep": 2,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A",
+              "icon": "i"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">i</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">3</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">C</span></div></div></div></div>"
+      },
+      "vertical dots lg clickable": {
+        "props": {
+          "orientation": "vertical",
+          "variant": "dots",
+          "size": "lg",
+          "activeStep": 0,
+          "onStepClick": {
+            "$fn": true
+          },
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B",
+              "description": "desc"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"vertical\" data-variant=\"dots\" data-size=\"lg\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"active\" data-clickable=\"true\" role=\"button\" tabindex=\"0\" aria-current=\"step\"><div class=\"ui-stepper__step-wrapper\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">1</span></span><div class=\"ui-stepper__connector\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__step\" data-status=\"pending\" data-clickable=\"true\" role=\"button\" tabindex=\"0\"><div class=\"ui-stepper__step-wrapper\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">2</span></span></div><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span><span class=\"ui-stepper__description\">desc</span></div></div></div>"
+      },
+      "all complete": {
+        "props": {
+          "activeStep": 5,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"3\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div><div class=\"ui-stepper__connector\" data-completed=\"true\" aria-hidden=\"true\"></div></div><div class=\"ui-stepper__step\" data-status=\"completed\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2.5 6L5 8.5L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">B</span></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "activeStep": 0,
+          "motion": 0,
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-stepper\" data-orientation=\"horizontal\" data-variant=\"default\" data-size=\"md\" data-motion=\"0\" aria-label=\"Progress steps\" role=\"navigation\"><div class=\"ui-stepper__step\" data-status=\"active\" aria-current=\"step\"><div class=\"ui-stepper__step-content\"><span class=\"ui-stepper__indicator\"><span class=\"ui-stepper__indicator-content\">1</span></span><div class=\"ui-stepper__label-group\"><span class=\"ui-stepper__label\">A</span></div></div></div></div>"
+      }
+    },
+    "SuccessCheckmark": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"3\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span></div>"
+      },
+      "lg not animated custom label": {
+        "props": {
+          "size": "lg",
+          "animated": false,
+          "label": "Saved"
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"lg\" data-animated=\"false\" data-motion=\"3\" role=\"img\" aria-label=\"Saved\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      },
+      "motion 2 has no particles": {
+        "props": {
+          "motion": 2
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"2\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      },
+      "motion 3 has particles": {
+        "props": {
+          "motion": 3
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"3\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span><span class=\"ui-success-checkmark__particle\" aria-hidden=\"true\"></span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"0\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      }
+    },
+    "ThresholdGauge": {
+      "value": {
+        "props": {
+          "value": 30
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"30\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 14.69504831500295 92.91597412837851 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "ok warning critical": {
+        "props": {
+          "value": 55,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          },
+          "showValue": true
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" data-status=\"warning\" role=\"meter\" aria-valuenow=\"55\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 4.689452926672288 51.23966995774708 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><text class=\"ui-threshold-gauge__value-text\" x=\"60\" y=\"56\">55</text></svg></div>"
+      },
+      "critical": {
+        "props": {
+          "value": 95,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          },
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"lg\" data-status=\"critical\" role=\"meter\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"160\" height=\"90\" viewBox=\"0 0 160 90\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 79.99999999999999 5 A 75 75 0 0 0 80 155\" stroke-width=\"10\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 68.26741512198268 5.92337445536468 A 75 75 0 0 0 80 155\" stroke-width=\"10\"></path></svg></div>"
+      },
+      "zero has no fill": {
+        "props": {
+          "value": 0,
+          "thresholds": {
+            "warning": 50,
+            "critical": 80
+          }
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" data-status=\"ok\" role=\"meter\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "full, labelled": {
+        "props": {
+          "value": 100,
+          "label": "Disk",
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"sm\" role=\"meter\" aria-valuenow=\"100\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Disk\"><svg class=\"ui-threshold-gauge__svg\" width=\"80\" height=\"46\" viewBox=\"0 0 80 46\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 39.99999999999999 3 A 37 37 0 0 0 40 77\" stroke-width=\"6\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 39.99999999999999 3 A 37 37 0 0 0 40 77\" stroke-width=\"6\"></path></svg><div class=\"ui-threshold-gauge__label\">Disk</div></div>"
+      },
+      "element label": {
+        "props": {
+          "value": 12,
+          "label": {
+            "$el": "Load"
+          }
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"12\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 39.38502504965805 112.06748320974208 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg><div class=\"ui-threshold-gauge__label\"><b>Load</b></div></div>"
+      },
+      "clamped negative": {
+        "props": {
+          "value": -10
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"3\" data-size=\"md\" role=\"meter\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-threshold-gauge\" data-motion=\"0\" data-size=\"md\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Gauge\"><svg class=\"ui-threshold-gauge__svg\" width=\"120\" height=\"68\" viewBox=\"0 0 120 68\" aria-hidden=\"true\"><path class=\"ui-threshold-gauge__track\" d=\"M 59.99999999999999 4 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path><path class=\"ui-threshold-gauge__fill\" d=\"M 58.24099749162482 115.97236738048096 A 56 56 0 0 0 60 116\" stroke-width=\"8\"></path></svg></div>"
+      }
+    },
+    "TimeRangeSelector": {
+      "default presets": {
+        "props": {},
+        "html": "<div class=\"ui-time-range-selector\" data-motion=\"3\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">1h</button><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">24h</button><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">7d</button><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">30d</button></div></div>"
+      },
+      "custom presets, one active": {
+        "props": {
+          "presets": [
+            {
+              "label": "Day",
+              "value": "d",
+              "range": [
+                0,
+                86400000
+              ]
+            },
+            {
+              "label": "Week",
+              "value": "w",
+              "range": [
+                0,
+                604800000
+              ]
+            }
+          ],
+          "value": [
+            0,
+            86400000
+          ]
+        },
+        "html": "<div class=\"ui-time-range-selector\" data-motion=\"3\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"><button class=\"ui-time-range-selector__preset\" data-active=\"true\" aria-pressed=\"true\">Day</button><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">Week</button></div></div>"
+      },
+      "show custom with value (UTC)": {
+        "props": {
+          "presets": [
+            {
+              "label": "Day",
+              "value": "d",
+              "range": [
+                0,
+                86400000
+              ]
+            }
+          ],
+          "value": [
+            1767225600000,
+            1767312000000
+          ],
+          "showCustom": true
+        },
+        "html": "<div class=\"ui-time-range-selector\" data-motion=\"3\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"><button class=\"ui-time-range-selector__preset\" aria-pressed=\"false\">Day</button></div><div class=\"ui-time-range-selector__custom\"><label><span class=\"sr-only\">Start time</span><input type=\"datetime-local\" class=\"ui-time-range-selector__input\" aria-label=\"Start time\" value=\"2026-01-01T00:00\"/></label><span aria-hidden=\"true\">—</span><label><span class=\"sr-only\">End time</span><input type=\"datetime-local\" class=\"ui-time-range-selector__input\" aria-label=\"End time\" value=\"2026-01-02T00:00\"/></label></div></div>"
+      },
+      "show custom without value": {
+        "props": {
+          "presets": [],
+          "showCustom": true
+        },
+        "html": "<div class=\"ui-time-range-selector\" data-motion=\"3\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"></div><div class=\"ui-time-range-selector__custom\"><label><span class=\"sr-only\">Start time</span><input type=\"datetime-local\" class=\"ui-time-range-selector__input\" aria-label=\"Start time\" value=\"\"/></label><span aria-hidden=\"true\">—</span><label><span class=\"sr-only\">End time</span><input type=\"datetime-local\" class=\"ui-time-range-selector__input\" aria-label=\"End time\" value=\"\"/></label></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "presets": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-time-range-selector\" data-motion=\"0\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"></div></div>"
+      }
+    },
+    "ToggleSwitch": {
+      "label": {
+        "props": {
+          "label": "Wi-Fi"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "controlled on": {
+        "props": {
+          "label": "Wi-Fi",
+          "checked": true
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" aria-checked=\"true\" checked=\"\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "controlled off": {
+        "props": {
+          "label": "Wi-Fi",
+          "checked": false
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" aria-checked=\"false\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "uncontrolled default on": {
+        "props": {
+          "label": "Wi-Fi",
+          "defaultChecked": true
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" checked=\"\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "disabled error xl": {
+        "props": {
+          "label": {
+            "$el": "Bluetooth"
+          },
+          "disabled": true,
+          "error": "Unavailable",
+          "size": "xl"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"xl\" data-motion=\"3\" data-disabled=\"\" data-error=\"\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\" disabled=\"\" aria-invalid=\"true\" aria-describedby=\"toggle-switch-_R_0_-error\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\"><b>Bluetooth</b></span></label><span id=\"toggle-switch-_R_0_-error\" class=\"ui-toggle-switch__error\" role=\"alert\">Unavailable</span></div>"
+      },
+      "explicit id and rest to input": {
+        "props": {
+          "label": "Wi-Fi",
+          "id": "wifi",
+          "name": "wifi"
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"3\"><label for=\"wifi\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"wifi\" class=\"ui-toggle-switch__input\" name=\"wifi\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">Wi-Fi</span></label></div>"
+      },
+      "motion 0": {
+        "props": {
+          "label": "x",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-toggle-switch\" data-size=\"md\" data-motion=\"0\"><label for=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__row\"><input type=\"checkbox\" role=\"switch\" id=\"toggle-switch-_R_0_\" class=\"ui-toggle-switch__input\"/><span class=\"ui-toggle-switch__track\" aria-hidden=\"true\"><span class=\"ui-toggle-switch__thumb\"></span></span><span class=\"ui-toggle-switch__label\">x</span></label></div>"
+      }
+    },
+    "Toolbar": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "tools"
+          }
+        },
+        "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"md\" data-justify=\"start\"><b>tools</b></div>"
+      },
+      "between wrap sticky lg": {
+        "props": {
+          "justify": "between",
+          "wrap": true,
+          "sticky": true,
+          "gap": "lg"
+        },
+        "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"lg\" data-justify=\"between\" data-wrap=\"true\" data-sticky=\"true\"></div>"
+      },
+      "wrap false": {
+        "props": {
+          "wrap": false,
+          "sticky": false
+        },
+        "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"md\" data-justify=\"start\"></div>"
+      }
+    },
+    "TypingIndicator": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      },
+      "avatar string sm": {
+        "props": {
+          "avatar": "AB",
+          "size": "sm",
+          "label": "Ada is typing"
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"sm\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__avatar\">AB</span><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Ada is typing</span></div>"
+      },
+      "avatar element": {
+        "props": {
+          "avatar": {
+            "$el": "img"
+          }
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"3\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__avatar\"><b>img</b></span><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-typing-indicator\" data-motion=\"0\" data-size=\"md\" role=\"status\" aria-live=\"polite\"><span class=\"ui-typing-indicator__dots\" aria-hidden=\"true\"><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span><span class=\"ui-typing-indicator__dot\"></span></span><span class=\"ui-typing-indicator__label\">Someone is typing...</span></div>"
+      }
+    },
+    "Typography": {
+      "body": {
+        "props": {
+          "children": {
+            "$el": "text"
+          }
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\"><b>text</b></p>"
+      },
+      "h2 brand weight center": {
+        "props": {
+          "variant": "h2",
+          "color": "brand",
+          "weight": 700,
+          "align": "center",
+          "children": {
+            "$el": "Title"
+          }
+        },
+        "html": "<h2 class=\"ui-typography\" data-variant=\"h2\" data-color=\"brand\" data-align=\"center\" data-motion=\"3\" style=\"font-weight:700\"><b>Title</b></h2>"
+      },
+      "truncate true": {
+        "props": {
+          "truncate": true
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\" data-truncate=\"1\"></p>"
+      },
+      "truncate 1": {
+        "props": {
+          "truncate": 1,
+          "variant": "caption"
+        },
+        "html": "<span class=\"ui-typography\" data-variant=\"caption\" data-motion=\"3\" data-truncate=\"1\"></span>"
+      },
+      "truncate 3 lines": {
+        "props": {
+          "truncate": 3,
+          "variant": "body-sm"
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body-sm\" data-motion=\"3\" data-truncate-lines=\"\" style=\"-webkit-line-clamp:3\"></p>"
+      },
+      "as label, code variant": {
+        "props": {
+          "as": "label",
+          "variant": "code"
+        },
+        "html": "<label class=\"ui-typography\" data-variant=\"code\" data-motion=\"3\"></label>"
+      },
+      "caller style merged with weight": {
+        "props": {
+          "style": {
+            "letterSpacing": 2,
+            "color": "red"
+          },
+          "weight": 300
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"3\" style=\"letter-spacing:2px;color:red;font-weight:300\"></p>"
+      },
+      "unknown variant falls back to span": {
+        "props": {
+          "variant": "nope"
+        },
+        "html": "<span class=\"ui-typography\" data-variant=\"nope\" data-motion=\"3\"></span>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<p class=\"ui-typography\" data-variant=\"body\" data-motion=\"0\"></p>"
+      }
+    },
+    "ViewTransitionLink": {
+      "defaults": {
+        "props": {
+          "href": "/next",
+          "children": {
+            "$el": "Next"
+          }
+        },
+        "html": "<a href=\"/next\" class=\"ui-view-transition-link\"><b>Next</b></a>"
+      },
+      "transition name": {
+        "props": {
+          "href": "/hero",
+          "transitionName": "hero",
+          "children": {
+            "$el": "Hero"
+          }
+        },
+        "html": "<a href=\"/hero\" class=\"ui-view-transition-link\" style=\"view-transition-name:hero\"><b>Hero</b></a>"
+      },
+      "caller style merged": {
+        "props": {
+          "href": "/a",
+          "transitionName": "card",
+          "style": {
+            "display": "block"
+          },
+          "children": {
+            "$el": "A"
+          }
+        },
+        "html": "<a href=\"/a\" class=\"ui-view-transition-link\" style=\"display:block;view-transition-name:card\"><b>A</b></a>"
+      },
+      "no href": {
+        "props": {
+          "children": {
+            "$el": "Nowhere"
+          }
+        },
+        "html": "<a class=\"ui-view-transition-link\"><b>Nowhere</b></a>"
+      }
+    },
+    "WavyBackground": {
+      "two": {
+        "props": {
+          "waveCount": 2
+        },
+        "html": "<div class=\"ui-wavy-background\" data-motion=\"3\"><svg class=\"ui-wavy-background--svg\" viewBox=\"0 0 800 400\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path class=\"ui-wavy-background--wave\" d=\"M 0,133.33333333333334 L 16,140.2034164471102 L 32,146.77272309414695 L 48,152.75364498652263 L 64,157.88433368298186 L 80,161.94016447484103 L 96,164.74357059397406 L 112.00000000000001,166.17181719519982 L 128,166.1623747633384 L 144,164.71565669386783 L 160,161.89500119421558 L 176,157.82389829805754 L 192,152.68058339564485 L 208,146.69023397872823 L 224.00000000000003,140.11511123138945 L 240,133.243078074 L 256,126.3749963474095 L 272,119.81155489639532 L 288,113.84010522698698 L 304,108.72208108068887 L 320,104.68155270438447 L 336,101.89541691702946 L 352,100.48565245805106 L 368,100.51397968306725 L 384,101.97915840873353 L 400,104.81704220873301 L 416,108.90338678379793 L 432,114.05928945359446 L 448.00000000000006,120.05902162616897 L 463.99999999999994,126.63991133462261 L 480,133.5138431774772 L 496,140.37987218826495 L 512,146.93739939136964 L 528,152.89933221017492 L 544,158.0046535567528 L 560,162.02984932060906 L 576,164.79869395399717 L 592,166.18996573485197 L 608,166.14275392838454 L 624,164.6591254965374 L 640,161.80403460511837 L 656,157.70247889044737 L 672,152.53402698591134 L 688,146.52495689668402 L 704,139.93834940940192 L 720,133.06257025341947 L 736,126.19864527170988 L 752,119.64708132420166 L 768,113.69470991251089 L 784,108.60212952027804 L 800,104.59229645117487 L 816,101.84076366471707 L 832,100.4679949596571 L 848,100.53409099473828 L 864,102.03615804486758 L 880.0000000000001,104.90843469018115 L 896.0000000000001,109.02517089147719 L 911.9999999999999,114.2061334043216 L 927.9999999999999,120.2244965014098 L 944,126.81677254250181 L 960,133.69434762546908 L 976,140.55611728054944 L 992,147.10166900934098 L 1008,153.04443452886272 L 1024,158.12423590734542 L 1040,162.11867631420355 L 1056,164.85287669014767 L 1072,166.20713206002438 L 1088,166.12215229029826 L 1104,164.60165784758664 L 1120,161.71221691434116 L 1136,157.5803309928528 L 1152,152.38689659162893 L 1168,146.35928546492315 L 1184,139.7613901374034 L 1200,132.88207052701648 L 1216,126.02250748000846 L 1232,119.48301688812181 L 1248,113.54990167403372 L 1264,108.48291727320242 L 1280,104.5038993810441 L 1296,101.7870518496632 L 1312,100.45131993599878 L 1328,100.55518280527342 L 1344,102.09409327715055 L 1360,105.00067690408787 L 1376,109.14768166611456 L 1392,114.35354914258002 L 1408,120.390363251545 L 1424,126.99382855611437 L 1440,133.8748412813182 L 1456,140.732146455302 L 1472,147.26552703739355 L 1488,153.18894760490494 L 1504,158.243077159971 L 1520,162.20664280023493 L 1536,164.9061171826896 L 1552,166.22331565754786 L 1568,166.10057046494393 L 1584,164.5432554649504 L 1600,161.61955086667723 L 1600,400 L 0,400 Z\" fill=\"oklch(75% 0.15 270)\" fill-opacity=\"0.1909074257113389\" style=\"--wave-speed:10.752433852932882s;--wave-delay:0.7492363870551344s\"></path><path class=\"ui-wavy-background--wave\" d=\"M 0,266.6666666666667 L 16,271.8898086929338 L 32,277.0015510366834 L 48,281.89286995869077 L 64,286.45944293196675 L 80,290.6038736427871 L 96,294.23776926877036 L 112.00000000000001,297.2836257296138 L 128,299.6764807016766 L 144,301.3652991407541 L 160,302.31406176247737 L 176,302.5025332651232 L 192,301.92669391010276 L 208,300.59882525533806 L 224.00000000000003,298.54724821299675 L 240,295.8157190183159 L 256,292.46249599234903 L 272,288.5590970028134 L 288,284.1887741240327 L 304,279.4447380285766 L 320,274.428169980946 L 336,269.24606383369616 L 352,264.00894405211494 L 368,258.82850843764845 L 384,253.81524582629842 L 400,249.0760795719528 L 416,244.71208707466636 L 432,240.81634399201488 L 448.00000000000006,237.47193911239336 L 463.99999999999994,234.75020222923385 L 480,232.7091828122148 L 496,231.3924119225107 L 512,230.82797377807375 L 528,231.02790677069476 L 544,231.98794671000888 L 560,233.6876177705635 L 576,236.09066920222057 L 592,239.14584848969065 L 608,242.7879944711775 L 624,246.93942710199167 L 640,251.51160422211905 L 656,256.4070099920449 L 672,261.5212347200892 L 688,266.7452017224927 L 704,271.9674937215666 L 720,277.07672916425605 L 736,281.9639377787668 L 752,286.5248847031487 L 768,290.66229361659714 L 784,294.2879214583097 L 800,297.32444048409286 L 816,299.7070875200315 L 832,301.385045237778 L 848,302.3225259914873 L 864,302.4995351002173 L 880.0000000000001,301.9122972964346 L 896.0000000000001,300.5733372452879 L 911.9999999999999,298.51121241732875 L 927.9999999999999,295.7699040119943 L 944,292.40787892229673 L 960,288.49684274722705 L 976,284.1202104477466 L 992,279.3713272643652 L 1008,274.35147784074775 L 1024,269.1677260149565 L 1040,263.9306313514718 L 1056,258.75189111601844 L 1072,253.74195798538935 L 1088,249.0076843019828 L 1104,244.65004311662372 L 1120,240.76197462548737 L 1136,237.4264039325326 L 1152,234.71447241479663 L 1168,232.68402041216805 L 1184,231.3783536029765 L 1200,230.82531937626214 L 1216,231.03671289994648 L 1232,232.00802555234037 L 1248,233.71854108246742 L 1264,236.13177744828485 L 1280,239.1962649092342 L 1296,242.84664377788755 L 1312,247.00505841773477 L 1328,251.58281775579263 L 1344,256.48228689445773 L 1360,261.59896947812524 L 1376,266.82373640165156 L 1392,272.0451533265522 L 1408,277.1518573634396 L 1424,282.03493223058933 L 1440,286.59023123101804 L 1456,290.72059850339406 L 1472,294.3379411717225 L 1488,297.3651081987957 L 1504,299.73753587103914 L 1520,301.4046248196907 L 1536,302.3308192090725 L 1552,302.4963650749217 L 1568,301.8977316388668 L 1584,300.54768661321293 L 1600,298.4750238899291 L 1600,400 L 0,400 Z\" fill=\"oklch(75% 0.15 270)\" fill-opacity=\"0.10305131244240329\" style=\"--wave-speed:10.082291278173216s;--wave-delay:0.42643011853215285s\"></path></svg></div>"
+      },
+      "color speed content": {
+        "props": {
+          "waveCount": 1,
+          "speed": 4,
+          "color": "teal",
+          "children": {
+            "$el": "hero"
+          }
+        },
+        "html": "<div class=\"ui-wavy-background\" data-motion=\"3\"><svg class=\"ui-wavy-background--svg\" viewBox=\"0 0 800 400\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path class=\"ui-wavy-background--wave\" d=\"M 0,200 L 16,206.87008311377684 L 32,213.4393897608136 L 48,219.4203116531893 L 64,224.55100034964852 L 80,228.6068311415077 L 96,231.4102372606407 L 112.00000000000001,232.83848386186645 L 128,232.82904143000505 L 144,231.38232336053449 L 160,228.56166786088224 L 176,224.4905649647242 L 192,219.3472500623115 L 208,213.3569006453949 L 224.00000000000003,206.7817778980561 L 240,199.90974474066667 L 256,193.04166301407616 L 272,186.478221563062 L 288,180.50677189365362 L 304,175.38874774735552 L 320,171.34821937105113 L 336,168.56208358369614 L 352,167.15231912471774 L 368,167.1806463497339 L 384,168.64582507540018 L 400,171.48370887539966 L 416,175.5700534504646 L 432,180.72595612026112 L 448.00000000000006,186.72568829283563 L 463.99999999999994,193.30657800128927 L 480,200.18050984414387 L 496,207.0465388549316 L 512,213.6040660580363 L 528,219.56599887684158 L 544,224.67132022341946 L 560,228.69651598727572 L 576,231.46536062066383 L 592,232.85663240151862 L 608,232.80942059505122 L 624,231.32579216320406 L 640,228.47070127178503 L 656,224.36914555711402 L 672,219.200693652578 L 688,213.19162356335067 L 704,206.60501607606858 L 720,199.72923692008612 L 736,192.86531193837655 L 752,186.3137479908683 L 768,180.36137657917754 L 784,175.2687961869447 L 800,171.25896311784152 L 816,168.50743033138372 L 832,167.13466162632375 L 848,167.20075766140494 L 864,168.70282471153422 L 880.0000000000001,171.57510135684782 L 896.0000000000001,175.69183755814385 L 911.9999999999999,180.87280007098826 L 927.9999999999999,186.89116316807645 L 944,193.48343920916847 L 960,200.36101429213574 L 976,207.2227839472161 L 992,213.76833567600764 L 1008,219.71110119552938 L 1024,224.79090257401208 L 1040,228.7853429808702 L 1056,231.51954335681432 L 1072,232.87379872669104 L 1088,232.78881895696492 L 1104,231.2683245142533 L 1120,228.3788835810078 L 1136,224.24699765951945 L 1152,219.05356325829558 L 1168,213.0259521315898 L 1184,206.42805680407005 L 1200,199.54873719368314 L 1216,192.6891741466751 L 1232,186.14968355478848 L 1248,180.21656834070038 L 1264,175.14958393986907 L 1280,171.17056604771076 L 1296,168.45371851632984 L 1312,167.11798660266544 L 1328,167.22184947194006 L 1344,168.7607599438172 L 1360,171.66734357075453 L 1376,175.81434833278124 L 1392,181.02021580924668 L 1408,187.05702991821164 L 1424,193.66049522278104 L 1440,200.54150794798485 L 1456,207.39881312196866 L 1472,213.9321937040602 L 1488,219.8556142715716 L 1504,224.90974382663762 L 1520,228.8733094669016 L 1536,231.57278384935626 L 1552,232.88998232421451 L 1568,232.76723713161056 L 1584,231.20992213161708 L 1600,228.2862175333439 L 1600,400 L 0,400 Z\" fill=\"teal\" fill-opacity=\"0.1909074257113389\" style=\"--wave-speed:4.3009735411731524s;--wave-delay:0.29969455482205376s\"></path></svg><div class=\"ui-wavy-background--content\"><b>hero</b></div></div>"
+      },
+      "caller style": {
+        "props": {
+          "waveCount": 1,
+          "style": {
+            "height": 240
+          }
+        },
+        "html": "<div class=\"ui-wavy-background\" data-motion=\"3\" style=\"height:240px\"><svg class=\"ui-wavy-background--svg\" viewBox=\"0 0 800 400\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path class=\"ui-wavy-background--wave\" d=\"M 0,200 L 16,206.87008311377684 L 32,213.4393897608136 L 48,219.4203116531893 L 64,224.55100034964852 L 80,228.6068311415077 L 96,231.4102372606407 L 112.00000000000001,232.83848386186645 L 128,232.82904143000505 L 144,231.38232336053449 L 160,228.56166786088224 L 176,224.4905649647242 L 192,219.3472500623115 L 208,213.3569006453949 L 224.00000000000003,206.7817778980561 L 240,199.90974474066667 L 256,193.04166301407616 L 272,186.478221563062 L 288,180.50677189365362 L 304,175.38874774735552 L 320,171.34821937105113 L 336,168.56208358369614 L 352,167.15231912471774 L 368,167.1806463497339 L 384,168.64582507540018 L 400,171.48370887539966 L 416,175.5700534504646 L 432,180.72595612026112 L 448.00000000000006,186.72568829283563 L 463.99999999999994,193.30657800128927 L 480,200.18050984414387 L 496,207.0465388549316 L 512,213.6040660580363 L 528,219.56599887684158 L 544,224.67132022341946 L 560,228.69651598727572 L 576,231.46536062066383 L 592,232.85663240151862 L 608,232.80942059505122 L 624,231.32579216320406 L 640,228.47070127178503 L 656,224.36914555711402 L 672,219.200693652578 L 688,213.19162356335067 L 704,206.60501607606858 L 720,199.72923692008612 L 736,192.86531193837655 L 752,186.3137479908683 L 768,180.36137657917754 L 784,175.2687961869447 L 800,171.25896311784152 L 816,168.50743033138372 L 832,167.13466162632375 L 848,167.20075766140494 L 864,168.70282471153422 L 880.0000000000001,171.57510135684782 L 896.0000000000001,175.69183755814385 L 911.9999999999999,180.87280007098826 L 927.9999999999999,186.89116316807645 L 944,193.48343920916847 L 960,200.36101429213574 L 976,207.2227839472161 L 992,213.76833567600764 L 1008,219.71110119552938 L 1024,224.79090257401208 L 1040,228.7853429808702 L 1056,231.51954335681432 L 1072,232.87379872669104 L 1088,232.78881895696492 L 1104,231.2683245142533 L 1120,228.3788835810078 L 1136,224.24699765951945 L 1152,219.05356325829558 L 1168,213.0259521315898 L 1184,206.42805680407005 L 1200,199.54873719368314 L 1216,192.6891741466751 L 1232,186.14968355478848 L 1248,180.21656834070038 L 1264,175.14958393986907 L 1280,171.17056604771076 L 1296,168.45371851632984 L 1312,167.11798660266544 L 1328,167.22184947194006 L 1344,168.7607599438172 L 1360,171.66734357075453 L 1376,175.81434833278124 L 1392,181.02021580924668 L 1408,187.05702991821164 L 1424,193.66049522278104 L 1440,200.54150794798485 L 1456,207.39881312196866 L 1472,213.9321937040602 L 1488,219.8556142715716 L 1504,224.90974382663762 L 1520,228.8733094669016 L 1536,231.57278384935626 L 1552,232.88998232421451 L 1568,232.76723713161056 L 1584,231.20992213161708 L 1600,228.2862175333439 L 1600,400 L 0,400 Z\" fill=\"oklch(75% 0.15 270)\" fill-opacity=\"0.1909074257113389\" style=\"--wave-speed:10.752433852932882s;--wave-delay:0.7492363870551344s\"></path></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "waveCount": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-wavy-background\" data-motion=\"0\"><svg class=\"ui-wavy-background--svg\" viewBox=\"0 0 800 400\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path class=\"ui-wavy-background--wave\" d=\"M 0,200 L 16,206.87008311377684 L 32,213.4393897608136 L 48,219.4203116531893 L 64,224.55100034964852 L 80,228.6068311415077 L 96,231.4102372606407 L 112.00000000000001,232.83848386186645 L 128,232.82904143000505 L 144,231.38232336053449 L 160,228.56166786088224 L 176,224.4905649647242 L 192,219.3472500623115 L 208,213.3569006453949 L 224.00000000000003,206.7817778980561 L 240,199.90974474066667 L 256,193.04166301407616 L 272,186.478221563062 L 288,180.50677189365362 L 304,175.38874774735552 L 320,171.34821937105113 L 336,168.56208358369614 L 352,167.15231912471774 L 368,167.1806463497339 L 384,168.64582507540018 L 400,171.48370887539966 L 416,175.5700534504646 L 432,180.72595612026112 L 448.00000000000006,186.72568829283563 L 463.99999999999994,193.30657800128927 L 480,200.18050984414387 L 496,207.0465388549316 L 512,213.6040660580363 L 528,219.56599887684158 L 544,224.67132022341946 L 560,228.69651598727572 L 576,231.46536062066383 L 592,232.85663240151862 L 608,232.80942059505122 L 624,231.32579216320406 L 640,228.47070127178503 L 656,224.36914555711402 L 672,219.200693652578 L 688,213.19162356335067 L 704,206.60501607606858 L 720,199.72923692008612 L 736,192.86531193837655 L 752,186.3137479908683 L 768,180.36137657917754 L 784,175.2687961869447 L 800,171.25896311784152 L 816,168.50743033138372 L 832,167.13466162632375 L 848,167.20075766140494 L 864,168.70282471153422 L 880.0000000000001,171.57510135684782 L 896.0000000000001,175.69183755814385 L 911.9999999999999,180.87280007098826 L 927.9999999999999,186.89116316807645 L 944,193.48343920916847 L 960,200.36101429213574 L 976,207.2227839472161 L 992,213.76833567600764 L 1008,219.71110119552938 L 1024,224.79090257401208 L 1040,228.7853429808702 L 1056,231.51954335681432 L 1072,232.87379872669104 L 1088,232.78881895696492 L 1104,231.2683245142533 L 1120,228.3788835810078 L 1136,224.24699765951945 L 1152,219.05356325829558 L 1168,213.0259521315898 L 1184,206.42805680407005 L 1200,199.54873719368314 L 1216,192.6891741466751 L 1232,186.14968355478848 L 1248,180.21656834070038 L 1264,175.14958393986907 L 1280,171.17056604771076 L 1296,168.45371851632984 L 1312,167.11798660266544 L 1328,167.22184947194006 L 1344,168.7607599438172 L 1360,171.66734357075453 L 1376,175.81434833278124 L 1392,181.02021580924668 L 1408,187.05702991821164 L 1424,193.66049522278104 L 1440,200.54150794798485 L 1456,207.39881312196866 L 1472,213.9321937040602 L 1488,219.8556142715716 L 1504,224.90974382663762 L 1520,228.8733094669016 L 1536,231.57278384935626 L 1552,232.88998232421451 L 1568,232.76723713161056 L 1584,231.20992213161708 L 1600,228.2862175333439 L 1600,400 L 0,400 Z\" fill=\"oklch(75% 0.15 270)\" fill-opacity=\"0.1909074257113389\" style=\"--wave-speed:10.752433852932882s;--wave-delay:0.7492363870551344s\"></path></svg></div>"
       }
     }
   },
@@ -216,6 +2869,496 @@
         "remove"
       ],
       "expected": "ui-badge--icon ui-badge--dot ui-badge--remove"
+    }
+  ],
+  "styles": [
+    {
+      "obj": {
+        "animationIterationCount": 2
+      },
+      "css": "animation-iteration-count:2"
+    },
+    {
+      "obj": {
+        "aspectRatio": 2
+      },
+      "css": "aspect-ratio:2"
+    },
+    {
+      "obj": {
+        "borderImageOutset": 2
+      },
+      "css": "border-image-outset:2"
+    },
+    {
+      "obj": {
+        "borderImageSlice": 2
+      },
+      "css": "border-image-slice:2"
+    },
+    {
+      "obj": {
+        "borderImageWidth": 2
+      },
+      "css": "border-image-width:2"
+    },
+    {
+      "obj": {
+        "boxFlex": 2
+      },
+      "css": "box-flex:2"
+    },
+    {
+      "obj": {
+        "boxFlexGroup": 2
+      },
+      "css": "box-flex-group:2"
+    },
+    {
+      "obj": {
+        "boxOrdinalGroup": 2
+      },
+      "css": "box-ordinal-group:2"
+    },
+    {
+      "obj": {
+        "columnCount": 2
+      },
+      "css": "column-count:2"
+    },
+    {
+      "obj": {
+        "columns": 2
+      },
+      "css": "columns:2"
+    },
+    {
+      "obj": {
+        "flex": 2
+      },
+      "css": "flex:2"
+    },
+    {
+      "obj": {
+        "flexGrow": 2
+      },
+      "css": "flex-grow:2"
+    },
+    {
+      "obj": {
+        "flexPositive": 2
+      },
+      "css": "flex-positive:2"
+    },
+    {
+      "obj": {
+        "flexShrink": 2
+      },
+      "css": "flex-shrink:2"
+    },
+    {
+      "obj": {
+        "flexNegative": 2
+      },
+      "css": "flex-negative:2"
+    },
+    {
+      "obj": {
+        "flexOrder": 2
+      },
+      "css": "flex-order:2"
+    },
+    {
+      "obj": {
+        "gridArea": 2
+      },
+      "css": "grid-area:2"
+    },
+    {
+      "obj": {
+        "gridRow": 2
+      },
+      "css": "grid-row:2"
+    },
+    {
+      "obj": {
+        "gridRowEnd": 2
+      },
+      "css": "grid-row-end:2"
+    },
+    {
+      "obj": {
+        "gridRowSpan": 2
+      },
+      "css": "grid-row-span:2"
+    },
+    {
+      "obj": {
+        "gridRowStart": 2
+      },
+      "css": "grid-row-start:2"
+    },
+    {
+      "obj": {
+        "gridColumn": 2
+      },
+      "css": "grid-column:2"
+    },
+    {
+      "obj": {
+        "gridColumnEnd": 2
+      },
+      "css": "grid-column-end:2"
+    },
+    {
+      "obj": {
+        "gridColumnSpan": 2
+      },
+      "css": "grid-column-span:2"
+    },
+    {
+      "obj": {
+        "gridColumnStart": 2
+      },
+      "css": "grid-column-start:2"
+    },
+    {
+      "obj": {
+        "fontWeight": 2
+      },
+      "css": "font-weight:2"
+    },
+    {
+      "obj": {
+        "lineClamp": 2
+      },
+      "css": "line-clamp:2"
+    },
+    {
+      "obj": {
+        "lineHeight": 2
+      },
+      "css": "line-height:2"
+    },
+    {
+      "obj": {
+        "opacity": 2
+      },
+      "css": "opacity:2"
+    },
+    {
+      "obj": {
+        "order": 2
+      },
+      "css": "order:2"
+    },
+    {
+      "obj": {
+        "orphans": 2
+      },
+      "css": "orphans:2"
+    },
+    {
+      "obj": {
+        "scale": 2
+      },
+      "css": "scale:2"
+    },
+    {
+      "obj": {
+        "tabSize": 2
+      },
+      "css": "tab-size:2"
+    },
+    {
+      "obj": {
+        "widows": 2
+      },
+      "css": "widows:2"
+    },
+    {
+      "obj": {
+        "zIndex": 2
+      },
+      "css": "z-index:2"
+    },
+    {
+      "obj": {
+        "zoom": 2
+      },
+      "css": "zoom:2"
+    },
+    {
+      "obj": {
+        "fillOpacity": 2
+      },
+      "css": "fill-opacity:2"
+    },
+    {
+      "obj": {
+        "floodOpacity": 2
+      },
+      "css": "flood-opacity:2"
+    },
+    {
+      "obj": {
+        "stopOpacity": 2
+      },
+      "css": "stop-opacity:2"
+    },
+    {
+      "obj": {
+        "strokeDasharray": 2
+      },
+      "css": "stroke-dasharray:2"
+    },
+    {
+      "obj": {
+        "strokeDashoffset": 2
+      },
+      "css": "stroke-dashoffset:2"
+    },
+    {
+      "obj": {
+        "strokeMiterlimit": 2
+      },
+      "css": "stroke-miterlimit:2"
+    },
+    {
+      "obj": {
+        "strokeOpacity": 2
+      },
+      "css": "stroke-opacity:2"
+    },
+    {
+      "obj": {
+        "strokeWidth": 2
+      },
+      "css": "stroke-width:2"
+    },
+    {
+      "obj": {
+        "MozAnimationIterationCount": 2
+      },
+      "css": "-moz-animation-iteration-count:2"
+    },
+    {
+      "obj": {
+        "MozBoxFlex": 2
+      },
+      "css": "-moz-box-flex:2"
+    },
+    {
+      "obj": {
+        "MozBoxFlexGroup": 2
+      },
+      "css": "-moz-box-flex-group:2"
+    },
+    {
+      "obj": {
+        "MozLineClamp": 2
+      },
+      "css": "-moz-line-clamp:2"
+    },
+    {
+      "obj": {
+        "msAnimationIterationCount": 2
+      },
+      "css": "-ms-animation-iteration-count:2"
+    },
+    {
+      "obj": {
+        "msFlex": 2
+      },
+      "css": "-ms-flex:2"
+    },
+    {
+      "obj": {
+        "msZoom": 2
+      },
+      "css": "-ms-zoom:2"
+    },
+    {
+      "obj": {
+        "msFlexGrow": 2
+      },
+      "css": "-ms-flex-grow:2"
+    },
+    {
+      "obj": {
+        "msFlexNegative": 2
+      },
+      "css": "-ms-flex-negative:2"
+    },
+    {
+      "obj": {
+        "msFlexOrder": 2
+      },
+      "css": "-ms-flex-order:2"
+    },
+    {
+      "obj": {
+        "msFlexPositive": 2
+      },
+      "css": "-ms-flex-positive:2"
+    },
+    {
+      "obj": {
+        "msFlexShrink": 2
+      },
+      "css": "-ms-flex-shrink:2"
+    },
+    {
+      "obj": {
+        "msGridColumn": 2
+      },
+      "css": "-ms-grid-column:2"
+    },
+    {
+      "obj": {
+        "msGridColumnSpan": 2
+      },
+      "css": "-ms-grid-column-span:2"
+    },
+    {
+      "obj": {
+        "msGridRow": 2
+      },
+      "css": "-ms-grid-row:2"
+    },
+    {
+      "obj": {
+        "msGridRowSpan": 2
+      },
+      "css": "-ms-grid-row-span:2"
+    },
+    {
+      "obj": {
+        "WebkitAnimationIterationCount": 2
+      },
+      "css": "-webkit-animation-iteration-count:2"
+    },
+    {
+      "obj": {
+        "WebkitBoxFlex": 2
+      },
+      "css": "-webkit-box-flex:2"
+    },
+    {
+      "obj": {
+        "WebKitBoxFlexGroup": 2
+      },
+      "css": "-web-kit-box-flex-group:2"
+    },
+    {
+      "obj": {
+        "WebkitBoxOrdinalGroup": 2
+      },
+      "css": "-webkit-box-ordinal-group:2"
+    },
+    {
+      "obj": {
+        "WebkitColumnCount": 2
+      },
+      "css": "-webkit-column-count:2"
+    },
+    {
+      "obj": {
+        "WebkitColumns": 2
+      },
+      "css": "-webkit-columns:2"
+    },
+    {
+      "obj": {
+        "WebkitFlex": 2
+      },
+      "css": "-webkit-flex:2"
+    },
+    {
+      "obj": {
+        "WebkitFlexGrow": 2
+      },
+      "css": "-webkit-flex-grow:2"
+    },
+    {
+      "obj": {
+        "WebkitFlexPositive": 2
+      },
+      "css": "-webkit-flex-positive:2"
+    },
+    {
+      "obj": {
+        "WebkitFlexShrink": 2
+      },
+      "css": "-webkit-flex-shrink:2"
+    },
+    {
+      "obj": {
+        "WebkitLineClamp": 2
+      },
+      "css": "-webkit-line-clamp:2"
+    },
+    {
+      "obj": {
+        "width": 50,
+        "height": 0,
+        "marginInlineStart": 12.5,
+        "inlineSize": -4,
+        "borderTopLeftRadius": 3
+      },
+      "css": "width:50px;height:0;margin-inline-start:12.5px;inline-size:-4px;border-top-left-radius:3px"
+    },
+    {
+      "obj": {
+        "--custom": 7,
+        "--gap": " 1rem ",
+        "--zero": 0
+      },
+      "css": "--custom:7;--gap:1rem;--zero:0"
+    },
+    {
+      "obj": {
+        "width": "50%",
+        "color": "  red  ",
+        "transform": "translateX(4px) scale(1.2)"
+      },
+      "css": "width:50%;color:red;transform:translateX(4px) scale(1.2)"
+    },
+    {
+      "obj": {
+        "opacity": 0,
+        "zIndex": 10,
+        "lineHeight": 1.5,
+        "flexGrow": 1,
+        "fontWeight": 600
+      },
+      "css": "opacity:0;z-index:10;line-height:1.5;flex-grow:1;font-weight:600"
+    },
+    {
+      "obj": {
+        "width": null,
+        "color": false,
+        "opacity": true,
+        "margin": "",
+        "padding": 4
+      },
+      "css": "padding:4px"
+    },
+    {
+      "obj": {
+        "msTransform": "none",
+        "WebkitLineClamp": 3,
+        "MozAppearance": "none",
+        "WebkitTransition": "none"
+      },
+      "css": "-ms-transform:none;-webkit-line-clamp:3;-moz-appearance:none;-webkit-transition:none"
+    },
+    {
+      "obj": {
+        "backgroundColor": "oklch(65% 0.2 270)",
+        "gridTemplateColumns": "repeat(3, 1fr)"
+      },
+      "css": "background-color:oklch(65% 0.2 270);grid-template-columns:repeat(3, 1fr)"
     }
   ]
 }

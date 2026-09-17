@@ -61,7 +61,7 @@
        setProperty call and CSP-safe there. Transcribed into Svelte markup it
        would be a static style attribute, which style-src 'self' blocks. It is a
        class instead; the rule lives in the stylesheet. -->
-  <span class="ui-checkbox__row">
+  <div class="ui-checkbox__row">
     <input
       bind:this={input}
       bind:checked
@@ -84,7 +84,7 @@
         {#if typeof label === 'function'}{@render label()}{:else}{label}{/if}
       </label>
     {/if}
-  </span>
+  </div>
   {#if error}
     <span id={errorId} class="ui-checkbox__error" role="alert">{error}</span>
   {/if}

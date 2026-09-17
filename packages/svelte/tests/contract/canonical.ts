@@ -1,0 +1,101 @@
+/* Reduces a DOM tree to a canonical text form so two independently rendered
+ * trees — React's server HTML and Svelte's client DOM — compare equal exactly
+ * when they carry the same contract.
+ *
+ * Normalised away (differences with no meaning):
+ *   - attribute order, and class-token order
+ *   - style formatting: "a:b;c:d" vs "a: b; c: d;" — declarations are parsed
+ *     and sorted
+ *   - comment nodes (React SSR separates adjacent text with <!-- -->), and
+ *     whitespace-only text; adjacent text is merged and whitespace collapsed
+ *   - generated id VALUES
+ *   - how a checkbox's checked state is carried: server HTML has a `checked`
+ *     attribute, a client render sets the `.checked` property and no attribute.
+ *     Both mean the same, so an input's checked state is read from either.
+ *   - likewise a text-like input's value: server HTML has `value="…"` (even
+ *     `value=""`), a client render sets .value. Read from the property, and an
+ *     empty value is the same as none. Checkbox and radio keep the attribute —
+ *     there `value` is the submitted value, meaningful even when unchecked.
+ *
+ * Kept (differences that matter):
+ *   - every tag, attribute name and value, text, and the tree's shape
+ *   - id RELATIONSHIPS. Ids become #1, #2… in order of first appearance, and
+ *     reference attributes (for, aria-describedby, …) map through the same
+ *     table. Two correct implementations with different random ids compare
+ *     equal; a label that points at the wrong element does not. */
+
+const REF_ATTRS = new Set([
+  'for', 'aria-describedby', 'aria-labelledby', 'aria-controls', 'aria-owns',
+  'aria-activedescendant', 'aria-details', 'aria-errormessage', 'aria-flowto', 'headers', 'list', 'form',
+])
+
+export function canonical(root: ParentNode): string {
+  const ids = new Map<string, string>()
+  const token = (v: string) => {
+    if (!ids.has(v)) ids.set(v, `#${ids.size + 1}`)
+    return ids.get(v)!
+  }
+  const out: string[] = []
+
+  const attrValue = (name: string, value: string): string => {
+    if (name === 'id') return token(value)
+    if (REF_ATTRS.has(name)) return value.trim().split(/\s+/).filter(Boolean).map(token).join(' ')
+    if (name === 'class') return [...new Set(value.trim().split(/\s+/).filter(Boolean))].sort().join(' ')
+    if (name === 'style') {
+      return value.split(';')
+        .map(d => d.trim()).filter(Boolean)
+        .map(d => {
+          const i = d.indexOf(':')
+          return `${d.slice(0, i).trim().toLowerCase()}:${d.slice(i + 1).trim().replace(/\s+/g, ' ')}`
+        })
+        .sort().join(';')
+    }
+    return value
+  }
+
+  const walk = (node: ParentNode, depth: number) => {
+    let text = ''
+    const flush = () => {
+      const t = text.replace(/\s+/g, ' ').trim()
+      if (t) out.push(`${'  '.repeat(depth)}"${t}"`)
+      text = ''
+    }
+    for (const child of Array.from(node.childNodes)) {
+      if (child.nodeType === 3) { text += child.textContent ?? ''; continue }
+      if (child.nodeType === 8) continue // comments are transparent to text merging
+      if (child.nodeType !== 1) continue
+      flush()
+      const el = child as Element
+      const raw = Array.from(el.attributes)
+        .map(a => [a.name.toLowerCase(), a.value] as const)
+        .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement))
+      if (el instanceof HTMLInputElement && (el.checked || el.hasAttribute('checked'))) raw.push(['checked', ''])
+      if (el instanceof HTMLInputElement && !['checkbox', 'radio'].includes(el.type)) {
+        const i = raw.findIndex(([n]) => n === 'value')
+        if (i >= 0) raw.splice(i, 1)
+        const v = el.value || el.getAttribute('value') || ''
+        if (v) raw.push(['value', v])
+      }
+      // id first, so a reference later on the same element resolves consistently
+      const attrs = raw
+        .sort(([a], [b]) => (a === 'id' ? -1 : b === 'id' ? 1 : a < b ? -1 : a > b ? 1 : 0))
+        .map(([n, v]) => [n, attrValue(n, v)] as const)
+        .filter(([n, v]) => !(n === 'class' && v === '') && !(n === 'style' && v === ''))
+        .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
+        .map(([n, v]) => (v === '' ? n : `${n}="${v}"`))
+      out.push(`${'  '.repeat(depth)}<${el.tagName.toLowerCase()}${attrs.length ? ' ' + attrs.join(' ') : ''}>`)
+      walk(el, depth + 1)
+    }
+    flush()
+  }
+
+  walk(root, 0)
+  return out.join('\n')
+}
+
+/** Parses server HTML into a detached tree for canonical(). */
+export function fromHtml(html: string): ParentNode {
+  const t = document.createElement('template')
+  t.innerHTML = html
+  return t.content
+}

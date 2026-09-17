@@ -18,7 +18,17 @@ if (!existsSync(BUILT)) {
 const built = readFileSync(BUILT, 'utf8')
 const current = existsSync(WORKER) ? readFileSync(WORKER, 'utf8') : ''
 
-if (built === current) {
+// build-registry stamps generatedAt with the build time, so a byte comparison
+// called the worker copy stale after every build and rewrote a committed file
+// whose content had not changed — timestamp-only churn in every commit that
+// ran a build. Compare what the registry says, not when it was said.
+const withoutStamp = text => {
+  if (!text) return ''
+  const { generatedAt: _ignored, ...rest } = JSON.parse(text)
+  return JSON.stringify(rest)
+}
+
+if (withoutStamp(built) === withoutStamp(current)) {
   console.log('[sync-worker-registry] worker registry is current')
   process.exit(0)
 }

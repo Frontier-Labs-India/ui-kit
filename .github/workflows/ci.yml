@@ -42,3 +42,11 @@ jobs:
       - run: npm run test:contract-fresh
       - run: npm run test:vendor-fresh
       - run: npm run test:svelte-css-fresh
+      - run: npm run test:unitless-fresh
+      # Every generated file that is committed — the worker registry, the
+      # contract fixture, vendored core, the Svelte stylesheet, the unitless
+      # list — must already match what the steps above regenerated. A freshness
+      # test that runs after a build that rewrites its input cannot fail; a
+      # clean tree after the build can.
+      - name: Committed generated files are fresh
+        run: git diff --exit-code

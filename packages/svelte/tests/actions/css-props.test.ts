@@ -30,6 +30,14 @@ describe('cssProps', () => {
     expect(node.style.getPropertyValue('height')).toBe('')
   })
 
+  it('works on SVG elements, which carry style.setProperty too', () => {
+    const node = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+    const action = cssProps(node, { '--wave-speed': '4s' })
+    expect(node.style.getPropertyValue('--wave-speed')).toBe('4s')
+    action.update({})
+    expect(node.style.getPropertyValue('--wave-speed')).toBe('')
+  })
+
   it('clears everything it set on destroy', () => {
     const node = document.createElement('div')
     const action = cssProps(node, { '--x': 1, '--y': 2 })
