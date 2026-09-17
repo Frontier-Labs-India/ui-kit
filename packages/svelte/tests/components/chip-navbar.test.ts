@@ -3,6 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/svelte'
 import { createRawSnippet, flushSync } from 'svelte'
 import Chip from '../../src/components/Chip.svelte'
 import Navbar from '../../src/components/Navbar.svelte'
+import ChipBindProbe from './chip-bind-probe.svelte'
 
 const children = createRawSnippet(() => ({ render: () => '<b>Tag</b>' }))
 const input = (c: Element) => c.querySelector('input') as HTMLInputElement
@@ -16,13 +17,12 @@ describe('Chip', () => {
     expect(onChange).toHaveBeenCalledWith(true)
   })
 
-  it('controlled: a parent that ignores the change keeps the chip where it was', async () => {
-    const onChange = vi.fn()
-    const { container } = render(Chip, { props: { children, checked: false, onChange } })
+  it('bind:checked round-trips to the parent and still calls onChange', async () => {
+    const { container } = render(ChipBindProbe)
     await fireEvent.click(input(container)); flushSync()
-    expect(onChange).toHaveBeenCalledWith(true)
-    expect(input(container).checked).toBe(false)
-    expect(container.querySelector('label')!.hasAttribute('data-checked')).toBe(false)
+    expect(container.querySelector('output')!.textContent).toBe('true')
+    expect(container.querySelector('label')!.hasAttribute('data-checked')).toBe(true)
+    expect(container.querySelector('output')!.getAttribute('data-calls')).toBe('1')
   })
 
   it('controlled: a parent that updates the prop moves the chip', async () => {

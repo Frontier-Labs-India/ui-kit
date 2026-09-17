@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/svelte'
 import userEvent from '@testing-library/user-event'
+import { flushSync } from 'svelte'
 import Checkbox from '../../src/components/Checkbox.svelte'
+import BindProbe from './checkbox-bind-probe.svelte'
 
 describe('Checkbox', () => {
   it('renders an input[type=checkbox]', () => {
@@ -40,6 +42,22 @@ describe('Checkbox', () => {
   it('starts checked when checked is true', () => {
     const { container } = render(Checkbox, { props: { label: 'A', checked: true } })
     expect((container.querySelector('input') as HTMLInputElement).checked).toBe(true)
+  })
+
+  it('defaultChecked starts checked and stays toggleable (it rendered unchecked before)', async () => {
+    const { container } = render(Checkbox, { props: { label: 'A', defaultChecked: true } })
+    const i = container.querySelector('input') as HTMLInputElement
+    expect(i.checked).toBe(true)
+    await userEvent.click(i)
+    expect(i.checked).toBe(false)
+  })
+
+  it('bind:checked round-trips to the parent', async () => {
+    const { container } = render(BindProbe)
+    expect(container.querySelector('output')!.textContent).toBe('true')
+    await userEvent.click(container.querySelector('input')!)
+    flushSync()
+    expect(container.querySelector('output')!.textContent).toBe('false')
   })
 
   it('reflects the indeterminate property, which has no HTML attribute', () => {

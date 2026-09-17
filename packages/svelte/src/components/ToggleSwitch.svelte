@@ -29,14 +29,15 @@
   const inputId = $derived(idProp || `toggle-switch-${uid}`)
   const errorId = $derived(error ? `${inputId}-error` : undefined)
 
-  /* React semantics, which a plain bind:checked would break: a switch is
-   * controlled only when the caller passes `checked`. Then aria-checked mirrors
-   * it and changes are written back (so bind:checked works). Uncontrolled, the
-   * native checkbox keeps its own state from defaultChecked, nothing is written
-   * back, and aria-checked is absent — exactly as React renders it. */
-  function handleChange(e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-    if (checked !== undefined) checked = e.currentTarget.checked
-    ;(onchange as ((e: Event) => void) | undefined)?.(e)
+  /* Same rule as Checkbox and Chip: `checked` is bindable; an uncontrolled
+   * switch keeps its own state from defaultChecked. aria-checked is set only
+   * when `checked` is provided (bound or passed), as React sets it only when
+   * controlled. */
+  // svelte-ignore state_referenced_locally
+  let internal = $state(defaultChecked ?? false)
+  function set(v: boolean) {
+    if (checked !== undefined) checked = v
+    else internal = v
   }
 </script>
 
@@ -54,11 +55,11 @@
       id={inputId}
       class="ui-toggle-switch__input"
       {disabled}
-      checked={checked ?? defaultChecked}
+      bind:checked={() => checked ?? internal, set}
       aria-checked={checked !== undefined ? checked : undefined}
       aria-invalid={error ? true : undefined}
       aria-describedby={errorId}
-      onchange={handleChange}
+      {onchange}
       {...rest}
     />
     <span class="ui-toggle-switch__track" aria-hidden="true"><span class="ui-toggle-switch__thumb"></span></span>

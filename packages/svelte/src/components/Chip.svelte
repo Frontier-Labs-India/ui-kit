@@ -7,7 +7,7 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLLabelAttributes, 'onchange'> {
-    /** Controlled when set. */
+    /** Bindable. Omit it for an uncontrolled chip that starts from defaultChecked. */
     checked?: boolean
     defaultChecked?: boolean
     onChange?: (checked: boolean) => void
@@ -23,7 +23,7 @@
   }
 
   let {
-    checked, defaultChecked = false, onChange, variant = 'outline', color = 'default', size = 'md', icon, name,
+    checked = $bindable(), defaultChecked = false, onChange, variant = 'outline', color = 'default', size = 'md', icon, name,
     disabled = false, children, motion, class: className, ...rest
   }: Props = $props()
 
@@ -33,18 +33,16 @@
   let internal = $state(defaultChecked)
   const isChecked = $derived(checked !== undefined ? checked : internal)
 
-  function change(e: Event & { currentTarget: HTMLInputElement }) {
+  /* Same rule as Checkbox and ToggleSwitch: `checked` is bindable, so
+   * bind:checked is two-way and an uncontrolled chip keeps its own state. React
+   * instead snaps a controlled input back to its prop; Svelte cannot tell a bound
+   * prop from a one-way one, so that model is not reproduced — it would make
+   * bind:checked impossible. onChange fires either way. */
+  function set(v: boolean) {
     if (disabled) return
-    const next = e.currentTarget.checked
-    if (checked === undefined) internal = next
-    else {
-      /* Controlled: React restores the input to the prop after onChange, so a
-       * parent that ignores the change keeps the chip where it was. Svelte will
-       * not re-apply an unchanged `checked`, so restore it here; if the parent
-       * does update, the new prop flows back in. */
-      e.currentTarget.checked = checked
-    }
-    onChange?.(next)
+    if (checked !== undefined) checked = v
+    else internal = v
+    onChange?.(v)
   }
 </script>
 
@@ -58,7 +56,7 @@
   data-motion={motionLevel()}
   {...rest}
 >
-  <input type="checkbox" class="ui-chip__input" {name} checked={isChecked} {disabled} onchange={change} />
+  <input type="checkbox" class="ui-chip__input" {name} bind:checked={() => isChecked, set} {disabled} />
   <span class="ui-chip__check" aria-hidden="true">
     <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.5 6.5L5 9L9.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

@@ -66,6 +66,7 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     disabled: { disabled: true },
     error: { label: 'Accept', error: 'Required' },
     'rest to input': { label: 'Accept', name: 'terms', value: 'yes' },
+    'default checked': { label: 'Accept', defaultChecked: true },
     'motion 0': { motion: 0 },
   },
   Divider: {

@@ -736,6 +736,13 @@
         },
         "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" name=\"terms\" value=\"yes\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
       },
+      "default checked": {
+        "props": {
+          "label": "Accept",
+          "defaultChecked": true
+        },
+        "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"3\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\" checked=\"\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span><label for=\"checkbox-_R_0_\" class=\"ui-checkbox__label\">Accept</label></div></div>"
+      },
       "motion 0": {
         "props": {
           "motion": 0

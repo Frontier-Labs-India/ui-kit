@@ -16,8 +16,9 @@
     error?: string
     /** Animation intensity override: 0=none, 1=subtle, 2=expressive, 3=cinematic */
     motion?: MotionLevel
-    /** Two-way bindable checked state. */
+    /** Bindable. Omit it for an uncontrolled checkbox that starts from defaultChecked. */
     checked?: boolean
+    defaultChecked?: boolean
     class?: string
   }
 
@@ -27,7 +28,8 @@
     indeterminate = false,
     error,
     motion,
-    checked = $bindable(false),
+    checked = $bindable(),
+    defaultChecked = false,
     disabled = false,
     id: idProp,
     class: className,
@@ -35,6 +37,13 @@
   }: Props = $props()
 
   const cls = makeCls('checkbox')
+  /* One rule for every checkbox-like component (Checkbox, ToggleSwitch, Chip):
+   * `checked` is bindable. bind:checked is two-way; an uncontrolled instance
+   * keeps its own state starting from defaultChecked. A `$bindable(false)`
+   * default used to overwrite defaultChecked, so defaultChecked rendered
+   * unchecked — that is what this replaces. */
+  // svelte-ignore state_referenced_locally
+  let internal = $state(defaultChecked)
   const motionLevel = getMotionLevel(() => motion)
 
   const uid = $props.id()
@@ -64,7 +73,7 @@
   <div class="ui-checkbox__row">
     <input
       bind:this={input}
-      bind:checked
+      bind:checked={() => checked ?? internal, v => { if (checked !== undefined) checked = v; else internal = v }}
       type="checkbox"
       id={inputId}
       class="ui-checkbox__input"
