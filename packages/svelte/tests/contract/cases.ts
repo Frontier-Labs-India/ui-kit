@@ -499,6 +499,10 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'alt shortcut glyphs': { open: true, shortcut: 'cmd+alt+k', actions: [{ id: 'a', title: 'Alpha', onClick: { $fn: true } }] },
     'motion 0': { open: true, motion: 0, actions: [] },
   },
+  ContainerQuery: {
+    children: { children: { $el: 'content' } },
+    'caller style merges after container-type, class and attrs': { children: { $el: 'c' }, style: { padding: 8, containerType: 'size' }, className: 'mine', id: 'cq' },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

@@ -20,6 +20,7 @@
   "component:ConfidenceBar": 846,
   "component:ConfirmDialog": 542,
   "component:ConnectionTestPanel": 1167,
+  "component:ContainerQuery": 537,
   "component:CopyBlock": 1229,
   "component:CoreChart": 1164,
   "component:DashboardGrid": 548,
@@ -225,6 +226,7 @@
   "module:lib/topology": 31,
   "module:lib/unitless.generated": 561,
   "module:runes/anchor-position.svelte": 795,
+  "module:runes/container-size.svelte": 693,
   "module:runes/context": 201,
   "module:runes/entrance.svelte": 1029,
   "module:runes/focus-trap.svelte": 574,
@@ -239,5 +241,6 @@
   "module:vendor/core/graph/types": 149,
   "module:vendor/core/icons/paths": 2242,
   "module:vendor/core/input/haptics": 317,
+  "module:vendor/core/utils/container-breakpoints": 455,
   "module:vendor/core/utils/format": 728
 }

@@ -33,6 +33,7 @@ const ALLOWLIST = [
   'src/core/forms/validators.ts',
   'src/core/forms/create-form.ts',
   'src/core/forms/form-types.ts',
+  'src/core/utils/container-breakpoints.ts',
 ]
 
 const FRAMEWORK_IMPORT = /from\s+['"](react|react-dom|react\/[^'"]*|svelte|svelte\/[^'"]*)['"]/

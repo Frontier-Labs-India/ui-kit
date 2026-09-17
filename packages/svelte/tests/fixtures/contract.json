@@ -1212,6 +1212,30 @@
         "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"0\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
       }
     },
+    "ContainerQuery": {
+      "children": {
+        "props": {
+          "children": {
+            "$el": "content"
+          }
+        },
+        "html": "<div class=\"ui-container-query\" style=\"container-type:inline-size\"><b>content</b></div>"
+      },
+      "caller style merges after container-type, class and attrs": {
+        "props": {
+          "children": {
+            "$el": "c"
+          },
+          "style": {
+            "padding": 8,
+            "containerType": "size"
+          },
+          "className": "mine",
+          "id": "cq"
+        },
+        "html": "<div class=\"ui-container-query mine\" style=\"container-type:size;padding:8px\" id=\"cq\"><b>c</b></div>"
+      }
+    },
     "CopyBlock": {
       "plain text": {
         "props": {
