@@ -75,8 +75,9 @@ declared in the contract tests rather than hidden.
 - **DOM handlers are lowercase** (`onclick`, `onmouseenter`); named callback
   props keep their React names (`onChange`, `onDismiss`, `onNodeClick`).
 - **`as`** (Typography, Card) takes a tag name; React also accepts a component.
-- **Highlight** takes its searchable text as `text` — a snippet's text cannot
-  be read back, which React's `children: string` relies on.
+- **TextHighlight** takes its searchable text as `text` — a snippet's text cannot
+  be read back, which React's `children: string` relies on. (As in React,
+  `Highlight` is the hero-section span and the text highlighter is `TextHighlight`.)
 - **OrbitingCircles** takes `items: []` — a snippet cannot be split into children.
 - **Tooltip** wraps its trigger in a `display: contents` span. React attaches
   handlers to the child with `cloneElement`; Svelte cannot, so the wrapper

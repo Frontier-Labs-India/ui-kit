@@ -46,9 +46,11 @@ function hydrate(value: unknown): unknown {
 
 async function load(name: string) {
   if (SOURCES[name]) {
-    const mod = await import(pathToFileURL(resolve(ROOT, SOURCES[name])).href)
-    if (!mod[name]) throw new Error(`${SOURCES[name]} does not export ${name}`)
-    return mod[name]
+    // `file#Export` when the public name differs from the file's own export name.
+    const [file, exportName = name] = SOURCES[name].split('#')
+    const mod = await import(pathToFileURL(resolve(ROOT, file)).href)
+    if (!mod[exportName]) throw new Error(`${file} does not export ${exportName}`)
+    return mod[exportName]
   }
   const file = fileOf[name]
   if (!file) throw new Error(`${name} is not in component-meta.json`)

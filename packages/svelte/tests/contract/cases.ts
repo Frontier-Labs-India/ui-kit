@@ -26,9 +26,15 @@ export type CaseProps = Record<string, unknown>
  * Date.now to this; the Svelte contract tests fake Date — and only Date — to it. */
 export const CONTRACT_NOW = Date.UTC(2026, 0, 15, 12, 0, 0)
 
-/* Exports that component-meta does not list (it lists one component per file),
- * mapped to the React source that exports them, so their cases can be rendered. */
+/* Case keys are the PUBLIC export names both packages share. Exports that
+ * component-meta does not list (it lists one component per file), or whose
+ * public name differs from their file's export, are mapped to their React
+ * source here — `file#Export` for the latter. React's components barrel
+ * exports highlight.tsx's Highlight as TextHighlight, and the public Highlight
+ * is hero-highlight.tsx's. */
 export const SOURCES: Record<string, string> = {
+  TextHighlight: 'src/components/highlight.tsx#Highlight',
+  Highlight: 'src/domain/hero-highlight.tsx',
   Icon: 'src/core/icons/icon.tsx',
   FilterPillGroup: 'src/components/filter-pill.tsx',
   SidebarHeader: 'src/components/sidebar.tsx',
@@ -217,7 +223,7 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller style': { style: { borderRadius: 12 } },
     'motion 0': { motion: 0 },
   },
-  Highlight: {
+  TextHighlight: {
     'single term, case-insensitive': { children: 'The quick brown fox', highlight: 'QUICK' },
     'several terms': { children: 'alpha beta gamma beta', highlight: ['beta', 'gamma'] },
     'case sensitive miss': { children: 'Alpha alpha', highlight: 'alpha', caseSensitive: true },
@@ -601,6 +607,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     defaults: { value: 1234.6 },
     'custom format, caller attrs': { value: 42, format: { $fn: true }, className: 'mine', id: 'ac' },
     'motion 0': { value: 0, motion: 0 },
+  },
+  HeroHighlight: {
+    children: { children: { $el: 'Build faster' } },
+    'caller attrs': { children: { $el: 'x' }, className: 'mine', id: 'hh' },
+    'motion 0': { children: { $el: 'x' }, motion: 0 },
+  },
+  Highlight: {
+    children: { children: { $el: 'fast' } },
+    'color and caller style': { children: { $el: 'fast' }, color: 'oklch(70% 0.2 150)', style: { fontWeight: 700 }, className: 'mine' },
+    'motion 0 is active at once': { children: { $el: 'fast' }, motion: 0 },
   },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },

@@ -2498,67 +2498,65 @@
         "html": "<div class=\"ui-heatmap-calendar\" data-motion=\"0\" role=\"group\" aria-label=\"Activity heatmap\"><div class=\"ui-heatmap-calendar__wrapper\"><div class=\"ui-heatmap-calendar__day-labels\"><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">M</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">W</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">F</div><div class=\"ui-heatmap-calendar__day-label\"></div></div><div class=\"ui-heatmap-calendar__grid\"></div></div></div>"
       }
     },
+    "HeroHighlight": {
+      "children": {
+        "props": {
+          "children": {
+            "$el": "Build faster"
+          }
+        },
+        "html": "<div class=\"ui-hero-highlight\" data-motion=\"3\"><b>Build faster</b></div>"
+      },
+      "caller attrs": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "className": "mine",
+          "id": "hh"
+        },
+        "html": "<div class=\"ui-hero-highlight mine\" data-motion=\"3\" id=\"hh\"><b>x</b></div>"
+      },
+      "motion 0": {
+        "props": {
+          "children": {
+            "$el": "x"
+          },
+          "motion": 0
+        },
+        "html": "<div class=\"ui-hero-highlight\" data-motion=\"0\"><b>x</b></div>"
+      }
+    },
     "Highlight": {
-      "single term, case-insensitive": {
+      "children": {
         "props": {
-          "children": "The quick brown fox",
-          "highlight": "QUICK"
+          "children": {
+            "$el": "fast"
+          }
         },
-        "html": "<span class=\"ui-highlight\"><span>The </span><mark>quick</mark><span> brown fox</span></span>"
+        "html": "<span class=\"ui-highlight\" data-motion=\"3\"><b>fast</b></span>"
       },
-      "several terms": {
+      "color and caller style": {
         "props": {
-          "children": "alpha beta gamma beta",
-          "highlight": [
-            "beta",
-            "gamma"
-          ]
+          "children": {
+            "$el": "fast"
+          },
+          "color": "oklch(70% 0.2 150)",
+          "style": {
+            "fontWeight": 700
+          },
+          "className": "mine"
         },
-        "html": "<span class=\"ui-highlight\"><span>alpha </span><mark>beta</mark><span> </span><mark>gamma</mark><span> </span><mark>beta</mark></span>"
+        "html": "<span class=\"ui-highlight mine\" data-motion=\"3\" style=\"font-weight:700;--highlight-brand-color:oklch(70% 0.2 150)\"><b>fast</b></span>"
       },
-      "case sensitive miss": {
+      "motion 0 is active at once": {
         "props": {
-          "children": "Alpha alpha",
-          "highlight": "alpha",
-          "caseSensitive": true
+          "children": {
+            "$el": "fast"
+          },
+          "motion": 0
         },
-        "html": "<span class=\"ui-highlight\"><span>Alpha </span><mark>alpha</mark></span>"
-      },
-      "regex metacharacters are literal": {
-        "props": {
-          "children": "cost is $5.00 (net)",
-          "highlight": [
-            "$5.00",
-            "(net)"
-          ]
-        },
-        "html": "<span class=\"ui-highlight\"><span>cost is </span><mark>$5.00</mark><span> </span><mark>(net)</mark></span>"
-      },
-      "no valid terms": {
-        "props": {
-          "children": "nothing here",
-          "highlight": [
-            "",
-            ""
-          ]
-        },
-        "html": "<span class=\"ui-highlight\"><span>nothing here</span></span>"
-      },
-      "term at both ends": {
-        "props": {
-          "children": "xx mid xx",
-          "highlight": "xx"
-        },
-        "html": "<span class=\"ui-highlight\"><mark>xx</mark><span> mid </span><mark>xx</mark></span>"
-      },
-      "color and mark class": {
-        "props": {
-          "children": "find me",
-          "highlight": "me",
-          "color": "gold",
-          "highlightClassName": "hit"
-        },
-        "html": "<span class=\"ui-highlight\" style=\"--ui-highlight-color:gold\"><span>find </span><mark class=\"hit\">me</mark></span>"
+        "html": "<span class=\"ui-highlight\" data-motion=\"0\"><b>fast</b></span>"
       }
     },
     "Icon": {
@@ -5841,6 +5839,69 @@
           "aria-label": "Tags"
         },
         "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      }
+    },
+    "TextHighlight": {
+      "single term, case-insensitive": {
+        "props": {
+          "children": "The quick brown fox",
+          "highlight": "QUICK"
+        },
+        "html": "<span class=\"ui-highlight\"><span>The </span><mark>quick</mark><span> brown fox</span></span>"
+      },
+      "several terms": {
+        "props": {
+          "children": "alpha beta gamma beta",
+          "highlight": [
+            "beta",
+            "gamma"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>alpha </span><mark>beta</mark><span> </span><mark>gamma</mark><span> </span><mark>beta</mark></span>"
+      },
+      "case sensitive miss": {
+        "props": {
+          "children": "Alpha alpha",
+          "highlight": "alpha",
+          "caseSensitive": true
+        },
+        "html": "<span class=\"ui-highlight\"><span>Alpha </span><mark>alpha</mark></span>"
+      },
+      "regex metacharacters are literal": {
+        "props": {
+          "children": "cost is $5.00 (net)",
+          "highlight": [
+            "$5.00",
+            "(net)"
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>cost is </span><mark>$5.00</mark><span> </span><mark>(net)</mark></span>"
+      },
+      "no valid terms": {
+        "props": {
+          "children": "nothing here",
+          "highlight": [
+            "",
+            ""
+          ]
+        },
+        "html": "<span class=\"ui-highlight\"><span>nothing here</span></span>"
+      },
+      "term at both ends": {
+        "props": {
+          "children": "xx mid xx",
+          "highlight": "xx"
+        },
+        "html": "<span class=\"ui-highlight\"><mark>xx</mark><span> mid </span><mark>xx</mark></span>"
+      },
+      "color and mark class": {
+        "props": {
+          "children": "find me",
+          "highlight": "me",
+          "color": "gold",
+          "highlightClassName": "hit"
+        },
+        "html": "<span class=\"ui-highlight\" style=\"--ui-highlight-color:gold\"><span>find </span><mark class=\"hit\">me</mark></span>"
       }
     },
     "TextReveal": {

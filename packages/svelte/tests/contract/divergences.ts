@@ -79,6 +79,13 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
  * matching elements before comparison, and a behaviour test named in `reason`
  * asserts what the effect sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  Highlight: [
+    {
+      selector: '.ui-highlight',
+      attributes: ['data-active'],
+      reason: 'Set once in view, or at once at motion 0, by an effect (hero-highlight.test.ts).',
+    },
+  ],
   TextReveal: [
     {
       selector: '.ui-text-reveal--char',
@@ -115,7 +122,7 @@ export const PROP_RENAMES: Record<string, { from: string; to: string; reason: st
         'be split into children, so the Svelte component takes the array as `items`.',
     },
   ],
-  Highlight: [
+  TextHighlight: [
     {
       from: 'children',
       to: 'text',
