@@ -50,6 +50,14 @@ export const UNIVERSAL_RENAMES: { from: string; to: string; reason: string }[] =
 ]
 
 export const PROP_RENAMES: Record<string, { from: string; to: string; reason: string }[]> = {
+  EntityCard: [
+    {
+      from: 'onClick',
+      to: 'onclick',
+      reason: "EntityCard's onClick is the card's DOM click handler; Svelte spells DOM handlers in lowercase. " +
+        'Not universal: many components take onClick as a custom callback prop with its React name.',
+    },
+  ],
   OrbitingCircles: [
     {
       from: 'children',

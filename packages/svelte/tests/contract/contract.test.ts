@@ -45,9 +45,12 @@ const exported = Object.entries(pkg)
   .sort()
 
 describe('React DOM contract', () => {
-  // Same clock as the generator, so relative times render identically. Only
-  // Date is faked — timers stay real, so Svelte's scheduling is untouched.
-  beforeAll(() => { vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(CONTRACT_NOW) })
+  // Same clock as the generator, so relative times render identically. Date
+  // and setTimeout are faked; microtasks are not, so Svelte's scheduling is
+  // untouched. setTimeout is faked so an entrance animation (useEntrance) can be
+  // run to its settled state — React's server render never runs effects, so the
+  // settled DOM is the fair comparison.
+  beforeAll(() => { vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] }); vi.setSystemTime(CONTRACT_NOW) })
   afterAll(() => { vi.useRealTimers() })
 
   it('uses the v2 full-tree fixture', () => {
@@ -98,11 +101,18 @@ describe('React DOM contract', () => {
       for (const [caseName, { props, html }] of Object.entries(cases)) {
         it(caseName, () => {
           const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
+          // Reset per render: runAllTimers advances the faked Date by every timer it
+          // runs, so without this the clock drifts across cases and relative
+          // times ("30 seconds ago") stop matching.
+          vi.setSystemTime(CONTRACT_NOW)
           const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+          vi.runAllTimers()
+          flushSync()
           // CSP: where React's markup has no inline style at all, Svelte must
-          // not either. Checked before divergences, which may add style to
-          // mirror React's shape.
-          if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]')).toBeNull()
+          // not either. An empty style attribute — left behind when an entrance
+          // animation clears the properties it set — carries no CSS. Checked
+          // before divergences, which may add style to mirror React's shape.
+          if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]:not([style=""])')).toBeNull()
           for (const d of DIVERGENCES[name] ?? []) d.apply(container)
           expect(canonical(container)).toBe(canonical(fromHtml(html)))
         })
