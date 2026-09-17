@@ -630,6 +630,23 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'zero, down, delay, caller class': { value: 0, direction: 'down', delay: 200, className: 'mine' },
     'motion 0': { value: 0, motion: 0 },
   },
+  EncryptedText: {
+    // React's server render has no character spans until an effect scrambles
+    // the text, so only empty text matches; the rest is encrypted-text.test.ts.
+    'empty text': { text: '' },
+    'empty, hover trigger, caller class': { text: '', trigger: 'hover', speed: 4, className: 'mine' },
+    'motion 0': { text: '', motion: 0 },
+  },
+  TracingBeam: {
+    children: { children: { $el: 'Story' } },
+    'color, caller style and class': { children: { $el: 'Story' }, color: 'red', style: { paddingLeft: 24 }, className: 'mine' },
+    'motion 0': { children: { $el: 'Story' }, motion: 0 },
+  },
+  CSVExportButton: {
+    defaults: { data: [{ a: 1 }] },
+    'children, size, disabled, caller attrs': { data: [], children: { $el: 'Download' }, size: 'xl', disabled: true, className: 'mine', id: 'csv' },
+    'motion 0': { data: [], motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

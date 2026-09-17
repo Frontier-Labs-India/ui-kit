@@ -108,6 +108,9 @@ const INHERITED: Record<string, string> = {
   'TimePicker/value with clear, lg, name/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
   'DateRangePicker/start only shows one date and clear/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
   'DateRangePicker/full range, lg, error, caller attrs/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  ...Object.fromEntries(Object.keys(CASES.EncryptedText).map(c => [`EncryptedText/${c}/role-img-alt`,
+    'EncryptedText is role="img" named by aria-label={text}; these cases must use empty text (React\'s server ' +
+    'render has no character spans otherwise), which leaves the image unnamed — as it would in React'])),
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

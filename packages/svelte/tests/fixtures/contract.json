@@ -652,6 +652,38 @@
         "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"0\"></div>"
       }
     },
+    "CSVExportButton": {
+      "defaults": {
+        "props": {
+          "data": [
+            {
+              "a": 1
+            }
+          ]
+        },
+        "html": "<button type=\"button\" class=\"ui-csv-export\" data-size=\"md\" data-motion=\"3\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M8 2v8m0 0l-3-3m3 3l3-3M3 12h10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Export CSV</button>"
+      },
+      "children, size, disabled, caller attrs": {
+        "props": {
+          "data": [],
+          "children": {
+            "$el": "Download"
+          },
+          "size": "xl",
+          "disabled": true,
+          "className": "mine",
+          "id": "csv"
+        },
+        "html": "<button type=\"button\" class=\"ui-csv-export mine\" data-size=\"xl\" data-motion=\"3\" disabled=\"\" id=\"csv\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M8 2v8m0 0l-3-3m3 3l3-3M3 12h10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><b>Download</b></button>"
+      },
+      "motion 0": {
+        "props": {
+          "data": [],
+          "motion": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-csv-export\" data-size=\"md\" data-motion=\"0\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M8 2v8m0 0l-3-3m3 3l3-3M3 12h10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>Export CSV</button>"
+      }
+    },
     "Calendar": {
       "today, no value": {
         "props": {},
@@ -2032,6 +2064,30 @@
           "motion": 0
         },
         "html": "<div class=\"ui-empty-state\" data-size=\"md\" data-motion=\"0\"><h3 class=\"ui-empty-state__title\">x</h3></div>"
+      }
+    },
+    "EncryptedText": {
+      "empty text": {
+        "props": {
+          "text": ""
+        },
+        "html": "<span class=\"ui-encrypted-text\" data-motion=\"3\" aria-label=\"\" role=\"img\"></span>"
+      },
+      "empty, hover trigger, caller class": {
+        "props": {
+          "text": "",
+          "trigger": "hover",
+          "speed": 4,
+          "className": "mine"
+        },
+        "html": "<span class=\"ui-encrypted-text mine\" data-motion=\"3\" aria-label=\"\" role=\"img\"></span>"
+      },
+      "motion 0": {
+        "props": {
+          "text": "",
+          "motion": 0
+        },
+        "html": "<span class=\"ui-encrypted-text\" data-motion=\"0\" aria-label=\"\" role=\"img\"></span>"
       }
     },
     "EntityCard": {
@@ -6571,6 +6627,38 @@
           "motion": 0
         },
         "html": "<div class=\"ui-topology-graph\" data-motion=\"0\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M434.29,215.31 Q394.0852514919011,244.0862316757689 365.71,284.69\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__node\" transform=\"translate(434.29,215.31)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(365.71,284.69)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g></g></svg></div>"
+      }
+    },
+    "TracingBeam": {
+      "children": {
+        "props": {
+          "children": {
+            "$el": "Story"
+          }
+        },
+        "html": "<div class=\"ui-tracing-beam\" data-motion=\"3\"><div class=\"ui-tracing-beam--track\" aria-hidden=\"true\"><div class=\"ui-tracing-beam--progress\" style=\"--beam-progress:0%\"></div><div class=\"ui-tracing-beam--dot\" style=\"--beam-progress:0%\"></div></div><div class=\"ui-tracing-beam--content\"><b>Story</b></div></div>"
+      },
+      "color, caller style and class": {
+        "props": {
+          "children": {
+            "$el": "Story"
+          },
+          "color": "red",
+          "style": {
+            "paddingLeft": 24
+          },
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-tracing-beam mine\" data-motion=\"3\" style=\"padding-left:24px;--tracing-beam-color:red\"><div class=\"ui-tracing-beam--track\" aria-hidden=\"true\"><div class=\"ui-tracing-beam--progress\" style=\"--beam-progress:0%\"></div><div class=\"ui-tracing-beam--dot\" style=\"--beam-progress:0%\"></div></div><div class=\"ui-tracing-beam--content\"><b>Story</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "children": {
+            "$el": "Story"
+          },
+          "motion": 0
+        },
+        "html": "<div class=\"ui-tracing-beam\" data-motion=\"0\"><div class=\"ui-tracing-beam--track\" aria-hidden=\"true\"><div class=\"ui-tracing-beam--progress\" style=\"--beam-progress:0%\"></div><div class=\"ui-tracing-beam--dot\" style=\"--beam-progress:0%\"></div></div><div class=\"ui-tracing-beam--content\"><b>Story</b></div></div>"
       }
     },
     "TruncatedText": {

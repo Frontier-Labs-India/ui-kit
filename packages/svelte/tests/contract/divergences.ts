@@ -41,11 +41,19 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
 }
 
 /* Inline styles an effect writes after mount. React's server render runs no
- * effects, so its HTML never has them; a React client render writes the same
- * ones. They are set through style properties, which style-src 'self' allows.
- * Only the listed properties on matching elements are removed before the CSP
- * check and the comparison — any other inline style still fails both. */
+ * effects, so its HTML has them missing or at their initial value; a React
+ * client render writes the same ones. They are set through style properties,
+ * which style-src 'self' allows. Only the listed properties on matching
+ * elements are removed, from both trees, before the CSP check and the
+ * comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  TracingBeam: [
+    {
+      selector: '.ui-tracing-beam--progress, .ui-tracing-beam--dot',
+      properties: ['--beam-progress'],
+      reason: 'Scroll progress is measured in an effect; the server HTML has its initial 0% (tracing-beam.test.ts).',
+    },
+  ],
   SegmentedControl: [
     {
       selector: '.ui-segmented__indicator',

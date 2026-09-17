@@ -3,7 +3,6 @@
   "Avatar",
   "AvatarUpload",
   "BackToTop",
-  "CSVExportButton",
   "Carousel",
   "CodeEditor",
   "ColorInput",
@@ -13,7 +12,6 @@
   "DashboardTemplate",
   "DataTable",
   "DropdownMenu",
-  "EncryptedText",
   "EvervaultCard",
   "FileUpload",
   "InfiniteScroll",
@@ -41,7 +39,6 @@
   "Timeline",
   "ToastProvider",
   "Tour",
-  "TracingBeam",
   "TransferList",
   "TreeView",
   "UpstreamDashboard"

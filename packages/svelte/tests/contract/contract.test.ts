@@ -128,10 +128,15 @@ describe('React DOM contract', () => {
           // not either. An empty style attribute — left behind when an entrance
           // animation clears the properties it set — carries no CSS. Checked
           // before divergences, which may add style to mirror React's shape.
+          // Removed from BOTH trees: the server HTML may carry the property's
+          // initial value (TracingBeam's 0%) that the effect then changes.
+          const reactTree = fromHtml(html)
           for (const { selector, properties } of EFFECT_STYLES[name] ?? []) {
-            for (const el of Array.from(container.querySelectorAll<HTMLElement>(selector))) {
-              for (const p of properties) el.style.removeProperty(p)
-              if (el.getAttribute('style') === '') el.removeAttribute('style')
+            for (const root of [container, reactTree]) {
+              for (const el of Array.from(root.querySelectorAll<HTMLElement>(selector))) {
+                for (const p of properties) el.style.removeProperty(p)
+                if (el.getAttribute('style') === '') el.removeAttribute('style')
+              }
             }
           }
           for (const { selector, attributes } of EFFECT_ATTRS[name] ?? []) {
@@ -145,7 +150,7 @@ describe('React DOM contract', () => {
           }
           if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]:not([style=""])')).toBeNull()
           for (const d of DIVERGENCES[name] ?? []) d.apply(container)
-          expect(canonical(container)).toBe(canonical(fromHtml(html)))
+          expect(canonical(container)).toBe(canonical(reactTree))
         })
       }
     })
