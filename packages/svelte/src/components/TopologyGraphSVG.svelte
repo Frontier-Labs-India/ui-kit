@@ -16,10 +16,9 @@
   }
   const statusColor = (status?: string) => STATUS_COLORS[status || 'unknown'] || STATUS_COLORS.unknown
 
-  /* React renders this text inside an inline <style>. style-src 'self' blocks
-   * that element in both packages, and ui-topo-dash is defined nowhere else, so
-   * animated edges do not animate under that policy — inherited, kept for the
-   * DOM contract. */
+  /* React renders this text inside an inline <style>, which style-src 'self'
+   * blocks in both packages. Kept for the DOM contract; allowed by name in
+   * INHERITED_INLINE_STYLE (scripts/check-svelte-csp.js) with its reason. */
   const KEYFRAMES = `
             @keyframes ui-topo-dash {
               to { stroke-dashoffset: -20; }
