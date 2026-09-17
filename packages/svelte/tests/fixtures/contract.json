@@ -1133,6 +1133,51 @@
         "html": "<div role=\"radiogroup\" aria-label=\"UI density\" class=\"ui-density-selector\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-density-selector__indicator\" style=\"inset-inline-start:calc(1 * (100% / 3) + 3px);inline-size:calc(100% / 3 - 4px)\"></div><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"compact\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"3\" x2=\"14\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"6.5\" x2=\"14\" y2=\"6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"10\" x2=\"14\" y2=\"10\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"13.5\" x2=\"14\" y2=\"13.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>compact</button><button type=\"button\" role=\"radio\" aria-checked=\"true\" aria-label=\"comfortable\" data-active=\"true\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"3\" x2=\"14\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"8\" x2=\"14\" y2=\"8\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"13\" x2=\"14\" y2=\"13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>comfortable</button><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-label=\"spacious\" class=\"ui-density-selector__option\"><span class=\"ui-density-selector__icon\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><line x1=\"2\" y1=\"4.5\" x2=\"14\" y2=\"4.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line><line x1=\"2\" y1=\"11.5\" x2=\"14\" y2=\"11.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></line></svg></span>spacious</button></div>"
       }
     },
+    "DiffViewer": {
+      "unified with a fold": {
+        "props": {
+          "oldValue": "a\nb\nc\nd\ne\nf\ng",
+          "newValue": "a\nb\nc\nd\ne\nf\nG",
+          "oldTitle": "before",
+          "newTitle": "after"
+        },
+        "html": "<div class=\"ui-diff-viewer\" data-mode=\"unified\" data-motion=\"3\"><div class=\"ui-diff-viewer__titles\"><div class=\"ui-diff-viewer__title\">before</div><div class=\"ui-diff-viewer__title\">after</div></div><div class=\"ui-diff-viewer__unified\"><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">a</span></div></div><div class=\"ui-diff-viewer__fold\" role=\"button\" tabindex=\"0\">4 unchanged lines</div><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">6</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">6</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">f</span></div></div><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--removed\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">7</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\"></span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\">-</span><span class=\"ui-diff-viewer__content\">g</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--added\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\"></span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">7</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\">+</span><span class=\"ui-diff-viewer__content\">G</span></div></div></div></div>"
+      },
+      "side by side, no numbers": {
+        "props": {
+          "mode": "side-by-side",
+          "showLineNumbers": false,
+          "oldValue": "x\ny\nz",
+          "newValue": "x\nY\nz\nw"
+        },
+        "html": "<div class=\"ui-diff-viewer\" data-mode=\"side-by-side\" data-motion=\"3\"><div class=\"ui-diff-viewer__side-by-side\"><div class=\"ui-diff-viewer__pane ui-diff-viewer__pane--old\"><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__content\">x</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--removed\"><span class=\"ui-diff-viewer__content\">y</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__content\">z</span></div></div><div class=\"ui-diff-viewer__pane ui-diff-viewer__pane--new\"><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__content\">x</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--added\"><span class=\"ui-diff-viewer__content\">Y</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__content\">z</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--added\"><span class=\"ui-diff-viewer__content\">w</span></div></div></div></div>"
+      },
+      "no folding, one title": {
+        "props": {
+          "foldUnchanged": false,
+          "oldTitle": "only old",
+          "oldValue": "1\n2\n3\n4\n5",
+          "newValue": "1\n2\n3\n4\n5\n6"
+        },
+        "html": "<div class=\"ui-diff-viewer\" data-mode=\"unified\" data-motion=\"3\"><div class=\"ui-diff-viewer__titles\"><div class=\"ui-diff-viewer__title\">only old</div></div><div class=\"ui-diff-viewer__unified\"><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">1</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">2</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">3</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">3</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">3</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">4</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">4</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">4</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">5</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">5</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">5</span></div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--added\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\"></span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">6</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\">+</span><span class=\"ui-diff-viewer__content\">6</span></div></div></div></div>"
+      },
+      "identical input": {
+        "props": {
+          "oldValue": "same",
+          "newValue": "same",
+          "foldThreshold": 0
+        },
+        "html": "<div class=\"ui-diff-viewer\" data-mode=\"unified\" data-motion=\"3\"><div class=\"ui-diff-viewer__unified\"><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\">same</span></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "oldValue": "",
+          "newValue": "",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-diff-viewer\" data-mode=\"unified\" data-motion=\"0\"><div class=\"ui-diff-viewer__unified\"><div><div class=\"ui-diff-viewer__line ui-diff-viewer__line--unchanged\"><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-diff-viewer__prefix\" aria-hidden=\"true\"> </span><span class=\"ui-diff-viewer__content\"></span></div></div></div></div>"
+      }
+    },
     "DiskMountBar": {
       "sorted, collapsed at 3": {
         "props": {

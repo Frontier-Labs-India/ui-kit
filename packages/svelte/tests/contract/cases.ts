@@ -785,4 +785,11 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'compact hides details, caller style': { compact: true, style: { gap: 4 }, interfaces: [{ name: 'eth1', status: 'up', speed: '10G', duplex: 'half' }] },
     'motion 0': { interfaces: [{ name: 'x', status: 'up' }], motion: 0 },
   },
+  DiffViewer: {
+    'unified with a fold': { oldValue: 'a\nb\nc\nd\ne\nf\ng', newValue: 'a\nb\nc\nd\ne\nf\nG', oldTitle: 'before', newTitle: 'after' },
+    'side by side, no numbers': { mode: 'side-by-side', showLineNumbers: false, oldValue: 'x\ny\nz', newValue: 'x\nY\nz\nw' },
+    'no folding, one title': { foldUnchanged: false, oldTitle: 'only old', oldValue: '1\n2\n3\n4\n5', newValue: '1\n2\n3\n4\n5\n6' },
+    'identical input': { oldValue: 'same', newValue: 'same', foldThreshold: 0 },
+    'motion 0': { oldValue: '', newValue: '', motion: 0 },
+  },
 }

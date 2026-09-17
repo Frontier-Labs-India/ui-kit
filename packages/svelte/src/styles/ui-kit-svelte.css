@@ -3496,6 +3496,169 @@
   }
 /* end density-selector */
 
+/* diff-viewer */
+@layer components {
+    @scope (.ui-diff-viewer) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        border-radius: var(--radius-lg, 0.75rem);
+        background: var(--bg-surface, oklch(18% 0.015 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        overflow: hidden;
+        font-family: var(--font-mono, ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace);
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.6;
+        tab-size: 2;
+      }
+
+      /* ── Titles ─────────────────────────────────────────── */
+
+      .ui-diff-viewer__titles {
+        display: flex;
+        border-block-end: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        background: var(--bg-elevated, oklch(22% 0.015 270));
+      }
+
+      .ui-diff-viewer__title {
+        flex: 1;
+        padding-inline: var(--space-md, 1rem);
+        padding-block: var(--space-xs, 0.25rem);
+        font-weight: 500;
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      .ui-diff-viewer__title + .ui-diff-viewer__title {
+        border-inline-start: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      /* ── Side-by-side container ─────────────────────────── */
+
+      .ui-diff-viewer__side-by-side {
+        display: flex;
+      }
+
+      .ui-diff-viewer__pane {
+        flex: 1;
+        min-inline-size: 0;
+        overflow-x: auto;
+      }
+
+      .ui-diff-viewer__pane + .ui-diff-viewer__pane {
+        border-inline-start: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      /* ── Unified body ───────────────────────────────────── */
+
+      .ui-diff-viewer__unified {
+        overflow-x: auto;
+      }
+
+      /* ── Line ───────────────────────────────────────────── */
+
+      .ui-diff-viewer__line {
+        display: flex;
+        min-block-size: 1.6em;
+      }
+
+      .ui-diff-viewer__line--added {
+        background: oklch(from var(--status-ok, oklch(72% 0.19 155)) l c h / 0.1);
+      }
+
+      .ui-diff-viewer__line--removed {
+        background: oklch(from var(--status-critical, oklch(65% 0.22 25)) l c h / 0.1);
+      }
+
+      .ui-diff-viewer__line--unchanged {
+        background: transparent;
+      }
+
+      .ui-diff-viewer__line-number {
+        display: inline-block;
+        min-inline-size: 3ch;
+        text-align: end;
+        padding-inline: var(--space-xs, 0.25rem);
+        color: var(--text-tertiary, oklch(45% 0 0));
+        opacity: 0.5;
+        user-select: none;
+        flex-shrink: 0;
+      }
+
+      .ui-diff-viewer__prefix {
+        display: inline-block;
+        inline-size: 2ch;
+        text-align: center;
+        flex-shrink: 0;
+        user-select: none;
+        font-weight: 600;
+      }
+
+      .ui-diff-viewer__line--added .ui-diff-viewer__prefix {
+        color: var(--status-ok, oklch(72% 0.19 155));
+      }
+
+      .ui-diff-viewer__line--removed .ui-diff-viewer__prefix {
+        color: var(--status-critical, oklch(65% 0.22 25));
+      }
+
+      .ui-diff-viewer__content {
+        flex: 1;
+        min-inline-size: 0;
+        white-space: pre;
+        padding-inline-end: var(--space-md, 1rem);
+      }
+
+      /* ── Fold divider ───────────────────────────────────── */
+
+      .ui-diff-viewer__fold {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-block: var(--space-2xs, 0.125rem);
+        background: var(--bg-elevated, oklch(22% 0.015 270));
+        border-block: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.06));
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: var(--font-sans, system-ui, sans-serif);
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.15s ease;
+      }
+
+      .ui-diff-viewer__fold:hover {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.08);
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      .ui-diff-viewer__fold:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: -2px;
+      }
+
+      /* ── Forced colors ──────────────────────────────────── */
+
+      @media (forced-colors: active) {
+        :scope {
+          border: 2px solid ButtonText;
+        }
+        .ui-diff-viewer__line--added {
+          background: transparent;
+          border-inline-start: 3px solid LinkText;
+        }
+        .ui-diff-viewer__line--removed {
+          background: transparent;
+          border-inline-start: 3px solid ButtonText;
+          text-decoration: line-through;
+        }
+        .ui-diff-viewer__fold {
+          border: 1px solid ButtonText;
+        }
+      }
+    }
+  }
+/* end diff-viewer */
+
 /* disk-mount-bar */
 @layer components {
     @scope (.ui-disk-mount-bar) {

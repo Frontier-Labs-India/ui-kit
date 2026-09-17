@@ -9,7 +9,7 @@
  *   component:<Name>   its .svelte source
  *   lib:<Name>         shared .svelte pieces (e.g. ErrorBoundary)
  *   css:<file>         its block in ui-kit-svelte.css
- *   runtime            shipped .js except the barrel (actions, runes, lib, vendored core)
+ *   module:<path>      each shipped .js module except the barrel (actions, runes, lib, vendored core)
  *   css:svelte-only    the Svelte-specific rules
  *
  * An existing entry growing more than 10% fails. A unit with no budget entry
@@ -48,12 +48,15 @@ for (const f of all.filter(f => f.endsWith('.svelte'))) {
   const kind = f.includes('/components/') ? 'component' : 'lib'
   measured[`${kind}:${basename(f, '.svelte')}`] = gz(readFileSync(f))
 }
-// The barrel (dist/index.js) is excluded: it is one re-export line per
-// component, so it grows with every port by design, and consumers' bundlers
-// tree-shake it away. Budgeting it would fail every few ports and teach the
-// habit of re-baselining — exactly what per-unit budgets exist to avoid.
+// Each shipped .js module is its own unit, as each component is. A single
+// "runtime" total grew with every port that added a helper module (diff,
+// sparkline, formatters), so it demanded a re-baseline every few commits —
+// the habit per-unit budgets exist to prevent. The barrel (dist/index.js) is
+// excluded: one re-export line per component, tree-shaken by consumers.
 const BARREL = resolve(DIST, 'index.js')
-measured.runtime = gz(Buffer.concat(all.filter(f => f.endsWith('.js') && f !== BARREL).sort().map(f => readFileSync(f))))
+for (const f of all.filter(f => f.endsWith('.js') && f !== BARREL)) {
+  measured[`module:${f.slice(DIST.length + 1).replace(/\.js$/, '')}`] = gz(readFileSync(f))
+}
 
 const sheet = readFileSync(resolve(DIST, 'styles/ui-kit-svelte.css'), 'utf8')
 for (const m of sheet.matchAll(/\/\* ([a-z0-9-]+) \*\/\n([\s\S]*?)\n\/\* end \1 \*\//g)) {
@@ -63,8 +66,9 @@ for (const m of sheet.matchAll(/\/\* ([a-z0-9-]+) \*\/\n([\s\S]*?)\n\/\* end \1 
 // Denominator: a build with nothing measured is not a pass.
 const components = Object.keys(measured).filter(k => k.startsWith('component:')).length
 const cssBlocks = Object.keys(measured).filter(k => k.startsWith('css:')).length
-if (components === 0 || cssBlocks === 0 || measured.runtime === 0) {
-  console.error(`FAIL: measured ${components} components, ${cssBlocks} css blocks, runtime ${measured.runtime} B — refusing to trust this build.`)
+const modules = Object.keys(measured).filter(k => k.startsWith('module:')).length
+if (components === 0 || cssBlocks === 0 || modules === 0) {
+  console.error(`FAIL: measured ${components} components, ${cssBlocks} css blocks, ${modules} modules — refusing to trust this build.`)
   process.exit(1)
 }
 
@@ -102,4 +106,4 @@ for (const k of Object.keys(entries)) {
 }
 const total = Object.values(measured).reduce((a, b) => a + b, 0)
 if (failed) process.exit(1)
-console.log(`OK: ${Object.keys(measured).length} units within budget (${components} components, ${cssBlocks} css blocks, ${total} B gz total).`)
+console.log(`OK: ${Object.keys(measured).length} units within budget (${components} components, ${modules} modules, ${cssBlocks} css blocks, ${total} B gz total).`)
