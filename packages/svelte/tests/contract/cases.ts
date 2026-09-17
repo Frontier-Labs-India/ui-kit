@@ -523,6 +523,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty data': { 'aria-label': 'E', data: [] },
     'motion 0': { 'aria-label': 'M', data: ['A'], motion: 0 },
   },
+  Combobox: {
+    'closed, no selection': { name: 'fw', options: [{ value: 'svelte', label: 'Svelte' }], 'aria-label': 'Framework' },
+    'label, uncontrolled default shows its label, lg': { name: 'fw', label: 'Framework', size: 'lg', defaultValue: 'react', options: [{ value: 'svelte', label: 'Svelte' }, { value: 'react', label: 'React' }] },
+    'controlled, error, disabled, placeholder, caller attrs': {
+      name: 'fw', label: { $el: 'FW' }, value: 'svelte', error: 'Pick one', disabled: true, placeholder: 'Find…', className: 'mine', id: 'cb',
+      options: [{ value: 'svelte', label: 'Svelte' }],
+    },
+    'value not in options leaves the input empty': { name: 'fw', 'aria-label': 'F', value: 'vue', options: [{ value: 'svelte', label: 'Svelte' }] },
+    'motion 0': { name: 'fw', 'aria-label': 'F', motion: 0, options: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

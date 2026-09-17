@@ -6,7 +6,7 @@ import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
-import { DIVERGENCES, EFFECT_STYLES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { DIVERGENCES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT, PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -132,6 +132,12 @@ describe('React DOM contract', () => {
             for (const el of Array.from(container.querySelectorAll<HTMLElement>(selector))) {
               for (const p of properties) el.style.removeProperty(p)
               if (el.getAttribute('style') === '') el.removeAttribute('style')
+            }
+          }
+          for (const { selector } of EFFECT_VALUES[name] ?? []) {
+            for (const el of Array.from(container.querySelectorAll<HTMLInputElement>(selector))) {
+              el.value = ''
+              el.removeAttribute('value')
             }
           }
           if (!/\sstyle="/.test(html)) expect(container.querySelector('[style]:not([style=""])')).toBeNull()

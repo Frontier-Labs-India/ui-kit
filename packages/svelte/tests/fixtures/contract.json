@@ -1035,6 +1035,84 @@
         "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-motion=\"0\"><input type=\"checkbox\" class=\"ui-chip__input\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>x</b></label>"
       }
     },
+    "Combobox": {
+      "closed, no selection": {
+        "props": {
+          "name": "fw",
+          "options": [
+            {
+              "value": "svelte",
+              "label": "Svelte"
+            }
+          ],
+          "aria-label": "Framework"
+        },
+        "html": "<div class=\"ui-combobox\" data-size=\"md\" data-motion=\"3\" aria-label=\"Framework\"><input type=\"hidden\" name=\"fw\" value=\"\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div></div>"
+      },
+      "label, uncontrolled default shows its label, lg": {
+        "props": {
+          "name": "fw",
+          "label": "Framework",
+          "size": "lg",
+          "defaultValue": "react",
+          "options": [
+            {
+              "value": "svelte",
+              "label": "Svelte"
+            },
+            {
+              "value": "react",
+              "label": "React"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-combobox\" data-size=\"lg\" data-motion=\"3\"><label class=\"ui-combobox__label\" id=\"combobox-_R_0_-label\" for=\"combobox-_R_0_-input\">Framework</label><input type=\"hidden\" name=\"fw\" value=\"react\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" aria-labelledby=\"combobox-_R_0_-label\" placeholder=\"Search...\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div></div>"
+      },
+      "controlled, error, disabled, placeholder, caller attrs": {
+        "props": {
+          "name": "fw",
+          "label": {
+            "$el": "FW"
+          },
+          "value": "svelte",
+          "error": "Pick one",
+          "disabled": true,
+          "placeholder": "Find…",
+          "className": "mine",
+          "id": "cb",
+          "options": [
+            {
+              "value": "svelte",
+              "label": "Svelte"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-combobox mine\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\" data-disabled=\"\" id=\"cb\"><label class=\"ui-combobox__label\" id=\"combobox-_R_0_-label\" for=\"combobox-_R_0_-input\"><b>FW</b></label><input type=\"hidden\" name=\"fw\" value=\"svelte\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" aria-labelledby=\"combobox-_R_0_-label\" aria-invalid=\"true\" aria-describedby=\"combobox-_R_0_-error\" disabled=\"\" placeholder=\"Find…\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div><div class=\"ui-combobox__error\" id=\"combobox-_R_0_-error\" role=\"alert\">Pick one</div></div>"
+      },
+      "value not in options leaves the input empty": {
+        "props": {
+          "name": "fw",
+          "aria-label": "F",
+          "value": "vue",
+          "options": [
+            {
+              "value": "svelte",
+              "label": "Svelte"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-combobox\" data-size=\"md\" data-motion=\"3\" aria-label=\"F\"><input type=\"hidden\" name=\"fw\" value=\"vue\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "fw",
+          "aria-label": "F",
+          "motion": 0,
+          "options": []
+        },
+        "html": "<div class=\"ui-combobox\" data-size=\"md\" data-motion=\"0\" aria-label=\"F\"><input type=\"hidden\" name=\"fw\" value=\"\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div></div>"
+      }
+    },
     "ConfidenceBar": {
       "medium": {
         "props": {

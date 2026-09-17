@@ -62,6 +62,18 @@ export const EFFECT_STYLES: Record<string, { selector: string; properties: strin
   ],
 }
 
+/* Input values an effect fills in after mount, which React's server HTML
+ * therefore lacks. The value on matching inputs is cleared before comparison;
+ * what the effect writes is asserted by a behaviour test named in `reason`. */
+export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[]> = {
+  Combobox: [
+    {
+      selector: 'input.ui-combobox__input',
+      reason: "An effect shows the selected option's label while closed (combobox.test.ts: 'shows the selected label').",
+    },
+  ],
+}
+
 /* Props whose NAME differs between the packages, applied to a case's props
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */
