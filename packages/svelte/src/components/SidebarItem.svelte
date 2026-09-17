@@ -30,6 +30,6 @@
   bind:this={ref}
   {...rest}
 >
-  {#if icon}<span class="ui-sidebar__item-icon"><Content value={icon} /></span>{/if}
-  <span class="ui-sidebar__item-label">{label}</span>
+  <!-- One line: a line break between the icon and the label renders as a space. -->
+  {#if icon}<span class="ui-sidebar__item-icon"><Content value={icon} /></span>{/if}<span class="ui-sidebar__item-label">{label}</span>
 </svelte:element>

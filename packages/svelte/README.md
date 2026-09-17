@@ -127,6 +127,13 @@ declared in the contract tests rather than hidden.
   with a reason (`tests/contract/divergences.ts`) and asserted by behaviour
   tests. States reached only by interaction (an open dropdown, a dragged
   crop) are covered by behaviour tests, not yet compared with React.
+- That comparison collapses whitespace, because jsdom has no layout to say
+  whether a space between two elements shows. `npm run check:svelte-whitespace`
+  lays every case out in Chromium under the shipped stylesheet and fails on
+  any visible spacing difference. It is a manual step, since CI has no
+  browser.
+- Every component's bindable `ref` is held to the element React's `ref`
+  receives, recorded from React for every case.
 - Every case is also run through axe. Accessibility defects found in the React
   package (and therefore present here) are recorded with their reason in
   `tests/contract/a11y-all.test.ts`, to be fixed in both packages together.

@@ -73,15 +73,11 @@
     </div>
     {#if showCustom}
       <div class="ui-time-range-selector__custom">
-        <label>
-          <span class="sr-only">Start time</span>
-          <input type="datetime-local" class="ui-time-range-selector__input" aria-label="Start time" value={value ? toDatetimeLocal(value[0]) : ''} onchange={customStart} />
-        </label>
+        <!-- No line break between the hidden text and the input: it would render as a space. -->
+        <label><span class="sr-only">Start time</span><input type="datetime-local" class="ui-time-range-selector__input" aria-label="Start time" value={value ? toDatetimeLocal(value[0]) : ''} onchange={customStart} /></label>
         <span aria-hidden="true">—</span>
-        <label>
-          <span class="sr-only">End time</span>
-          <input type="datetime-local" class="ui-time-range-selector__input" aria-label="End time" value={value ? toDatetimeLocal(value[1]) : ''} onchange={customEnd} />
-        </label>
+        <!-- No line break between the hidden text and the input: it would render as a space. -->
+        <label><span class="sr-only">End time</span><input type="datetime-local" class="ui-time-range-selector__input" aria-label="End time" value={value ? toDatetimeLocal(value[1]) : ''} onchange={customEnd} /></label>
       </div>
     {/if}
   </div>

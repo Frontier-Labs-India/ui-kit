@@ -157,8 +157,7 @@
       <div class="ui-plugin-dashboard__prop" role="listitem">
         <span class="ui-plugin-dashboard__prop-label">{prop.label}</span>
         <span class="ui-plugin-dashboard__prop-value">
-          {#if value == null}—{:else if prop.format === 'code'}<code class="ui-plugin-dashboard__prop-code">{String(value)}</code>{:else if prop.format === 'link'}<a class="ui-plugin-dashboard__prop-link" href={String(value)} target="_blank" rel="noopener noreferrer">{String(value)}</a>{:else if prop.format === 'badge'}<span class="ui-plugin-dashboard__prop-badge">{String(value)}</span>{:else if prop.format === 'timestamp'}{new Date(typeof value === 'number' ? value : String(value)).toLocaleString()}{:else if prop.format === 'duration'}{formatMetricValue(value, 'duration')}{:else}{String(value)}{/if}
-          {#if prop.copyable && value != null}<button type="button" class="ui-plugin-dashboard__prop-copy" onclick={() => navigator.clipboard?.writeText(String(value))} aria-label={`Copy ${String(value)}`}>copy</button>{/if}
+          {#if value == null}—{:else if prop.format === 'code'}<code class="ui-plugin-dashboard__prop-code">{String(value)}</code>{:else if prop.format === 'link'}<a class="ui-plugin-dashboard__prop-link" href={String(value)} target="_blank" rel="noopener noreferrer">{String(value)}</a>{:else if prop.format === 'badge'}<span class="ui-plugin-dashboard__prop-badge">{String(value)}</span>{:else if prop.format === 'timestamp'}{new Date(typeof value === 'number' ? value : String(value)).toLocaleString()}{:else if prop.format === 'duration'}{formatMetricValue(value, 'duration')}{:else}{String(value)}{/if}{#if prop.copyable && value != null}<button type="button" class="ui-plugin-dashboard__prop-copy" onclick={() => navigator.clipboard?.writeText(String(value))} aria-label={`Copy ${String(value)}`}>copy</button>{/if}
         </span>
       </div>
     {/each}

@@ -62,16 +62,13 @@
         <span class="ui-property-list__label">{item.label}</span>
         <span class="ui-property-list__value" data-mono={item.mono ? '' : undefined}>
           {#if item.href}<a class="ui-property-list__link" href={item.href} target="_blank" rel="noopener noreferrer"><Content value={item.value} /></a>
-          {:else}<Content value={item.value} />{/if}
-          {#if item.copyable}
-            <button class="ui-property-list__copy" onclick={() => copy(item.value, i)} aria-label={`Copy ${item.label}`} type="button" data-copied={copiedIndex === i ? '' : undefined}>
+          {:else}<Content value={item.value} />{/if}{#if item.copyable}<button class="ui-property-list__copy" onclick={() => copy(item.value, i)} aria-label={`Copy ${item.label}`} type="button" data-copied={copiedIndex === i ? '' : undefined}>
               {#if copiedIndex === i}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
               {:else}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
               {/if}
-            </button>
-          {/if}
+            </button>{/if}
         </span>
       </div>
     {/each}

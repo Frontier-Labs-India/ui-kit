@@ -1,0 +1,56 @@
+import { describe, it, vi } from 'vitest'
+import { render, cleanup } from '@testing-library/svelte'
+import { createRawSnippet, flushSync, type Component } from 'svelte'
+import { writeFileSync } from 'node:fs'
+import * as pkg from '../../src/index.js'
+import contract from '../fixtures/contract.json'
+import { CONTRACT_NOW } from '../contract/cases.js'
+import { PROP_RENAMES, UNIVERSAL_RENAMES } from '../contract/divergences.js'
+
+/* Input for scripts/check-svelte-whitespace.mjs, which sets WHITESPACE_DUMP to
+ * an output path; skipped otherwise. Writes React's server HTML and Svelte's
+ * rendered HTML for every contract case, for Chromium to lay out. */
+const OUT = process.env.WHITESPACE_DUMP
+
+type Fx = { components: Record<string, Record<string, { props: unknown; html: string }>> }
+const cases = (contract as unknown as Fx).components
+
+function renamed(name: string, props: unknown): Record<string, unknown> {
+  const out = { ...(props as Record<string, unknown>) }
+  for (const { from, to } of [...UNIVERSAL_RENAMES, ...(PROP_RENAMES[name] ?? [])]) {
+    if (from in out) { out[to] = out[from]; delete out[from] }
+  }
+  return out
+}
+
+function hydrate(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(hydrate)
+  if (value && typeof value === 'object') {
+    const v = value as Record<string, unknown>
+    if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
+    if ('$fn' in v) return () => {}
+    if ('$date' in v) return new Date(String(v.$date))
+    return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
+  }
+  return value
+}
+
+describe.skipIf(!OUT)('whitespace dump', () => {
+  it('writes React and Svelte HTML for every contract case', () => {
+    const out: Record<string, { react: string; svelte: string }> = {}
+    for (const [name, byCase] of Object.entries(cases)) {
+      for (const [caseName, { props, html }] of Object.entries(byCase)) {
+        vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] })
+        vi.setSystemTime(CONTRACT_NOW)
+        const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
+        const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+        flushSync()
+        vi.runAllTimers()
+        vi.useRealTimers()
+        out[`${name} / ${caseName}`] = { react: html, svelte: container.innerHTML }
+        cleanup()
+      }
+    }
+    writeFileSync(OUT!, JSON.stringify(out))
+  }, 600_000)
+})

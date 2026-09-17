@@ -85,6 +85,7 @@
     "test:vendor-fresh": "node scripts/vendor-core.js --check",
     "build:contract": "npx tsx scripts/generate-contract-fixtures.tsx",
     "test:contract-fresh": "npx tsx scripts/generate-contract-fixtures.tsx --check",
+    "check:svelte-whitespace": "node scripts/check-svelte-whitespace.mjs",
     "build:refs": "vitest run --config scripts/ref-fixtures.vitest.config.ts",
     "test:refs-fresh": "vitest run --config scripts/ref-fixtures.vitest.config.ts --mode check",
     "build:registry": "node dist/mcp/scripts/build-registry.js",
