@@ -849,6 +849,29 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'controlled partial, text, 4, error, lg, disabled': { 'aria-label': 'Code', value: '12', type: 'text', length: 4, error: 'Wrong code', size: 'lg', disabled: true },
     'motion 0': { 'aria-label': 'Code', motion: 0, length: 2 },
   },
+  SearchInput: {
+    empty: {},
+    'uncontrolled default shows clear': { defaultValue: 'svelte' },
+    'controlled, loading, xl, placeholder, caller attrs on the input': { value: 'x', loading: true, size: 'xl', placeholder: 'Find…', 'aria-label': 'Find users', id: 'q', className: 'mine' },
+    'disabled hides clear; not clearable': { value: 'x', disabled: true },
+    'clearable off': { value: 'x', clearable: false },
+    'motion 0': { motion: 0 },
+  },
+  RadioGroup: {
+    'label, default selected': { name: 'plan', label: 'Plan', defaultValue: 'pro', options: [{ value: 'free', label: 'Free' }, { value: 'pro', label: { $el: 'Pro' } }] },
+    'nothing selected, horizontal, error, disabled option, caller attrs': {
+      name: 'plan', label: 'Plan', orientation: 'horizontal', size: 'xl', error: 'Pick one', className: 'mine', id: 'rg',
+      options: [{ value: 'a', label: 'A' }, { value: 'b', label: 'B', disabled: true }],
+    },
+    'controlled': { name: 'p', label: 'P', value: 'b', options: [{ value: 'a', label: 'A' }, { value: 'b', label: 'B' }] },
+    'motion 0': { name: 'p', label: 'P', motion: 0, options: [] },
+  },
+  InlineEdit: {
+    value: { value: 'Project name', onChange: { $fn: true } },
+    'empty with placeholder, lg, caller attrs': { value: '', placeholder: 'Untitled', size: 'lg', onChange: { $fn: true }, className: 'mine', id: 'ie' },
+    'empty without placeholder, disabled': { value: '', disabled: true, onChange: { $fn: true } },
+    'motion 0': { value: 'x', motion: 0, onChange: { $fn: true } },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

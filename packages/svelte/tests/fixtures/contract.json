@@ -2944,6 +2944,50 @@
         "html": "<div class=\"ui-infinite-scroll\" data-direction=\"down\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\"></div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div></div>"
       }
     },
+    "InlineEdit": {
+      "value": {
+        "props": {
+          "value": "Project name",
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-inline-edit\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-inline-edit__display\" role=\"button\" tabindex=\"0\" aria-label=\"Edit: Project name\"><span class=\"ui-inline-edit__text\">Project name</span><span class=\"ui-inline-edit__icon\" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7\"></path><path d=\"M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z\"></path></svg></span></div></div>"
+      },
+      "empty with placeholder, lg, caller attrs": {
+        "props": {
+          "value": "",
+          "placeholder": "Untitled",
+          "size": "lg",
+          "onChange": {
+            "$fn": true
+          },
+          "className": "mine",
+          "id": "ie"
+        },
+        "html": "<div class=\"ui-inline-edit mine\" data-size=\"lg\" data-motion=\"3\" id=\"ie\"><div class=\"ui-inline-edit__display\" role=\"button\" tabindex=\"0\" aria-label=\"Edit: Untitled\"><span class=\"ui-inline-edit__placeholder\">Untitled</span><span class=\"ui-inline-edit__icon\" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7\"></path><path d=\"M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z\"></path></svg></span></div></div>"
+      },
+      "empty without placeholder, disabled": {
+        "props": {
+          "value": "",
+          "disabled": true,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-inline-edit\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\"><div class=\"ui-inline-edit__display\" role=\"button\" tabindex=\"-1\" aria-label=\"Edit: empty\"><span class=\"ui-inline-edit__placeholder\"></span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "value": "x",
+          "motion": 0,
+          "onChange": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-inline-edit\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-inline-edit__display\" role=\"button\" tabindex=\"0\" aria-label=\"Edit: x\"><span class=\"ui-inline-edit__text\">x</span><span class=\"ui-inline-edit__icon\" aria-hidden=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7\"></path><path d=\"M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z\"></path></svg></span></div></div>"
+      }
+    },
     "JsonViewer": {
       "nested": {
         "props": {
@@ -5267,6 +5311,78 @@
         "html": "<div class=\"ui-rack-diagram\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"Rack diagram: 1U, 0 devices\"><div class=\"ui-rack-diagram__numbers\"><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">1</div></div><div class=\"ui-rack-diagram__frame\" style=\"block-size:16px\"><div class=\"ui-rack-diagram__slot\"></div></div></div>"
       }
     },
+    "RadioGroup": {
+      "label, default selected": {
+        "props": {
+          "name": "plan",
+          "label": "Plan",
+          "defaultValue": "pro",
+          "options": [
+            {
+              "value": "free",
+              "label": "Free"
+            },
+            {
+              "value": "pro",
+              "label": {
+                "$el": "Pro"
+              }
+            }
+          ]
+        },
+        "html": "<fieldset class=\"ui-radio-group\" data-size=\"md\" data-orientation=\"vertical\" data-motion=\"3\"><legend class=\"ui-radio-group__legend\">Plan</legend><div class=\"ui-radio-group__options\"><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-free\"><input type=\"radio\" id=\"radio-_R_0_-free\" class=\"ui-radio-group__input\" tabindex=\"-1\" name=\"plan\" value=\"free\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\">Free</span></label><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-pro\"><input type=\"radio\" id=\"radio-_R_0_-pro\" class=\"ui-radio-group__input\" tabindex=\"0\" name=\"plan\" checked=\"\" value=\"pro\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\"><b>Pro</b></span></label></div></fieldset>"
+      },
+      "nothing selected, horizontal, error, disabled option, caller attrs": {
+        "props": {
+          "name": "plan",
+          "label": "Plan",
+          "orientation": "horizontal",
+          "size": "xl",
+          "error": "Pick one",
+          "className": "mine",
+          "id": "rg",
+          "options": [
+            {
+              "value": "a",
+              "label": "A"
+            },
+            {
+              "value": "b",
+              "label": "B",
+              "disabled": true
+            }
+          ]
+        },
+        "html": "<fieldset class=\"ui-radio-group mine\" data-size=\"xl\" data-orientation=\"horizontal\" data-motion=\"3\" data-error=\"\" id=\"rg\"><legend class=\"ui-radio-group__legend\">Plan</legend><div class=\"ui-radio-group__options\"><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-a\"><input type=\"radio\" id=\"radio-_R_0_-a\" class=\"ui-radio-group__input\" tabindex=\"-1\" name=\"plan\" value=\"a\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\">A</span></label><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-b\" data-disabled=\"\"><input type=\"radio\" id=\"radio-_R_0_-b\" disabled=\"\" class=\"ui-radio-group__input\" tabindex=\"-1\" name=\"plan\" value=\"b\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\">B</span></label></div><span class=\"ui-radio-group__error\" role=\"alert\">Pick one</span></fieldset>"
+      },
+      "controlled": {
+        "props": {
+          "name": "p",
+          "label": "P",
+          "value": "b",
+          "options": [
+            {
+              "value": "a",
+              "label": "A"
+            },
+            {
+              "value": "b",
+              "label": "B"
+            }
+          ]
+        },
+        "html": "<fieldset class=\"ui-radio-group\" data-size=\"md\" data-orientation=\"vertical\" data-motion=\"3\"><legend class=\"ui-radio-group__legend\">P</legend><div class=\"ui-radio-group__options\"><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-a\"><input type=\"radio\" id=\"radio-_R_0_-a\" class=\"ui-radio-group__input\" tabindex=\"-1\" name=\"p\" value=\"a\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\">A</span></label><label class=\"ui-radio-group__option\" for=\"radio-_R_0_-b\"><input type=\"radio\" id=\"radio-_R_0_-b\" class=\"ui-radio-group__input\" tabindex=\"0\" name=\"p\" checked=\"\" value=\"b\"/><span class=\"ui-radio-group__circle\"><span class=\"ui-radio-group__dot\"></span></span><span class=\"ui-radio-group__label\">B</span></label></div></fieldset>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "p",
+          "label": "P",
+          "motion": 0,
+          "options": []
+        },
+        "html": "<fieldset class=\"ui-radio-group\" data-size=\"md\" data-orientation=\"vertical\" data-motion=\"0\"><legend class=\"ui-radio-group__legend\">P</legend><div class=\"ui-radio-group__options\"></div></fieldset>"
+      }
+    },
     "Rating": {
       "empty": {
         "props": {},
@@ -5555,6 +5671,50 @@
           "motion": 0
         },
         "html": "<div class=\"ui-scroll-reveal\" data-animation=\"fade-up\" data-motion=\"0\"><b>Card</b></div>"
+      }
+    },
+    "SearchInput": {
+      "empty": {
+        "props": {},
+        "html": "<div class=\"ui-search-input\" data-size=\"md\" data-motion=\"3\"><span class=\"ui-search-input__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg></span><input type=\"search\" class=\"ui-search-input__field\" aria-label=\"Search\" value=\"\"/></div>"
+      },
+      "uncontrolled default shows clear": {
+        "props": {
+          "defaultValue": "svelte"
+        },
+        "html": "<div class=\"ui-search-input\" data-size=\"md\" data-motion=\"3\" data-has-value=\"\"><span class=\"ui-search-input__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg></span><input type=\"search\" class=\"ui-search-input__field\" aria-label=\"Search\" value=\"svelte\"/><button type=\"button\" class=\"ui-search-input__clear\" aria-label=\"Clear search\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "controlled, loading, xl, placeholder, caller attrs on the input": {
+        "props": {
+          "value": "x",
+          "loading": true,
+          "size": "xl",
+          "placeholder": "Find…",
+          "aria-label": "Find users",
+          "id": "q",
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-search-input mine\" data-size=\"xl\" data-motion=\"3\" data-loading=\"true\" data-has-value=\"\"><span class=\"ui-search-input__spinner\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21 12a9 9 0 1 1-6.219-8.56\"></path></svg></span><input type=\"search\" class=\"ui-search-input__field\" aria-label=\"Find users\" placeholder=\"Find…\" id=\"q\" value=\"x\"/><button type=\"button\" class=\"ui-search-input__clear\" aria-label=\"Clear search\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></div>"
+      },
+      "disabled hides clear; not clearable": {
+        "props": {
+          "value": "x",
+          "disabled": true
+        },
+        "html": "<div class=\"ui-search-input\" data-size=\"md\" data-motion=\"3\" data-has-value=\"\"><span class=\"ui-search-input__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg></span><input type=\"search\" class=\"ui-search-input__field\" disabled=\"\" aria-label=\"Search\" value=\"x\"/></div>"
+      },
+      "clearable off": {
+        "props": {
+          "value": "x",
+          "clearable": false
+        },
+        "html": "<div class=\"ui-search-input\" data-size=\"md\" data-motion=\"3\" data-has-value=\"\"><span class=\"ui-search-input__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg></span><input type=\"search\" class=\"ui-search-input__field\" aria-label=\"Search\" value=\"x\"/></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-search-input\" data-size=\"md\" data-motion=\"0\"><span class=\"ui-search-input__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg></span><input type=\"search\" class=\"ui-search-input__field\" aria-label=\"Search\" value=\"\"/></div>"
       }
     },
     "SectionHeader": {
