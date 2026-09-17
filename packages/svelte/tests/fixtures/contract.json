@@ -507,6 +507,120 @@
         "html": "<div role=\"group\" class=\"ui-button-group\" data-orientation=\"horizontal\" data-size=\"md\" data-variant=\"primary\" data-motion=\"0\"></div>"
       }
     },
+    "Card": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\"><b>body</b></div>"
+      },
+      "as article, elevated, header and footer": {
+        "props": {
+          "as": "article",
+          "variant": "elevated",
+          "padding": "lg",
+          "header": "Title",
+          "footer": {
+            "$el": "foot"
+          },
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<article class=\"ui-card\" data-variant=\"elevated\" data-padding=\"lg\" data-motion=\"3\"><div class=\"ui-card__header\"><span>Title</span></div><b>body</b><div class=\"ui-card__footer\"><b>foot</b></div></article>"
+      },
+      "expandable with header": {
+        "props": {
+          "expandable": true,
+          "header": {
+            "$el": "Title"
+          },
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\" data-expandable=\"true\" style=\"cursor:pointer\"><div class=\"ui-card__header\"><span><b>Title</b></span><button type=\"button\" class=\"ui-card__expand-toggle\" data-expanded=\"true\" aria-label=\"Collapse\" aria-expanded=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-card__content\" data-collapsed=\"false\"><div class=\"ui-card__content-inner\"><b>body</b></div></div></div>"
+      },
+      "expandable without header": {
+        "props": {
+          "expandable": true,
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\" data-expandable=\"true\" style=\"cursor:pointer\"><div class=\"ui-card__header\" style=\"border-block-end:none;margin-block-end:0\"><span></span><button type=\"button\" class=\"ui-card__expand-toggle\" data-expanded=\"true\" aria-label=\"Collapse\" aria-expanded=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-card__content\" data-collapsed=\"false\"><div class=\"ui-card__content-inner\"><b>body</b></div></div></div>"
+      },
+      "expandable, collapsed by default": {
+        "props": {
+          "expandable": true,
+          "defaultExpanded": false,
+          "header": "T",
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\" data-expandable=\"true\" style=\"cursor:pointer\"><div class=\"ui-card__header\"><span>T</span><button type=\"button\" class=\"ui-card__expand-toggle\" data-expanded=\"false\" aria-label=\"Expand\" aria-expanded=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-card__content\" data-collapsed=\"true\"><div class=\"ui-card__content-inner\"><b>body</b></div></div></div>"
+      },
+      "expandable with caller style drops cursor": {
+        "props": {
+          "expandable": true,
+          "style": {
+            "padding": 4
+          },
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\" data-expandable=\"true\" style=\"padding:4px\"><div class=\"ui-card__header\" style=\"border-block-end:none;margin-block-end:0\"><span></span><button type=\"button\" class=\"ui-card__expand-toggle\" data-expanded=\"true\" aria-label=\"Collapse\" aria-expanded=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-card__content\" data-collapsed=\"false\"><div class=\"ui-card__content-inner\"><b>body</b></div></div></div>"
+      },
+      "flags and classNames": {
+        "props": {
+          "interactive": true,
+          "bordered": true,
+          "variant": "glass",
+          "padding": "none",
+          "header": "h",
+          "footer": "f",
+          "expandable": true,
+          "classNames": {
+            "root": "r",
+            "header": "hd",
+            "footer": "ft",
+            "content": "ct"
+          },
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card r\" data-variant=\"glass\" data-padding=\"none\" data-motion=\"3\" data-interactive=\"true\" data-expandable=\"true\" data-bordered=\"true\" style=\"cursor:pointer\"><div class=\"ui-card__header hd\"><span>h</span><button type=\"button\" class=\"ui-card__expand-toggle\" data-expanded=\"true\" aria-label=\"Collapse\" aria-expanded=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 6l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-card__content ct\" data-collapsed=\"false\"><div class=\"ui-card__content-inner\"><b>body</b></div></div><div class=\"ui-card__footer ft\">f</div></div>"
+      },
+      "loading": {
+        "props": {
+          "loading": true,
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"3\" data-loading=\"true\"><b>body</b><div class=\"ui-skeleton\" data-variant=\"rectangular\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"3\" data-speed=\"normal\" aria-hidden=\"true\" style=\"position:absolute;inset:0;z-index:2;border-radius:inherit\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"0\"></div>"
+      },
+      "motion 1 (no entrance)": {
+        "props": {
+          "motion": 1,
+          "children": {
+            "$el": "body"
+          }
+        },
+        "html": "<div class=\"ui-card\" data-variant=\"default\" data-padding=\"md\" data-motion=\"1\"><b>body</b></div>"
+      }
+    },
     "Card3D": {
       "defaults": {
         "props": {
@@ -794,6 +908,48 @@
           "title": "split"
         },
         "html": "<hr role=\"separator\" class=\"ui-divider\" data-orientation=\"horizontal\" data-variant=\"solid\" data-spacing=\"md\" id=\"d1\" title=\"split\"/>"
+      }
+    },
+    "EmptyState": {
+      "title only": {
+        "props": {
+          "title": "Nothing here"
+        },
+        "html": "<div class=\"ui-empty-state\" data-size=\"md\" data-motion=\"3\"><h3 class=\"ui-empty-state__title\">Nothing here</h3></div>"
+      },
+      "everything": {
+        "props": {
+          "icon": {
+            "$el": "i"
+          },
+          "title": {
+            "$el": "No results"
+          },
+          "description": "Try another search",
+          "action": {
+            "$el": "Reset"
+          },
+          "secondaryAction": "Help",
+          "size": "lg"
+        },
+        "html": "<div class=\"ui-empty-state\" data-size=\"lg\" data-motion=\"3\"><div class=\"ui-empty-state__icon\" aria-hidden=\"true\"><b>i</b></div><h3 class=\"ui-empty-state__title\"><b>No results</b></h3><p class=\"ui-empty-state__description\">Try another search</p><div class=\"ui-empty-state__actions\"><b>Reset</b>Help</div></div>"
+      },
+      "secondary action only": {
+        "props": {
+          "title": "x",
+          "secondaryAction": {
+            "$el": "Help"
+          },
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-empty-state\" data-size=\"sm\" data-motion=\"3\"><h3 class=\"ui-empty-state__title\">x</h3><div class=\"ui-empty-state__actions\"><b>Help</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "title": "x",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-empty-state\" data-size=\"md\" data-motion=\"0\"><h3 class=\"ui-empty-state__title\">x</h3></div>"
       }
     },
     "FilterPill": {

@@ -513,4 +513,25 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'height string beats caller style height': { height: '50vh', style: { height: 10 }, points: [] },
     'motion 0': { motion: 0, points: [] },
   },
+  Card: {
+    defaults: { children: { $el: 'body' } },
+    'as article, elevated, header and footer': { as: 'article', variant: 'elevated', padding: 'lg', header: 'Title', footer: { $el: 'foot' }, children: { $el: 'body' } },
+    'expandable with header': { expandable: true, header: { $el: 'Title' }, children: { $el: 'body' } },
+    'expandable without header': { expandable: true, children: { $el: 'body' } },
+    'expandable, collapsed by default': { expandable: true, defaultExpanded: false, header: 'T', children: { $el: 'body' } },
+    'expandable with caller style drops cursor': { expandable: true, style: { padding: 4 }, children: { $el: 'body' } },
+    'flags and classNames': {
+      interactive: true, bordered: true, variant: 'glass', padding: 'none', header: 'h', footer: 'f', expandable: true,
+      classNames: { root: 'r', header: 'hd', footer: 'ft', content: 'ct' }, children: { $el: 'body' },
+    },
+    loading: { loading: true, children: { $el: 'body' } },
+    'motion 0': { motion: 0 },
+    'motion 1 (no entrance)': { motion: 1, children: { $el: 'body' } },
+  },
+  EmptyState: {
+    'title only': { title: 'Nothing here' },
+    everything: { icon: { $el: 'i' }, title: { $el: 'No results' }, description: 'Try another search', action: { $el: 'Reset' }, secondaryAction: 'Help', size: 'lg' },
+    'secondary action only': { title: 'x', secondaryAction: { $el: 'Help' }, size: 'sm' },
+    'motion 0': { title: 'x', motion: 0 },
+  },
 }

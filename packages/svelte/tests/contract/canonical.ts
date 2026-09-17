@@ -16,6 +16,9 @@
  *     `value=""`), a client render sets .value. Read from the property, and an
  *     empty value is the same as none. Checkbox and radio keep the attribute —
  *     there `value` is the submitted value, meaningful even when unchecked.
+ *   - a zero length written `0px` vs `0`: React serialises the number 0 as "0",
+ *     the CSSOM (browsers and jsdom alike) reports a zero length as "0px". A
+ *     standalone 0px token is read as 0; any other length is compared as-is.
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -46,7 +49,8 @@ export function canonical(root: ParentNode): string {
         .map(d => d.trim()).filter(Boolean)
         .map(d => {
           const i = d.indexOf(':')
-          return `${d.slice(0, i).trim().toLowerCase()}:${d.slice(i + 1).trim().replace(/\s+/g, ' ')}`
+          const value = d.slice(i + 1).trim().replace(/\s+/g, ' ').replace(/(^|[\s(,])0px(?=$|[\s),])/g, '$10')
+          return `${d.slice(0, i).trim().toLowerCase()}:${value}`
         })
         .sort().join(';')
     }

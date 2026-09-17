@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest'
+import { describe, it, expect, vi, afterAll } from 'vitest'
 import { render } from '@testing-library/svelte'
 import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
@@ -69,9 +69,14 @@ const INHERITED: Record<string, string> = {
 }
 
 describe('accessibility — every contract case', () => {
-  // Same clock as the generator, so relative times render identically. Only
-  // Date is faked — timers stay real, so Svelte's scheduling is untouched.
-  beforeAll(() => { vi.useFakeTimers({ toFake: ['Date'] }); vi.setSystemTime(CONTRACT_NOW) })
+  // Same clock as the generator, so relative times render identically. Date
+  // and setTimeout are faked; microtasks are not, so Svelte's scheduling is
+  // untouched. setTimeout is faked so an entrance animation (useEntrance) can be
+  // run to its settled state — React's server render never runs effects, so the
+  // settled DOM is the fair comparison.
+  // Fake clocks only around the render: axe-core schedules its own work with
+  // setTimeout, so faked timers must be restored before axe runs or it never
+  // resolves. The DOM is fully rendered and settled by then.
   afterAll(() => { vi.useRealTimers() })
 
   const seen = new Set<string>()
@@ -80,7 +85,11 @@ describe('accessibility — every contract case', () => {
     for (const [caseName, { props }] of Object.entries(cases)) {
       it(`${name} / ${caseName}`, async () => {
         const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
+        vi.useFakeTimers({ toFake: ['Date', 'setTimeout', 'clearTimeout'] })
+        vi.setSystemTime(CONTRACT_NOW)
         const { container } = render(Comp, { props: hydrate(renamed(name, props)) as Record<string, unknown> })
+        vi.runAllTimers()
+        vi.useRealTimers()
         expect(container.innerHTML.length).toBeGreaterThan(0)
         const found = (await axe(container)).violations.map(v => `${name}/${caseName}/${v.id}`)
         found.forEach(k => seen.add(k))
