@@ -203,6 +203,15 @@ export const PROP_RENAMES: Record<string, { from: string; to: string; reason: st
         'Not universal: many components take onClick as a custom callback prop with its React name.',
     },
   ],
+  StepWizard: [
+    {
+      from: 'children',
+      to: 'items',
+      reason:
+        'React indexes its children with Children.toArray to show the current step. A Svelte snippet cannot be ' +
+        'indexed, so the Svelte component takes the array as `items` (COMPONENT-API.md rule 2, as OrbitingCircles).',
+    },
+  ],
   OrbitingCircles: [
     {
       from: 'children',

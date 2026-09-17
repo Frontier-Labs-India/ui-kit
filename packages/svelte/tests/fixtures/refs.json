@@ -3289,6 +3289,23 @@
    "nth": 0
   }
  },
+ "StepWizard": {
+  "first step": {
+   "tag": "div",
+   "classes": "ui-step-wizard",
+   "nth": 0
+  },
+  "middle step, icons, snippet labels, vertical, skip, caller attrs, motion 0": {
+   "tag": "div",
+   "classes": "ui-step-wizard wiz",
+   "nth": 0
+  },
+  "controlled past the end": {
+   "tag": "div",
+   "classes": "ui-step-wizard",
+   "nth": 0
+  }
+ },
  "Stepper": {
   "horizontal middle active": {
    "tag": "div",

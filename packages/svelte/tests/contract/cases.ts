@@ -1674,6 +1674,25 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'max 0': { max: 0, children: [{ $part: 'Avatar', props: { name: 'A' } }] },
   },
+  StepWizard: {
+    'first step': {
+      steps: [{ id: 'a', label: 'Account' }, { id: 'b', label: 'Profile', description: 'About you' }, { id: 'c', label: 'Done' }],
+      children: [{ $el: 'Account form' }, 'Profile form', { $el: 'Summary' }],
+    },
+    'middle step, icons, snippet labels, vertical, skip, caller attrs, motion 0': {
+      steps: [
+        { id: 'a', label: { $el: 'Account' }, icon: 'A' },
+        { id: 'b', label: 'Profile', icon: { $el: 'P' }, description: { $el: 'Rich' } },
+        { id: 'c', label: 'Done', icon: 0 },
+      ],
+      defaultStep: 1, orientation: 'vertical', allowSkip: true, motion: 0, className: 'wiz', 'aria-label': 'Signup',
+      children: [null, 'Account form', false, { $el: 'Profile form' }, 'Summary'],
+    },
+    'controlled past the end': {
+      steps: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }],
+      activeStep: 5, children: ['one', 'two'],
+    },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

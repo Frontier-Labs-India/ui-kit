@@ -8203,6 +8203,101 @@
         "html": "<span class=\"ui-status-pulse\" data-status=\"info\" data-size=\"md\" data-motion=\"0\" role=\"img\"><span class=\"ui-status-pulse__dot\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span><span class=\"ui-status-pulse__ring\" aria-hidden=\"true\"></span></span>"
       }
     },
+    "StepWizard": {
+      "first step": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "Account"
+            },
+            {
+              "id": "b",
+              "label": "Profile",
+              "description": "About you"
+            },
+            {
+              "id": "c",
+              "label": "Done"
+            }
+          ],
+          "children": [
+            {
+              "$el": "Account form"
+            },
+            "Profile form",
+            {
+              "$el": "Summary"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-step-wizard\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-step-wizard__steps\" role=\"list\"><li class=\"ui-step-wizard__step\" role=\"listitem\" aria-current=\"step\"><button type=\"button\" class=\"ui-step-wizard__step-button\" tabindex=\"-1\"><span class=\"ui-step-wizard__indicator\" data-state=\"active\">1</span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">Account</span></span></button><span class=\"ui-step-wizard__connector\" aria-hidden=\"true\"></span></li><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" tabindex=\"-1\"><span class=\"ui-step-wizard__indicator\" data-state=\"upcoming\">2</span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">Profile</span><span class=\"ui-step-wizard__label-desc\">About you</span></span></button><span class=\"ui-step-wizard__connector\" aria-hidden=\"true\"></span></li><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" tabindex=\"-1\"><span class=\"ui-step-wizard__indicator\" data-state=\"upcoming\">3</span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">Done</span></span></button></li></ol><div class=\"ui-step-wizard__content\"><b>Account form</b></div></div>"
+      },
+      "middle step, icons, snippet labels, vertical, skip, caller attrs, motion 0": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": {
+                "$el": "Account"
+              },
+              "icon": "A"
+            },
+            {
+              "id": "b",
+              "label": "Profile",
+              "icon": {
+                "$el": "P"
+              },
+              "description": {
+                "$el": "Rich"
+              }
+            },
+            {
+              "id": "c",
+              "label": "Done",
+              "icon": 0
+            }
+          ],
+          "defaultStep": 1,
+          "orientation": "vertical",
+          "allowSkip": true,
+          "motion": 0,
+          "className": "wiz",
+          "aria-label": "Signup",
+          "children": [
+            null,
+            "Account form",
+            false,
+            {
+              "$el": "Profile form"
+            },
+            "Summary"
+          ]
+        },
+        "html": "<div class=\"ui-step-wizard wiz\" data-orientation=\"vertical\" data-motion=\"0\" aria-label=\"Signup\"><ol class=\"ui-step-wizard__steps\" role=\"list\"><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" data-clickable=\"true\" tabindex=\"0\"><span class=\"ui-step-wizard__indicator\" data-state=\"completed\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 7L6 10L11 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\"><b>Account</b></span></span></button><span class=\"ui-step-wizard__connector\" data-filled=\"true\" aria-hidden=\"true\"></span></li><li class=\"ui-step-wizard__step\" role=\"listitem\" aria-current=\"step\"><button type=\"button\" class=\"ui-step-wizard__step-button\" data-clickable=\"true\" tabindex=\"0\"><span class=\"ui-step-wizard__indicator\" data-state=\"active\"><b>P</b></span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">Profile</span><span class=\"ui-step-wizard__label-desc\"><b>Rich</b></span></span></button><span class=\"ui-step-wizard__connector\" aria-hidden=\"true\"></span></li><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" data-clickable=\"true\" tabindex=\"0\"><span class=\"ui-step-wizard__indicator\" data-state=\"upcoming\">3</span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">Done</span></span></button></li></ol><div class=\"ui-step-wizard__content\"><b>Profile form</b></div></div>"
+      },
+      "controlled past the end": {
+        "props": {
+          "steps": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ],
+          "activeStep": 5,
+          "children": [
+            "one",
+            "two"
+          ]
+        },
+        "html": "<div class=\"ui-step-wizard\" data-orientation=\"horizontal\" data-motion=\"3\"><ol class=\"ui-step-wizard__steps\" role=\"list\"><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" data-clickable=\"true\" tabindex=\"0\"><span class=\"ui-step-wizard__indicator\" data-state=\"completed\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 7L6 10L11 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">A</span></span></button><span class=\"ui-step-wizard__connector\" data-filled=\"true\" aria-hidden=\"true\"></span></li><li class=\"ui-step-wizard__step\" role=\"listitem\"><button type=\"button\" class=\"ui-step-wizard__step-button\" data-clickable=\"true\" tabindex=\"0\"><span class=\"ui-step-wizard__indicator\" data-state=\"completed\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 7L6 10L11 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-step-wizard__label\"><span class=\"ui-step-wizard__label-text\">B</span></span></button></li></ol><div class=\"ui-step-wizard__content\"></div></div>"
+      }
+    },
     "Stepper": {
       "horizontal middle active": {
         "props": {
