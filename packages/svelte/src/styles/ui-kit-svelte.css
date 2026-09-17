@@ -26097,6 +26097,228 @@
   }
 /* end transfer-list */
 
+/* tree-view */
+@layer components {
+    @scope (.ui-tree-view) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      /* ── Tree item row ───────────────────────────────── */
+
+      .ui-tree-view__row {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        padding-block: 0.125rem;
+        padding-inline-start: calc(var(--depth, 0) * 1.25rem);
+        padding-inline-end: var(--space-sm, 0.5rem);
+        cursor: pointer;
+        border-radius: var(--radius-sm, 0.25rem);
+        min-block-size: 1.75rem;
+        user-select: none;
+        position: relative;
+        transition: background 0.1s;
+      }
+
+      .ui-tree-view__row:hover {
+        background: var(--bg-hover);
+      }
+
+      .ui-tree-view__row[data-selected] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      .ui-tree-view__row[data-selected]:hover {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.16);
+      }
+
+      .ui-tree-view__row[aria-disabled="true"] {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      /* ── Toggle button ───────────────────────────────── */
+
+      .ui-tree-view__toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+        border: none;
+        background: transparent;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        flex-shrink: 0;
+        padding: 0;
+        border-radius: var(--radius-sm, 0.25rem);
+      }
+
+      .ui-tree-view__toggle:hover {
+        color: var(--text-primary, oklch(90% 0 0));
+        background: var(--bg-hover);
+      }
+
+      .ui-tree-view__toggle svg {
+        transition: transform 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-tree-view__toggle[data-expanded] svg {
+        transform: rotate(90deg);
+      }
+
+      .ui-tree-view__spacer {
+        inline-size: 1.25rem;
+        flex-shrink: 0;
+      }
+
+      /* ── Node icon ───────────────────────────────────── */
+
+      .ui-tree-view__icon {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      .ui-tree-view__icon svg {
+        inline-size: 1em;
+        block-size: 1em;
+      }
+
+      /* ── Node label ──────────────────────────────────── */
+
+      .ui-tree-view__label {
+        flex: 1;
+        min-inline-size: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* ── Group (children container) ──────────────────── */
+
+      .ui-tree-view__group {
+        overflow: hidden;
+      }
+
+      .ui-tree-view__group:not([data-motion="0"]) {
+        transition: grid-template-rows 0.2s var(--ease-out, ease-out);
+        display: grid;
+        grid-template-rows: 0fr;
+      }
+
+      .ui-tree-view__group[data-expanded]:not([data-motion="0"]) {
+        grid-template-rows: 1fr;
+      }
+
+      .ui-tree-view__group[data-motion="0"] {
+        display: none;
+      }
+
+      .ui-tree-view__group[data-expanded][data-motion="0"] {
+        display: block;
+      }
+
+      .ui-tree-view__group-inner {
+        overflow: hidden;
+      }
+
+      /* ── Indent guides ───────────────────────────────── */
+
+      :scope[data-guides="true"] .ui-tree-view__row::before {
+        content: '';
+        position: absolute;
+        inset-inline-start: calc(var(--depth, 0) * 1.25rem - 0.625rem);
+        inset-block: 0;
+        inline-size: 1px;
+        background: var(--border-subtle, oklch(100% 0 0 / 0.08));
+        pointer-events: none;
+      }
+
+      :scope[data-guides="true"] .ui-tree-view__row[style*="--depth: 0"]::before,
+      :scope[data-guides="true"] .ui-tree-view__row[style*="--depth:0"]::before {
+        display: none;
+      }
+
+      /* ── Loading spinner ─────────────────────────────── */
+
+      .ui-tree-view__loading {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        padding-block: 0.25rem;
+        padding-inline-start: calc((var(--depth, 0) + 1) * 1.25rem + 1.5rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+      }
+
+      .ui-tree-view__spinner {
+        inline-size: 0.875rem;
+        block-size: 0.875rem;
+        border: 2px solid var(--border-default, oklch(100% 0 0 / 0.1));
+        border-block-start-color: var(--brand, oklch(65% 0.2 270));
+        border-radius: 50%;
+        animation: ui-tree-spin 0.6s linear infinite;
+      }
+
+      /* ── Reduced motion ──────────────────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        .ui-tree-view__toggle svg {
+          transition: none;
+        }
+        .ui-tree-view__group {
+          transition: none;
+        }
+        .ui-tree-view__spinner {
+          animation: none;
+        }
+      }
+
+      /* ── Touch targets ───────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-tree-view__row {
+          min-block-size: 44px;
+        }
+        .ui-tree-view__toggle {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* ── Forced colors ───────────────────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-tree-view__row[data-selected] {
+          outline: 2px solid Highlight;
+        }
+        .ui-tree-view__row:focus-visible {
+          outline: 2px solid Highlight;
+        }
+      }
+
+      /* ── Print ───────────────────────────────────────── */
+
+      @media print {
+        .ui-tree-view__group {
+          display: block !important;
+          grid-template-rows: unset !important;
+        }
+      }
+    }
+
+    @keyframes ui-tree-spin {
+      to { transform: rotate(360deg); }
+    }
+  }
+/* end tree-view */
+
 /* truncated-text */
 @layer components {
     @scope (.ui-truncated-text) {

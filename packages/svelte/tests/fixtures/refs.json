@@ -3947,6 +3947,23 @@
    "nth": 0
   }
  },
+ "TreeView": {
+  "flat": {
+   "tag": "div",
+   "classes": "ui-tree-view",
+   "nth": 0
+  },
+  "nested, expanded, selected, icons, disabled, guides off, multi, caller attrs, motion 0": {
+   "tag": "div",
+   "classes": "files ui-tree-view",
+   "nth": 0
+  },
+  "collapsed parent, single selection string": {
+   "tag": "div",
+   "classes": "ui-tree-view",
+   "nth": 0
+  }
+ },
  "TruncatedText": {
   "defaults": {
    "tag": "span",

@@ -9,6 +9,19 @@
 export type Divergence = { reason: string; apply: (root: ParentNode) => void }
 
 export const DIVERGENCES: Record<string, Divergence[]> = {
+  TreeView: [
+    {
+      reason:
+        'React nests a child <li> inside div.ui-tree-view__group > div inside its parent <li>. Client DOM keeps ' +
+        'that, as Svelte\'s does, but the HTML parser\'s <li> rule closes the open <li> across the divs, so the ' +
+        'server-HTML fixture is re-parented (a hydration hazard in both packages, see the README). Re-parsing the ' +
+        'Svelte tree applies the same parser rule.',
+      apply(root) {
+        const el = root as Element
+        el.innerHTML = el.innerHTML
+      },
+    },
+  ],
   Tabs: [
     {
       reason:
@@ -129,6 +142,13 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
  * comparison, and a behaviour test named in `reason` asserts what the effect
  * sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  TreeView: [
+    {
+      selector: '[role="treeitem"]',
+      attributes: ['tabindex'],
+      reason: 'An effect makes the first item the tab stop; the server HTML has -1 on all (tree-view.test.ts).',
+    },
+  ],
   Popover: [
     {
       selector: '.ui-popover',

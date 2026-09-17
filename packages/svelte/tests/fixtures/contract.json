@@ -10515,6 +10515,99 @@
         "html": "<div class=\"ui-transfer-list\" data-size=\"md\" data-motion=\"0\" role=\"group\" aria-label=\"Transfer list\"><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Source\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Source</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Source items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-left\" style=\"max-block-size:16rem\"><div></div></div></div><div class=\"ui-transfer-list__controls\"><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to right\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 3L9 8L4 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L13 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to right\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M6 3L11 8L6 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to left\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3L5 8L10 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to left\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 3L7 8L12 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L3 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Target\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Target</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Target items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-right\" style=\"max-block-size:16rem\"><div></div></div></div></div>"
       }
     },
+    "TreeView": {
+      "flat": {
+        "props": {
+          "nodes": [
+            {
+              "id": "a",
+              "label": "Alpha"
+            },
+            {
+              "id": "b",
+              "label": "Beta"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tree-view\" data-motion=\"3\" data-guides=\"true\"><ul role=\"tree\" style=\"list-style:none;margin:0;padding:0\"><li role=\"treeitem\" aria-selected=\"false\" tabindex=\"-1\" data-node-id=\"a\"><div class=\"ui-tree-view__row\" style=\"--depth:0\"><span class=\"ui-tree-view__spacer\"></span><span class=\"ui-tree-view__label\">Alpha</span></div></li><li role=\"treeitem\" aria-selected=\"false\" tabindex=\"-1\" data-node-id=\"b\"><div class=\"ui-tree-view__row\" style=\"--depth:0\"><span class=\"ui-tree-view__spacer\"></span><span class=\"ui-tree-view__label\">Beta</span></div></li></ul></div>"
+      },
+      "nested, expanded, selected, icons, disabled, guides off, multi, caller attrs, motion 0": {
+        "props": {
+          "nodes": [
+            {
+              "id": "src",
+              "label": "src",
+              "icon": {
+                "$el": "d"
+              },
+              "children": [
+                {
+                  "id": "app",
+                  "label": {
+                    "$el": "app.ts"
+                  },
+                  "icon": 0
+                },
+                {
+                  "id": "lib",
+                  "label": "lib",
+                  "children": [
+                    {
+                      "id": "util",
+                      "label": "util.ts",
+                      "disabled": true
+                    }
+                  ]
+                },
+                {
+                  "id": "empty",
+                  "label": "empty",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "readme",
+              "label": "README",
+              "disabled": true
+            }
+          ],
+          "expanded": [
+            "src",
+            "lib",
+            "empty"
+          ],
+          "selected": [
+            "app",
+            "readme"
+          ],
+          "multiSelect": true,
+          "showGuides": false,
+          "motion": 0,
+          "className": "files",
+          "aria-label": "Files"
+        },
+        "html": "<div class=\"ui-tree-view files\" data-motion=\"0\" aria-label=\"Files\"><ul role=\"tree\" aria-multiselectable=\"true\" style=\"list-style:none;margin:0;padding:0\"><li role=\"treeitem\" aria-expanded=\"true\" aria-selected=\"false\" tabindex=\"-1\" data-node-id=\"src\"><div class=\"ui-tree-view__row\" style=\"--depth:0\"><button class=\"ui-tree-view__toggle\" data-toggle=\"\" data-expanded=\"\" tabindex=\"-1\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L8 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><span class=\"ui-tree-view__icon\"><b>d</b></span><span class=\"ui-tree-view__label\">src</span></div><div class=\"ui-tree-view__group\" role=\"group\" data-motion=\"0\" data-expanded=\"\"><div class=\"ui-tree-view__group-inner\"><li role=\"treeitem\" aria-selected=\"true\" tabindex=\"-1\" data-node-id=\"app\"><div class=\"ui-tree-view__row\" style=\"--depth:1\" data-selected=\"\"><span class=\"ui-tree-view__spacer\"></span>0<span class=\"ui-tree-view__label\"><b>app.ts</b></span></div></li><li role=\"treeitem\" aria-expanded=\"true\" aria-selected=\"false\" tabindex=\"-1\" data-node-id=\"lib\"><div class=\"ui-tree-view__row\" style=\"--depth:1\"><button class=\"ui-tree-view__toggle\" data-toggle=\"\" data-expanded=\"\" tabindex=\"-1\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L8 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><span class=\"ui-tree-view__label\">lib</span></div><div class=\"ui-tree-view__group\" role=\"group\" data-motion=\"0\" data-expanded=\"\"><div class=\"ui-tree-view__group-inner\"><li role=\"treeitem\" aria-selected=\"false\" aria-disabled=\"true\" tabindex=\"-1\" data-node-id=\"util\"><div class=\"ui-tree-view__row\" style=\"--depth:2\" aria-disabled=\"true\"><span class=\"ui-tree-view__spacer\"></span><span class=\"ui-tree-view__label\">util.ts</span></div></li></div></div></li><li role=\"treeitem\" aria-expanded=\"true\" aria-selected=\"false\" tabindex=\"-1\" data-node-id=\"empty\"><div class=\"ui-tree-view__row\" style=\"--depth:1\"><button class=\"ui-tree-view__toggle\" data-toggle=\"\" data-expanded=\"\" tabindex=\"-1\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L8 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><span class=\"ui-tree-view__label\">empty</span></div><div class=\"ui-tree-view__group\" role=\"group\" data-motion=\"0\" data-expanded=\"\"><div class=\"ui-tree-view__group-inner\"></div></div></li></div></div></li><li role=\"treeitem\" aria-selected=\"true\" aria-disabled=\"true\" tabindex=\"-1\" data-node-id=\"readme\"><div class=\"ui-tree-view__row\" style=\"--depth:0\" data-selected=\"\" aria-disabled=\"true\"><span class=\"ui-tree-view__spacer\"></span><span class=\"ui-tree-view__label\">README</span></div></li></ul></div>"
+      },
+      "collapsed parent, single selection string": {
+        "props": {
+          "nodes": [
+            {
+              "id": "p",
+              "label": "Parent",
+              "children": [
+                {
+                  "id": "c",
+                  "label": "Child"
+                }
+              ]
+            }
+          ],
+          "selected": "p"
+        },
+        "html": "<div class=\"ui-tree-view\" data-motion=\"3\" data-guides=\"true\"><ul role=\"tree\" style=\"list-style:none;margin:0;padding:0\"><li role=\"treeitem\" aria-expanded=\"false\" aria-selected=\"true\" tabindex=\"-1\" data-node-id=\"p\"><div class=\"ui-tree-view__row\" style=\"--depth:0\" data-selected=\"\"><button class=\"ui-tree-view__toggle\" data-toggle=\"\" tabindex=\"-1\" aria-hidden=\"true\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4.5 2.5L8 6L4.5 9.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><span class=\"ui-tree-view__label\">Parent</span></div><div class=\"ui-tree-view__group\" role=\"group\" data-motion=\"3\"><div class=\"ui-tree-view__group-inner\"></div></div></li></ul></div>"
+      }
+    },
     "TruncatedText": {
       "defaults": {
         "props": {

@@ -111,6 +111,12 @@ declared in the contract tests rather than hidden.
   "Close [object Object]" when the label is a snippet (both inherited).
   AvatarGroup lays out its `Avatar` children only; React clones any child
   element with the group's size.
+- **Server-rendered markup that the HTML parser rearranges** (inherited):
+  an expanded TreeView nests a child `<li>` inside `<div>`s in its parent
+  `<li>`, and a closeable Tabs tab nests a `<button>` in a `<button>`. Built
+  in the browser that is fine; server HTML for it is re-parented by the
+  parser, so hydration will not match. Both need a markup fix in both
+  packages.
 - **Render props are snippet parameters.** ContainerQuery's `children`
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a

@@ -1702,6 +1702,26 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'single slide hides arrows and dots': { children: ['only'], gap: 8 },
     'no dots, three per view': { children: ['1', '2', '3', '4'], slidesPerView: 3, showDots: false },
   },
+  TreeView: {
+    flat: { nodes: [{ id: 'a', label: 'Alpha' }, { id: 'b', label: 'Beta' }] },
+    'nested, expanded, selected, icons, disabled, guides off, multi, caller attrs, motion 0': {
+      nodes: [
+        {
+          id: 'src', label: 'src', icon: { $el: 'd' }, children: [
+            { id: 'app', label: { $el: 'app.ts' }, icon: 0 },
+            { id: 'lib', label: 'lib', children: [{ id: 'util', label: 'util.ts', disabled: true }] },
+            { id: 'empty', label: 'empty', children: [] },
+          ],
+        },
+        { id: 'readme', label: 'README', disabled: true },
+      ],
+      expanded: ['src', 'lib', 'empty'], selected: ['app', 'readme'], multiSelect: true, showGuides: false, motion: 0,
+      className: 'files', 'aria-label': 'Files',
+    },
+    'collapsed parent, single selection string': {
+      nodes: [{ id: 'p', label: 'Parent', children: [{ id: 'c', label: 'Child' }] }], selected: 'p',
+    },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },
