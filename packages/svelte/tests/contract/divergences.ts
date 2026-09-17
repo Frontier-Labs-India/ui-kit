@@ -46,6 +46,13 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * Only the listed properties on matching elements are removed before the CSP
  * check and the comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  SegmentedControl: [
+    {
+      selector: '.ui-segmented__indicator',
+      properties: ['transform', 'inline-size', 'block-size'],
+      reason: 'The indicator is measured against the active item in a layout effect and moved with style properties.',
+    },
+  ],
   Textarea: [
     {
       selector: 'textarea[data-auto-resize]',

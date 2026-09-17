@@ -510,6 +510,19 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'no title and no close: no header; caller attrs': { open: false, onClose: { $fn: true }, showClose: false, className: 'mine', 'aria-label': 'Panel', children: { $el: 'Body' } },
     'motion 0': { open: false, onClose: { $fn: true }, motion: 0, children: { $el: 'Body' } },
   },
+  SegmentedControl: {
+    'strings, first is active by default': { data: ['Day', 'Week', 'Month'], 'aria-label': 'Range' },
+    'objects with icons, disabled option, controlled': {
+      'aria-label': 'View', value: 'grid',
+      data: [{ value: 'list', label: 'List', icon: { $el: 'l' } }, { value: 'grid', label: { $el: 'Grid' } }, { value: 'map', label: 'Map', disabled: true }],
+    },
+    'vertical xl full width, color, caller style and class': {
+      'aria-label': 'V', data: ['A', 'B'], defaultValue: 'B', orientation: 'vertical', size: 'xl', fullWidth: true, color: 'red', style: { margin: 4 }, className: 'mine',
+    },
+    'disabled and readOnly': { 'aria-label': 'D', data: ['A', 'B'], disabled: true, readOnly: true },
+    'empty data': { 'aria-label': 'E', data: [] },
+    'motion 0': { 'aria-label': 'M', data: ['A'], motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

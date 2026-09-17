@@ -4176,6 +4176,94 @@
         "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
       }
     },
+    "SegmentedControl": {
+      "strings, first is active by default": {
+        "props": {
+          "data": [
+            "Day",
+            "Week",
+            "Month"
+          ],
+          "aria-label": "Range"
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\" aria-label=\"Range\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"true\" data-active=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\">Day</span></button><button type=\"button\" role=\"radio\" aria-checked=\"false\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\">Week</span></button><button type=\"button\" role=\"radio\" aria-checked=\"false\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\">Month</span></button></div>"
+      },
+      "objects with icons, disabled option, controlled": {
+        "props": {
+          "aria-label": "View",
+          "value": "grid",
+          "data": [
+            {
+              "value": "list",
+              "label": "List",
+              "icon": {
+                "$el": "l"
+              }
+            },
+            {
+              "value": "grid",
+              "label": {
+                "$el": "Grid"
+              }
+            },
+            {
+              "value": "map",
+              "label": "Map",
+              "disabled": true
+            }
+          ]
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\" aria-label=\"View\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"false\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\"><b>l</b>List</span></button><button type=\"button\" role=\"radio\" aria-checked=\"true\" data-active=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\"><b>Grid</b></span></button><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-disabled=\"true\" data-disabled=\"true\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\">Map</span></button></div>"
+      },
+      "vertical xl full width, color, caller style and class": {
+        "props": {
+          "aria-label": "V",
+          "data": [
+            "A",
+            "B"
+          ],
+          "defaultValue": "B",
+          "orientation": "vertical",
+          "size": "xl",
+          "fullWidth": true,
+          "color": "red",
+          "style": {
+            "margin": 4
+          },
+          "className": "mine"
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented mine\" data-size=\"xl\" data-orientation=\"vertical\" data-motion=\"3\" data-full-width=\"true\" data-has-color=\"true\" style=\"margin:4px;--segmented-color:red\" aria-label=\"V\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"false\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\">A</span></button><button type=\"button\" role=\"radio\" aria-checked=\"true\" data-active=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\">B</span></button></div>"
+      },
+      "disabled and readOnly": {
+        "props": {
+          "aria-label": "D",
+          "data": [
+            "A",
+            "B"
+          ],
+          "disabled": true,
+          "readOnly": true
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\" data-disabled=\"true\" aria-label=\"D\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"true\" aria-disabled=\"true\" data-active=\"true\" data-disabled=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\">A</span></button><button type=\"button\" role=\"radio\" aria-checked=\"false\" aria-disabled=\"true\" data-disabled=\"true\" class=\"ui-segmented__item\" tabindex=\"-1\"><span class=\"ui-segmented__item-label\">B</span></button></div>"
+      },
+      "empty data": {
+        "props": {
+          "aria-label": "E",
+          "data": []
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\" aria-label=\"E\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "aria-label": "M",
+          "data": [
+            "A"
+          ],
+          "motion": 0
+        },
+        "html": "<div role=\"radiogroup\" class=\"ui-segmented\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"0\" aria-label=\"M\"><div class=\"ui-segmented__indicator\" aria-hidden=\"true\"></div><button type=\"button\" role=\"radio\" aria-checked=\"true\" data-active=\"true\" class=\"ui-segmented__item\" tabindex=\"0\"><span class=\"ui-segmented__item-label\">A</span></button></div>"
+      }
+    },
     "ServiceStrip": {
       "basic": {
         "props": {
