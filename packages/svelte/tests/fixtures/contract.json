@@ -8424,6 +8424,47 @@
         "html": "<div class=\"ui-switch-faceplate\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Network switch faceplate\"><div class=\"ui-switch-faceplate__grid\"><div class=\"ui-switch-faceplate__row\"></div><div class=\"ui-switch-faceplate__row\"></div></div></div>"
       }
     },
+    "TabContent": {
+      "outside Tabs": {
+        "props": {
+          "value": "a",
+          "children": "A"
+        },
+        "html": "<div role=\"tabpanel\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\">A</div>"
+      }
+    },
+    "TabList": {
+      "outside Tabs": {
+        "props": {
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" class=\"ui-tabs__list\"><b>x</b></div></div>"
+      }
+    },
+    "TabPanel": {
+      "outside Tabs": {
+        "props": {
+          "tabId": "a",
+          "children": {
+            "$el": "loose"
+          },
+          "className": "p"
+        },
+        "html": "<div class=\"ui-tabs__panel-inner p\" data-tab-id=\"a\"><b>loose</b></div>"
+      }
+    },
+    "TabTrigger": {
+      "outside Tabs": {
+        "props": {
+          "value": "a",
+          "children": "A",
+          "disabled": true
+        },
+        "html": "<button role=\"tab\" type=\"button\" aria-selected=\"false\" aria-disabled=\"true\" tabindex=\"-1\" class=\"ui-tabs__tab\">A</button>"
+      }
+    },
     "TableOfContents": {
       "nested, none active": {
         "props": {
@@ -8523,6 +8564,201 @@
           "items": []
         },
         "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div style=\"position:relative\"><div class=\"ui-toc__indicator\" aria-hidden=\"true\" style=\"opacity:0\"></div><ul class=\"ui-toc__list\" role=\"list\"></ul></div></nav>"
+      }
+    },
+    "Tabs": {
+      "array, panels, defaults": {
+        "props": {
+          "tabs": [
+            {
+              "id": "a",
+              "label": "Alpha"
+            },
+            {
+              "id": "b",
+              "label": "Beta"
+            }
+          ],
+          "children": [
+            {
+              "$part": "TabPanel",
+              "props": {
+                "tabId": "a",
+                "children": {
+                  "$el": "Panel A"
+                }
+              }
+            },
+            {
+              "$part": "TabPanel",
+              "props": {
+                "tabId": "b",
+                "children": "Panel B"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tabs\" data-variant=\"underline\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\"><div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" aria-orientation=\"horizontal\" class=\"ui-tabs__list\"><button id=\"tabs-_R_0_-tab-a\" role=\"tab\" type=\"button\" aria-selected=\"true\" aria-controls=\"tabs-_R_0_-panel-a\" tabindex=\"0\" class=\"ui-tabs__tab\">Alpha</button><button id=\"tabs-_R_0_-tab-b\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-b\" tabindex=\"-1\" class=\"ui-tabs__tab\">Beta</button></div></div><div class=\"ui-tabs__panels\"><div id=\"tabs-_R_0_-panel-a\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-a\" class=\"ui-tabs__panel\" tabindex=\"0\"><b>Panel A</b></div><div id=\"tabs-_R_0_-panel-b\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-b\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\">Panel B</div></div></div>"
+      },
+      "array, every tab option, pills lg vertical, motion 0": {
+        "props": {
+          "tabs": [
+            {
+              "id": "a",
+              "label": "Alpha",
+              "icon": {
+                "$el": "i"
+              },
+              "badge": 3
+            },
+            {
+              "id": "b",
+              "label": {
+                "$el": "Beta"
+              },
+              "disabled": true,
+              "closeable": true
+            },
+            {
+              "id": "c",
+              "label": "Gamma",
+              "badge": 0,
+              "icon": 0,
+              "closeable": true
+            }
+          ],
+          "defaultTab": "c",
+          "variant": "pills",
+          "size": "lg",
+          "orientation": "vertical",
+          "motion": 0,
+          "className": "mine",
+          "data-x": "1",
+          "onClose": {
+            "$fn": true
+          },
+          "children": [
+            {
+              "$part": "TabPanel",
+              "props": {
+                "tabId": "c",
+                "children": "Panel C"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tabs mine\" data-variant=\"pills\" data-size=\"lg\" data-orientation=\"vertical\" data-motion=\"0\" data-x=\"1\"><div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" aria-orientation=\"vertical\" class=\"ui-tabs__list\"><button id=\"tabs-_R_0_-tab-a\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-a\" tabindex=\"-1\" class=\"ui-tabs__tab\"><span class=\"ui-tabs__tab-icon\"><b>i</b></span>Alpha<span class=\"ui-tabs__tab-badge\">3</span></button><button id=\"tabs-_R_0_-tab-b\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-b\" aria-disabled=\"true\" tabindex=\"-1\" class=\"ui-tabs__tab\"><b>Beta</b><button type=\"button\" class=\"ui-tabs__tab-close\" aria-label=\"Close [object Object]\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\"><path d=\"M2 2l6 6m0-6l-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></button><button id=\"tabs-_R_0_-tab-c\" role=\"tab\" type=\"button\" aria-selected=\"true\" aria-controls=\"tabs-_R_0_-panel-c\" tabindex=\"0\" class=\"ui-tabs__tab\">0Gamma0<button type=\"button\" class=\"ui-tabs__tab-close\" aria-label=\"Close Gamma\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\"><path d=\"M2 2l6 6m0-6l-6 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button></button></div></div><div class=\"ui-tabs__panels\"><div id=\"tabs-_R_0_-panel-a\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-a\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\"></div><div id=\"tabs-_R_0_-panel-b\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-b\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\"></div><div id=\"tabs-_R_0_-panel-c\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-c\" class=\"ui-tabs__panel\" tabindex=\"0\">Panel C</div></div></div>"
+      },
+      "array, controlled on a disabled tab, lazy, no panels": {
+        "props": {
+          "tabs": [
+            {
+              "id": "a",
+              "label": "A",
+              "disabled": true
+            },
+            {
+              "id": "b",
+              "label": "B"
+            },
+            {
+              "id": "c",
+              "label": "C"
+            }
+          ],
+          "activeTab": "a",
+          "lazy": true
+        },
+        "html": "<div class=\"ui-tabs\" data-variant=\"underline\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\"><div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" aria-orientation=\"horizontal\" class=\"ui-tabs__list\"><button id=\"tabs-_R_0_-tab-a\" role=\"tab\" type=\"button\" aria-selected=\"true\" aria-controls=\"tabs-_R_0_-panel-a\" aria-disabled=\"true\" tabindex=\"-1\" class=\"ui-tabs__tab\">A</button><button id=\"tabs-_R_0_-tab-b\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-b\" tabindex=\"0\" class=\"ui-tabs__tab\">B</button><button id=\"tabs-_R_0_-tab-c\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-c\" tabindex=\"-1\" class=\"ui-tabs__tab\">C</button></div></div><div class=\"ui-tabs__panels\"><div id=\"tabs-_R_0_-panel-a\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-a\" class=\"ui-tabs__panel\" tabindex=\"0\"></div></div></div>"
+      },
+      "array, value alias wins over activeTab, duplicate panel ids": {
+        "props": {
+          "tabs": [
+            {
+              "id": "a",
+              "label": "A"
+            },
+            {
+              "id": "b",
+              "label": "B"
+            }
+          ],
+          "value": "b",
+          "activeTab": "a",
+          "children": [
+            {
+              "$part": "TabPanel",
+              "props": {
+                "tabId": "b",
+                "children": "first"
+              }
+            },
+            {
+              "$part": "TabPanel",
+              "props": {
+                "tabId": "b",
+                "children": "second"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tabs\" data-variant=\"underline\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\"><div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" aria-orientation=\"horizontal\" class=\"ui-tabs__list\"><button id=\"tabs-_R_0_-tab-a\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-a\" tabindex=\"-1\" class=\"ui-tabs__tab\">A</button><button id=\"tabs-_R_0_-tab-b\" role=\"tab\" type=\"button\" aria-selected=\"true\" aria-controls=\"tabs-_R_0_-panel-b\" tabindex=\"0\" class=\"ui-tabs__tab\">B</button></div></div><div class=\"ui-tabs__panels\"><div id=\"tabs-_R_0_-panel-a\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-a\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\"></div><div id=\"tabs-_R_0_-panel-b\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-b\" class=\"ui-tabs__panel\" tabindex=\"0\">first</div></div></div>"
+      },
+      "composed, every part": {
+        "props": {
+          "defaultValue": "two",
+          "variant": "enclosed",
+          "children": [
+            {
+              "$part": "TabList",
+              "props": {
+                "className": "list",
+                "children": [
+                  {
+                    "$part": "TabTrigger",
+                    "props": {
+                      "value": "one",
+                      "children": "One"
+                    }
+                  },
+                  {
+                    "$part": "TabTrigger",
+                    "props": {
+                      "value": "two",
+                      "children": {
+                        "$el": "Two"
+                      }
+                    }
+                  },
+                  {
+                    "$part": "TabTrigger",
+                    "props": {
+                      "value": "three",
+                      "disabled": true,
+                      "children": "Three"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$part": "TabContent",
+              "props": {
+                "value": "one",
+                "children": "First"
+              }
+            },
+            {
+              "$part": "TabContent",
+              "props": {
+                "value": "two",
+                "className": "c",
+                "children": "Second"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tabs\" data-variant=\"enclosed\" data-size=\"md\" data-orientation=\"horizontal\" data-motion=\"3\"><div class=\"ui-tabs__list-wrapper\"><div role=\"tablist\" aria-orientation=\"horizontal\" class=\"ui-tabs__list list\"><button id=\"tabs-_R_0_-tab-one\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-one\" tabindex=\"-1\" class=\"ui-tabs__tab\">One</button><button id=\"tabs-_R_0_-tab-two\" role=\"tab\" type=\"button\" aria-selected=\"true\" aria-controls=\"tabs-_R_0_-panel-two\" tabindex=\"0\" class=\"ui-tabs__tab\"><b>Two</b></button><button id=\"tabs-_R_0_-tab-three\" role=\"tab\" type=\"button\" aria-selected=\"false\" aria-controls=\"tabs-_R_0_-panel-three\" aria-disabled=\"true\" tabindex=\"-1\" class=\"ui-tabs__tab\">Three</button></div></div><div id=\"tabs-_R_0_-panel-one\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-one\" class=\"ui-tabs__panel\" hidden=\"\" tabindex=\"-1\">First</div><div id=\"tabs-_R_0_-panel-two\" role=\"tabpanel\" aria-labelledby=\"tabs-_R_0_-tab-two\" class=\"ui-tabs__panel c\" tabindex=\"0\">Second</div></div>"
       }
     },
     "TagInput": {

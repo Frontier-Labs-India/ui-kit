@@ -7,7 +7,7 @@ import fixture from '../fixtures/contract.json'
 import { CASES, CONTRACT_NOW } from './cases.js'
 import { canonical, fromHtml } from './canonical.js'
 import { DIVERGENCES, EFFECT_ATTRS, EFFECT_NODES, EFFECT_STYLES, EFFECT_VALUES, NO_SSR_CONTRACT } from './divergences.js'
-import { caseRender, hydrate, renamed } from './hydrate.svelte.js'
+import { caseRender } from './hydrate.svelte.js'
 
 /* Every Svelte component must render the same DOM tree as its React
  * counterpart, for every case in cases.ts. React's side is server HTML
@@ -68,18 +68,20 @@ describe('React DOM contract', () => {
     const zeroCase = Object.values(cases).find(c => (c.props as { motion?: unknown }).motion === 0 && c.html.includes('data-motion'))
     it(`${name}: data-motion follows a motion prop change after mount`, async () => {
       const Comp = (pkg as Record<string, unknown>)[name] as Component<any>
-      const base = hydrate(renamed(name, (zeroCase ?? withMotion[1]).props)) as Record<string, unknown>
+      const raw = (zeroCase ?? withMotion[1]).props as Record<string, unknown>
+      const at = (level: number) => caseRender(Comp, name, { ...raw, motion: level })
       const react = zeroCase ? motions(zeroCase.html) : null
       const expected = (level: number) =>
         react ? react.map(v => (v === '0' ? String(level) : v)) : null
-      const { container, rerender } = render(Comp, { props: { ...base, motion: 1 } })
+      const first = at(1)
+      const { container, rerender } = render(first.component, { props: first.props })
       const read = () => Array.from(container.querySelectorAll('[data-motion]')).map(e => e.getAttribute('data-motion'))
       expect(read().length).toBeGreaterThan(0)
       if (react) {
         expect(react).toContain('0')
         expect(read()).toEqual(expected(1))
       } else expect(new Set(read())).toEqual(new Set(['1']))
-      await rerender({ ...base, motion: 0 })
+      await rerender(at(0).props)
       flushSync()
       if (react) expect(read()).toEqual(expected(0))
       else expect(new Set(read())).toEqual(new Set(['0']))

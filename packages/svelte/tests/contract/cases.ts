@@ -39,6 +39,10 @@ export const SOURCES: Record<string, string> = {
   FilterPillGroup: 'src/components/filter-pill.tsx',
   SidebarHeader: 'src/components/sidebar.tsx',
   DropdownMenuTrigger: 'src/components/dropdown-menu.tsx',
+  TabList: 'src/components/tabs.tsx',
+  TabTrigger: 'src/components/tabs.tsx',
+  TabContent: 'src/components/tabs.tsx',
+  TabPanel: 'src/components/tabs.tsx',
   DropdownMenuContent: 'src/components/dropdown-menu.tsx',
   DropdownMenuItem: 'src/components/dropdown-menu.tsx',
   DropdownMenuSeparator: 'src/components/dropdown-menu.tsx',
@@ -1591,6 +1595,56 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
   },
   DropdownMenuSeparator: { 'outside a menu': {} },
   DropdownMenuLabel: { 'outside a menu': { children: 'Group' } },
+  // Array API with TabPanel parts (rule 2 registry) and the composed API (rule 3).
+  Tabs: {
+    'array, panels, defaults': {
+      tabs: [{ id: 'a', label: 'Alpha' }, { id: 'b', label: 'Beta' }],
+      children: [
+        { $part: 'TabPanel', props: { tabId: 'a', children: { $el: 'Panel A' } } },
+        { $part: 'TabPanel', props: { tabId: 'b', children: 'Panel B' } },
+      ],
+    },
+    'array, every tab option, pills lg vertical, motion 0': {
+      tabs: [
+        { id: 'a', label: 'Alpha', icon: { $el: 'i' }, badge: 3 },
+        { id: 'b', label: { $el: 'Beta' }, disabled: true, closeable: true },
+        { id: 'c', label: 'Gamma', badge: 0, icon: 0, closeable: true },
+      ],
+      defaultTab: 'c', variant: 'pills', size: 'lg', orientation: 'vertical', motion: 0, className: 'mine', 'data-x': '1',
+      onClose: { $fn: true },
+      children: [{ $part: 'TabPanel', props: { tabId: 'c', children: 'Panel C' } }],
+    },
+    'array, controlled on a disabled tab, lazy, no panels': {
+      tabs: [{ id: 'a', label: 'A', disabled: true }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+      activeTab: 'a', lazy: true,
+    },
+    'array, value alias wins over activeTab, duplicate panel ids': {
+      tabs: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }],
+      value: 'b', activeTab: 'a',
+      children: [
+        { $part: 'TabPanel', props: { tabId: 'b', children: 'first' } },
+        { $part: 'TabPanel', props: { tabId: 'b', children: 'second' } },
+      ],
+    },
+    'composed, every part': {
+      defaultValue: 'two', variant: 'enclosed',
+      children: [
+        {
+          $part: 'TabList', props: { className: 'list', children: [
+            { $part: 'TabTrigger', props: { value: 'one', children: 'One' } },
+            { $part: 'TabTrigger', props: { value: 'two', children: { $el: 'Two' } } },
+            { $part: 'TabTrigger', props: { value: 'three', disabled: true, children: 'Three' } },
+          ] },
+        },
+        { $part: 'TabContent', props: { value: 'one', children: 'First' } },
+        { $part: 'TabContent', props: { value: 'two', className: 'c', children: 'Second' } },
+      ],
+    },
+  },
+  TabList: { 'outside Tabs': { children: { $el: 'x' } } },
+  TabTrigger: { 'outside Tabs': { value: 'a', children: 'A', disabled: true } },
+  TabContent: { 'outside Tabs': { value: 'a', children: 'A' } },
+  TabPanel: { 'outside Tabs': { tabId: 'a', children: { $el: 'loose' }, className: 'p' } },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

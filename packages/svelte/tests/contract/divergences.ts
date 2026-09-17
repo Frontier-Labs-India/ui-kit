@@ -9,6 +9,19 @@
 export type Divergence = { reason: string; apply: (root: ParentNode) => void }
 
 export const DIVERGENCES: Record<string, Divergence[]> = {
+  Tabs: [
+    {
+      reason:
+        'React nests the close <button> inside the tab <button> (an inherited defect, see a11y-all). Its ' +
+        'client DOM keeps the nesting, as Svelte\'s does; only the fixture differs, because parsing server ' +
+        'HTML ends the tab button at the inner one. This applies the same parser rule to the Svelte tree.',
+      apply(root) {
+        for (const close of Array.from(root.querySelectorAll('button.ui-tabs__tab > button.ui-tabs__tab-close'))) {
+          close.parentElement!.after(close)
+        }
+      },
+    },
+  ],
   PipelineStage: [
     {
       reason:

@@ -105,6 +105,10 @@ declared in the contract tests rather than hidden.
   share state through Svelte context, and `useToast()` is `getToast()`.
   DropdownMenu's composed parts render where written, so put
   `DropdownMenuContent` after `DropdownMenuTrigger`.
+  Tabs finds array-API panels only through `TabPanel`; React also accepts
+  any child element with a `data-tab-id` prop. As in React, a closeable tab
+  nests its close button inside the tab button, and names it
+  "Close [object Object]" when the label is a snippet (both inherited).
 - **Render props are snippet parameters.** ContainerQuery's `children`
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a

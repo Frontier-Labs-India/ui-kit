@@ -54,11 +54,20 @@ const STAND_IN_TRIGGER =
   'the case\'s trigger is the contract\'s <b> stand-in, where aria-expanded/aria-haspopup are not allowed; ' +
   'on the <button> a caller spreads the trigger props onto they are (popover.test.ts runs axe on that)'
 
+const PART_ALONE_TABS =
+  'the case renders the part on its own, as React\'s does without Tabs; a tab needs a tablist and a ' +
+  'tablist needs tabs, which the composed case supplies together'
+
 const PART_ALONE =
   'the case renders the part on its own, as React\'s does without a menu; a menuitem needs the role="menu" ' +
   'panel that the enclosing DropdownMenu supplies (the composed case checks them together)'
 
 const INHERITED: Record<string, string> = {
+  'Tabs/array, every tab option, pills lg vertical, motion 0/nested-interactive':
+    'DEFECT in both packages: a closeable tab puts its close <button> inside the tab <button>. Fix together ' +
+    '(move the close button beside the tab) or the contract breaks',
+  'TabList/outside Tabs/aria-required-children': PART_ALONE_TABS,
+  'TabTrigger/outside Tabs/aria-required-parent': PART_ALONE_TABS,
   'DropdownMenu/items, closed/aria-allowed-attr': STAND_IN_TRIGGER,
   'DropdownMenu/items, open, every entry kind, top-end, motion 0/aria-allowed-attr': STAND_IN_TRIGGER,
   'DropdownMenu/composed, closed/aria-allowed-attr': STAND_IN_TRIGGER,
