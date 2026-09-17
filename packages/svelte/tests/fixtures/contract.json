@@ -1314,6 +1314,108 @@
         "html": "<div class=\"ui-combobox\" data-size=\"md\" data-motion=\"0\" aria-label=\"F\"><input type=\"hidden\" name=\"fw\" value=\"\"/><div class=\"ui-combobox__input-wrapper\"><input id=\"combobox-_R_0_-input\" class=\"ui-combobox__input\" type=\"text\" role=\"combobox\" aria-expanded=\"false\" aria-haspopup=\"listbox\" aria-controls=\"combobox-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Search...\" value=\"\"/><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"ui-combobox__chevron\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"></path></svg></div></div>"
       }
     },
+    "CommandBar": {
+      "closed": {
+        "props": {
+          "items": [],
+          "open": false,
+          "onOpenChange": {
+            "$fn": true
+          },
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-command-bar mine\"><dialog data-motion=\"3\"></dialog></div>"
+      },
+      "open with sections, icons, shortcuts, disabled": {
+        "props": {
+          "open": true,
+          "onOpenChange": {
+            "$fn": true
+          },
+          "items": [
+            {
+              "id": "new",
+              "label": "New file",
+              "description": "Create",
+              "icon": {
+                "$el": "+"
+              },
+              "shortcut": [
+                "⌘",
+                "N"
+              ],
+              "section": "File",
+              "onSelect": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "open",
+              "label": "Open",
+              "section": "File",
+              "disabled": true,
+              "onSelect": {
+                "$fn": true
+              }
+            },
+            {
+              "id": "theme",
+              "label": "Toggle theme",
+              "section": "View",
+              "keywords": [
+                "dark"
+              ],
+              "onSelect": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-command-bar\"><dialog data-motion=\"3\" aria-label=\"Command palette\"><div class=\"ui-command-bar__search\"><span class=\"ui-command-bar__search-icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-command-bar__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"command-bar-_R_0_-listbox\" aria-activedescendant=\"command-bar-_R_0_-item-new\" aria-autocomplete=\"list\" placeholder=\"Type a command...\" value=\"\"/></div><div class=\"ui-command-bar__list\" role=\"listbox\" id=\"command-bar-_R_0_-listbox\"><div class=\"ui-command-bar__section\"><div class=\"ui-command-bar__section-header\" role=\"presentation\">File</div></div><div role=\"option\" id=\"command-bar-_R_0_-item-new\" aria-selected=\"true\" class=\"ui-command-bar__item\" data-active=\"\"><span class=\"ui-command-bar__item-icon\"><b>+</b></span><span class=\"ui-command-bar__item-content\"><span class=\"ui-command-bar__item-label\">New file</span><span class=\"ui-command-bar__item-description\">Create</span></span><span class=\"ui-command-bar__shortcut\"><kbd class=\"ui-command-bar__kbd\">⌘</kbd><kbd class=\"ui-command-bar__kbd\">N</kbd></span></div><div role=\"option\" id=\"command-bar-_R_0_-item-open\" aria-selected=\"false\" aria-disabled=\"true\" class=\"ui-command-bar__item\"><span class=\"ui-command-bar__item-content\"><span class=\"ui-command-bar__item-label\">Open</span></span></div><div class=\"ui-command-bar__section\"><div class=\"ui-command-bar__section-header\" role=\"presentation\">View</div></div><div role=\"option\" id=\"command-bar-_R_0_-item-theme\" aria-selected=\"false\" class=\"ui-command-bar__item\"><span class=\"ui-command-bar__item-content\"><span class=\"ui-command-bar__item-label\">Toggle theme</span></span></div></div></dialog></div>"
+      },
+      "open without sections, placeholder, caller attrs": {
+        "props": {
+          "open": true,
+          "onOpenChange": {
+            "$fn": true
+          },
+          "placeholder": "Run…",
+          "id": "cb",
+          "items": [
+            {
+              "id": "a",
+              "label": "Alpha",
+              "onSelect": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-command-bar\" id=\"cb\"><dialog data-motion=\"3\" aria-label=\"Command palette\"><div class=\"ui-command-bar__search\"><span class=\"ui-command-bar__search-icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-command-bar__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"command-bar-_R_0_-listbox\" aria-activedescendant=\"command-bar-_R_0_-item-a\" aria-autocomplete=\"list\" placeholder=\"Run…\" value=\"\"/></div><div class=\"ui-command-bar__list\" role=\"listbox\" id=\"command-bar-_R_0_-listbox\"><div role=\"option\" id=\"command-bar-_R_0_-item-a\" aria-selected=\"true\" class=\"ui-command-bar__item\" data-active=\"\"><span class=\"ui-command-bar__item-content\"><span class=\"ui-command-bar__item-label\">Alpha</span></span></div></div></dialog></div>"
+      },
+      "open and empty": {
+        "props": {
+          "open": true,
+          "onOpenChange": {
+            "$fn": true
+          },
+          "emptyMessage": "Nothing",
+          "items": []
+        },
+        "html": "<div class=\"ui-command-bar\"><dialog data-motion=\"3\" aria-label=\"Command palette\"><div class=\"ui-command-bar__search\"><span class=\"ui-command-bar__search-icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.5\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M11 11L14 14\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></span><input class=\"ui-command-bar__input\" type=\"text\" role=\"combobox\" aria-expanded=\"true\" aria-haspopup=\"listbox\" aria-controls=\"command-bar-_R_0_-listbox\" aria-autocomplete=\"list\" placeholder=\"Type a command...\" value=\"\"/></div><div class=\"ui-command-bar__list\" role=\"listbox\" id=\"command-bar-_R_0_-listbox\"><div class=\"ui-command-bar__empty\">Nothing</div></div></dialog></div>"
+      },
+      "motion 0": {
+        "props": {
+          "open": false,
+          "onOpenChange": {
+            "$fn": true
+          },
+          "motion": 0,
+          "items": []
+        },
+        "html": "<div class=\"ui-command-bar\"><dialog data-motion=\"0\"></dialog></div>"
+      }
+    },
     "ConfidenceBar": {
       "medium": {
         "props": {

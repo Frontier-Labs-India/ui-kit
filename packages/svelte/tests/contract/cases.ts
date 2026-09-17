@@ -962,6 +962,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty sides, string height': { onChange: { $fn: true }, listHeight: '50vh', value: [[], []] },
     'motion 0': { onChange: { $fn: true }, motion: 0, value: [[], []] },
   },
+  CommandBar: {
+    closed: { items: [], open: false, onOpenChange: { $fn: true }, className: 'mine' },
+    'open with sections, icons, shortcuts, disabled': {
+      open: true, onOpenChange: { $fn: true },
+      items: [
+        { id: 'new', label: 'New file', description: 'Create', icon: { $el: '+' }, shortcut: ['⌘', 'N'], section: 'File', onSelect: { $fn: true } },
+        { id: 'open', label: 'Open', section: 'File', disabled: true, onSelect: { $fn: true } },
+        { id: 'theme', label: 'Toggle theme', section: 'View', keywords: ['dark'], onSelect: { $fn: true } },
+      ],
+    },
+    'open without sections, placeholder, caller attrs': {
+      open: true, onOpenChange: { $fn: true }, placeholder: 'Run…', id: 'cb', items: [{ id: 'a', label: 'Alpha', onSelect: { $fn: true } }],
+    },
+    'open and empty': { open: true, onOpenChange: { $fn: true }, emptyMessage: 'Nothing', items: [] },
+    'motion 0': { open: false, onOpenChange: { $fn: true }, motion: 0, items: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

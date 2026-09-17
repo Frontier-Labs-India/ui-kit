@@ -4229,6 +4229,248 @@
   }
 /* end combobox */
 
+/* command-bar */
+@layer components {
+    @scope (.ui-command-bar) {
+      :scope {
+        display: contents;
+      }
+
+      dialog {
+        position: fixed;
+        inset-block-start: 20%;
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-lg, 0.75rem);
+        background: var(--bg-elevated, oklch(22% 0.01 270));
+        box-shadow: var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3));
+        padding: 0;
+        color: var(--text-primary, oklch(90% 0 0));
+        overflow: hidden;
+        outline: none;
+        max-inline-size: 560px;
+        inline-size: calc(100% - 2rem);
+      }
+
+      dialog::backdrop {
+        background: var(--bg-overlay);
+        backdrop-filter: blur(4px);
+      }
+
+      /* Entry animation */
+      dialog:not([data-motion="0"]) {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition:
+          opacity 0.2s var(--ease-out, ease-out),
+          transform 0.2s var(--ease-out, ease-out),
+          display 0.2s allow-discrete,
+          overlay 0.2s allow-discrete;
+      }
+
+      @starting-style {
+        dialog[open]:not([data-motion="0"]) {
+          opacity: 0;
+          transform: translateY(-8px) scale(0.98);
+        }
+      }
+
+      dialog[data-motion="0"] {
+        transition: none;
+      }
+
+      /* Search input */
+      .ui-command-bar__search {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border-block-end: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+      }
+
+      .ui-command-bar__search-icon {
+        flex-shrink: 0;
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      .ui-command-bar__input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-base, 1rem);
+        line-height: 1.5;
+        outline: none;
+        font-family: inherit;
+        min-block-size: 2.5rem;
+      }
+      .ui-command-bar__input::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      /* Results */
+      .ui-command-bar__list {
+        max-block-size: 20rem;
+        overflow-y: auto;
+        padding-block: 0.25rem;
+      }
+
+      /* Section */
+      .ui-command-bar__section {
+        padding-block-start: var(--space-xs, 0.25rem);
+      }
+
+      .ui-command-bar__section-header {
+        padding-block: 0.25rem;
+        padding-inline: var(--space-md, 0.75rem);
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 600;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        user-select: none;
+      }
+
+      /* Item */
+      .ui-command-bar__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-md, 0.75rem);
+        cursor: pointer;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        color: var(--text-primary, oklch(90% 0 0));
+        min-block-size: 2.25rem;
+        user-select: none;
+        transition: background 0.1s;
+      }
+
+      .ui-command-bar__item[data-active] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      .ui-command-bar__item[aria-disabled="true"] {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .ui-command-bar__item:not([aria-disabled="true"]):hover {
+        background: var(--bg-hover);
+      }
+
+      .ui-command-bar__item[data-active]:not([aria-disabled="true"]):hover {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      /* Item icon */
+      .ui-command-bar__item-icon {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      .ui-command-bar__item-icon svg {
+        inline-size: 1em;
+        block-size: 1em;
+      }
+
+      /* Item content */
+      .ui-command-bar__item-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-inline-size: 0;
+      }
+
+      .ui-command-bar__item-label {
+        display: inline;
+      }
+
+      .ui-command-bar__item-description {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        line-height: 1.4;
+      }
+
+      /* Shortcut badge */
+      .ui-command-bar__shortcut {
+        display: flex;
+        gap: 0.125rem;
+        margin-inline-start: auto;
+        flex-shrink: 0;
+      }
+
+      .ui-command-bar__kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: 1.25rem;
+        padding-inline: 0.25rem;
+        block-size: 1.25rem;
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: var(--bg-hover);
+        font-size: var(--text-2xs, 0.625rem);
+        font-family: inherit;
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1;
+      }
+
+      /* Empty state */
+      .ui-command-bar__empty {
+        padding-block: var(--space-lg, 1.25rem);
+        padding-inline: var(--space-md, 0.75rem);
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        text-align: center;
+      }
+
+      /* Aurora glow */
+      dialog[open] {
+        box-shadow:
+          var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3)),
+          0 0 0 1px oklch(65% 0.15 270 / 0.1);
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-command-bar__item {
+          min-block-size: 44px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        dialog {
+          border: 2px solid ButtonText;
+          background: Canvas;
+          color: CanvasText;
+        }
+        dialog::backdrop {
+          background: Canvas;
+          opacity: 0.8;
+        }
+        .ui-command-bar__item[data-active] {
+          outline: 2px solid Highlight;
+        }
+        .ui-command-bar__kbd {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        dialog {
+          display: none;
+        }
+      }
+    }
+  }
+/* end command-bar */
+
 /* confidence-bar */
 @layer components {
     @scope (.ui-confidence-bar) {

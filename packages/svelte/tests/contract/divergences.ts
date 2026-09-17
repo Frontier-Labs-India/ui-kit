@@ -102,6 +102,13 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
  * comparison, and a behaviour test named in `reason` asserts what the effect
  * sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  CommandBar: [
+    {
+      selector: 'dialog',
+      attributes: ['open'],
+      reason: 'showModal() in an effect sets `open`; the server renders the dialog without it (command-bar.test.ts).',
+    },
+  ],
   SortableList: [
     {
       selector: '[role="option"]',
