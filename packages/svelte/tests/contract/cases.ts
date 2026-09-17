@@ -705,4 +705,18 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'expandable without description has no button': { expandable: true, events: [{ id: 'a', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'info', title: 'x' }] },
     'motion 0': { events: [], motion: 0 },
   },
+  PinInput: {
+    defaults: {},
+    'controlled partial, alphanumeric, unmasked': { value: 'a7', type: 'alphanumeric', mask: false, length: 6 },
+    'error, disabled, one-time-code, lg': { value: '12', error: true, disabled: true, oneTimeCode: true, size: 'lg', placeholder: '-' },
+    'custom aria-label': { 'aria-label': 'Verification code', length: 2 },
+    'motion 0': { motion: 0, length: 1 },
+  },
+  TagInput: {
+    empty: { tags: [], onChange: { $fn: true }, placeholder: 'Add tag', 'aria-label': 'Tags' },
+    'with tags': { tags: ['alpha', 'beta'], onChange: { $fn: true }, 'aria-label': 'Tags', size: 'sm' },
+    'disabled hides remove buttons': { tags: ['alpha'], onChange: { $fn: true }, disabled: true, 'aria-label': 'Tags' },
+    'error wires aria-describedby': { tags: [], onChange: { $fn: true }, error: 'Too many', 'aria-label': 'Tags' },
+    'motion 0': { tags: [], onChange: { $fn: true }, motion: 0, 'aria-label': 'Tags' },
+  },
 }

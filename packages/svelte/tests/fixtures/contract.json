@@ -2396,6 +2396,46 @@
         "html": "<nav class=\"ui-pagination\" aria-label=\"Pagination\" data-size=\"md\" data-motion=\"0\"><button type=\"button\" aria-label=\"Previous page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" aria-current=\"page\" aria-label=\"Page 1\">1</button><button type=\"button\" aria-label=\"Next page\" disabled=\"\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></nav>"
       }
     },
+    "PinInput": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-pin-input\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"PIN input\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 1 of 4\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 2 of 4\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 3 of 4\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 4 of 4\" value=\"\"/></div></div>"
+      },
+      "controlled partial, alphanumeric, unmasked": {
+        "props": {
+          "value": "a7",
+          "type": "alphanumeric",
+          "mask": false,
+          "length": 6
+        },
+        "html": "<div class=\"ui-pin-input\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"PIN input\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 1 of 6\" value=\"a\"/><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 2 of 6\" value=\"7\"/><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 3 of 6\" value=\"\"/><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 4 of 6\" value=\"\"/><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 5 of 6\" value=\"\"/><input type=\"text\" inputMode=\"text\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 6 of 6\" value=\"\"/></div></div>"
+      },
+      "error, disabled, one-time-code, lg": {
+        "props": {
+          "value": "12",
+          "error": true,
+          "disabled": true,
+          "oneTimeCode": true,
+          "size": "lg",
+          "placeholder": "-"
+        },
+        "html": "<div class=\"ui-pin-input\" data-size=\"lg\" data-motion=\"3\" data-error=\"\" role=\"group\" aria-label=\"PIN input\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" disabled=\"\" placeholder=\"-\" autoComplete=\"one-time-code\" aria-label=\"PIN digit 1 of 4\" aria-invalid=\"true\" data-masked=\"true\" value=\"1\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" disabled=\"\" placeholder=\"-\" autoComplete=\"one-time-code\" aria-label=\"PIN digit 2 of 4\" aria-invalid=\"true\" data-masked=\"true\" value=\"2\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" disabled=\"\" placeholder=\"-\" autoComplete=\"one-time-code\" aria-label=\"PIN digit 3 of 4\" aria-invalid=\"true\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" disabled=\"\" placeholder=\"-\" autoComplete=\"one-time-code\" aria-label=\"PIN digit 4 of 4\" aria-invalid=\"true\" value=\"\"/></div></div>"
+      },
+      "custom aria-label": {
+        "props": {
+          "aria-label": "Verification code",
+          "length": 2
+        },
+        "html": "<div class=\"ui-pin-input\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Verification code\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 1 of 2\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 2 of 2\" value=\"\"/></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "length": 1
+        },
+        "html": "<div class=\"ui-pin-input\" data-size=\"md\" data-motion=\"0\" role=\"group\" aria-label=\"PIN input\"><div class=\"ui-pin-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-pin-input__digit\" maxLength=\"1\" placeholder=\"○\" autoComplete=\"off\" aria-label=\"PIN digit 1 of 1\" value=\"\"/></div></div>"
+      }
+    },
     "PipelineStage": {
       "all statuses": {
         "props": {
@@ -3703,6 +3743,68 @@
           "motion": 0
         },
         "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"0\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      }
+    },
+    "TagInput": {
+      "empty": {
+        "props": {
+          "tags": [],
+          "onChange": {
+            "$fn": true
+          },
+          "placeholder": "Add tag",
+          "aria-label": "Tags"
+        },
+        "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" placeholder=\"Add tag\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      },
+      "with tags": {
+        "props": {
+          "tags": [
+            "alpha",
+            "beta"
+          ],
+          "onChange": {
+            "$fn": true
+          },
+          "aria-label": "Tags",
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-tag-input\" data-size=\"sm\" data-motion=\"3\"><div class=\"ui-tag-input__wrapper\"><span class=\"ui-tag-input__tag\"><span>alpha</span><button type=\"button\" class=\"ui-tag-input__tag-remove\" aria-label=\"Remove alpha\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></span><span class=\"ui-tag-input__tag\"><span>beta</span><button type=\"button\" class=\"ui-tag-input__tag-remove\" aria-label=\"Remove beta\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg></button></span><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      },
+      "disabled hides remove buttons": {
+        "props": {
+          "tags": [
+            "alpha"
+          ],
+          "onChange": {
+            "$fn": true
+          },
+          "disabled": true,
+          "aria-label": "Tags"
+        },
+        "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\"><div class=\"ui-tag-input__wrapper\"><span class=\"ui-tag-input__tag\"><span>alpha</span></span><input type=\"text\" class=\"ui-tag-input__field\" disabled=\"\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      },
+      "error wires aria-describedby": {
+        "props": {
+          "tags": [],
+          "onChange": {
+            "$fn": true
+          },
+          "error": "Too many",
+          "aria-label": "Tags"
+        },
+        "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"3\" data-invalid=\"\" aria-describedby=\"tag-input-_R_0_-error\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div><span id=\"tag-input-_R_0_-error\" class=\"ui-tag-input__error\" role=\"alert\">Too many</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "tags": [],
+          "onChange": {
+            "$fn": true
+          },
+          "motion": 0,
+          "aria-label": "Tags"
+        },
+        "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div></div>"
       }
     },
     "ThresholdGauge": {

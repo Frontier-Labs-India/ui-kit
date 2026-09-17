@@ -6568,6 +6568,154 @@
   }
 /* end pagination */
 
+/* pin-input */
+@layer components {
+    @scope (.ui-pin-input) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        font-family: inherit;
+      }
+
+      .ui-pin-input__digits {
+        display: flex;
+        gap: var(--space-sm, 0.5rem);
+      }
+
+      .ui-pin-input__digit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-weight: 600;
+        outline: none;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      /* Masked — show disc character */
+      .ui-pin-input__digit[data-masked="true"] {
+        -webkit-text-security: disc;
+      }
+
+      /* Sizes */
+      :scope[data-size="xs"] .ui-pin-input__digit {
+        inline-size: 1.5rem;
+        block-size: 2rem;
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="sm"] .ui-pin-input__digit {
+        inline-size: 2rem;
+        block-size: 2.5rem;
+        font-size: var(--text-sm, 0.875rem);
+      }
+      :scope[data-size="md"] .ui-pin-input__digit {
+        inline-size: 2.5rem;
+        block-size: 3rem;
+        font-size: var(--text-lg, 1.125rem);
+      }
+      :scope[data-size="lg"] .ui-pin-input__digit {
+        inline-size: 3rem;
+        block-size: 3.5rem;
+        font-size: var(--text-xl, 1.25rem);
+      }
+      :scope[data-size="xl"] .ui-pin-input__digit {
+        inline-size: 3.5rem;
+        block-size: 4rem;
+        font-size: var(--text-2xl, 1.5rem);
+      }
+
+      /* Focus glow */
+      .ui-pin-input__digit:focus {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+        transform: scale(1.04);
+        transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.15s, box-shadow 0.15s;
+      }
+
+      /* Filled digit glow */
+      .ui-pin-input__digit:not(:placeholder-shown) {
+        box-shadow: 0 0 8px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1);
+      }
+
+      /* Focus visible */
+      .ui-pin-input__digit:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Hover */
+      .ui-pin-input__digit:hover:not(:focus):not(:disabled) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+        background: oklch(100% 0 0 / 0.03);
+      }
+
+      /* Disabled */
+      .ui-pin-input__digit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Error state */
+      :scope[data-error] .ui-pin-input__digit {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+      }
+      :scope[data-error] .ui-pin-input__digit:focus {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      /* Shake animation on error — motion 2+ */
+      :scope[data-error]:not([data-motion="0"]):not([data-motion="1"]) .ui-pin-input__digits {
+        animation: ui-pin-shake 0.4s var(--ease-out, ease-out);
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-pin-input__digit {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-pin-input__digit {
+          border: 2px solid ButtonText;
+        }
+        .ui-pin-input__digit:focus {
+          outline: 2px solid Highlight;
+        }
+        :scope[data-error] .ui-pin-input__digit {
+          border-color: LinkText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-pin-input__digit {
+          box-shadow: none;
+          border: 1px solid;
+        }
+      }
+    }
+
+    @keyframes ui-pin-shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); }
+      60% { transform: translateX(-2px); }
+      80% { transform: translateX(2px); }
+    }
+  }
+/* end pin-input */
+
 /* pipeline-stage */
 @layer components {
     @scope (.ui-pipeline-stage) {
@@ -9818,6 +9966,217 @@
     }
   }
 /* end success-checkmark */
+
+/* tag-input */
+@layer components {
+    @scope (.ui-tag-input) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        font-family: inherit;
+      }
+
+      .ui-tag-input__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        padding: var(--space-xs, 0.25rem) var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        background: transparent;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+        cursor: text;
+      }
+
+      :scope[data-size="xs"] .ui-tag-input__wrapper {
+        min-block-size: 28px;
+        padding: 0.0625rem 0.25rem;
+      }
+      :scope[data-size="sm"] .ui-tag-input__wrapper {
+        min-block-size: 32px;
+        padding: 0.125rem 0.375rem;
+      }
+      :scope[data-size="md"] .ui-tag-input__wrapper {
+        min-block-size: 36px;
+      }
+      :scope[data-size="lg"] .ui-tag-input__wrapper {
+        min-block-size: 44px;
+        padding: var(--space-xs, 0.375rem) var(--space-md, 0.75rem);
+      }
+      :scope[data-size="xl"] .ui-tag-input__wrapper {
+        min-block-size: 48px;
+        padding: var(--space-sm, 0.5rem) var(--space-md, 1rem);
+      }
+
+      /* Focus within */
+      .ui-tag-input__wrapper:focus-within {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+      }
+
+      /* Hover */
+      .ui-tag-input__wrapper:hover:not(:focus-within) {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+      }
+
+      /* Error state */
+      :scope[data-invalid] .ui-tag-input__wrapper {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+      }
+      :scope[data-invalid] .ui-tag-input__wrapper:focus-within {
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      /* Tag pill */
+      .ui-tag-input__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding-block: 0.125rem;
+        padding-inline: 0.5rem;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--bg-active);
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 500;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+
+      :scope[data-size="xs"] .ui-tag-input__tag {
+        font-size: var(--text-xs, 0.6875rem);
+        padding-block: 0.0625rem;
+        padding-inline: 0.375rem;
+      }
+      :scope[data-size="lg"] .ui-tag-input__tag {
+        font-size: var(--text-sm, 0.875rem);
+        padding-block: 0.25rem;
+        padding-inline: 0.625rem;
+      }
+      :scope[data-size="xl"] .ui-tag-input__tag {
+        font-size: var(--text-base, 1rem);
+        padding-block: 0.375rem;
+        padding-inline: 0.75rem;
+      }
+
+      /* Tag entry animation — motion 1+ */
+      :scope:not([data-motion="0"]) .ui-tag-input__tag {
+        animation: ui-tag-in 0.15s var(--ease-out, ease-out);
+      }
+
+      /* Tag remove button */
+      .ui-tag-input__tag-remove {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        border-radius: var(--radius-full, 9999px);
+        transition: color 0.1s;
+      }
+      .ui-tag-input__tag-remove:hover {
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+      .ui-tag-input__tag-remove:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+      .ui-tag-input__tag-remove svg {
+        inline-size: 0.75rem;
+        block-size: 0.75rem;
+      }
+
+      /* Input */
+      .ui-tag-input__field {
+        flex: 1;
+        min-inline-size: 4rem;
+        border: none;
+        background: none;
+        outline: none;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.5;
+        padding: 0.125rem 0;
+      }
+
+      :scope[data-size="xs"] .ui-tag-input__field {
+        font-size: var(--text-xs, 0.6875rem);
+      }
+      :scope[data-size="sm"] .ui-tag-input__field {
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="lg"] .ui-tag-input__field {
+        font-size: var(--text-base, 1rem);
+      }
+      :scope[data-size="xl"] .ui-tag-input__field {
+        font-size: var(--text-lg, 1.125rem);
+      }
+
+      .ui-tag-input__field::placeholder {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      .ui-tag-input__field:disabled {
+        cursor: not-allowed;
+      }
+
+      /* Error message */
+      .ui-tag-input__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      /* Disabled */
+      :scope[data-disabled] {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-tag-input__wrapper {
+          border: 2px solid ButtonText;
+        }
+        .ui-tag-input__wrapper:focus-within {
+          outline: 2px solid Highlight;
+        }
+        .ui-tag-input__tag {
+          border: 1px solid CanvasText;
+        }
+        :scope[data-invalid] .ui-tag-input__wrapper {
+          border-color: LinkText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-tag-input__wrapper {
+          box-shadow: none;
+          border: 1px solid;
+        }
+      }
+    }
+
+    @keyframes ui-tag-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+/* end tag-input */
 
 /* threshold-gauge */
 @layer components {
