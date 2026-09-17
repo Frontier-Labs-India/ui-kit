@@ -3,7 +3,7 @@
   import { cssProps } from '../actions/css-props.js'
   import { getMotionLevel } from '../runes/motion-level.svelte.js'
   import type { MotionLevel } from '../runes/context.js'
-  import { computeAnchorPosition } from '../vendor/core/a11y/compute-anchor-position.js'
+  import { useAnchorPosition } from '../runes/anchor-position.svelte.js'
 
   interface Props {
     /** The tooltip content to display. */
@@ -45,11 +45,6 @@
   let visible = $state(false)
   let trigger = $state<HTMLElement | null>(null)
   let floating = $state<HTMLElement | null>(null)
-  // Only the initial placement is read here; the positioning effect below reads
-  // `placement` reactively and overwrites this on every show.
-  // svelte-ignore state_referenced_locally
-  let position = $state({ x: 0, y: 0, width: 0, placement })
-
   let showTimer: ReturnType<typeof setTimeout> | null = null
   let hideTimer: ReturnType<typeof setTimeout> | null = null
   let longPressTimer: ReturnType<typeof setTimeout> | null = null
@@ -71,33 +66,10 @@
     hideTimer = setTimeout(() => { visible = false }, interactive ? 100 : 0)
   }
 
-  // Position is recomputed from the shared, framework-neutral maths in
-  // src/core/a11y/anchor-position.ts — the same function React's
-  // useAnchorPosition calls, so flip-when-off-screen cannot drift between them.
-  $effect(() => {
-    if (!visible || !trigger || !floating) return
-
-    const update = () => {
-      if (!trigger || !floating) return
-      position = computeAnchorPosition(
-        trigger.getBoundingClientRect(),
-        floating.getBoundingClientRect(),
-        window,
-        { placement, offset }
-      )
-    }
-    update()
-
-    const ro = new ResizeObserver(update)
-    ro.observe(trigger)
-    window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update, { passive: true })
-    return () => {
-      ro.disconnect()
-      window.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  })
+  // Positioned by the shared rune, which calls the same framework-neutral
+  // computeAnchorPosition as React's useAnchorPosition, so flip-when-off-screen
+  // cannot drift between them. Only while visible, as in React.
+  const position = useAnchorPosition(() => trigger, () => floating, () => ({ placement, offset, enabled: visible }))
 
   // Dismiss on touch outside, matching React.
   $effect(() => {

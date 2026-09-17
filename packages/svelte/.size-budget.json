@@ -222,6 +222,7 @@
   "module:lib/tokenize": 2964,
   "module:lib/topology": 31,
   "module:lib/unitless.generated": 561,
+  "module:runes/anchor-position.svelte": 795,
   "module:runes/context": 201,
   "module:runes/entrance.svelte": 1029,
   "module:runes/form-context": 626,
