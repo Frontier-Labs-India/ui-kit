@@ -34,6 +34,7 @@ const ALLOWLIST = [
   'src/core/forms/create-form.ts',
   'src/core/forms/form-types.ts',
   'src/core/utils/container-breakpoints.ts',
+  'src/core/motion/spring.ts',
 ]
 
 const FRAMEWORK_IMPORT = /from\s+['"](react|react-dom|react\/[^'"]*|svelte|svelte\/[^'"]*)['"]/

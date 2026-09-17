@@ -74,6 +74,20 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
   ],
 }
 
+/* Attributes an effect sets after mount (e.g. progress through a reveal).
+ * React's server HTML has none of them; the listed attributes are removed from
+ * matching elements before comparison, and a behaviour test named in `reason`
+ * asserts what the effect sets. */
+export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  TextReveal: [
+    {
+      selector: '.ui-text-reveal--char',
+      attributes: ['data-revealed'],
+      reason: 'Characters are revealed by effect timers, or all at once at motion 0 (text-reveal.test.ts).',
+    },
+  ],
+}
+
 /* Props whose NAME differs between the packages, applied to a case's props
  * before the Svelte render — the case file stays in React's shape, and the
  * rename is stated here with its reason. */

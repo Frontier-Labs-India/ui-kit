@@ -790,6 +790,27 @@
   }
 /* end alert */
 
+/* animated-counter */
+@layer components {
+    @scope (.ui-animated-counter) {
+      :scope {
+        display: inline-block;
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+        font-family: inherit;
+        white-space: nowrap;
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        :scope {
+          color: ButtonText;
+        }
+      }
+    }
+  }
+/* end animated-counter */
+
 /* app-shell */
 @layer components {
     @scope (.ui-app-shell) {
@@ -6909,6 +6930,66 @@
     }
   }
 /* end filter-pill */
+
+/* flip-words */
+@layer components {
+    @scope (.ui-flip-words) {
+      :scope {
+        display: inline-block;
+        position: relative;
+        vertical-align: baseline;
+        perspective: 600px;
+      }
+
+      .ui-flip-words--word {
+        display: inline-block;
+        backface-visibility: hidden;
+        transition:
+          transform 0.4s var(--ease-out, ease-out),
+          opacity 0.4s var(--ease-out, ease-out);
+      }
+
+      .ui-flip-words--word[data-state="entering"] {
+        transform: rotateX(90deg);
+        opacity: 0;
+      }
+
+      .ui-flip-words--word[data-state="visible"] {
+        transform: rotateX(0deg);
+        opacity: 1;
+      }
+
+      .ui-flip-words--word[data-state="exiting"] {
+        transform: rotateX(-90deg);
+        opacity: 0;
+      }
+
+      /* Motion 0: no animation, just show current word */
+      :scope[data-motion="0"] .ui-flip-words--word {
+        transform: none;
+        opacity: 1;
+        transition: none;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-flip-words--word {
+          transform: none !important;
+          opacity: 1 !important;
+          transition: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-flip-words--word {
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+/* end flip-words */
 
 /* form-input */
 @layer components {
@@ -16372,6 +16453,61 @@
     }
   }
 /* end tag-input */
+
+/* text-reveal */
+@layer components {
+    @scope (.ui-text-reveal) {
+      :scope {
+        display: block;
+      }
+
+      .ui-text-reveal--char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(0.3em);
+        transition:
+          opacity 0.15s var(--ease-out, ease-out),
+          transform 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-text-reveal--char[data-revealed="true"] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Whitespace chars need explicit width */
+      .ui-text-reveal--char[data-space="true"] {
+        inline-size: 0.3em;
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Motion 0: instant reveal */
+      :scope[data-motion="0"] .ui-text-reveal--char {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-text-reveal--char {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-text-reveal--char {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    }
+  }
+/* end text-reveal */
 
 /* textarea */
 @layer components {

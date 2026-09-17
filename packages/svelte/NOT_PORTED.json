@@ -1,6 +1,5 @@
 [
   "Affix",
-  "AnimatedCounter",
   "Avatar",
   "AvatarUpload",
   "BackToTop",
@@ -18,7 +17,6 @@
   "EncryptedText",
   "EvervaultCard",
   "FileUpload",
-  "FlipWords",
   "HeroHighlight",
   "InfiniteScroll",
   "InlineEdit",
@@ -42,7 +40,6 @@
   "StreamingText",
   "TableOfContents",
   "Tabs",
-  "TextReveal",
   "TimeSeriesChart",
   "Timeline",
   "ToastProvider",

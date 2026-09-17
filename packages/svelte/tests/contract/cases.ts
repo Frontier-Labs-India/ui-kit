@@ -587,6 +587,21 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'disabled, custom placeholder': { label: 'Period', disabled: true, placeholder: 'Any time' },
     'motion 0': { label: 'M', motion: 0 },
   },
+  FlipWords: {
+    words: { words: ['fast', 'safe', 'small'] },
+    'empty words, interval, caller attrs': { words: [], interval: 1000, className: 'mine', id: 'fw' },
+    'motion 0': { words: ['a', 'b'], motion: 0 },
+  },
+  TextReveal: {
+    'mount with a space': { text: 'Hi there' },
+    'inView, speed, caller class': { text: 'Go', trigger: 'inView', speed: 60, className: 'mine' },
+    'motion 0 reveals everything': { text: 'Now', motion: 0 },
+  },
+  AnimatedCounter: {
+    defaults: { value: 1234.6 },
+    'custom format, caller attrs': { value: 42, format: { $fn: true }, className: 'mine', id: 'ac' },
+    'motion 0': { value: 0, motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

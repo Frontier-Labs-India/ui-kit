@@ -173,6 +173,32 @@
         "html": "<div class=\"ui-alert\" data-variant=\"info\" data-size=\"md\" data-motion=\"0\" role=\"status\"><span class=\"ui-alert__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"12\" y1=\"16\" x2=\"12\" y2=\"12\"></line><line x1=\"12\" y1=\"8\" x2=\"12.01\" y2=\"8\"></line></svg></span><div class=\"ui-alert__content\"><div class=\"ui-alert__body\"></div></div></div>"
       }
     },
+    "AnimatedCounter": {
+      "defaults": {
+        "props": {
+          "value": 1234.6
+        },
+        "html": "<span class=\"ui-animated-counter\" role=\"status\" aria-live=\"polite\" data-motion=\"3\">1,235</span>"
+      },
+      "custom format, caller attrs": {
+        "props": {
+          "value": 42,
+          "format": {
+            "$fn": true
+          },
+          "className": "mine",
+          "id": "ac"
+        },
+        "html": "<span class=\"ui-animated-counter mine\" role=\"status\" aria-live=\"polite\" data-motion=\"3\" id=\"ac\"></span>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 0,
+          "motion": 0
+        },
+        "html": "<span class=\"ui-animated-counter\" role=\"status\" aria-live=\"polite\" data-motion=\"0\">0</span>"
+      }
+    },
     "AppShell": {
       "main only": {
         "props": {
@@ -2143,6 +2169,37 @@
           "clearLabel": "Reset"
         },
         "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><button type=\"button\" class=\"ui-filter-pill-group__clear\">Reset</button></div>"
+      }
+    },
+    "FlipWords": {
+      "words": {
+        "props": {
+          "words": [
+            "fast",
+            "safe",
+            "small"
+          ]
+        },
+        "html": "<span class=\"ui-flip-words\" data-motion=\"3\" aria-live=\"polite\" aria-atomic=\"true\"><span class=\"ui-flip-words--word\" data-state=\"visible\">fast</span></span>"
+      },
+      "empty words, interval, caller attrs": {
+        "props": {
+          "words": [],
+          "interval": 1000,
+          "className": "mine",
+          "id": "fw"
+        },
+        "html": "<span class=\"ui-flip-words mine\" data-motion=\"3\" aria-live=\"polite\" aria-atomic=\"true\" id=\"fw\"><span class=\"ui-flip-words--word\" data-state=\"visible\"></span></span>"
+      },
+      "motion 0": {
+        "props": {
+          "words": [
+            "a",
+            "b"
+          ],
+          "motion": 0
+        },
+        "html": "<span class=\"ui-flip-words\" data-motion=\"0\" aria-live=\"polite\" aria-atomic=\"true\"><span class=\"ui-flip-words--word\" data-state=\"visible\">a</span></span>"
       }
     },
     "FormInput": {
@@ -5784,6 +5841,30 @@
           "aria-label": "Tags"
         },
         "html": "<div class=\"ui-tag-input\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-tag-input__wrapper\"><input type=\"text\" class=\"ui-tag-input__field\" aria-label=\"Tags\" value=\"\"/></div></div>"
+      }
+    },
+    "TextReveal": {
+      "mount with a space": {
+        "props": {
+          "text": "Hi there"
+        },
+        "html": "<div class=\"ui-text-reveal\" data-motion=\"3\" aria-label=\"Hi there\" role=\"img\"><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">H</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">i</span><span class=\"ui-text-reveal--char\" data-space=\"true\" aria-hidden=\"true\"> </span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">t</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">h</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">e</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">r</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">e</span></div>"
+      },
+      "inView, speed, caller class": {
+        "props": {
+          "text": "Go",
+          "trigger": "inView",
+          "speed": 60,
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-text-reveal mine\" data-motion=\"3\" aria-label=\"Go\" role=\"img\"><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">G</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">o</span></div>"
+      },
+      "motion 0 reveals everything": {
+        "props": {
+          "text": "Now",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-text-reveal\" data-motion=\"0\" aria-label=\"Now\" role=\"img\"><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">N</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">o</span><span class=\"ui-text-reveal--char\" aria-hidden=\"true\">w</span></div>"
       }
     },
     "Textarea": {

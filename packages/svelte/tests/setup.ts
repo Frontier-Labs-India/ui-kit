@@ -26,3 +26,16 @@ if (typeof HTMLDialogElement !== 'undefined' && !HTMLDialogElement.prototype.sho
     this.dispatchEvent(new Event('close'))
   }
 }
+
+/* jsdom lacks IntersectionObserver. A no-op, as for ResizeObserver: components
+ * that reveal on scroll never fire here, and tests that need an intersection
+ * stub the global with a controllable one. */
+if (typeof globalThis.IntersectionObserver === 'undefined') {
+  globalThis.IntersectionObserver = class IntersectionObserver {
+    constructor(_callback: IntersectionObserverCallback, _options?: IntersectionObserverInit) {}
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() { return [] }
+  } as unknown as typeof IntersectionObserver
+}
