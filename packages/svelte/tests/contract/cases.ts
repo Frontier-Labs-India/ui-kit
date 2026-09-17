@@ -834,4 +834,15 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { nodes: [], edges: [], motion: 0 },
   },
+  VlanBusBar: {
+    basic: { totalPorts: 6, vlans: [{ id: 10, name: 'mgmt', ports: [1, 2, 3] }, { id: 20, ports: [3, 4, 6], tagged: true, color: 'tomato' }] },
+    'numbers, trunks, sequential, lg, clickable': {
+      totalPorts: 4, showPortNumbers: true, showTrunkIndicator: true, colorScheme: 'sequential', size: 'lg', onVlanClick: { $fn: true }, onPortClick: { $fn: true },
+      vlans: [{ id: 1, ports: [1, 2] }, { id: 2, ports: [2], tagged: true }, { id: 3, ports: [4] }],
+    },
+    'external highlight dims the rest': { totalPorts: 3, highlightVlans: [5], vlans: [{ id: 5, ports: [1] }, { id: 6, ports: [2, 3] }] },
+    'highlighted port': { totalPorts: 3, highlightPorts: [3], vlans: [{ id: 5, ports: [1, 3] }, { id: 6, ports: [2] }] },
+    'vertical compact, max height, caller style': { orientation: 'vertical', compactMode: true, showPortNumbers: true, maxHeight: 200, style: { border: '1px solid' }, totalPorts: 2, vlans: [{ id: 1, ports: [1, 2] }] },
+    'motion 0': { totalPorts: 1, vlans: [], motion: 0 },
+  },
 }

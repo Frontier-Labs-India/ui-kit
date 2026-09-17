@@ -90,6 +90,7 @@ export { default as Typography } from './components/Typography.svelte'
 export { default as UptimeTracker } from './components/UptimeTracker.svelte'
 export { default as UtilizationBar } from './components/UtilizationBar.svelte'
 export { default as ViewTransitionLink } from './components/ViewTransitionLink.svelte'
+export { default as VlanBusBar } from './components/VlanBusBar.svelte'
 export { default as WavyBackground } from './components/WavyBackground.svelte'
 
 export { default as ComponentErrorBoundary } from './lib/ErrorBoundary.svelte'

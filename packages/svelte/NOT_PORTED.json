@@ -71,6 +71,5 @@
   "TracingBeam",
   "TransferList",
   "TreeView",
-  "UpstreamDashboard",
-  "VlanBusBar"
+  "UpstreamDashboard"
 ]
