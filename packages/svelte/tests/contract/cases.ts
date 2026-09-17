@@ -40,6 +40,7 @@ export const SOURCES: Record<string, string> = {
   SidebarHeader: 'src/components/sidebar.tsx',
   DropdownMenuTrigger: 'src/components/dropdown-menu.tsx',
   TabList: 'src/components/tabs.tsx',
+  AvatarGroup: 'src/components/avatar.tsx',
   TabTrigger: 'src/components/tabs.tsx',
   TabContent: 'src/components/tabs.tsx',
   TabPanel: 'src/components/tabs.tsx',
@@ -1645,6 +1646,34 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
   TabTrigger: { 'outside Tabs': { value: 'a', children: 'A', disabled: true } },
   TabContent: { 'outside Tabs': { value: 'a', children: 'A' } },
   TabPanel: { 'outside Tabs': { tabId: 'a', children: { $el: 'loose' }, className: 'p' } },
+  Avatar: {
+    initials: { name: 'Ada Lovelace' },
+    'single name, status, size, caller attrs': { name: 'plato', status: 'busy', size: 'xl', className: 'me', title: 'Plato' },
+    'image with alt': { src: '/a.png', alt: 'Ada', status: 'online' },
+    'icon over name, alt without image is role img': { icon: { $el: 'i' }, name: 'Ada', alt: 'Ada' },
+    empty: {},
+  },
+  // Rule 2 registry: Avatars register, the group renders them reversed with its size.
+  AvatarGroup: {
+    'three avatars, group size': {
+      size: 'sm',
+      children: [
+        { $part: 'Avatar', props: { name: 'Ada Lovelace', size: 'lg' } },
+        { $part: 'Avatar', props: { name: 'Grace Hopper', status: 'online' } },
+        { $part: 'Avatar', props: { src: '/k.png', alt: 'Katherine' } },
+      ],
+    },
+    'max with overflow, no group size, caller attrs': {
+      max: 2, className: 'team', 'aria-label': 'Team',
+      children: [
+        { $part: 'Avatar', props: { name: 'A B', size: 'xs' } },
+        { $part: 'Avatar', props: { name: 'C D' } },
+        { $part: 'Avatar', props: { name: 'E F' } },
+        { $part: 'Avatar', props: { name: 'G H' } },
+      ],
+    },
+    'max 0': { max: 0, children: [{ $part: 'Avatar', props: { name: 'A' } }] },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

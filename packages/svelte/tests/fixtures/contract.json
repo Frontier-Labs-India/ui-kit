@@ -263,6 +263,126 @@
         "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
       }
     },
+    "Avatar": {
+      "initials": {
+        "props": {
+          "name": "Ada Lovelace"
+        },
+        "html": "<div class=\"ui-avatar\" data-size=\"md\"><span class=\"ui-avatar__initials\">AL</span></div>"
+      },
+      "single name, status, size, caller attrs": {
+        "props": {
+          "name": "plato",
+          "status": "busy",
+          "size": "xl",
+          "className": "me",
+          "title": "Plato"
+        },
+        "html": "<div class=\"ui-avatar me\" data-size=\"xl\" title=\"Plato\"><span class=\"ui-avatar__initials\">P</span><span class=\"ui-avatar__status\" data-status=\"busy\" aria-hidden=\"true\"></span></div>"
+      },
+      "image with alt": {
+        "props": {
+          "src": "/a.png",
+          "alt": "Ada",
+          "status": "online"
+        },
+        "html": "<link rel=\"preload\" as=\"image\" href=\"/a.png\"/><div class=\"ui-avatar\" data-size=\"md\"><img class=\"ui-avatar__image\" src=\"/a.png\" alt=\"Ada\"/><span class=\"ui-avatar__status\" data-status=\"online\" aria-hidden=\"true\"></span></div>"
+      },
+      "icon over name, alt without image is role img": {
+        "props": {
+          "icon": {
+            "$el": "i"
+          },
+          "name": "Ada",
+          "alt": "Ada"
+        },
+        "html": "<div class=\"ui-avatar\" data-size=\"md\" role=\"img\" aria-label=\"Ada\"><span class=\"ui-avatar__icon\"><b>i</b></span></div>"
+      },
+      "empty": {
+        "props": {},
+        "html": "<div class=\"ui-avatar\" data-size=\"md\"></div>"
+      }
+    },
+    "AvatarGroup": {
+      "three avatars, group size": {
+        "props": {
+          "size": "sm",
+          "children": [
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "Ada Lovelace",
+                "size": "lg"
+              }
+            },
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "Grace Hopper",
+                "status": "online"
+              }
+            },
+            {
+              "$part": "Avatar",
+              "props": {
+                "src": "/k.png",
+                "alt": "Katherine"
+              }
+            }
+          ]
+        },
+        "html": "<link rel=\"preload\" as=\"image\" href=\"/k.png\"/><div class=\"ui-avatar-group\" role=\"group\"><div class=\"ui-avatar\" data-size=\"sm\"><img class=\"ui-avatar__image\" src=\"/k.png\" alt=\"Katherine\"/></div><div class=\"ui-avatar\" data-size=\"sm\"><span class=\"ui-avatar__initials\">GH</span><span class=\"ui-avatar__status\" data-status=\"online\" aria-hidden=\"true\"></span></div><div class=\"ui-avatar\" data-size=\"sm\"><span class=\"ui-avatar__initials\">AL</span></div></div>"
+      },
+      "max with overflow, no group size, caller attrs": {
+        "props": {
+          "max": 2,
+          "className": "team",
+          "aria-label": "Team",
+          "children": [
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "A B",
+                "size": "xs"
+              }
+            },
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "C D"
+              }
+            },
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "E F"
+              }
+            },
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "G H"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-avatar-group team\" role=\"group\" aria-label=\"Team\"><span class=\"ui-avatar-group__overflow\" aria-label=\"2 more\">+2</span><div class=\"ui-avatar\" data-size=\"md\"><span class=\"ui-avatar__initials\">CD</span></div><div class=\"ui-avatar\" data-size=\"xs\"><span class=\"ui-avatar__initials\">AB</span></div></div>"
+      },
+      "max 0": {
+        "props": {
+          "max": 0,
+          "children": [
+            {
+              "$part": "Avatar",
+              "props": {
+                "name": "A"
+              }
+            }
+          ]
+        },
+        "html": "<div class=\"ui-avatar-group\" role=\"group\"><span class=\"ui-avatar-group__overflow\" aria-label=\"1 more\">+1</span></div>"
+      }
+    },
     "AvatarUpload": {
       "empty": {
         "props": {},

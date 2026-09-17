@@ -126,6 +126,50 @@
    "nth": 0
   }
  },
+ "Avatar": {
+  "initials": {
+   "tag": "div",
+   "classes": "ui-avatar",
+   "nth": 0
+  },
+  "single name, status, size, caller attrs": {
+   "tag": "div",
+   "classes": "me ui-avatar",
+   "nth": 0
+  },
+  "image with alt": {
+   "tag": "div",
+   "classes": "ui-avatar",
+   "nth": 0
+  },
+  "icon over name, alt without image is role img": {
+   "tag": "div",
+   "classes": "ui-avatar",
+   "nth": 0
+  },
+  "empty": {
+   "tag": "div",
+   "classes": "ui-avatar",
+   "nth": 0
+  }
+ },
+ "AvatarGroup": {
+  "three avatars, group size": {
+   "tag": "div",
+   "classes": "ui-avatar-group",
+   "nth": 0
+  },
+  "max with overflow, no group size, caller attrs": {
+   "tag": "div",
+   "classes": "team ui-avatar-group",
+   "nth": 0
+  },
+  "max 0": {
+   "tag": "div",
+   "classes": "ui-avatar-group",
+   "nth": 0
+  }
+ },
  "AvatarUpload": {
   "empty": {
    "tag": "div",
