@@ -1007,6 +1007,54 @@
         "html": "<div class=\"ui-core-chart\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"CPU core utilization: 0 cores\"><div class=\"ui-core-chart__grid\" style=\"grid-template-columns:repeat(0, var(--cell-size, 24px))\"></div></div>"
       }
     },
+    "DashboardGrid": {
+      "ungrouped children": {
+        "props": {
+          "children": {
+            "$el": "cards"
+          },
+          "columns": 3,
+          "gap": "lg"
+        },
+        "html": "<div class=\"ui-dashboard-grid\" data-motion=\"3\" data-columns=\"3\" data-gap=\"lg\"><div class=\"ui-dashboard-grid__grid\"><b>cards</b></div></div>"
+      },
+      "groups": {
+        "props": {
+          "groups": [
+            {
+              "id": "net",
+              "title": "Network",
+              "description": "Edge links",
+              "summary": {
+                "$el": "2 Gbps"
+              },
+              "items": [
+                {
+                  "$el": "card1"
+                },
+                "card2"
+              ]
+            },
+            {
+              "id": "db",
+              "title": {
+                "$el": "Databases"
+              },
+              "description": "hidden while collapsed",
+              "items": [],
+              "collapsed": true
+            }
+          ]
+        },
+        "html": "<div class=\"ui-dashboard-grid\" data-motion=\"3\" data-columns=\"auto\" data-gap=\"md\"><section class=\"ui-dashboard-grid__group\"><button type=\"button\" class=\"ui-dashboard-grid__group-header\" aria-expanded=\"true\"><span class=\"ui-dashboard-grid__group-chevron\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><h3 class=\"ui-dashboard-grid__group-title\">Network</h3><span class=\"ui-dashboard-grid__group-summary\"><b>2 Gbps</b></span></button><p class=\"ui-dashboard-grid__group-description\">Edge links</p><div class=\"ui-dashboard-grid__group-content\"><div class=\"ui-dashboard-grid__grid\"><div class=\"ui-dashboard-grid__item\"><b>card1</b></div><div class=\"ui-dashboard-grid__item\">card2</div></div></div></section><section class=\"ui-dashboard-grid__group\" data-collapsed=\"\"><button type=\"button\" class=\"ui-dashboard-grid__group-header\" aria-expanded=\"false\"><span class=\"ui-dashboard-grid__group-chevron\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><h3 class=\"ui-dashboard-grid__group-title\"><b>Databases</b></h3></button><div class=\"ui-dashboard-grid__group-content\"><div class=\"ui-dashboard-grid__grid\"></div></div></section></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-dashboard-grid\" data-motion=\"0\" data-columns=\"auto\" data-gap=\"md\"><div class=\"ui-dashboard-grid__grid\"></div></div>"
+      }
+    },
     "DensitySelector": {
       "defaults": {
         "props": {},
@@ -3347,6 +3395,53 @@
           "motion": 0
         },
         "html": "<div class=\"ui-skeleton\" data-variant=\"text\" data-animate=\"true\" data-animation=\"shimmer\" data-motion=\"0\" data-speed=\"normal\" aria-hidden=\"true\"></div>"
+      }
+    },
+    "Slider": {
+      "defaults": {
+        "props": {},
+        "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"0\" max=\"100\" step=\"1\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"0\"/></div></div>"
+      },
+      "label, value, ticks, step": {
+        "props": {
+          "label": "Volume",
+          "showValue": true,
+          "showTicks": true,
+          "step": 25,
+          "defaultValue": 50
+        },
+        "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-slider__header\"><span class=\"ui-slider__label\">Volume</span><span class=\"ui-slider__value\">50</span></div><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"0\" max=\"100\" step=\"25\" aria-label=\"Volume\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 50%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 50%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"50\"/></div><div class=\"ui-slider__ticks\" aria-hidden=\"true\"><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span></div></div>"
+      },
+      "controlled, custom range, disabled xl": {
+        "props": {
+          "value": 7,
+          "min": 5,
+          "max": 10,
+          "disabled": true,
+          "size": "xl"
+        },
+        "html": "<div class=\"ui-slider\" data-size=\"xl\" data-motion=\"3\" data-disabled=\"\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"5\" max=\"10\" step=\"1\" disabled=\"\" aria-valuenow=\"7\" aria-valuemin=\"5\" aria-valuemax=\"10\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 40%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 40%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"7\"/></div></div>"
+      },
+      "min equals max": {
+        "props": {
+          "min": 3,
+          "max": 3
+        },
+        "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"3\" max=\"3\" step=\"1\" aria-valuenow=\"3\" aria-valuemin=\"3\" aria-valuemax=\"3\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 100%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"3\"/></div></div>"
+      },
+      "ticks capped at 101": {
+        "props": {
+          "showTicks": true,
+          "step": 0.5
+        },
+        "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"0\" max=\"100\" step=\"0.5\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"0\"/></div><div class=\"ui-slider__ticks\" aria-hidden=\"true\"><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span><span class=\"ui-slider__tick\"></span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "aria-label": "x"
+        },
+        "html": "<div class=\"ui-slider\" data-size=\"md\" data-motion=\"0\" aria-label=\"x\"><div class=\"ui-slider__track-container\"><input type=\"range\" class=\"ui-slider__input\" min=\"0\" max=\"100\" step=\"1\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"background:linear-gradient(to right, var(--brand, oklch(65% 0.2 270)) 0%, var(--brand, oklch(65% 0.2 270)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 0%, var(--bg-surface, oklch(20% 0 0 / 0.3)) 100%)\" value=\"0\"/></div></div>"
       }
     },
     "Sparkline": {

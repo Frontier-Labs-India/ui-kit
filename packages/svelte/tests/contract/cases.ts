@@ -719,4 +719,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'error wires aria-describedby': { tags: [], onChange: { $fn: true }, error: 'Too many', 'aria-label': 'Tags' },
     'motion 0': { tags: [], onChange: { $fn: true }, motion: 0, 'aria-label': 'Tags' },
   },
+  DashboardGrid: {
+    'ungrouped children': { children: { $el: 'cards' }, columns: 3, gap: 'lg' },
+    groups: {
+      groups: [
+        { id: 'net', title: 'Network', description: 'Edge links', summary: { $el: '2 Gbps' }, items: [{ $el: 'card1' }, 'card2'] },
+        { id: 'db', title: { $el: 'Databases' }, description: 'hidden while collapsed', items: [], collapsed: true },
+      ],
+    },
+    'motion 0': { motion: 0 },
+  },
+  Slider: {
+    defaults: {},
+    'label, value, ticks, step': { label: 'Volume', showValue: true, showTicks: true, step: 25, defaultValue: 50 },
+    'controlled, custom range, disabled xl': { value: 7, min: 5, max: 10, disabled: true, size: 'xl' },
+    'min equals max': { min: 3, max: 3 },
+    'ticks capped at 101': { showTicks: true, step: 0.5 },
+    'motion 0': { motion: 0, 'aria-label': 'x' },
+  },
 }

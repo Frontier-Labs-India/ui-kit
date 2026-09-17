@@ -20,7 +20,13 @@ describe('canonical — style values', () => {
     expect(c('<i style="margin:10px"></i>')).not.toBe(c('<i style="margin:0"></i>'))
     expect(c('<i style="margin:0.5px"></i>')).toContain('0.5px')
     expect(c('<i style="background-color:oklch(65% 0.15 155)"></i>')).not.toBe(c('<i style="background-color:oklch(65% 0.15 156)"></i>'))
-    expect(c('<i style="width:50px"></i>')).not.toBe(c('<i style="width:50"></i>')) // the CSSOM drops the bare number
+    expect(c('<i style="--x:1"></i>')).not.toBe(c('<i style="--x:3"></i>'))
+  })
+
+  it('refuses a declaration the CSSOM drops, instead of comparing without it', () => {
+    expect(() => c('<i style="width:50"></i>')).toThrow(/CSSOM dropped "width:50"/)
+    // A semicolon inside url() is not a declaration boundary.
+    expect(() => c('<i style="background-image:url(data:image/png;base64,AA)"></i>')).not.toThrow()
     expect(c('<i style="--x:1"></i>')).not.toBe(c('<i style="--x:2"></i>'))
   })
 })

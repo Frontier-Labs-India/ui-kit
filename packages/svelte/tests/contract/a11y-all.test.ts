@@ -50,6 +50,10 @@ const DISK_DEFECT =
   'plain wrapper div, beside a toggle button and a footer that are not listitems. Fix together (move ' +
   'the role to the wrapper) or the contract breaks'
 
+const SLIDER_NAME =
+  CALLER_MUST_NAME + '. Slider-specific, inherited: a caller aria-label lands on the wrapper div, not ' +
+  'the range input, so the `label` prop is the only way to name the slider'
+
 /** `Component/case/rule-id` -> why it is accepted for now. */
 const INHERITED: Record<string, string> = {
   'Checkbox/defaults/label': CALLER_MUST_NAME,
@@ -71,6 +75,11 @@ const INHERITED: Record<string, string> = {
   'DiskMountBar/sorted, collapsed at 3/aria-required-children': DISK_DEFECT,
   'DiskMountBar/no mounts/aria-required-children': DISK_DEFECT,
   'DiskMountBar/motion 0/aria-required-children': DISK_DEFECT,
+  'Slider/defaults/label': SLIDER_NAME,
+  'Slider/controlled, custom range, disabled xl/label': SLIDER_NAME,
+  'Slider/min equals max/label': SLIDER_NAME,
+  'Slider/ticks capped at 101/label': SLIDER_NAME,
+  'Slider/motion 0/label': SLIDER_NAME,
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

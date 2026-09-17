@@ -35,12 +35,40 @@ const REF_ATTRS = new Set([
   'aria-activedescendant', 'aria-details', 'aria-errormessage', 'aria-flowto', 'headers', 'list', 'form',
 ])
 
+/* Splits at top-level semicolons only — not inside url(…) or quotes. */
+function declarations(style: string): string[] {
+  const out: string[] = []
+  let depth = 0, quote = '', start = 0
+  for (let i = 0; i < style.length; i++) {
+    const ch = style[i]
+    if (quote) { if (ch === quote) quote = ''; continue }
+    if (ch === '"' || ch === "'") quote = ch
+    else if (ch === '(') depth++
+    else if (ch === ')') depth = Math.max(0, depth - 1)
+    else if (ch === ';' && depth === 0) { out.push(style.slice(start, i)); start = i + 1 }
+  }
+  out.push(style.slice(start))
+  return out
+}
+
 /* Reads declarations back through a CSSOM so both trees normalise the same
  * way. A fresh element of the page's document is used — template content
  * lives in an inert document, but parsing is identical either way. */
 function styleText(raw: string): string {
   const probe = document.createElement('div')
   probe.setAttribute('style', raw)
+  /* Denominator: a declaration the CSSOM drops cannot be compared — it would be
+   * missing from BOTH trees and pass unverified. Refuse loudly instead. (A
+   * Svelte-side bug such as a bare `width: 50` never reaches this: setProperty
+   * rejects it before it is written, so it is absent and fails the comparison.) */
+  for (const decl of declarations(raw)) {
+    const i = decl.indexOf(':')
+    if (i < 1) continue
+    const name = decl.slice(0, i).trim().toLowerCase()
+    if (name && probe.style.getPropertyValue(name) === '') {
+      throw new Error(`canonical: the CSSOM dropped "${decl.trim()}" — this declaration cannot be verified`)
+    }
+  }
   const out: string[] = []
   for (let i = 0; i < probe.style.length; i++) {
     const prop = probe.style.item(i)
