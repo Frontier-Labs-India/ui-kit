@@ -66,6 +66,7 @@ const INHERITED: Record<string, string> = {
   'Checkbox/disabled/label': CALLER_MUST_NAME,
   'Checkbox/indeterminate/label': CALLER_MUST_NAME,
   'Checkbox/motion 0/label': CALLER_MUST_NAME,
+  'FormInput/name only/label': CALLER_MUST_NAME,
   'Link/external defaults/link-name': CALLER_MUST_NAME,
   'Link/external keeps caller target and rel/link-name': CALLER_MUST_NAME,
   'Link/not external passes target through/link-name': CALLER_MUST_NAME,

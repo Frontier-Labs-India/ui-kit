@@ -430,6 +430,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'de-DE locale, caller attributes': { locale: 'de-DE', className: 'mine', id: 'cal', value: { $date: '2026-01-15T00:00' } },
     'motion 0': { motion: 0 },
   },
+  FormInput: {
+    'name only': { name: 'email' },
+    'label, required, description, placeholder': { name: 'email', label: 'Email', required: true, description: 'We never share it', placeholder: 'you@example.com' },
+    'error sets invalid and describedby order': { name: 'email', label: { $el: 'Email' }, description: 'Help', error: 'Required' },
+    'controlled value with counter at limit, clearable': { name: 'code', 'aria-label': 'Code', value: 'ABCDE', maxLength: 5, clearable: true, onClear: { $fn: true } },
+    'showCount without max, numeric value': { name: 'n', 'aria-label': 'N', value: 42, showCount: true },
+    'clearable but empty shows no button': { name: 'q', 'aria-label': 'Q', value: '', clearable: true },
+    'icons, filled xl, disabled, caller id and attrs': {
+      name: 'search', 'aria-label': 'Search', icon: { $el: 's' }, iconEnd: { $el: 'k' }, variant: 'filled', size: 'xl', disabled: true, id: 'mine', type: 'search', autoComplete: 'off',
+    },
+    'classNames everywhere': {
+      name: 'x', label: 'L', description: 'D', error: 'E', icon: 'i', iconEnd: 'j', className: 'root-extra',
+      classNames: { root: 'r', label: 'l', field: 'f', icon: 'ic', iconEnd: 'ie', description: 'd', error: 'e' },
+    },
+    'motion 0': { name: 'x', 'aria-label': 'X', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

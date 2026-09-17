@@ -1952,6 +1952,114 @@
         "html": "<div class=\"ui-filter-pill-group\" role=\"group\" aria-label=\"Active filters\"><button type=\"button\" class=\"ui-filter-pill-group__clear\">Reset</button></div>"
       }
     },
+    "FormInput": {
+      "name only": {
+        "props": {
+          "name": "email"
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" name=\"email\"/></div></div>"
+      },
+      "label, required, description, placeholder": {
+        "props": {
+          "name": "email",
+          "label": "Email",
+          "required": true,
+          "description": "We never share it",
+          "placeholder": "you@example.com"
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><label for=\"form-input-_R_0_\" class=\"ui-form-input__label\">Email<span class=\"ui-form-input__required\" aria-hidden=\"true\">*</span></label><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" aria-describedby=\"form-input-_R_0_-description\" required=\"\" placeholder=\"you@example.com\" name=\"email\"/></div><span id=\"form-input-_R_0_-description\" class=\"ui-form-input__description\">We never share it</span></div>"
+      },
+      "error sets invalid and describedby order": {
+        "props": {
+          "name": "email",
+          "label": {
+            "$el": "Email"
+          },
+          "description": "Help",
+          "error": "Required"
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-invalid=\"\"><label for=\"form-input-_R_0_\" class=\"ui-form-input__label\"><b>Email</b></label><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" aria-invalid=\"true\" aria-describedby=\"form-input-_R_0_-description form-input-_R_0_-error\" name=\"email\"/></div><span id=\"form-input-_R_0_-description\" class=\"ui-form-input__description\">Help</span><span id=\"form-input-_R_0_-error\" class=\"ui-form-input__error\" role=\"alert\">Required</span></div>"
+      },
+      "controlled value with counter at limit, clearable": {
+        "props": {
+          "name": "code",
+          "aria-label": "Code",
+          "value": "ABCDE",
+          "maxLength": 5,
+          "clearable": true,
+          "onClear": {
+            "$fn": true
+          }
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-has-icon-end=\"\"><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" maxLength=\"5\" aria-label=\"Code\" name=\"code\" value=\"ABCDE\"/><button type=\"button\" class=\"ui-form-input__clear\" aria-label=\"Clear input\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 4L12 12M12 4L4 12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"></path></svg></button></div><span class=\"ui-form-input__counter\" data-at-limit=\"\">5/5</span></div>"
+      },
+      "showCount without max, numeric value": {
+        "props": {
+          "name": "n",
+          "aria-label": "N",
+          "value": 42,
+          "showCount": true
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" aria-label=\"N\" name=\"n\" value=\"42\"/></div><span class=\"ui-form-input__counter\">2</span></div>"
+      },
+      "clearable but empty shows no button": {
+        "props": {
+          "name": "q",
+          "aria-label": "Q",
+          "value": "",
+          "clearable": true
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-has-icon-end=\"\"><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" aria-label=\"Q\" name=\"q\" value=\"\"/></div></div>"
+      },
+      "icons, filled xl, disabled, caller id and attrs": {
+        "props": {
+          "name": "search",
+          "aria-label": "Search",
+          "icon": {
+            "$el": "s"
+          },
+          "iconEnd": {
+            "$el": "k"
+          },
+          "variant": "filled",
+          "size": "xl",
+          "disabled": true,
+          "id": "mine",
+          "type": "search",
+          "autoComplete": "off"
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"xl\" data-variant=\"filled\" data-motion=\"3\" data-disabled=\"\" data-has-icon=\"\" data-has-icon-end=\"\"><div class=\"ui-form-input__field-wrapper\"><span class=\"ui-form-input__icon\" aria-hidden=\"true\"><b>s</b></span><input id=\"mine\" class=\"ui-form-input__field\" disabled=\"\" aria-label=\"Search\" type=\"search\" autoComplete=\"off\" name=\"search\"/><span class=\"ui-form-input__icon-end\" aria-hidden=\"true\"><b>k</b></span></div></div>"
+      },
+      "classNames everywhere": {
+        "props": {
+          "name": "x",
+          "label": "L",
+          "description": "D",
+          "error": "E",
+          "icon": "i",
+          "iconEnd": "j",
+          "className": "root-extra",
+          "classNames": {
+            "root": "r",
+            "label": "l",
+            "field": "f",
+            "icon": "ic",
+            "iconEnd": "ie",
+            "description": "d",
+            "error": "e"
+          }
+        },
+        "html": "<div class=\"ui-form-input r root-extra\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\" data-invalid=\"\" data-has-icon=\"\" data-has-icon-end=\"\"><label for=\"form-input-_R_0_\" class=\"ui-form-input__label l\">L</label><div class=\"ui-form-input__field-wrapper\"><span class=\"ui-form-input__icon ic\" aria-hidden=\"true\">i</span><input id=\"form-input-_R_0_\" class=\"ui-form-input__field f\" aria-invalid=\"true\" aria-describedby=\"form-input-_R_0_-description form-input-_R_0_-error\" name=\"x\"/><span class=\"ui-form-input__icon-end ie\" aria-hidden=\"true\">j</span></div><span id=\"form-input-_R_0_-description\" class=\"ui-form-input__description d\">D</span><span id=\"form-input-_R_0_-error\" class=\"ui-form-input__error e\" role=\"alert\">E</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "x",
+          "aria-label": "X",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-form-input\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-form-input__field-wrapper\"><input id=\"form-input-_R_0_\" class=\"ui-form-input__field\" aria-label=\"X\" name=\"x\"/></div></div>"
+      }
+    },
     "GeoMap": {
       "points only": {
         "props": {
