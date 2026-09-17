@@ -59,6 +59,11 @@ const PASSWORD_METER_DEFECT =
   'DEFECT in both packages: PasswordInput\'s strength bar is role="meter" with no accessible name. ' +
   'Fix together (aria-label, or aria-labelledby the strength label) or the contract breaks'
 
+const CLEAR_IN_TRIGGER_DEFECT =
+  'DEFECT in both packages: the clear control is a role="button" span inside the trigger <button>, whose ' +
+  'children are presentational, so it is unreachable to assistive technology (TimePicker, DateRangePicker). ' +
+  'Fix together (move the clear control beside the trigger) or the contract breaks'
+
 const CALENDAR_DEFECT =
   'DEFECT in both packages: Calendar puts role="gridcell" day buttons directly inside role="grid", ' +
   'laid out by CSS grid with no role="row" wrappers, so the grid has no rows and the cells no row ' +
@@ -100,10 +105,9 @@ const INHERITED: Record<string, string> = {
   'PasswordInput/strength meter empty/aria-meter-name': PASSWORD_METER_DEFECT,
   'PasswordInput/strength meter strong with error/aria-meter-name': PASSWORD_METER_DEFECT,
   'PasswordInput/strength meter fair, custom labels, sm disabled, caller id/aria-meter-name': PASSWORD_METER_DEFECT,
-  'TimePicker/value with clear, lg, name/nested-interactive':
-    'DEFECT in both packages: TimePicker\'s clear control is a role="button" span inside the trigger <button>, ' +
-    'whose children are presentational, so it is unreachable to assistive technology. Fix together (move the ' +
-    'clear control beside the trigger) or the contract breaks',
+  'TimePicker/value with clear, lg, name/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  'DateRangePicker/start only shows one date and clear/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
+  'DateRangePicker/full range, lg, error, caller attrs/nested-interactive': CLEAR_IN_TRIGGER_DEFECT,
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

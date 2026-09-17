@@ -577,6 +577,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     '24h value, error, disabled, custom placeholder, caller attrs': { label: 'At', format: '24h', value: '14:05', error: 'Closed', disabled: true, placeholder: 'hh:mm', className: 'mine', id: 'tp' },
     'motion 0': { label: 'M', motion: 0 },
   },
+  DateRangePicker: {
+    'label, placeholder': { label: 'Period' },
+    'start only shows one date and clear': { label: 'Period', value: [{ $date: '2026-01-05T00:00' }, null] },
+    'full range, lg, error, caller attrs': {
+      label: 'Period', size: 'lg', error: 'Too long', className: 'mine', id: 'drp', name: 'period',
+      value: [{ $date: '2026-01-05T00:00' }, { $date: '2026-02-14T00:00' }],
+    },
+    'disabled, custom placeholder': { label: 'Period', disabled: true, placeholder: 'Any time' },
+    'motion 0': { label: 'M', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
