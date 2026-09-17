@@ -1,5 +1,4 @@
 [
-  "Affix",
   "Avatar",
   "AvatarUpload",
   "BackToTop",
@@ -13,7 +12,6 @@
   "DataTable",
   "DropdownMenu",
   "FileUpload",
-  "InfiniteScroll",
   "InlineEdit",
   "KanbanColumn",
   "LiveFeed",
@@ -27,7 +25,6 @@
   "SearchInput",
   "SmartTable",
   "SortableList",
-  "Spoiler",
   "StepWizard",
   "StreamingText",
   "TableOfContents",

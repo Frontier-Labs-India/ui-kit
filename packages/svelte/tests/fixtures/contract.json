@@ -92,6 +92,34 @@
         "html": "<button type=\"button\" class=\"ui-action-icon\" data-variant=\"subtle\" data-color=\"default\" data-size=\"md\" data-radius=\"md\" data-motion=\"0\" aria-label=\"x\"></button>"
       }
     },
+    "Affix": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Help"
+          }
+        },
+        "html": "<div class=\"ui-affix\" style=\"bottom:20px;right:20px;z-index:100\"><b>Help</b></div>"
+      },
+      "top-left, zIndex, caller style overrides": {
+        "props": {
+          "position": {
+            "top": 0,
+            "left": 16
+          },
+          "zIndex": 5,
+          "style": {
+            "zIndex": 9,
+            "opacity": 0.9
+          },
+          "className": "mine",
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-affix mine\" style=\"top:0px;left:16px;z-index:9;opacity:0.9\"><b>x</b></div>"
+      }
+    },
     "Alert": {
       "info": {
         "props": {
@@ -2764,6 +2792,82 @@
           "motion": 0
         },
         "html": "<div class=\"ui-indicator\" data-color=\"primary\" data-position=\"top-end\" data-motion=\"0\"><span class=\"ui-indicator__dot\" style=\"inline-size:10px;block-size:10px\" aria-hidden=\"true\"></span></div>"
+      }
+    },
+    "InfiniteScroll": {
+      "has more": {
+        "props": {
+          "onLoadMore": {
+            "$fn": true
+          },
+          "hasMore": true,
+          "children": {
+            "$el": "Items"
+          }
+        },
+        "html": "<div class=\"ui-infinite-scroll\" data-direction=\"down\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\"></div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div><div class=\"ui-infinite-scroll__sentinel\" aria-hidden=\"true\"></div></div>"
+      },
+      "loading with default spinner": {
+        "props": {
+          "onLoadMore": {
+            "$fn": true
+          },
+          "hasMore": true,
+          "loading": true,
+          "children": {
+            "$el": "Items"
+          }
+        },
+        "html": "<div class=\"ui-infinite-scroll\" data-direction=\"down\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\">Loading more items...</div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div><div class=\"ui-infinite-scroll__loader\"><div class=\"ui-infinite-scroll__spinner\"></div></div><div class=\"ui-infinite-scroll__sentinel\" aria-hidden=\"true\"></div></div>"
+      },
+      "loading up with custom loader, pull to refresh, caller attrs": {
+        "props": {
+          "onLoadMore": {
+            "$fn": true
+          },
+          "hasMore": true,
+          "loading": true,
+          "loader": {
+            "$el": "Wait"
+          },
+          "direction": "up",
+          "pullToRefresh": true,
+          "onRefresh": {
+            "$fn": true
+          },
+          "className": "mine",
+          "id": "is",
+          "children": {
+            "$el": "Items"
+          }
+        },
+        "html": "<div class=\"ui-infinite-scroll mine\" data-direction=\"up\" id=\"is\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\">Loading more items...</div><div class=\"ui-infinite-scroll__pull-indicator\">Pull to refresh</div><div class=\"ui-infinite-scroll__sentinel\" aria-hidden=\"true\"></div><div class=\"ui-infinite-scroll__loader\"><b>Wait</b></div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div></div>"
+      },
+      "end message when exhausted": {
+        "props": {
+          "onLoadMore": {
+            "$fn": true
+          },
+          "hasMore": false,
+          "endMessage": "All caught up",
+          "children": {
+            "$el": "Items"
+          }
+        },
+        "html": "<div class=\"ui-infinite-scroll\" data-direction=\"down\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\"></div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div><div class=\"ui-infinite-scroll__end\">All caught up</div></div>"
+      },
+      "pull to refresh needs onRefresh": {
+        "props": {
+          "onLoadMore": {
+            "$fn": true
+          },
+          "hasMore": false,
+          "pullToRefresh": true,
+          "children": {
+            "$el": "Items"
+          }
+        },
+        "html": "<div class=\"ui-infinite-scroll\" data-direction=\"down\"><div class=\"ui-infinite-scroll__status\" aria-live=\"polite\"></div><div class=\"ui-infinite-scroll__content\"><b>Items</b></div></div>"
       }
     },
     "JsonViewer": {
@@ -5477,6 +5581,45 @@
           "motion": 0
         },
         "html": "<div class=\"ui-sparkline\" data-motion=\"0\" style=\"--sparkline-color:oklch(65% 0.2 270)\"><svg viewBox=\"0 0 100 32\" preserveAspectRatio=\"none\" aria-hidden=\"true\" style=\"width:100%;height:32px\"></svg></div>"
+      }
+    },
+    "Spoiler": {
+      "defaults": {
+        "props": {
+          "maxHeight": 100,
+          "children": {
+            "$el": "Long text"
+          }
+        },
+        "html": "<div class=\"ui-spoiler\" data-state=\"hidden\" data-motion=\"3\" style=\"--ui-spoiler-duration:350ms\"><div class=\"ui-spoiler__content\"><b>Long text</b></div></div>"
+      },
+      "visible, labels, no gradient, duration, caller style": {
+        "props": {
+          "maxHeight": 50,
+          "initialState": "visible",
+          "showLabel": "More",
+          "hideLabel": "Less",
+          "gradient": false,
+          "transitionDuration": 200,
+          "style": {
+            "padding": 8
+          },
+          "className": "mine",
+          "children": {
+            "$el": "Text"
+          }
+        },
+        "html": "<div class=\"ui-spoiler mine\" data-state=\"visible\" data-gradient=\"false\" data-motion=\"3\" style=\"padding:8px;--ui-spoiler-duration:200ms\"><div class=\"ui-spoiler__content\"><b>Text</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "maxHeight": 10,
+          "motion": 0,
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-spoiler\" data-state=\"hidden\" data-motion=\"0\" style=\"--ui-spoiler-duration:350ms\"><div class=\"ui-spoiler__content\"><b>x</b></div></div>"
       }
     },
     "Spotlight": {

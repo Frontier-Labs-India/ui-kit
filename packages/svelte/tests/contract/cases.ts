@@ -665,6 +665,29 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'caller attrs': { children: { $el: 'x' }, className: 'mine', id: 'ev' },
     'motion 0': { children: { $el: 'x' }, motion: 0 },
   },
+  Spoiler: {
+    // jsdom measures scrollHeight as 0, as a server render never measures: no toggle.
+    defaults: { maxHeight: 100, children: { $el: 'Long text' } },
+    'visible, labels, no gradient, duration, caller style': {
+      maxHeight: 50, initialState: 'visible', showLabel: 'More', hideLabel: 'Less', gradient: false, transitionDuration: 200,
+      style: { padding: 8 }, className: 'mine', children: { $el: 'Text' },
+    },
+    'motion 0': { maxHeight: 10, motion: 0, children: { $el: 'x' } },
+  },
+  InfiniteScroll: {
+    'has more': { onLoadMore: { $fn: true }, hasMore: true, children: { $el: 'Items' } },
+    'loading with default spinner': { onLoadMore: { $fn: true }, hasMore: true, loading: true, children: { $el: 'Items' } },
+    'loading up with custom loader, pull to refresh, caller attrs': {
+      onLoadMore: { $fn: true }, hasMore: true, loading: true, loader: { $el: 'Wait' }, direction: 'up', pullToRefresh: true, onRefresh: { $fn: true },
+      className: 'mine', id: 'is', children: { $el: 'Items' },
+    },
+    'end message when exhausted': { onLoadMore: { $fn: true }, hasMore: false, endMessage: 'All caught up', children: { $el: 'Items' } },
+    'pull to refresh needs onRefresh': { onLoadMore: { $fn: true }, hasMore: false, pullToRefresh: true, children: { $el: 'Items' } },
+  },
+  Affix: {
+    defaults: { children: { $el: 'Help' } },
+    'top-left, zIndex, caller style overrides': { position: { top: 0, left: 16 }, zIndex: 5, style: { zIndex: 9, opacity: 0.9 }, className: 'mine', children: { $el: 'x' } },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
