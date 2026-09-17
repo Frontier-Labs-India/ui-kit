@@ -564,4 +564,15 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     empty: { items: [] },
     'motion 0': { items: [], motion: 0 },
   },
+  ServiceStrip: {
+    basic: { services: [{ name: 'api', status: 'running', version: '3.0.0' }, { name: 'db', status: 'error' }] },
+    'overflow sm icons': {
+      size: 'sm', maxVisible: 2,
+      services: [{ name: 'a', status: 'running', icon: { $el: 'i' } }, { name: 'b', status: 'stopped' }, { name: 'c', status: 'unknown' }, { name: 'd', status: 'running' }],
+    },
+    'maxVisible equal to length: no overflow': { maxVisible: 1, services: [{ name: 'a', status: 'running' }] },
+    clickable: { onServiceClick: { $fn: true }, services: [{ name: 'a', status: 'running' }] },
+    'empty renders nothing': { services: [] },
+    'motion 0': { motion: 0, services: [{ name: 'a', status: 'running' }] },
+  },
 }

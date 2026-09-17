@@ -2290,6 +2290,96 @@
         "html": "<header class=\"ui-section-header\" data-size=\"md\"><div class=\"ui-section-header__left\"><h2 class=\"ui-section-header__title\">Usage</h2></div></header>"
       }
     },
+    "ServiceStrip": {
+      "basic": {
+        "props": {
+          "services": [
+            {
+              "name": "api",
+              "status": "running",
+              "version": "3.0.0"
+            },
+            {
+              "name": "db",
+              "status": "error"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-service-strip\" data-motion=\"3\" data-size=\"md\" role=\"list\" aria-label=\"Services\"><span class=\"ui-service-strip__badge\" data-status=\"running\" role=\"listitem\" aria-label=\"api: running v3.0.0\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">api</span><span class=\"ui-service-strip__version\">v3.0.0</span></span><span class=\"ui-service-strip__badge\" data-status=\"error\" role=\"listitem\" aria-label=\"db: error\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">db</span></span></div>"
+      },
+      "overflow sm icons": {
+        "props": {
+          "size": "sm",
+          "maxVisible": 2,
+          "services": [
+            {
+              "name": "a",
+              "status": "running",
+              "icon": {
+                "$el": "i"
+              }
+            },
+            {
+              "name": "b",
+              "status": "stopped"
+            },
+            {
+              "name": "c",
+              "status": "unknown"
+            },
+            {
+              "name": "d",
+              "status": "running"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-service-strip\" data-motion=\"3\" data-size=\"sm\" role=\"list\" aria-label=\"Services\"><span class=\"ui-service-strip__badge\" data-status=\"running\" role=\"listitem\" aria-label=\"a: running\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__icon\" aria-hidden=\"true\"><b>i</b></span><span class=\"ui-service-strip__name\">a</span></span><span class=\"ui-service-strip__badge\" data-status=\"stopped\" role=\"listitem\" aria-label=\"b: stopped\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">b</span></span><span class=\"ui-service-strip__overflow\" role=\"listitem\" aria-label=\"2 more services\">+2 more</span></div>"
+      },
+      "maxVisible equal to length: no overflow": {
+        "props": {
+          "maxVisible": 1,
+          "services": [
+            {
+              "name": "a",
+              "status": "running"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-service-strip\" data-motion=\"3\" data-size=\"md\" role=\"list\" aria-label=\"Services\"><span class=\"ui-service-strip__badge\" data-status=\"running\" role=\"listitem\" aria-label=\"a: running\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">a</span></span></div>"
+      },
+      "clickable": {
+        "props": {
+          "onServiceClick": {
+            "$fn": true
+          },
+          "services": [
+            {
+              "name": "a",
+              "status": "running"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-service-strip\" data-motion=\"3\" data-size=\"md\" role=\"list\" aria-label=\"Services\"><span class=\"ui-service-strip__badge\" data-status=\"running\" data-clickable=\"\" role=\"listitem\" aria-label=\"a: running\" tabindex=\"0\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">a</span></span></div>"
+      },
+      "empty renders nothing": {
+        "props": {
+          "services": []
+        },
+        "html": ""
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "services": [
+            {
+              "name": "a",
+              "status": "running"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-service-strip\" data-motion=\"0\" data-size=\"md\" role=\"list\" aria-label=\"Services\"><span class=\"ui-service-strip__badge\" data-status=\"running\" role=\"listitem\" aria-label=\"a: running\"><span class=\"ui-service-strip__dot\" aria-hidden=\"true\"></span><span class=\"ui-service-strip__name\">a</span></span></div>"
+      }
+    },
     "ShimmerButton": {
       "defaults": {
         "props": {
