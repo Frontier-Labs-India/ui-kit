@@ -100,9 +100,6 @@ declared in the contract tests rather than hidden.
   `setFormContext(form)` / `getFormContext()`, with React's `FormState` shape.
   React's form engine itself (`createForm`, `useForm`, `Form`, `FieldArray`)
   is not ported.
-- **RichTextEditor sanitizes the HTML it is given** (`value`, `defaultValue`)
-  before showing it. React writes it into the editor unsanitized, so stored
-  HTML containing a script handler would run there.
 - **Select**'s search box handles each key once; React's handles it twice
   (one ArrowDown moves two options).
 - **Spotlight** and **CommandBar** always show a current Recent list; React's

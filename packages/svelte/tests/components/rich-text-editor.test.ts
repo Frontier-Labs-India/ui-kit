@@ -17,7 +17,7 @@ function commands() {
 const editorOf = (c: HTMLElement) => c.querySelector<HTMLElement>('.ui-rich-text-editor__editor')!
 
 describe('RichTextEditor', () => {
-  it('sanitizes an incoming value and defaultValue before showing them (React does not)', async () => {
+  it('sanitizes an incoming value and defaultValue before showing them', async () => {
     commands()
     const hostile = '<p>hi<script>alert(1)</script><img src=x onerror="alert(2)"><a href="javascript:alert(3)">x</a></p>'
     const a = render(RichTextEditor, { props: { value: hostile } })

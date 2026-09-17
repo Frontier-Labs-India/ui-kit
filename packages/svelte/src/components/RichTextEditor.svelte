@@ -22,7 +22,7 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'placeholder'> {
-    /** HTML. Sanitized before it is shown (React writes it unsanitized — see below). */
+    /** HTML. Sanitized before it is shown. */
     value?: string
     defaultValue?: string
     /** Receives sanitized HTML ('' when empty). */
@@ -87,10 +87,8 @@
   let headingMenuOpen = $state(false)
   let lastHtml = ''
 
-  /* React writes `value`/`defaultValue` into innerHTML unsanitized, so a
-   * caller passing stored HTML with a <script> or an onerror handler would run
-   * it. Here incoming HTML goes through the same sanitize() that already
-   * cleans the output. Recorded as a React security defect. */
+  /* Incoming HTML goes through the same sanitize() that cleans the output, so
+   * stored HTML with a <script> or an onerror handler never runs (as in React). */
   $effect(() => {
     if (value === undefined || !editor || focused) return
     const clean = sanitize(value)
