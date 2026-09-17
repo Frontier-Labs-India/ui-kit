@@ -1152,6 +1152,49 @@
         "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-motion=\"0\"><input type=\"checkbox\" class=\"ui-chip__input\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>x</b></label>"
       }
     },
+    "ColumnVisibilityToggle": {
+      "columns": {
+        "props": {
+          "columns": [
+            {
+              "id": "a",
+              "label": "Name",
+              "visible": true
+            },
+            {
+              "id": "b",
+              "label": "Owner",
+              "visible": false
+            }
+          ]
+        },
+        "html": "<div class=\"ui-column-visibility\" data-motion=\"3\"><button type=\"button\" class=\"ui-column-visibility__trigger\" aria-expanded=\"false\" aria-haspopup=\"listbox\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4h12M2 8h12M2 12h12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>Columns (1/2)</button><div class=\"ui-column-visibility__dropdown\" role=\"listbox\" aria-label=\"Toggle column visibility\" data-open=\"false\"><label class=\"ui-column-visibility__item\"><input type=\"checkbox\" class=\"ui-column-visibility__checkbox\" checked=\"\"/>Name</label><label class=\"ui-column-visibility__item\"><input type=\"checkbox\" class=\"ui-column-visibility__checkbox\"/>Owner</label></div></div>"
+      },
+      "reset, caller attrs": {
+        "props": {
+          "columns": [
+            {
+              "id": "a",
+              "label": "Name",
+              "visible": true
+            }
+          ],
+          "onReset": {
+            "$fn": true
+          },
+          "className": "mine",
+          "id": "cvt"
+        },
+        "html": "<div class=\"ui-column-visibility mine\" data-motion=\"3\" id=\"cvt\"><button type=\"button\" class=\"ui-column-visibility__trigger\" aria-expanded=\"false\" aria-haspopup=\"listbox\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4h12M2 8h12M2 12h12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>Columns (1/1)</button><div class=\"ui-column-visibility__dropdown\" role=\"listbox\" aria-label=\"Toggle column visibility\" data-open=\"false\"><label class=\"ui-column-visibility__item\"><input type=\"checkbox\" class=\"ui-column-visibility__checkbox\" checked=\"\"/>Name</label><div class=\"ui-column-visibility__divider\"></div><button type=\"button\" class=\"ui-column-visibility__reset\">Reset to default</button></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "columns": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-column-visibility\" data-motion=\"0\"><button type=\"button\" class=\"ui-column-visibility__trigger\" aria-expanded=\"false\" aria-haspopup=\"listbox\"><svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 4h12M2 8h12M2 12h12\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>Columns (0/0)</button><div class=\"ui-column-visibility__dropdown\" role=\"listbox\" aria-label=\"Toggle column visibility\" data-open=\"false\"></div></div>"
+      }
+    },
     "Combobox": {
       "closed, no selection": {
         "props": {
@@ -3155,6 +3198,640 @@
         "html": "<div class=\"ui-live-feed\" data-motion=\"0\" aria-live=\"polite\"><div class=\"ui-live-feed__scroll\"><div class=\"ui-live-feed__empty\">No events</div></div></div>"
       }
     },
+    "LogViewer": {
+      "empty": {
+        "props": {
+          "lines": []
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"3\" role=\"log\"><div class=\"ui-log-viewer__scroll\"><div></div></div></div>"
+      },
+      "timestamps, levels, wrap, height, autoTail, caller attrs": {
+        "props": {
+          "showTimestamp": true,
+          "showLevel": true,
+          "wrap": true,
+          "height": "200px",
+          "autoTail": true,
+          "className": "mine",
+          "id": "lv",
+          "lines": [
+            {
+              "id": 1,
+              "timestamp": 1768478400000,
+              "level": "info",
+              "message": "started"
+            },
+            {
+              "id": 2,
+              "level": "error",
+              "message": "failed"
+            },
+            {
+              "id": 3,
+              "timestamp": {
+                "$date": "2026-01-15T12:00:03"
+              },
+              "message": "no level"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-log-viewer mine\" data-motion=\"3\" data-wrap=\"true\" role=\"log\" aria-live=\"polite\" id=\"lv\"><div class=\"ui-log-viewer__scroll\" style=\"height:200px;block-size:200px\"><div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__timestamp\">12:00:00 PM</span><span class=\"ui-log-viewer__level\" data-level=\"info\">info</span><span class=\"ui-log-viewer__message\">started</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__level\" data-level=\"error\">error</span><span class=\"ui-log-viewer__message\">failed</span></div><div class=\"ui-log-viewer__line\"><span class=\"ui-log-viewer__timestamp\">12:00:03 PM</span><span class=\"ui-log-viewer__message\">no level</span></div></div></div></div>"
+      },
+      "search highlights across repeated matches": {
+        "props": {
+          "search": "ab",
+          "lines": [
+            {
+              "id": 1,
+              "message": "ab x AB y ab ab"
+            },
+            {
+              "id": 2,
+              "message": "nothing"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"3\" role=\"log\"><div class=\"ui-log-viewer__scroll\"><div><div class=\"ui-log-viewer__line\"><span class=\"ui-log-viewer__message\"><mark>ab</mark> x <mark>AB</mark> y <mark>ab</mark> <mark>ab</mark></span></div><div class=\"ui-log-viewer__line\"><span class=\"ui-log-viewer__message\">nothing</span></div></div></div></div>"
+      },
+      "search with regex metacharacters": {
+        "props": {
+          "search": "(1)",
+          "lines": [
+            {
+              "id": 1,
+              "message": "call (1) and (1)"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"3\" role=\"log\"><div class=\"ui-log-viewer__scroll\"><div><div class=\"ui-log-viewer__line\"><span class=\"ui-log-viewer__message\">call <mark>(1)</mark> and <mark>(1)</mark></span></div></div></div></div>"
+      },
+      "filterLevel and maxLines": {
+        "props": {
+          "filterLevel": [
+            "warn",
+            "error"
+          ],
+          "maxLines": 1,
+          "lines": [
+            {
+              "id": 1,
+              "level": "warn",
+              "message": "w"
+            },
+            {
+              "id": 2,
+              "level": "error",
+              "message": "e"
+            },
+            {
+              "id": 3,
+              "message": "x"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"3\" role=\"log\"><div class=\"ui-log-viewer__scroll\"><div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">e</span></div></div></div></div>"
+      },
+      "virtual above 100 lines with a height": {
+        "props": {
+          "height": "105px",
+          "lines": [
+            {
+              "id": 0,
+              "level": "debug",
+              "message": "line 0"
+            },
+            {
+              "id": 1,
+              "level": "info",
+              "message": "line 1"
+            },
+            {
+              "id": 2,
+              "level": "warn",
+              "message": "line 2"
+            },
+            {
+              "id": 3,
+              "level": "error",
+              "message": "line 3"
+            },
+            {
+              "id": 4,
+              "level": "debug",
+              "message": "line 4"
+            },
+            {
+              "id": 5,
+              "level": "info",
+              "message": "line 5"
+            },
+            {
+              "id": 6,
+              "level": "warn",
+              "message": "line 6"
+            },
+            {
+              "id": 7,
+              "level": "error",
+              "message": "line 7"
+            },
+            {
+              "id": 8,
+              "level": "debug",
+              "message": "line 8"
+            },
+            {
+              "id": 9,
+              "level": "info",
+              "message": "line 9"
+            },
+            {
+              "id": 10,
+              "level": "warn",
+              "message": "line 10"
+            },
+            {
+              "id": 11,
+              "level": "error",
+              "message": "line 11"
+            },
+            {
+              "id": 12,
+              "level": "debug",
+              "message": "line 12"
+            },
+            {
+              "id": 13,
+              "level": "info",
+              "message": "line 13"
+            },
+            {
+              "id": 14,
+              "level": "warn",
+              "message": "line 14"
+            },
+            {
+              "id": 15,
+              "level": "error",
+              "message": "line 15"
+            },
+            {
+              "id": 16,
+              "level": "debug",
+              "message": "line 16"
+            },
+            {
+              "id": 17,
+              "level": "info",
+              "message": "line 17"
+            },
+            {
+              "id": 18,
+              "level": "warn",
+              "message": "line 18"
+            },
+            {
+              "id": 19,
+              "level": "error",
+              "message": "line 19"
+            },
+            {
+              "id": 20,
+              "level": "debug",
+              "message": "line 20"
+            },
+            {
+              "id": 21,
+              "level": "info",
+              "message": "line 21"
+            },
+            {
+              "id": 22,
+              "level": "warn",
+              "message": "line 22"
+            },
+            {
+              "id": 23,
+              "level": "error",
+              "message": "line 23"
+            },
+            {
+              "id": 24,
+              "level": "debug",
+              "message": "line 24"
+            },
+            {
+              "id": 25,
+              "level": "info",
+              "message": "line 25"
+            },
+            {
+              "id": 26,
+              "level": "warn",
+              "message": "line 26"
+            },
+            {
+              "id": 27,
+              "level": "error",
+              "message": "line 27"
+            },
+            {
+              "id": 28,
+              "level": "debug",
+              "message": "line 28"
+            },
+            {
+              "id": 29,
+              "level": "info",
+              "message": "line 29"
+            },
+            {
+              "id": 30,
+              "level": "warn",
+              "message": "line 30"
+            },
+            {
+              "id": 31,
+              "level": "error",
+              "message": "line 31"
+            },
+            {
+              "id": 32,
+              "level": "debug",
+              "message": "line 32"
+            },
+            {
+              "id": 33,
+              "level": "info",
+              "message": "line 33"
+            },
+            {
+              "id": 34,
+              "level": "warn",
+              "message": "line 34"
+            },
+            {
+              "id": 35,
+              "level": "error",
+              "message": "line 35"
+            },
+            {
+              "id": 36,
+              "level": "debug",
+              "message": "line 36"
+            },
+            {
+              "id": 37,
+              "level": "info",
+              "message": "line 37"
+            },
+            {
+              "id": 38,
+              "level": "warn",
+              "message": "line 38"
+            },
+            {
+              "id": 39,
+              "level": "error",
+              "message": "line 39"
+            },
+            {
+              "id": 40,
+              "level": "debug",
+              "message": "line 40"
+            },
+            {
+              "id": 41,
+              "level": "info",
+              "message": "line 41"
+            },
+            {
+              "id": 42,
+              "level": "warn",
+              "message": "line 42"
+            },
+            {
+              "id": 43,
+              "level": "error",
+              "message": "line 43"
+            },
+            {
+              "id": 44,
+              "level": "debug",
+              "message": "line 44"
+            },
+            {
+              "id": 45,
+              "level": "info",
+              "message": "line 45"
+            },
+            {
+              "id": 46,
+              "level": "warn",
+              "message": "line 46"
+            },
+            {
+              "id": 47,
+              "level": "error",
+              "message": "line 47"
+            },
+            {
+              "id": 48,
+              "level": "debug",
+              "message": "line 48"
+            },
+            {
+              "id": 49,
+              "level": "info",
+              "message": "line 49"
+            },
+            {
+              "id": 50,
+              "level": "warn",
+              "message": "line 50"
+            },
+            {
+              "id": 51,
+              "level": "error",
+              "message": "line 51"
+            },
+            {
+              "id": 52,
+              "level": "debug",
+              "message": "line 52"
+            },
+            {
+              "id": 53,
+              "level": "info",
+              "message": "line 53"
+            },
+            {
+              "id": 54,
+              "level": "warn",
+              "message": "line 54"
+            },
+            {
+              "id": 55,
+              "level": "error",
+              "message": "line 55"
+            },
+            {
+              "id": 56,
+              "level": "debug",
+              "message": "line 56"
+            },
+            {
+              "id": 57,
+              "level": "info",
+              "message": "line 57"
+            },
+            {
+              "id": 58,
+              "level": "warn",
+              "message": "line 58"
+            },
+            {
+              "id": 59,
+              "level": "error",
+              "message": "line 59"
+            },
+            {
+              "id": 60,
+              "level": "debug",
+              "message": "line 60"
+            },
+            {
+              "id": 61,
+              "level": "info",
+              "message": "line 61"
+            },
+            {
+              "id": 62,
+              "level": "warn",
+              "message": "line 62"
+            },
+            {
+              "id": 63,
+              "level": "error",
+              "message": "line 63"
+            },
+            {
+              "id": 64,
+              "level": "debug",
+              "message": "line 64"
+            },
+            {
+              "id": 65,
+              "level": "info",
+              "message": "line 65"
+            },
+            {
+              "id": 66,
+              "level": "warn",
+              "message": "line 66"
+            },
+            {
+              "id": 67,
+              "level": "error",
+              "message": "line 67"
+            },
+            {
+              "id": 68,
+              "level": "debug",
+              "message": "line 68"
+            },
+            {
+              "id": 69,
+              "level": "info",
+              "message": "line 69"
+            },
+            {
+              "id": 70,
+              "level": "warn",
+              "message": "line 70"
+            },
+            {
+              "id": 71,
+              "level": "error",
+              "message": "line 71"
+            },
+            {
+              "id": 72,
+              "level": "debug",
+              "message": "line 72"
+            },
+            {
+              "id": 73,
+              "level": "info",
+              "message": "line 73"
+            },
+            {
+              "id": 74,
+              "level": "warn",
+              "message": "line 74"
+            },
+            {
+              "id": 75,
+              "level": "error",
+              "message": "line 75"
+            },
+            {
+              "id": 76,
+              "level": "debug",
+              "message": "line 76"
+            },
+            {
+              "id": 77,
+              "level": "info",
+              "message": "line 77"
+            },
+            {
+              "id": 78,
+              "level": "warn",
+              "message": "line 78"
+            },
+            {
+              "id": 79,
+              "level": "error",
+              "message": "line 79"
+            },
+            {
+              "id": 80,
+              "level": "debug",
+              "message": "line 80"
+            },
+            {
+              "id": 81,
+              "level": "info",
+              "message": "line 81"
+            },
+            {
+              "id": 82,
+              "level": "warn",
+              "message": "line 82"
+            },
+            {
+              "id": 83,
+              "level": "error",
+              "message": "line 83"
+            },
+            {
+              "id": 84,
+              "level": "debug",
+              "message": "line 84"
+            },
+            {
+              "id": 85,
+              "level": "info",
+              "message": "line 85"
+            },
+            {
+              "id": 86,
+              "level": "warn",
+              "message": "line 86"
+            },
+            {
+              "id": 87,
+              "level": "error",
+              "message": "line 87"
+            },
+            {
+              "id": 88,
+              "level": "debug",
+              "message": "line 88"
+            },
+            {
+              "id": 89,
+              "level": "info",
+              "message": "line 89"
+            },
+            {
+              "id": 90,
+              "level": "warn",
+              "message": "line 90"
+            },
+            {
+              "id": 91,
+              "level": "error",
+              "message": "line 91"
+            },
+            {
+              "id": 92,
+              "level": "debug",
+              "message": "line 92"
+            },
+            {
+              "id": 93,
+              "level": "info",
+              "message": "line 93"
+            },
+            {
+              "id": 94,
+              "level": "warn",
+              "message": "line 94"
+            },
+            {
+              "id": 95,
+              "level": "error",
+              "message": "line 95"
+            },
+            {
+              "id": 96,
+              "level": "debug",
+              "message": "line 96"
+            },
+            {
+              "id": 97,
+              "level": "info",
+              "message": "line 97"
+            },
+            {
+              "id": 98,
+              "level": "warn",
+              "message": "line 98"
+            },
+            {
+              "id": 99,
+              "level": "error",
+              "message": "line 99"
+            },
+            {
+              "id": 100,
+              "level": "debug",
+              "message": "line 100"
+            },
+            {
+              "id": 101,
+              "level": "info",
+              "message": "line 101"
+            },
+            {
+              "id": 102,
+              "level": "warn",
+              "message": "line 102"
+            },
+            {
+              "id": 103,
+              "level": "error",
+              "message": "line 103"
+            },
+            {
+              "id": 104,
+              "level": "debug",
+              "message": "line 104"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"3\" role=\"log\"><div class=\"ui-log-viewer__scroll\" style=\"height:105px;block-size:105px\"><div class=\"ui-log-viewer__virtual-spacer\" style=\"height:2205px\"></div><div style=\"position:absolute;top:0;left:0;right:0;transform:translateY(0px)\"><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 0</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 1</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 2</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 3</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 4</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 5</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 6</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 7</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 8</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 9</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 10</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 11</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 12</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 13</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 14</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 15</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 16</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 17</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 18</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 19</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 20</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"info\"><span class=\"ui-log-viewer__message\">line 21</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"warn\"><span class=\"ui-log-viewer__message\">line 22</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"error\"><span class=\"ui-log-viewer__message\">line 23</span></div><div class=\"ui-log-viewer__line\" data-line-level=\"debug\"><span class=\"ui-log-viewer__message\">line 24</span></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "lines": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-log-viewer\" data-motion=\"0\" role=\"log\"><div class=\"ui-log-viewer__scroll\"><div></div></div></div>"
+      }
+    },
     "MeteorShower": {
       "few": {
         "props": {
@@ -3909,6 +4586,34 @@
           ]
         },
         "html": "<div class=\"ui-orbiting-circles\" data-motion=\"0\" style=\"--orbit-radius:100px;--orbit-duration:15s;--orbit-direction:normal\" role=\"presentation\"><div class=\"ui-orbiting-circles--item\" style=\"--orbit-start-angle:0deg;--orbit-delay:0s\">x</div></div>"
+      }
+    },
+    "OtpInput": {
+      "defaults": {
+        "props": {
+          "aria-label": "Code"
+        },
+        "html": "<div class=\"ui-otp-input\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Code\"><div class=\"ui-otp-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 1 of 6\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 2 of 6\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 3 of 6\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 4 of 6\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 5 of 6\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 6 of 6\" value=\"\"/></div></div>"
+      },
+      "controlled partial, text, 4, error, lg, disabled": {
+        "props": {
+          "aria-label": "Code",
+          "value": "12",
+          "type": "text",
+          "length": 4,
+          "error": "Wrong code",
+          "size": "lg",
+          "disabled": true
+        },
+        "html": "<div class=\"ui-otp-input\" data-size=\"lg\" data-motion=\"3\" data-invalid=\"\" role=\"group\" aria-label=\"Code\" aria-describedby=\"otp-_R_0_-error\"><div class=\"ui-otp-input__digits\"><input type=\"text\" inputMode=\"text\" class=\"ui-otp-input__digit\" maxLength=\"1\" disabled=\"\" autoComplete=\"one-time-code\" aria-label=\"Digit 1 of 4\" aria-invalid=\"true\" value=\"1\"/><input type=\"text\" inputMode=\"text\" class=\"ui-otp-input__digit\" maxLength=\"1\" disabled=\"\" autoComplete=\"one-time-code\" aria-label=\"Digit 2 of 4\" aria-invalid=\"true\" value=\"2\"/><input type=\"text\" inputMode=\"text\" class=\"ui-otp-input__digit\" maxLength=\"1\" disabled=\"\" autoComplete=\"one-time-code\" aria-label=\"Digit 3 of 4\" aria-invalid=\"true\" value=\"\"/><input type=\"text\" inputMode=\"text\" class=\"ui-otp-input__digit\" maxLength=\"1\" disabled=\"\" autoComplete=\"one-time-code\" aria-label=\"Digit 4 of 4\" aria-invalid=\"true\" value=\"\"/></div><span id=\"otp-_R_0_-error\" class=\"ui-otp-input__error\" role=\"alert\">Wrong code</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "aria-label": "Code",
+          "motion": 0,
+          "length": 2
+        },
+        "html": "<div class=\"ui-otp-input\" data-size=\"md\" data-motion=\"0\" role=\"group\" aria-label=\"Code\"><div class=\"ui-otp-input__digits\"><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 1 of 2\" value=\"\"/><input type=\"text\" inputMode=\"numeric\" class=\"ui-otp-input__digit\" maxLength=\"1\" autoComplete=\"one-time-code\" aria-label=\"Digit 2 of 2\" value=\"\"/></div></div>"
       }
     },
     "PageHeader": {

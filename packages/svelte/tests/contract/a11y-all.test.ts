@@ -111,6 +111,10 @@ const INHERITED: Record<string, string> = {
   ...Object.fromEntries(Object.keys(CASES.EncryptedText).map(c => [`EncryptedText/${c}/role-img-alt`,
     'EncryptedText is role="img" named by aria-label={text}; these cases must use empty text (React\'s server ' +
     'render has no character spans otherwise), which leaves the image unnamed — as it would in React'])),
+  ...Object.fromEntries(['columns', 'reset, caller attrs'].map(c => [`ColumnVisibilityToggle/${c}/aria-required-children`,
+    'DEFECT in both packages: ColumnVisibilityToggle\'s dropdown is role="listbox" but holds labelled checkboxes ' +
+    '(and a reset button), not role="option" children. Fix together (a group of checkboxes, no listbox role) or ' +
+    'the contract breaks'])),
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,
