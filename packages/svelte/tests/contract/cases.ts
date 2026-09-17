@@ -953,6 +953,15 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     collapsed: { columnId: 'done', title: 'Done', collapsed: true, onCollapse: { $fn: true }, cards: [{ id: 'a', title: 'A' }] },
     'motion 0': { columnId: 'm', title: 'M', motion: 0, cards: [] },
   },
+  TransferList: {
+    lists: { onChange: { $fn: true }, value: [[{ value: 'a', label: 'Alpha' }, { value: 'b', label: 'Beta' }], [{ value: 'c', label: 'Gamma' }]] },
+    'groups, searchable, titles, numeric height, no transfer-all, lg, caller attrs': {
+      onChange: { $fn: true }, searchable: true, titles: ['Available', 'Chosen'], listHeight: 200, showTransferAll: false, size: 'lg', className: 'mine', id: 'tl',
+      value: [[{ value: 'a', label: 'A', group: 'G1' }, { value: 'b', label: 'B', group: 'G2' }, { value: 'c', label: 'C' }], []],
+    },
+    'empty sides, string height': { onChange: { $fn: true }, listHeight: '50vh', value: [[], []] },
+    'motion 0': { onChange: { $fn: true }, motion: 0, value: [[], []] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

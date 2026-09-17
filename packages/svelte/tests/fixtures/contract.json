@@ -8450,6 +8450,97 @@
         "html": "<div class=\"ui-tracing-beam\" data-motion=\"0\"><div class=\"ui-tracing-beam--track\" aria-hidden=\"true\"><div class=\"ui-tracing-beam--progress\" style=\"--beam-progress:0%\"></div><div class=\"ui-tracing-beam--dot\" style=\"--beam-progress:0%\"></div></div><div class=\"ui-tracing-beam--content\"><b>Story</b></div></div>"
       }
     },
+    "TransferList": {
+      "lists": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "value": [
+            [
+              {
+                "value": "a",
+                "label": "Alpha"
+              },
+              {
+                "value": "b",
+                "label": "Beta"
+              }
+            ],
+            [
+              {
+                "value": "c",
+                "label": "Gamma"
+              }
+            ]
+          ]
+        },
+        "html": "<div class=\"ui-transfer-list\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Transfer list\"><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Source\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Source</span><span class=\"ui-transfer-list__count\">2</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Source items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-left\" style=\"max-block-size:16rem\"><div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">Alpha</span></div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">Beta</span></div></div></div></div><div class=\"ui-transfer-list__controls\"><button type=\"button\" class=\"ui-transfer-list__control-btn\" aria-label=\"Transfer all to right\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 3L9 8L4 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L13 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to right\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M6 3L11 8L6 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to left\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3L5 8L10 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" aria-label=\"Transfer all to left\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 3L7 8L12 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L3 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Target\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Target</span><span class=\"ui-transfer-list__count\">1</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Target items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-right\" style=\"max-block-size:16rem\"><div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">Gamma</span></div></div></div></div></div>"
+      },
+      "groups, searchable, titles, numeric height, no transfer-all, lg, caller attrs": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "searchable": true,
+          "titles": [
+            "Available",
+            "Chosen"
+          ],
+          "listHeight": 200,
+          "showTransferAll": false,
+          "size": "lg",
+          "className": "mine",
+          "id": "tl",
+          "value": [
+            [
+              {
+                "value": "a",
+                "label": "A",
+                "group": "G1"
+              },
+              {
+                "value": "b",
+                "label": "B",
+                "group": "G2"
+              },
+              {
+                "value": "c",
+                "label": "C"
+              }
+            ],
+            []
+          ]
+        },
+        "html": "<div class=\"ui-transfer-list mine\" data-size=\"lg\" data-motion=\"3\" role=\"group\" aria-label=\"Transfer list\" id=\"tl\"><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Available\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Available</span><span class=\"ui-transfer-list__count\">3</span></div><div class=\"ui-transfer-list__search\"><input type=\"text\" class=\"ui-transfer-list__search-input\" placeholder=\"Search...\" aria-label=\"Search Available\" value=\"\"/></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Available items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-left\" style=\"max-block-size:200px\"><div><div class=\"ui-transfer-list__group-header\" role=\"presentation\">G1</div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">A</span></div></div><div><div class=\"ui-transfer-list__group-header\" role=\"presentation\">G2</div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">B</span></div></div><div><div class=\"ui-transfer-list__item\" role=\"option\" aria-selected=\"false\"><span class=\"ui-transfer-list__checkbox\" aria-hidden=\"true\"></span><span class=\"ui-transfer-list__item-label\">C</span></div></div></div></div><div class=\"ui-transfer-list__controls\"><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to right\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M6 3L11 8L6 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to left\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3L5 8L10 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Chosen\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Chosen</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__search\"><input type=\"text\" class=\"ui-transfer-list__search-input\" placeholder=\"Search...\" aria-label=\"Search Chosen\" value=\"\"/></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Chosen items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-right\" style=\"max-block-size:200px\"><div></div></div></div></div>"
+      },
+      "empty sides, string height": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "listHeight": "50vh",
+          "value": [
+            [],
+            []
+          ]
+        },
+        "html": "<div class=\"ui-transfer-list\" data-size=\"md\" data-motion=\"3\" role=\"group\" aria-label=\"Transfer list\"><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Source\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Source</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Source items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-left\" style=\"max-block-size:50vh\"><div></div></div></div><div class=\"ui-transfer-list__controls\"><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to right\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 3L9 8L4 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L13 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to right\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M6 3L11 8L6 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to left\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3L5 8L10 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to left\" data-motion=\"3\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 3L7 8L12 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L3 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Target\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Target</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Target items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-right\" style=\"max-block-size:50vh\"><div></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "onChange": {
+            "$fn": true
+          },
+          "motion": 0,
+          "value": [
+            [],
+            []
+          ]
+        },
+        "html": "<div class=\"ui-transfer-list\" data-size=\"md\" data-motion=\"0\" role=\"group\" aria-label=\"Transfer list\"><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Source\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Source</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Source items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-left\" style=\"max-block-size:16rem\"><div></div></div></div><div class=\"ui-transfer-list__controls\"><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to right\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 3L9 8L4 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L13 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to right\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M6 3L11 8L6 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer selected to left\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3L5 8L10 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-transfer-list__control-btn\" disabled=\"\" aria-label=\"Transfer all to left\" data-motion=\"0\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 3L7 8L12 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M8 3L3 8L8 13\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-transfer-list__panel\" role=\"group\" aria-label=\"Target\"><div class=\"ui-transfer-list__header\"><span class=\"ui-transfer-list__title\">Target</span><span class=\"ui-transfer-list__count\">0</span></div><div class=\"ui-transfer-list__items\" role=\"listbox\" aria-label=\"Target items\" aria-multiselectable=\"true\" id=\"transfer-list-_R_0_-right\" style=\"max-block-size:16rem\"><div></div></div></div></div>"
+      }
+    },
     "TruncatedText": {
       "defaults": {
         "props": {
