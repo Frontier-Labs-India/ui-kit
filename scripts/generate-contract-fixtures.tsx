@@ -37,6 +37,7 @@ function hydrate(value: unknown): unknown {
   if (value && typeof value === 'object') {
     const v = value as Record<string, unknown>
     if ('$el' in v) return React.createElement('b', null, String(v.$el))
+    if ('$date' in v) return new Date(String(v.$date))
     if ('$fn' in v) return () => {}
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
@@ -62,8 +63,19 @@ async function load(name: string) {
   throw new Error(`no source file for ${name} (${file}.tsx)`)
 }
 
-// Freeze the clock for every render — see CONTRACT_NOW in cases.ts.
-Date.now = () => CONTRACT_NOW
+// Freeze the clock for every render — see CONTRACT_NOW in cases.ts. Both
+// Date.now and the zero-argument constructor: `new Date()` reads the real clock
+// even when Date.now is replaced, so Calendar's "today" was the day the fixture
+// was generated. The Svelte side fakes both through vi.setSystemTime.
+const RealDate = Date
+class PinnedDate extends RealDate {
+  constructor(...args: unknown[]) {
+    if (args.length === 0) super(CONTRACT_NOW)
+    else super(...(args as [string]))
+  }
+  static now() { return CONTRACT_NOW }
+}
+globalThis.Date = PinnedDate as DateConstructor
 
 const components: Record<string, Record<string, { props: unknown; html: string }>> = {}
 for (const name of Object.keys(CASES).sort()) {

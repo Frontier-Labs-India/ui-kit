@@ -9,6 +9,9 @@
  *   { $el: 'text' }  a rendered child — React <b>text</b>, Svelte a snippet of the same
  *   { $fn: true }    a callback — a no-op on both sides; some markup exists only
  *                    when a handler is passed (e.g. a close button)
+ *   { $date: '2026-01-20T00:00' }  a Date — `new Date(string)` on both sides. Omit
+ *                    the zone: both run with TZ=UTC, so it is the local midnight
+ *                    a caller's date picker would produce
  *
  * Choose cases that change the MARKUP: every variant/size value that is an
  * attribute, every boolean that adds or removes an element, and the edge values
@@ -410,6 +413,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'motion 0 has no keyframes and no dash': {
       nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b', animated: true }], motion: 0,
     },
+  },
+  Calendar: {
+    // CONTRACT_NOW is 2026-01-15, so "today" is inside January 2026.
+    'today, no value': {},
+    'uncontrolled defaultValue in another month': { defaultValue: { $date: '2025-11-03T00:00' } },
+    'controlled value, min/max and disabled list': {
+      value: { $date: '2026-01-20T00:00' }, minDate: { $date: '2026-01-05T09:30' }, maxDate: { $date: '2026-01-28T00:00' },
+      disabledDates: [{ $date: '2026-01-21T00:00' }, { $date: '2026-01-22T00:00' }],
+    },
+    'value null is controlled-empty': { value: null, defaultValue: { $date: '2026-01-10T00:00' } },
+    'monday start, week numbers, no outside days, lg': { value: { $date: '2026-03-10T00:00' }, firstDayOfWeek: 1, showWeekNumbers: true, showOutsideDays: false, size: 'lg' },
+    'three months across a year boundary, no today highlight': { defaultValue: { $date: '2025-11-15T00:00' }, numberOfMonths: 3, highlightToday: false },
+    'range display with hover end': { value: { $date: '2026-01-08T00:00' }, _rangeStart: { $date: '2026-01-08T00:00' }, _hoverDate: { $date: '2026-01-02T00:00' } },
+    'range with explicit end beats hover': { _rangeStart: { $date: '2026-01-10T00:00' }, _rangeEnd: { $date: '2026-01-12T00:00' }, _hoverDate: { $date: '2026-01-25T00:00' } },
+    'de-DE locale, caller attributes': { locale: 'de-DE', className: 'mine', id: 'cal', value: { $date: '2026-01-15T00:00' } },
+    'motion 0': { motion: 0 },
   },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },

@@ -4,7 +4,7 @@ import { createRawSnippet, type Component } from 'svelte'
 import { axe } from 'jest-axe'
 import * as pkg from '../../src/index.js'
 import fixture from '../fixtures/contract.json'
-import { CONTRACT_NOW } from './cases.js'
+import { CASES, CONTRACT_NOW } from './cases.js'
 import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
 
 /* jest-axe over every case of every contract-tested component — not a
@@ -32,6 +32,7 @@ function hydrate(value: unknown): unknown {
     const v = value as Record<string, unknown>
     if ('$el' in v) return createRawSnippet(() => ({ render: () => `<b>${String(v.$el)}</b>` }))
     if ('$fn' in v) return () => {}
+    if ('$date' in v) return new Date(String(v.$date))
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
   return value
@@ -53,6 +54,11 @@ const DISK_DEFECT =
 const SLIDER_NAME =
   CALLER_MUST_NAME + '. Slider-specific, inherited: a caller aria-label lands on the wrapper div, not ' +
   'the range input, so the `label` prop is the only way to name the slider'
+
+const CALENDAR_DEFECT =
+  'DEFECT in both packages: Calendar puts role="gridcell" day buttons directly inside role="grid", ' +
+  'laid out by CSS grid with no role="row" wrappers, so the grid has no rows and the cells no row ' +
+  'parent. Fix together (row wrappers with display:contents, or drop the grid roles) or the contract breaks'
 
 /** `Component/case/rule-id` -> why it is accepted for now. */
 const INHERITED: Record<string, string> = {
@@ -80,6 +86,10 @@ const INHERITED: Record<string, string> = {
   'Slider/min equals max/label': SLIDER_NAME,
   'Slider/ticks capped at 101/label': SLIDER_NAME,
   'Slider/motion 0/label': SLIDER_NAME,
+  // Every Calendar case renders the grid, so every case carries the defect; the
+  // stale-entry check below still fails if a case stops producing it.
+  ...Object.fromEntries(Object.keys(CASES.Calendar).flatMap(c =>
+    ['aria-required-children', 'aria-required-parent'].map(rule => [`Calendar/${c}/${rule}`, CALENDAR_DEFECT]))),
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

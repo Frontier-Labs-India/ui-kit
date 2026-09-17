@@ -34,6 +34,7 @@ function hydrate(value: unknown): unknown {
       return createRawSnippet(() => ({ render: () => `<b>${text}</b>` }))
     }
     if ('$fn' in v) return () => {}
+    if ('$date' in v) return new Date(String(v.$date))
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
   return value
