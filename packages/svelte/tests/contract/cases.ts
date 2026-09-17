@@ -654,4 +654,20 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'labels hidden when none labelled': { showLabels: true, segments: [{ value: 5 }] },
     'motion 0': { segments: [], motion: 0 },
   },
+  DensitySelector: {
+    defaults: {},
+    'controlled spacious sm': { value: 'spacious', size: 'sm' },
+    'default compact': { defaultValue: 'compact' },
+    'motion 0': { motion: 0 },
+  },
+  Rating: {
+    empty: {},
+    'three of five': { defaultValue: 3 },
+    'controlled half, custom max': { value: 2.5, allowHalf: true, max: 4 },
+    'half ignored without allowHalf': { value: 2.5 },
+    'read-only, colour, size': { value: 4, readOnly: true, color: 'gold', size: 'xl' },
+    'colour lost to caller style (inherited)': { value: 1, color: 'gold', style: { padding: 2 } },
+    'custom icons and label': { value: 2, icon: { $el: '*' }, emptyIcon: 'o', 'aria-label': 'Quality' },
+    'motion 0': { motion: 0 },
+  },
 }

@@ -30,6 +30,14 @@ describe('canonical — ids', () => {
     expect(c('<label for="a1">x</label><input id="a1">')).toBe(c('<label for="zz">x</label><input id="zz">'))
   })
 
+  it('maps url(#id) references through the same table', () => {
+    const a = '<svg><defs><clipPath id="r1"></clipPath></defs><path clip-path="url(#r1)"></path></svg>'
+    const b = '<svg><defs><clipPath id="zz"></clipPath></defs><path clip-path="url(#zz)"></path></svg>'
+    const broken = '<svg><defs><clipPath id="zz"></clipPath></defs><path clip-path="url(#other)"></path></svg>'
+    expect(c(a)).toBe(c(b))
+    expect(c(a)).not.toBe(c(broken))
+  })
+
   it('tells a broken relationship apart', () => {
     expect(c('<label for="a">x</label><input id="b">')).not.toBe(c('<label for="a">x</label><input id="a">'))
   })

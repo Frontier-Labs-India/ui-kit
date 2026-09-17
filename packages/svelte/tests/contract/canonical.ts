@@ -26,7 +26,8 @@
  *   - every tag, attribute name and value, text, and the tree's shape
  *   - id RELATIONSHIPS. Ids become #1, #2… in order of first appearance, and
  *     reference attributes (for, aria-describedby, …) map through the same
- *     table. Two correct implementations with different random ids compare
+ *     table — as do `url(#id)` references inside any attribute (clip-path,
+ *     fill, mask, filter), which SVG uses to point at gradients and clips. Two correct implementations with different random ids compare
  *     equal; a label that points at the wrong element does not. */
 
 const REF_ATTRS = new Set([
@@ -60,6 +61,7 @@ export function canonical(root: ParentNode): string {
   const attrValue = (name: string, value: string): string => {
     if (name === 'id') return token(value)
     if (REF_ATTRS.has(name)) return value.trim().split(/\s+/).filter(Boolean).map(token).join(' ')
+    if (value.includes('url(#')) value = value.replace(/url\(#([^)\s]+)\)/g, (_, id) => `url(${token(id)})`)
     if (name === 'class') return [...new Set(value.trim().split(/\s+/).filter(Boolean))].sort().join(' ')
     if (name === 'style') return styleText(value)
     return value
