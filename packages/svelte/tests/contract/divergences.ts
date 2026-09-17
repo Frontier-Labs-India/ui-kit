@@ -203,6 +203,15 @@ export const PROP_RENAMES: Record<string, { from: string; to: string; reason: st
         'Not universal: many components take onClick as a custom callback prop with its React name.',
     },
   ],
+  Carousel: [
+    {
+      from: 'children',
+      to: 'items',
+      reason:
+        'React counts and wraps its children with Children.toArray. A Svelte snippet cannot be counted, so the ' +
+        'Svelte component takes the array as `items` (COMPONENT-API.md rule 2, as OrbitingCircles).',
+    },
+  ],
   StepWizard: [
     {
       from: 'children',

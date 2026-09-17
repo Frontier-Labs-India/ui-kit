@@ -3357,6 +3357,235 @@
   }
 /* end card-grid */
 
+/* carousel */
+@layer components {
+    @scope (.ui-carousel) {
+      :scope {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm, 0.5rem);
+        container-type: inline-size;
+        font-family: inherit;
+      }
+
+      /* ── Track ─────────────────────────────────────────── */
+
+      .ui-carousel__track {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .ui-carousel__track::-webkit-scrollbar {
+        display: none;
+      }
+
+      :scope[data-motion="0"] .ui-carousel__track {
+        scroll-behavior: auto;
+      }
+
+      /* ── Slide ─────────────────────────────────────────── */
+
+      .ui-carousel__slide {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        min-inline-size: 0;
+      }
+
+      /* ── Arrows ────────────────────────────────────────── */
+
+      .ui-carousel__arrows {
+        position: absolute;
+        inset-block: 0;
+        inset-inline: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .ui-carousel__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-full, 9999px);
+        background: var(--surface-elevated, oklch(22% 0.01 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        cursor: pointer;
+        pointer-events: auto;
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0;
+        transition: background 0.15s var(--ease-out, ease-out),
+                    opacity 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+        box-shadow: var(--shadow-md, 0 4px 12px oklch(0% 0 0 / 0.2));
+        outline: none;
+      }
+
+      .ui-carousel__arrow:hover {
+        background: var(--bg-hover, oklch(100% 0 0 / 0.06));
+      }
+
+      .ui-carousel__arrow:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      .ui-carousel__arrow:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .ui-carousel__arrow--prev {
+        margin-inline-start: var(--space-xs, 0.25rem);
+      }
+
+      .ui-carousel__arrow--next {
+        margin-inline-end: var(--space-xs, 0.25rem);
+      }
+
+      :scope[data-motion="0"] .ui-carousel__arrow {
+        transition: none;
+      }
+
+      .ui-carousel__arrow svg {
+        inline-size: 1.25em;
+        block-size: 1.25em;
+        flex-shrink: 0;
+      }
+
+      /* ── Dots ──────────────────────────────────────────── */
+
+      .ui-carousel__dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-xs, 0.25rem);
+        padding-block: var(--space-xs, 0.25rem);
+      }
+
+      .ui-carousel__dot {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        border: none;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--text-tertiary, oklch(60% 0 0));
+        opacity: 0.4;
+        cursor: pointer;
+        padding: 0;
+        transition: opacity 0.15s var(--ease-out, ease-out),
+                    background 0.15s var(--ease-out, ease-out),
+                    transform 0.15s var(--ease-out, ease-out);
+        outline: none;
+      }
+
+      .ui-carousel__dot[data-active] {
+        opacity: 1;
+        background: var(--brand, oklch(65% 0.2 270));
+        transform: scale(1.25);
+      }
+
+      .ui-carousel__dot:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      :scope[data-motion="0"] .ui-carousel__dot {
+        transition: none;
+      }
+
+      /* ── Live region ───────────────────────────────────── */
+
+      .ui-carousel__live {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      /* ── Touch targets ─────────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-carousel__arrow {
+          inline-size: 44px;
+          block-size: 44px;
+        }
+        .ui-carousel__dot {
+          inline-size: 44px;
+          block-size: 44px;
+          background: transparent;
+          position: relative;
+        }
+        .ui-carousel__dot::after {
+          content: '';
+          position: absolute;
+          inset: 50%;
+          transform: translate(-50%, -50%);
+          inline-size: 0.5rem;
+          block-size: 0.5rem;
+          border-radius: var(--radius-full, 9999px);
+          background: var(--text-tertiary, oklch(60% 0 0));
+          opacity: 0.4;
+        }
+        .ui-carousel__dot[data-active]::after {
+          opacity: 1;
+          background: var(--brand, oklch(65% 0.2 270));
+          transform: translate(-50%, -50%) scale(1.25);
+        }
+      }
+
+      /* ── Forced colors ─────────────────────────────────── */
+
+      @media (forced-colors: active) {
+        .ui-carousel__arrow {
+          border: 2px solid ButtonText;
+        }
+        .ui-carousel__arrow:focus-visible {
+          outline: 2px solid Highlight;
+        }
+        .ui-carousel__dot {
+          border: 2px solid ButtonText;
+        }
+        .ui-carousel__dot[data-active] {
+          background: Highlight;
+        }
+      }
+
+      /* ── Print ──────────────────────────────────────────── */
+
+      @media print {
+        .ui-carousel__track {
+          overflow: visible;
+          flex-wrap: wrap;
+          scroll-snap-type: none;
+        }
+        .ui-carousel__arrows {
+          display: none;
+        }
+        .ui-carousel__dots {
+          display: none;
+        }
+      }
+    }
+  }
+/* end carousel */
+
 /* checkbox */
 @layer components {
     @scope (.ui-checkbox) {

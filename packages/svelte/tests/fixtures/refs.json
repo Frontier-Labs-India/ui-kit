@@ -603,6 +603,28 @@
    "nth": 0
   }
  },
+ "Carousel": {
+  "three slides": {
+   "tag": "div",
+   "classes": "ui-carousel",
+   "nth": 0
+  },
+  "two per view, gap string, loop, autoplay, no arrows, caller attrs, motion 0": {
+   "tag": "div",
+   "classes": "shows ui-carousel",
+   "nth": 0
+  },
+  "single slide hides arrows and dots": {
+   "tag": "div",
+   "classes": "ui-carousel",
+   "nth": 0
+  },
+  "no dots, three per view": {
+   "tag": "div",
+   "classes": "ui-carousel",
+   "nth": 0
+  }
+ },
  "Checkbox": {
   "defaults": {
    "tag": "input",

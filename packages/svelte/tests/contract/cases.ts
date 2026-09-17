@@ -1693,6 +1693,15 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
       activeStep: 5, children: ['one', 'two'],
     },
   },
+  Carousel: {
+    'three slides': { children: [{ $el: 'One' }, 'Two', { $el: 'Three' }] },
+    'two per view, gap string, loop, autoplay, no arrows, caller attrs, motion 0': {
+      children: ['a', null, 'b', false, 'c'], slidesPerView: 2, gap: '1rem', loop: true, autoPlay: true, showArrows: false,
+      className: 'shows', 'aria-label': 'Shows', style: { maxWidth: 600 }, motion: 0,
+    },
+    'single slide hides arrows and dots': { children: ['only'], gap: 8 },
+    'no dots, three per view': { children: ['1', '2', '3', '4'], slidesPerView: 3, showDots: false },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

@@ -1200,6 +1200,67 @@
         "html": "<div class=\"ui-card-grid\" data-columns=\"3\" data-gap=\"md\" style=\"margin-top:4px\"></div>"
       }
     },
+    "Carousel": {
+      "three slides": {
+        "props": {
+          "children": [
+            {
+              "$el": "One"
+            },
+            "Two",
+            {
+              "$el": "Three"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-carousel\" data-motion=\"3\" role=\"region\" aria-roledescription=\"carousel\" aria-label=\"Carousel\" tabindex=\"0\"><div class=\"ui-carousel__track\" aria-live=\"polite\" style=\"gap:0px\"><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 1 of 3\" style=\"flex-basis:100%\"><b>One</b></div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 2 of 3\" style=\"flex-basis:100%\">Two</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 3 of 3\" style=\"flex-basis:100%\"><b>Three</b></div></div><div class=\"ui-carousel__arrows\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-carousel__arrow ui-carousel__arrow--prev\" disabled=\"\" aria-label=\"Previous slide\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 18l-6-6 6-6\"></path></svg></button><button type=\"button\" class=\"ui-carousel__arrow ui-carousel__arrow--next\" aria-label=\"Next slide\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18l6-6-6-6\"></path></svg></button></div><div class=\"ui-carousel__dots\" role=\"tablist\" aria-label=\"Slides\"><button type=\"button\" class=\"ui-carousel__dot\" role=\"tab\" aria-selected=\"true\" aria-label=\"Go to slide 1\" data-active=\"\" tabindex=\"0\"></button><button type=\"button\" class=\"ui-carousel__dot\" role=\"tab\" aria-selected=\"false\" aria-label=\"Go to slide 2\" tabindex=\"-1\"></button><button type=\"button\" class=\"ui-carousel__dot\" role=\"tab\" aria-selected=\"false\" aria-label=\"Go to slide 3\" tabindex=\"-1\"></button></div><div class=\"ui-carousel__live\" aria-live=\"polite\" aria-atomic=\"true\">Slide 1 of 3</div></div>"
+      },
+      "two per view, gap string, loop, autoplay, no arrows, caller attrs, motion 0": {
+        "props": {
+          "children": [
+            "a",
+            null,
+            "b",
+            false,
+            "c"
+          ],
+          "slidesPerView": 2,
+          "gap": "1rem",
+          "loop": true,
+          "autoPlay": true,
+          "showArrows": false,
+          "className": "shows",
+          "aria-label": "Shows",
+          "style": {
+            "maxWidth": 600
+          },
+          "motion": 0
+        },
+        "html": "<div class=\"ui-carousel shows\" data-motion=\"0\" role=\"region\" aria-roledescription=\"carousel\" aria-label=\"Shows\" tabindex=\"0\" style=\"max-width:600px\"><div class=\"ui-carousel__track\" aria-live=\"off\" style=\"gap:1rem\"><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 1 of 3\" style=\"flex-basis:calc((100% - 1rem * 1) / 2)\">a</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 2 of 3\" style=\"flex-basis:calc((100% - 1rem * 1) / 2)\">b</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 3 of 3\" style=\"flex-basis:calc((100% - 1rem * 1) / 2)\">c</div></div><div class=\"ui-carousel__dots\" role=\"tablist\" aria-label=\"Slides\"><button type=\"button\" class=\"ui-carousel__dot\" role=\"tab\" aria-selected=\"true\" aria-label=\"Go to slide 1\" data-active=\"\" tabindex=\"0\"></button><button type=\"button\" class=\"ui-carousel__dot\" role=\"tab\" aria-selected=\"false\" aria-label=\"Go to slide 2\" tabindex=\"-1\"></button></div><div class=\"ui-carousel__live\" aria-live=\"polite\" aria-atomic=\"true\">Slide 1 of 2</div></div>"
+      },
+      "single slide hides arrows and dots": {
+        "props": {
+          "children": [
+            "only"
+          ],
+          "gap": 8
+        },
+        "html": "<div class=\"ui-carousel\" data-motion=\"3\" role=\"region\" aria-roledescription=\"carousel\" aria-label=\"Carousel\" tabindex=\"0\"><div class=\"ui-carousel__track\" aria-live=\"polite\" style=\"gap:8px\"><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 1 of 1\" style=\"flex-basis:100%\">only</div></div><div class=\"ui-carousel__live\" aria-live=\"polite\" aria-atomic=\"true\">Slide 1 of 1</div></div>"
+      },
+      "no dots, three per view": {
+        "props": {
+          "children": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "slidesPerView": 3,
+          "showDots": false
+        },
+        "html": "<div class=\"ui-carousel\" data-motion=\"3\" role=\"region\" aria-roledescription=\"carousel\" aria-label=\"Carousel\" tabindex=\"0\"><div class=\"ui-carousel__track\" aria-live=\"polite\" style=\"gap:0px\"><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 1 of 4\" style=\"flex-basis:calc((100% - 0px * 2) / 3)\">1</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 2 of 4\" style=\"flex-basis:calc((100% - 0px * 2) / 3)\">2</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 3 of 4\" style=\"flex-basis:calc((100% - 0px * 2) / 3)\">3</div><div class=\"ui-carousel__slide\" role=\"group\" aria-roledescription=\"slide\" aria-label=\"Slide 4 of 4\" style=\"flex-basis:calc((100% - 0px * 2) / 3)\">4</div></div><div class=\"ui-carousel__arrows\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-carousel__arrow ui-carousel__arrow--prev\" disabled=\"\" aria-label=\"Previous slide\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 18l-6-6 6-6\"></path></svg></button><button type=\"button\" class=\"ui-carousel__arrow ui-carousel__arrow--next\" aria-label=\"Next slide\" tabindex=\"-1\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18l6-6-6-6\"></path></svg></button></div><div class=\"ui-carousel__live\" aria-live=\"polite\" aria-atomic=\"true\">Slide 1 of 2</div></div>"
+      }
+    },
     "Checkbox": {
       "defaults": {
         "props": {},
