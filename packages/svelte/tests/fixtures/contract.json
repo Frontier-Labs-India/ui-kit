@@ -1445,6 +1445,153 @@
         "html": "<div class=\"ui-meteor-shower\" data-motion=\"0\" aria-hidden=\"true\"><div class=\"ui-meteor-shower--meteor\" style=\"--meteor-left:9.360662364633754%;--meteor-delay:2.3139203786558937s;--meteor-duration:1.8800629448960535s\"></div></div>"
       }
     },
+    "MetricCard": {
+      "basic": {
+        "props": {
+          "title": "Requests",
+          "value": "1.2k"
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"Requests\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">Requests</h3></div><div class=\"ui-metric-card__value\">1.2k</div></div>"
+      },
+      "change, trend, period, status, icon": {
+        "props": {
+          "title": "Latency",
+          "value": {
+            "$el": "42ms"
+          },
+          "icon": {
+            "$el": "i"
+          },
+          "status": "warning",
+          "trend": "up",
+          "change": {
+            "value": 12,
+            "period": "last week"
+          }
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" data-status=\"warning\" role=\"group\" aria-label=\"Latency\"><span class=\"ui-metric-card__status-dot\" data-status=\"warning\" aria-hidden=\"true\"></span><div class=\"ui-metric-card__header\"><span class=\"ui-metric-card__icon\"><b>i</b></span><h3 class=\"ui-metric-card__title\">Latency</h3></div><div class=\"ui-metric-card__value\"><b>42ms</b></div><div class=\"ui-metric-card__change\"><span class=\"ui-metric-card__trend\" data-trend=\"up\" aria-label=\"Trend: up\">↑</span><span class=\"ui-metric-card__change-value\" data-direction=\"positive\">+12%</span><span class=\"ui-metric-card__change-period\">vs last week</span></div></div>"
+      },
+      "negative and zero change": {
+        "props": {
+          "title": "Errors",
+          "value": 3,
+          "change": {
+            "value": -4
+          },
+          "trend": "down"
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"Errors\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">Errors</h3></div><div class=\"ui-metric-card__value\">3</div><div class=\"ui-metric-card__change\"><span class=\"ui-metric-card__trend\" data-trend=\"down\" aria-label=\"Trend: down\">↓</span><span class=\"ui-metric-card__change-value\" data-direction=\"negative\">-4%</span></div></div>"
+      },
+      "zero change": {
+        "props": {
+          "title": "Errors",
+          "value": 3,
+          "change": {
+            "value": 0
+          },
+          "trend": "flat"
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"Errors\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">Errors</h3></div><div class=\"ui-metric-card__value\">3</div><div class=\"ui-metric-card__change\"><span class=\"ui-metric-card__trend\" data-trend=\"flat\" aria-label=\"Trend: flat\">→</span><span class=\"ui-metric-card__change-value\" data-direction=\"zero\">0%</span></div></div>"
+      },
+      "sparkline": {
+        "props": {
+          "title": "CPU",
+          "value": "40%",
+          "sparkline": [
+            3,
+            5,
+            2,
+            8,
+            6
+          ]
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__value\">40%</div><div class=\"ui-metric-card__sparkline\"><svg viewBox=\"0 0 100 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><defs><linearGradient id=\"sparkline-fill\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0.3\"></stop><stop offset=\"100%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M 0 19.333333333333332 Q 12.5 19.333333333333332, 25 12 Q 37.5 12, 50 23 Q 62.5 23, 75 1 Q 87.5 1, 100 8.333333333333334 L 100 24 L 0 24 Z\" fill=\"url(#sparkline-fill)\"></path><path d=\"M 0 19.333333333333332 Q 12.5 19.333333333333332, 25 12 Q 37.5 12, 50 23 Q 62.5 23, 75 1 Q 87.5 1, 100 8.333333333333334\" fill=\"none\" stroke=\"oklch(65% 0.2 270)\" stroke-width=\"1.5\"></path></svg></div></div>"
+      },
+      "flat sparkline range": {
+        "props": {
+          "title": "CPU",
+          "value": "40%",
+          "sparkline": [
+            4,
+            4,
+            4
+          ]
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__value\">40%</div><div class=\"ui-metric-card__sparkline\"><svg viewBox=\"0 0 100 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><defs><linearGradient id=\"sparkline-fill\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0.3\"></stop><stop offset=\"100%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M 0 23 Q 25 23, 50 23 Q 75 23, 100 23 L 100 24 L 0 24 Z\" fill=\"url(#sparkline-fill)\"></path><path d=\"M 0 23 Q 25 23, 50 23 Q 75 23, 100 23\" fill=\"none\" stroke=\"oklch(65% 0.2 270)\" stroke-width=\"1.5\"></path></svg></div></div>"
+      },
+      "short sparkline hidden": {
+        "props": {
+          "title": "CPU",
+          "value": "40%",
+          "sparkline": [
+            4
+          ]
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__value\">40%</div></div>"
+      },
+      "loading": {
+        "props": {
+          "title": "CPU",
+          "value": "40%",
+          "loading": true
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" data-loading=\"\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__value\"> </div></div>"
+      },
+      "error hides change and sparkline": {
+        "props": {
+          "title": "CPU",
+          "value": "40%",
+          "error": "Down",
+          "change": {
+            "value": 1
+          },
+          "sparkline": [
+            1,
+            2
+          ]
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__error\">Down</div></div>"
+      },
+      "empty when no value": {
+        "props": {
+          "title": "CPU",
+          "value": "",
+          "empty": {
+            "$el": "No data"
+          },
+          "sparkline": [
+            1,
+            2
+          ]
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"CPU\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">CPU</h3></div><div class=\"ui-metric-card__empty\"><b>No data</b></div></div>"
+      },
+      "value 0 shows empty (inherited)": {
+        "props": {
+          "title": "Queue",
+          "value": 0,
+          "empty": "No data"
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\" aria-label=\"Queue\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">Queue</h3></div><div class=\"ui-metric-card__empty\">No data</div></div>"
+      },
+      "element title has no aria-label": {
+        "props": {
+          "title": {
+            "$el": "CPU"
+          },
+          "value": 1
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"3\" role=\"group\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\"><b>CPU</b></h3></div><div class=\"ui-metric-card__value\">1</div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "title": "x",
+          "value": 1,
+          "motion": 0
+        },
+        "html": "<div class=\"ui-metric-card\" data-motion=\"0\" role=\"group\" aria-label=\"x\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">x</h3></div><div class=\"ui-metric-card__value\">1</div></div>"
+      }
+    },
     "NotificationStack": {
       "empty": {
         "props": {
@@ -1932,6 +2079,63 @@
           "motion": 0
         },
         "html": "<div class=\"ui-progress\" role=\"progressbar\" aria-valuenow=\"10\" aria-valuemin=\"0\" aria-valuemax=\"100\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div class=\"ui-progress__track\"><div class=\"ui-progress__fill\" style=\"inline-size:10%\"></div></div></div>"
+      }
+    },
+    "PropertyList": {
+      "basic": {
+        "props": {
+          "items": [
+            {
+              "label": "Host",
+              "value": "db-1"
+            },
+            {
+              "label": "Port",
+              "value": 5432
+            }
+          ]
+        },
+        "html": "<div class=\"ui-property-list\" data-motion=\"3\" data-size=\"md\" data-columns=\"1\" role=\"list\" aria-label=\"Properties\"><div class=\"ui-property-list__row\" role=\"listitem\"><span class=\"ui-property-list__label\">Host</span><span class=\"ui-property-list__value\">db-1</span></div><div class=\"ui-property-list__row\" role=\"listitem\"><span class=\"ui-property-list__label\">Port</span><span class=\"ui-property-list__value\">5432</span></div></div>"
+      },
+      "every item option, two columns striped lg": {
+        "props": {
+          "columns": 2,
+          "striped": true,
+          "size": "lg",
+          "items": [
+            {
+              "label": "ID",
+              "value": "abc",
+              "mono": true,
+              "copyable": true
+            },
+            {
+              "label": "Docs",
+              "value": {
+                "$el": "link"
+              },
+              "href": "https://x.test"
+            },
+            {
+              "label": "Zero",
+              "value": 0
+            }
+          ]
+        },
+        "html": "<div class=\"ui-property-list\" data-motion=\"3\" data-size=\"lg\" data-columns=\"2\" data-striped=\"\" role=\"list\" aria-label=\"Properties\"><div class=\"ui-property-list__row\" role=\"listitem\"><span class=\"ui-property-list__label\">ID</span><span class=\"ui-property-list__value\" data-mono=\"\">abc<button class=\"ui-property-list__copy\" aria-label=\"Copy ID\" type=\"button\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"></rect><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"></path></svg></button></span></div><div class=\"ui-property-list__row\" role=\"listitem\"><span class=\"ui-property-list__label\">Docs</span><span class=\"ui-property-list__value\"><a class=\"ui-property-list__link\" href=\"https://x.test\" target=\"_blank\" rel=\"noopener noreferrer\"><b>link</b></a></span></div><div class=\"ui-property-list__row\" role=\"listitem\"><span class=\"ui-property-list__label\">Zero</span><span class=\"ui-property-list__value\">0</span></div></div>"
+      },
+      "empty": {
+        "props": {
+          "items": []
+        },
+        "html": "<div class=\"ui-property-list\" data-motion=\"3\" data-size=\"md\" data-columns=\"1\" role=\"list\" aria-label=\"Properties\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "items": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-property-list\" data-motion=\"0\" data-size=\"md\" data-columns=\"1\" role=\"list\" aria-label=\"Properties\"></div>"
       }
     },
     "ResponsiveCard": {

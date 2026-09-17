@@ -534,4 +534,34 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'secondary action only': { title: 'x', secondaryAction: { $el: 'Help' }, size: 'sm' },
     'motion 0': { title: 'x', motion: 0 },
   },
+  MetricCard: {
+    basic: { title: 'Requests', value: '1.2k' },
+    'change, trend, period, status, icon': {
+      title: 'Latency', value: { $el: '42ms' }, icon: { $el: 'i' }, status: 'warning', trend: 'up', change: { value: 12, period: 'last week' },
+    },
+    'negative and zero change': { title: 'Errors', value: 3, change: { value: -4 }, trend: 'down' },
+    'zero change': { title: 'Errors', value: 3, change: { value: 0 }, trend: 'flat' },
+    'sparkline': { title: 'CPU', value: '40%', sparkline: [3, 5, 2, 8, 6] },
+    'flat sparkline range': { title: 'CPU', value: '40%', sparkline: [4, 4, 4] },
+    'short sparkline hidden': { title: 'CPU', value: '40%', sparkline: [4] },
+    loading: { title: 'CPU', value: '40%', loading: true },
+    'error hides change and sparkline': { title: 'CPU', value: '40%', error: 'Down', change: { value: 1 }, sparkline: [1, 2] },
+    'empty when no value': { title: 'CPU', value: '', empty: { $el: 'No data' }, sparkline: [1, 2] },
+    'value 0 shows empty (inherited)': { title: 'Queue', value: 0, empty: 'No data' },
+    'element title has no aria-label': { title: { $el: 'CPU' }, value: 1 },
+    'motion 0': { title: 'x', value: 1, motion: 0 },
+  },
+  PropertyList: {
+    basic: { items: [{ label: 'Host', value: 'db-1' }, { label: 'Port', value: 5432 }] },
+    'every item option, two columns striped lg': {
+      columns: 2, striped: true, size: 'lg',
+      items: [
+        { label: 'ID', value: 'abc', mono: true, copyable: true },
+        { label: 'Docs', value: { $el: 'link' }, href: 'https://x.test' },
+        { label: 'Zero', value: 0 },
+      ],
+    },
+    empty: { items: [] },
+    'motion 0': { items: [], motion: 0 },
+  },
 }
