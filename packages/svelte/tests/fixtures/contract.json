@@ -6029,6 +6029,56 @@
         "html": "<div class=\"ui-plugin-dashboard\" data-motion=\"0\"><div class=\"ui-dashboard-template\" data-motion=\"0\" data-columns=\"2\" role=\"group\" aria-label=\"Dashboard: X\"><div class=\"ui-dashboard-template__header\"><div class=\"ui-dashboard-template__title-group\"><h2 class=\"ui-dashboard-template__title\">X</h2></div><div class=\"ui-dashboard-template__header-meta\"></div></div><div class=\"ui-dashboard-template__body\" data-sidebar=\"none\"><div class=\"ui-dashboard-template__main\"></div></div></div></div>"
       }
     },
+    "Popover": {
+      "closed": {
+        "props": {
+          "content": "Details",
+          "children": {
+            "$el": "Open"
+          }
+        },
+        "html": "<b aria-expanded=\"false\" aria-haspopup=\"dialog\">Open</b>"
+      },
+      "default open with snippet content": {
+        "props": {
+          "content": {
+            "$el": "Rich"
+          },
+          "children": {
+            "$el": "Open"
+          },
+          "defaultOpen": true
+        },
+        "html": "<b aria-expanded=\"true\" aria-haspopup=\"dialog\" aria-controls=\"popover-_R_0_\">Open</b><div class=\"ui-popover\" data-placement=\"bottom\" data-motion=\"3\" style=\"position:fixed;left:0px;top:0px\"><div class=\"ui-popover__panel\" id=\"popover-_R_0_\" role=\"dialog\" aria-label=\"Popover\" tabindex=\"-1\"><b>Rich</b></div><div class=\"ui-popover__arrow\"></div></div>"
+      },
+      "controlled open, top, no arrow, class, label, motion 0": {
+        "props": {
+          "content": "x",
+          "children": {
+            "$el": "T"
+          },
+          "open": true,
+          "placement": "top",
+          "arrow": false,
+          "className": "mine",
+          "aria-label": "Filters",
+          "motion": 0
+        },
+        "html": "<b aria-expanded=\"true\" aria-haspopup=\"dialog\" aria-controls=\"popover-_R_0_\">T</b><div class=\"ui-popover mine\" data-placement=\"top\" data-motion=\"0\" style=\"position:fixed;left:0px;top:0px\"><div class=\"ui-popover__panel\" id=\"popover-_R_0_\" role=\"dialog\" aria-label=\"Filters\" tabindex=\"-1\">x</div></div>"
+      },
+      "controlled closed wins over defaultOpen": {
+        "props": {
+          "content": "x",
+          "children": {
+            "$el": "T"
+          },
+          "open": false,
+          "defaultOpen": true,
+          "modal": true
+        },
+        "html": "<b aria-expanded=\"false\" aria-haspopup=\"dialog\">T</b>"
+      }
+    },
     "PortStatusGrid": {
       "basic": {
         "props": {

@@ -47,6 +47,13 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * elements are removed, from both trees, before the CSP check and the
  * comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  Popover: [
+    {
+      selector: '.ui-popover',
+      properties: ['left', 'top'],
+      reason: 'The panel is placed beside the measured trigger in an effect; the server HTML has 0,0 (popover.test.ts).',
+    },
+  ],
   Tour: [
     {
       selector: '.ui-tour__tooltip',
@@ -102,6 +109,13 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
  * comparison, and a behaviour test named in `reason` asserts what the effect
  * sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  Popover: [
+    {
+      selector: '.ui-popover',
+      attributes: ['data-placement'],
+      reason: 'The measured position can flip the placement (jsdom\'s zero-size trigger at the top flips top to bottom); the server HTML has the requested placement (popover.test.ts).',
+    },
+  ],
   CommandBar: [
     {
       selector: 'dialog',

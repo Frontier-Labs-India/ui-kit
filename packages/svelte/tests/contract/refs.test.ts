@@ -20,6 +20,7 @@ const EXTENSIONS: Record<string, string> = {
   ConfirmDialog: 'the <dialog> of the Dialog it renders',
   DataTableSuggestions: 'its root, null while no insight is shown',
   NativeTooltip: 'the caller\'s trigger element, through the attachment in its props',
+  Popover: 'the caller\'s trigger element, through the attachment in its props',
   TopologyGraphCanvas: 'its <canvas>',
   TopologyGraphSVG: 'its <svg>',
   Tour: 'its overlay root, null while closed',

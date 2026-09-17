@@ -1518,6 +1518,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'quotes and ampersand': { content: 'Say "hi" & <wave>', children: { $el: 'Hi' } },
     'empty content': { content: '', children: { $el: 'Nothing' } },
   },
+  // Rule 1 trigger. Closed cases compare the trigger props React's cloneElement
+  // adds; open cases the panel too (position is effect state, EFFECT_STYLES).
+  Popover: {
+    closed: { content: 'Details', children: { $el: 'Open' } },
+    'default open with snippet content': { content: { $el: 'Rich' }, children: { $el: 'Open' }, defaultOpen: true },
+    'controlled open, top, no arrow, class, label, motion 0': {
+      content: 'x', children: { $el: 'T' }, open: true, placement: 'top', arrow: false, className: 'mine', 'aria-label': 'Filters', motion: 0,
+    },
+    'controlled closed wins over defaultOpen': { content: 'x', children: { $el: 'T' }, open: false, defaultOpen: true, modal: true },
+  },
   Navbar: {
     'logo only': { logo: { $el: 'Acme' } },
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },

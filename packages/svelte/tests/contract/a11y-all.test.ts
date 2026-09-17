@@ -50,7 +50,15 @@ const CALENDAR_DEFECT =
   'parent. Fix together (row wrappers with display:contents, or drop the grid roles) or the contract breaks'
 
 /** `Component/case/rule-id` -> why it is accepted for now. */
+const STAND_IN_TRIGGER =
+  'the case\'s trigger is the contract\'s <b> stand-in, where aria-expanded/aria-haspopup are not allowed; ' +
+  'on the <button> a caller spreads the trigger props onto they are (popover.test.ts runs axe on that)'
+
 const INHERITED: Record<string, string> = {
+  'Popover/closed/aria-allowed-attr': STAND_IN_TRIGGER,
+  'Popover/default open with snippet content/aria-allowed-attr': STAND_IN_TRIGGER,
+  'Popover/controlled open, top, no arrow, class, label, motion 0/aria-allowed-attr': STAND_IN_TRIGGER,
+  'Popover/controlled closed wins over defaultOpen/aria-allowed-attr': STAND_IN_TRIGGER,
   'Checkbox/defaults/label': CALLER_MUST_NAME,
   'Checkbox/disabled/label': CALLER_MUST_NAME,
   'Checkbox/indeterminate/label': CALLER_MUST_NAME,

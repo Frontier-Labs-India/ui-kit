@@ -2354,6 +2354,12 @@
    "nth": 0
   }
  },
+ "Popover": {
+  "closed": null,
+  "default open with snippet content": null,
+  "controlled open, top, no arrow, class, label, motion 0": null,
+  "controlled closed wins over defaultOpen": null
+ },
  "PortStatusGrid": {
   "basic": {
    "tag": "div",
