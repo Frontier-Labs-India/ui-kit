@@ -1,7 +1,6 @@
 [
   "Avatar",
   "AvatarUpload",
-  "BackToTop",
   "Carousel",
   "CodeEditor",
   "ColorInput",
@@ -14,7 +13,6 @@
   "FileUpload",
   "InlineEdit",
   "KanbanColumn",
-  "LiveFeed",
   "LogViewer",
   "NativeTooltip",
   "OtpInput",
@@ -26,7 +24,6 @@
   "SmartTable",
   "SortableList",
   "StepWizard",
-  "StreamingText",
   "TableOfContents",
   "Tabs",
   "TimeSeriesChart",

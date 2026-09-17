@@ -263,6 +263,37 @@
         "html": "<div class=\"ui-app-shell\" data-has-sidebar=\"true\" data-sidebar-position=\"left\" data-sidebar-collapsed=\"false\"><div class=\"ui-app-shell__main\"><b>main</b></div></div>"
       }
     },
+    "BackToTop": {
+      "defaults": {
+        "props": {},
+        "html": "<button type=\"button\" class=\"ui-back-to-top\" data-visible=\"false\" data-motion=\"3\" style=\"inline-size:44px;block-size:44px\" aria-label=\"Back to top\"><span class=\"ui-back-to-top__icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 19V5m0 0l-7 7m7-7l7 7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></button>"
+      },
+      "progress ring, lg, caller style and class": {
+        "props": {
+          "showProgress": true,
+          "size": "lg",
+          "style": {
+            "right": 24
+          },
+          "className": "mine"
+        },
+        "html": "<button type=\"button\" class=\"ui-back-to-top mine\" data-visible=\"false\" data-motion=\"3\" style=\"inline-size:56px;block-size:56px;right:24px\" aria-label=\"Back to top\"><svg class=\"ui-back-to-top__progress\" viewBox=\"0 0 56 56\" width=\"56\" height=\"56\"><circle class=\"ui-back-to-top__progress-track\" cx=\"28\" cy=\"28\" r=\"27\" stroke-width=\"2\"></circle><circle class=\"ui-back-to-top__progress-fill\" cx=\"28\" cy=\"28\" r=\"27\" stroke-width=\"2\" stroke-dasharray=\"169.64600329384882\" stroke-dashoffset=\"169.64600329384882\" transform=\"rotate(-90 28 28)\"></circle></svg><span class=\"ui-back-to-top__icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 19V5m0 0l-7 7m7-7l7 7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></button>"
+      },
+      "sm, visibleFrom, not smooth": {
+        "props": {
+          "size": "sm",
+          "visibleFrom": 100,
+          "smooth": false
+        },
+        "html": "<button type=\"button\" class=\"ui-back-to-top\" data-visible=\"false\" data-motion=\"3\" style=\"inline-size:36px;block-size:36px\" aria-label=\"Back to top\"><span class=\"ui-back-to-top__icon\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 19V5m0 0l-7 7m7-7l7 7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></button>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<button type=\"button\" class=\"ui-back-to-top\" data-visible=\"false\" data-motion=\"0\" style=\"inline-size:44px;block-size:44px\" aria-label=\"Back to top\"><span class=\"ui-back-to-top__icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M12 19V5m0 0l-7 7m7-7l7 7\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span></button>"
+      }
+    },
     "BackgroundBeams": {
       "few": {
         "props": {
@@ -3057,6 +3088,71 @@
           "dividers": false
         },
         "html": "<div class=\"ui-list-layout\" data-gap=\"md\" data-padding=\"none\"></div>"
+      }
+    },
+    "LiveFeed": {
+      "empty": {
+        "props": {
+          "items": []
+        },
+        "html": "<div class=\"ui-live-feed\" data-motion=\"3\" aria-live=\"polite\"><div class=\"ui-live-feed__scroll\"><div class=\"ui-live-feed__empty\">No events</div></div></div>"
+      },
+      "custom empty, height, caller attrs": {
+        "props": {
+          "items": [],
+          "emptyMessage": {
+            "$el": "Quiet"
+          },
+          "height": "240px",
+          "className": "mine",
+          "id": "lf"
+        },
+        "html": "<div class=\"ui-live-feed mine\" data-motion=\"3\" aria-live=\"polite\" id=\"lf\"><div class=\"ui-live-feed__scroll\" style=\"block-size:240px\"><div class=\"ui-live-feed__empty\"><b>Quiet</b></div></div></div>"
+      },
+      "items truncated to maxItems, types, status and paused": {
+        "props": {
+          "maxItems": 2,
+          "connectionStatus": "reconnecting",
+          "paused": true,
+          "items": [
+            {
+              "id": "1",
+              "content": "boot",
+              "timestamp": 1768478400000
+            },
+            {
+              "id": "2",
+              "content": {
+                "$el": "deploy"
+              },
+              "timestamp": {
+                "$date": "2026-01-15T12:00:05"
+              },
+              "type": "info"
+            },
+            {
+              "id": "3",
+              "content": "error",
+              "timestamp": 1768478410000,
+              "type": "error"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-live-feed\" data-motion=\"3\" data-paused=\"true\" data-connection=\"reconnecting\" aria-live=\"polite\"><div class=\"ui-live-feed__header\"><div class=\"ui-live-feed__status\"><span class=\"ui-live-feed__status-dot\" aria-hidden=\"true\"></span><span>Reconnecting</span></div><span class=\"ui-live-feed__pause-badge\">Paused</span></div><div class=\"ui-live-feed__scroll\"><div class=\"ui-live-feed__list\"><div class=\"ui-live-feed__item\" data-type=\"info\"><div class=\"ui-live-feed__item-content\"><b>deploy</b></div><span class=\"ui-live-feed__timestamp\">12:00:05 PM</span></div><div class=\"ui-live-feed__item\" data-type=\"error\"><div class=\"ui-live-feed__item-content\">error</div><span class=\"ui-live-feed__timestamp\">12:00:10 PM</span></div></div></div></div>"
+      },
+      "connected only": {
+        "props": {
+          "items": [],
+          "connectionStatus": "connected"
+        },
+        "html": "<div class=\"ui-live-feed\" data-motion=\"3\" data-connection=\"connected\" aria-live=\"polite\"><div class=\"ui-live-feed__header\"><div class=\"ui-live-feed__status\"><span class=\"ui-live-feed__status-dot\" aria-hidden=\"true\"></span><span>Connected</span></div></div><div class=\"ui-live-feed__scroll\"><div class=\"ui-live-feed__empty\">No events</div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "items": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-live-feed\" data-motion=\"0\" aria-live=\"polite\"><div class=\"ui-live-feed__scroll\"><div class=\"ui-live-feed__empty\">No events</div></div></div>"
       }
     },
     "MeteorShower": {
@@ -6043,6 +6139,58 @@
           "motion": 0
         },
         "html": "<div class=\"ui-storage-bar\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"Storage: 0.0 GB of 1.0 GB used\"><div class=\"ui-storage-bar__track\"></div></div>"
+      }
+    },
+    "StreamingText": {
+      "plain": {
+        "props": {
+          "text": "Hello world"
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"3\" aria-live=\"polite\"><div class=\"ui-streaming-text__content\"><span>Hello world</span></div></div>"
+      },
+      "code blocks with and without language": {
+        "props": {
+          "text": "Run:\n```bash\nnpm i\n```\nthen ```x``` done"
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"3\" aria-live=\"polite\"><div class=\"ui-streaming-text__content\"><span>Run:\n</span><code class=\"ui-streaming-text__code-block\"><span class=\"ui-streaming-text__code-lang\">bash</span>npm i\n</code><span>\nthen </span><code class=\"ui-streaming-text__code-block\"><span class=\"ui-streaming-text__code-lang\">x</span></code><span> done</span></div></div>"
+      },
+      "streaming shows the cursor and aria-busy": {
+        "props": {
+          "text": "Thinking",
+          "streaming": true
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"3\" aria-live=\"polite\" aria-busy=\"true\"><div class=\"ui-streaming-text__content\"><span>Thinking</span><span class=\"ui-streaming-text__cursor\" aria-hidden=\"true\"></span></div></div>"
+      },
+      "cursor forced off while streaming, caller attrs": {
+        "props": {
+          "text": "x",
+          "streaming": true,
+          "showCursor": false,
+          "className": "mine",
+          "id": "st"
+        },
+        "html": "<div class=\"ui-streaming-text mine\" data-motion=\"3\" aria-live=\"polite\" aria-busy=\"true\" id=\"st\"><div class=\"ui-streaming-text__content\"><span>x</span></div></div>"
+      },
+      "cursor forced on": {
+        "props": {
+          "text": "x",
+          "showCursor": true
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"3\" aria-live=\"polite\"><div class=\"ui-streaming-text__content\"><span>x</span><span class=\"ui-streaming-text__cursor\" aria-hidden=\"true\"></span></div></div>"
+      },
+      "with speed starts empty": {
+        "props": {
+          "text": "Typing",
+          "speed": 2
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"3\" aria-live=\"polite\"><div class=\"ui-streaming-text__content\"><span></span></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "text": "x",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-streaming-text\" data-motion=\"0\" aria-live=\"polite\"><div class=\"ui-streaming-text__content\"><span>x</span></div></div>"
       }
     },
     "SuccessCheckmark": {

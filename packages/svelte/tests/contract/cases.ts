@@ -688,6 +688,35 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     defaults: { children: { $el: 'Help' } },
     'top-left, zIndex, caller style overrides': { position: { top: 0, left: 16 }, zIndex: 5, style: { zIndex: 9, opacity: 0.9 }, className: 'mine', children: { $el: 'x' } },
   },
+  BackToTop: {
+    defaults: {},
+    'progress ring, lg, caller style and class': { showProgress: true, size: 'lg', style: { right: 24 }, className: 'mine' },
+    'sm, visibleFrom, not smooth': { size: 'sm', visibleFrom: 100, smooth: false },
+    'motion 0': { motion: 0 },
+  },
+  StreamingText: {
+    plain: { text: 'Hello world' },
+    'code blocks with and without language': { text: 'Run:\n```bash\nnpm i\n```\nthen ```x``` done' },
+    'streaming shows the cursor and aria-busy': { text: 'Thinking', streaming: true },
+    'cursor forced off while streaming, caller attrs': { text: 'x', streaming: true, showCursor: false, className: 'mine', id: 'st' },
+    'cursor forced on': { text: 'x', showCursor: true },
+    'with speed starts empty': { text: 'Typing', speed: 2 },
+    'motion 0': { text: 'x', motion: 0 },
+  },
+  LiveFeed: {
+    empty: { items: [] },
+    'custom empty, height, caller attrs': { items: [], emptyMessage: { $el: 'Quiet' }, height: '240px', className: 'mine', id: 'lf' },
+    'items truncated to maxItems, types, status and paused': {
+      maxItems: 2, connectionStatus: 'reconnecting', paused: true,
+      items: [
+        { id: '1', content: 'boot', timestamp: 1768478400000 },
+        { id: '2', content: { $el: 'deploy' }, timestamp: { $date: '2026-01-15T12:00:05' }, type: 'info' },
+        { id: '3', content: 'error', timestamp: 1768478410000, type: 'error' },
+      ],
+    },
+    'connected only': { items: [], connectionStatus: 'connected' },
+    'motion 0': { items: [], motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
