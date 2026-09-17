@@ -95,6 +95,7 @@
   "component:Rating": 1920,
   "component:RealtimeValue": 1230,
   "component:ResponsiveCard": 565,
+  "component:RichTextEditor": 4195,
   "component:RingChart": 1234,
   "component:Ripple": 1078,
   "component:ScrollReveal": 1043,
@@ -244,6 +245,7 @@
   "css:rating": 731,
   "css:realtime-value": 546,
   "css:responsive-card": 1478,
+  "css:rich-text-editor": 2003,
   "css:ring-chart": 585,
   "css:ripple": 442,
   "css:scroll-reveal": 746,
@@ -335,5 +337,6 @@
   "module:vendor/core/input/haptics": 317,
   "module:vendor/core/motion/spring": 963,
   "module:vendor/core/utils/container-breakpoints": 455,
-  "module:vendor/core/utils/format": 728
+  "module:vendor/core/utils/format": 728,
+  "module:vendor/core/utils/sanitize": 950
 }

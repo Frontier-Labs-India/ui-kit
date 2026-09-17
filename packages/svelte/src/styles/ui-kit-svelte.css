@@ -15873,6 +15873,343 @@
   }
 /* end responsive-card */
 
+/* rich-text-editor */
+@layer components {
+    @scope (.ui-rich-text-editor) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      .ui-rich-text-editor__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      .ui-rich-text-editor__wrapper {
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        overflow: hidden;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-rich-text-editor__wrapper:focus-within {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15),
+                    0 0 16px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1);
+      }
+
+      /* ── Toolbar ── */
+      .ui-rich-text-editor__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2px;
+        padding-block: 0.25rem;
+        padding-inline: 0.375rem;
+        background: linear-gradient(to bottom, oklch(20% 0.01 270), oklch(18% 0.01 270));
+        box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.08);
+        backdrop-filter: blur(8px);
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        user-select: none;
+      }
+
+      .ui-rich-text-editor__toolbar-separator {
+        inline-size: 1px;
+        block-size: 1.25rem;
+        background: linear-gradient(to bottom, transparent, var(--border-default, oklch(100% 0 0 / 0.08)), transparent);
+        margin-inline: 0.25rem;
+        flex-shrink: 0;
+      }
+
+      .ui-rich-text-editor__toolbar-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        border-radius: var(--radius-sm, 0.25rem);
+        cursor: pointer;
+        min-inline-size: 1.75rem;
+        min-block-size: 1.75rem;
+        padding: 0.25rem;
+        transition: background 0.1s ease-out, color 0.1s ease-out;
+      }
+
+      .ui-rich-text-editor__toolbar-btn:hover:not(:disabled) {
+        background: var(--bg-hover, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px oklch(0% 0 0 / 0.15);
+      }
+
+      .ui-rich-text-editor__toolbar-btn:active:not(:disabled) {
+        transform: scale(0.93);
+        transition: transform 0.06s ease-out;
+      }
+
+      .ui-rich-text-editor__toolbar-btn[data-active] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.2);
+        color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: inset 0 0 8px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+      }
+
+      .ui-rich-text-editor__toolbar-btn:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      .ui-rich-text-editor__toolbar-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      /* Heading dropdown */
+      .ui-rich-text-editor__heading-group {
+        position: relative;
+        display: inline-flex;
+      }
+
+      .ui-rich-text-editor__heading-menu {
+        position: absolute;
+        inset-block-start: 100%;
+        inset-inline-start: 0;
+        z-index: 10;
+        display: none;
+        flex-direction: column;
+        background: var(--bg-elevated, oklch(22% 0 0));
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.375rem);
+        padding-block: 0.25rem;
+        min-inline-size: 6rem;
+        box-shadow: 0 8px 24px oklch(0% 0 0 / 0.4);
+        animation: ui-rte-menu-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .ui-rich-text-editor__heading-menu[data-open] {
+        display: flex;
+      }
+
+      .ui-rich-text-editor__heading-menu button {
+        display: block;
+        inline-size: 100%;
+        text-align: start;
+        border: none;
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        padding-block: 0.375rem;
+        padding-inline: 0.75rem;
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .ui-rich-text-editor__heading-menu button:hover {
+        background: var(--bg-hover, oklch(100% 0 0 / 0.06));
+      }
+
+      .ui-rich-text-editor__heading-menu button[data-active] {
+        color: var(--brand, oklch(65% 0.2 270));
+      }
+
+      /* ── Editor area ── */
+      .ui-rich-text-editor__editor {
+        position: relative;
+        outline: none;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+        line-height: 1.6;
+        overflow-y: auto;
+        cursor: text;
+      }
+
+      /* Placeholder */
+      .ui-rich-text-editor__editor[data-placeholder]:empty::before {
+        content: attr(data-placeholder);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        pointer-events: none;
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        padding: inherit;
+      }
+
+      /* Size variants */
+      :scope[data-size="sm"] .ui-rich-text-editor__editor {
+        padding: 0.5rem;
+        font-size: var(--text-xs, 0.75rem);
+      }
+      :scope[data-size="sm"] .ui-rich-text-editor__toolbar-btn {
+        min-inline-size: 1.5rem;
+        min-block-size: 1.5rem;
+      }
+
+      :scope[data-size="md"] .ui-rich-text-editor__editor {
+        padding: 0.75rem;
+        font-size: var(--text-sm, 0.875rem);
+      }
+
+      :scope[data-size="lg"] .ui-rich-text-editor__editor {
+        padding: 1rem;
+        font-size: var(--text-base, 1rem);
+      }
+      :scope[data-size="lg"] .ui-rich-text-editor__toolbar-btn {
+        min-inline-size: 2rem;
+        min-block-size: 2rem;
+      }
+
+      /* Inner content styling */
+      .ui-rich-text-editor__editor h1 {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-block: 0.5em;
+        line-height: 1.3;
+      }
+      .ui-rich-text-editor__editor h2 {
+        font-size: 1.25em;
+        font-weight: 600;
+        margin-block: 0.4em;
+        line-height: 1.35;
+      }
+      .ui-rich-text-editor__editor h3 {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-block: 0.35em;
+        line-height: 1.4;
+      }
+      .ui-rich-text-editor__editor blockquote {
+        border-inline-start: 3px solid var(--brand, oklch(65% 0.2 270));
+        padding-inline-start: 0.75rem;
+        margin-inline: 0;
+        margin-block: 0.5em;
+        color: var(--text-secondary, oklch(70% 0 0));
+        font-style: italic;
+      }
+      .ui-rich-text-editor__editor code {
+        background: oklch(100% 0 0 / 0.08);
+        padding-inline: 0.3em;
+        padding-block: 0.1em;
+        border-radius: var(--radius-sm, 0.25rem);
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+      .ui-rich-text-editor__editor ul,
+      .ui-rich-text-editor__editor ol {
+        padding-inline-start: 1.5em;
+        margin-block: 0.5em;
+      }
+      .ui-rich-text-editor__editor li {
+        margin-block: 0.15em;
+      }
+      .ui-rich-text-editor__editor a {
+        color: var(--brand, oklch(65% 0.2 270));
+        text-decoration: underline;
+      }
+      .ui-rich-text-editor__editor p {
+        margin-block: 0.25em;
+      }
+
+      /* ── Error state ── */
+      :scope[data-invalid] .ui-rich-text-editor__wrapper {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 1px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.2);
+      }
+      :scope[data-invalid] .ui-rich-text-editor__wrapper:focus-within {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+        box-shadow: 0 0 0 3px oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.25);
+      }
+
+      .ui-rich-text-editor__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-rich-text-editor__error {
+        animation: ui-rte-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      /* ── Disabled state ── */
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      /* ── Read-only state ── */
+      :scope[data-readonly] .ui-rich-text-editor__toolbar {
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      /* ── Forced colors ── */
+      @media (forced-colors: active) {
+        .ui-rich-text-editor__wrapper {
+          border: 2px solid ButtonText;
+        }
+        .ui-rich-text-editor__wrapper:focus-within {
+          outline: 2px solid Highlight;
+        }
+        .ui-rich-text-editor__toolbar-btn[data-active] {
+          background: Highlight;
+          color: HighlightText;
+        }
+        :scope[data-invalid] .ui-rich-text-editor__wrapper {
+          border-color: LinkText;
+        }
+      }
+
+      /* ── Print ── */
+      @media print {
+        .ui-rich-text-editor__toolbar {
+          display: none;
+        }
+        .ui-rich-text-editor__wrapper {
+          border: 1px solid;
+          box-shadow: none;
+        }
+      }
+
+      /* ── Touch targets ── */
+      @media (pointer: coarse) {
+        .ui-rich-text-editor__toolbar-btn {
+          min-inline-size: 2.75rem;
+          min-block-size: 2.75rem;
+        }
+      }
+    }
+
+    @keyframes ui-rte-menu-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes ui-rte-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end rich-text-editor */
+
 /* ring-chart */
 @layer components {
     @scope (.ui-ring-chart) {

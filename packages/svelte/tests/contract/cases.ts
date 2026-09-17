@@ -1005,6 +1005,13 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'no controls': { src: 'a.png', showZoom: false, showRotate: false },
     'motion 0': { src: 'a.png', motion: 0 },
   },
+  RichTextEditor: {
+    defaults: {},
+    'label, error, heights, placeholder, caller attrs': { label: 'Notes', error: 'Required', minHeight: '10rem', maxHeight: 400, placeholder: 'Write…', className: 'mine', id: 'rte' },
+    'custom toolbar order makes separators, lg': { toolbar: ['link', 'bold', 'heading', 'italic', 'clearFormatting'], size: 'lg' },
+    'readOnly and disabled': { readOnly: true, disabled: true, toolbar: ['bold'] },
+    'motion 0': { motion: 0, toolbar: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
