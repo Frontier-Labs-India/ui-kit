@@ -761,4 +761,28 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
     'motion 0': { ports: [], motion: 0 },
   },
+  DataTableSuggestions: {
+    basic: {
+      onApply: { $fn: true },
+      insights: [
+        { id: 'a', type: 'aggregate', title: 'Sum revenue', description: 'Add a total row', confidence: 0.92, icon: 'calculator', apply: { showTotals: true } },
+        { id: 'b', type: 'anomaly', title: 'Outliers', description: '3 rows stand out', confidence: 0.456, icon: 'unknown-icon' },
+      ],
+    },
+    'no apply handler hides Apply': { insights: [{ id: 'a', type: 't', title: 'x', description: 'y', confidence: 1, icon: 'filter', apply: {} }] },
+    'nothing to show': { insights: [] },
+  },
+  NetworkInterfaceGrid: {
+    basic: { interfaces: [{ name: 'eth0', status: 'up', speed: '1G', duplex: 'full', type: 'ethernet' }, { name: 'lo', status: 'unknown', type: 'loopback' }] },
+    'traffic, errors, columns, clickable, lg': {
+      showTraffic: true, showErrors: true, columns: 3, size: 'lg', onInterfaceClick: { $fn: true },
+      interfaces: [
+        { name: 'bond0', status: 'up', type: 'bond', txRate: 2_000_000_000, rxRate: 512, txErrors: 0, rxErrors: 4 },
+        { name: 'wlan0', status: 'dormant', type: 'wireless', txRate: 3 * 1_048_576, rxErrors: 0 },
+        { name: 'br0', status: 'down', type: 'bridge', rxRate: 4096 },
+      ],
+    },
+    'compact hides details, caller style': { compact: true, style: { gap: 4 }, interfaces: [{ name: 'eth1', status: 'up', speed: '10G', duplex: 'half' }] },
+    'motion 0': { interfaces: [{ name: 'x', status: 'up' }], motion: 0 },
+  },
 }

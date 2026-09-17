@@ -1055,6 +1055,59 @@
         "html": "<div class=\"ui-dashboard-grid\" data-motion=\"0\" data-columns=\"auto\" data-gap=\"md\"><div class=\"ui-dashboard-grid__grid\"></div></div>"
       }
     },
+    "DataTableSuggestions": {
+      "basic": {
+        "props": {
+          "onApply": {
+            "$fn": true
+          },
+          "insights": [
+            {
+              "id": "a",
+              "type": "aggregate",
+              "title": "Sum revenue",
+              "description": "Add a total row",
+              "confidence": 0.92,
+              "icon": "calculator",
+              "apply": {
+                "showTotals": true
+              }
+            },
+            {
+              "id": "b",
+              "type": "anomaly",
+              "title": "Outliers",
+              "description": "3 rows stand out",
+              "confidence": 0.456,
+              "icon": "unknown-icon"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-data-table-suggestions\" role=\"region\" aria-label=\"AI Suggestions\"><button type=\"button\" class=\"ui-data-table-suggestions__header\" aria-expanded=\"true\"><span class=\"ui-data-table-suggestions__title\"><span aria-hidden=\"true\">✨</span>AI Suggestions<span class=\"ui-data-table-suggestions__badge\">2</span></span><span class=\"ui-data-table-suggestions__toggle\" data-open=\"\" aria-hidden=\"true\">▼</span></button><div class=\"ui-data-table-suggestions__list\" role=\"list\"><div class=\"ui-data-table-suggestions__item\" role=\"listitem\"><span class=\"ui-data-table-suggestions__item-icon\" aria-hidden=\"true\">Σ</span><div class=\"ui-data-table-suggestions__item-body\"><div class=\"ui-data-table-suggestions__item-title\">Sum revenue</div><div class=\"ui-data-table-suggestions__item-desc\">Add a total row</div><div class=\"ui-data-table-suggestions__item-meta\"><span class=\"ui-data-table-suggestions__confidence\">92%</span></div></div><div class=\"ui-data-table-suggestions__item-actions\"><button type=\"button\" class=\"ui-data-table-suggestions__apply-btn\" aria-label=\"Apply: Sum revenue\">Apply</button><button type=\"button\" class=\"ui-data-table-suggestions__dismiss-btn\" aria-label=\"Dismiss: Sum revenue\">×</button></div></div><div class=\"ui-data-table-suggestions__item\" role=\"listitem\"><span class=\"ui-data-table-suggestions__item-icon\" aria-hidden=\"true\">✦</span><div class=\"ui-data-table-suggestions__item-body\"><div class=\"ui-data-table-suggestions__item-title\">Outliers</div><div class=\"ui-data-table-suggestions__item-desc\">3 rows stand out</div><div class=\"ui-data-table-suggestions__item-meta\"><span class=\"ui-data-table-suggestions__confidence\">46%</span></div></div><div class=\"ui-data-table-suggestions__item-actions\"><button type=\"button\" class=\"ui-data-table-suggestions__dismiss-btn\" aria-label=\"Dismiss: Outliers\">×</button></div></div></div></div>"
+      },
+      "no apply handler hides Apply": {
+        "props": {
+          "insights": [
+            {
+              "id": "a",
+              "type": "t",
+              "title": "x",
+              "description": "y",
+              "confidence": 1,
+              "icon": "filter",
+              "apply": {}
+            }
+          ]
+        },
+        "html": "<div class=\"ui-data-table-suggestions\" role=\"region\" aria-label=\"AI Suggestions\"><button type=\"button\" class=\"ui-data-table-suggestions__header\" aria-expanded=\"true\"><span class=\"ui-data-table-suggestions__title\"><span aria-hidden=\"true\">✨</span>AI Suggestions<span class=\"ui-data-table-suggestions__badge\">1</span></span><span class=\"ui-data-table-suggestions__toggle\" data-open=\"\" aria-hidden=\"true\">▼</span></button><div class=\"ui-data-table-suggestions__list\" role=\"list\"><div class=\"ui-data-table-suggestions__item\" role=\"listitem\"><span class=\"ui-data-table-suggestions__item-icon\" aria-hidden=\"true\">▽</span><div class=\"ui-data-table-suggestions__item-body\"><div class=\"ui-data-table-suggestions__item-title\">x</div><div class=\"ui-data-table-suggestions__item-desc\">y</div><div class=\"ui-data-table-suggestions__item-meta\"><span class=\"ui-data-table-suggestions__confidence\">100%</span></div></div><div class=\"ui-data-table-suggestions__item-actions\"><button type=\"button\" class=\"ui-data-table-suggestions__dismiss-btn\" aria-label=\"Dismiss: x\">×</button></div></div></div></div>"
+      },
+      "nothing to show": {
+        "props": {
+          "insights": []
+        },
+        "html": ""
+      }
+    },
     "DensitySelector": {
       "defaults": {
         "props": {},
@@ -2047,6 +2100,92 @@
           }
         },
         "html": "<header class=\"ui-navbar\" data-sticky=\"false\" data-bordered=\"false\" data-transparent=\"true\" data-mobile-open=\"false\" style=\"--navbar-height:10px\"></header>"
+      }
+    },
+    "NetworkInterfaceGrid": {
+      "basic": {
+        "props": {
+          "interfaces": [
+            {
+              "name": "eth0",
+              "status": "up",
+              "speed": "1G",
+              "duplex": "full",
+              "type": "ethernet"
+            },
+            {
+              "name": "lo",
+              "status": "unknown",
+              "type": "loopback"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-network-interface-grid\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"Network interfaces\"><div class=\"ui-nig__card\" data-status=\"up\" data-motion=\"3\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"up\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">eth0</span><span class=\"ui-nig__type-badge\">ETH</span></div><div class=\"ui-nig__details\"><span class=\"ui-nig__speed-badge\">1G</span><span class=\"ui-nig__duplex\">full</span></div></div><div class=\"ui-nig__card\" data-status=\"unknown\" data-motion=\"3\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"unknown\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">lo</span><span class=\"ui-nig__type-badge\">LO</span></div></div></div>"
+      },
+      "traffic, errors, columns, clickable, lg": {
+        "props": {
+          "showTraffic": true,
+          "showErrors": true,
+          "columns": 3,
+          "size": "lg",
+          "onInterfaceClick": {
+            "$fn": true
+          },
+          "interfaces": [
+            {
+              "name": "bond0",
+              "status": "up",
+              "type": "bond",
+              "txRate": 2000000000,
+              "rxRate": 512,
+              "txErrors": 0,
+              "rxErrors": 4
+            },
+            {
+              "name": "wlan0",
+              "status": "dormant",
+              "type": "wireless",
+              "txRate": 3145728,
+              "rxErrors": 0
+            },
+            {
+              "name": "br0",
+              "status": "down",
+              "type": "bridge",
+              "rxRate": 4096
+            }
+          ]
+        },
+        "html": "<div class=\"ui-network-interface-grid\" data-motion=\"3\" data-size=\"lg\" data-columns=\"\" role=\"group\" aria-label=\"Network interfaces\" style=\"--nig-cols:3\"><div class=\"ui-nig__card\" data-status=\"up\" data-motion=\"3\"><button class=\"ui-nig__card-btn\" aria-label=\"bond0: up, bond\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"up\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">bond0</span><span class=\"ui-nig__type-badge\">BOND</span></div><div class=\"ui-nig__traffic\"><span class=\"ui-nig__traffic-item\"><span class=\"ui-nig__traffic-arrow ui-nig__traffic-arrow--tx\" aria-hidden=\"true\">↑</span><span class=\"ui-nig__traffic-value\">1.9 GB/s</span></span><span class=\"ui-nig__traffic-item\"><span class=\"ui-nig__traffic-arrow ui-nig__traffic-arrow--rx\" aria-hidden=\"true\">↓</span><span class=\"ui-nig__traffic-value\">512 B/s</span></span></div><div class=\"ui-nig__errors\"><span class=\"ui-nig__error-item ui-nig__error-item--zero\">TX err: 0</span><span class=\"ui-nig__error-item\">RX err: 4</span></div></button></div><div class=\"ui-nig__card\" data-status=\"dormant\" data-motion=\"3\"><button class=\"ui-nig__card-btn\" aria-label=\"wlan0: dormant, wireless\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"dormant\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">wlan0</span><span class=\"ui-nig__type-badge\">WLAN</span></div><div class=\"ui-nig__traffic\"><span class=\"ui-nig__traffic-item\"><span class=\"ui-nig__traffic-arrow ui-nig__traffic-arrow--tx\" aria-hidden=\"true\">↑</span><span class=\"ui-nig__traffic-value\">3.0 MB/s</span></span></div><div class=\"ui-nig__errors\"><span class=\"ui-nig__error-item ui-nig__error-item--zero\">RX err: 0</span></div></button></div><div class=\"ui-nig__card\" data-status=\"down\" data-motion=\"3\"><button class=\"ui-nig__card-btn\" aria-label=\"br0: down, bridge\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"down\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">br0</span><span class=\"ui-nig__type-badge\">BR</span></div><div class=\"ui-nig__traffic\"><span class=\"ui-nig__traffic-item\"><span class=\"ui-nig__traffic-arrow ui-nig__traffic-arrow--rx\" aria-hidden=\"true\">↓</span><span class=\"ui-nig__traffic-value\">4.0 KB/s</span></span></div></button></div></div>"
+      },
+      "compact hides details, caller style": {
+        "props": {
+          "compact": true,
+          "style": {
+            "gap": 4
+          },
+          "interfaces": [
+            {
+              "name": "eth1",
+              "status": "up",
+              "speed": "10G",
+              "duplex": "half"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-network-interface-grid\" data-motion=\"3\" data-size=\"md\" data-compact=\"\" role=\"group\" aria-label=\"Network interfaces\" style=\"gap:4px\"><div class=\"ui-nig__card\" data-status=\"up\" data-motion=\"3\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"up\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">eth1</span></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "interfaces": [
+            {
+              "name": "x",
+              "status": "up"
+            }
+          ],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-network-interface-grid\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Network interfaces\"><div class=\"ui-nig__card\" data-status=\"up\" data-motion=\"0\"><div class=\"ui-nig__header\"><span class=\"ui-nig__led\" data-status=\"up\" aria-hidden=\"true\"></span><span class=\"ui-nig__name\">x</span></div></div></div>"
       }
     },
     "NetworkTrafficCard": {
