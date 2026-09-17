@@ -47,6 +47,13 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * elements are removed, from both trees, before the CSP check and the
  * comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  TableOfContents: [
+    {
+      selector: '.ui-toc__indicator',
+      properties: ['opacity', 'transform', 'block-size'],
+      reason: 'The indicator is measured against the active link in an effect; the server HTML has only its initial opacity:0 (toc-timeline.test.ts).',
+    },
+  ],
   TracingBeam: [
     {
       selector: '.ui-tracing-beam--progress, .ui-tracing-beam--dot',

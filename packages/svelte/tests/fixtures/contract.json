@@ -7163,6 +7163,107 @@
         "html": "<div class=\"ui-switch-faceplate\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Network switch faceplate\"><div class=\"ui-switch-faceplate__grid\"><div class=\"ui-switch-faceplate__row\"></div><div class=\"ui-switch-faceplate__row\"></div></div></div>"
       }
     },
+    "TableOfContents": {
+      "nested, none active": {
+        "props": {
+          "items": [
+            {
+              "id": "intro",
+              "label": "Intro",
+              "level": 1
+            },
+            {
+              "id": "api",
+              "label": "API",
+              "level": 1,
+              "children": [
+                {
+                  "id": "props",
+                  "label": "Props",
+                  "level": 2,
+                  "children": [
+                    {
+                      "id": "deep",
+                      "label": "Deep",
+                      "level": 3
+                    }
+                  ]
+                },
+                {
+                  "id": "events",
+                  "label": "Events",
+                  "level": 2
+                }
+              ]
+            },
+            {
+              "id": "empty-kids",
+              "label": "Empty",
+              "level": 1,
+              "children": []
+            }
+          ]
+        },
+        "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div style=\"position:relative\"><div class=\"ui-toc__indicator\" aria-hidden=\"true\" style=\"opacity:0\"></div><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"intro\" data-level=\"1\">Intro</button></li><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"api\" data-level=\"1\">API</button><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"props\" data-level=\"2\">Props</button><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"deep\" data-level=\"3\">Deep</button></li></ul></li><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"events\" data-level=\"2\">Events</button></li></ul></li><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"empty-kids\" data-level=\"1\">Empty</button></li></ul></div></nav>"
+      },
+      "controlled active nested item, filled lg, caller attrs": {
+        "props": {
+          "activeId": "props",
+          "variant": "filled",
+          "size": "lg",
+          "className": "mine",
+          "id": "toc",
+          "items": [
+            {
+              "id": "api",
+              "label": "API",
+              "level": 1,
+              "children": [
+                {
+                  "id": "props",
+                  "label": "Props",
+                  "level": 2
+                }
+              ]
+            }
+          ]
+        },
+        "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc mine\" data-size=\"lg\" data-variant=\"filled\" data-motion=\"3\" id=\"toc\"><div style=\"position:relative\"><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"api\" data-level=\"1\">API</button><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"props\" data-level=\"2\" data-active=\"true\">Props</button></li></ul></li></ul></div></nav>"
+      },
+      "default variant with an active item": {
+        "props": {
+          "activeId": "intro",
+          "items": [
+            {
+              "id": "intro",
+              "label": "Intro",
+              "level": 1
+            }
+          ]
+        },
+        "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc\" data-size=\"md\" data-variant=\"default\" data-motion=\"3\"><div style=\"position:relative\"><div class=\"ui-toc__indicator\" aria-hidden=\"true\" style=\"opacity:0\"></div><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"intro\" data-level=\"1\" data-active=\"true\">Intro</button></li></ul></div></nav>"
+      },
+      "dots": {
+        "props": {
+          "variant": "dots",
+          "items": [
+            {
+              "id": "a",
+              "label": "A",
+              "level": 1
+            }
+          ]
+        },
+        "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc\" data-size=\"md\" data-variant=\"dots\" data-motion=\"3\"><div style=\"position:relative\"><ul class=\"ui-toc__list\" role=\"list\"><li class=\"ui-toc__item\"><button type=\"button\" class=\"ui-toc__link\" data-id=\"a\" data-level=\"1\">A</button></li></ul></div></nav>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "items": []
+        },
+        "html": "<nav aria-label=\"Table of contents\" class=\"ui-toc\" data-size=\"md\" data-variant=\"default\" data-motion=\"0\"><div style=\"position:relative\"><div class=\"ui-toc__indicator\" aria-hidden=\"true\" style=\"opacity:0\"></div><ul class=\"ui-toc__list\" role=\"list\"></ul></div></nav>"
+      }
+    },
     "TagInput": {
       "empty": {
         "props": {
@@ -7544,6 +7645,76 @@
           "motion": 0
         },
         "html": "<div class=\"ui-time-range-selector\" data-motion=\"0\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"></div></div>"
+      }
+    },
+    "Timeline": {
+      "items": {
+        "props": {
+          "items": [
+            {
+              "id": "1",
+              "title": "Created",
+              "timestamp": "09:00",
+              "status": "completed",
+              "icon": {
+                "$el": "✓"
+              }
+            },
+            {
+              "id": "2",
+              "title": {
+                "$el": "Building"
+              },
+              "description": "In progress",
+              "status": "active"
+            },
+            {
+              "id": "3",
+              "title": "Deploy",
+              "description": {
+                "$el": "Waiting"
+              }
+            },
+            {
+              "id": "4",
+              "title": "Failed",
+              "status": "error"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-timeline\" data-variant=\"default\" data-size=\"md\" data-connector=\"solid\" data-motion=\"3\" role=\"list\"><div class=\"ui-timeline__item\" role=\"listitem\"><span class=\"ui-timeline__dot\" data-status=\"completed\" aria-hidden=\"true\"><b>✓</b></span><div class=\"ui-timeline__content\"><span class=\"ui-timeline__title\">Created</span><time class=\"ui-timeline__timestamp\">09:00</time></div></div><div class=\"ui-timeline__item\" role=\"listitem\"><span class=\"ui-timeline__dot\" data-status=\"active\" aria-hidden=\"true\"></span><div class=\"ui-timeline__content\"><span class=\"ui-timeline__title\"><b>Building</b></span><span class=\"ui-timeline__description\">In progress</span></div></div><div class=\"ui-timeline__item\" role=\"listitem\"><span class=\"ui-timeline__dot\" data-status=\"pending\" aria-hidden=\"true\"></span><div class=\"ui-timeline__content\"><span class=\"ui-timeline__title\">Deploy</span><span class=\"ui-timeline__description\"><b>Waiting</b></span></div></div><div class=\"ui-timeline__item\" role=\"listitem\"><span class=\"ui-timeline__dot\" data-status=\"error\" aria-hidden=\"true\"></span><div class=\"ui-timeline__content\"><span class=\"ui-timeline__title\">Failed</span></div></div></div>"
+      },
+      "alternate lg dashed, caller attrs": {
+        "props": {
+          "items": [
+            {
+              "id": "a",
+              "title": "A"
+            }
+          ],
+          "variant": "alternate",
+          "size": "lg",
+          "connectorStyle": "dashed",
+          "className": "mine",
+          "id": "tl"
+        },
+        "html": "<div class=\"ui-timeline mine\" data-variant=\"alternate\" data-size=\"lg\" data-connector=\"dashed\" data-motion=\"3\" role=\"list\" id=\"tl\"><div class=\"ui-timeline__item\" role=\"listitem\"><span class=\"ui-timeline__dot\" data-status=\"pending\" aria-hidden=\"true\"></span><div class=\"ui-timeline__content\"><span class=\"ui-timeline__title\">A</span></div></div></div>"
+      },
+      "compact dotted empty": {
+        "props": {
+          "items": [],
+          "variant": "compact",
+          "connectorStyle": "dotted",
+          "aria-label": "Events"
+        },
+        "html": "<div class=\"ui-timeline\" data-variant=\"compact\" data-size=\"md\" data-connector=\"dotted\" data-motion=\"3\" role=\"list\" aria-label=\"Events\"></div>"
+      },
+      "motion 0": {
+        "props": {
+          "items": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-timeline\" data-variant=\"default\" data-size=\"md\" data-connector=\"solid\" data-motion=\"0\" role=\"list\"></div>"
       }
     },
     "ToggleSwitch": {

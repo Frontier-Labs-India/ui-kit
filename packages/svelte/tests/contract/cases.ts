@@ -872,6 +872,35 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty without placeholder, disabled': { value: '', disabled: true, onChange: { $fn: true } },
     'motion 0': { value: 'x', motion: 0, onChange: { $fn: true } },
   },
+  TableOfContents: {
+    'nested, none active': {
+      items: [
+        { id: 'intro', label: 'Intro', level: 1 },
+        { id: 'api', label: 'API', level: 1, children: [{ id: 'props', label: 'Props', level: 2, children: [{ id: 'deep', label: 'Deep', level: 3 }] }, { id: 'events', label: 'Events', level: 2 }] },
+        { id: 'empty-kids', label: 'Empty', level: 1, children: [] },
+      ],
+    },
+    'controlled active nested item, filled lg, caller attrs': {
+      activeId: 'props', variant: 'filled', size: 'lg', className: 'mine', id: 'toc',
+      items: [{ id: 'api', label: 'API', level: 1, children: [{ id: 'props', label: 'Props', level: 2 }] }],
+    },
+    'default variant with an active item': { activeId: 'intro', items: [{ id: 'intro', label: 'Intro', level: 1 }] },
+    dots: { variant: 'dots', items: [{ id: 'a', label: 'A', level: 1 }] },
+    'motion 0': { motion: 0, items: [] },
+  },
+  Timeline: {
+    items: {
+      items: [
+        { id: '1', title: 'Created', timestamp: '09:00', status: 'completed', icon: { $el: '✓' } },
+        { id: '2', title: { $el: 'Building' }, description: 'In progress', status: 'active' },
+        { id: '3', title: 'Deploy', description: { $el: 'Waiting' } },
+        { id: '4', title: 'Failed', status: 'error' },
+      ],
+    },
+    'alternate lg dashed, caller attrs': { items: [{ id: 'a', title: 'A' }], variant: 'alternate', size: 'lg', connectorStyle: 'dashed', className: 'mine', id: 'tl' },
+    'compact dotted empty': { items: [], variant: 'compact', connectorStyle: 'dotted', 'aria-label': 'Events' },
+    'motion 0': { items: [], motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
