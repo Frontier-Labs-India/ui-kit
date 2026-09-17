@@ -1,3 +1,5 @@
+import './contract/pin-locale.js'
+
 /* jsdom lacks ResizeObserver, which the shared anchor-positioning code observes
  * the trigger with. The React suite polyfills it the same way in
  * src/__tests__/setup.ts; without it every positioned component throws inside

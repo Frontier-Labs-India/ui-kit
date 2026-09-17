@@ -45,6 +45,11 @@ const PULSE_DEFECT =
   'unlabelled use is an image with no name. Fix together (require label, or drop the role without one) ' +
   'or the DOM contract breaks'
 
+const DISK_DEFECT =
+  'DEFECT in both packages: DiskMountBar puts role="list" on its root, but its listitems sit inside a ' +
+  'plain wrapper div, beside a toggle button and a footer that are not listitems. Fix together (move ' +
+  'the role to the wrapper) or the contract breaks'
+
 /** `Component/case/rule-id` -> why it is accepted for now. */
 const INHERITED: Record<string, string> = {
   'Checkbox/defaults/label': CALLER_MUST_NAME,
@@ -63,6 +68,9 @@ const INHERITED: Record<string, string> = {
     'inherited from React: aria-label uses `typeof label === "string"`, so an explicit empty label ' +
     'yields aria-label="" instead of the "Ring chart" fallback. Minor — needs a caller to pass "" — ' +
     'and fixable only in both packages together',
+  'DiskMountBar/sorted, collapsed at 3/aria-required-children': DISK_DEFECT,
+  'DiskMountBar/no mounts/aria-required-children': DISK_DEFECT,
+  'DiskMountBar/motion 0/aria-required-children': DISK_DEFECT,
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,

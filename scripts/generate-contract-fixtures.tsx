@@ -15,6 +15,8 @@
 // Pinned so components that format dates in local time (TimeRangeSelector)
 // render the same fixture on every machine; the Svelte suite pins it too.
 process.env.TZ = 'UTC'
+// …and the default locale, which Node fixes at startup from LC_ALL / LANG.
+await import('../packages/svelte/tests/contract/pin-locale')
 
 import { renderToStaticMarkup } from 'react-dom/server'
 import React from 'react'

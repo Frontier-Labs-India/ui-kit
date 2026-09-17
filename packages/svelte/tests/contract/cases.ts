@@ -683,4 +683,26 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },
     'not sticky, no border, transparent, caller style wins': { sticky: false, bordered: false, transparent: true, style: { '--navbar-height': '10px' } },
   },
+  DiskMountBar: {
+    'sorted, collapsed at 3': {
+      mounts: [
+        { mount: '/', totalBytes: 1e11, usedBytes: 5e10, freeBytes: 5e10, utilPct: 50 },
+        { mount: '/var', totalBytes: 2 ** 40, usedBytes: 2 ** 39, freeBytes: 2 ** 39, utilPct: 93.25 },
+        { mount: '/home', totalBytes: 512, usedBytes: 400, freeBytes: 112, utilPct: 78.1 },
+        { mount: '/tmp', totalBytes: 4096, usedBytes: 4, freeBytes: 4092, utilPct: 0.1 },
+      ],
+    },
+    'single mount shows free, lg': { showFree: true, size: 'lg', mounts: [{ mount: '/data', totalBytes: 3 * 1024 ** 2, usedBytes: 1024 ** 2, freeBytes: 2 * 1024 ** 2, utilPct: 33.3 }] },
+    'no mounts': { mounts: [] },
+    'motion 0': { mounts: [], motion: 0 },
+  },
+  SeverityTimeline: {
+    basic: { events: [{ id: 'a', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'critical', title: 'Outage' }, { id: 'b', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'ok', title: { $el: 'Recovered' }, description: 'All good' }] },
+    'expandable horizontal, cut to one': {
+      orientation: 'horizontal', expandable: true, maxVisible: 1,
+      events: [{ id: 'a', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'warning', title: 'Slow', description: { $el: 'p95 up' } }, { id: 'b', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'info', title: 'Deploy' }],
+    },
+    'expandable without description has no button': { expandable: true, events: [{ id: 'a', timestamp: Date.UTC(2026, 0, 15, 9, 30, 0), severity: 'info', title: 'x' }] },
+    'motion 0': { events: [], motion: 0 },
+  },
 }
