@@ -992,6 +992,12 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'no line numbers': { showLineNumbers: false, value: 'x' },
     'motion 0': { motion: 0 },
   },
+  ColorInput: {
+    defaults: { name: 'color' },
+    'label, uncontrolled default, lg, swatches': { name: 'brand', label: 'Brand', defaultValue: '#3366ff', size: 'lg', swatches: ['#ff0000', '#0f0'] },
+    'controlled, error, disabled, no text input, caller attrs': { name: 'c', label: { $el: 'C' }, value: '#abcdef', error: 'Too dark', disabled: true, showInput: false, className: 'mine', id: 'ci' },
+    'motion 0': { name: 'c', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

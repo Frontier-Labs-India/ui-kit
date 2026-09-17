@@ -1250,6 +1250,49 @@
         "html": "<div class=\"ui-code-editor\" data-motion=\"0\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\" data-active=\"\">1</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\"></textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span> </span>\n</span></pre></div></div>"
       }
     },
+    "ColorInput": {
+      "defaults": {
+        "props": {
+          "name": "color"
+        },
+        "html": "<div class=\"ui-color-input\" data-size=\"md\" data-motion=\"3\"><div class=\"ui-color-input__row\"><div class=\"ui-color-input__trigger\" role=\"button\" tabindex=\"0\" aria-label=\"Choose color: #000000\" aria-expanded=\"false\"><div class=\"ui-color-input__swatch\" style=\"background-color:#000000\"></div></div><input type=\"text\" id=\"color-input-_R_0_-hex\" class=\"ui-color-input__hex-input\" aria-label=\"Hex color value\" spellCheck=\"false\" autoComplete=\"off\" name=\"color\" value=\"#000000\"/></div></div>"
+      },
+      "label, uncontrolled default, lg, swatches": {
+        "props": {
+          "name": "brand",
+          "label": "Brand",
+          "defaultValue": "#3366ff",
+          "size": "lg",
+          "swatches": [
+            "#ff0000",
+            "#0f0"
+          ]
+        },
+        "html": "<div class=\"ui-color-input\" data-size=\"lg\" data-motion=\"3\"><label class=\"ui-color-input__label\" for=\"color-input-_R_0_-hex\">Brand</label><div class=\"ui-color-input__row\"><div class=\"ui-color-input__trigger\" role=\"button\" tabindex=\"0\" aria-label=\"Choose color: #3366ff\" aria-expanded=\"false\"><div class=\"ui-color-input__swatch\" style=\"background-color:#3366ff\"></div></div><input type=\"text\" id=\"color-input-_R_0_-hex\" class=\"ui-color-input__hex-input\" aria-label=\"Hex color value\" spellCheck=\"false\" autoComplete=\"off\" name=\"brand\" value=\"#3366ff\"/></div></div>"
+      },
+      "controlled, error, disabled, no text input, caller attrs": {
+        "props": {
+          "name": "c",
+          "label": {
+            "$el": "C"
+          },
+          "value": "#abcdef",
+          "error": "Too dark",
+          "disabled": true,
+          "showInput": false,
+          "className": "mine",
+          "id": "ci"
+        },
+        "html": "<div class=\"ui-color-input mine\" data-size=\"md\" data-motion=\"3\" data-disabled=\"\" data-invalid=\"\" id=\"ci\"><label class=\"ui-color-input__label\" for=\"color-input-_R_0_-hex\"><b>C</b></label><div class=\"ui-color-input__row\"><div class=\"ui-color-input__trigger\" role=\"button\" tabindex=\"-1\" aria-label=\"Choose color: #abcdef\" aria-expanded=\"false\"><div class=\"ui-color-input__swatch\" style=\"background-color:#abcdef\"></div></div></div><span id=\"color-input-_R_0_-error\" class=\"ui-color-input__error\" role=\"alert\">Too dark</span></div>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "c",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-color-input\" data-size=\"md\" data-motion=\"0\"><div class=\"ui-color-input__row\"><div class=\"ui-color-input__trigger\" role=\"button\" tabindex=\"0\" aria-label=\"Choose color: #000000\" aria-expanded=\"false\"><div class=\"ui-color-input__swatch\" style=\"background-color:#000000\"></div></div><input type=\"text\" id=\"color-input-_R_0_-hex\" class=\"ui-color-input__hex-input\" aria-label=\"Hex color value\" spellCheck=\"false\" autoComplete=\"off\" name=\"c\" value=\"#000000\"/></div></div>"
+      }
+    },
     "ColumnVisibilityToggle": {
       "columns": {
         "props": {
