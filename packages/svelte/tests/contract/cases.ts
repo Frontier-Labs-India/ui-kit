@@ -913,6 +913,14 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'value without onRemove has no remove button': { value: 'https://example.com/a.png' },
     'motion 0': { motion: 0 },
   },
+  FileUpload: {
+    defaults: { name: 'files' },
+    'label, description, accept, multiple, error, caller attrs': {
+      name: 'docs', label: { $el: 'Documents' }, description: 'PDF up to 5MB', accept: '.pdf,image/*', multiple: true, error: 'Required', className: 'mine', id: 'fu',
+    },
+    disabled: { name: 'f', disabled: true },
+    'motion 0': { name: 'f', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

@@ -7609,6 +7609,253 @@
   }
 /* end evervault-card */
 
+/* file-upload */
+@layer components {
+    @scope (.ui-file-upload) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm, 0.5rem);
+        position: relative;
+        font-family: inherit;
+      }
+
+      :scope[data-disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .ui-file-upload__label {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+        user-select: none;
+      }
+
+      /* Drop zone */
+      .ui-file-upload__dropzone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-sm, 0.5rem);
+        padding: var(--space-xl, 1.5rem) var(--space-lg, 1rem);
+        border: 2px dashed var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-lg, 0.5rem);
+        background: transparent;
+        cursor: pointer;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    background 0.15s var(--ease-out, ease-out);
+        outline: none;
+        min-block-size: 120px;
+      }
+
+      .ui-file-upload__dropzone:hover {
+        border-color: var(--border-strong, oklch(100% 0 0 / 0.2));
+        background: var(--bg-hover);
+      }
+
+      .ui-file-upload__dropzone:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+        box-shadow: var(--shadow-glow, 0 0 0 4px oklch(65% 0.2 270 / 0.15));
+      }
+
+      /* Drag-over state */
+      :scope[data-dragover] .ui-file-upload__dropzone {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.05);
+        border-style: solid;
+      }
+
+      .ui-file-upload__dropzone-icon {
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      .ui-file-upload__dropzone-text {
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        text-align: center;
+      }
+
+      .ui-file-upload__dropzone-browse {
+        color: var(--brand, oklch(65% 0.2 270));
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      /* Hidden file input */
+      .ui-file-upload__input {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* File list */
+      .ui-file-upload__files {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+      }
+
+      .ui-file-upload__file {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding: var(--space-xs, 0.25rem) var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-md, 0.375rem);
+        background: var(--bg-hover);
+      }
+
+      /* Entry animation */
+      :scope:not([data-motion="0"]) .ui-file-upload__file {
+        animation: ui-file-upload-file-in 0.2s var(--ease-out, ease-out);
+      }
+
+      .ui-file-upload__thumbnail {
+        inline-size: 36px;
+        block-size: 36px;
+        border-radius: var(--radius-sm, 0.25rem);
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .ui-file-upload__file-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 36px;
+        block-size: 36px;
+        flex-shrink: 0;
+        color: var(--text-tertiary, oklch(60% 0 0));
+      }
+
+      .ui-file-upload__file-info {
+        flex: 1;
+        min-inline-size: 0;
+      }
+
+      .ui-file-upload__file-name {
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .ui-file-upload__file-size {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        line-height: 1.3;
+      }
+
+      .ui-file-upload__remove {
+        appearance: none;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-xs, 0.25rem);
+        border-radius: var(--radius-sm, 0.25rem);
+        color: var(--text-tertiary, oklch(60% 0 0));
+        transition: color 0.1s, background 0.1s;
+        flex-shrink: 0;
+      }
+
+      .ui-file-upload__remove:hover {
+        color: var(--status-critical, oklch(65% 0.25 25));
+        background: oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.1);
+      }
+
+      .ui-file-upload__remove:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* Error */
+      .ui-file-upload__error {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--status-critical, oklch(65% 0.25 25));
+        line-height: 1.4;
+      }
+
+      :scope:not([data-motion="0"]) .ui-file-upload__error {
+        animation: ui-file-upload-error-in 0.2s var(--ease-out, ease-out);
+      }
+
+      :scope[data-invalid] .ui-file-upload__dropzone {
+        border-color: var(--status-critical, oklch(65% 0.25 25));
+      }
+
+      /* Touch targets */
+      @media (pointer: coarse) {
+        .ui-file-upload__remove {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-file-upload__dropzone {
+          border: 2px dashed ButtonText;
+        }
+        :scope[data-dragover] .ui-file-upload__dropzone {
+          border: 2px solid Highlight;
+        }
+        .ui-file-upload__dropzone:focus-visible {
+          outline: 2px solid Highlight;
+        }
+        .ui-file-upload__file {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-file-upload__dropzone {
+          border: 2px dashed;
+        }
+      }
+    }
+
+    @keyframes ui-file-upload-file-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes ui-file-upload-error-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+/* end file-upload */
+
 /* filter-pill */
 @layer components {
     @scope (.ui-filter-pill) {
