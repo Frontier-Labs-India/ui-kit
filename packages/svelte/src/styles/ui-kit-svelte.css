@@ -6935,6 +6935,95 @@
   }
 /* end entity-card */
 
+/* evervault-card */
+@layer components {
+    @scope (.ui-evervault-card) {
+      :scope {
+        --ev-x: 50%;
+        --ev-y: 50%;
+        position: relative;
+        min-inline-size: 200px;
+        overflow: hidden;
+        border-radius: var(--radius-lg, 0.75rem);
+        background: var(--bg-surface, oklch(22% 0.02 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        isolation: isolate;
+      }
+
+      .ui-evervault-card--matrix {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        font-family: monospace;
+        font-size: 0.625rem;
+        line-height: 1;
+        color: oklch(75% 0.15 270 / 0.4);
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.3s var(--ease-out, ease-out);
+        mask-image: radial-gradient(
+          circle 100px at var(--ev-x) var(--ev-y),
+          transparent 60px,
+          black 100px
+        );
+        -webkit-mask-image: radial-gradient(
+          circle 100px at var(--ev-x) var(--ev-y),
+          transparent 60px,
+          black 100px
+        );
+      }
+
+      :scope[data-hovering="true"] .ui-evervault-card--matrix {
+        opacity: 1;
+      }
+
+      .ui-evervault-card--char {
+        inline-size: 0.6em;
+        text-align: center;
+      }
+
+      .ui-evervault-card--content {
+        position: relative;
+        z-index: 1;
+        padding: var(--space-md, 1rem);
+      }
+
+      /* Motion 0: no effect */
+      :scope[data-motion="0"] .ui-evervault-card--matrix {
+        display: none;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .ui-evervault-card--matrix {
+          display: none;
+        }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        :scope {
+          border: 2px solid CanvasText;
+        }
+        .ui-evervault-card--matrix {
+          display: none;
+        }
+      }
+
+      /* Print */
+      @media print {
+        .ui-evervault-card--matrix {
+          display: none;
+        }
+      }
+    }
+  }
+/* end evervault-card */
+
 /* filter-pill */
 @layer components {
     @scope (.ui-filter-pill) {
@@ -12456,6 +12545,74 @@
   }
 /* end rating */
 
+/* realtime-value */
+@layer components {
+    @scope (.ui-realtime-value) {
+      :scope {
+        display: inline-flex;
+        min-inline-size: 60px;
+        align-items: baseline;
+        gap: var(--space-2xs, 0.25rem);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .ui-realtime-value__number {
+        font-weight: 600;
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      /* Delta indicator */
+      .ui-realtime-value__delta {
+        font-size: 0.8em;
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .ui-realtime-value__delta[data-direction="positive"] {
+        color: oklch(72% 0.19 155);
+      }
+      .ui-realtime-value__delta[data-direction="negative"] {
+        color: oklch(62% 0.22 25);
+      }
+      .ui-realtime-value__delta[data-direction="zero"] {
+        color: var(--text-tertiary, oklch(55% 0 0));
+      }
+
+      /* Flash animations */
+      :scope[data-flash="up"] {
+        animation: ui-realtime-flash-up 0.6s ease-out;
+      }
+      :scope[data-flash="down"] {
+        animation: ui-realtime-flash-down 0.6s ease-out;
+      }
+
+      :scope[data-motion="0"] {
+        animation: none !important;
+      }
+
+      @keyframes ui-realtime-flash-up {
+        0% { background: oklch(72% 0.19 155 / 0.15); }
+        100% { background: transparent; }
+      }
+
+      @keyframes ui-realtime-flash-down {
+        0% { background: oklch(62% 0.22 25 / 0.15); }
+        100% { background: transparent; }
+      }
+
+      /* Forced colors */
+      @media (forced-colors: active) {
+        .ui-realtime-value__delta[data-direction="positive"] {
+          color: LinkText;
+        }
+        .ui-realtime-value__delta[data-direction="negative"] {
+          color: LinkText;
+        }
+      }
+    }
+  }
+/* end realtime-value */
+
 /* responsive-card */
 @layer components {
     @scope (.ui-responsive-card) {
@@ -12818,6 +12975,118 @@
     }
   }
 /* end ripple */
+
+/* scroll-reveal */
+@layer components {
+    @scope (.ui-scroll-reveal) {
+      :scope {
+        /* Content always accessible to SR; only visual transform */
+      }
+
+      /* ── Hidden state (before reveal) ──────────────────── */
+
+      :scope:not([data-revealed="true"]):not([data-motion="0"])[data-animation="fade-up"] {
+        opacity: 0;
+        transform: translateY(1.5rem);
+      }
+      :scope:not([data-revealed="true"]):not([data-motion="0"])[data-animation="fade-down"] {
+        opacity: 0;
+        transform: translateY(-1.5rem);
+      }
+      :scope:not([data-revealed="true"]):not([data-motion="0"])[data-animation="fade-left"] {
+        opacity: 0;
+        transform: translateX(1.5rem);
+      }
+      :scope:not([data-revealed="true"]):not([data-motion="0"])[data-animation="fade-right"] {
+        opacity: 0;
+        transform: translateX(-1.5rem);
+      }
+      :scope:not([data-revealed="true"]):not([data-motion="0"])[data-animation="scale"] {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      /* ── Revealed state ────────────────────────────────── */
+
+      :scope[data-revealed="true"]:not([data-motion="0"]) {
+        opacity: 1;
+        transform: none;
+        transition:
+          opacity 0.5s var(--ease-out, ease-out) var(--scroll-reveal-delay, 0ms),
+          transform 0.5s var(--ease-out, ease-out) var(--scroll-reveal-delay, 0ms);
+      }
+
+      /* ── Motion 0: instant, no animation ───────────────── */
+
+      :scope[data-motion="0"] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      /* ── Stagger: children get incremental delay ───────── */
+
+      :scope[data-stagger] > * {
+        transition:
+          opacity 0.5s var(--ease-out, ease-out) calc(var(--scroll-reveal-delay, 0ms) + var(--stagger-index, 0) * var(--stagger-delay, 0ms)),
+          transform 0.5s var(--ease-out, ease-out) calc(var(--scroll-reveal-delay, 0ms) + var(--stagger-index, 0) * var(--stagger-delay, 0ms));
+      }
+
+      /* ── CSS scroll-driven animations (progressive enhancement) ── */
+
+      @supports (animation-timeline: view()) {
+        :scope[data-animation="fade-up"]:not([data-motion="0"]) {
+          animation: ui-scroll-reveal-fade-up both;
+          animation-timeline: view();
+          animation-range: entry 0% entry 100%;
+        }
+        :scope[data-animation="fade-down"]:not([data-motion="0"]) {
+          animation: ui-scroll-reveal-fade-down both;
+          animation-timeline: view();
+          animation-range: entry 0% entry 100%;
+        }
+        :scope[data-animation="scale"]:not([data-motion="0"]) {
+          animation: ui-scroll-reveal-scale both;
+          animation-timeline: view();
+          animation-range: entry 0% entry 100%;
+        }
+      }
+
+      /* ── Reduced motion ────────────────────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        :scope {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+
+      /* ── Print ─────────────────────────────────────────── */
+
+      @media print {
+        :scope {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    }
+
+    @keyframes ui-scroll-reveal-fade-up {
+      from { opacity: 0; transform: translateY(1.5rem); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes ui-scroll-reveal-fade-down {
+      from { opacity: 0; transform: translateY(-1.5rem); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes ui-scroll-reveal-scale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+/* end scroll-reveal */
 
 /* section-header */
 @layer components {

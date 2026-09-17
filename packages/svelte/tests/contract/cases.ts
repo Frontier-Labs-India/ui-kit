@@ -647,6 +647,24 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'children, size, disabled, caller attrs': { data: [], children: { $el: 'Download' }, size: 'xl', disabled: true, className: 'mine', id: 'csv' },
     'motion 0': { data: [], motion: 0 },
   },
+  RealtimeValue: {
+    defaults: { value: 1234.567 },
+    'positive delta': { value: 12, previousValue: 10, showDelta: true },
+    'negative delta, custom format, caller attrs': { value: 8, previousValue: 10, showDelta: true, format: { $fn: true }, className: 'mine', id: 'rv' },
+    'zero delta': { value: 10, previousValue: 10, showDelta: true },
+    'delta hidden without showDelta': { value: 12, previousValue: 10 },
+    'motion 0': { value: 1, motion: 0 },
+  },
+  ScrollReveal: {
+    defaults: { children: { $el: 'Card' } },
+    'scale, delay, stagger, threshold, caller style': { children: { $el: 'Card' }, animation: 'scale', delay: 150, stagger: 50, threshold: 0.5, once: false, style: { margin: 4 }, className: 'mine' },
+    'motion 0': { children: { $el: 'Card' }, motion: 0 },
+  },
+  EvervaultCard: {
+    children: { children: { $el: 'Secure' } },
+    'caller attrs': { children: { $el: 'x' }, className: 'mine', id: 'ev' },
+    'motion 0': { children: { $el: 'x' }, motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

@@ -87,6 +87,13 @@ export const EFFECT_VALUES: Record<string, { selector: string; reason: string }[
  * matching elements before comparison, and a behaviour test named in `reason`
  * asserts what the effect sets. */
 export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string[]; reason: string }[]> = {
+  ScrollReveal: [
+    {
+      selector: '.ui-scroll-reveal',
+      attributes: ['data-revealed'],
+      reason: 'Set on intersection, at once at motion 0 or with CSS scroll timelines, by an effect (scroll-reveal.test.ts).',
+    },
+  ],
   Highlight: [
     {
       selector: '.ui-highlight',
