@@ -618,6 +618,18 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'color and caller style': { children: { $el: 'fast' }, color: 'oklch(70% 0.2 150)', style: { fontWeight: 700 }, className: 'mine' },
     'motion 0 is active at once': { children: { $el: 'fast' }, motion: 0 },
   },
+  CopyButton: {
+    defaults: { value: 'npm i @frontier-labs/ui-kit', children: { $fn: true } },
+    'size, caller class': { value: 'x', size: 'xs', className: 'mine', children: { $fn: true } },
+    'motion 0': { value: 'x', motion: 0, children: { $fn: true } },
+  },
+  NumberTicker: {
+    // React's server render shows "0" until an effect sets the value, so only
+    // zero matches; other values' digits are asserted in number-ticker.test.ts.
+    zero: { value: 0 },
+    'zero, down, delay, caller class': { value: 0, direction: 'down', delay: 200, className: 'mine' },
+    'motion 0': { value: 0, motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

@@ -1403,6 +1403,39 @@
         "html": "<div class=\"ui-copy-block\" data-motion=\"0\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span>x</span>\n</span></span></code></pre></div></div>"
       }
     },
+    "CopyButton": {
+      "defaults": {
+        "props": {
+          "value": "npm i @frontier-labs/ui-kit",
+          "children": {
+            "$fn": true
+          },
+          "aria-describedby": "x"
+        },
+        "html": "<button type=\"button\" class=\"ui-copy-button\" data-size=\"md\" data-motion=\"3\" aria-label=\"Copy to clipboard\" aria-describedby=\"x\"></button>"
+      },
+      "size, caller class": {
+        "props": {
+          "value": "x",
+          "size": "xs",
+          "className": "mine",
+          "children": {
+            "$fn": true
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-copy-button mine\" data-size=\"xs\" data-motion=\"3\" aria-label=\"Copy to clipboard\"></button>"
+      },
+      "motion 0": {
+        "props": {
+          "value": "x",
+          "motion": 0,
+          "children": {
+            "$fn": true
+          }
+        },
+        "html": "<button type=\"button\" class=\"ui-copy-button\" data-size=\"md\" data-motion=\"0\" aria-label=\"Copy to clipboard\"></button>"
+      }
+    },
     "CoreChart": {
       "green-red auto columns": {
         "props": {
@@ -3502,6 +3535,30 @@
           "motion": 0
         },
         "html": "<div class=\"ui-number-input\" data-size=\"md\" data-motion=\"0\"><label for=\"number-input-_R_0_\" class=\"ui-number-input__label\">M</label><div class=\"ui-number-input__field-wrapper\"><input id=\"number-input-_R_0_\" type=\"text\" inputMode=\"decimal\" role=\"spinbutton\" class=\"ui-number-input__field\" value=\"\"/><div class=\"ui-number-input__controls\" aria-hidden=\"true\"><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Increment\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 6.5L5 3.5L8 6.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button><button type=\"button\" class=\"ui-number-input__stepper\" tabindex=\"-1\" aria-label=\"Decrement\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 10 10\" fill=\"none\" aria-hidden=\"true\"><path d=\"M2 3.5L5 6.5L8 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div></div>"
+      }
+    },
+    "NumberTicker": {
+      "zero": {
+        "props": {
+          "value": 0
+        },
+        "html": "<span class=\"ui-number-ticker\" data-motion=\"3\" aria-label=\"0\" role=\"img\"><span class=\"ui-number-ticker--digit-slot\" aria-hidden=\"true\"><span class=\"ui-number-ticker--digit-column\" style=\"transform:translateY(0em)\"><span class=\"ui-number-ticker--digit\">0</span><span class=\"ui-number-ticker--digit\">1</span><span class=\"ui-number-ticker--digit\">2</span><span class=\"ui-number-ticker--digit\">3</span><span class=\"ui-number-ticker--digit\">4</span><span class=\"ui-number-ticker--digit\">5</span><span class=\"ui-number-ticker--digit\">6</span><span class=\"ui-number-ticker--digit\">7</span><span class=\"ui-number-ticker--digit\">8</span><span class=\"ui-number-ticker--digit\">9</span></span></span></span>"
+      },
+      "zero, down, delay, caller class": {
+        "props": {
+          "value": 0,
+          "direction": "down",
+          "delay": 200,
+          "className": "mine"
+        },
+        "html": "<span class=\"ui-number-ticker mine\" data-motion=\"3\" aria-label=\"0\" role=\"img\"><span class=\"ui-number-ticker--digit-slot\" aria-hidden=\"true\"><span class=\"ui-number-ticker--digit-column\" style=\"transform:translateY(-9em)\"><span class=\"ui-number-ticker--digit\">9</span><span class=\"ui-number-ticker--digit\">8</span><span class=\"ui-number-ticker--digit\">7</span><span class=\"ui-number-ticker--digit\">6</span><span class=\"ui-number-ticker--digit\">5</span><span class=\"ui-number-ticker--digit\">4</span><span class=\"ui-number-ticker--digit\">3</span><span class=\"ui-number-ticker--digit\">2</span><span class=\"ui-number-ticker--digit\">1</span><span class=\"ui-number-ticker--digit\">0</span></span></span></span>"
+      },
+      "motion 0": {
+        "props": {
+          "value": 0,
+          "motion": 0
+        },
+        "html": "<span class=\"ui-number-ticker\" data-motion=\"0\" aria-label=\"0\" role=\"img\"><span class=\"ui-number-ticker--digit-slot\" aria-hidden=\"true\"><span class=\"ui-number-ticker--digit-column\" style=\"transform:translateY(0em)\"><span class=\"ui-number-ticker--digit\">0</span><span class=\"ui-number-ticker--digit\">1</span><span class=\"ui-number-ticker--digit\">2</span><span class=\"ui-number-ticker--digit\">3</span><span class=\"ui-number-ticker--digit\">4</span><span class=\"ui-number-ticker--digit\">5</span><span class=\"ui-number-ticker--digit\">6</span><span class=\"ui-number-ticker--digit\">7</span><span class=\"ui-number-ticker--digit\">8</span><span class=\"ui-number-ticker--digit\">9</span></span></span></span>"
       }
     },
     "OrbitingCircles": {
