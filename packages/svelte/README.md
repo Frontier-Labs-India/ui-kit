@@ -97,9 +97,15 @@ declared in the contract tests rather than hidden.
   be read back, which React's `children: string` relies on. (As in React,
   `Highlight` is the hero-section span and the text highlighter is `TextHighlight`.)
 - **OrbitingCircles** takes `items: []` — a snippet cannot be split into children.
-- **Tooltip** wraps its trigger in a `display: contents` span. React attaches
-  handlers to the child with `cloneElement`; Svelte cannot, so the wrapper
-  carries them without adding a box.
+- **Components that inject props, count children or share state** follow
+  three rules, written down in [COMPONENT-API.md](./COMPONENT-API.md): a
+  trigger snippet receives the props React's `cloneElement` would add and
+  spreads them (`mergeProps` chains your own handlers); a children list is
+  either registered parts (AvatarGroup, TabPanel) or an `items` prop; parts
+  share state through Svelte context, and `useToast()` is `getToast()`.
+  Tooltip still wraps its trigger in a `display: contents` span until it moves
+  to the first rule. That span has no box, so the tooltip is positioned
+  against the viewport origin.
 - **Render props are snippet parameters.** ContainerQuery's `children`
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a

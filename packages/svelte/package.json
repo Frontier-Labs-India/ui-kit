@@ -39,6 +39,7 @@
     "!dist/styles/svelte-only.css",
     "NOT_PORTED.json",
     "README.md",
+    "COMPONENT-API.md",
     "LICENSE"
   ],
   "sideEffects": [
