@@ -737,4 +737,28 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'ticks capped at 101': { showTicks: true, step: 0.5 },
     'motion 0': { motion: 0, 'aria-label': 'x' },
   },
+  HeatmapCalendar: {
+    empty: { data: [] },
+    'month boundary, zeros, gaps': {
+      data: [{ date: '2026-01-29', value: 0 }, { date: '2026-01-31', value: 4 }, { date: '2026-02-02', value: 8 }, { date: '2026-02-10', value: 2 }],
+    },
+    'explicit range and colours, clickable': {
+      startDate: '2026-05-01', endDate: '2026-05-20', colorScale: ['#111', 'lime'], onDateClick: { $fn: true },
+      data: [{ date: '2026-05-05', value: 1 }, { date: '2026-05-06', value: 5 }],
+    },
+    'motion 0': { data: [], motion: 0 },
+  },
+  SwitchFaceplate: {
+    basic: { ports: [1, 2, 3, 4, 5].map(id => ({ id, status: id % 2 ? 'up' : 'down' })) },
+    'labelled, clickable, three rows, labels shown': {
+      label: 'core-sw1', rows: 3, showLabels: true, size: 'lg', onPortClick: { $fn: true },
+      ports: [
+        { id: 1, label: 'wan', status: 'up', speed: '10G', type: 'sfp' },
+        { id: 2, status: 'admin-down', type: 'management' },
+        { id: 3, label: 'lan', status: 'unused', vlan: 20 },
+        { id: 4, status: 'up', type: 'qsfp' },
+      ],
+    },
+    'motion 0': { ports: [], motion: 0 },
+  },
 }

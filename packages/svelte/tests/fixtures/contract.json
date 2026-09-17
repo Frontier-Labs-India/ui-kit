@@ -1524,6 +1524,68 @@
         "html": "<div class=\"ui-glow-card\" data-motion=\"0\"><div class=\"ui-glow-card--content\"></div></div>"
       }
     },
+    "HeatmapCalendar": {
+      "empty": {
+        "props": {
+          "data": []
+        },
+        "html": "<div class=\"ui-heatmap-calendar\" data-motion=\"3\" role=\"group\" aria-label=\"Activity heatmap\"><div class=\"ui-heatmap-calendar__wrapper\"><div class=\"ui-heatmap-calendar__day-labels\"><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">M</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">W</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">F</div><div class=\"ui-heatmap-calendar__day-label\"></div></div><div class=\"ui-heatmap-calendar__grid\"></div></div></div>"
+      },
+      "month boundary, zeros, gaps": {
+        "props": {
+          "data": [
+            {
+              "date": "2026-01-29",
+              "value": 0
+            },
+            {
+              "date": "2026-01-31",
+              "value": 4
+            },
+            {
+              "date": "2026-02-02",
+              "value": 8
+            },
+            {
+              "date": "2026-02-10",
+              "value": 2
+            }
+          ]
+        },
+        "html": "<div class=\"ui-heatmap-calendar\" data-motion=\"3\" role=\"group\" aria-label=\"Activity heatmap\"><div class=\"ui-heatmap-calendar__wrapper\"><div class=\"ui-heatmap-calendar__day-labels\"><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">M</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">W</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">F</div><div class=\"ui-heatmap-calendar__day-label\"></div></div><div class=\"ui-heatmap-calendar__grid\"><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__month-label\">Jan</div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:oklch(22% 0.02 270)\" role=\"img\" aria-label=\"2026-01-29: 0\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:color-mix(in oklch, oklch(65% 0.2 155) 50%, oklch(22% 0.02 270))\" role=\"img\" aria-label=\"2026-01-31: 4\"></div></div><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__month-label\">Feb</div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:color-mix(in oklch, oklch(65% 0.2 155) 100%, oklch(22% 0.02 270))\" role=\"img\" aria-label=\"2026-02-02: 8\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:color-mix(in oklch, oklch(65% 0.2 155) 25%, oklch(22% 0.02 270))\" role=\"img\" aria-label=\"2026-02-10: 2\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div></div></div></div>"
+      },
+      "explicit range and colours, clickable": {
+        "props": {
+          "startDate": "2026-05-01",
+          "endDate": "2026-05-20",
+          "colorScale": [
+            "#111",
+            "lime"
+          ],
+          "onDateClick": {
+            "$fn": true
+          },
+          "data": [
+            {
+              "date": "2026-05-05",
+              "value": 1
+            },
+            {
+              "date": "2026-05-06",
+              "value": 5
+            }
+          ]
+        },
+        "html": "<div class=\"ui-heatmap-calendar\" data-motion=\"3\" role=\"group\" aria-label=\"Activity heatmap\"><div class=\"ui-heatmap-calendar__wrapper\"><div class=\"ui-heatmap-calendar__day-labels\"><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">M</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">W</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">F</div><div class=\"ui-heatmap-calendar__day-label\"></div></div><div class=\"ui-heatmap-calendar__grid\"><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__month-label\">Apr</div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__month-label\">May</div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:color-mix(in oklch, lime 20%, #111)\" role=\"img\" aria-label=\"2026-05-05: 1\" data-clickable=\"\"></div><div class=\"ui-heatmap-calendar__cell\" style=\"background:color-mix(in oklch, lime 100%, #111)\" role=\"img\" aria-label=\"2026-05-06: 5\" data-clickable=\"\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div><div class=\"ui-heatmap-calendar__week\"><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div><div class=\"ui-heatmap-calendar__cell ui-heatmap-calendar__cell--empty\"></div></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "data": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-heatmap-calendar\" data-motion=\"0\" role=\"group\" aria-label=\"Activity heatmap\"><div class=\"ui-heatmap-calendar__wrapper\"><div class=\"ui-heatmap-calendar__day-labels\"><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">M</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">W</div><div class=\"ui-heatmap-calendar__day-label\"></div><div class=\"ui-heatmap-calendar__day-label\">F</div><div class=\"ui-heatmap-calendar__day-label\"></div></div><div class=\"ui-heatmap-calendar__grid\"></div></div></div>"
+      }
+    },
     "Highlight": {
       "single term, case-insensitive": {
         "props": {
@@ -3838,6 +3900,79 @@
           "motion": 0
         },
         "html": "<div class=\"ui-success-checkmark\" data-size=\"md\" data-animated=\"true\" data-motion=\"0\" role=\"img\" aria-label=\"Success\"><svg class=\"ui-success-checkmark__svg\" viewBox=\"0 0 52 52\" aria-hidden=\"true\"><circle class=\"ui-success-checkmark__circle-fill\" cx=\"26\" cy=\"26\" r=\"24\"></circle><circle class=\"ui-success-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"24\"></circle><polyline class=\"ui-success-checkmark__check\" points=\"16 26 22 32 36 20\"></polyline></svg></div>"
+      }
+    },
+    "SwitchFaceplate": {
+      "basic": {
+        "props": {
+          "ports": [
+            {
+              "id": 1,
+              "status": "up"
+            },
+            {
+              "id": 2,
+              "status": "down"
+            },
+            {
+              "id": 3,
+              "status": "up"
+            },
+            {
+              "id": 4,
+              "status": "down"
+            },
+            {
+              "id": 5,
+              "status": "up"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-switch-faceplate\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"Network switch faceplate\"><div class=\"ui-switch-faceplate__grid\"><div class=\"ui-switch-faceplate__row\"><div class=\"ui-switch-faceplate__port\" data-status=\"up\" data-type=\"ethernet\"><span class=\"ui-switch-faceplate__led\" aria-hidden=\"true\"></span>1</div><div class=\"ui-switch-faceplate__port\" data-status=\"up\" data-type=\"ethernet\"><span class=\"ui-switch-faceplate__led\" aria-hidden=\"true\"></span>3</div><div class=\"ui-switch-faceplate__port\" data-status=\"up\" data-type=\"ethernet\"><span class=\"ui-switch-faceplate__led\" aria-hidden=\"true\"></span>5</div></div><div class=\"ui-switch-faceplate__row\"><div class=\"ui-switch-faceplate__port\" data-status=\"down\" data-type=\"ethernet\">2</div><div class=\"ui-switch-faceplate__port\" data-status=\"down\" data-type=\"ethernet\">4</div></div></div></div>"
+      },
+      "labelled, clickable, three rows, labels shown": {
+        "props": {
+          "label": "core-sw1",
+          "rows": 3,
+          "showLabels": true,
+          "size": "lg",
+          "onPortClick": {
+            "$fn": true
+          },
+          "ports": [
+            {
+              "id": 1,
+              "label": "wan",
+              "status": "up",
+              "speed": "10G",
+              "type": "sfp"
+            },
+            {
+              "id": 2,
+              "status": "admin-down",
+              "type": "management"
+            },
+            {
+              "id": 3,
+              "label": "lan",
+              "status": "unused",
+              "vlan": 20
+            },
+            {
+              "id": 4,
+              "status": "up",
+              "type": "qsfp"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-switch-faceplate\" data-motion=\"3\" data-size=\"lg\" role=\"group\" aria-label=\"Switch: core-sw1\"><div class=\"ui-switch-faceplate__header\">core-sw1</div><div class=\"ui-switch-faceplate__grid\"><div class=\"ui-switch-faceplate__row\"><div class=\"ui-switch-faceplate__port\" data-status=\"up\" data-type=\"sfp\"><span class=\"ui-switch-faceplate__led\" aria-hidden=\"true\"></span><button class=\"ui-switch-faceplate__port-btn\" aria-label=\"Port 1 (wan): up, 10G\">1</button></div><div class=\"ui-switch-faceplate__port\" data-status=\"up\" data-type=\"qsfp\"><span class=\"ui-switch-faceplate__led\" aria-hidden=\"true\"></span><button class=\"ui-switch-faceplate__port-btn\" aria-label=\"Port 4: up\">4</button></div></div><div class=\"ui-switch-faceplate__row\"><div class=\"ui-switch-faceplate__port\" data-status=\"admin-down\" data-type=\"management\"><button class=\"ui-switch-faceplate__port-btn\" aria-label=\"Port 2: admin-down\">2</button></div></div><div class=\"ui-switch-faceplate__row\"><div class=\"ui-switch-faceplate__port\" data-status=\"unused\" data-type=\"ethernet\"><button class=\"ui-switch-faceplate__port-btn\" aria-label=\"Port 3 (lan): unused\">3</button></div></div></div><div class=\"ui-switch-faceplate__row\" style=\"margin-block-start:0.125rem\"><div class=\"ui-switch-faceplate__port-label\">wan</div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "ports": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-switch-faceplate\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"Network switch faceplate\"><div class=\"ui-switch-faceplate__grid\"><div class=\"ui-switch-faceplate__row\"></div><div class=\"ui-switch-faceplate__row\"></div></div></div>"
       }
     },
     "TagInput": {
