@@ -5818,6 +5818,299 @@
   }
 /* end core-chart */
 
+/* cropper */
+@layer components {
+    @scope (.ui-cropper) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm, 0.5rem);
+        position: relative;
+        font-family: inherit;
+        user-select: none;
+        touch-action: none;
+      }
+
+      /* ── Container ── */
+      .ui-cropper__container {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md, 0.375rem);
+        background: oklch(10% 0 0);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+      }
+
+      /* ── Image ── */
+      .ui-cropper__image {
+        display: block;
+        max-inline-size: 100%;
+        block-size: auto;
+        pointer-events: none;
+        transform-origin: center center;
+      }
+
+      /* ── Overlay (dims outside crop area) ── */
+      .ui-cropper__overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .ui-cropper__overlay-top,
+      .ui-cropper__overlay-bottom,
+      .ui-cropper__overlay-left,
+      .ui-cropper__overlay-right {
+        position: absolute;
+        background: oklch(0% 0 0 / 0.55);
+      }
+
+      .ui-cropper__overlay-top {
+        inset-block-start: 0;
+        inset-inline: 0;
+      }
+      .ui-cropper__overlay-bottom {
+        inset-block-end: 0;
+        inset-inline: 0;
+      }
+      .ui-cropper__overlay-left {
+        inset-inline-start: 0;
+      }
+      .ui-cropper__overlay-right {
+        inset-inline-end: 0;
+      }
+
+      /* ── Crop area ── */
+      .ui-cropper__crop-area {
+        position: absolute;
+        z-index: 2;
+        border: 2px solid oklch(100% 0 0 / 0.9);
+        cursor: move;
+        box-shadow: 0 0 0 9999px oklch(0% 0 0 / 0);
+      }
+
+      :scope[data-rounded] .ui-cropper__crop-area {
+        border-radius: 50%;
+        clip-path: circle(50%);
+      }
+
+      /* ── Grid lines ── */
+      .ui-cropper__grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .ui-cropper__grid-line {
+        position: absolute;
+        background: oklch(100% 0 0 / 0.3);
+      }
+
+      .ui-cropper__grid-line--h1 {
+        inset-block-start: 33.33%;
+        inset-inline: 0;
+        block-size: 1px;
+      }
+      .ui-cropper__grid-line--h2 {
+        inset-block-start: 66.66%;
+        inset-inline: 0;
+        block-size: 1px;
+      }
+      .ui-cropper__grid-line--v1 {
+        inset-inline-start: 33.33%;
+        inset-block: 0;
+        inline-size: 1px;
+      }
+      .ui-cropper__grid-line--v2 {
+        inset-inline-start: 66.66%;
+        inset-block: 0;
+        inline-size: 1px;
+      }
+
+      /* ── Resize handles ── */
+      .ui-cropper__handle {
+        position: absolute;
+        inline-size: 10px;
+        block-size: 10px;
+        background: oklch(100% 0 0);
+        border: 1px solid oklch(0% 0 0 / 0.3);
+        border-radius: 1px;
+        z-index: 3;
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+
+      .ui-cropper__handle:hover {
+        transform: scale(1.3);
+        box-shadow: 0 2px 8px oklch(0% 0 0 / 0.5), 0 0 12px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.3);
+      }
+
+      .ui-cropper__handle--nw { inset-block-start: -5px; inset-inline-start: -5px; cursor: nwse-resize; }
+      .ui-cropper__handle--n  { inset-block-start: -5px; inset-inline-start: calc(50% - 5px); cursor: ns-resize; }
+      .ui-cropper__handle--ne { inset-block-start: -5px; inset-inline-end: -5px; cursor: nesw-resize; }
+      .ui-cropper__handle--e  { inset-block-start: calc(50% - 5px); inset-inline-end: -5px; cursor: ew-resize; }
+      .ui-cropper__handle--se { inset-block-end: -5px; inset-inline-end: -5px; cursor: nwse-resize; }
+      .ui-cropper__handle--s  { inset-block-end: -5px; inset-inline-start: calc(50% - 5px); cursor: ns-resize; }
+      .ui-cropper__handle--sw { inset-block-end: -5px; inset-inline-start: -5px; cursor: nesw-resize; }
+      .ui-cropper__handle--w  { inset-block-start: calc(50% - 5px); inset-inline-start: -5px; cursor: ew-resize; }
+
+      /* ── Controls toolbar ── */
+      .ui-cropper__controls {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md, 0.75rem);
+        padding-block: 0.375rem;
+        padding-inline: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .ui-cropper__control-group {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+      }
+
+      .ui-cropper__control-label {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        user-select: none;
+        white-space: nowrap;
+      }
+
+      .ui-cropper__slider {
+        -webkit-appearance: none;
+        appearance: none;
+        inline-size: 100px;
+        block-size: 4px;
+        border-radius: 2px;
+        background: var(--border-default, oklch(100% 0 0 / 0.12));
+        outline: none;
+        cursor: pointer;
+      }
+
+      .ui-cropper__slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        inline-size: 14px;
+        block-size: 14px;
+        border-radius: 50%;
+        background: var(--brand, oklch(65% 0.2 270));
+        cursor: pointer;
+        border: 2px solid oklch(100% 0 0);
+        box-shadow: 0 1px 4px oklch(0% 0 0 / 0.3);
+      }
+
+      .ui-cropper__slider::-moz-range-thumb {
+        inline-size: 14px;
+        block-size: 14px;
+        border-radius: 50%;
+        background: var(--brand, oklch(65% 0.2 270));
+        cursor: pointer;
+        border: 2px solid oklch(100% 0 0);
+        box-shadow: 0 1px 4px oklch(0% 0 0 / 0.3);
+      }
+
+      .ui-cropper__slider:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 2px;
+      }
+
+      .ui-cropper__rotate-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        border-radius: var(--radius-sm, 0.25rem);
+        cursor: pointer;
+        min-inline-size: 1.75rem;
+        min-block-size: 1.75rem;
+        padding: 0.25rem;
+        font-family: inherit;
+        font-size: var(--text-xs, 0.75rem);
+        transition: background 0.1s ease-out, color 0.1s ease-out;
+      }
+
+      .ui-cropper__rotate-btn:hover {
+        background: var(--bg-hover, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-cropper__rotate-btn:hover:not(:disabled) {
+        transform: scale(1.06);
+        box-shadow: 0 2px 6px oklch(0% 0 0 / 0.2);
+      }
+
+      .ui-cropper__rotate-btn:active:not(:disabled) {
+        transform: scale(0.92);
+        transition: transform 0.06s ease-out;
+      }
+
+      .ui-cropper__rotate-btn:focus-visible {
+        outline: 2px solid var(--brand, oklch(65% 0.2 270));
+        outline-offset: 1px;
+      }
+
+      /* ── Forced colors ── */
+      @media (forced-colors: active) {
+        .ui-cropper__container {
+          border: 2px solid ButtonText;
+        }
+        .ui-cropper__crop-area {
+          border-color: Highlight;
+        }
+        .ui-cropper__handle {
+          background: Highlight;
+          border-color: HighlightText;
+        }
+        .ui-cropper__rotate-btn {
+          border-color: ButtonText;
+        }
+      }
+
+      /* ── Print ── */
+      @media print {
+        .ui-cropper__controls {
+          display: none;
+        }
+        .ui-cropper__handle {
+          display: none;
+        }
+        .ui-cropper__overlay-top,
+        .ui-cropper__overlay-bottom,
+        .ui-cropper__overlay-left,
+        .ui-cropper__overlay-right {
+          display: none;
+        }
+        .ui-cropper__container {
+          border: 1px solid;
+        }
+      }
+
+      /* ── Touch targets ── */
+      @media (pointer: coarse) {
+        .ui-cropper__handle {
+          inline-size: 20px;
+          block-size: 20px;
+        }
+        .ui-cropper__handle--nw { inset-block-start: -10px; inset-inline-start: -10px; }
+        .ui-cropper__handle--n  { inset-block-start: -10px; inset-inline-start: calc(50% - 10px); }
+        .ui-cropper__handle--ne { inset-block-start: -10px; inset-inline-end: -10px; }
+        .ui-cropper__handle--e  { inset-block-start: calc(50% - 10px); inset-inline-end: -10px; }
+        .ui-cropper__handle--se { inset-block-end: -10px; inset-inline-end: -10px; }
+        .ui-cropper__handle--s  { inset-block-end: -10px; inset-inline-start: calc(50% - 10px); }
+        .ui-cropper__handle--sw { inset-block-end: -10px; inset-inline-start: -10px; }
+        .ui-cropper__handle--w  { inset-block-start: calc(50% - 10px); inset-inline-start: -10px; }
+
+        .ui-cropper__rotate-btn {
+          min-inline-size: 2.75rem;
+          min-block-size: 2.75rem;
+        }
+      }
+    }
+  }
+/* end cropper */
+
 /* dashboard-grid */
 @layer components {
     @scope (.ui-dashboard-grid) {

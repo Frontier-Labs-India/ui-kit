@@ -998,6 +998,13 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'controlled, error, disabled, no text input, caller attrs': { name: 'c', label: { $el: 'C' }, value: '#abcdef', error: 'Too dark', disabled: true, showInput: false, className: 'mine', id: 'ci' },
     'motion 0': { name: 'c', motion: 0 },
   },
+  Cropper: {
+    // An image never loads in either render, so the crop UI is behaviour-tested.
+    defaults: { src: 'https://example.com/photo.jpg' },
+    'rounded, zoom only, caller attrs': { src: 'a.png', rounded: true, showRotate: false, className: 'mine', id: 'cr' },
+    'no controls': { src: 'a.png', showZoom: false, showRotate: false },
+    'motion 0': { src: 'a.png', motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
