@@ -743,6 +743,60 @@
         "html": "<div class=\"ui-checkbox\" data-size=\"md\" data-motion=\"0\"><div style=\"display:inline-flex;align-items:flex-start;gap:inherit\"><input type=\"checkbox\" id=\"checkbox-_R_0_\" class=\"ui-checkbox__input\"/><span class=\"ui-checkbox__box\"><svg class=\"ui-checkbox__check\" viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 8.5L6.5 12L13 4\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg><span class=\"ui-checkbox__dash\" aria-hidden=\"true\"></span></span></div></div>"
       }
     },
+    "Chip": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Tag"
+          }
+        },
+        "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-motion=\"3\"><input type=\"checkbox\" class=\"ui-chip__input\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>Tag</b></label>"
+      },
+      "controlled checked filled primary lg": {
+        "props": {
+          "checked": true,
+          "variant": "filled",
+          "color": "primary",
+          "size": "lg",
+          "name": "tags",
+          "children": {
+            "$el": "Tag"
+          }
+        },
+        "html": "<label class=\"ui-chip\" data-variant=\"filled\" data-color=\"primary\" data-size=\"lg\" data-checked=\"true\" data-motion=\"3\"><input type=\"checkbox\" class=\"ui-chip__input\" name=\"tags\" checked=\"\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>Tag</b></label>"
+      },
+      "default checked hides icon": {
+        "props": {
+          "defaultChecked": true,
+          "icon": {
+            "$el": "i"
+          },
+          "children": {
+            "$el": "Tag"
+          }
+        },
+        "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-checked=\"true\" data-motion=\"3\"><input type=\"checkbox\" class=\"ui-chip__input\" checked=\"\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>Tag</b></label>"
+      },
+      "icon shown when unchecked, disabled": {
+        "props": {
+          "icon": "i",
+          "disabled": true,
+          "children": {
+            "$el": "Tag"
+          }
+        },
+        "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-disabled=\"true\" data-motion=\"3\"><input type=\"checkbox\" class=\"ui-chip__input\" disabled=\"\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><span class=\"ui-chip__icon\">i</span><b>Tag</b></label>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-motion=\"0\"><input type=\"checkbox\" class=\"ui-chip__input\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>x</b></label>"
+      }
+    },
     "ConfidenceBar": {
       "medium": {
         "props": {
@@ -1776,6 +1830,40 @@
           "motion": 0
         },
         "html": "<div class=\"ui-metric-card\" data-motion=\"0\" role=\"group\" aria-label=\"x\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">x</h3></div><div class=\"ui-metric-card__value\">1</div></div>"
+      }
+    },
+    "Navbar": {
+      "logo only": {
+        "props": {
+          "logo": {
+            "$el": "Acme"
+          }
+        },
+        "html": "<header class=\"ui-navbar\" data-sticky=\"true\" data-bordered=\"true\" data-mobile-open=\"false\" style=\"--navbar-height:56px\"><div class=\"ui-navbar__logo\"><b>Acme</b></div></header>"
+      },
+      "everything": {
+        "props": {
+          "logo": "Acme",
+          "actions": {
+            "$el": "Sign in"
+          },
+          "height": 64,
+          "children": {
+            "$el": "links"
+          }
+        },
+        "html": "<header class=\"ui-navbar\" data-sticky=\"true\" data-bordered=\"true\" data-mobile-open=\"false\" style=\"--navbar-height:64px\"><div class=\"ui-navbar__logo\">Acme</div><nav class=\"ui-navbar__nav\"><b>links</b></nav><div class=\"ui-navbar__actions\"><b>Sign in</b></div><button type=\"button\" class=\"ui-navbar__hamburger\" aria-label=\"Toggle menu\" aria-expanded=\"false\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 5H15M3 9H15M3 13H15\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg></button><nav class=\"ui-navbar__mobile-nav\" aria-label=\"Mobile navigation\"><b>links</b></nav></header>"
+      },
+      "not sticky, no border, transparent, caller style wins": {
+        "props": {
+          "sticky": false,
+          "bordered": false,
+          "transparent": true,
+          "style": {
+            "--navbar-height": "10px"
+          }
+        },
+        "html": "<header class=\"ui-navbar\" data-sticky=\"false\" data-bordered=\"false\" data-transparent=\"true\" data-mobile-open=\"false\" style=\"--navbar-height:10px\"></header>"
       }
     },
     "NetworkTrafficCard": {

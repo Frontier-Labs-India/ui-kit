@@ -670,4 +670,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'custom icons and label': { value: 2, icon: { $el: '*' }, emptyIcon: 'o', 'aria-label': 'Quality' },
     'motion 0': { motion: 0 },
   },
+  Chip: {
+    defaults: { children: { $el: 'Tag' } },
+    'controlled checked filled primary lg': { checked: true, variant: 'filled', color: 'primary', size: 'lg', name: 'tags', children: { $el: 'Tag' } },
+    'default checked hides icon': { defaultChecked: true, icon: { $el: 'i' }, children: { $el: 'Tag' } },
+    'icon shown when unchecked, disabled': { icon: 'i', disabled: true, children: { $el: 'Tag' } },
+    'motion 0': { motion: 0, children: { $el: 'x' } },
+  },
+  Navbar: {
+    'logo only': { logo: { $el: 'Acme' } },
+    everything: { logo: 'Acme', actions: { $el: 'Sign in' }, height: 64, children: { $el: 'links' } },
+    'not sticky, no border, transparent, caller style wins': { sticky: false, bordered: false, transparent: true, style: { '--navbar-height': '10px' } },
+  },
 }
