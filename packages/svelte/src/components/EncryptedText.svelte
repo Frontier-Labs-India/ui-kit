@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     text: string
     trigger?: 'mount' | 'hover' | 'inView'
     /** Higher resolves faster: a character every round(4 / speed) frames. */
@@ -16,10 +18,10 @@
 
   const DEFAULT_SCRAMBLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%'
 
-  let { text, trigger = 'mount', speed = 2, scrambleChars = DEFAULT_SCRAMBLE, motion, class: className, onmouseenter, ...rest }: Props = $props()
+  let { text, trigger = 'mount', speed = 2, scrambleChars = DEFAULT_SCRAMBLE, motion, class: className, onmouseenter, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLSpanElement | null>(null)
+  const element = $derived(ref)
   let resolvedCount = $state(0)
   let started = $state(false)
   let displayChars = $state<string[]>([])
@@ -78,7 +80,7 @@
 </script>
 
 <span
-  bind:this={element}
+  bind:this={ref}
   class={cn('ui-encrypted-text', className)}
   data-motion={motionLevel()}
   aria-label={text}

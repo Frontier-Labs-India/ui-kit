@@ -5,6 +5,8 @@
   import { mergeStyles, type StyleInput } from '../lib/react-style.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     /** The text to search. React takes this as `children`; a Svelte snippet's
      *  text cannot be read back, so it is a prop here. */
     text: string
@@ -16,7 +18,7 @@
     class?: string
   }
 
-  let { text, highlight, color, caseSensitive = false, highlightClassName, class: className, style, ...rest }: Props = $props()
+  let { text, highlight, color, caseSensitive = false, highlightClassName, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
@@ -36,6 +38,6 @@
   const styles = $derived(mergeStyles(style, color ? { '--ui-highlight-color': color } : null))
 </script>
 
-<span class={cn('ui-highlight', className)} use:cssProps={styles} {...rest}>
+<span class={cn('ui-highlight', className)} use:cssProps={styles} bind:this={ref} {...rest}>
   {#each chunks as chunk, i (i)}{#if chunk.highlighted}<mark class={highlightClassName}>{chunk.text}</mark>{:else}<span>{chunk.text}</span>{/if}{/each}
 </span>

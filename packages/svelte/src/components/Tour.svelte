@@ -20,6 +20,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props {
+    /** The tour overlay element, null while closed (React's Tour takes no ref). Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     steps: TourStep[]
     open?: boolean
     onClose?: () => void
@@ -36,7 +38,7 @@
 
   let {
     steps, open = false, onClose, onFinish, currentStep, onStepChange, closeOnOverlay = true, closeOnEscape = true,
-    showProgress = true, showSkip = true, motion,
+    showProgress = true, showSkip = true, motion, ref = $bindable(null),
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -134,7 +136,7 @@
 </script>
 
 {#if open && data}
-  <div class="ui-tour" data-motion={motionLevel()} data-open="" role="dialog" aria-modal="true" aria-label={`Tour step ${step + 1} of ${steps.length}: ${data.title}`}>
+  <div bind:this={ref} class="ui-tour" data-motion={motionLevel()} data-open="" role="dialog" aria-modal="true" aria-label={`Tour step ${step + 1} of ${steps.length}: ${data.title}`}>
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
     <svg class="ui-tour__overlay" onclick={() => { if (closeOnOverlay) onClose?.() }} aria-hidden="true">
       <defs>

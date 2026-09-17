@@ -17,6 +17,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     events: TimelineEvent[]
     orientation?: 'vertical' | 'horizontal'
     expandable?: boolean
@@ -25,7 +27,7 @@
     class?: string
   }
 
-  let { events, orientation = 'vertical', expandable = false, maxVisible, motion, class: className, ...rest }: Props = $props()
+  let { events, orientation = 'vertical', expandable = false, maxVisible, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const expanded = new SvelteSet<string>()
@@ -37,7 +39,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-severity-timeline', className)} data-orientation={orientation} data-motion={motionLevel()} {...rest}>
+  <div class={cn('ui-severity-timeline', className)} data-orientation={orientation} data-motion={motionLevel()} bind:this={ref} {...rest}>
     <ol class="ui-severity-timeline__list">
       {#each visible as event (event.id)}
         <li class="ui-severity-timeline__item">

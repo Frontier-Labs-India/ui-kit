@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     text: string
     streaming?: boolean
     showCursor?: boolean
@@ -17,7 +19,7 @@
     class?: string
   }
 
-  let { text, streaming, showCursor, speed, onComplete, motion, class: className, ...rest }: Props = $props()
+  let { text, streaming, showCursor, speed, onComplete, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   type Segment = { type: 'text' | 'code'; content: string; language?: string }
   function parseText(value: string): Segment[] {
@@ -88,7 +90,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-streaming-text', className)} data-motion={motionLevel()} aria-live="polite" aria-busy={streaming || undefined} {...rest}>
+  <div class={cn('ui-streaming-text', className)} data-motion={motionLevel()} aria-live="polite" aria-busy={streaming || undefined} bind:this={ref} {...rest}>
     <div class="ui-streaming-text__content">{#each segments as seg}{#if seg.type === 'code'}<code class="ui-streaming-text__code-block">{#if seg.language}<span class="ui-streaming-text__code-lang">{seg.language}</span>{/if}{seg.content}</code>{:else}<span>{seg.content}</span>{/if}{/each}{#if shouldShowCursor || cursorFading}<span class="ui-streaming-text__cursor" aria-hidden="true" data-fading={cursorFading ? 'true' : undefined}></span>{/if}</div>
   </div>
 </ErrorBoundary>

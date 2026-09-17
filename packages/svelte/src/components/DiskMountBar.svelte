@@ -16,6 +16,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     mounts: MountInfo[]
     maxVisible?: number
     showFree?: boolean
@@ -35,7 +37,7 @@
   const level = (pct: number) => (pct >= 90 ? 'critical' : pct >= 70 ? 'warning' : 'ok')
   const s = (n: number) => (n !== 1 ? 's' : '')
 
-  let { mounts, maxVisible = 3, showFree = false, formatBytes, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { mounts, maxVisible = 3, showFree = false, formatBytes, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let expanded = $state(false)
@@ -47,7 +49,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-disk-mount-bar', className)} data-size={size} data-motion={motionLevel()} role="list" aria-label={`Disk utilization — ${sorted.length} mount${s(sorted.length)}`} {...rest}>
+  <div class={cn('ui-disk-mount-bar', className)} data-size={size} data-motion={motionLevel()} role="list" aria-label={`Disk utilization — ${sorted.length} mount${s(sorted.length)}`} bind:this={ref} {...rest}>
     <div class="ui-disk-mount-bar__list">
       {#each visible as m (m.mount)}
         <div class="ui-disk-mount-bar__entry" role="listitem">

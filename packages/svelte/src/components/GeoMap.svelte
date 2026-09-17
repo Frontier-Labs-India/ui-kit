@@ -26,6 +26,8 @@
   }
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     points: GeoPoint[]
     connections?: GeoConnection[]
     /** Accepted for API parity; React renders equirectangular for both values. */
@@ -52,7 +54,7 @@
 
   let {
     points, connections, projection: _projection = 'equirectangular', showLabels, interactive, onPointClick,
-    onPointHover, height, motion, class: className, style, ...rest
+    onPointHover, height, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -81,7 +83,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-geo-map', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+  <div class={cn('ui-geo-map', className)} data-motion={motionLevel()} use:cssProps={styles} bind:this={ref} {...rest}>
     <svg viewBox="0 0 360 180" preserveAspectRatio="xMidYMid meet" role="img" aria-label={`Geographic map with ${points.length} point${points.length !== 1 ? 's' : ''}`}>
       <g class="ui-geo-map__world">{#each WORLD_PATHS as d, i (i)}<path {d} />{/each}</g>
       {#each paths as p (p.key)}<path class="ui-geo-map__connection" d={p.d} data-status={p.status || undefined} />{/each}

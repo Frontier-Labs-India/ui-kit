@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     code: string
     language?: CopyBlockLanguage
     showLineNumbers?: boolean
@@ -18,7 +20,7 @@
     class?: string
   }
 
-  let { code, language = 'text', showLineNumbers = true, highlight, maxHeight, title, motion, class: className, ...rest }: Props = $props()
+  let { code, language = 'text', showLineNumbers = true, highlight, maxHeight, title, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let copied = $state(false)
@@ -55,7 +57,7 @@
   }
 </script>
 
-<div class={cn('ui-copy-block', className)} data-motion={motionLevel()} {...rest}>
+<div class={cn('ui-copy-block', className)} data-motion={motionLevel()} bind:this={ref} {...rest}>
   {#if title}
     <div class="ui-copy-block__header">
       <span class="ui-copy-block__title">{title}</span>

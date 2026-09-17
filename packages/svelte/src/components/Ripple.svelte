@@ -13,6 +13,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     color?: string
     duration?: number
     children?: Snippet
@@ -21,10 +23,10 @@
     class?: string
   }
 
-  let { color, duration = 600, children, motion, class: className, style, onclick, ...rest }: Props = $props()
+  let { color, duration = 600, children, motion, class: className, style, onclick, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   let ripples = $state<{ id: number; x: number; y: number; size: number }[]>([])
 
   function handleClick(e: MouseEvent & { currentTarget: EventTarget & HTMLDivElement }) {
@@ -45,7 +47,7 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<div bind:this={el} class={cn('ui-ripple', className)} data-motion={motionLevel()} onclick={handleClick} use:cssProps={styles} {...rest}>
+<div bind:this={ref} class={cn('ui-ripple', className)} data-motion={motionLevel()} onclick={handleClick} use:cssProps={styles} {...rest}>
   {#each ripples as r (r.id)}
     <!-- numbers, so React's px rule applies: inset/size are pixels -->
     <span class="ui-ripple--circle" use:cssProps={reactStyle({ insetInlineStart: r.x, insetBlockStart: r.y, inlineSize: r.size, blockSize: r.size })}></span>

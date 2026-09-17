@@ -18,6 +18,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     src: string
     aspectRatio?: number
     minWidth?: number
@@ -35,7 +37,7 @@
 
   let {
     src, aspectRatio, minWidth = 20, minHeight = 20, maxWidth, maxHeight, onCrop, showGrid = true, showZoom = true,
-    showRotate = true, rounded = false, motion, class: className, ...rest
+    showRotate = true, rounded = false, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   type Box = { x: number; y: number; width: number; height: number }
@@ -166,7 +168,7 @@
   })
 </script>
 
-<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-rounded={rounded ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-rounded={rounded ? '' : undefined} bind:this={ref} {...rest}>
   <div
     bind:this={container}
     class="ui-cropper__container"

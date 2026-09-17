@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     text: string
     trigger?: 'mount' | 'inView'
     /** Characters per second. */
@@ -13,10 +15,10 @@
     class?: string
   }
 
-  let { text, trigger = 'mount', speed = 30, motion, class: className, ...rest }: Props = $props()
+  let { text, trigger = 'mount', speed = 30, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLDivElement | null>(null)
+  const element = $derived(ref)
   let revealedCount = $state(0)
   let started = $state(false)
   const chars = $derived(Array.from(text))
@@ -53,6 +55,6 @@
   })
 </script>
 
-<div bind:this={element} class={cn('ui-text-reveal', className)} data-motion={motionLevel()} aria-label={text} role="img" {...rest}>
+<div bind:this={ref} class={cn('ui-text-reveal', className)} data-motion={motionLevel()} aria-label={text} role="img" {...rest}>
   {#each chars as char, i}<span class="ui-text-reveal--char" data-revealed={i < revealedCount || undefined} data-space={char === ' ' || undefined} aria-hidden="true">{char === ' ' ? ' ' : char}</span>{/each}
 </div>

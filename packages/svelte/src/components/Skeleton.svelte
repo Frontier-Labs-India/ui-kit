@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     variant?: 'text' | 'circular' | 'rectangular' | 'rounded'
     width?: string | number
     height?: string | number
@@ -27,7 +29,7 @@
 
   let {
     variant = 'text', width, height, lines, lineHeight, lineGap, animate = true, animation = 'shimmer',
-    radius, count, direction = 'row', speed = 'normal', motion, class: className, style, ...rest
+    radius, count, direction = 'row', speed = 'normal', motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('skeleton')
@@ -70,6 +72,7 @@
     data-lines=""
     aria-hidden="true"
     use:cssProps={styles}
+    bind:this={ref}
     {...rest}
   >
     {#each Array.from({ length: lines! }) as _, i (i)}
@@ -87,6 +90,7 @@
     data-speed={speed}
     aria-hidden="true"
     use:cssProps={styles}
+    bind:this={ref}
     {...rest}
   ></div>
 {/if}

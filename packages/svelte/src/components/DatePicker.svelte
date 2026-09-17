@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable ISO date (YYYY-MM-DD). Omit it for an uncontrolled picker that starts from defaultValue. */
     value?: string
     defaultValue?: string
@@ -26,7 +28,7 @@
 
   let {
     value = $bindable(), defaultValue, onChange, min, max, placeholder, label, error, disabled = false, size = 'md',
-    showWeekNumbers: _showWeekNumbers = false, firstDayOfWeek = 1, motion, class: className, 'aria-label': ariaLabel, ...rest
+    showWeekNumbers: _showWeekNumbers = false, firstDayOfWeek = 1, motion, class: className, 'aria-label': ariaLabel, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const DAY_NAMES_MON = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
@@ -177,7 +179,7 @@
   const selectedDate = $derived(currentValue ? parseDate(currentValue) : null)
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-invalid={error ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-invalid={error ? '' : undefined} bind:this={ref} {...rest}>
   {#if label}<label for={inputId} class="ui-date-picker__label"><Content value={label} /></label>{/if}
   <div class="ui-date-picker__input-wrapper">
     <input

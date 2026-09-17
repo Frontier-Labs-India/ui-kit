@@ -9,6 +9,8 @@
   type Part = 'root' | 'icon' | 'content' | 'title' | 'body' | 'dismiss'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     variant: 'info' | 'success' | 'warning' | 'error'
     title?: string | Snippet
     icon?: string | Snippet
@@ -26,7 +28,7 @@
 
   let {
     variant, title, icon, dismissible = false, onDismiss, action, size = 'md', banner = false, compact = false,
-    motion, classNames, children, class: className, ...rest
+    motion, classNames, children, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('alert')
@@ -43,6 +45,7 @@
   data-compact={compact || undefined}
   data-motion={motionLevel()}
   {role}
+  bind:this={ref}
   {...rest}
 >
   <span class={cn('ui-alert__icon', classNames?.icon)} aria-hidden="true">

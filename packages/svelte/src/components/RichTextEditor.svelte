@@ -22,6 +22,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'placeholder'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** HTML. Sanitized before it is shown. */
     value?: string
     defaultValue?: string
@@ -44,7 +46,7 @@
 
   let {
     value, defaultValue, onChange, placeholder = 'Start typing...', label, error, disabled = false, readOnly = false,
-    minHeight = 120, maxHeight, toolbar = DEFAULT_TOOLBAR, size = 'md', motion, class: className, ...rest
+    minHeight = 120, maxHeight, toolbar = DEFAULT_TOOLBAR, size = 'md', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const ICONS: Record<string, string> = {
@@ -214,7 +216,7 @@
   const labelId = $derived(label ? `${stableId}-label` : undefined)
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-invalid={error ? '' : undefined} data-disabled={disabled ? '' : undefined} data-readonly={readOnly ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-invalid={error ? '' : undefined} data-disabled={disabled ? '' : undefined} data-readonly={readOnly ? '' : undefined} bind:this={ref} {...rest}>
   <!-- React renders this label without `for`: the editor is named by aria-labelledby. -->
   <!-- svelte-ignore a11y_label_has_associated_control -->
   {#if label}<label id={labelId} class="ui-rich-text-editor__label">{label}</label>{/if}

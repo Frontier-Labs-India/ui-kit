@@ -27,6 +27,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     nodes: PipelineNode[]
     edges: PipelineEdge[]
     direction?: 'LR' | 'TB'
@@ -48,7 +50,7 @@
 
   let {
     nodes, edges, direction = 'LR', onNodeClick, onEdgeClick, selectedNode, showMetrics = false, showThroughput = false,
-    height = 300, motion, class: className, ...rest
+    height = 300, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -98,13 +100,13 @@
 
 <ErrorBoundary>
   {#if !layout}
-    <div class={cn('ui-pipeline-dag', className)} data-motion={motionLevel()} role="img" aria-label="Empty pipeline DAG" {...rest}>
+    <div class={cn('ui-pipeline-dag', className)} data-motion={motionLevel()} role="img" aria-label="Empty pipeline DAG" bind:this={ref} {...rest}>
       <svg class="ui-pipeline-dag__svg" viewBox="0 0 400 100" use:cssProps={svgStyle}>
         <text x="200" y="50" text-anchor="middle" fill="var(--text-tertiary, oklch(55% 0 0))" font-size="13">No pipeline data</text>
       </svg>
     </div>
   {:else}
-    <div class={cn('ui-pipeline-dag', className)} data-motion={motionLevel()} role={onNodeClick || onEdgeClick ? 'figure' : 'img'} aria-label={`Pipeline DAG with ${nodes.length} nodes and ${edges.length} edges`} {...rest}>
+    <div class={cn('ui-pipeline-dag', className)} data-motion={motionLevel()} role={onNodeClick || onEdgeClick ? 'figure' : 'img'} aria-label={`Pipeline DAG with ${nodes.length} nodes and ${edges.length} edges`} bind:this={ref} {...rest}>
       <svg class="ui-pipeline-dag__svg" {viewBox} use:cssProps={svgStyle} xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="ui-dag-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">

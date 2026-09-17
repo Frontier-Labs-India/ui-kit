@@ -5,8 +5,11 @@
   import type { TopologyRendererProps } from '../lib/topology.js'
 
   let {
-    layout, nodes, edges, selectedNodes = [], onNodeClick, onNodeHover, onEdgeClick: _onEdgeClick, motionLevel, width, height
-  }: TopologyRendererProps = $props()
+    layout, nodes, edges, selectedNodes = [], onNodeClick, onNodeHover, onEdgeClick: _onEdgeClick, motionLevel, width, height, ref = $bindable(null),
+  }: TopologyRendererProps & {
+    /** The <canvas> element (React's renderer takes no ref). Read it with `bind:ref`. */
+    ref?: HTMLCanvasElement | null
+  } = $props()
 
   // Canvas-compatible hex approximations of the OKLCH status colours.
   const STATUS_FILL: Record<string, string> = {
@@ -18,7 +21,7 @@
   }
   const colorOf = (status?: string) => STATUS_FILL[status || 'unknown'] || STATUS_FILL.unknown
 
-  let canvas: HTMLCanvasElement | undefined
+  const canvas = $derived(ref)
   let pan = $state({ x: 0, y: 0 })
   let zoom = $state(1)
   let dragging = $state(false)
@@ -224,7 +227,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <canvas
-  bind:this={canvas}
+  bind:this={ref}
   {width}
   {height}
   use:cssProps={reactStyle({ width, height, cursor: dragging ? 'grabbing' : 'grab' })}

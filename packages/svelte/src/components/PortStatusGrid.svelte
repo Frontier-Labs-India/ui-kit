@@ -14,6 +14,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     ports: PortStatus[]
     columns?: number
     size?: 'sm' | 'md'
@@ -22,14 +24,14 @@
     class?: string
   }
 
-  let { ports, columns = 8, size = 'md', onPortClick, motion, class: className, ...rest }: Props = $props()
+  let { ports, columns = 8, size = 'md', onPortClick, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let hovered = $state<number | null>(null)
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-port-status-grid', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label="Port status" {...rest}>
+  <div class={cn('ui-port-status-grid', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label="Port status" bind:this={ref} {...rest}>
     <div class="ui-port-status-grid__grid" use:cssProps={reactStyle({ '--columns': columns })}>
       {#each ports as p (p.port)}
         <!-- svelte-ignore a11y_no_static_element_interactions -->

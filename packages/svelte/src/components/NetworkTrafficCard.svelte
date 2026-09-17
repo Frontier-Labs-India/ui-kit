@@ -17,6 +17,8 @@
   }
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     title: string | Snippet
     vendor?: string
     location?: string
@@ -28,10 +30,10 @@
     class?: string
   }
 
-  let { title, vendor, location, traffic, trend, status, compact, motion, class: className, ...rest }: Props = $props()
+  let { title, vendor, location, traffic, trend, status, compact, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'fade-up' : 'none'), () => ({ duration: 280 }))
   const spark = $derived(sparklinePaths(trend))
 </script>
@@ -46,7 +48,7 @@
 
 <ErrorBoundary>
   <div
-    bind:this={el}
+    bind:this={ref}
     class={cn('ui-network-traffic-card', className)}
     data-motion={motionLevel()}
     data-status={status || undefined}

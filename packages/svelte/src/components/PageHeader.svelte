@@ -5,6 +5,8 @@
   import Content from '../lib/Content.svelte'
 
   interface Props extends HTMLAttributes<HTMLElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     title: string
     description?: string
     actions?: string | Snippet
@@ -13,11 +15,11 @@
     class?: string
   }
 
-  let { title, description, actions, size = 'md', breadcrumbs, class: className, ...rest }: Props = $props()
+  let { title, description, actions, size = 'md', breadcrumbs, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const cls = makeCls('page-header')
 </script>
 
-<header class={cn(cls('root'), className)} data-size={size} {...rest}>
+<header class={cn(cls('root'), className)} data-size={size} bind:this={ref} {...rest}>
   {#if breadcrumbs}
     <nav class="ui-page-header__breadcrumbs" aria-label="Breadcrumb"><Content value={breadcrumbs} /></nav>
   {/if}

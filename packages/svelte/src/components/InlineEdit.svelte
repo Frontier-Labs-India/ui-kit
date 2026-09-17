@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable; saving writes it and calls onChange. */
     value: string
     onChange?: (value: string) => void
@@ -22,7 +24,7 @@
 
   let {
     value = $bindable(), onChange, placeholder, disabled = false, size = 'md', multiline = false, editTrigger = 'click',
-    onSave, onCancel, motion, class: className, ...rest
+    onSave, onCancel, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('inline-edit')
@@ -81,7 +83,7 @@
   }
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} bind:this={ref} {...rest}>
   {#if editing}
     {#if multiline}
       <textarea bind:this={field} class="ui-inline-edit__field" value={editValue} oninput={e => { editValue = e.currentTarget.value }} onkeydown={onFieldKeyDown} onblur={save} aria-label="Edit value" rows={3}></textarea>

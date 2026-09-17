@@ -12,6 +12,8 @@
    * motion 0. It lives in lib/ because components/Highlight.svelte is the text
    * highlighter React exports as TextHighlight. */
   interface Props extends Omit<HTMLAttributes<HTMLSpanElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     children?: Snippet
     color?: string
     motion?: MotionLevel
@@ -19,10 +21,10 @@
     style?: StyleInput
   }
 
-  let { children, color, motion, class: className, style, ...rest }: Props = $props()
+  let { children, color, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLSpanElement | null>(null)
+  const element = $derived(ref)
   let active = $state(false)
 
   $effect(() => {
@@ -45,4 +47,4 @@
   const styles = $derived(mergeStyles(style, color ? { '--highlight-brand-color': color } : null))
 </script>
 
-<span bind:this={element} class={cn('ui-highlight', className)} data-motion={motionLevel()} data-active={active || undefined} use:cssProps={styles} {...rest}>{#if children}{@render children()}{/if}</span>
+<span bind:this={ref} class={cn('ui-highlight', className)} data-motion={motionLevel()} data-active={active || undefined} use:cssProps={styles} {...rest}>{#if children}{@render children()}{/if}</span>

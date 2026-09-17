@@ -15,6 +15,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     items: SortableItem[]
     onChange: (items: SortableItem[]) => void
     handle?: boolean
@@ -24,7 +26,7 @@
     class?: string
   }
 
-  let { items, onChange, handle = true, disabled = false, orientation = 'vertical', motion, class: className, 'aria-label': ariaLabel, ...rest }: Props = $props()
+  let { items, onChange, handle = true, disabled = false, orientation = 'vertical', motion, class: className, 'aria-label': ariaLabel, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('sortable-list')
   const motionLevel = getMotionLevel(() => motion)
@@ -142,7 +144,7 @@
   }
 </script>
 
-<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-orientation={orientation} {...rest}>
+<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-orientation={orientation} bind:this={ref} {...rest}>
   <!-- React sets no tabindex on the listbox: focus lives on the options (roving tabindex). -->
   <!-- svelte-ignore a11y_interactive_supports_focus -->
   <div

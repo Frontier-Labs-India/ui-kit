@@ -17,6 +17,8 @@
   type Pair = [TransferListItem[], TransferListItem[]]
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable [source, target]. */
     value: Pair
     onChange?: (value: Pair) => void
@@ -31,7 +33,7 @@
 
   let {
     value = $bindable(), onChange, titles = ['Source', 'Target'], searchable = false, showTransferAll = true, listHeight,
-    size = 'md', motion, class: className, ...rest
+    size = 'md', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -125,7 +127,7 @@
 
 {#snippet chevron(d: string[])}<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">{#each d as path}<path d={path} stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />{/each}</svg>{/snippet}
 
-<div class={cn('ui-transfer-list', className)} data-size={size} data-motion={motionLevel()} role="group" aria-label="Transfer list" {...rest}>
+<div class={cn('ui-transfer-list', className)} data-size={size} data-motion={motionLevel()} role="group" aria-label="Transfer list" bind:this={ref} {...rest}>
   {@render panel(value[0], leftFiltered, titles[0], leftSelected, 'left')}
   <div class="ui-transfer-list__controls">
     {#if showTransferAll}

@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'placeholder'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Image URL to show; a picked file's preview is used when omitted. */
     value?: string
     onChange?: (file: File, preview: string) => void
@@ -23,7 +25,7 @@
     class?: string
   }
 
-  let { value, onChange, onRemove, size = 120, accept = 'image/*', maxSize, placeholder, disabled = false, shape = 'circle', motion, class: className, ...rest }: Props = $props()
+  let { value, onChange, onRemove, size = 120, accept = 'image/*', maxSize, placeholder, disabled = false, shape = 'circle', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('avatar-upload')
   const motionLevel = getMotionLevel(() => motion)
@@ -67,7 +69,7 @@
   </svg>
 {/snippet}
 
-<div class={cn(cls('root'), className)} data-shape={shape} data-disabled={disabled || undefined} data-motion={motionLevel()} {...rest}>
+<div class={cn(cls('root'), className)} data-shape={shape} data-disabled={disabled || undefined} data-motion={motionLevel()} bind:this={ref} {...rest}>
   <label
     class="ui-avatar-upload__container"
     aria-label="Upload avatar"

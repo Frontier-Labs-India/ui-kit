@@ -19,6 +19,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     items: TimelineItem[]
     variant?: 'default' | 'alternate' | 'compact'
     size?: 'sm' | 'md' | 'lg'
@@ -27,11 +29,11 @@
     class?: string
   }
 
-  let { items, variant = 'default', size = 'md', connectorStyle = 'solid', motion, class: className, ...rest }: Props = $props()
+  let { items, variant = 'default', size = 'md', connectorStyle = 'solid', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const motionLevel = getMotionLevel(() => motion)
 </script>
 
-<div class={cn('ui-timeline', className)} data-variant={variant} data-size={size} data-connector={connectorStyle} data-motion={motionLevel()} role="list" {...rest}>
+<div class={cn('ui-timeline', className)} data-variant={variant} data-size={size} data-connector={connectorStyle} data-motion={motionLevel()} role="list" bind:this={ref} {...rest}>
   {#each items as item (item.id)}
     <div class="ui-timeline__item" role="listitem">
       <span class="ui-timeline__dot" data-status={item.status ?? 'pending'} aria-hidden="true"><Content value={item.icon} /></span>

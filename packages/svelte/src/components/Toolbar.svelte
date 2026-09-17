@@ -4,6 +4,8 @@
   import { makeCls, cn } from '../lib/cls.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     children?: Snippet
     gap?: 'sm' | 'md' | 'lg'
     justify?: 'start' | 'end' | 'between' | 'center'
@@ -12,7 +14,7 @@
     class?: string
   }
 
-  let { children, gap = 'md', justify = 'start', wrap = false, sticky = false, class: className, ...rest }: Props = $props()
+  let { children, gap = 'md', justify = 'start', wrap = false, sticky = false, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const cls = makeCls('toolbar')
 </script>
 
@@ -23,6 +25,7 @@
   data-justify={justify}
   data-wrap={wrap || undefined}
   data-sticky={sticky || undefined}
+  bind:this={ref}
   {...rest}
 >
   {#if children}{@render children()}{/if}

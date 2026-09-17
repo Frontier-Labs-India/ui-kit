@@ -13,6 +13,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     cores: CoreChartCore[]
     columns?: number
     size?: 'sm' | 'md' | 'lg'
@@ -29,7 +31,7 @@
     return `oklch(${(50 + (u / 100) * 20).toFixed(0)}% 0.2 270)`
   }
 
-  let { cores, columns, size = 'md', showLabels = false, colorScale = 'green-red', motion, class: className, ...rest }: Props = $props()
+  let { cores, columns, size = 'md', showLabels = false, colorScale = 'green-red', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let tooltip = $state<{ core: CoreChartCore; x: number; y: number } | null>(null)
@@ -42,7 +44,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-core-chart', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`CPU core utilization: ${cores.length} cores`} {...rest}>
+  <div class={cn('ui-core-chart', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`CPU core utilization: ${cores.length} cores`} bind:this={ref} {...rest}>
     <div class="ui-core-chart__grid" use:cssProps={reactStyle({ gridTemplateColumns: `repeat(${cols}, var(--cell-size, 24px))` })}>
       {#each cores as core (core.id)}
         <!-- svelte-ignore a11y_no_static_element_interactions -->

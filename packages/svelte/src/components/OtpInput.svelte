@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     length?: number
     /** Bindable. */
     value?: string
@@ -21,7 +23,7 @@
 
   let {
     length = 6, value = $bindable(), onChange, onComplete, type = 'number', error, disabled = false, autoFocus = false,
-    size = 'md', motion, class: className, ...rest
+    size = 'md', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('otp-input')
@@ -95,6 +97,7 @@
   data-invalid={error ? '' : undefined}
   role="group"
   aria-describedby={errorId}
+  bind:this={ref}
   {...rest}
 >
   <div class="ui-otp-input__digits">

@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Controlled when set. */
     value?: number
     defaultValue?: number
@@ -29,7 +31,7 @@
 
   let {
     value, defaultValue = 0, onChange, max = 5, size = 'md', readOnly = false, allowHalf = false, icon, emptyIcon, color,
-    motion, class: className, style, ...rest
+    motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('rating')
@@ -91,6 +93,7 @@
   onkeydown={keydown}
   onmouseleave={() => (hoverIndex = null)}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >
   {#each Array.from({ length: max }) as _, i (i)}

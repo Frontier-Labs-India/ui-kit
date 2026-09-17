@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Controls whether the drawer is visible. */
     open: boolean
     /** Callback fired when the drawer requests to close (overlay click, Escape key). */
@@ -33,6 +35,7 @@
     children,
     motion,
     class: className,
+    ref = $bindable(null),
     ...rest
   }: Props = $props()
 
@@ -51,7 +54,7 @@
 </script>
 
 {#if open}
-  <div use:portal class={cn('ui-drawer', className)} {...rest}>
+  <div use:portal class={cn('ui-drawer', className)} bind:this={ref} {...rest}>
     {#if overlay}
       <!-- svelte-ignore a11y_click_events_have_key_events -->
       <!-- svelte-ignore a11y_no_static_element_interactions -->

@@ -4,11 +4,13 @@
   import { cn } from '../lib/cls.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     children?: Snippet
     class?: string
   }
 
-  let { children, class: className, ...rest }: Props = $props()
+  let { children, class: className, ref = $bindable(null), ...rest }: Props = $props()
 </script>
 
-<div class={cn('ui-sidebar__header', className)} {...rest}>{#if children}{@render children()}{/if}</div>
+<div class={cn('ui-sidebar__header', className)} bind:this={ref} {...rest}>{#if children}{@render children()}{/if}</div>

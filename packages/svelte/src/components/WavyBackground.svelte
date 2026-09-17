@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     waveCount?: number
     speed?: number
     color?: string
@@ -18,7 +20,7 @@
     class?: string
   }
 
-  let { waveCount = 5, speed = 10, color, children, motion, class: className, style, ...rest }: Props = $props()
+  let { waveCount = 5, speed = 10, color, children, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
 
@@ -49,7 +51,7 @@
   const styles = $derived(mergeStyles(style))
 </script>
 
-<div class={cn('ui-wavy-background', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+<div class={cn('ui-wavy-background', className)} data-motion={motionLevel()} use:cssProps={styles} bind:this={ref} {...rest}>
   <svg class="ui-wavy-background--svg" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
     {#each waves as wave, i (i)}
       <path class="ui-wavy-background--wave" d={wave.path} fill={baseColor} fill-opacity={wave.opacity} use:cssProps={wave.style} />

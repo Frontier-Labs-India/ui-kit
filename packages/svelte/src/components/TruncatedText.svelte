@@ -5,6 +5,8 @@
   import { reactStyle } from '../lib/react-style.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     text: string
     lines?: number
     expandable?: boolean
@@ -12,11 +14,11 @@
     class?: string
   }
 
-  let { text, lines = 1, expandable = false, showTooltip = true, class: className, ...rest }: Props = $props()
+  let { text, lines = 1, expandable = false, showTooltip = true, class: className, ref = $bindable(null), ...rest }: Props = $props()
   let expanded = $state(false)
 </script>
 
-<span class={cn('ui-truncated-text', className)} data-lines={lines} title={showTooltip && !expanded ? text : undefined} {...rest}>
+<span class={cn('ui-truncated-text', className)} data-lines={lines} title={showTooltip && !expanded ? text : undefined} bind:this={ref} {...rest}>
   <span class="ui-truncated-text__content" use:cssProps={reactStyle({ '--lines': lines })} data-expanded={expanded ? '' : undefined}>{text}</span>
   {#if expandable}
     <button class="ui-truncated-text__toggle" onclick={() => (expanded = !expanded)} aria-expanded={expanded}>{expanded ? 'Show less' : 'Show more'}</button>

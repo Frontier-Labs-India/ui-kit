@@ -13,6 +13,8 @@
   }
 
   interface Props {
+    /** The root element, null while no insight is shown (React's takes no ref). Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     insights: DataInsight[]
     onApply?: (insight: DataInsight) => void
     onDismiss?: (id: string) => void
@@ -23,7 +25,7 @@
     'trending-up': '↗', filter: '▽', 'badge-check': '◉', list: '☰', 'scatter-chart': '•',
   }
 
-  let { insights, onApply, onDismiss }: Props = $props()
+  let { insights, onApply, onDismiss, ref = $bindable(null) }: Props = $props()
 
   let open = $state(true)
   const dismissed = new SvelteSet<string>()
@@ -37,7 +39,7 @@
 
 <!-- Renders nothing once every insight is dismissed, as React returns an empty fragment. -->
 {#if visible.length > 0}
-  <div class="ui-data-table-suggestions" role="region" aria-label="AI Suggestions">
+  <div bind:this={ref} class="ui-data-table-suggestions" role="region" aria-label="AI Suggestions">
     <button type="button" class="ui-data-table-suggestions__header" onclick={() => (open = !open)} aria-expanded={open}>
       <span class="ui-data-table-suggestions__title"><span aria-hidden="true">{'✨'}</span>AI Suggestions<span class="ui-data-table-suggestions__badge">{visible.length}</span></span>
       <span class="ui-data-table-suggestions__toggle" data-open={open ? '' : undefined} aria-hidden="true">{'▼'}</span>

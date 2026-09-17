@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     status: 'ok' | 'warning' | 'critical' | 'info' | 'unknown' | 'maintenance'
     label?: string
     icon?: string | Snippet
@@ -16,7 +18,7 @@
     class?: string
   }
 
-  let { status, label, icon, size = 'sm', pulse = false, motion, class: className, ...rest }: Props = $props()
+  let { status, label, icon, size = 'sm', pulse = false, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('status-badge')
   const motionLevel = getMotionLevel(() => motion)
@@ -28,6 +30,7 @@
   data-status={status}
   data-size={size}
   data-motion={motionLevel()}
+  bind:this={ref}
   {...rest}
 >
   <span class="ui-status-badge__dot" data-pulse={pulse || undefined} aria-hidden="true"></span>

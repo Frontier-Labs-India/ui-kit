@@ -1,0 +1,3986 @@
+{
+ "Accordion": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-accordion",
+   "nth": 0
+  },
+  "variant+size": {
+   "tag": "div",
+   "classes": "ui-accordion",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-accordion",
+   "nth": 0
+  },
+  "items": {
+   "tag": "div",
+   "classes": "ui-accordion",
+   "nth": 0
+  }
+ },
+ "ActionIcon": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-action-icon",
+   "nth": 0
+  },
+  "filled danger xl full loading": {
+   "tag": "button",
+   "classes": "ui-action-icon",
+   "nth": 0
+  },
+  "disabled": {
+   "tag": "button",
+   "classes": "ui-action-icon",
+   "nth": 0
+  },
+  "type submit": {
+   "tag": "button",
+   "classes": "ui-action-icon",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-action-icon",
+   "nth": 0
+  }
+ },
+ "Affix": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-affix",
+   "nth": 0
+  },
+  "top-left, zIndex, caller style overrides": {
+   "tag": "div",
+   "classes": "mine ui-affix",
+   "nth": 0
+  }
+ },
+ "Alert": {
+  "info": {
+   "tag": "div",
+   "classes": "ui-alert",
+   "nth": 0
+  },
+  "success title sm": {
+   "tag": "div",
+   "classes": "ui-alert",
+   "nth": 0
+  },
+  "warning banner compact": {
+   "tag": "div",
+   "classes": "ui-alert",
+   "nth": 0
+  },
+  "error dismissible with action": {
+   "tag": "div",
+   "classes": "ui-alert",
+   "nth": 0
+  },
+  "custom icon and classNames": {
+   "tag": "div",
+   "classes": "r ui-alert",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-alert",
+   "nth": 0
+  }
+ },
+ "AnimatedCounter": {
+  "defaults": {
+   "tag": "span",
+   "classes": "ui-animated-counter",
+   "nth": 0
+  },
+  "custom format, caller attrs": {
+   "tag": "span",
+   "classes": "mine ui-animated-counter",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-animated-counter",
+   "nth": 0
+  }
+ },
+ "AppShell": {
+  "main only": {
+   "tag": "div",
+   "classes": "ui-app-shell",
+   "nth": 0
+  },
+  "all regions right collapsed": {
+   "tag": "div",
+   "classes": "ui-app-shell",
+   "nth": 0
+  },
+  "empty-string sidebar reports true, renders nothing": {
+   "tag": "div",
+   "classes": "ui-app-shell",
+   "nth": 0
+  }
+ },
+ "AvatarUpload": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-avatar-upload",
+   "nth": 0
+  },
+  "value with remove, square, size, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-avatar-upload",
+   "nth": 0
+  },
+  "custom placeholder, disabled, accept": {
+   "tag": "div",
+   "classes": "ui-avatar-upload",
+   "nth": 0
+  },
+  "value without onRemove has no remove button": {
+   "tag": "div",
+   "classes": "ui-avatar-upload",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-avatar-upload",
+   "nth": 0
+  }
+ },
+ "BackToTop": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-back-to-top",
+   "nth": 0
+  },
+  "progress ring, lg, caller style and class": {
+   "tag": "button",
+   "classes": "mine ui-back-to-top",
+   "nth": 0
+  },
+  "sm, visibleFrom, not smooth": {
+   "tag": "button",
+   "classes": "ui-back-to-top",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-back-to-top",
+   "nth": 0
+  }
+ },
+ "BackgroundBeams": {
+  "few": {
+   "tag": "div",
+   "classes": "ui-background-beams",
+   "nth": 0
+  },
+  "color, content, style": {
+   "tag": "div",
+   "classes": "ui-background-beams",
+   "nth": 0
+  },
+  "no style at all": {
+   "tag": "div",
+   "classes": "ui-background-beams",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-background-beams",
+   "nth": 0
+  }
+ },
+ "BackgroundBoxes": {
+  "small grid": {
+   "tag": "div",
+   "classes": "ui-background-boxes",
+   "nth": 0
+  },
+  "with content and style": {
+   "tag": "div",
+   "classes": "ui-background-boxes",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-background-boxes",
+   "nth": 0
+  }
+ },
+ "Badge": {
+  "defaults": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "variant+size": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "outline": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "dot+pulse": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "count over max": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "count zero": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "removable": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  },
+  "children": {
+   "tag": "span",
+   "classes": "ui-badge",
+   "nth": 0
+  }
+ },
+ "BorderBeam": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-border-beam",
+   "nth": 0
+  },
+  "duration size color": {
+   "tag": "div",
+   "classes": "ui-border-beam",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "div",
+   "classes": "ui-border-beam",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-border-beam",
+   "nth": 0
+  }
+ },
+ "Breadcrumbs": {
+  "three": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  },
+  "custom separator, icons, element label": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  },
+  "collapsed to maxVisible 3": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  },
+  "maxVisible not exceeded": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  },
+  "item without href gets #": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  },
+  "single": {
+   "tag": "nav",
+   "classes": "ui-breadcrumbs",
+   "nth": 0
+  }
+ },
+ "Button": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "secondary xs full width": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "danger xl submit": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "ghost disabled": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "link with classNames": {
+   "tag": "button",
+   "classes": "mine r ui-button",
+   "nth": 0
+  },
+  "loading without text keeps children": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "loading text replaces children": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "loading text ignored when not loading": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "icon only": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "shortcuts": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-button",
+   "nth": 0
+  }
+ },
+ "ButtonGroup": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-button-group",
+   "nth": 0
+  },
+  "vertical xl ghost attached": {
+   "tag": "div",
+   "classes": "ui-button-group",
+   "nth": 0
+  },
+  "role override": {
+   "tag": "div",
+   "classes": "ui-button-group",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-button-group",
+   "nth": 0
+  }
+ },
+ "CSVExportButton": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-csv-export",
+   "nth": 0
+  },
+  "children, size, disabled, caller attrs": {
+   "tag": "button",
+   "classes": "mine ui-csv-export",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-csv-export",
+   "nth": 0
+  }
+ },
+ "Calendar": {
+  "today, no value": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "uncontrolled defaultValue in another month": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "controlled value, min/max and disabled list": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "value null is controlled-empty": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "monday start, week numbers, no outside days, lg": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "three months across a year boundary, no today highlight": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "range display with hover end": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "range with explicit end beats hover": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  },
+  "de-DE locale, caller attributes": {
+   "tag": "div",
+   "classes": "mine ui-calendar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-calendar",
+   "nth": 0
+  }
+ },
+ "Card": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "as article, elevated, header and footer": {
+   "tag": "article",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "expandable with header": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "expandable without header": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "expandable, collapsed by default": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "expandable with caller style drops cursor": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "flags and classNames": {
+   "tag": "div",
+   "classes": "r ui-card",
+   "nth": 0
+  },
+  "loading": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  },
+  "motion 1 (no entrance)": {
+   "tag": "div",
+   "classes": "ui-card",
+   "nth": 0
+  }
+ },
+ "Card3D": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-card-3d",
+   "nth": 0
+  },
+  "perspective, no glare": {
+   "tag": "div",
+   "classes": "ui-card-3d",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "div",
+   "classes": "ui-card-3d",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-card-3d",
+   "nth": 0
+  }
+ },
+ "CardGrid": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-card-grid",
+   "nth": 0
+  },
+  "min child width": {
+   "tag": "div",
+   "classes": "ui-card-grid",
+   "nth": 0
+  },
+  "caller style object merged": {
+   "tag": "div",
+   "classes": "ui-card-grid",
+   "nth": 0
+  },
+  "caller style without min width": {
+   "tag": "div",
+   "classes": "ui-card-grid",
+   "nth": 0
+  }
+ },
+ "Checkbox": {
+  "defaults": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "label": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "size": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "indeterminate": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "disabled": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "error": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "rest to input": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "default checked": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-checkbox__input",
+   "nth": 0
+  }
+ },
+ "Chip": {
+  "defaults": {
+   "tag": "label",
+   "classes": "ui-chip",
+   "nth": 0
+  },
+  "controlled checked filled primary lg": {
+   "tag": "label",
+   "classes": "ui-chip",
+   "nth": 0
+  },
+  "default checked hides icon": {
+   "tag": "label",
+   "classes": "ui-chip",
+   "nth": 0
+  },
+  "icon shown when unchecked, disabled": {
+   "tag": "label",
+   "classes": "ui-chip",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "label",
+   "classes": "ui-chip",
+   "nth": 0
+  }
+ },
+ "CodeEditor": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  },
+  "typescript with every token kind": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  },
+  "python and bash comments, sql, word wrap hides numbers": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  },
+  "sql with comment, line numbers from 10, no active highlight, heights, readOnly, placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-code-editor",
+   "nth": 0
+  },
+  "bash and json": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  },
+  "no line numbers": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-code-editor",
+   "nth": 0
+  }
+ },
+ "ColorInput": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-color-input",
+   "nth": 0
+  },
+  "label, uncontrolled default, lg, swatches": {
+   "tag": "div",
+   "classes": "ui-color-input",
+   "nth": 0
+  },
+  "controlled, error, disabled, no text input, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-color-input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-color-input",
+   "nth": 0
+  }
+ },
+ "ColumnVisibilityToggle": {
+  "columns": {
+   "tag": "div",
+   "classes": "ui-column-visibility",
+   "nth": 0
+  },
+  "reset, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-column-visibility",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-column-visibility",
+   "nth": 0
+  }
+ },
+ "Combobox": {
+  "closed, no selection": {
+   "tag": "div",
+   "classes": "ui-combobox",
+   "nth": 0
+  },
+  "label, uncontrolled default shows its label, lg": {
+   "tag": "div",
+   "classes": "ui-combobox",
+   "nth": 0
+  },
+  "controlled, error, disabled, placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-combobox",
+   "nth": 0
+  },
+  "value not in options leaves the input empty": {
+   "tag": "div",
+   "classes": "ui-combobox",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-combobox",
+   "nth": 0
+  }
+ },
+ "CommandBar": {
+  "closed": {
+   "tag": "div",
+   "classes": "mine ui-command-bar",
+   "nth": 0
+  },
+  "open with sections, icons, shortcuts, disabled": {
+   "tag": "div",
+   "classes": "ui-command-bar",
+   "nth": 0
+  },
+  "open without sections, placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "ui-command-bar",
+   "nth": 0
+  },
+  "open and empty": {
+   "tag": "div",
+   "classes": "ui-command-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-command-bar",
+   "nth": 0
+  }
+ },
+ "ConfidenceBar": {
+  "medium": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  },
+  "low string label lg": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  },
+  "high element label, no value": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  },
+  "no header": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  },
+  "custom thresholds": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-confidence-bar",
+   "nth": 0
+  }
+ },
+ "ConfirmDialog": {
+  "defaults": null,
+  "danger loading with description and labels": null,
+  "motion 0": null
+ },
+ "ConnectionTestPanel": {
+  "every status": {
+   "tag": "div",
+   "classes": "ui-connection-test-panel",
+   "nth": 0
+  },
+  "running shows cancel, hides retry": {
+   "tag": "div",
+   "classes": "ui-connection-test-panel",
+   "nth": 0
+  },
+  "no failures or skips": {
+   "tag": "div",
+   "classes": "ui-connection-test-panel",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-connection-test-panel",
+   "nth": 0
+  }
+ },
+ "ContainerQuery": {
+  "children": {
+   "tag": "div",
+   "classes": "ui-container-query",
+   "nth": 0
+  },
+  "caller style merges after container-type, class and attrs": {
+   "tag": "div",
+   "classes": "mine ui-container-query",
+   "nth": 0
+  }
+ },
+ "CopyBlock": {
+  "plain text": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "typescript": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "json": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "css": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "bash": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "sql, python, yaml": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "python": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-copy-block",
+   "nth": 0
+  }
+ },
+ "CopyButton": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-copy-button",
+   "nth": 0
+  },
+  "size, caller class": {
+   "tag": "button",
+   "classes": "mine ui-copy-button",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-copy-button",
+   "nth": 0
+  }
+ },
+ "CoreChart": {
+  "green-red auto columns": {
+   "tag": "div",
+   "classes": "ui-core-chart",
+   "nth": 0
+  },
+  "blue-red labels lg columns": {
+   "tag": "div",
+   "classes": "ui-core-chart",
+   "nth": 0
+  },
+  "brand": {
+   "tag": "div",
+   "classes": "ui-core-chart",
+   "nth": 0
+  },
+  "empty": {
+   "tag": "div",
+   "classes": "ui-core-chart",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-core-chart",
+   "nth": 0
+  }
+ },
+ "Cropper": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-cropper",
+   "nth": 0
+  },
+  "rounded, zoom only, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-cropper",
+   "nth": 0
+  },
+  "no controls": {
+   "tag": "div",
+   "classes": "ui-cropper",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-cropper",
+   "nth": 0
+  }
+ },
+ "DashboardGrid": {
+  "ungrouped children": {
+   "tag": "div",
+   "classes": "ui-dashboard-grid",
+   "nth": 0
+  },
+  "groups": {
+   "tag": "div",
+   "classes": "ui-dashboard-grid",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-dashboard-grid",
+   "nth": 0
+  }
+ },
+ "DashboardTemplate": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-dashboard-template",
+   "nth": 0
+  },
+  "full header, status bar, metrics and sections with right sidebar": {
+   "tag": "div",
+   "classes": "ui-dashboard-template",
+   "nth": 0
+  },
+  "clickable metrics in a grid, left collapsible sidebar, custom status bar, caller style": {
+   "tag": "div",
+   "classes": "mine ui-dashboard-template",
+   "nth": 0
+  },
+  "lastUpdated and autoRefresh of 0 render a stray 0": {
+   "tag": "div",
+   "classes": "ui-dashboard-template",
+   "nth": 0
+  },
+  "children only, days ago": {
+   "tag": "div",
+   "classes": "ui-dashboard-template",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-dashboard-template",
+   "nth": 0
+  }
+ },
+ "DataTableSuggestions": {
+  "basic": null,
+  "no apply handler hides Apply": null,
+  "nothing to show": null
+ },
+ "DatePicker": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-date-picker",
+   "nth": 0
+  },
+  "label, uncontrolled default, placeholder, lg": {
+   "tag": "div",
+   "classes": "ui-date-picker",
+   "nth": 0
+  },
+  "controlled, error, disabled, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-date-picker",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-date-picker",
+   "nth": 0
+  }
+ },
+ "DateRangePicker": {
+  "label, placeholder": {
+   "tag": "div",
+   "classes": "ui-date-range-picker",
+   "nth": 0
+  },
+  "start only shows one date and clear": {
+   "tag": "div",
+   "classes": "ui-date-range-picker",
+   "nth": 0
+  },
+  "full range, lg, error, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-date-range-picker",
+   "nth": 0
+  },
+  "disabled, custom placeholder": {
+   "tag": "div",
+   "classes": "ui-date-range-picker",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-date-range-picker",
+   "nth": 0
+  }
+ },
+ "DensitySelector": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-density-selector",
+   "nth": 0
+  },
+  "controlled spacious sm": {
+   "tag": "div",
+   "classes": "ui-density-selector",
+   "nth": 0
+  },
+  "default compact": {
+   "tag": "div",
+   "classes": "ui-density-selector",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-density-selector",
+   "nth": 0
+  }
+ },
+ "Dialog": {
+  "body only": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "title and description": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "no title, no close: no header": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "description without title": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "element title, footer, size, classNames": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "caller attributes on the dialog": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  }
+ },
+ "DiffViewer": {
+  "unified with a fold": {
+   "tag": "div",
+   "classes": "ui-diff-viewer",
+   "nth": 0
+  },
+  "side by side, no numbers": {
+   "tag": "div",
+   "classes": "ui-diff-viewer",
+   "nth": 0
+  },
+  "no folding, one title": {
+   "tag": "div",
+   "classes": "ui-diff-viewer",
+   "nth": 0
+  },
+  "identical input": {
+   "tag": "div",
+   "classes": "ui-diff-viewer",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-diff-viewer",
+   "nth": 0
+  }
+ },
+ "DiskMountBar": {
+  "sorted, collapsed at 3": {
+   "tag": "div",
+   "classes": "ui-disk-mount-bar",
+   "nth": 0
+  },
+  "single mount shows free, lg": {
+   "tag": "div",
+   "classes": "ui-disk-mount-bar",
+   "nth": 0
+  },
+  "no mounts": {
+   "tag": "div",
+   "classes": "ui-disk-mount-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-disk-mount-bar",
+   "nth": 0
+  }
+ },
+ "Divider": {
+  "defaults": {
+   "tag": "hr",
+   "classes": "ui-divider",
+   "nth": 0
+  },
+  "vertical dashed lg": {
+   "tag": "hr",
+   "classes": "ui-divider",
+   "nth": 0
+  },
+  "label string": {
+   "tag": "div",
+   "classes": "ui-divider",
+   "nth": 0
+  },
+  "label element": {
+   "tag": "div",
+   "classes": "ui-divider",
+   "nth": 0
+  },
+  "label empty string": {
+   "tag": "div",
+   "classes": "ui-divider",
+   "nth": 0
+  },
+  "rest attrs": {
+   "tag": "hr",
+   "classes": "ui-divider",
+   "nth": 0
+  }
+ },
+ "EmptyState": {
+  "title only": {
+   "tag": "div",
+   "classes": "ui-empty-state",
+   "nth": 0
+  },
+  "everything": {
+   "tag": "div",
+   "classes": "ui-empty-state",
+   "nth": 0
+  },
+  "secondary action only": {
+   "tag": "div",
+   "classes": "ui-empty-state",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-empty-state",
+   "nth": 0
+  }
+ },
+ "EncryptedText": {
+  "empty text": {
+   "tag": "span",
+   "classes": "ui-encrypted-text",
+   "nth": 0
+  },
+  "empty, hover trigger, caller class": {
+   "tag": "span",
+   "classes": "mine ui-encrypted-text",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-encrypted-text",
+   "nth": 0
+  }
+ },
+ "EntityCard": {
+  "name only": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  },
+  "everything": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  },
+  "href makes a link and clickable": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  },
+  "onClick makes it clickable": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  },
+  "empty lists render no sections": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-entity-card",
+   "nth": 0
+  }
+ },
+ "EvervaultCard": {
+  "children": {
+   "tag": "div",
+   "classes": "ui-evervault-card",
+   "nth": 0
+  },
+  "caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-evervault-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-evervault-card",
+   "nth": 0
+  }
+ },
+ "FileUpload": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-file-upload",
+   "nth": 0
+  },
+  "label, description, accept, multiple, error, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-file-upload",
+   "nth": 0
+  },
+  "disabled": {
+   "tag": "div",
+   "classes": "ui-file-upload",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-file-upload",
+   "nth": 0
+  }
+ },
+ "FilterPill": {
+  "plain": {
+   "tag": "button",
+   "classes": "ui-filter-pill",
+   "nth": 0
+  },
+  "active count icon sm": {
+   "tag": "button",
+   "classes": "ui-filter-pill",
+   "nth": 0
+  },
+  "count zero": {
+   "tag": "button",
+   "classes": "ui-filter-pill",
+   "nth": 0
+  },
+  "removable": {
+   "tag": "button",
+   "classes": "ui-filter-pill__main",
+   "nth": 0
+  },
+  "rest to the main button": {
+   "tag": "button",
+   "classes": "ui-filter-pill__main",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-filter-pill",
+   "nth": 0
+  }
+ },
+ "FilterPillGroup": {
+  "children only": {
+   "tag": "div",
+   "classes": "ui-filter-pill-group",
+   "nth": 0
+  },
+  "clear all": {
+   "tag": "div",
+   "classes": "ui-filter-pill-group",
+   "nth": 0
+  },
+  "custom clear label": {
+   "tag": "div",
+   "classes": "ui-filter-pill-group",
+   "nth": 0
+  }
+ },
+ "FlipWords": {
+  "words": {
+   "tag": "span",
+   "classes": "ui-flip-words",
+   "nth": 0
+  },
+  "empty words, interval, caller attrs": {
+   "tag": "span",
+   "classes": "mine ui-flip-words",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-flip-words",
+   "nth": 0
+  }
+ },
+ "FormInput": {
+  "name only": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "label, required, description, placeholder": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "error sets invalid and describedby order": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "controlled value with counter at limit, clearable": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "showCount without max, numeric value": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "clearable but empty shows no button": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "icons, filled xl, disabled, caller id and attrs": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  },
+  "classNames everywhere": {
+   "tag": "input",
+   "classes": "f ui-form-input__field",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-form-input__field",
+   "nth": 0
+  }
+ },
+ "GeoMap": {
+  "points only": {
+   "tag": "div",
+   "classes": "ui-geo-map",
+   "nth": 0
+  },
+  "values, statuses, labels, connections": {
+   "tag": "div",
+   "classes": "ui-geo-map",
+   "nth": 0
+  },
+  "interactive, height number, style": {
+   "tag": "div",
+   "classes": "ui-geo-map",
+   "nth": 0
+  },
+  "height string beats caller style height": {
+   "tag": "div",
+   "classes": "ui-geo-map",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-geo-map",
+   "nth": 0
+  }
+ },
+ "GlowCard": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-glow-card",
+   "nth": 0
+  },
+  "color": {
+   "tag": "div",
+   "classes": "ui-glow-card",
+   "nth": 0
+  },
+  "caller style, no color": {
+   "tag": "div",
+   "classes": "ui-glow-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-glow-card",
+   "nth": 0
+  }
+ },
+ "HeatmapCalendar": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-heatmap-calendar",
+   "nth": 0
+  },
+  "month boundary, zeros, gaps": {
+   "tag": "div",
+   "classes": "ui-heatmap-calendar",
+   "nth": 0
+  },
+  "explicit range and colours, clickable": {
+   "tag": "div",
+   "classes": "ui-heatmap-calendar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-heatmap-calendar",
+   "nth": 0
+  }
+ },
+ "HeroHighlight": {
+  "children": {
+   "tag": "div",
+   "classes": "ui-hero-highlight",
+   "nth": 0
+  },
+  "caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-hero-highlight",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-hero-highlight",
+   "nth": 0
+  }
+ },
+ "Highlight": {
+  "children": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "color and caller style": {
+   "tag": "span",
+   "classes": "mine ui-highlight",
+   "nth": 0
+  },
+  "motion 0 is active at once": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  }
+ },
+ "Icon": {
+  "chevron-down": {
+   "tag": "svg",
+   "classes": "",
+   "nth": 0
+  },
+  "labelled lg": {
+   "tag": "svg",
+   "classes": "",
+   "nth": 0
+  },
+  "numeric size, class, rest": {
+   "tag": "svg",
+   "classes": "k",
+   "nth": 0
+  },
+  "unknown name renders nothing": null
+ },
+ "Indicator": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "numeric label bottom-start offset": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "zero label": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "size and flags": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "top-start offset": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "bottom-end offset, labelled": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-indicator",
+   "nth": 0
+  }
+ },
+ "InfiniteScroll": {
+  "has more": {
+   "tag": "div",
+   "classes": "ui-infinite-scroll",
+   "nth": 0
+  },
+  "loading with default spinner": {
+   "tag": "div",
+   "classes": "ui-infinite-scroll",
+   "nth": 0
+  },
+  "loading up with custom loader, pull to refresh, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-infinite-scroll",
+   "nth": 0
+  },
+  "end message when exhausted": {
+   "tag": "div",
+   "classes": "ui-infinite-scroll",
+   "nth": 0
+  },
+  "pull to refresh needs onRefresh": {
+   "tag": "div",
+   "classes": "ui-infinite-scroll",
+   "nth": 0
+  }
+ },
+ "InlineEdit": {
+  "value": {
+   "tag": "div",
+   "classes": "ui-inline-edit",
+   "nth": 0
+  },
+  "empty with placeholder, lg, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-inline-edit",
+   "nth": 0
+  },
+  "empty without placeholder, disabled": {
+   "tag": "div",
+   "classes": "ui-inline-edit",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-inline-edit",
+   "nth": 0
+  }
+ },
+ "JsonViewer": {
+  "nested": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "collapsed, sorted, types, no sizes, root name": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "depth 1, indent 4, light, clipboard": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "truncated string": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "maxStringLength 0 renders a stray 0 (inherited)": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "primitive root": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "empty array": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-json-viewer",
+   "nth": 0
+  }
+ },
+ "KanbanColumn": {
+  "cards with every part": {
+   "tag": "div",
+   "classes": "ui-kanban-column",
+   "nth": 0
+  },
+  "empty tags array renders no footer": {
+   "tag": "div",
+   "classes": "ui-kanban-column",
+   "nth": 0
+  },
+  "interactive: wip exceeded, click and move handlers, collapse button, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-kanban-column",
+   "nth": 0
+  },
+  "collapsed": {
+   "tag": "div",
+   "classes": "ui-kanban-column",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-kanban-column",
+   "nth": 0
+  }
+ },
+ "Kbd": {
+  "defaults": {
+   "tag": "kbd",
+   "classes": "ui-kbd",
+   "nth": 0
+  },
+  "xs ghost": {
+   "tag": "kbd",
+   "classes": "ui-kbd",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "kbd",
+   "classes": "ui-kbd",
+   "nth": 0
+  },
+  "no children": {
+   "tag": "kbd",
+   "classes": "ui-kbd",
+   "nth": 0
+  }
+ },
+ "Link": {
+  "defaults": {
+   "tag": "a",
+   "classes": "ui-link",
+   "nth": 0
+  },
+  "external defaults": {
+   "tag": "a",
+   "classes": "ui-link",
+   "nth": 0
+  },
+  "external keeps caller target and rel": {
+   "tag": "a",
+   "classes": "ui-link",
+   "nth": 0
+  },
+  "not external passes target through": {
+   "tag": "a",
+   "classes": "ui-link",
+   "nth": 0
+  },
+  "brand always xl": {
+   "tag": "a",
+   "classes": "ui-link",
+   "nth": 0
+  }
+ },
+ "ListLayout": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-list-layout",
+   "nth": 0
+  },
+  "gap lg dividers padding sm": {
+   "tag": "div",
+   "classes": "ui-list-layout",
+   "nth": 0
+  },
+  "dividers false": {
+   "tag": "div",
+   "classes": "ui-list-layout",
+   "nth": 0
+  }
+ },
+ "LiveFeed": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-live-feed",
+   "nth": 0
+  },
+  "custom empty, height, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-live-feed",
+   "nth": 0
+  },
+  "items truncated to maxItems, types, status and paused": {
+   "tag": "div",
+   "classes": "ui-live-feed",
+   "nth": 0
+  },
+  "connected only": {
+   "tag": "div",
+   "classes": "ui-live-feed",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-live-feed",
+   "nth": 0
+  }
+ },
+ "LogViewer": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  },
+  "timestamps, levels, wrap, height, autoTail, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-log-viewer",
+   "nth": 0
+  },
+  "search highlights across repeated matches": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  },
+  "search with regex metacharacters": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  },
+  "filterLevel and maxLines": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  },
+  "virtual above 100 lines with a height": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-log-viewer",
+   "nth": 0
+  }
+ },
+ "MeteorShower": {
+  "few": {
+   "tag": "div",
+   "classes": "ui-meteor-shower",
+   "nth": 0
+  },
+  "with content": {
+   "tag": "div",
+   "classes": "ui-meteor-shower",
+   "nth": 0
+  },
+  "none": {
+   "tag": "div",
+   "classes": "ui-meteor-shower",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-meteor-shower",
+   "nth": 0
+  }
+ },
+ "MetricCard": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "change, trend, period, status, icon": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "negative and zero change": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "zero change": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "sparkline": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "flat sparkline range": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "short sparkline hidden": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "loading": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "error hides change and sparkline": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "empty when no value": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "value 0 shows empty (inherited)": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "element title has no aria-label": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-metric-card",
+   "nth": 0
+  }
+ },
+ "MultiSelect": {
+  "placeholder, no name": {
+   "tag": "div",
+   "classes": "ui-multi-select",
+   "nth": 0
+  },
+  "selected tags, hidden inputs, clearable, lg": {
+   "tag": "div",
+   "classes": "ui-multi-select",
+   "nth": 0
+  },
+  "disabled hides remove and clear; error; not searchable is readonly": {
+   "tag": "div",
+   "classes": "mine ui-multi-select",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-multi-select",
+   "nth": 0
+  }
+ },
+ "Navbar": {
+  "logo only": {
+   "tag": "header",
+   "classes": "ui-navbar",
+   "nth": 0
+  },
+  "everything": {
+   "tag": "header",
+   "classes": "ui-navbar",
+   "nth": 0
+  },
+  "not sticky, no border, transparent, caller style wins": {
+   "tag": "header",
+   "classes": "ui-navbar",
+   "nth": 0
+  }
+ },
+ "NetworkInterfaceGrid": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-network-interface-grid",
+   "nth": 0
+  },
+  "traffic, errors, columns, clickable, lg": {
+   "tag": "div",
+   "classes": "ui-network-interface-grid",
+   "nth": 0
+  },
+  "compact hides details, caller style": {
+   "tag": "div",
+   "classes": "ui-network-interface-grid",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-network-interface-grid",
+   "nth": 0
+  }
+ },
+ "NetworkTrafficCard": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "every unit, vendor and location, trend": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "kbps and tbps": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "vendor only": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "location only, one-point trend hidden": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "element title": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-network-traffic-card",
+   "nth": 0
+  }
+ },
+ "NotificationStack": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "custom empty message": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "mixed with relative times": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "grouped": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "maxVisible cuts, unread still counted from all": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "all read hides mark-all": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-notification-stack",
+   "nth": 0
+  }
+ },
+ "NumberInput": {
+  "labelled": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "default value formatted with separator, prefix, suffix, precision": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "controlled at max and min bounds": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "at min with error, description, required, placeholder": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "null value, hide controls, readOnly xl, caller id": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "disabled": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-number-input__field",
+   "nth": 0
+  }
+ },
+ "NumberTicker": {
+  "zero": {
+   "tag": "span",
+   "classes": "ui-number-ticker",
+   "nth": 0
+  },
+  "zero, down, delay, caller class": {
+   "tag": "span",
+   "classes": "mine ui-number-ticker",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-number-ticker",
+   "nth": 0
+  }
+ },
+ "OrbitingCircles": {
+  "three": {
+   "tag": "div",
+   "classes": "ui-orbiting-circles",
+   "nth": 0
+  },
+  "reverse radius duration": {
+   "tag": "div",
+   "classes": "ui-orbiting-circles",
+   "nth": 0
+  },
+  "null and false dropped, 0 kept": {
+   "tag": "div",
+   "classes": "ui-orbiting-circles",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "div",
+   "classes": "ui-orbiting-circles",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-orbiting-circles",
+   "nth": 0
+  }
+ },
+ "OtpInput": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-otp-input",
+   "nth": 0
+  },
+  "controlled partial, text, 4, error, lg, disabled": {
+   "tag": "div",
+   "classes": "ui-otp-input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-otp-input",
+   "nth": 0
+  }
+ },
+ "PageHeader": {
+  "title only": {
+   "tag": "header",
+   "classes": "ui-page-header",
+   "nth": 0
+  },
+  "everything": {
+   "tag": "header",
+   "classes": "ui-page-header",
+   "nth": 0
+  },
+  "string actions": {
+   "tag": "header",
+   "classes": "ui-page-header",
+   "nth": 0
+  }
+ },
+ "PageShell": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-page-shell",
+   "nth": 0
+  },
+  "xl none": {
+   "tag": "div",
+   "classes": "ui-page-shell",
+   "nth": 0
+  },
+  "full lg rest": {
+   "tag": "div",
+   "classes": "ui-page-shell",
+   "nth": 0
+  }
+ },
+ "Pagination": {
+  "fits without truncation": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "right ellipsis only": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "left ellipsis only": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "both ellipses": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "wider siblings, no prev/next": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "first page disables back": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "last page disables forward": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "no pages": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "nav",
+   "classes": "ui-pagination",
+   "nth": 0
+  }
+ },
+ "PasswordInput": {
+  "labelled": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  },
+  "no toggle, placeholder, required, description": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  },
+  "strength meter empty": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  },
+  "strength meter strong with error": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  },
+  "strength meter fair, custom labels, sm disabled, caller id": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-password-input__field",
+   "nth": 0
+  }
+ },
+ "PinInput": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-pin-input",
+   "nth": 0
+  },
+  "controlled partial, alphanumeric, unmasked": {
+   "tag": "div",
+   "classes": "ui-pin-input",
+   "nth": 0
+  },
+  "error, disabled, one-time-code, lg": {
+   "tag": "div",
+   "classes": "ui-pin-input",
+   "nth": 0
+  },
+  "custom aria-label": {
+   "tag": "div",
+   "classes": "ui-pin-input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-pin-input",
+   "nth": 0
+  }
+ },
+ "PipelineDAG": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-pipeline-dag",
+   "nth": 0
+  },
+  "left to right": {
+   "tag": "div",
+   "classes": "ui-pipeline-dag",
+   "nth": 0
+  },
+  "top to bottom, metrics, throughput, selected, clickable": {
+   "tag": "div",
+   "classes": "ui-pipeline-dag",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-pipeline-dag",
+   "nth": 0
+  }
+ },
+ "PipelineStage": {
+  "all statuses": {
+   "tag": "div",
+   "classes": "ui-pipeline-stage",
+   "nth": 0
+  },
+  "vertical, clickable": {
+   "tag": "div",
+   "classes": "ui-pipeline-stage",
+   "nth": 0
+  },
+  "single stage has no connector": {
+   "tag": "div",
+   "classes": "ui-pipeline-stage",
+   "nth": 0
+  },
+  "empty": {
+   "tag": "div",
+   "classes": "ui-pipeline-stage",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-pipeline-stage",
+   "nth": 0
+  }
+ },
+ "PluginDashboard": {
+  "every widget type, charts, properties, status": {
+   "tag": "div",
+   "classes": "mine ui-plugin-dashboard",
+   "nth": 0
+  },
+  "loading": {
+   "tag": "div",
+   "classes": "ui-plugin-dashboard",
+   "nth": 0
+  },
+  "error": {
+   "tag": "div",
+   "classes": "ui-plugin-dashboard",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-plugin-dashboard",
+   "nth": 0
+  }
+ },
+ "PortStatusGrid": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-port-status-grid",
+   "nth": 0
+  },
+  "clickable sm columns": {
+   "tag": "div",
+   "classes": "ui-port-status-grid",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-port-status-grid",
+   "nth": 0
+  }
+ },
+ "Progress": {
+  "indeterminate": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  },
+  "half with value": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  },
+  "zero": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  },
+  "clamped over max": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  },
+  "clamped negative": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-progress",
+   "nth": 0
+  }
+ },
+ "PropertyList": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-property-list",
+   "nth": 0
+  },
+  "every item option, two columns striped lg": {
+   "tag": "div",
+   "classes": "ui-property-list",
+   "nth": 0
+  },
+  "empty": {
+   "tag": "div",
+   "classes": "ui-property-list",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-property-list",
+   "nth": 0
+  }
+ },
+ "RackDiagram": {
+  "front view": {
+   "tag": "div",
+   "classes": "ui-rack-diagram",
+   "nth": 0
+  },
+  "rear view lg no numbers": {
+   "tag": "div",
+   "classes": "ui-rack-diagram",
+   "nth": 0
+  },
+  "empty rack sm": {
+   "tag": "div",
+   "classes": "ui-rack-diagram",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-rack-diagram",
+   "nth": 0
+  }
+ },
+ "RadioGroup": {
+  "label, default selected": {
+   "tag": "fieldset",
+   "classes": "ui-radio-group",
+   "nth": 0
+  },
+  "nothing selected, horizontal, error, disabled option, caller attrs": {
+   "tag": "fieldset",
+   "classes": "mine ui-radio-group",
+   "nth": 0
+  },
+  "controlled": {
+   "tag": "fieldset",
+   "classes": "ui-radio-group",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "fieldset",
+   "classes": "ui-radio-group",
+   "nth": 0
+  }
+ },
+ "Rating": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "three of five": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "controlled half, custom max": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "half ignored without allowHalf": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "read-only, colour, size": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "colour lost to caller style (inherited)": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "custom icons and label": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-rating",
+   "nth": 0
+  }
+ },
+ "RealtimeValue": {
+  "defaults": {
+   "tag": "span",
+   "classes": "ui-realtime-value",
+   "nth": 0
+  },
+  "positive delta": {
+   "tag": "span",
+   "classes": "ui-realtime-value",
+   "nth": 0
+  },
+  "negative delta, custom format, caller attrs": {
+   "tag": "span",
+   "classes": "mine ui-realtime-value",
+   "nth": 0
+  },
+  "zero delta": {
+   "tag": "span",
+   "classes": "ui-realtime-value",
+   "nth": 0
+  },
+  "delta hidden without showDelta": {
+   "tag": "span",
+   "classes": "ui-realtime-value",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-realtime-value",
+   "nth": 0
+  }
+ },
+ "ResponsiveCard": {
+  "title only": {
+   "tag": "article",
+   "classes": "ui-responsive-card",
+   "nth": 0
+  },
+  "everything": {
+   "tag": "article",
+   "classes": "ui-responsive-card",
+   "nth": 0
+  },
+  "compact string parts": {
+   "tag": "article",
+   "classes": "ui-responsive-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "article",
+   "classes": "ui-responsive-card",
+   "nth": 0
+  }
+ },
+ "RichTextEditor": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-rich-text-editor",
+   "nth": 0
+  },
+  "label, error, heights, placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-rich-text-editor",
+   "nth": 0
+  },
+  "custom toolbar order makes separators, lg": {
+   "tag": "div",
+   "classes": "ui-rich-text-editor",
+   "nth": 0
+  },
+  "readOnly and disabled": {
+   "tag": "div",
+   "classes": "ui-rich-text-editor",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-rich-text-editor",
+   "nth": 0
+  }
+ },
+ "RingChart": {
+  "value": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "show value lg thickness color": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "string label names the meter": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "element label": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "empty-string label renders empty centre": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "clamped": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "caller style wins over size": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-ring-chart",
+   "nth": 0
+  }
+ },
+ "Ripple": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-ripple",
+   "nth": 0
+  },
+  "color, duration, caller style": {
+   "tag": "div",
+   "classes": "ui-ripple",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-ripple",
+   "nth": 0
+  }
+ },
+ "ScrollReveal": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-scroll-reveal",
+   "nth": 0
+  },
+  "scale, delay, stagger, threshold, caller style": {
+   "tag": "div",
+   "classes": "mine ui-scroll-reveal",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-scroll-reveal",
+   "nth": 0
+  }
+ },
+ "SearchInput": {
+  "empty": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  },
+  "uncontrolled default shows clear": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  },
+  "controlled, loading, xl, placeholder, caller attrs on the input": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  },
+  "disabled hides clear; not clearable": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  },
+  "clearable off": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-search-input__field",
+   "nth": 0
+  }
+ },
+ "SectionHeader": {
+  "title only": {
+   "tag": "header",
+   "classes": "ui-section-header",
+   "nth": 0
+  },
+  "description action sm": {
+   "tag": "header",
+   "classes": "ui-section-header",
+   "nth": 0
+  },
+  "action string lg": {
+   "tag": "header",
+   "classes": "ui-section-header",
+   "nth": 0
+  },
+  "empty description": {
+   "tag": "header",
+   "classes": "ui-section-header",
+   "nth": 0
+  },
+  "children are dropped": {
+   "tag": "header",
+   "classes": "ui-section-header",
+   "nth": 0
+  }
+ },
+ "SegmentedControl": {
+  "strings, first is active by default": {
+   "tag": "div",
+   "classes": "ui-segmented",
+   "nth": 0
+  },
+  "objects with icons, disabled option, controlled": {
+   "tag": "div",
+   "classes": "ui-segmented",
+   "nth": 0
+  },
+  "vertical xl full width, color, caller style and class": {
+   "tag": "div",
+   "classes": "mine ui-segmented",
+   "nth": 0
+  },
+  "disabled and readOnly": {
+   "tag": "div",
+   "classes": "ui-segmented",
+   "nth": 0
+  },
+  "empty data": {
+   "tag": "div",
+   "classes": "ui-segmented",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-segmented",
+   "nth": 0
+  }
+ },
+ "Select": {
+  "no label (unnamed trigger)": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  },
+  "label, selected with icon, clearable, xl": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  },
+  "controlled, error, disabled, custom placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-select",
+   "nth": 0
+  },
+  "multiple with two tags and hidden inputs": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  },
+  "multiple with four collapses to +2 more": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  },
+  "multiple empty shows placeholder": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-select",
+   "nth": 0
+  }
+ },
+ "ServiceStrip": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-service-strip",
+   "nth": 0
+  },
+  "overflow sm icons": {
+   "tag": "div",
+   "classes": "ui-service-strip",
+   "nth": 0
+  },
+  "maxVisible equal to length: no overflow": {
+   "tag": "div",
+   "classes": "ui-service-strip",
+   "nth": 0
+  },
+  "clickable": {
+   "tag": "div",
+   "classes": "ui-service-strip",
+   "nth": 0
+  },
+  "empty renders nothing": null,
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-service-strip",
+   "nth": 0
+  }
+ },
+ "SeverityTimeline": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-severity-timeline",
+   "nth": 0
+  },
+  "expandable horizontal, cut to one": {
+   "tag": "div",
+   "classes": "ui-severity-timeline",
+   "nth": 0
+  },
+  "expandable without description has no button": {
+   "tag": "div",
+   "classes": "ui-severity-timeline",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-severity-timeline",
+   "nth": 0
+  }
+ },
+ "Sheet": {
+  "body only": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "left lg with title and description": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "bottom, element title, no close": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "no title and no close: no header; caller attrs": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "dialog",
+   "classes": "",
+   "nth": 0
+  }
+ },
+ "ShimmerButton": {
+  "defaults": {
+   "tag": "button",
+   "classes": "ui-shimmer-button",
+   "nth": 0
+  },
+  "color lg disabled": {
+   "tag": "button",
+   "classes": "ui-shimmer-button",
+   "nth": 0
+  },
+  "no style at all": {
+   "tag": "button",
+   "classes": "ui-shimmer-button",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "button",
+   "classes": "ui-shimmer-button",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "button",
+   "classes": "ui-shimmer-button",
+   "nth": 0
+  }
+ },
+ "Sidebar": {
+  "defaults": {
+   "tag": "aside",
+   "classes": "ui-sidebar",
+   "nth": 0
+  },
+  "collapsed right string widths": {
+   "tag": "aside",
+   "classes": "ui-sidebar",
+   "nth": 0
+  },
+  "caller style wins over width vars": {
+   "tag": "aside",
+   "classes": "ui-sidebar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "aside",
+   "classes": "ui-sidebar",
+   "nth": 0
+  }
+ },
+ "SidebarContent": {
+  "basic": {
+   "tag": "div",
+   "classes": "c ui-sidebar__content",
+   "nth": 0
+  }
+ },
+ "SidebarFooter": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-sidebar__footer",
+   "nth": 0
+  }
+ },
+ "SidebarHeader": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-sidebar__header",
+   "nth": 0
+  }
+ },
+ "SidebarItem": {
+  "button": {
+   "tag": "button",
+   "classes": "ui-sidebar__item",
+   "nth": 0
+  },
+  "link active icon": {
+   "tag": "a",
+   "classes": "ui-sidebar__item",
+   "nth": 0
+  },
+  "empty href is a button": {
+   "tag": "button",
+   "classes": "ui-sidebar__item",
+   "nth": 0
+  },
+  "rest attrs": {
+   "tag": "button",
+   "classes": "ui-sidebar__item",
+   "nth": 0
+  }
+ },
+ "Skeleton": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "sized numbers and strings": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "three lines": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "one line": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "lines ignored when not text": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "animate false pulse slow": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "count row": null,
+  "count one renders single": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-skeleton",
+   "nth": 0
+  }
+ },
+ "Slider": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  },
+  "label, value, ticks, step": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  },
+  "controlled, custom range, disabled xl": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  },
+  "min equals max": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  },
+  "ticks capped at 101": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-slider",
+   "nth": 0
+  }
+ },
+ "SortableList": {
+  "items": {
+   "tag": "div",
+   "classes": "ui-sortable-list",
+   "nth": 0
+  },
+  "horizontal, no handle, disabled, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-sortable-list",
+   "nth": 0
+  },
+  "motion 0 empty": {
+   "tag": "div",
+   "classes": "ui-sortable-list",
+   "nth": 0
+  }
+ },
+ "Sparkline": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-sparkline",
+   "nth": 0
+  },
+  "width number, colour, tooltip, no gradient": {
+   "tag": "div",
+   "classes": "ui-sparkline",
+   "nth": 0
+  },
+  "width string, caller style": {
+   "tag": "div",
+   "classes": "ui-sparkline",
+   "nth": 0
+  },
+  "too few points": {
+   "tag": "div",
+   "classes": "ui-sparkline",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-sparkline",
+   "nth": 0
+  }
+ },
+ "Spoiler": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-spoiler",
+   "nth": 0
+  },
+  "visible, labels, no gradient, duration, caller style": {
+   "tag": "div",
+   "classes": "mine ui-spoiler",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-spoiler",
+   "nth": 0
+  }
+ },
+ "Spotlight": {
+  "closed": null,
+  "open, no actions": {
+   "tag": "div",
+   "classes": "ui-spotlight",
+   "nth": 0
+  },
+  "open with grouped actions and icons": {
+   "tag": "div",
+   "classes": "ui-spotlight",
+   "nth": 0
+  },
+  "ungrouped, limit, custom shortcut and placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-spotlight",
+   "nth": 0
+  },
+  "alt shortcut glyphs": {
+   "tag": "div",
+   "classes": "ui-spotlight",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-spotlight",
+   "nth": 0
+  }
+ },
+ "SpotlightCard": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-spotlight-card",
+   "nth": 0
+  },
+  "color": {
+   "tag": "div",
+   "classes": "ui-spotlight-card",
+   "nth": 0
+  },
+  "caller style with color": {
+   "tag": "div",
+   "classes": "ui-spotlight-card",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-spotlight-card",
+   "nth": 0
+  }
+ },
+ "StatsGrid": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-stats-grid",
+   "nth": 0
+  },
+  "columns 6 gap sm": {
+   "tag": "div",
+   "classes": "ui-stats-grid",
+   "nth": 0
+  },
+  "role override": {
+   "tag": "div",
+   "classes": "ui-stats-grid",
+   "nth": 0
+  }
+ },
+ "StatusBadge": {
+  "ok": {
+   "tag": "span",
+   "classes": "ui-status-badge",
+   "nth": 0
+  },
+  "label icon pulse lg": {
+   "tag": "span",
+   "classes": "ui-status-badge",
+   "nth": 0
+  },
+  "maintenance empty label": {
+   "tag": "span",
+   "classes": "ui-status-badge",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "span",
+   "classes": "ui-status-badge",
+   "nth": 0
+  }
+ },
+ "StatusPulse": {
+  "ok": {
+   "tag": "span",
+   "classes": "ui-status-pulse",
+   "nth": 0
+  },
+  "critical lg label": {
+   "tag": "span",
+   "classes": "ui-status-pulse",
+   "nth": 0
+  },
+  "warning": {
+   "tag": "span",
+   "classes": "ui-status-pulse",
+   "nth": 0
+  },
+  "info motion 0": {
+   "tag": "span",
+   "classes": "ui-status-pulse",
+   "nth": 0
+  }
+ },
+ "Stepper": {
+  "horizontal middle active": {
+   "tag": "div",
+   "classes": "ui-stepper",
+   "nth": 0
+  },
+  "completed step with custom icon keeps the icon": {
+   "tag": "div",
+   "classes": "ui-stepper",
+   "nth": 0
+  },
+  "vertical dots lg clickable": {
+   "tag": "div",
+   "classes": "ui-stepper",
+   "nth": 0
+  },
+  "all complete": {
+   "tag": "div",
+   "classes": "ui-stepper",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-stepper",
+   "nth": 0
+  }
+ },
+ "StorageBar": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-storage-bar",
+   "nth": 0
+  },
+  "labels, legend, TB, lg": {
+   "tag": "div",
+   "classes": "ui-storage-bar",
+   "nth": 0
+  },
+  "seven segments wrap default colours": {
+   "tag": "div",
+   "classes": "ui-storage-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-storage-bar",
+   "nth": 0
+  }
+ },
+ "StreamingText": {
+  "plain": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  },
+  "code blocks with and without language": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  },
+  "streaming shows the cursor and aria-busy": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  },
+  "cursor forced off while streaming, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-streaming-text",
+   "nth": 0
+  },
+  "cursor forced on": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  },
+  "with speed starts empty": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-streaming-text",
+   "nth": 0
+  }
+ },
+ "SuccessCheckmark": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-success-checkmark",
+   "nth": 0
+  },
+  "lg not animated custom label": {
+   "tag": "div",
+   "classes": "ui-success-checkmark",
+   "nth": 0
+  },
+  "motion 2 has no particles": {
+   "tag": "div",
+   "classes": "ui-success-checkmark",
+   "nth": 0
+  },
+  "motion 3 has particles": {
+   "tag": "div",
+   "classes": "ui-success-checkmark",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-success-checkmark",
+   "nth": 0
+  }
+ },
+ "SwitchFaceplate": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-switch-faceplate",
+   "nth": 0
+  },
+  "labelled, clickable, three rows, labels shown": {
+   "tag": "div",
+   "classes": "ui-switch-faceplate",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-switch-faceplate",
+   "nth": 0
+  }
+ },
+ "TableOfContents": {
+  "nested, none active": {
+   "tag": "nav",
+   "classes": "ui-toc",
+   "nth": 0
+  },
+  "controlled active nested item, filled lg, caller attrs": {
+   "tag": "nav",
+   "classes": "mine ui-toc",
+   "nth": 0
+  },
+  "default variant with an active item": {
+   "tag": "nav",
+   "classes": "ui-toc",
+   "nth": 0
+  },
+  "dots": {
+   "tag": "nav",
+   "classes": "ui-toc",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "nav",
+   "classes": "ui-toc",
+   "nth": 0
+  }
+ },
+ "TagInput": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-tag-input",
+   "nth": 0
+  },
+  "with tags": {
+   "tag": "div",
+   "classes": "ui-tag-input",
+   "nth": 0
+  },
+  "disabled hides remove buttons": {
+   "tag": "div",
+   "classes": "ui-tag-input",
+   "nth": 0
+  },
+  "error wires aria-describedby": {
+   "tag": "div",
+   "classes": "ui-tag-input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-tag-input",
+   "nth": 0
+  }
+ },
+ "TextHighlight": {
+  "single term, case-insensitive": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "several terms": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "case sensitive miss": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "regex metacharacters are literal": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "no valid terms": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "term at both ends": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  },
+  "color and mark class": {
+   "tag": "span",
+   "classes": "ui-highlight",
+   "nth": 0
+  }
+ },
+ "TextReveal": {
+  "mount with a space": {
+   "tag": "div",
+   "classes": "ui-text-reveal",
+   "nth": 0
+  },
+  "inView, speed, caller class": {
+   "tag": "div",
+   "classes": "mine ui-text-reveal",
+   "nth": 0
+  },
+  "motion 0 reveals everything": {
+   "tag": "div",
+   "classes": "ui-text-reveal",
+   "nth": 0
+  }
+ },
+ "Textarea": {
+  "labelled": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  },
+  "uncontrolled defaultValue with count": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  },
+  "controlled at limit, error, description, required, placeholder": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  },
+  "resize none, minRows, lg disabled, caller id and attrs": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  },
+  "autoResize forces data-resize none": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "textarea",
+   "classes": "ui-textarea__field",
+   "nth": 0
+  }
+ },
+ "ThresholdGauge": {
+  "value": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "ok warning critical": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "critical": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "zero has no fill": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "full, labelled": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "element label": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "clamped negative": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-threshold-gauge",
+   "nth": 0
+  }
+ },
+ "TimePicker": {
+  "label, placeholder": {
+   "tag": "div",
+   "classes": "ui-time-picker",
+   "nth": 0
+  },
+  "value with clear, lg, name": {
+   "tag": "div",
+   "classes": "ui-time-picker",
+   "nth": 0
+  },
+  "24h value, error, disabled, custom placeholder, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-time-picker",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-time-picker",
+   "nth": 0
+  }
+ },
+ "TimeRangeSelector": {
+  "default presets": {
+   "tag": "div",
+   "classes": "ui-time-range-selector",
+   "nth": 0
+  },
+  "custom presets, one active": {
+   "tag": "div",
+   "classes": "ui-time-range-selector",
+   "nth": 0
+  },
+  "show custom with value (UTC)": {
+   "tag": "div",
+   "classes": "ui-time-range-selector",
+   "nth": 0
+  },
+  "show custom without value": {
+   "tag": "div",
+   "classes": "ui-time-range-selector",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-time-range-selector",
+   "nth": 0
+  }
+ },
+ "TimeSeriesChart": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-time-series-chart",
+   "nth": 0
+  },
+  "two series with legend and annotations": {
+   "tag": "div",
+   "classes": "ui-time-series-chart",
+   "nth": 0
+  },
+  "single point, fixed y range, no axes/grid/legend, height, caller style": {
+   "tag": "div",
+   "classes": "mine ui-time-series-chart",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-time-series-chart",
+   "nth": 0
+  }
+ },
+ "Timeline": {
+  "items": {
+   "tag": "div",
+   "classes": "ui-timeline",
+   "nth": 0
+  },
+  "alternate lg dashed, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-timeline",
+   "nth": 0
+  },
+  "compact dotted empty": {
+   "tag": "div",
+   "classes": "ui-timeline",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-timeline",
+   "nth": 0
+  }
+ },
+ "ToggleSwitch": {
+  "label": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "controlled on": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "controlled off": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "uncontrolled default on": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "disabled error xl": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "explicit id and rest to input": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "input",
+   "classes": "ui-toggle-switch__input",
+   "nth": 0
+  }
+ },
+ "Toolbar": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-toolbar",
+   "nth": 0
+  },
+  "between wrap sticky lg": {
+   "tag": "div",
+   "classes": "ui-toolbar",
+   "nth": 0
+  },
+  "wrap false": {
+   "tag": "div",
+   "classes": "ui-toolbar",
+   "nth": 0
+  }
+ },
+ "TopologyGraph": {
+  "empty": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "every node type and edge feature": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "dagre, pinned positions, no controls, string height": {
+   "tag": "div",
+   "classes": "mine ui-topology-graph",
+   "nth": 0
+  },
+  "circular": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "grid": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "caller style replaces height": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "minimap with no nodes renders nothing": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "canvas renderer": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  },
+  "motion 0 has no keyframes and no dash": {
+   "tag": "div",
+   "classes": "ui-topology-graph",
+   "nth": 0
+  }
+ },
+ "TopologyGraphCanvas": {
+  "defaults": null
+ },
+ "TopologyGraphSVG": {
+  "statuses, selection, animated and bidirectional edges": null,
+  "motionLevel 0, no handlers": null
+ },
+ "Tour": {
+  "closed": null,
+  "first of three, progress and skip": null,
+  "controlled middle step without progress or skip": null,
+  "last step finishes": null,
+  "step out of range renders nothing": null,
+  "motion 0": null
+ },
+ "TracingBeam": {
+  "children": {
+   "tag": "div",
+   "classes": "ui-tracing-beam",
+   "nth": 0
+  },
+  "color, caller style and class": {
+   "tag": "div",
+   "classes": "mine ui-tracing-beam",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-tracing-beam",
+   "nth": 0
+  }
+ },
+ "TransferList": {
+  "lists": {
+   "tag": "div",
+   "classes": "ui-transfer-list",
+   "nth": 0
+  },
+  "groups, searchable, titles, numeric height, no transfer-all, lg, caller attrs": {
+   "tag": "div",
+   "classes": "mine ui-transfer-list",
+   "nth": 0
+  },
+  "empty sides, string height": {
+   "tag": "div",
+   "classes": "ui-transfer-list",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-transfer-list",
+   "nth": 0
+  }
+ },
+ "TruncatedText": {
+  "defaults": {
+   "tag": "span",
+   "classes": "ui-truncated-text",
+   "nth": 0
+  },
+  "three lines expandable": {
+   "tag": "span",
+   "classes": "ui-truncated-text",
+   "nth": 0
+  },
+  "no tooltip": {
+   "tag": "span",
+   "classes": "ui-truncated-text",
+   "nth": 0
+  }
+ },
+ "TypingIndicator": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-typing-indicator",
+   "nth": 0
+  },
+  "avatar string sm": {
+   "tag": "div",
+   "classes": "ui-typing-indicator",
+   "nth": 0
+  },
+  "avatar element": {
+   "tag": "div",
+   "classes": "ui-typing-indicator",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-typing-indicator",
+   "nth": 0
+  }
+ },
+ "Typography": {
+  "body": {
+   "tag": "p",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "h2 brand weight center": {
+   "tag": "h2",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "truncate true": {
+   "tag": "p",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "truncate 1": {
+   "tag": "span",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "truncate 3 lines": {
+   "tag": "p",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "as label, code variant": {
+   "tag": "label",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "caller style merged with weight": {
+   "tag": "p",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "unknown variant falls back to span": {
+   "tag": "span",
+   "classes": "ui-typography",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "p",
+   "classes": "ui-typography",
+   "nth": 0
+  }
+ },
+ "UptimeTracker": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-uptime-tracker",
+   "nth": 0
+  },
+  "sla with target": {
+   "tag": "div",
+   "classes": "ui-uptime-tracker",
+   "nth": 0
+  },
+  "sla all 100 percent": {
+   "tag": "div",
+   "classes": "ui-uptime-tracker",
+   "nth": 0
+  },
+  "sla with no uptime data": {
+   "tag": "div",
+   "classes": "ui-uptime-tracker",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-uptime-tracker",
+   "nth": 0
+  }
+ },
+ "UtilizationBar": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-utilization-bar",
+   "nth": 0
+  },
+  "thresholds, labels, max, sm": {
+   "tag": "div",
+   "classes": "ui-utilization-bar",
+   "nth": 0
+  },
+  "labels hidden when none labelled": {
+   "tag": "div",
+   "classes": "ui-utilization-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-utilization-bar",
+   "nth": 0
+  }
+ },
+ "ViewTransitionLink": {
+  "defaults": {
+   "tag": "a",
+   "classes": "ui-view-transition-link",
+   "nth": 0
+  },
+  "transition name": {
+   "tag": "a",
+   "classes": "ui-view-transition-link",
+   "nth": 0
+  },
+  "caller style merged": {
+   "tag": "a",
+   "classes": "ui-view-transition-link",
+   "nth": 0
+  },
+  "no href": {
+   "tag": "a",
+   "classes": "ui-view-transition-link",
+   "nth": 0
+  }
+ },
+ "VlanBusBar": {
+  "basic": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  },
+  "numbers, trunks, sequential, lg, clickable": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  },
+  "external highlight dims the rest": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  },
+  "highlighted port": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  },
+  "vertical compact, max height, caller style": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-vlan-bus-bar",
+   "nth": 0
+  }
+ },
+ "WavyBackground": {
+  "two": {
+   "tag": "div",
+   "classes": "ui-wavy-background",
+   "nth": 0
+  },
+  "color speed content": {
+   "tag": "div",
+   "classes": "ui-wavy-background",
+   "nth": 0
+  },
+  "caller style": {
+   "tag": "div",
+   "classes": "ui-wavy-background",
+   "nth": 0
+  },
+  "motion 0": {
+   "tag": "div",
+   "classes": "ui-wavy-background",
+   "nth": 0
+  }
+ }
+}

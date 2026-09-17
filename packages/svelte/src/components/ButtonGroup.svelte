@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     orientation?: 'horizontal' | 'vertical'
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     variant?: 'primary' | 'secondary' | 'ghost'
@@ -17,7 +19,7 @@
 
   let {
     orientation = 'horizontal', size = 'md', variant = 'primary', attached = false, motion,
-    children, class: className, role = 'group', ...rest
+    children, class: className, role = 'group', ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('button-group')
@@ -32,6 +34,7 @@
   data-variant={variant}
   data-attached={attached || undefined}
   data-motion={motionLevel()}
+  bind:this={ref}
   {...rest}
 >
   {#if children}{@render children()}{/if}

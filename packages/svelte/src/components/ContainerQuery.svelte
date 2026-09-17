@@ -7,20 +7,22 @@
   import { useContainerSize, type ContainerSize } from '../runes/container-size.svelte.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Receives the container's current size. React's function-as-children. */
     children?: Snippet<[ContainerSize]>
     class?: string
     style?: StyleInput
   }
 
-  let { children, class: className, style, ...rest }: Props = $props()
+  let { children, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
-  let element = $state<HTMLDivElement | null>(null)
+  const element = $derived(ref)
   const size = useContainerSize(() => element)
   // React: { containerType: 'inline-size', ...style }.
   const styles = $derived(mergeStyles({ containerType: 'inline-size' }, style))
 </script>
 
-<div bind:this={element} class={cn('ui-container-query', className)} use:cssProps={styles} {...rest}>
+<div bind:this={ref} class={cn('ui-container-query', className)} use:cssProps={styles} {...rest}>
   {#if children}{@render children(size)}{/if}
 </div>

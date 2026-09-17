@@ -14,6 +14,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     steps: TestStep[]
     title?: string
     onRetry?: () => void
@@ -30,7 +32,7 @@
   const formatMs = (ms: number) => (ms < 1000 ? `${ms}ms` : `${(ms / 1000).toFixed(2)}s`)
 
   let {
-    steps, title = 'Connection Test', onRetry, onCancel, running = false, size = 'md', motion, class: className, ...rest
+    steps, title = 'Connection Test', onRetry, onCancel, running = false, size = 'md', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -38,7 +40,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-connection-test-panel', className)} data-size={size} data-motion={motionLevel()} role="region" aria-label={title} {...rest}>
+  <div class={cn('ui-connection-test-panel', className)} data-size={size} data-motion={motionLevel()} role="region" aria-label={title} bind:this={ref} {...rest}>
     <div class="ui-connection-test-panel__header">
       <span class="ui-connection-test-panel__title">{title}</span>
       <div class="ui-connection-test-panel__actions">

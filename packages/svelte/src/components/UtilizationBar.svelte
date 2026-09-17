@@ -14,6 +14,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     segments: UtilizationSegment[]
     max?: number
     thresholds?: { warning: number; critical: number }
@@ -25,7 +27,7 @@
 
   const COLORS = ['oklch(65% 0.2 270)', 'oklch(72% 0.19 155)', 'oklch(80% 0.18 85)', 'oklch(70% 0.15 330)', 'oklch(60% 0.2 30)']
 
-  let { segments, max = 100, thresholds, showLabels = false, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { segments, max = 100, thresholds, showLabels = false, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let hovered = $state<number | null>(null)
@@ -34,7 +36,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-utilization-bar', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label="Utilization" {...rest}>
+  <div class={cn('ui-utilization-bar', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label="Utilization" bind:this={ref} {...rest}>
     <div class="ui-utilization-bar__track">
       {#each segments as seg, i (i)}
         <div

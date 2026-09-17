@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLInputAttributes, 'size' | 'value'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLInputElement | null
     name: string
     /** Bindable. Inside a form context, the field's value is used when this is omitted. */
     value?: string | number | null
@@ -32,7 +34,7 @@
   let {
     name, value = $bindable(), label, description, error: errorProp, size = 'md', variant = 'default', icon, iconEnd, motion,
     maxLength, showCount, clearable, onClear, required, disabled, classNames, class: className, id: idProp,
-    oninput, onblur, ...rest
+    oninput, onblur, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -100,6 +102,7 @@
       aria-describedby={describedBy}
       {required}
       maxlength={maxLength}
+      bind:this={ref}
       {...rest}
     />
 

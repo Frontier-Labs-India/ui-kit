@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     children?: Snippet
     label?: string | number | Snippet
     color?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
@@ -26,7 +28,7 @@
   let {
     children, label, color = 'primary', position = 'top-end', size = 10, offset = 0,
     processing = false, disabled = false, inline = false, withBorder = false, motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('indicator')
@@ -52,6 +54,7 @@
   data-motion={motionLevel()}
   data-inline={inline || undefined}
   data-disabled={disabled || undefined}
+  bind:this={ref}
   {...rest}
 >
   <span

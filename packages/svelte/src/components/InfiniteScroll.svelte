@@ -5,6 +5,8 @@
   import Content from '../lib/Content.svelte'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     onLoadMore: () => void | Promise<void>
     hasMore: boolean
     loading?: boolean
@@ -21,7 +23,7 @@
 
   let {
     onLoadMore, hasMore, loading = false, threshold = 200, loader, endMessage, direction = 'down', pullToRefresh = false,
-    onRefresh, children, class: className, ...rest
+    onRefresh, children, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   let sentinel = $state<HTMLDivElement | null>(null)
@@ -45,7 +47,7 @@
 {#snippet sentinelEl()}{#if hasMore}<div bind:this={sentinel} class="ui-infinite-scroll__sentinel" aria-hidden="true"></div>{/if}{/snippet}
 {#snippet loaderEl()}{#if loading}<div class="ui-infinite-scroll__loader">{#if loader !== undefined && loader !== null}<Content value={loader} />{:else}<div class="ui-infinite-scroll__spinner"></div>{/if}</div>{/if}{/snippet}
 
-<div class={cn('ui-infinite-scroll', className)} data-direction={direction} {...rest}>
+<div class={cn('ui-infinite-scroll', className)} data-direction={direction} bind:this={ref} {...rest}>
   <div class="ui-infinite-scroll__status" aria-live="polite">{loading ? 'Loading more items...' : ''}</div>
   {#if pullToRefresh && onRefresh}<div class="ui-infinite-scroll__pull-indicator">Pull to refresh</div>{/if}
   {#if direction === 'up'}{@render sentinelEl()}{@render loaderEl()}{/if}

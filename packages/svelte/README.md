@@ -61,9 +61,17 @@ Built to run under `style-src 'self'` with no `unsafe-inline`:
 Each exists because the React idiom has no Svelte equivalent, and each is
 declared in the contract tests rather than hidden.
 
-- **Refs** — components do not expose their DOM element; React's forwarded
-  refs have no equivalent yet (`bind:this` on a component gives the component
-  instance, not its element).
+- **Refs are a bindable `ref` prop.** `bind:this` on a component gives the
+  component instance, so every component instead takes `ref` and binds it to
+  the element React's `ref` receives: usually the root, but the `<input>` or
+  `<textarea>` for Checkbox, ToggleSwitch, FormInput, NumberInput,
+  PasswordInput, SearchInput and Textarea, and the `<dialog>` for Dialog and
+  Sheet, and the main button of a removable FilterPill (`<script>let input = $state(null)</script>
+  <FormInput bind:ref={input} />`). React's ConfirmDialog, DataTableSuggestions,
+  Tour, Tooltip and the two TopologyGraph renderers take no ref; here `ref` is
+  their dialog, root, trigger wrapper or drawing surface. It is `null` while
+  the component renders nothing. A test holds each case to the element React
+  gives, derived from React (`tests/fixtures/refs.json`).
 - **`className` is `class`.**
 - **`ReactNode` props** (`icon`, `label`, `title`, `trigger`, `content`, …)
   accept a string or a snippet.

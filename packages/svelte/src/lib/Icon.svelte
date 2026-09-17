@@ -8,6 +8,8 @@
   export type IconSize = 'sm' | 'md' | 'lg' | number
 
   interface Props extends SVGAttributes<SVGSVGElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: SVGSVGElement | null
     name: string
     /** 'sm' (16px), 'md' (20px), 'lg' (24px), or a number. */
     size?: IconSize
@@ -18,7 +20,7 @@
 
   const SIZE_MAP = { sm: 16, md: 20, lg: 24 } as const
 
-  let { name, size = 'md', label, class: className, ...rest }: Props = $props()
+  let { name, size = 'md', label, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const paths = $derived(iconPaths[name])
   const px = $derived(typeof size === 'number' ? size : SIZE_MAP[size])
@@ -39,6 +41,7 @@
     role={label ? 'img' : undefined}
     aria-label={label || undefined}
     aria-hidden={label ? undefined : true}
+    bind:this={ref}
     {...rest}
   >
     {#each paths as d, i (i)}<path {d} />{/each}

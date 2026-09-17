@@ -11,6 +11,8 @@
   type Item = Snippet | string | number | boolean | null | undefined
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     radius?: number
     duration?: number
     reverse?: boolean
@@ -22,7 +24,7 @@
     class?: string
   }
 
-  let { radius = 100, duration = 15, reverse = false, items, motion, class: className, style, ...rest }: Props = $props()
+  let { radius = 100, duration = 15, reverse = false, items, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
 
@@ -38,7 +40,7 @@
   }))
 </script>
 
-<div class={cn('ui-orbiting-circles', className)} data-motion={motionLevel()} use:cssProps={styles} role="presentation" {...rest}>
+<div class={cn('ui-orbiting-circles', className)} data-motion={motionLevel()} use:cssProps={styles} role="presentation" bind:this={ref} {...rest}>
   {#each visible as item, i (i)}
     <div
       class="ui-orbiting-circles--item"

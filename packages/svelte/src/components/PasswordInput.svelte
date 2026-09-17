@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLInputElement | null
     /** Bindable. Inside a form context, the field's value is used when this is omitted. */
     value?: string
     onChange?: (e: Event & { currentTarget: EventTarget & HTMLInputElement }) => void
@@ -30,7 +32,7 @@
   let {
     value = $bindable(), onChange, label, description, error: errorProp, placeholder, name, size = 'md', disabled, required,
     showStrengthMeter, strengthLabels = DEFAULT_STRENGTH_LABELS, visibilityToggle = true, onStrengthChange, motion,
-    class: className, id: idProp, ...rest
+    class: className, id: idProp, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function calculateStrength(password: string): number {
@@ -86,6 +88,7 @@
   {/if}
   <div class="ui-password-input__field-wrapper">
     <input
+      bind:this={ref}
       id={inputId}
       {name}
       type={visible ? 'text' : 'password'}

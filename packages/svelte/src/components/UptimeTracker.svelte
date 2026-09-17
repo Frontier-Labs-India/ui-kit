@@ -12,6 +12,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     days: UptimeDay[]
     slaTarget?: number
     showSla?: boolean
@@ -19,7 +21,7 @@
     class?: string
   }
 
-  let { days, slaTarget, showSla = false, motion, class: className, ...rest }: Props = $props()
+  let { days, slaTarget, showSla = false, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let hovered = $state<number | null>(null)
@@ -32,7 +34,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-uptime-tracker', className)} data-motion={motionLevel()} role="group" aria-label="Uptime history" {...rest}>
+  <div class={cn('ui-uptime-tracker', className)} data-motion={motionLevel()} role="group" aria-label="Uptime history" bind:this={ref} {...rest}>
     <div class="ui-uptime-tracker__bar">
       {#each days as day, i (day.date)}
         <!-- svelte-ignore a11y_no_static_element_interactions -->

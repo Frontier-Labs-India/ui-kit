@@ -19,6 +19,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     data: SegmentedControlOption[] | string[]
     /** Bindable. Omit it for an uncontrolled control that starts from defaultValue. */
     value?: string
@@ -37,7 +39,7 @@
 
   let {
     data, value = $bindable(), defaultValue, onChange, size = 'md', fullWidth = false, orientation = 'horizontal', color,
-    disabled = false, readOnly = false, motion, class: className, style, ...rest
+    disabled = false, readOnly = false, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('segmented')
@@ -49,7 +51,7 @@
   let internal = $state(defaultValue ?? options[0]?.value ?? '')
   const activeValue = $derived(value !== undefined ? value : internal)
 
-  let container = $state<HTMLDivElement | null>(null)
+  const container = $derived(ref)
   let indicator = $state<HTMLDivElement | null>(null)
   const items = new Map<string, HTMLButtonElement>()
   const itemRef = (node: HTMLButtonElement, key: string) => {
@@ -124,7 +126,7 @@
 
 <!-- svelte-ignore a11y_interactive_supports_focus -->
 <div
-  bind:this={container}
+  bind:this={ref}
   role="radiogroup"
   class={cn(cls('root'), className)}
   data-size={size}

@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLDialogAttributes, 'title' | 'open'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDialogElement | null
     open: boolean
     onClose: () => void
     title?: string | Snippet
@@ -25,14 +27,14 @@
 
   let {
     open, onClose, title, description, size = 'md', closeOnOverlay = true, closeOnEscape = true,
-    showClose = true, footer, preventClose = false, children, motion, classNames, class: className, ...rest
+    showClose = true, footer, preventClose = false, children, motion, classNames, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const uid = $props.id()
   const titleId = `dialog-title-${uid}`
   const descId = `dialog-desc-${uid}`
-  let dialog: HTMLDialogElement | undefined
+  const dialog = $derived(ref)
 
   /* The element's open state follows the prop through the modal API, never
    * the `open` attribute: only showModal() gives the top layer, inert
@@ -64,7 +66,7 @@
 <div class={cn('ui-dialog', classNames?.root, className)}>
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
   <dialog
-    bind:this={dialog}
+    bind:this={ref}
     data-size={size}
     data-motion={motionLevel()}
     aria-labelledby={title ? titleId : undefined}

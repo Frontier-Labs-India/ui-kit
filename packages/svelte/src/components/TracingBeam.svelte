@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     color?: string
     children?: Snippet
     motion?: MotionLevel
@@ -15,10 +17,10 @@
     style?: StyleInput
   }
 
-  let { color, children, motion, class: className, style, ...rest }: Props = $props()
+  let { color, children, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLDivElement | null>(null)
+  const element = $derived(ref)
   let progress = $state(0)
 
   // Percentage of the element scrolled past, from entering at the bottom to leaving at the top.
@@ -44,7 +46,7 @@
   const styles = $derived(mergeStyles(style, color ? { '--tracing-beam-color': color } : null))
 </script>
 
-<div bind:this={element} class={cn('ui-tracing-beam', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+<div bind:this={ref} class={cn('ui-tracing-beam', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
   <div class="ui-tracing-beam--track" aria-hidden="true">
     <div class="ui-tracing-beam--progress" use:cssProps={{ '--beam-progress': `${progress}%` }}></div>
     <div class="ui-tracing-beam--dot" use:cssProps={{ '--beam-progress': `${progress}%` }}></div>

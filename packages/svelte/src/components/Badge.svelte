@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     /** Semantic color variant (default: 'default') */
     variant?: 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'
     /** Controls padding, font-size, and dimensions (default: 'md') */
@@ -46,6 +48,7 @@
     motion,
     class: className,
     children,
+    ref = $bindable(null),
     ...rest
   }: Props = $props()
 
@@ -64,6 +67,7 @@
   data-size={size}
   data-motion={motionLevel()}
   data-outline={outline || undefined}
+  bind:this={ref}
   {...rest}
 >
   {#if icon}<span class="ui-badge__icon">{@render icon()}</span>{/if}

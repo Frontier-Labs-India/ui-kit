@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     value: number
     thresholds?: { warning: number; critical: number }
     label?: string | Snippet
@@ -31,7 +33,7 @@
     return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`
   }
 
-  let { value: rawValue, thresholds, label, showValue = false, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { value: rawValue, thresholds, label, showValue = false, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const value = $derived(Math.max(0, Math.min(100, rawValue)))
@@ -59,6 +61,7 @@
     aria-valuemin={0}
     aria-valuemax={100}
     aria-label={typeof label === 'string' ? label : 'Gauge'}
+    bind:this={ref}
     {...rest}
   >
     <svg

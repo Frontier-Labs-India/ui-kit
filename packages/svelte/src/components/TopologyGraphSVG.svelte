@@ -4,8 +4,11 @@
   import type { TopologyRendererProps } from '../lib/topology.js'
 
   let {
-    layout, nodes, edges, selectedNodes = [], onNodeClick, onNodeHover, onEdgeClick, motionLevel, width, height
-  }: TopologyRendererProps = $props()
+    layout, nodes, edges, selectedNodes = [], onNodeClick, onNodeHover, onEdgeClick, motionLevel, width, height, ref = $bindable(null),
+  }: TopologyRendererProps & {
+    /** The <svg> element (React's renderer takes no ref). Read it with `bind:ref`. */
+    ref?: SVGSVGElement | null
+  } = $props()
 
   const STATUS_COLORS: Record<string, string> = {
     ok: 'oklch(72% 0.19 155)',
@@ -81,6 +84,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <svg
+  bind:this={ref}
   {width}
   {height}
   viewBox={`0 0 ${width} ${height}`}

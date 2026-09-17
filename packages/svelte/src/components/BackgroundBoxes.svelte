@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     rows?: number
     cols?: number
     children?: Snippet
@@ -17,7 +19,7 @@
     class?: string
   }
 
-  let { rows = 15, cols = 15, children, motion, class: className, style, ...rest }: Props = $props()
+  let { rows = 15, cols = 15, children, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const boxes = $derived(Array.from({ length: rows * cols }, (_, i) => reactStyle({
@@ -32,7 +34,7 @@
   }))
 </script>
 
-<div class={cn('ui-background-boxes', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+<div class={cn('ui-background-boxes', className)} data-motion={motionLevel()} use:cssProps={styles} bind:this={ref} {...rest}>
   <div class="ui-background-boxes--grid" aria-hidden="true">
     {#each boxes as boxStyle, i (i)}<div class="ui-background-boxes--box" use:cssProps={boxStyle}></div>{/each}
   </div>

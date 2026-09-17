@@ -36,6 +36,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     title?: string | Snippet
     subtitle?: string
     status?: 'ok' | 'warning' | 'critical' | 'unknown' | 'maintenance'
@@ -71,7 +73,7 @@
     title, subtitle, status, lastUpdated, metrics, sections, columns = 2, sidebar, sidebarPosition = 'right',
     sidebarCollapsible = false, actions, autoRefresh, onRefresh, headerHeight, metricsScrollable = true, sidebarWidth,
     variant = 'default', showBreadcrumb, showStatusBar = false, statusBarContent, onSectionToggle, stickyHeader = false,
-    metricsLayout = 'row', onMetricClick, children, motion, class: className, style, ...rest
+    metricsLayout = 'row', onMetricClick, children, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function formatRelativeTime(timestamp: number | Date) {
@@ -134,6 +136,7 @@
     role="group"
     aria-label={typeof title === 'string' ? `Dashboard: ${title}` : 'Dashboard'}
     use:cssProps={rootStyles}
+    bind:this={ref}
     {...rest}
   >
     {#if title || status || lastUpdated || actions || showBreadcrumb}

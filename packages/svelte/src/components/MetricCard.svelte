@@ -12,6 +12,8 @@
   type Node = string | number | Snippet
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     title: Node
     value: Node
     change?: { value: number; period?: string }
@@ -27,11 +29,11 @@
   }
 
   let {
-    title, value, change, trend, status, icon, sparkline, loading, error, empty, motion, class: className, ...rest
+    title, value, change, trend, status, icon, sparkline, loading, error, empty, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'fade-up' : 'none'), () => ({ duration: 280 }))
 
   const showError = $derived(error !== undefined)
@@ -45,7 +47,7 @@
 
 <ErrorBoundary>
   <div
-    bind:this={el}
+    bind:this={ref}
     class={cn('ui-metric-card', className)}
     data-motion={motionLevel()}
     data-status={status || undefined}

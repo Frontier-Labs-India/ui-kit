@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLButtonAttributes {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     data: Record<string, unknown>[]
     filename?: string
     columns?: { key: string; label: string }[]
@@ -18,7 +20,7 @@
   }
 
   let {
-    data, filename = 'export.csv', columns, onExport, size = 'md', motion, class: className, disabled, children, onclick, ...rest
+    data, filename = 'export.csv', columns, onExport, size = 'md', motion, class: className, disabled, children, onclick, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function escapeCSV(val: unknown): string {
@@ -53,7 +55,7 @@
   }
 </script>
 
-<button type="button" class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-exported={exported || undefined} {disabled} onclick={handleClick} {...rest}>
+<button type="button" class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-exported={exported || undefined} {disabled} onclick={handleClick} bind:this={ref} {...rest}>
   {#if exported}
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
   {:else}

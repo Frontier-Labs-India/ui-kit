@@ -17,6 +17,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     items: PropertyItem[]
     columns?: 1 | 2
     size?: 'sm' | 'md' | 'lg'
@@ -25,10 +27,10 @@
     class?: string
   }
 
-  let { items, columns = 1, size = 'md', striped, motion, class: className, ...rest }: Props = $props()
+  let { items, columns = 1, size = 'md', striped, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   let copiedIndex = $state<number | null>(null)
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'fade-up' : 'none'), () => ({ duration: 280 }))
 
@@ -45,7 +47,7 @@
 
 <ErrorBoundary>
   <div
-    bind:this={el}
+    bind:this={ref}
     class={cn('ui-property-list', className)}
     data-motion={motionLevel()}
     data-size={size}

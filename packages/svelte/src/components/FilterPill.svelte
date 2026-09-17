@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLButtonAttributes {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     label: string
     active?: boolean
     onRemove?: () => void
@@ -18,7 +20,7 @@
     class?: string
   }
 
-  let { label, active = false, onRemove, count, icon, size = 'md', motion, class: className, onclick, ...rest }: Props = $props()
+  let { label, active = false, onRemove, count, icon, size = 'md', motion, class: className, onclick, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('filter-pill')
   const motionLevel = getMotionLevel(() => motion)
@@ -46,7 +48,7 @@
     role="group"
     aria-label={`${label} filter`}
   >
-    <button type="button" class="ui-filter-pill__main" aria-pressed={active} {onclick} {...rest}>{@render body()}</button>
+    <button type="button" class="ui-filter-pill__main" aria-pressed={active} {onclick} bind:this={ref} {...rest}>{@render body()}</button>
     <button type="button" class="ui-filter-pill__remove" onclick={remove} aria-label={`Remove ${label}`}><Icon name="x" size="sm" /></button>
   </span>
 {:else}
@@ -58,6 +60,7 @@
     data-active={active ? '' : undefined}
     aria-pressed={active}
     {onclick}
+    bind:this={ref}
     {...rest}
   >{@render body()}</button>
 {/if}

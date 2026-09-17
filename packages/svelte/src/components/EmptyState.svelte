@@ -10,6 +10,8 @@
   type Node = string | Snippet
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     icon?: Node
     title: Node
     description?: Node
@@ -20,15 +22,15 @@
     class?: string
   }
 
-  let { icon, title, description, action, secondaryAction, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { icon, title, description, action, secondaryAction, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   // Scale entrance at motion level 2+
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'scale' : 'none'), () => ({ duration: 350 }))
 </script>
 
-<div bind:this={el} class={cn('ui-empty-state', className)} data-size={size} data-motion={motionLevel()} {...rest}>
+<div bind:this={ref} class={cn('ui-empty-state', className)} data-size={size} data-motion={motionLevel()} {...rest}>
   {#if icon}<div class="ui-empty-state__icon" aria-hidden="true"><Content value={icon} /></div>{/if}
   <h3 class="ui-empty-state__title"><Content value={title} /></h3>
   {#if description}<p class="ui-empty-state__description"><Content value={description} /></p>{/if}

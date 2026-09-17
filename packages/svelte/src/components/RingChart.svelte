@@ -10,6 +10,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     value: number
     max?: number
     size?: 'sm' | 'md' | 'lg'
@@ -28,7 +30,7 @@
 
   let {
     value: rawValue, max = 100, size = 'md', thickness, color = 'oklch(65% 0.2 270)', label,
-    showValue = false, animated: _animated = true, motion, class: className, style, ...rest
+    showValue = false, animated: _animated = true, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -54,6 +56,7 @@
     aria-valuemax={max}
     aria-label={typeof label === 'string' ? label : 'Ring chart'}
     use:cssProps={styles}
+    bind:this={ref}
     {...rest}
   >
     <svg class="ui-ring-chart__svg" width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`} aria-hidden="true">

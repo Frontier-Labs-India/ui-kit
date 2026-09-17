@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'prefix'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLInputElement | null
     /** Bindable. Omit it for an uncontrolled input that starts from defaultValue. */
     value?: number | null
     defaultValue?: number
@@ -37,7 +39,7 @@
   let {
     value = $bindable(), defaultValue, onChange, min, max, step = 1, precision, label, description, error: errorProp,
     placeholder, name, size = 'md', disabled, readOnly, hideControls, clampBehavior = 'blur', prefix, suffix,
-    thousandSeparator, allowNegative = true, allowDecimal = true, required, motion, class: className, id: idProp, ...rest
+    thousandSeparator, allowNegative = true, allowDecimal = true, required, motion, class: className, id: idProp, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const clamp = (val: number) => {
@@ -89,7 +91,7 @@
 
   let focused = $state(false)
   let rawText = $state('')
-  let input: HTMLInputElement | undefined
+  const input = $derived(ref)
   let holdTimer: ReturnType<typeof setTimeout> | null = null
   let holdInterval: ReturnType<typeof setInterval> | null = null
 
@@ -185,7 +187,7 @@
   {/if}
   <div class="ui-number-input__field-wrapper">
     <input
-      bind:this={input}
+      bind:this={ref}
       id={inputId}
       {name}
       type="text"

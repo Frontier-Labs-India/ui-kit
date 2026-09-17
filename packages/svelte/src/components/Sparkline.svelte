@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     data: number[]
     width?: number | string
     height?: number
@@ -24,7 +26,7 @@
 
   let {
     data, width, height = 32, color, gradient = true, showTooltip = false, animate: _animate = true, motion,
-    class: className, style, ...rest
+    class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -51,7 +53,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-sparkline', className)} data-motion={motionLevel()} use:cssProps={wrapper} {...rest}>
+  <div class={cn('ui-sparkline', className)} data-motion={motionLevel()} use:cssProps={wrapper} bind:this={ref} {...rest}>
     <svg viewBox={`0 0 ${VIEW_W} ${height}`} preserveAspectRatio="none" aria-hidden="true" use:cssProps={reactStyle({ width: '100%', height: `${height}px` })}>
       {#if gradient && geo}
         <defs>

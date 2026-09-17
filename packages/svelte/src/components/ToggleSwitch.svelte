@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLInputAttributes, 'type' | 'size'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLInputElement | null
     label?: string | Snippet
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     error?: string
@@ -20,7 +22,7 @@
 
   let {
     label, size = 'md', error, motion, class: className, disabled, checked = $bindable(),
-    defaultChecked, id: idProp, onchange, ...rest
+    defaultChecked, id: idProp, onchange, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('toggle-switch')
@@ -60,6 +62,7 @@
       aria-invalid={error ? true : undefined}
       aria-describedby={errorId}
       {onchange}
+      bind:this={ref}
       {...rest}
     />
     <span class="ui-toggle-switch__track" aria-hidden="true"><span class="ui-toggle-switch__thumb"></span></span>

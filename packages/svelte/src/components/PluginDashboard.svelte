@@ -14,6 +14,8 @@
   type Series = Record<string, Array<{ timestamp: number; value: number }>>
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     config: PluginDashboardConfig
     data: Record<string, unknown>
     timeSeries?: Series
@@ -25,7 +27,7 @@
     class?: string
   }
 
-  let { config, data, timeSeries, loading = false, error, onRefresh, autoRefresh, motion, class: className, ...rest }: Props = $props()
+  let { config, data, timeSeries, loading = false, error, onRefresh, autoRefresh, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
 
@@ -164,7 +166,7 @@
 {/snippet}
 
 <ErrorBoundary>
-  <div class={cn('ui-plugin-dashboard', className)} data-motion={motionLevel()} {...rest}>
+  <div class={cn('ui-plugin-dashboard', className)} data-motion={motionLevel()} bind:this={ref} {...rest}>
     {#if error}
       <DashboardTemplate title={config.name} status="unknown">
         <div class="ui-plugin-dashboard__error" role="alert"><Content value={error} /></div>

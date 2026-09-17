@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLDialogAttributes, 'title' | 'open'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDialogElement | null
     open: boolean
     onClose: () => void
     side?: 'left' | 'right' | 'bottom'
@@ -21,14 +23,14 @@
   }
 
   let {
-    open, onClose, side = 'right', title, description, size = 'md', showClose = true, children, motion, class: className, ...rest
+    open, onClose, side = 'right', title, description, size = 'md', showClose = true, children, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const uid = $props.id()
   const titleId = `sheet-title-${uid}`
   const descId = `sheet-desc-${uid}`
-  let dialog: HTMLDialogElement | undefined
+  const dialog = $derived(ref)
   let swipe = $state<HTMLDivElement | null>(null)
 
   // Same modal handling as Dialog: the prop drives showModal()/close().
@@ -52,7 +54,7 @@
 <div class={cn('ui-sheet', className)}>
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
   <dialog
-    bind:this={dialog}
+    bind:this={ref}
     data-side={side}
     data-size={size}
     data-motion={motionLevel()}

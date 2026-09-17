@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     perspective?: number
     maxTilt?: number
     glare?: boolean
@@ -19,7 +21,7 @@
 
   let {
     perspective = 1000, maxTilt = 10, glare = true, children, motion, class: className, style,
-    onmousemove, onmouseleave, ...rest
+    onmousemove, onmouseleave, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -62,6 +64,7 @@
   onmousemove={handleMove}
   onmouseleave={handleLeave}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >
   <div bind:this={inner} class="ui-card-3d--inner">

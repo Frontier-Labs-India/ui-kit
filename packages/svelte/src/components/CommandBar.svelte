@@ -33,6 +33,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     items: CommandItem[]
     open: boolean
     onOpenChange: (open: boolean) => void
@@ -46,7 +48,7 @@
 
   let {
     items, open, onOpenChange, placeholder = 'Type a command...', emptyMessage = 'No results found', shortcut, motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function fuzzyMatch(query: string, target: string) {
@@ -165,7 +167,7 @@
   const activeDescendantId = $derived(activeIndex >= 0 && activeIndex < navigable.length ? itemId(navigable[activeIndex].id) : undefined)
 </script>
 
-<div class={cn('ui-command-bar', className)} {...rest}>
+<div class={cn('ui-command-bar', className)} bind:this={ref} {...rest}>
   <!-- One dialog node open or closed, as React keeps it: the closed bar renders it bare. -->
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
   <dialog

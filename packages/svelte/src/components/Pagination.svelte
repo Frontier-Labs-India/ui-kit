@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     page: number
     totalPages: number
     onChange: (page: number) => void
@@ -41,7 +43,7 @@
 
   let {
     page, totalPages, onChange, siblingCount = 1, showFirst = false, showPrevNext = true, size = 'md', motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -54,7 +56,7 @@
   </svg>
 {/snippet}
 
-<nav class={cn('ui-pagination', className)} aria-label="Pagination" data-size={size} data-motion={motionLevel()} {...rest}>
+<nav class={cn('ui-pagination', className)} aria-label="Pagination" data-size={size} data-motion={motionLevel()} bind:this={ref} {...rest}>
   {#if showFirst}
     <button type="button" aria-label="First page" disabled={page <= 1} onclick={() => onChange(1)}>{@render chevron('M7 3L3 7L7 11M11 3L7 7L11 11')}</button>
   {/if}

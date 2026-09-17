@@ -9,6 +9,8 @@
   type Node = string | Snippet
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     image?: Node
     title: Node
     description?: Node
@@ -19,11 +21,11 @@
     class?: string
   }
 
-  let { image, title, description, actions, badge, variant = 'default', motion, class: className, ...rest }: Props = $props()
+  let { image, title, description, actions, badge, variant = 'default', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const motionLevel = getMotionLevel(() => motion)
 </script>
 
-<article class={cn('ui-responsive-card', className)} data-variant={variant} data-motion={motionLevel()} {...rest}>
+<article class={cn('ui-responsive-card', className)} data-variant={variant} data-motion={motionLevel()} bind:this={ref} {...rest}>
   {#if badge}<div class="ui-responsive-card__badge"><Content value={badge} /></div>{/if}
   {#if image}<div class="ui-responsive-card__image"><Content value={image} /></div>{/if}
   <div class="ui-responsive-card__content">

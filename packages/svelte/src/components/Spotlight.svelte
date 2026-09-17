@@ -34,6 +34,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     actions: SpotlightAction[]
     open?: boolean
     onOpenChange?: (open: boolean) => void
@@ -49,7 +51,7 @@
 
   let {
     actions, open = false, onOpenChange, shortcut = 'meta+k', placeholder = 'Search...', nothingFoundMessage = 'No results found',
-    limit, filter, motion, class: className, ...rest
+    limit, filter, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function fuzzyMatch(query: string, target: string): boolean {
@@ -172,7 +174,7 @@
 </script>
 
 {#if open}
-  <div class={cn('ui-spotlight', className)} {...rest}>
+  <div class={cn('ui-spotlight', className)} bind:this={ref} {...rest}>
     <!-- React renders no tabindex here; focus lives on the input (focus trap). -->
     <!-- svelte-ignore a11y_click_events_have_key_events, a11y_interactive_supports_focus -->
     <div

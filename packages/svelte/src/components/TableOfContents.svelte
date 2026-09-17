@@ -15,6 +15,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     items: TocItem[]
     /** Controlled active item; omit to track clicks (and scroll spy) internally. */
     activeId?: string
@@ -29,7 +31,7 @@
 
   let {
     items, activeId: controlledActiveId, onItemClick, scrollSpy = false, scrollOffset = 0, size = 'md', variant = 'default',
-    motion, class: className, ...rest
+    motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const flatten = (list: TocItem[]): TocItem[] => list.flatMap(i => [i, ...(i.children ? flatten(i.children) : [])])
@@ -99,7 +101,7 @@
   {/each}
 {/snippet}
 
-<nav aria-label="Table of contents" class={cn(cls('root'), className)} data-size={size} data-variant={variant} data-motion={motionLevel()} {...rest}>
+<nav aria-label="Table of contents" class={cn(cls('root'), className)} data-size={size} data-variant={variant} data-motion={motionLevel()} bind:this={ref} {...rest}>
   <div use:cssProps={{ position: 'relative' }}>
     {#if variant === 'default'}<div bind:this={indicator} class="ui-toc__indicator" aria-hidden="true" use:cssProps={{ opacity: '0' }}></div>{/if}
     <ul bind:this={list} class="ui-toc__list" role="list">{@render links(items)}</ul>

@@ -33,6 +33,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     series: TimeSeriesSeries[]
     height?: number
     showXAxis?: boolean
@@ -70,11 +72,11 @@
   let {
     series, height = 200, showXAxis = true, showYAxis = true, showGrid = true, showTooltip = true, showLegend = true,
     yMin: yMinProp, yMax: yMaxProp, formatValue = defaultFormatValue, formatTime = defaultFormatTime, motion,
-    brushable = false, onBrush, zoomable = false, onZoom, toggleableSeries = false, annotations, class: className, style, ...rest
+    brushable = false, onBrush, zoomable = false, onZoom, toggleableSeries = false, annotations, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let container = $state<HTMLDivElement | null>(null)
+  const container = $derived(ref)
   let svg = $state<SVGSVGElement | null>(null)
   let tooltip = $state<HTMLDivElement | null>(null)
   let width = $state(400)
@@ -262,7 +264,7 @@
 </script>
 
 <ErrorBoundary>
-  <div bind:this={container} class={cn('ui-time-series-chart', className)} data-motion={motionLevel()} use:cssProps={mergeStyles(style)} {...rest}>
+  <div bind:this={ref} class={cn('ui-time-series-chart', className)} data-motion={motionLevel()} use:cssProps={mergeStyles(style)} {...rest}>
     {#if zoomable && (zoomX !== null || zoomY !== null)}
       <button class="ui-time-series-chart__zoom-reset" onclick={resetZoom} type="button">Reset zoom</button>
     {/if}

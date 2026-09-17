@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable. */
     tags: string[]
     onChange?: (tags: string[]) => void
@@ -21,7 +23,7 @@
 
   let {
     tags = $bindable(), onChange, placeholder, maxTags, allowDuplicates = false, validate, size = 'md', error,
-    disabled = false, motion, class: className, 'aria-label': ariaLabel, ...rest
+    disabled = false, motion, class: className, 'aria-label': ariaLabel, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('tag-input')
@@ -65,6 +67,7 @@
   data-invalid={error ? '' : undefined}
   data-disabled={disabled ? '' : undefined}
   aria-describedby={error ? errorId : undefined}
+  bind:this={ref}
   {...rest}
 >
   <div class="ui-tag-input__wrapper">

@@ -10,6 +10,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable: "2:30 PM" (12h) or "14:30" (24h). */
     value?: string
     onChange?: (time: string) => void
@@ -30,7 +32,7 @@
 
   let {
     value = $bindable(), onChange, format = '12h', minuteStep = 1, minTime, maxTime, label, placeholder = 'Select time',
-    size = 'md', error: errorProp, disabled, clearable = false, motion, name, class: className, ...rest
+    size = 'md', error: errorProp, disabled, clearable = false, motion, name, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function parseTime(time: string): { hours: number; minutes: number } | null {
@@ -73,7 +75,7 @@
 
   let trigger = $state<HTMLButtonElement | null>(null)
   let dropdown = $state<HTMLDivElement | null>(null)
-  let root = $state<HTMLDivElement | null>(null)
+  const root = $derived(ref)
   let hourCol = $state<HTMLDivElement | null>(null)
   let minuteCol = $state<HTMLDivElement | null>(null)
 
@@ -164,7 +166,7 @@
 </script>
 
 <div
-  bind:this={root}
+  bind:this={ref}
   class={cn(cls('root'), className)}
   data-size={size}
   data-motion={motionLevel()}

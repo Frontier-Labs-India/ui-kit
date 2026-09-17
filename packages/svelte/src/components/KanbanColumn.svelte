@@ -19,6 +19,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     title: string | Snippet
     cards: KanbanCard[]
     onCardMove?: (cardId: string, targetColumnId: string, targetIndex: number) => void
@@ -31,7 +33,7 @@
     class?: string
   }
 
-  let { title, cards, onCardMove, onCardClick, wipLimit, collapsed = false, onCollapse, columnId, motion, class: className, ...rest }: Props = $props()
+  let { title, cards, onCardMove, onCardClick, wipLimit, collapsed = false, onCollapse, columnId, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const uid = $props.id()
@@ -119,6 +121,7 @@
   data-wip-exceeded={wipExceeded ? '' : undefined}
   role="region"
   aria-labelledby={headerId}
+  bind:this={ref}
   {...rest}
 >
   <div class="ui-kanban-column__header">

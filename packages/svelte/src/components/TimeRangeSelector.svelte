@@ -12,6 +12,8 @@
   }
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     presets?: TimeRangePreset[]
     value?: [number, number]
     onChange?: (range: [number, number]) => void
@@ -20,7 +22,7 @@
     class?: string
   }
 
-  let { presets: presetsProp, value, onChange, showCustom = false, motion, class: className, ...rest }: Props = $props()
+  let { presets: presetsProp, value, onChange, showCustom = false, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
 
@@ -58,7 +60,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-time-range-selector', className)} data-motion={motionLevel()} role="group" aria-label="Time range" {...rest}>
+  <div class={cn('ui-time-range-selector', className)} data-motion={motionLevel()} role="group" aria-label="Time range" bind:this={ref} {...rest}>
     <div class="ui-time-range-selector__presets" role="group" aria-label="Preset ranges">
       {#each presets as preset (preset.value)}
         <button

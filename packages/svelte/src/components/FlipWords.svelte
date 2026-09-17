@@ -5,13 +5,15 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     words: string[]
     interval?: number
     motion?: MotionLevel
     class?: string
   }
 
-  let { words, interval = 3000, motion, class: className, ...rest }: Props = $props()
+  let { words, interval = 3000, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let currentIndex = $state(0)
@@ -41,6 +43,6 @@
   })
 </script>
 
-<span class={cn('ui-flip-words', className)} data-motion={motionLevel()} aria-live="polite" aria-atomic="true" {...rest}>
+<span class={cn('ui-flip-words', className)} data-motion={motionLevel()} aria-live="polite" aria-atomic="true" bind:this={ref} {...rest}>
   <span class="ui-flip-words--word" data-state={motionLevel() === 0 ? 'visible' : phase}>{safeWords[currentIndex]}</span>
 </span>

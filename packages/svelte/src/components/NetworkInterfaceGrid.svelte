@@ -24,6 +24,8 @@
   }
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     interfaces: NetworkInterface[]
     columns?: number
     size?: 'sm' | 'md' | 'lg'
@@ -47,7 +49,7 @@
 
   let {
     interfaces, columns, size = 'md', showTraffic = false, showErrors = false, onInterfaceClick, compact = false, motion,
-    class: className, style, ...rest
+    class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -91,6 +93,7 @@
     role="group"
     aria-label="Network interfaces"
     use:cssProps={styles}
+    bind:this={ref}
     {...rest}
   >
     {#each interfaces as iface (iface.name)}

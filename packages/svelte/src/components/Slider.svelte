@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'defaultValue'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     min?: number
     max?: number
     step?: number
@@ -25,7 +27,7 @@
 
   let {
     min = 0, max = 100, step = 1, value = $bindable(), defaultValue, onChange, label, showValue = false, showTicks = false,
-    disabled = false, size = 'md', motion, class: className, ...rest
+    disabled = false, size = 'md', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('slider')
@@ -48,7 +50,7 @@
   }))
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} bind:this={ref} {...rest}>
   {#if label || showValue}
     <div class="ui-slider__header">
       {#if label}<span class="ui-slider__label">{label}</span>{/if}

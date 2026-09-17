@@ -11,6 +11,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     items: BreadcrumbItem[]
     separator?: string | Snippet
     maxVisible?: number
@@ -18,7 +20,7 @@
     class?: string
   }
 
-  let { items, separator, maxVisible, onNavigate, class: className, ...rest }: Props = $props()
+  let { items, separator, maxVisible, onNavigate, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   // Collapse, exactly as React computes it: the first item, then the last
   // (maxVisible - 1). React's own comment says "maxVisible - 2", but its code
@@ -44,7 +46,7 @@
   </span>
 {/snippet}
 
-<nav class={cn('ui-breadcrumbs', className)} aria-label="Breadcrumb" {...rest}>
+<nav class={cn('ui-breadcrumbs', className)} aria-label="Breadcrumb" bind:this={ref} {...rest}>
   <ol>
     {#each visible as item, index (index)}
       <li>

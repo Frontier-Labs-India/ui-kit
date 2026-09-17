@@ -15,6 +15,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     steps: StepperStep[]
     activeStep: number
     orientation?: 'horizontal' | 'vertical'
@@ -27,7 +29,7 @@
 
   let {
     steps, activeStep, orientation = 'horizontal', variant = 'default', size = 'md', onStepClick, motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('stepper')
@@ -75,6 +77,7 @@
   data-motion={motionLevel()}
   aria-label="Progress steps"
   role="navigation"
+  bind:this={ref}
   {...rest}
 >
   {#each steps as step, i (step.id)}

@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLButtonAttributes, 'children'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     value: string
     /** How long `copied` stays true, in ms. */
     timeout?: number
@@ -16,7 +18,7 @@
     class?: string
   }
 
-  let { value, timeout = 2000, children, size = 'md', motion, class: className, onclick, ...rest }: Props = $props()
+  let { value, timeout = 2000, children, size = 'md', motion, class: className, onclick, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let copied = $state(false)
@@ -41,5 +43,6 @@
   data-motion={motionLevel()}
   onclick={e => { copy(); onclick?.(e) }}
   aria-label={copied ? 'Copied' : 'Copy to clipboard'}
+  bind:this={ref}
   {...rest}
 >{@render children({ copied, copy })}</button>

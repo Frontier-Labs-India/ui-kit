@@ -16,6 +16,8 @@
   }
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     vlans: VlanEntry[]
     totalPorts: number
     showLabels?: boolean
@@ -50,7 +52,7 @@
   let {
     vlans, totalPorts, showLabels = true, showPortNumbers = false, orientation = 'horizontal', size = 'md', onVlanClick, onPortClick,
     motion, highlightPorts, highlightVlans, showTrunkIndicator = false, compactMode = false, maxHeight, colorScheme = 'auto',
-    onPortHover, onVlanHover, class: className, style, ...rest
+    onPortHover, onVlanHover, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -205,6 +207,7 @@
     role="img"
     aria-label={`VLAN bus bar diagram showing ${vlans.length} VLANs across ${totalPorts} ports`}
     use:cssProps={styles}
+    bind:this={ref}
     {...rest}
   >
     <svg class="ui-vlan-bus-bar__svg" width={vertical ? totalH : totalW} height={vertical ? totalW : totalH} viewBox={vertical ? `0 0 ${totalH} ${totalW}` : `0 0 ${totalW} ${totalH}`} aria-hidden="true">

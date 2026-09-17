@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLButtonAttributes, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     visibleFrom?: number
     smooth?: boolean
     /** A scrolling element to watch instead of the window. */
@@ -18,7 +20,7 @@
     style?: StyleInput
   }
 
-  let { visibleFrom = 400, smooth = true, target, showProgress = false, size = 'md', motion, class: className, style, ...rest }: Props = $props()
+  let { visibleFrom = 400, smooth = true, target, showProgress = false, size = 'md', motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const SIZE_MAP = { sm: 36, md: 44, lg: 56 } as const
   const ICON_MAP = { sm: 16, md: 20, lg: 24 } as const
@@ -67,6 +69,7 @@
   use:cssProps={styles}
   onclick={handleClick}
   aria-label="Back to top"
+  bind:this={ref}
   {...rest}
 >
   {#if showProgress}

@@ -9,6 +9,8 @@
   type DensityValue = 'compact' | 'comfortable' | 'spacious'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'defaultValue'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Controlled when set. */
     value?: DensityValue
     defaultValue?: DensityValue
@@ -22,7 +24,7 @@
   // Line y-positions per icon, from React's three icon components.
   const LINES: Record<DensityValue, number[]> = { compact: [3, 6.5, 10, 13.5], comfortable: [3, 8, 13], spacious: [4.5, 11.5] }
 
-  let { value, defaultValue = 'comfortable', onChange, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { value, defaultValue = 'comfortable', onChange, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('density-selector')
   const motionLevel = getMotionLevel(() => motion)
@@ -37,7 +39,7 @@
   }
 </script>
 
-<div role="radiogroup" aria-label="UI density" class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} {...rest}>
+<div role="radiogroup" aria-label="UI density" class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} bind:this={ref} {...rest}>
   <div class="ui-density-selector__indicator" use:cssProps={reactStyle({ insetInlineStart: `calc(${activeIndex} * (100% / 3) + 3px)`, inlineSize: 'calc(100% / 3 - 4px)' })}></div>
   {#each OPTIONS as opt (opt)}
     <button type="button" role="radio" aria-checked={opt === current} aria-label={opt} data-active={opt === current || undefined} class="ui-density-selector__option" onclick={() => select(opt)}>

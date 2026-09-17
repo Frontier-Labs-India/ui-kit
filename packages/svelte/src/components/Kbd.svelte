@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     size?: 'xs' | 'sm' | 'md'
     variant?: 'default' | 'ghost'
     motion?: MotionLevel
@@ -13,7 +15,7 @@
     children?: Snippet
   }
 
-  let { size = 'sm', variant = 'default', motion, class: className, children, ...rest }: Props = $props()
+  let { size = 'sm', variant = 'default', motion, class: className, children, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('kbd')
   const motionLevel = getMotionLevel(() => motion)
@@ -24,5 +26,6 @@
   data-size={size}
   data-variant={variant}
   data-motion={motionLevel()}
+  bind:this={ref}
   {...rest}
 >{#if children}{@render children()}{/if}</kbd>

@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     maxHeight: number
     showLabel?: string
     hideLabel?: string
@@ -22,7 +24,7 @@
 
   let {
     maxHeight, showLabel = 'Show more', hideLabel = 'Show less', initialState = 'hidden', transitionDuration = 350,
-    gradient = true, children, motion, class: className, style, ...rest
+    gradient = true, children, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -57,6 +59,7 @@
   data-gradient={gradient ? undefined : 'false'}
   data-motion={motionLevel()}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >
   <div bind:this={content} class="ui-spoiler__content" use:cssProps={{ 'max-height': currentMaxHeight !== undefined ? `${currentMaxHeight}px` : null }}>{#if children}{@render children()}{/if}</div>

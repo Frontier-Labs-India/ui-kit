@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     duration?: number
     color?: string
     size?: number
@@ -17,7 +19,7 @@
     class?: string
   }
 
-  let { duration = 5, color, size = 80, children, motion, class: className, style, ...rest }: Props = $props()
+  let { duration = 5, color, size = 80, children, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const styles = $derived(mergeStyles(style, {
@@ -27,6 +29,6 @@
   }))
 </script>
 
-<div class={cn('ui-border-beam', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+<div class={cn('ui-border-beam', className)} data-motion={motionLevel()} use:cssProps={styles} bind:this={ref} {...rest}>
   <div class="ui-border-beam--content">{#if children}{@render children()}{/if}</div>
 </div>

@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     value?: number
     max?: number
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -19,7 +21,7 @@
 
   let {
     value, max = 100, size = 'md', variant = 'default', label, showValue = false, motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('progress')
@@ -42,6 +44,7 @@
   data-variant={variant}
   data-motion={motionLevel()}
   data-indeterminate={isIndeterminate ? '' : undefined}
+  bind:this={ref}
   {...rest}
 >
   <div class="ui-progress__track">

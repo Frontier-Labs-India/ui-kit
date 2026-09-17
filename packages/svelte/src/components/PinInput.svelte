@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     length?: number
     /** Bindable. Omit it for an uncontrolled input. */
     value?: string
@@ -24,7 +26,7 @@
 
   let {
     length = 4, value = $bindable(), onChange, onComplete, mask = true, type = 'number', placeholder = '○', size = 'md',
-    error = false, disabled = false, oneTimeCode = false, manageFocus = true, motion, class: className, ...rest
+    error = false, disabled = false, oneTimeCode = false, manageFocus = true, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('pin-input')
@@ -81,7 +83,7 @@
   const ariaLabel = $derived(((rest as Record<string, unknown>)['aria-label'] as string) || 'PIN input')
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-error={error ? '' : undefined} role="group" aria-label={ariaLabel} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-error={error ? '' : undefined} role="group" aria-label={ariaLabel} bind:this={ref} {...rest}>
   <div class="ui-pin-input__digits">
     {#each digits as digit, i (i)}
       <input

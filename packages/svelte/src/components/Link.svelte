@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAnchorAttributes {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLAnchorElement | null
     variant?: 'default' | 'subtle' | 'brand'
     underline?: 'always' | 'hover' | 'none'
     external?: boolean
@@ -17,7 +19,7 @@
 
   let {
     variant = 'default', underline = 'hover', external = false, size = 'md', motion,
-    children, class: className, target, rel, ...rest
+    children, class: className, target, rel, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('link')
@@ -38,5 +40,6 @@
   data-external={external || undefined}
   target={resolvedTarget}
   rel={resolvedRel}
+  bind:this={ref}
   {...rest}
 >{#if children}{@render children()}{/if}</a>

@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     count?: number
     color?: string
     children?: Snippet
@@ -17,7 +19,7 @@
     class?: string
   }
 
-  let { count = 6, color, children, motion, class: className, style, ...rest }: Props = $props()
+  let { count = 6, color, children, motion, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const beams = $derived(Array.from({ length: count }, (_, i) => reactStyle({
@@ -30,7 +32,7 @@
   const styles = $derived(mergeStyles(style, color ? { '--beam-color': color } : null))
 </script>
 
-<div class={cn('ui-background-beams', className)} data-motion={motionLevel()} use:cssProps={styles} {...rest}>
+<div class={cn('ui-background-beams', className)} data-motion={motionLevel()} use:cssProps={styles} bind:this={ref} {...rest}>
   {#each beams as beamStyle, i (i)}<div class="ui-background-beams--beam" aria-hidden="true" use:cssProps={beamStyle}></div>{/each}
   {#if children}<div class="ui-background-beams--content">{@render children()}</div>{/if}
 </div>

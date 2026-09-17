@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLButtonAttributes {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'transparent'
     color?: 'default' | 'primary' | 'success' | 'warning' | 'danger'
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -21,7 +23,7 @@
 
   let {
     variant = 'subtle', color = 'default', size = 'md', radius = 'md', loading = false, disabled,
-    children, motion, class: className, type = 'button', ...rest
+    children, motion, class: className, type = 'button', ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('action-icon')
@@ -40,5 +42,6 @@
   data-motion={motionLevel()}
   aria-busy={loading || undefined}
   aria-disabled={disabled || undefined}
+  bind:this={ref}
   {...rest}
 >{#if children}{@render children()}{/if}</button>

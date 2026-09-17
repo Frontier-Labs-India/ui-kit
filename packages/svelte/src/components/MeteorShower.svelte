@@ -9,13 +9,15 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     count?: number
     children?: Snippet
     motion?: MotionLevel
     class?: string
   }
 
-  let { count = 20, children, motion, class: className, ...rest }: Props = $props()
+  let { count = 20, children, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const meteors = $derived(Array.from({ length: count }, (_, i) => reactStyle({
@@ -25,7 +27,7 @@
   })))
 </script>
 
-<div class={cn('ui-meteor-shower', className)} data-motion={motionLevel()} aria-hidden="true" {...rest}>
+<div class={cn('ui-meteor-shower', className)} data-motion={motionLevel()} aria-hidden="true" bind:this={ref} {...rest}>
   {#each meteors as style, i (i)}<div class="ui-meteor-shower--meteor" use:cssProps={style}></div>{/each}
   {#if children}<div class="ui-meteor-shower--content">{@render children()}</div>{/if}
 </div>

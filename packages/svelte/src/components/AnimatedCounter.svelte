@@ -7,6 +7,8 @@
   import { solveSpring } from '../vendor/core/motion/spring.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     value: number
     format?: (value: number) => string
     duration?: number
@@ -14,7 +16,7 @@
     class?: string
   }
 
-  let { value, format, duration = 500, motion, class: className, ...rest }: Props = $props()
+  let { value, format, duration = 500, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   function defaultFormat(v: number): string {
     try {
@@ -32,7 +34,7 @@
   let displayValue = $state(value)
   // svelte-ignore state_referenced_locally
   let prev = value
-  let span = $state<HTMLSpanElement | null>(null)
+  const span = $derived(ref)
   let springCurve: number[] | null = null
 
   /* Animates from the previous value when `value` changes. Frames write the
@@ -71,4 +73,4 @@
   })
 </script>
 
-<span bind:this={span} class={cn(cls('root'), className)} role="status" aria-live="polite" data-motion={motionLevel()} {...rest}>{formatter(displayValue)}</span>
+<span bind:this={ref} class={cn(cls('root'), className)} role="status" aria-live="polite" data-motion={motionLevel()} {...rest}>{formatter(displayValue)}</span>

@@ -6,12 +6,14 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     children?: Snippet
     motion?: MotionLevel
     class?: string
   }
 
-  let { children, motion, class: className, onmousemove, onmouseenter, onmouseleave, ...rest }: Props = $props()
+  let { children, motion, class: className, onmousemove, onmouseenter, onmouseleave, ref = $bindable(null), ...rest }: Props = $props()
 
   const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*'
   // Deterministic, so the server and client render the same matrix.
@@ -22,7 +24,7 @@
   const pick = (seed: number) => SCRAMBLE_CHARS[Math.floor(seeded(seed) * SCRAMBLE_CHARS.length)]
 
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLDivElement | null>(null)
+  const element = $derived(ref)
   let hovering = $state(false)
   let chars = $state(Array.from({ length: 600 }, (_, i) => pick(i + 1)))
 
@@ -43,7 +45,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  bind:this={element}
+  bind:this={ref}
   class={cn('ui-evervault-card', className)}
   data-motion={motionLevel()}
   onmousemove={e => {

@@ -10,6 +10,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     value: number
     label?: string | Snippet
     showValue?: boolean
@@ -21,7 +23,7 @@
 
   let {
     value, label, showValue = true, thresholds = { low: 0.3, medium: 0.7 }, size = 'md', motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -42,6 +44,7 @@
     aria-valuemin={0}
     aria-valuemax={1}
     aria-label={ariaLabel}
+    bind:this={ref}
     {...rest}
   >
     {#if label || showValue}

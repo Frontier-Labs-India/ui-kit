@@ -20,6 +20,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     notifications: Notification[]
     onDismiss?: (id: string) => void
     onDismissAll?: () => void
@@ -33,7 +35,7 @@
 
   let {
     notifications, onDismiss, onDismissAll, onMarkAllRead, onMarkRead, maxVisible = 10,
-    emptyMessage = 'No notifications', motion, class: className, ...rest
+    emptyMessage = 'No notifications', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -61,7 +63,7 @@
   const ts = (t: number | Date) => (t instanceof Date ? t.getTime() : t)
 </script>
 
-<div class={cn('ui-notification-stack', className)} data-motion={motionLevel()} {...rest}>
+<div class={cn('ui-notification-stack', className)} data-motion={motionLevel()} bind:this={ref} {...rest}>
   <div class="ui-notification-stack__header">
     <h3 class="ui-notification-stack__title">Notifications</h3>
     <div class="ui-notification-stack__actions">

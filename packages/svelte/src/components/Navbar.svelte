@@ -7,6 +7,8 @@
   import { mergeStyles, type StyleInput } from '../lib/react-style.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     logo?: string | Snippet
     children?: Snippet
     actions?: string | Snippet
@@ -18,7 +20,7 @@
     class?: string
   }
 
-  let { logo, children, actions, sticky = true, bordered = true, transparent = false, height = 56, class: className, style, ...rest }: Props = $props()
+  let { logo, children, actions, sticky = true, bordered = true, transparent = false, height = 56, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   let mobileOpen = $state(false)
   // Height variable first, caller's style after — React's spread order.
@@ -32,6 +34,7 @@
   data-transparent={transparent ? 'true' : undefined}
   data-mobile-open={String(mobileOpen)}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >
   {#if logo}<div class="ui-navbar__logo"><Content value={logo} /></div>{/if}

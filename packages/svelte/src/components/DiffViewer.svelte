@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     oldValue: string
     newValue: string
     oldTitle?: string
@@ -23,7 +25,7 @@
 
   let {
     oldValue, newValue, oldTitle, newTitle, mode = 'unified', showLineNumbers = true, foldUnchanged = true, foldThreshold = 3,
-    language: _language, motion, class: className, ...rest
+    language: _language, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -45,7 +47,7 @@
   </div>
 {/snippet}
 
-<div class={cn('ui-diff-viewer', className)} data-mode={mode} data-motion={motionLevel()} {...rest}>
+<div class={cn('ui-diff-viewer', className)} data-mode={mode} data-motion={motionLevel()} bind:this={ref} {...rest}>
   {#if oldTitle || newTitle}
     <div class="ui-diff-viewer__titles">
       {#if oldTitle}<div class="ui-diff-viewer__title">{oldTitle}</div>{/if}

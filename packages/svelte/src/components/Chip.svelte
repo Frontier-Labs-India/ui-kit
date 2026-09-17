@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLLabelAttributes, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLLabelElement | null
     /** Bindable. Omit it for an uncontrolled chip that starts from defaultChecked. */
     checked?: boolean
     defaultChecked?: boolean
@@ -24,7 +26,7 @@
 
   let {
     checked = $bindable(), defaultChecked = false, onChange, variant = 'outline', color = 'default', size = 'md', icon, name,
-    disabled = false, children, motion, class: className, ...rest
+    disabled = false, children, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('chip')
@@ -54,6 +56,7 @@
   data-checked={isChecked || undefined}
   data-disabled={disabled || undefined}
   data-motion={motionLevel()}
+  bind:this={ref}
   {...rest}
 >
   <input type="checkbox" class="ui-chip__input" {name} bind:checked={() => isChecked, set} {disabled} />

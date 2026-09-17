@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'placeholder'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable. Omit it for an uncontrolled editor that starts from defaultValue. */
     value?: string
     defaultValue?: string
@@ -28,7 +30,7 @@
   let {
     value = $bindable(), defaultValue = '', onChange, language = 'plain', readOnly = false, showLineNumbers = true,
     lineNumberStart = 1, placeholder, minHeight, maxHeight, wordWrap = false, tabSize = 2, highlightActiveLine = true,
-    motion, class: className, ...rest
+    motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -108,7 +110,7 @@
   const size = (v: string | number | undefined) => (v ? (typeof v === 'number' ? `${v}px` : v) : null)
 </script>
 
-<div class={cn('ui-code-editor', className)} data-motion={motionLevel()} role="group" aria-label="Code editor" use:cssProps={{ 'min-block-size': size(minHeight), 'max-block-size': size(maxHeight) }} {...rest}>
+<div class={cn('ui-code-editor', className)} data-motion={motionLevel()} role="group" aria-label="Code editor" use:cssProps={{ 'min-block-size': size(minHeight), 'max-block-size': size(maxHeight) }} bind:this={ref} {...rest}>
   {#if gutter}
     <div class="ui-code-editor__gutter" aria-hidden="true">
       {#each lines as _, idx}<span class="ui-code-editor__line-number" data-active={highlightActiveLine && idx === activeLine ? '' : undefined}>{idx + lineNumberStart}</span>{/each}

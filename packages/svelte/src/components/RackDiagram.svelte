@@ -16,6 +16,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     units: number
     devices: RackDevice[]
     showUnitNumbers?: boolean
@@ -27,7 +29,7 @@
 
   const UNIT_H = { sm: 10, md: 16, lg: 22 } as const
 
-  let { units, devices, showUnitNumbers = true, orientation = 'front', size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { units, devices, showUnitNumbers = true, orientation = 'front', size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let tooltip = $state<{ device: RackDevice; x: number; y: number } | null>(null)
@@ -43,7 +45,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-rack-diagram', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`Rack diagram: ${units}U, ${devices.length} devices`} {...rest}>
+  <div class={cn('ui-rack-diagram', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`Rack diagram: ${units}U, ${devices.length} devices`} bind:this={ref} {...rest}>
     {#if showUnitNumbers}
       <div class="ui-rack-diagram__numbers">
         {#each unitNums as u (u)}<div class="ui-rack-diagram__number" use:cssProps={reactStyle({ blockSize: unitH })}>{u}</div>{/each}

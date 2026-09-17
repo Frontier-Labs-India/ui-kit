@@ -13,6 +13,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     stages: Stage[]
     orientation?: 'horizontal' | 'vertical'
     onStageClick?: (stageId: string) => void
@@ -31,12 +33,12 @@
     return s > 0 ? `${m}m ${s}s` : `${m}m`
   }
 
-  let { stages, orientation = 'horizontal', onStageClick, motion, class: className, ...rest }: Props = $props()
+  let { stages, orientation = 'horizontal', onStageClick, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const motionLevel = getMotionLevel(() => motion)
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-pipeline-stage', className)} data-orientation={orientation} data-motion={motionLevel()} {...rest}>
+  <div class={cn('ui-pipeline-stage', className)} data-orientation={orientation} data-motion={motionLevel()} bind:this={ref} {...rest}>
     <ol class="ui-pipeline-stage__list">
       {#each stages as stage, i (stage.id)}
         <!-- React: <li style={{display:'contents'}}> — a setProperty call there, a blocked

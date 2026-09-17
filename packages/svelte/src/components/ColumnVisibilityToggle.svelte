@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     columns: { id: string; label: string; visible: boolean }[]
     onChange?: (columnId: string, visible: boolean) => void
     onReset?: () => void
@@ -12,12 +14,12 @@
     class?: string
   }
 
-  let { columns, onChange, onReset, motion, class: className, ...rest }: Props = $props()
+  let { columns, onChange, onReset, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('column-visibility')
   const motionLevel = getMotionLevel(() => motion)
   let open = $state(false)
-  let container = $state<HTMLDivElement | null>(null)
+  const container = $derived(ref)
 
   // Outside click and Escape close.
   $effect(() => {
@@ -39,7 +41,7 @@
   const visibleCount = $derived(columns.filter(c => c.visible).length)
 </script>
 
-<div bind:this={container} class={cn(cls('root'), className)} data-motion={motionLevel()} {...rest}>
+<div bind:this={ref} class={cn(cls('root'), className)} data-motion={motionLevel()} {...rest}>
   <button type="button" class="ui-column-visibility__trigger" aria-expanded={open} aria-haspopup="listbox" onclick={() => { open = !open }}>
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
     Columns ({visibleCount}/{columns.length})

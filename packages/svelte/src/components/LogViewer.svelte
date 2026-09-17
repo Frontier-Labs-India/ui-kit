@@ -16,6 +16,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     lines: LogLine[]
     maxLines?: number
     autoTail?: boolean
@@ -32,7 +34,7 @@
 
   let {
     lines, maxLines, autoTail = false, showTimestamp = false, showLevel = false, search, filterLevel, wrap = false, height,
-    motion, class: className, ...rest
+    motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const LINE_HEIGHT = 21
@@ -86,7 +88,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-log-viewer', className)} data-motion={motionLevel()} data-wrap={wrap ? 'true' : undefined} role="log" aria-live={autoTail ? 'polite' : undefined} {...rest}>
+  <div class={cn('ui-log-viewer', className)} data-motion={motionLevel()} data-wrap={wrap ? 'true' : undefined} role="log" aria-live={autoTail ? 'polite' : undefined} bind:this={ref} {...rest}>
     <div
       bind:this={scroller}
       class="ui-log-viewer__scroll"

@@ -14,6 +14,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     segments: StorageBarSegment[]
     total: number
     showLabels?: boolean
@@ -27,7 +29,7 @@
   // Values are in GB; 1024 and above reads as TB.
   const fmt = (gb: number) => (gb >= 1024 ? `${(gb / 1024).toFixed(1)} TB` : `${gb.toFixed(1)} GB`)
 
-  let { segments, total, showLabels = false, showLegend = false, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { segments, total, showLabels = false, showLegend = false, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let tooltip = $state<{ seg: StorageBarSegment; pct: number; x: number; y: number } | null>(null)
@@ -41,7 +43,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-storage-bar', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`Storage: ${fmt(used)} of ${fmt(total)} used`} {...rest}>
+  <div class={cn('ui-storage-bar', className)} data-size={size} data-motion={motionLevel()} role="img" aria-label={`Storage: ${fmt(used)} of ${fmt(total)} used`} bind:this={ref} {...rest}>
     <div class="ui-storage-bar__track">
       {#each segments as seg, i (seg.label)}
         {@const pct = (seg.value / total) * 100}

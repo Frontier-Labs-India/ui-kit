@@ -13,6 +13,8 @@
   import TopologyGraphCanvas from './TopologyGraphCanvas.svelte'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     nodes: TopologyNode[]
     edges: TopologyEdge[]
     layout?: 'force' | 'dagre' | 'circular' | 'grid'
@@ -37,7 +39,7 @@
   let {
     nodes, edges, layout: layoutType = 'force', layoutOptions, onNodeClick, onNodeHover, onEdgeClick, selectedNodes,
     showMinimap = false, showControls = true, showLegend = false, height: heightProp = 500, groupBy: _groupBy,
-    renderer = 'auto', nodeFilter, edgeFilter, motion, class: className, style, ...rest
+    renderer = 'auto', nodeFilter, edgeFilter, motion, class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const LEGEND_STATUSES = [
@@ -49,7 +51,7 @@
   ]
 
   const motionLevel = getMotionLevel(() => motion)
-  let container: HTMLDivElement | undefined
+  const container = $derived(ref)
   let containerWidth = $state(800)
   /* Inherited from React: the zoom buttons update this, but it is never passed
    * to either renderer, so they change nothing visible. Kept, not fixed on one
@@ -96,7 +98,7 @@
 
 <ErrorBoundary>
   <div
-    bind:this={container}
+    bind:this={ref}
     class={cn('ui-topology-graph', className)}
     data-motion={motionLevel()}
     role="figure"

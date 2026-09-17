@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLTextAreaElement | null
     /** Bindable. Omit it for an uncontrolled textarea that starts from defaultValue. */
     value?: string
     defaultValue?: string
@@ -31,14 +33,14 @@
   let {
     value = $bindable(), defaultValue, onChange, label, description, error: errorProp, placeholder, name, size = 'md',
     disabled, required, autoResize, minRows = 3, maxRows, maxLength, showCount, resize = 'vertical', motion,
-    class: className, id: idProp, ...rest
+    class: className, id: idProp, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   const cls = makeCls('textarea')
   const uid = $props.id()
   const inputId = $derived(idProp || `textarea-${uid}`)
-  let textarea: HTMLTextAreaElement | undefined
+  const textarea = $derived(ref)
 
   const form = getFormContextOptional()
   const field = $derived(form && name ? form.getFieldProps(name) : null)
@@ -100,7 +102,7 @@
   {/if}
   <div class="ui-textarea__field-wrapper">
     <textarea
-      bind:this={textarea}
+      bind:this={ref}
       id={inputId}
       {name}
       class="ui-textarea__field"

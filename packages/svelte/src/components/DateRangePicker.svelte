@@ -20,6 +20,8 @@
   type Range = [Date | null, Date | null]
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable [start, end]. */
     value?: Range
     onChange?: (range: Range) => void
@@ -38,7 +40,7 @@
 
   let {
     value = $bindable(), onChange, presets, minDate, maxDate, label, placeholder = 'Select date range', size = 'md',
-    error: errorProp, disabled, motion, name, class: className, ...rest
+    error: errorProp, disabled, motion, name, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const formatDate = (date: Date | null) => (date ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '')
@@ -63,7 +65,7 @@
 
   let trigger = $state<HTMLButtonElement | null>(null)
   let popover = $state<HTMLDivElement | null>(null)
-  let root = $state<HTMLDivElement | null>(null)
+  const root = $derived(ref)
 
   const position = useAnchorPosition(() => trigger, () => popover, () => ({ placement: 'bottom', align: 'start', offset: 4, enabled: isOpen }))
 
@@ -137,7 +139,7 @@
 </script>
 
 <div
-  bind:this={root}
+  bind:this={ref}
   class={cn(cls('root'), className)}
   data-size={size}
   data-motion={motionLevel()}

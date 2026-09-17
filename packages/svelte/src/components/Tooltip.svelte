@@ -6,6 +6,8 @@
   import { useAnchorPosition } from '../runes/anchor-position.svelte.js'
 
   interface Props {
+    /** The trigger wrapper element (React's Tooltip takes no ref). Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     /** The tooltip content to display. */
     content: string | Snippet
     /** The trigger element the tooltip attaches to. */
@@ -36,6 +38,7 @@
     interactive = false,
     maxWidth,
     motion,
+    ref = $bindable(null),
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -43,7 +46,7 @@
   const tooltipId = `tooltip-${uid}`
 
   let visible = $state(false)
-  let trigger = $state<HTMLElement | null>(null)
+  const trigger = $derived(ref)
   let floating = $state<HTMLElement | null>(null)
   let showTimer: ReturnType<typeof setTimeout> | null = null
   let hideTimer: ReturnType<typeof setTimeout> | null = null
@@ -102,7 +105,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <span
   class="ui-tooltip-trigger"
-  bind:this={trigger}
+  bind:this={ref}
   aria-describedby={visible ? tooltipId : undefined}
   onmouseenter={show}
   onmouseleave={hide}

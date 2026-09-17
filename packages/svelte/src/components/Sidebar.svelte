@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     collapsed?: boolean
     onCollapse?: (collapsed: boolean) => void
     width?: number | string
@@ -21,7 +23,7 @@
 
   let {
     collapsed = false, onCollapse, width = 240, collapsedWidth = 64, position = 'left', children, motion,
-    class: className, style, ...rest
+    class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -36,6 +38,7 @@
   data-position={position}
   data-motion={motionLevel()}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >
   <button type="button" class="ui-sidebar__toggle" aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onclick={() => onCollapse?.(!collapsed)}>

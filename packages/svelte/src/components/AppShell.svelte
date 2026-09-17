@@ -5,6 +5,8 @@
   import Content from '../lib/Content.svelte'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     navbar?: string | Snippet
     sidebar?: string | Snippet
     footer?: string | Snippet
@@ -14,7 +16,7 @@
     class?: string
   }
 
-  let { navbar, sidebar, footer, sidebarCollapsed = false, sidebarPosition = 'left', children, class: className, ...rest }: Props = $props()
+  let { navbar, sidebar, footer, sidebarCollapsed = false, sidebarPosition = 'left', children, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   // React reads the two differently and so must this: data-has-sidebar uses
   // `sidebar != null`, while the sidebar element renders only when truthy. An
@@ -27,6 +29,7 @@
   data-has-sidebar={String(hasSidebar)}
   data-sidebar-position={sidebarPosition}
   data-sidebar-collapsed={String(sidebarCollapsed)}
+  bind:this={ref}
   {...rest}
 >
   {#if navbar}<div class="ui-app-shell__navbar"><Content value={navbar} /></div>{/if}

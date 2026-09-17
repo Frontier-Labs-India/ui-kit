@@ -10,6 +10,8 @@
   type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'body-sm' | 'caption' | 'code' | 'overline'
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     variant?: Variant
     color?: 'primary' | 'secondary' | 'tertiary' | 'brand' | 'success' | 'warning' | 'danger'
     weight?: 300 | 400 | 500 | 600 | 700 | 800
@@ -31,7 +33,7 @@
 
   let {
     variant = 'body', color, weight, align, truncate, as, motion, children,
-    class: className, style, ...rest
+    class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('typography')
@@ -57,5 +59,6 @@
   data-truncate-lines={isMultiLine ? '' : undefined}
   data-truncate={!isMultiLine && truncVal ? truncVal : undefined}
   use:cssProps={styles}
+  bind:this={ref}
   {...rest}
 >{#if children}{@render children()}{/if}</svelte:element>

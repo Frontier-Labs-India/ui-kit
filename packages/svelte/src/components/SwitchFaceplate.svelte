@@ -17,6 +17,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     ports: SwitchPort[]
     rows?: number
     label?: string
@@ -27,7 +29,7 @@
     class?: string
   }
 
-  let { ports, rows = 2, label, showLabels = false, onPortClick, size = 'md', motion, class: className, ...rest }: Props = $props()
+  let { ports, rows = 2, label, showLabels = false, onPortClick, size = 'md', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let hovered = $state<number | null>(null)
@@ -41,7 +43,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-switch-faceplate', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label={label ? `Switch: ${label}` : 'Network switch faceplate'} {...rest}>
+  <div class={cn('ui-switch-faceplate', className)} data-motion={motionLevel()} data-size={size} role="group" aria-label={label ? `Switch: ${label}` : 'Network switch faceplate'} bind:this={ref} {...rest}>
     {#if label}<div class="ui-switch-faceplate__header">{label}</div>{/if}
     <div class="ui-switch-faceplate__grid">
       {#each portRows as row, r (r)}

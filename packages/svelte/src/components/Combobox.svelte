@@ -23,6 +23,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     name: string
     options: ComboboxOption[]
     /** Bindable. Omit it for an uncontrolled combobox that starts from defaultValue. */
@@ -45,7 +47,7 @@
 
   let {
     name, options, value = $bindable(), defaultValue, onChange, onSearch, placeholder = 'Search...', label, error: errorProp,
-    disabled, size = 'md', allowCreate, onCreate, loading, emptyMessage = 'No results found', motion, class: className, ...rest
+    disabled, size = 'md', allowCreate, onCreate, loading, emptyMessage = 'No results found', motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('combobox')
@@ -73,7 +75,7 @@
   let wrapper = $state<HTMLDivElement | null>(null)
   let listbox = $state<HTMLDivElement | null>(null)
   let popover = $state<HTMLDivElement | null>(null)
-  let root = $state<HTMLDivElement | null>(null)
+  const root = $derived(ref)
 
   // With onSearch the caller filters `options`; otherwise filter locally.
   const filteredOptions = $derived(
@@ -223,7 +225,7 @@
 </script>
 
 <div
-  bind:this={root}
+  bind:this={ref}
   class={cn(cls('root'), className)}
   data-size={size}
   data-motion={motionLevel()}

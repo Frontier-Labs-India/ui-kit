@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLInputAttributes, 'type' | 'size'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLInputElement | null
     /** Label content rendered beside the box. */
     label?: string | Snippet
     /** Controls box and font size (default: 'md'). */
@@ -33,6 +35,7 @@
     disabled = false,
     id: idProp,
     class: className,
+    ref = $bindable(null),
     ...rest
   }: Props = $props()
 
@@ -52,7 +55,7 @@
 
   // `indeterminate` is a DOM property with no HTML attribute, so it cannot be
   // set declaratively — this mirrors React's useEffect on the same property.
-  let input = $state<HTMLInputElement | null>(null)
+  const input = $derived(ref)
   $effect(() => {
     if (input) input.indeterminate = indeterminate
   })
@@ -72,7 +75,7 @@
        class instead; the rule lives in the stylesheet. -->
   <div class="ui-checkbox__row">
     <input
-      bind:this={input}
+      bind:this={ref}
       bind:checked={() => checked ?? internal, v => { if (checked !== undefined) checked = v; else internal = v }}
       type="checkbox"
       id={inputId}

@@ -7,6 +7,8 @@
   import { mergeStyles, type StyleInput } from '../lib/react-style.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     position?: { top?: number; bottom?: number; left?: number; right?: number }
     zIndex?: number
     /** Render into document.body instead of in place. */
@@ -18,7 +20,7 @@
     style?: StyleInput
   }
 
-  let { position = { bottom: 20, right: 20 }, zIndex = 100, withinPortal = false, target: _target, children, class: className, style, ...rest }: Props = $props()
+  let { position = { bottom: 20, right: 20 }, zIndex = 100, withinPortal = false, target: _target, children, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('affix')
   const px = (n: number | undefined) => (n !== undefined ? `${n}px` : undefined)
@@ -30,4 +32,4 @@
   const maybePortal = (node: HTMLElement, enabled: boolean) => (enabled ? portal(node) : undefined)
 </script>
 
-<div use:maybePortal={withinPortal} class={cn(cls('root'), className)} use:cssProps={styles} {...rest}>{#if children}{@render children()}{/if}</div>
+<div use:maybePortal={withinPortal} class={cn(cls('root'), className)} use:cssProps={styles} bind:this={ref} {...rest}>{#if children}{@render children()}{/if}</div>

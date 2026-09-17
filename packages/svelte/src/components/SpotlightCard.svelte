@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     spotlightColor?: string
     children?: Snippet
     motion?: MotionLevel
@@ -17,11 +19,11 @@
 
   let {
     spotlightColor, children, motion, class: className, style,
-    onmousemove, onmouseenter, onmouseleave, ...rest
+    onmousemove, onmouseenter, onmouseleave, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   let hovering = $state(false)
 
   // The pointer position is written straight to the element, as React does, so
@@ -48,7 +50,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-  bind:this={el}
+  bind:this={ref}
   class={cn('ui-spotlight-card', className)}
   data-motion={motionLevel()}
   data-hovering={hovering ? 'true' : undefined}

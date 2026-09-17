@@ -20,6 +20,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Array of accordion items to render. */
     items: AccordionItem[]
     /** `'single'` closes others when one opens; `'multiple'` allows many open at once. */
@@ -46,6 +48,7 @@
     variant = 'default',
     size = 'md',
     class: className,
+    ref = $bindable(null),
     ...rest
   }: Props = $props()
 
@@ -78,6 +81,7 @@
   data-motion={motionLevel()}
   data-variant={variant}
   data-size={size}
+  bind:this={ref}
   {...rest}
 >
   {#each items as item (item.id)}

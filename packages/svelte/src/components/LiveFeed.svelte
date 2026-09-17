@@ -19,6 +19,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     items: FeedItem[]
     maxItems?: number
     autoScroll?: boolean
@@ -34,7 +36,7 @@
 
   let {
     items, maxItems = 50, autoScroll = true, paused, onPause: _onPause, onResume: _onResume, connectionStatus, height,
-    emptyMessage, motion, class: className, ...rest
+    emptyMessage, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const LABELS = { connected: 'Connected', reconnecting: 'Reconnecting', offline: 'Offline' }
@@ -62,6 +64,7 @@
     data-paused={paused ? 'true' : undefined}
     data-connection={connectionStatus || undefined}
     aria-live="polite"
+    bind:this={ref}
     {...rest}
   >
     {#if connectionStatus || paused}

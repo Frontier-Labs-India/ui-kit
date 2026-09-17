@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange' | 'onerror'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     name: string
     accept?: string
     multiple?: boolean
@@ -27,7 +29,7 @@
 
   let {
     name, accept, multiple = false, maxSize, maxFiles, onChange, onError, label, description, error, disabled = false,
-    showPreview = true, motion, class: className, ...rest
+    showPreview = true, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   function formatFileSize(bytes: number) {
@@ -114,7 +116,7 @@
   const stop = (e: DragEvent) => { e.preventDefault(); e.stopPropagation() }
 </script>
 
-<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} data-dragover={dragOver ? '' : undefined} data-invalid={error ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} data-dragover={dragOver ? '' : undefined} data-invalid={error ? '' : undefined} bind:this={ref} {...rest}>
   {#if label}<span class="ui-file-upload__label"><Content value={label} /></span>{/if}
   <input
     bind:this={input}

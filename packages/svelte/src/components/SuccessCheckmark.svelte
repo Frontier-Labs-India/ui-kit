@@ -5,6 +5,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     size?: 'sm' | 'md' | 'lg'
     animated?: boolean
     label?: string
@@ -14,7 +16,7 @@
 
   const PARTICLE_COUNT = 8
 
-  let { size = 'md', animated = true, label = 'Success', motion, class: className, ...rest }: Props = $props()
+  let { size = 'md', animated = true, label = 'Success', motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('success-checkmark')
   const motionLevel = getMotionLevel(() => motion)
@@ -27,6 +29,7 @@
   data-motion={motionLevel()}
   role="img"
   aria-label={label}
+  bind:this={ref}
   {...rest}
 >
   <svg class="ui-success-checkmark__svg" viewBox="0 0 52 52" aria-hidden="true">

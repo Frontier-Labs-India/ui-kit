@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     name: string
     /** Bindable hex colour. Omit it for an uncontrolled input that starts from defaultValue. */
     value?: string
@@ -26,7 +28,7 @@
 
   let {
     name, value = $bindable(), defaultValue, onChange, label, error, disabled = false, size = 'md', swatches, showInput = true,
-    motion, class: className, ...rest
+    motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('color-input')
@@ -149,7 +151,7 @@
       linear-gradient(to right, #fff, hsl(${hue}, 100%, 50%))`)
 </script>
 
-<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} data-invalid={error ? '' : undefined} {...rest}>
+<div class={cn(cls('root'), className)} data-size={size} data-motion={motionLevel()} data-disabled={disabled ? '' : undefined} data-invalid={error ? '' : undefined} bind:this={ref} {...rest}>
   {#if label}<label class="ui-color-input__label" for={`${stableId}-hex`}><Content value={label} /></label>{/if}
   <div class="ui-color-input__row">
     <div

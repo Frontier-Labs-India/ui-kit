@@ -5,6 +5,8 @@
   import Content from '../lib/Content.svelte'
 
   interface Props extends HTMLAttributes<HTMLElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     icon?: string | Snippet
     label: string
     active?: boolean
@@ -15,7 +17,7 @@
     class?: string
   }
 
-  let { icon, label, active, href, onClick, collapsed: _collapsed, class: className, ...rest }: Props = $props()
+  let { icon, label, active, href, onClick, collapsed: _collapsed, class: className, ref = $bindable(null), ...rest }: Props = $props()
 </script>
 
 <svelte:element
@@ -25,6 +27,7 @@
   onclick={onClick}
   href={href || undefined}
   type={href ? undefined : 'button'}
+  bind:this={ref}
   {...rest}
 >
   {#if icon}<span class="ui-sidebar__item-icon"><Content value={icon} /></span>{/if}

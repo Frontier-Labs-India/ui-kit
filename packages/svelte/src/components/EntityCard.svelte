@@ -11,6 +11,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     name: string
     type?: string
     status?: 'ok' | 'warning' | 'critical' | 'unknown' | 'maintenance'
@@ -26,11 +28,11 @@
   }
 
   let {
-    name, type, status, icon, metrics, tags, href, actions, compact, size = 'md', motion, class: className, onclick, ...rest
+    name, type, status, icon, metrics, tags, href, actions, compact, size = 'md', motion, class: className, onclick, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'fade-up' : 'none'), () => ({ duration: 280 }))
   const clickable = $derived(!!href || !!onclick)
   // React's wrapper carries a static style object; applied through setProperty.
@@ -42,7 +44,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div
-      bind:this={el}
+      bind:this={ref}
       class={cn('ui-entity-card', className)}
       data-motion={motionLevel()}
       data-size={size}

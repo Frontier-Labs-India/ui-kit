@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     /** Bindable. Omit it for an uncontrolled calendar that starts from defaultValue. */
     value?: Date | null
     defaultValue?: Date | null
@@ -33,7 +35,7 @@
   let {
     value = $bindable(), defaultValue, onChange, minDate, maxDate, disabledDates, firstDayOfWeek = 0, locale = 'en-US',
     showOutsideDays = true, showWeekNumbers = false, numberOfMonths = 1, highlightToday = true, size = 'md', motion,
-    class: className, _rangeStart, _rangeEnd, _hoverDate, _onDayHover, _onDayClick, ...rest
+    class: className, _rangeStart, _rangeEnd, _hoverDate, _onDayHover, _onDayClick, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('calendar')
@@ -182,6 +184,7 @@
   data-show-week-numbers={showWeekNumbers ? '' : undefined}
   role="application"
   aria-label="Calendar"
+  bind:this={ref}
   {...rest}
 >
   <!-- svelte-ignore a11y_no_static_element_interactions -->

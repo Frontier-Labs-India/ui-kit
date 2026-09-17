@@ -13,6 +13,8 @@
   type Part = 'root' | 'header' | 'footer' | 'content'
 
   interface Props extends Omit<HTMLAttributes<HTMLElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLElement | null
     /** Element to render. React also accepts a component here; Svelte takes a tag name. */
     as?: string
     variant?: 'default' | 'elevated' | 'outlined' | 'ghost' | 'glass' | 'gradient'
@@ -37,12 +39,12 @@
   let {
     as = 'div', variant = 'default', padding = 'md', interactive = false, motion, header, footer,
     expandable = false, defaultExpanded = true, loading = false, bordered, classNames, children,
-    class: className, style, ...rest
+    class: className, style, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('card')
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLElement | null>(null)
+  const el = $derived(ref)
   // Reading only the initial value is intended: defaultExpanded is an uncontrolled default.
   // svelte-ignore state_referenced_locally
   let expanded = $state(defaultExpanded)
@@ -84,7 +86,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <svelte:element
   this={as}
-  bind:this={el}
+  bind:this={ref}
   class={cn(cls('root'), classNames?.root, className)}
   data-variant={variant}
   data-padding={padding}

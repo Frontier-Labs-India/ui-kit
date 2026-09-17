@@ -8,6 +8,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale' | 'none'
     delay?: number
     stagger?: number
@@ -19,11 +21,11 @@
     style?: StyleInput
   }
 
-  let { animation = 'fade-up', delay = 0, stagger, threshold = 0.1, once = true, motion, children, class: className, style, ...rest }: Props = $props()
+  let { animation = 'fade-up', delay = 0, stagger, threshold = 0.1, once = true, motion, children, class: className, style, ref = $bindable(null), ...rest }: Props = $props()
 
   const cls = makeCls('scroll-reveal')
   const motionLevel = getMotionLevel(() => motion)
-  let element = $state<HTMLDivElement | null>(null)
+  const element = $derived(ref)
   let revealed = $state(false)
   let triggered = false
 
@@ -65,7 +67,7 @@
 </script>
 
 <div
-  bind:this={element}
+  bind:this={ref}
   class={cn(cls('root'), className)}
   data-animation={animation}
   data-revealed={revealed || undefined}

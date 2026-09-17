@@ -16,6 +16,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     services: ServiceItem[]
     maxVisible?: number
     size?: 'sm' | 'md'
@@ -24,10 +26,10 @@
     class?: string
   }
 
-  let { services, maxVisible, size = 'md', onServiceClick, motion, class: className, ...rest }: Props = $props()
+  let { services, maxVisible, size = 'md', onServiceClick, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
-  let el = $state<HTMLDivElement | null>(null)
+  const el = $derived(ref)
   useEntrance(() => el, () => (motionLevel() >= 2 ? 'fade-up' : 'none'), () => ({ duration: 280 }))
 
   const cut = $derived(maxVisible != null && maxVisible < services.length)
@@ -45,7 +47,7 @@
 <ErrorBoundary>
   <!-- React returns null for an empty list; so does this. -->
   {#if services.length > 0}
-    <div bind:this={el} class={cn('ui-service-strip', className)} data-motion={motionLevel()} data-size={size} role="list" aria-label="Services" {...rest}>
+    <div bind:this={ref} class={cn('ui-service-strip', className)} data-motion={motionLevel()} data-size={size} role="list" aria-label="Services" {...rest}>
       {#each visible as service (service.name)}
         <!-- tabindex is set only with a click handler, as in React. -->
         <!-- svelte-ignore a11y_no_noninteractive_tabindex, a11y_no_noninteractive_element_interactions -->

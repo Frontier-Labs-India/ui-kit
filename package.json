@@ -69,7 +69,7 @@
   "scripts": {
     "build": "tsup && tsup --config tsup.cli.config.ts && tsup --config tsup.mcp.config.ts && node scripts/extract-css.js && npx tsx scripts/extract-component-meta.ts && npm run build:registry && npm run sync:registry",
     "build:meta": "npx tsx scripts/extract-component-meta.ts",
-    "verify:svelte": "npm run build:svelte && npm run test:svelte && npm run check:svelte && npm run test:svelte-no-react && npm run test:svelte-parity && npm run test:svelte-csp && npm run test:svelte-size && npm run test:contract-fresh && npm run test:vendor-fresh && npm run test:svelte-css-fresh && npm run test:unitless-fresh",
+    "verify:svelte": "npm run build:svelte && npm run test:svelte && npm run check:svelte && npm run test:svelte-no-react && npm run test:svelte-parity && npm run test:svelte-csp && npm run test:svelte-size && npm run test:contract-fresh && npm run test:refs-fresh && npm run test:vendor-fresh && npm run test:svelte-css-fresh && npm run test:unitless-fresh",
     "build:unitless": "node scripts/extract-react-unitless.js",
     "test:unitless-fresh": "node scripts/extract-react-unitless.js --check",
     "build:svelte": "npm run build:unitless && npm run vendor:core && npm run build:svelte-css && npm -w @frontier-labs/ui-kit-svelte run build",
@@ -85,6 +85,8 @@
     "test:vendor-fresh": "node scripts/vendor-core.js --check",
     "build:contract": "npx tsx scripts/generate-contract-fixtures.tsx",
     "test:contract-fresh": "npx tsx scripts/generate-contract-fixtures.tsx --check",
+    "build:refs": "vitest run --config scripts/ref-fixtures.vitest.config.ts",
+    "test:refs-fresh": "vitest run --config scripts/ref-fixtures.vitest.config.ts --mode check",
     "build:registry": "node dist/mcp/scripts/build-registry.js",
     "sync:registry": "node scripts/sync-worker-registry.js",
     "build:mcp": "tsup --config tsup.mcp.config.ts && npm run build:registry",

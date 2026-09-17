@@ -14,6 +14,8 @@
   import { haptic, type HapticType } from '../vendor/core/input/haptics.js'
 
   interface Props extends HTMLButtonAttributes {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLButtonElement | null
     variant?: 'primary' | 'secondary' | 'ghost' | 'danger' | 'link'
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     loading?: boolean
@@ -34,13 +36,13 @@
   let {
     variant = 'primary', size = 'md', loading = false, loadingText, icon, iconEnd, fullWidth, iconOnly,
     motion, haptics, shortcuts, classNames, disabled, children, class: className, onclick,
-    type = 'button', ...rest
+    type = 'button', ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('button')
   const motionLevel = getMotionLevel(() => motion)
   let lastClick = 0
-  let element: HTMLButtonElement | undefined
+  const element = $derived(ref)
 
   /* Debounces rapid clicks (150ms) and gives haptic feedback, as React does. */
   function handleClick(e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
@@ -77,7 +79,7 @@
 </script>
 
 <button
-  bind:this={element}
+  bind:this={ref}
   {type}
   {disabled}
   class={cn(cls('root'), classNames?.root, className)}

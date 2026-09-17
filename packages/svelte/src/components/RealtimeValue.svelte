@@ -7,6 +7,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     value: number
     previousValue?: number
     format?: (value: number) => string
@@ -18,7 +20,7 @@
 
   const defaultFormat = (v: number) => new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 }).format(v)
 
-  let { value, previousValue, format = defaultFormat, showDelta, flashOnChange = true, motion, class: className, ...rest }: Props = $props()
+  let { value, previousValue, format = defaultFormat, showDelta, flashOnChange = true, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   // svelte-ignore state_referenced_locally
@@ -70,7 +72,7 @@
 </script>
 
 <ErrorBoundary>
-  <span class={cn('ui-realtime-value', className)} data-motion={motionLevel()} data-flash={flash ?? undefined} aria-live="polite" {...rest}>
+  <span class={cn('ui-realtime-value', className)} data-motion={motionLevel()} data-flash={flash ?? undefined} aria-live="polite" bind:this={ref} {...rest}>
     <span class="ui-realtime-value__number">{format(displayValue)}</span>
     {#if showDelta && delta !== undefined}
       <span class="ui-realtime-value__delta" data-direction={deltaDirection} aria-label={`Change: ${formatDelta(delta)}`}>{formatDelta(delta)}</span>

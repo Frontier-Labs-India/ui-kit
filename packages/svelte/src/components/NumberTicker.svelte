@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLSpanElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLSpanElement | null
     value: number
     direction?: 'up' | 'down'
     /** ms before the first value shows; later changes show at once. */
@@ -14,7 +16,7 @@
     class?: string
   }
 
-  let { value, direction = 'up', delay = 0, motion, class: className, ...rest }: Props = $props()
+  let { value, direction = 'up', delay = 0, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   const REVERSED = [...DIGITS].reverse()
@@ -44,7 +46,7 @@
   const chars = $derived(Array.from(displayValue === null ? '0' : new Intl.NumberFormat().format(displayValue)))
 </script>
 
-<span class={cn('ui-number-ticker', className)} data-motion={motionLevel()} aria-label={String(value)} role="img" {...rest}>
+<span class={cn('ui-number-ticker', className)} data-motion={motionLevel()} aria-label={String(value)} role="img" bind:this={ref} {...rest}>
   {#each chars as char}
     {@const digit = DIGITS.indexOf(char)}
     {#if digit === -1}

@@ -6,6 +6,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     data: unknown
     initialExpandDepth?: number
     collapsed?: boolean
@@ -23,7 +25,7 @@
 
   let {
     data, initialExpandDepth = 2, collapsed = false, rootName = 'root', enableClipboard = false, displayDataTypes = false,
-    displayObjectSize = true, theme = 'dark', indentWidth = 2, sortKeys = false, maxStringLength, motion, class: className, ...rest
+    displayObjectSize = true, theme = 'dark', indentWidth = 2, sortKeys = false, maxStringLength, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
@@ -37,7 +39,7 @@
   )
 </script>
 
-<div class={cn('ui-json-viewer', className)} data-motion={motionLevel()} data-theme={resolvedTheme} role="group" aria-label={`JSON viewer: ${rootName}`} {...rest}>
+<div class={cn('ui-json-viewer', className)} data-motion={motionLevel()} data-theme={resolvedTheme} role="group" aria-label={`JSON viewer: ${rootName}`} bind:this={ref} {...rest}>
   <JsonTreeNode
     keyName={rootName}
     value={data}

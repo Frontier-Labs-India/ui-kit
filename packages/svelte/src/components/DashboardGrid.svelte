@@ -9,6 +9,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     groups?: DashboardGroup[]
     columns?: number | 'auto'
     gap?: 'sm' | 'md' | 'lg'
@@ -17,12 +19,12 @@
     class?: string
   }
 
-  let { groups, columns = 'auto', gap = 'md', children, motion, class: className, ...rest }: Props = $props()
+  let { groups, columns = 'auto', gap = 'md', children, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
   const motionLevel = getMotionLevel(() => motion)
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-dashboard-grid', className)} data-motion={motionLevel()} data-columns={columns} data-gap={gap} {...rest}>
+  <div class={cn('ui-dashboard-grid', className)} data-motion={motionLevel()} data-columns={columns} data-gap={gap} bind:this={ref} {...rest}>
     {#if groups}
       {#each groups as group (group.id)}<DashboardGridGroup {group} />{/each}
     {:else}

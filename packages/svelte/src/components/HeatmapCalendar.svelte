@@ -13,6 +13,8 @@
   }
 
   interface Props extends HTMLAttributes<HTMLDivElement> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     data: HeatmapData[]
     colorScale?: [string, string]
     startDate?: string
@@ -28,7 +30,7 @@
   const parse = (s: string) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d) }
   const fmt = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
-  let { data, colorScale, startDate, endDate, showTooltip = false, onDateClick, motion, class: className, ...rest }: Props = $props()
+  let { data, colorScale, startDate, endDate, showTooltip = false, onDateClick, motion, class: className, ref = $bindable(null), ...rest }: Props = $props()
 
   const motionLevel = getMotionLevel(() => motion)
   let hovered = $state<string | null>(null)
@@ -69,7 +71,7 @@
 </script>
 
 <ErrorBoundary>
-  <div class={cn('ui-heatmap-calendar', className)} data-motion={motionLevel()} role="group" aria-label="Activity heatmap" {...rest}>
+  <div class={cn('ui-heatmap-calendar', className)} data-motion={motionLevel()} role="group" aria-label="Activity heatmap" bind:this={ref} {...rest}>
     <div class="ui-heatmap-calendar__wrapper">
       <div class="ui-heatmap-calendar__day-labels">
         {#each [0, 1, 2, 3, 4, 5, 6] as dow (dow)}<div class="ui-heatmap-calendar__day-label">{dow % 2 === 1 ? DAY_NAMES[dow].charAt(0) : ''}</div>{/each}

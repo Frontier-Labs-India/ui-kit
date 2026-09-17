@@ -23,6 +23,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLDivElement | null
     name: string
     options: SelectOption[]
     /** Bindable. A string, or a string[] when `multiple`. */
@@ -43,7 +45,7 @@
 
   let {
     name, options, value = $bindable(), defaultValue, onChange, placeholder = 'Select...', label, error: errorProp, disabled,
-    size = 'md', searchable, clearable, multiple, motion, class: className, ...rest
+    size = 'md', searchable, clearable, multiple, motion, class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('select')
@@ -72,7 +74,7 @@
   let trigger = $state<HTMLButtonElement | null>(null)
   let listbox = $state<HTMLDivElement | null>(null)
   let popover = $state<HTMLDivElement | null>(null)
-  let root = $state<HTMLDivElement | null>(null)
+  const root = $derived(ref)
 
   const filteredOptions = $derived(
     searchable && searchQuery ? options.filter(o => o.label.toLowerCase().includes(searchQuery.toLowerCase())) : options,
@@ -179,7 +181,7 @@
 </script>
 
 <div
-  bind:this={root}
+  bind:this={ref}
   class={cn(cls('root'), className)}
   data-size={size}
   data-motion={motionLevel()}

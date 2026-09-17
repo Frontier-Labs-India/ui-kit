@@ -16,6 +16,8 @@
   import type { MotionLevel } from '../runes/context.js'
 
   interface Props extends Omit<HTMLFieldsetAttributes, 'onchange'> {
+    /** The element React's `ref` receives. Read it with `bind:ref`. */
+    ref?: HTMLFieldSetElement | null
     name: string
     options: RadioOption[]
     /** Bindable. Omit it for an uncontrolled group that starts from defaultValue. */
@@ -32,7 +34,7 @@
 
   let {
     name, options, value = $bindable(), defaultValue, onChange, orientation = 'vertical', size = 'md', label, error, motion,
-    class: className, ...rest
+    class: className, ref = $bindable(null), ...rest
   }: Props = $props()
 
   const cls = makeCls('radio-group')
@@ -78,7 +80,7 @@
   }
 </script>
 
-<fieldset class={cn(cls('root'), className)} data-size={size} data-orientation={orientation} data-motion={motionLevel()} data-error={error ? '' : undefined} {...rest}>
+<fieldset class={cn(cls('root'), className)} data-size={size} data-orientation={orientation} data-motion={motionLevel()} data-error={error ? '' : undefined} bind:this={ref} {...rest}>
   {#if label}<legend class="ui-radio-group__legend">{label}</legend>{/if}
   <div class="ui-radio-group__options" bind:this={optionsEl}>
     {#each options as option (option.value)}
