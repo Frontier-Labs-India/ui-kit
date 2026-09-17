@@ -4,6 +4,7 @@
   import { cn } from '../lib/cls.js'
   import Content from '../lib/Content.svelte'
   import ErrorBoundary from '../lib/ErrorBoundary.svelte'
+  import { sparklinePaths } from '../lib/sparkline.js'
   import { useEntrance } from '../runes/entrance.svelte.js'
   import { getMotionLevel } from '../runes/motion-level.svelte.js'
   import type { MotionLevel } from '../runes/context.js'
@@ -39,16 +40,7 @@
   const showEmpty = $derived(!showError && empty !== undefined && !value)
   const ARROWS = { up: '↑', down: '↓', flat: '→' } as const
 
-  const spark = $derived.by(() => {
-    if (!sparkline || sparkline.length < 2) return null
-    const min = Math.min(...sparkline), max = Math.max(...sparkline)
-    const range = max - min || 1
-    const w = 100, h = 24, pad = 1
-    const pts = sparkline.map((v, i) => ({ x: (i / (sparkline.length - 1)) * w, y: h - pad - ((v - min) / range) * (h - pad * 2) }))
-    let d = `M ${pts[0].x} ${pts[0].y}`
-    for (let i = 1; i < pts.length; i++) d += ` Q ${(pts[i - 1].x + pts[i].x) / 2} ${pts[i - 1].y}, ${pts[i].x} ${pts[i].y}`
-    return { d, area: `${d} L ${pts[pts.length - 1].x} ${h} L ${pts[0].x} ${h} Z` }
-  })
+  const spark = $derived(sparklinePaths(sparkline))
 </script>
 
 <ErrorBoundary>
@@ -89,7 +81,7 @@
             </linearGradient>
           </defs>
           <path d={spark.area} fill="url(#sparkline-fill)" />
-          <path d={spark.d} fill="none" stroke="oklch(65% 0.2 270)" stroke-width="1.5" />
+          <path d={spark.line} fill="none" stroke="oklch(65% 0.2 270)" stroke-width="1.5" />
         </svg>
       </div>
     {/if}

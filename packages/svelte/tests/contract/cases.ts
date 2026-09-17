@@ -588,4 +588,16 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty lists render no sections': { name: 'x', metrics: [], tags: [], actions: [] },
     'motion 0': { name: 'x', motion: 0 },
   },
+  NetworkTrafficCard: {
+    basic: { title: 'eth0', traffic: { inbound: 125, outbound: 0 } },
+    'every unit, vendor and location, trend': {
+      title: 'core-sw', vendor: 'Arista', location: 'DC1', status: 'warning', compact: true,
+      traffic: { inbound: 1.5e6, outbound: 2e11 }, trend: [1, 4, 2, 9],
+    },
+    'kbps and tbps': { title: 'x', traffic: { inbound: 2000, outbound: 3e11 } },
+    'vendor only': { title: 'x', vendor: 'Juniper', traffic: { inbound: 1, outbound: 1 } },
+    'location only, one-point trend hidden': { title: 'x', location: 'DC2', traffic: { inbound: 1, outbound: 1 }, trend: [3] },
+    'element title': { title: { $el: 'uplink' }, traffic: { inbound: 1, outbound: 1 } },
+    'motion 0': { title: 'x', traffic: { inbound: 1, outbound: 1 }, motion: 0 },
+  },
 }

@@ -1676,6 +1676,96 @@
         "html": "<div class=\"ui-metric-card\" data-motion=\"0\" role=\"group\" aria-label=\"x\"><div class=\"ui-metric-card__header\"><h3 class=\"ui-metric-card__title\">x</h3></div><div class=\"ui-metric-card__value\">1</div></div>"
       }
     },
+    "NetworkTrafficCard": {
+      "basic": {
+        "props": {
+          "title": "eth0",
+          "traffic": {
+            "inbound": 125,
+            "outbound": 0
+          }
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" role=\"group\" aria-label=\"eth0\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">eth0</h3></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">1.00 Kbps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">0 bps</span></div></div></div>"
+      },
+      "every unit, vendor and location, trend": {
+        "props": {
+          "title": "core-sw",
+          "vendor": "Arista",
+          "location": "DC1",
+          "status": "warning",
+          "compact": true,
+          "traffic": {
+            "inbound": 1500000,
+            "outbound": 200000000000
+          },
+          "trend": [
+            1,
+            4,
+            2,
+            9
+          ]
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" data-status=\"warning\" data-compact=\"\" role=\"group\" aria-label=\"core-sw\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">core-sw</h3><span class=\"ui-network-traffic-card__status\" role=\"status\" aria-label=\"Status: warning\"></span></div><div class=\"ui-network-traffic-card__vendor\"><span>Arista</span><span class=\"ui-network-traffic-card__vendor-sep\">/</span><span>DC1</span></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">12.00 Mbps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">1.60 Tbps</span></div></div><div class=\"ui-network-traffic-card__sparkline\"><svg viewBox=\"0 0 100 24\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><defs><linearGradient id=\"ntc-sparkline-fill\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0.3\"></stop><stop offset=\"100%\" stop-color=\"oklch(65% 0.2 270)\" stop-opacity=\"0\"></stop></linearGradient></defs><path d=\"M 0 23 Q 16.666666666666664 23, 33.33333333333333 14.75 Q 49.99999999999999 14.75, 66.66666666666666 20.25 Q 83.33333333333333 20.25, 100 1 L 100 24 L 0 24 Z\" fill=\"url(#ntc-sparkline-fill)\"></path><path d=\"M 0 23 Q 16.666666666666664 23, 33.33333333333333 14.75 Q 49.99999999999999 14.75, 66.66666666666666 20.25 Q 83.33333333333333 20.25, 100 1\" fill=\"none\" stroke=\"oklch(65% 0.2 270)\" stroke-width=\"1.5\"></path></svg></div></div>"
+      },
+      "kbps and tbps": {
+        "props": {
+          "title": "x",
+          "traffic": {
+            "inbound": 2000,
+            "outbound": 300000000000
+          }
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" role=\"group\" aria-label=\"x\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">x</h3></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">16.00 Kbps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">2.40 Tbps</span></div></div></div>"
+      },
+      "vendor only": {
+        "props": {
+          "title": "x",
+          "vendor": "Juniper",
+          "traffic": {
+            "inbound": 1,
+            "outbound": 1
+          }
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" role=\"group\" aria-label=\"x\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">x</h3></div><div class=\"ui-network-traffic-card__vendor\"><span>Juniper</span></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div></div></div>"
+      },
+      "location only, one-point trend hidden": {
+        "props": {
+          "title": "x",
+          "location": "DC2",
+          "traffic": {
+            "inbound": 1,
+            "outbound": 1
+          },
+          "trend": [
+            3
+          ]
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" role=\"group\" aria-label=\"x\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">x</h3></div><div class=\"ui-network-traffic-card__vendor\"><span>DC2</span></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div></div></div>"
+      },
+      "element title": {
+        "props": {
+          "title": {
+            "$el": "uplink"
+          },
+          "traffic": {
+            "inbound": 1,
+            "outbound": 1
+          }
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"3\" role=\"group\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\"><b>uplink</b></h3></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "title": "x",
+          "traffic": {
+            "inbound": 1,
+            "outbound": 1
+          },
+          "motion": 0
+        },
+        "html": "<div class=\"ui-network-traffic-card\" data-motion=\"0\" role=\"group\" aria-label=\"x\"><div class=\"ui-network-traffic-card__header\"><h3 class=\"ui-network-traffic-card__title\">x</h3></div><div class=\"ui-network-traffic-card__traffic\"><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--inbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 2v10M3 8l4 4 4-4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Inbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div><div class=\"ui-network-traffic-card__direction\"><span class=\"ui-network-traffic-card__label\"><span class=\"ui-network-traffic-card__arrow ui-network-traffic-card__arrow--outbound\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M7 12V2M3 6l4-4 4 4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>Outbound</span><span class=\"ui-network-traffic-card__rate\">8 bps</span></div></div></div>"
+      }
+    },
     "NotificationStack": {
       "empty": {
         "props": {
