@@ -1,0 +1,76 @@
+name: Publish Svelte
+
+# Separate from publish.yml, which fires on v* and publishes the React package.
+# `v*` does not match `svelte-v*`, so neither workflow can fire the other.
+on:
+  push:
+    tags: ['svelte-v*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      # A tag is an irreversible publish trigger — refuse one that does not
+      # name the version in packages/svelte/package.json.
+      - name: Verify tag matches the Svelte package version
+        run: |
+          PKG=$(node -p "require('./packages/svelte/package.json').version")
+          TAG="${GITHUB_REF_NAME#svelte-v}"
+          if [ "$PKG" != "$TAG" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match packages/svelte version $PKG — refusing to publish."
+            exit 1
+          fi
+          echo "Tag $GITHUB_REF_NAME matches packages/svelte $PKG"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run build:svelte
+      - run: npm run test:svelte
+      - run: npm run check:svelte
+      - run: npm run test:svelte-no-react
+      - run: npm run test:svelte-parity
+      - run: npm run test:svelte-csp
+      - run: npm run test:svelte-size
+      - run: npm run test:contract-fresh
+      - run: npm run test:vendor-fresh
+      - run: npm run test:svelte-css-fresh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svelte-dist
+          path: packages/svelte/dist/
+
+  # npm trusted publishing via OIDC. Requires a binding on npmjs.com for
+  # @frontier-labs/ui-kit-svelte specifically — bindings are per package, and the
+  # React package's binding does not cover this one:
+  #   org Frontier-Labs-India, repo ui-kit, workflow publish-svelte.yml, env npm
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/@frontier-labs/ui-kit-svelte
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -g npm@latest   # trusted publishing needs npm >= 11.5
+      - uses: actions/download-artifact@v4
+        with:
+          name: svelte-dist
+          path: packages/svelte/dist/
+      - name: Publish to npm
+        working-directory: packages/svelte
+        run: npm publish --access public --provenance

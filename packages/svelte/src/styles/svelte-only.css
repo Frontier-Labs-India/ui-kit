@@ -1,0 +1,19 @@
+/* Rules the Svelte package needs and the React package does not.
+ * Each one exists because a React idiom has no Svelte equivalent. */
+
+/* Checkbox: React lays this row out with style={{display:'inline-flex',…}},
+ * which react-dom applies through setProperty and is CSP-safe. Written into
+ * Svelte markup it would be a static style attribute, which style-src 'self'
+ * blocks — so it is a class here. */
+.ui-checkbox__row {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: inherit;
+}
+
+/* Tooltip: React attaches trigger handlers to the child with cloneElement.
+ * Svelte has no equivalent, so a wrapper carries them; display:contents keeps
+ * it from generating a box, so layout matches React's. */
+.ui-tooltip-trigger {
+  display: contents;
+}

@@ -1,0 +1,221 @@
+{
+  "components": {
+    "Accordion": {
+      "defaults": {
+        "attrs": {
+          "class": "ui-accordion",
+          "data-motion": "3",
+          "data-variant": "default",
+          "data-size": "md"
+        },
+        "text": ""
+      },
+      "variant+size": {
+        "attrs": {
+          "class": "ui-accordion",
+          "data-motion": "3",
+          "data-variant": "bordered",
+          "data-size": "lg"
+        },
+        "text": ""
+      },
+      "motion override 0": {
+        "attrs": {
+          "class": "ui-accordion",
+          "data-motion": "0",
+          "data-variant": "default",
+          "data-size": "md"
+        },
+        "text": ""
+      }
+    },
+    "Checkbox": {
+      "defaults": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": ""
+      },
+      "size": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "xl",
+          "data-motion": "3"
+        },
+        "text": ""
+      },
+      "indeterminate": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "md",
+          "data-motion": "3",
+          "data-indeterminate": ""
+        },
+        "text": ""
+      },
+      "disabled": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "md",
+          "data-motion": "3",
+          "data-disabled": ""
+        },
+        "text": ""
+      },
+      "error": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "md",
+          "data-motion": "3",
+          "data-error": ""
+        },
+        "text": "Required"
+      },
+      "motion override 0": {
+        "attrs": {
+          "class": "ui-checkbox",
+          "data-size": "md",
+          "data-motion": "0"
+        },
+        "text": ""
+      }
+    },
+    "Badge": {
+      "defaults": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": ""
+      },
+      "variant+size": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "danger",
+          "data-size": "xl",
+          "data-motion": "3"
+        },
+        "text": ""
+      },
+      "outline": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3",
+          "data-outline": "true"
+        },
+        "text": ""
+      },
+      "dot+pulse": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": ""
+      },
+      "count over max": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": "99+"
+      },
+      "count zero": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": "0"
+      },
+      "motion override 0": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "0"
+        },
+        "text": ""
+      },
+      "removable": {
+        "attrs": {
+          "class": "ui-badge",
+          "data-variant": "default",
+          "data-size": "md",
+          "data-motion": "3"
+        },
+        "text": ""
+      }
+    }
+  },
+  "cls": [
+    {
+      "parts": [
+        "root"
+      ],
+      "expected": "ui-badge"
+    },
+    {
+      "parts": [
+        "dot"
+      ],
+      "expected": "ui-badge--dot"
+    },
+    {
+      "parts": [
+        "root",
+        "dot"
+      ],
+      "expected": "ui-badge ui-badge--dot"
+    },
+    {
+      "parts": [
+        "root",
+        false,
+        "icon"
+      ],
+      "expected": "ui-badge ui-badge--icon"
+    },
+    {
+      "parts": [
+        ""
+      ],
+      "expected": ""
+    },
+    {
+      "parts": [
+        0
+      ],
+      "expected": ""
+    },
+    {
+      "parts": [
+        "root",
+        null,
+        null,
+        0,
+        "",
+        "remove"
+      ],
+      "expected": "ui-badge ui-badge--remove"
+    },
+    {
+      "parts": [
+        "icon",
+        "dot",
+        "remove"
+      ],
+      "expected": "ui-badge--icon ui-badge--dot ui-badge--remove"
+    }
+  ]
+}
