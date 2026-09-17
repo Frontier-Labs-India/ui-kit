@@ -4,6 +4,7 @@ import { createRawSnippet, flushSync } from 'svelte'
 import TopologyGraph from '../../src/components/TopologyGraph.svelte'
 import TopologyGraphCanvas from '../../src/components/TopologyGraphCanvas.svelte'
 import { computeLayout } from '../../src/vendor/core/graph/layout.js'
+import * as pkg from '../../src/index.js'
 
 const nodes = [
   { id: 'a', label: 'A', x: 100, y: 100 },
@@ -171,5 +172,19 @@ describe('TopologyGraphCanvas', () => {
     const raf = vi.spyOn(window, 'requestAnimationFrame')
     render(TopologyGraphCanvas, { props: { layout, nodes, edges, motionLevel: 1, width: 400, height: 400 } })
     expect(raf).not.toHaveBeenCalled()
+  })
+})
+
+describe('exported renderers', () => {
+  it('render a layout computed with the exported computeLayout, and report node clicks', async () => {
+    const layout = pkg.computeLayout(nodes, edges, { type: 'grid', width: 400, height: 300 })
+    const onNodeClick = vi.fn()
+    const { container } = render(pkg.TopologyGraphSVG, {
+      props: { layout, nodes, edges, onNodeClick, motionLevel: 0, width: 400, height: 300 },
+    })
+    const labels = [...container.querySelectorAll('text')].map(t => t.textContent)
+    expect(labels).toEqual(expect.arrayContaining(['A', 'B', 'C']))
+    await fireEvent.click(container.querySelectorAll('.ui-topology-graph__node')[1])
+    expect(onNodeClick).toHaveBeenCalledWith(nodes[1])
   })
 })

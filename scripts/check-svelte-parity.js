@@ -106,6 +106,14 @@ for (const m of svelteIndex.matchAll(/export\s*\{\s*default as (\w+)[^}]*\}\s*fr
   if (have !== want) fail(`Svelte exports ${dir}/${file}.svelte as ${name}, but React's public ${name} comes from ${want}.tsx (this is ${have ?? 'unknown'})`)
 }
 
+/* A ported component counts only if users can import it. TopologyGraphSVG and
+ * TopologyGraphCanvas were counted as ported for a whole batch while the index
+ * never exported them. */
+const exportedFiles = new Set([...svelteIndex.matchAll(/export\s*\{\s*default as \w+[^}]*\}\s*from\s*'\.\/components\/(\w+)\.svelte'/g)].map(m => m[1]))
+for (const n of ported) {
+  if (!exportedFiles.has(n)) fail(`${n}.svelte is counted as ported but src/index.ts does not export it (under its React public name)`)
+}
+
 const done = expected.filter(n => ported.includes(n)).length
 const extra = companions.length ? ` Companion exports: ${companions.join(', ')}.` : ''
 console.log(`${done}/${expected.length} components ported (${expected.length - done} remaining).${extra}`)

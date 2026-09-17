@@ -104,7 +104,6 @@ declared in the contract tests rather than hidden.
   (one ArrowDown moves two options).
 - **Spotlight** and **CommandBar** always show a current Recent list; React's
   updates only when `items`/`actions` change identity.
-- **TopologyGraph**'s SVG and canvas renderers are not exported, as in React.
 - **Motion context** — `setMotionLevel(() => level)` takes a getter.
 - **JsonViewer** `theme="auto"` falls back to dark where `matchMedia` is
   missing, where React would throw.

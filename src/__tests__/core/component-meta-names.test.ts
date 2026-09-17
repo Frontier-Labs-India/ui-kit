@@ -24,21 +24,9 @@ describe.skipIf(!existsSync(META))('component-meta names', () => {
     expect(components.map(c => c.name).filter(n => !/^[A-Za-z_$][\w$]*$/.test(n))).toEqual([])
   })
 
-  /* OPEN DECISION, not a pass: these two are counted in the 162 and documented
-   * with an import line, but are not exported by the package. Both are internal
-   * rendering backends that TopologyGraph (which is exported) chooses between.
-   * Either export them — the count stays 162 — or exclude internal renderers
-   * from component-meta, making the published count 160 across the website,
-   * README, check-counts and the Svelte parity denominator. That is a product
-   * call. Listed so it cannot be forgotten; the stale check below fails the
-   * moment either becomes a real export. */
-  const NOT_EXPORTED_PENDING_DECISION = ['TopologyGraphCanvas', 'TopologyGraphSVG']
-
-  it('every name is a real export of the package, apart from the recorded open decision', () => {
+  it('every name is a real export of the package', () => {
     const exported = new Set(Object.keys(ui))
-    const missing = components.map(c => c.name).filter(n => !exported.has(n))
-    expect(missing.filter(n => !NOT_EXPORTED_PENDING_DECISION.includes(n))).toEqual([])
-    expect(NOT_EXPORTED_PENDING_DECISION.filter(n => !missing.includes(n))).toEqual([])
+    expect(components.map(c => c.name).filter(n => !exported.has(n))).toEqual([])
   })
 
   it('every documented import line names that export', () => {

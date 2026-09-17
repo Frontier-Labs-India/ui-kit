@@ -420,6 +420,70 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
       nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }], edges: [{ source: 'a', target: 'b', animated: true }], motion: 0,
     },
   },
+  // The renderers take a precomputed layout (computeLayout's result), so the
+  // cases pin one instead of depending on the layout algorithms.
+  TopologyGraphSVG: {
+    'statuses, selection, animated and bidirectional edges': {
+      layout: {
+        nodes: [
+          { id: 'a', x: 60, y: 50 }, { id: 'b', x: 200, y: 50, width: 60, height: 40 }, { id: 'c', x: 130, y: 150 },
+        ],
+        edges: [
+          { source: 'a', target: 'b', points: [{ x: 60, y: 50 }, { x: 200, y: 50 }] },
+          { source: 'b', target: 'c', points: [{ x: 200, y: 50 }, { x: 165, y: 100 }, { x: 130, y: 150 }] },
+          { source: 'c', target: 'ghost', points: [] },
+        ],
+        width: 260, height: 200,
+      },
+      nodes: [
+        { id: 'a', label: 'Edge', type: 'firewall', status: 'ok' },
+        { id: 'b', label: 'Core', type: 'router', status: 'critical', icon: 'i' },
+        { id: 'c', label: 'Store', type: 'database' },
+      ],
+      edges: [
+        { source: 'a', target: 'b', label: 'WAN', status: 'warning', bandwidth: 1000, animated: true, bidirectional: true },
+        { source: 'b', target: 'c', bandwidth: 10 },
+        { source: 'c', target: 'ghost' },
+      ],
+      selectedNodes: ['b'],
+      onNodeClick: { $fn: true }, onNodeHover: { $fn: true }, onEdgeClick: { $fn: true },
+      motionLevel: 3, width: 260, height: 200,
+    },
+    'motionLevel 0, no handlers': {
+      layout: {
+        nodes: [
+          { id: 'a', x: 60, y: 50 }, { id: 'b', x: 200, y: 50, width: 60, height: 40 }, { id: 'c', x: 130, y: 150 },
+        ],
+        edges: [
+          { source: 'a', target: 'b', points: [{ x: 60, y: 50 }, { x: 200, y: 50 }] },
+          { source: 'b', target: 'c', points: [{ x: 200, y: 50 }, { x: 165, y: 100 }, { x: 130, y: 150 }] },
+          { source: 'c', target: 'ghost', points: [] },
+        ],
+        width: 260, height: 200,
+      },
+      nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+      edges: [{ source: 'a', target: 'b', animated: true }],
+      motionLevel: 0, width: 260, height: 200,
+    },
+  },
+  TopologyGraphCanvas: {
+    defaults: {
+      layout: {
+        nodes: [
+          { id: 'a', x: 60, y: 50 }, { id: 'b', x: 200, y: 50, width: 60, height: 40 }, { id: 'c', x: 130, y: 150 },
+        ],
+        edges: [
+          { source: 'a', target: 'b', points: [{ x: 60, y: 50 }, { x: 200, y: 50 }] },
+          { source: 'b', target: 'c', points: [{ x: 200, y: 50 }, { x: 165, y: 100 }, { x: 130, y: 150 }] },
+          { source: 'c', target: 'ghost', points: [] },
+        ],
+        width: 260, height: 200,
+      },
+      nodes: [{ id: 'a', label: 'A' }, { id: 'b', label: 'B' }, { id: 'c', label: 'C' }],
+      edges: [{ source: 'a', target: 'b' }],
+      motionLevel: 3, width: 260, height: 200,
+    },
+  },
   Calendar: {
     // CONTRACT_NOW is 2026-01-15, so "today" is inside January 2026.
     'today, no value': {},

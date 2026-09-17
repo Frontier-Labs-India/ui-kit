@@ -77,6 +77,8 @@ export { PropertyList, type PropertyListProps, type PropertyItem } from './prope
 export { EntityCard, type EntityCardProps } from './entity-card'
 export { ServiceStrip, type ServiceStripProps, type ServiceItem } from './service-strip'
 export { TopologyGraph, type TopologyGraphProps, type TopologyNode, type TopologyEdge } from './topology-graph'
+export { TopologyGraphSVG, type TopologyGraphSVGProps } from './topology-graph-svg'
+export { TopologyGraphCanvas, type TopologyGraphCanvasProps } from './topology-graph-canvas'
 export { PipelineDAG, type PipelineDAGProps, type PipelineNode, type PipelineEdge } from './pipeline-dag'
 export { DashboardTemplate, type DashboardTemplateProps, type DashboardMetric, type DashboardSection } from './dashboard-template'
 export { PluginDashboard, type PluginDashboardProps, type PluginDashboardConfig, type PluginMetricDef, type PluginChartDef, type PluginPropertyDef, type DashboardWidget, POSTGRES_DASHBOARD, MYSQL_DASHBOARD, REDIS_DASHBOARD, KAFKA_DASHBOARD, KUBERNETES_DASHBOARD, DOCKER_DASHBOARD, NGINX_DASHBOARD, ELASTICSEARCH_DASHBOARD } from './plugin-dashboard'
