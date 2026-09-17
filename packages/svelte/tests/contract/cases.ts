@@ -575,4 +575,17 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty renders nothing': { services: [] },
     'motion 0': { motion: 0, services: [{ name: 'a', status: 'running' }] },
   },
+  EntityCard: {
+    'name only': { name: 'db-primary' },
+    everything: {
+      name: 'db-primary', type: 'PostgreSQL', status: 'warning', icon: { $el: 'db' }, size: 'lg', compact: true,
+      metrics: [{ label: 'CPU', value: '42%' }, { label: 'Conns', value: '120' }],
+      tags: ['prod', 'eu-west'],
+      actions: [{ label: 'Restart', icon: { $el: 'r' }, onClick: { $fn: true } }, { label: 'Logs', onClick: { $fn: true } }],
+    },
+    'href makes a link and clickable': { name: 'api', href: '/services/api' },
+    'onClick makes it clickable': { name: 'api', onClick: { $fn: true } },
+    'empty lists render no sections': { name: 'x', metrics: [], tags: [], actions: [] },
+    'motion 0': { name: 'x', motion: 0 },
+  },
 }

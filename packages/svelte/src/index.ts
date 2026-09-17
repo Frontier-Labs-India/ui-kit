@@ -17,6 +17,7 @@ export { default as ConnectionTestPanel } from './components/ConnectionTestPanel
 export { default as Divider } from './components/Divider.svelte'
 export { default as Drawer } from './components/Drawer.svelte'
 export { default as EmptyState } from './components/EmptyState.svelte'
+export { default as EntityCard } from './components/EntityCard.svelte'
 export { default as FilterPill } from './components/FilterPill.svelte'
 export { default as FilterPillGroup } from './components/FilterPillGroup.svelte'
 export { default as GeoMap } from './components/GeoMap.svelte'

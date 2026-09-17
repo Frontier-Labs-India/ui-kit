@@ -952,6 +952,90 @@
         "html": "<div class=\"ui-empty-state\" data-size=\"md\" data-motion=\"0\"><h3 class=\"ui-empty-state__title\">x</h3></div>"
       }
     },
+    "EntityCard": {
+      "name only": {
+        "props": {
+          "name": "db-primary"
+        },
+        "html": "<div style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"db-primary\"><div class=\"ui-entity-card__header\"><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"db-primary\">db-primary</h3></div></div></div></div>"
+      },
+      "everything": {
+        "props": {
+          "name": "db-primary",
+          "type": "PostgreSQL",
+          "status": "warning",
+          "icon": {
+            "$el": "db"
+          },
+          "size": "lg",
+          "compact": true,
+          "metrics": [
+            {
+              "label": "CPU",
+              "value": "42%"
+            },
+            {
+              "label": "Conns",
+              "value": "120"
+            }
+          ],
+          "tags": [
+            "prod",
+            "eu-west"
+          ],
+          "actions": [
+            {
+              "label": "Restart",
+              "icon": {
+                "$el": "r"
+              },
+              "onClick": {
+                "$fn": true
+              }
+            },
+            {
+              "label": "Logs",
+              "onClick": {
+                "$fn": true
+              }
+            }
+          ]
+        },
+        "html": "<div style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"3\" data-size=\"lg\" data-status=\"warning\" data-compact=\"\" role=\"group\" aria-label=\"db-primary\"><div class=\"ui-entity-card__header\"><span class=\"ui-entity-card__icon\"><b>db</b></span><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"db-primary\">db-primary</h3><p class=\"ui-entity-card__type\">PostgreSQL</p></div><span class=\"ui-entity-card__status\" data-status=\"warning\"><span class=\"ui-entity-card__status-dot\" aria-hidden=\"true\"></span>warning</span></div><div class=\"ui-entity-card__metrics\"><div class=\"ui-entity-card__metric\"><span class=\"ui-entity-card__metric-value\">42%</span><span class=\"ui-entity-card__metric-label\">CPU</span></div><div class=\"ui-entity-card__metric\"><span class=\"ui-entity-card__metric-value\">120</span><span class=\"ui-entity-card__metric-label\">Conns</span></div></div><div class=\"ui-entity-card__tags\"><span class=\"ui-entity-card__tag\">prod</span><span class=\"ui-entity-card__tag\">eu-west</span></div><div class=\"ui-entity-card__actions\"><button class=\"ui-entity-card__action\" type=\"button\" aria-label=\"Restart\"><b>r</b>Restart</button><button class=\"ui-entity-card__action\" type=\"button\" aria-label=\"Logs\">Logs</button></div></div></div>"
+      },
+      "href makes a link and clickable": {
+        "props": {
+          "name": "api",
+          "href": "/services/api"
+        },
+        "html": "<a href=\"/services/api\" style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"3\" data-size=\"md\" data-clickable=\"\" role=\"group\" aria-label=\"api\"><div class=\"ui-entity-card__header\"><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"api\">api</h3></div></div></div></a>"
+      },
+      "onClick makes it clickable": {
+        "props": {
+          "name": "api",
+          "onClick": {
+            "$fn": true
+          }
+        },
+        "html": "<div style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"3\" data-size=\"md\" data-clickable=\"\" role=\"group\" aria-label=\"api\"><div class=\"ui-entity-card__header\"><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"api\">api</h3></div></div></div></div>"
+      },
+      "empty lists render no sections": {
+        "props": {
+          "name": "x",
+          "metrics": [],
+          "tags": [],
+          "actions": []
+        },
+        "html": "<div style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"3\" data-size=\"md\" role=\"group\" aria-label=\"x\"><div class=\"ui-entity-card__header\"><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"x\">x</h3></div></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "name": "x",
+          "motion": 0
+        },
+        "html": "<div style=\"text-decoration:none;color:inherit\"><div class=\"ui-entity-card\" data-motion=\"0\" data-size=\"md\" role=\"group\" aria-label=\"x\"><div class=\"ui-entity-card__header\"><div class=\"ui-entity-card__info\"><h3 class=\"ui-entity-card__name\" title=\"x\">x</h3></div></div></div></div>"
+      }
+    },
     "FilterPill": {
       "plain": {
         "props": {
