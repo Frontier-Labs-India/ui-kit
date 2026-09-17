@@ -132,9 +132,11 @@ after the Trigger (as React's examples do), and the markup is identical.
   exact attributes React's `cloneElement` adds.
 - Rule 2 `items`: a `PROP_RENAMES` entry (`children` → `items`), as for
   OrbitingCircles. Each `{ $el }` in the array becomes a snippet.
-- Rule 2 and Rule 3 parts: a case encodes a part tree (`{ $part: 'TabPanel',
-  props, children }`). React builds it with `createElement`. Svelte renders it
-  through one recursive test component, so the markup callers actually write is
-  what gets compared.
+- Rule 2 and Rule 3 parts: a case's `children` can be a list of parts,
+  `{ $part: 'TabPanel', props: { tabId, children } }`, nested through
+  `props.children`. React builds the tree with `createElement`
+  (`scripts/contract-react.tsx`). Svelte renders it through one recursive test
+  component (`tests/contract/Part.svelte`), so the markup callers actually
+  write is what gets compared.
 - Open states (menus, popovers) stay behaviour-tested, like every other
   interaction state.

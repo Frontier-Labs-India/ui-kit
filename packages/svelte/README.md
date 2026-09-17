@@ -67,10 +67,13 @@ declared in the contract tests rather than hidden.
   `<textarea>` for Checkbox, ToggleSwitch, FormInput, NumberInput,
   PasswordInput, SearchInput and Textarea, and the `<dialog>` for Dialog and
   Sheet, and the main button of a removable FilterPill (`<script>let input = $state(null)</script>
-  <FormInput bind:ref={input} />`). React's ConfirmDialog, DataTableSuggestions,
-  Tour, Tooltip and the two TopologyGraph renderers take no ref; here `ref` is
-  their dialog, root, trigger wrapper or drawing surface. It is `null` while
-  the component renders nothing. A test holds each case to the element React
+  <FormInput bind:ref={input} />`). Where React's component takes no ref, `ref`
+  is still useful here: for Tooltip, NativeTooltip, Popover, DropdownMenu and
+  DropdownMenuTrigger it is the element you spread the trigger props onto; for
+  ConfirmDialog its dialog; for ToastProvider its container; for the other
+  DropdownMenu parts, DataTableSuggestions, Tour and the two TopologyGraph
+  renderers their own root or drawing surface. It is `null` while the
+  component renders nothing. A test holds each case to the element React
   gives, derived from React (`tests/fixtures/refs.json`).
 - **`className` is `class`.**
 - **`ReactNode` props** (`icon`, `label`, `title`, `trigger`, `content`, …)
