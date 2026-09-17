@@ -1193,6 +1193,63 @@
         "html": "<label class=\"ui-chip\" data-variant=\"outline\" data-color=\"default\" data-size=\"md\" data-motion=\"0\"><input type=\"checkbox\" class=\"ui-chip__input\"/><span class=\"ui-chip__check\" aria-hidden=\"true\"><svg viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M2.5 6.5L5 9L9.5 3.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span><b>x</b></label>"
       }
     },
+    "CodeEditor": {
+      "empty": {
+        "props": {},
+        "html": "<div class=\"ui-code-editor\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\" data-active=\"\">1</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\"></textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span> </span>\n</span></pre></div></div>"
+      },
+      "typescript with every token kind": {
+        "props": {
+          "language": "typescript",
+          "defaultValue": "// greet\nconst n: number = 0x1F + 2.5e3 /* inline */\nexport function hi(name = 'world') { return `hi ${name}` }\n"
+        },
+        "html": "<div class=\"ui-code-editor\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\" data-active=\"\">1</span><span class=\"ui-code-editor__line-number\">2</span><span class=\"ui-code-editor__line-number\">3</span><span class=\"ui-code-editor__line-number\">4</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\">// greet\nconst n: number = 0x1F + 2.5e3 /* inline */\nexport function hi(name = &#x27;world&#x27;) { return `hi ${name}` }\n</textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span class=\"ui-code-editor__token--comment\">// greet</span>\n</span><span class=\"ui-code-editor__line\"><span class=\"ui-code-editor__token--keyword\">const</span><span> </span><span>n</span><span class=\"ui-code-editor__token--operator\">:</span><span> </span><span>number</span><span> </span><span class=\"ui-code-editor__token--operator\">=</span><span> </span><span class=\"ui-code-editor__token--number\">0x1F</span><span> </span><span class=\"ui-code-editor__token--operator\">+</span><span> </span><span class=\"ui-code-editor__token--number\">2.5e3</span><span> </span><span class=\"ui-code-editor__token--comment\">/* inline */</span>\n</span><span class=\"ui-code-editor__line\"><span class=\"ui-code-editor__token--keyword\">export</span><span> </span><span class=\"ui-code-editor__token--keyword\">function</span><span> </span><span>hi</span><span>(</span><span>name</span><span> </span><span class=\"ui-code-editor__token--operator\">=</span><span> </span><span class=\"ui-code-editor__token--string\">&#x27;world&#x27;</span><span>) { </span><span class=\"ui-code-editor__token--keyword\">return</span><span> </span><span class=\"ui-code-editor__token--string\">`hi ${name}`</span><span> }</span>\n</span><span class=\"ui-code-editor__line\"><span> </span>\n</span></pre></div></div>"
+      },
+      "python and bash comments, sql, word wrap hides numbers": {
+        "props": {
+          "language": "python",
+          "value": "def f():\n    return True  # done",
+          "wordWrap": true
+        },
+        "html": "<div class=\"ui-code-editor\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\" data-word-wrap=\"\">def f():\n    return True  # done</textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\" data-word-wrap=\"\"><span class=\"ui-code-editor__line\" data-active=\"\"><span class=\"ui-code-editor__token--keyword\">def</span><span> </span><span>f</span><span>()</span><span class=\"ui-code-editor__token--operator\">:</span>\n</span><span class=\"ui-code-editor__line\"><span>    </span><span class=\"ui-code-editor__token--keyword\">return</span><span> </span><span class=\"ui-code-editor__token--keyword\">True</span><span>  </span><span class=\"ui-code-editor__token--comment\"># done</span>\n</span></pre></div></div>"
+      },
+      "sql with comment, line numbers from 10, no active highlight, heights, readOnly, placeholder, caller attrs": {
+        "props": {
+          "language": "sql",
+          "value": "SELECT * FROM t -- all\nwhere id = 1",
+          "lineNumberStart": 10,
+          "highlightActiveLine": false,
+          "minHeight": 120,
+          "maxHeight": "50vh",
+          "readOnly": true,
+          "placeholder": "Query",
+          "tabSize": 4,
+          "className": "mine",
+          "id": "ce"
+        },
+        "html": "<div class=\"ui-code-editor mine\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\" style=\"min-block-size:120px;max-block-size:50vh\" id=\"ce\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\">10</span><span class=\"ui-code-editor__line-number\">11</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" readOnly=\"\" placeholder=\"Query\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:4\">SELECT * FROM t -- all\nwhere id = 1</textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\"><span class=\"ui-code-editor__token--keyword\">SELECT</span><span> </span><span class=\"ui-code-editor__token--operator\">*</span><span> </span><span class=\"ui-code-editor__token--keyword\">FROM</span><span> </span><span>t</span><span> </span><span class=\"ui-code-editor__token--comment\">-- all</span>\n</span><span class=\"ui-code-editor__line\"><span class=\"ui-code-editor__token--keyword\">where</span><span> </span><span>id</span><span> </span><span class=\"ui-code-editor__token--operator\">=</span><span> </span><span class=\"ui-code-editor__token--number\">1</span>\n</span></pre></div></div>"
+      },
+      "bash and json": {
+        "props": {
+          "language": "bash",
+          "value": "echo \"hi\" # say"
+        },
+        "html": "<div class=\"ui-code-editor\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\" data-active=\"\">1</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\">echo &quot;hi&quot; # say</textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span class=\"ui-code-editor__token--keyword\">echo</span><span> </span><span class=\"ui-code-editor__token--string\">&quot;hi&quot;</span><span> </span><span class=\"ui-code-editor__token--comment\"># say</span>\n</span></pre></div></div>"
+      },
+      "no line numbers": {
+        "props": {
+          "showLineNumbers": false,
+          "value": "x"
+        },
+        "html": "<div class=\"ui-code-editor\" data-motion=\"3\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\">x</textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span>x</span>\n</span></pre></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0
+        },
+        "html": "<div class=\"ui-code-editor\" data-motion=\"0\" role=\"group\" aria-label=\"Code editor\"><div class=\"ui-code-editor__gutter\" aria-hidden=\"true\"><span class=\"ui-code-editor__line-number\" data-active=\"\">1</span></div><div class=\"ui-code-editor__editor\"><textarea class=\"ui-code-editor__textarea\" spellCheck=\"false\" autoCapitalize=\"off\" autoComplete=\"off\" autoCorrect=\"off\" aria-label=\"Code input\" aria-multiline=\"true\" role=\"textbox\" style=\"tab-size:2\"></textarea><pre class=\"ui-code-editor__pre\" aria-hidden=\"true\"><span class=\"ui-code-editor__line\" data-active=\"\"><span> </span>\n</span></pre></div></div>"
+      }
+    },
     "ColumnVisibilityToggle": {
       "columns": {
         "props": {

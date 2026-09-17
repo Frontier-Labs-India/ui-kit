@@ -3654,6 +3654,207 @@
   }
 /* end chip */
 
+/* code-editor */
+@layer components {
+    @scope (.ui-code-editor) {
+      :scope {
+        position: relative;
+        display: flex;
+        border-radius: var(--radius-lg, 0.75rem);
+        background: var(--bg-surface, oklch(18% 0.015 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        overflow: hidden;
+        font-family: var(--font-mono, ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace);
+        font-size: var(--text-sm, 0.875rem);
+        line-height: 1.6;
+      }
+
+      :scope:focus-within {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 1px var(--brand, oklch(65% 0.2 270));
+      }
+
+      /* ── Line numbers gutter ───────────────────────────── */
+
+      .ui-code-editor__gutter {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding-block: var(--space-md, 1rem);
+        padding-inline: var(--space-sm, 0.5rem) var(--space-md, 1rem);
+        background: var(--bg-elevated, oklch(15% 0.01 270));
+        border-inline-end: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        color: var(--text-tertiary, oklch(45% 0 0));
+        user-select: none;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+
+      .ui-code-editor__line-number {
+        block-size: 1.6em;
+        display: flex;
+        align-items: center;
+        opacity: 0.6;
+      }
+
+      .ui-code-editor__line-number[data-active] {
+        opacity: 1;
+        color: var(--text-secondary, oklch(70% 0 0));
+      }
+
+      /* ── Editor area ───────────────────────────────────── */
+
+      .ui-code-editor__editor {
+        position: relative;
+        flex: 1;
+        min-inline-size: 0;
+        overflow: auto;
+      }
+
+      .ui-code-editor__textarea {
+        position: absolute;
+        inset: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        padding: var(--space-md, 1rem);
+        margin: 0;
+        border: none;
+        background: transparent;
+        color: transparent;
+        caret-color: var(--text-primary, oklch(90% 0 0));
+        font: inherit;
+        line-height: inherit;
+        resize: none;
+        outline: none;
+        overflow: auto;
+        white-space: pre;
+        z-index: 1;
+      }
+
+      .ui-code-editor__textarea[data-word-wrap] {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      .ui-code-editor__textarea::placeholder {
+        color: var(--text-tertiary, oklch(45% 0 0));
+      }
+
+      .ui-code-editor__textarea::selection {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.3);
+      }
+
+      /* ── Highlighted pre layer ─────────────────────────── */
+
+      .ui-code-editor__pre {
+        margin: 0;
+        padding: var(--space-md, 1rem);
+        min-block-size: 100%;
+        white-space: pre;
+        pointer-events: none;
+        overflow: hidden;
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-code-editor__pre[data-word-wrap] {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
+
+      .ui-code-editor__line {
+        display: block;
+        block-size: 1.6em;
+        position: relative;
+      }
+
+      .ui-code-editor__line[data-active] {
+        background: oklch(100% 0 0 / 0.04);
+        border-radius: var(--radius-sm, 0.25rem);
+      }
+
+      /* ── Tokens ────────────────────────────────────────── */
+
+      .ui-code-editor__token--keyword {
+        color: var(--brand, oklch(65% 0.2 270));
+      }
+
+      .ui-code-editor__token--string {
+        color: var(--status-ok, oklch(72% 0.19 155));
+      }
+
+      .ui-code-editor__token--comment {
+        color: var(--text-tertiary, oklch(50% 0 0));
+        font-style: italic;
+      }
+
+      .ui-code-editor__token--number {
+        color: var(--status-warning, oklch(78% 0.15 80));
+      }
+
+      .ui-code-editor__token--operator {
+        color: var(--text-secondary, oklch(75% 0.05 270));
+      }
+
+      /* ── Active line glow ──────────────────────────────── */
+
+      :scope[data-motion='2'] .ui-code-editor__line[data-active],
+      :scope[data-motion='3'] .ui-code-editor__line[data-active] {
+        box-shadow: inset 0 0 20px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.03);
+      }
+
+      /* ── Forced colors ─────────────────────────────────── */
+
+      @media (forced-colors: active) {
+        :scope {
+          border: 2px solid ButtonText;
+        }
+        :scope:focus-within {
+          border-color: Highlight;
+          box-shadow: none;
+        }
+        .ui-code-editor__gutter {
+          border-inline-end: 1px solid ButtonText;
+          background: Canvas;
+        }
+        .ui-code-editor__textarea {
+          caret-color: ButtonText;
+        }
+        .ui-code-editor__token--keyword,
+        .ui-code-editor__token--string,
+        .ui-code-editor__token--comment,
+        .ui-code-editor__token--number,
+        .ui-code-editor__token--operator {
+          color: inherit;
+        }
+        .ui-code-editor__line[data-active] {
+          background: Highlight;
+          color: HighlightText;
+        }
+      }
+
+      /* ── Print ──────────────────────────────────────────── */
+
+      @media print {
+        :scope {
+          background: white;
+          color: black;
+          border: 1px solid black;
+        }
+        .ui-code-editor__textarea {
+          display: none;
+        }
+        .ui-code-editor__token--keyword,
+        .ui-code-editor__token--string,
+        .ui-code-editor__token--comment,
+        .ui-code-editor__token--number,
+        .ui-code-editor__token--operator {
+          color: inherit;
+        }
+      }
+    }
+  }
+/* end code-editor */
+
 /* column-visibility-toggle */
 @layer components {
     @scope (.ui-column-visibility) {

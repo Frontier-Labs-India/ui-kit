@@ -978,6 +978,20 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'open and empty': { open: true, onOpenChange: { $fn: true }, emptyMessage: 'Nothing', items: [] },
     'motion 0': { open: false, onOpenChange: { $fn: true }, motion: 0, items: [] },
   },
+  CodeEditor: {
+    empty: {},
+    'typescript with every token kind': {
+      language: 'typescript', defaultValue: "// greet\nconst n: number = 0x1F + 2.5e3 /* inline */\nexport function hi(name = 'world') { return `hi ${name}` }\n",
+    },
+    'python and bash comments, sql, word wrap hides numbers': { language: 'python', value: "def f():\n    return True  # done", wordWrap: true },
+    'sql with comment, line numbers from 10, no active highlight, heights, readOnly, placeholder, caller attrs': {
+      language: 'sql', value: "SELECT * FROM t -- all\nwhere id = 1", lineNumberStart: 10, highlightActiveLine: false, minHeight: 120, maxHeight: '50vh',
+      readOnly: true, placeholder: 'Query', tabSize: 4, className: 'mine', id: 'ce',
+    },
+    'bash and json': { language: 'bash', value: 'echo "hi" # say' },
+    'no line numbers': { showLineNumbers: false, value: 'x' },
+    'motion 0': { motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
