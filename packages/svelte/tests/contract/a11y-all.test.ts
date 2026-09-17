@@ -100,6 +100,10 @@ const INHERITED: Record<string, string> = {
   'PasswordInput/strength meter empty/aria-meter-name': PASSWORD_METER_DEFECT,
   'PasswordInput/strength meter strong with error/aria-meter-name': PASSWORD_METER_DEFECT,
   'PasswordInput/strength meter fair, custom labels, sm disabled, caller id/aria-meter-name': PASSWORD_METER_DEFECT,
+  'TimePicker/value with clear, lg, name/nested-interactive':
+    'DEFECT in both packages: TimePicker\'s clear control is a role="button" span inside the trigger <button>, ' +
+    'whose children are presentational, so it is unreachable to assistive technology. Fix together (move the ' +
+    'clear control beside the trigger) or the contract breaks',
   'StatusPulse/ok/role-img-alt': PULSE_DEFECT,
   'StatusPulse/warning/role-img-alt': PULSE_DEFECT,
   'StatusPulse/info motion 0/role-img-alt': PULSE_DEFECT,
