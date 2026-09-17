@@ -3156,6 +3156,110 @@
         "html": "<div class=\"ui-json-viewer\" data-motion=\"0\" data-theme=\"dark\" role=\"group\" aria-label=\"JSON viewer: root\"><div class=\"ui-json-viewer__node\"><div class=\"ui-json-viewer__row\"><span class=\"ui-json-viewer__indent\" style=\"inline-size:0ch\"></span><span class=\"ui-json-viewer__chevron-spacer\"></span><span class=\"ui-json-viewer__key\">root</span><span class=\"ui-json-viewer__colon\">:</span><span class=\"ui-json-viewer__value\" data-type=\"number\">1</span></div></div></div>"
       }
     },
+    "KanbanColumn": {
+      "cards with every part": {
+        "props": {
+          "columnId": "todo",
+          "title": "To do",
+          "cards": [
+            {
+              "id": "c1",
+              "title": "Write docs",
+              "description": {
+                "$el": "README"
+              },
+              "tags": [
+                "docs",
+                "p1"
+              ],
+              "assignee": "Ana",
+              "priority": "high"
+            },
+            {
+              "id": "c2",
+              "title": {
+                "$el": "Fix bug"
+              },
+              "assignee": {
+                "$el": "Raj"
+              }
+            },
+            {
+              "id": "c3",
+              "title": "No footer"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-kanban-column\" data-motion=\"3\" data-column-id=\"todo\" role=\"region\" aria-labelledby=\"kanban-header-_R_0_\"><div class=\"ui-kanban-column__header\"><span class=\"ui-kanban-column__title\" id=\"kanban-header-_R_0_\">To do</span><span class=\"ui-kanban-column__count\">3</span></div><div class=\"ui-kanban-column__cards\"><div class=\"ui-kanban-column__card\" data-card=\"\" data-card-id=\"c1\" data-priority=\"high\"><span class=\"ui-kanban-column__card-title\">Write docs</span><span class=\"ui-kanban-column__card-desc\"><b>README</b></span><div class=\"ui-kanban-column__card-footer\"><span class=\"ui-kanban-column__tag\">docs</span><span class=\"ui-kanban-column__tag\">p1</span><span class=\"ui-kanban-column__assignee\">Ana</span></div></div><div class=\"ui-kanban-column__card\" data-card=\"\" data-card-id=\"c2\"><span class=\"ui-kanban-column__card-title\"><b>Fix bug</b></span><div class=\"ui-kanban-column__card-footer\"><span class=\"ui-kanban-column__assignee\"><b>Raj</b></span></div></div><div class=\"ui-kanban-column__card\" data-card=\"\" data-card-id=\"c3\"><span class=\"ui-kanban-column__card-title\">No footer</span></div></div></div>"
+      },
+      "empty tags array renders no footer": {
+        "props": {
+          "columnId": "x",
+          "title": "X",
+          "cards": [
+            {
+              "id": "c",
+              "title": "T",
+              "tags": []
+            }
+          ]
+        },
+        "html": "<div class=\"ui-kanban-column\" data-motion=\"3\" data-column-id=\"x\" role=\"region\" aria-labelledby=\"kanban-header-_R_0_\"><div class=\"ui-kanban-column__header\"><span class=\"ui-kanban-column__title\" id=\"kanban-header-_R_0_\">X</span><span class=\"ui-kanban-column__count\">1</span></div><div class=\"ui-kanban-column__cards\"><div class=\"ui-kanban-column__card\" data-card=\"\" data-card-id=\"c\"><span class=\"ui-kanban-column__card-title\">T</span></div></div></div>"
+      },
+      "interactive: wip exceeded, click and move handlers, collapse button, caller attrs": {
+        "props": {
+          "columnId": "doing",
+          "title": {
+            "$el": "Doing"
+          },
+          "wipLimit": 1,
+          "onCardClick": {
+            "$fn": true
+          },
+          "onCardMove": {
+            "$fn": true
+          },
+          "onCollapse": {
+            "$fn": true
+          },
+          "className": "mine",
+          "id": "kc",
+          "cards": [
+            {
+              "id": "a",
+              "title": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-kanban-column mine\" data-motion=\"3\" data-column-id=\"doing\" data-wip-exceeded=\"\" role=\"region\" aria-labelledby=\"kanban-header-_R_0_\" id=\"kc\"><div class=\"ui-kanban-column__header\"><span class=\"ui-kanban-column__title\" id=\"kanban-header-_R_0_\"><b>Doing</b></span><span class=\"ui-kanban-column__count\">1</span><span class=\"ui-kanban-column__wip-label\" aria-label=\"WIP limit: 1\">/ 1</span><button class=\"ui-kanban-column__collapse-btn\" aria-label=\"Collapse column\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 3L5 7L9 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div><div class=\"ui-kanban-column__cards\"><div class=\"ui-kanban-column__card\" data-card=\"\" data-card-id=\"a\" tabindex=\"0\" draggable=\"true\"><span class=\"ui-kanban-column__card-title\">A</span></div></div></div>"
+      },
+      "collapsed": {
+        "props": {
+          "columnId": "done",
+          "title": "Done",
+          "collapsed": true,
+          "onCollapse": {
+            "$fn": true
+          },
+          "cards": [
+            {
+              "id": "a",
+              "title": "A"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-kanban-column\" data-motion=\"3\" data-column-id=\"done\" data-collapsed=\"\" role=\"region\" aria-labelledby=\"kanban-header-_R_0_\"><div class=\"ui-kanban-column__header\"><span class=\"ui-kanban-column__title\" id=\"kanban-header-_R_0_\">Done</span><span class=\"ui-kanban-column__count\">1</span><button class=\"ui-kanban-column__collapse-btn\" aria-label=\"Expand column\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\"><path d=\"M5 3L9 7L5 11\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "columnId": "m",
+          "title": "M",
+          "motion": 0,
+          "cards": []
+        },
+        "html": "<div class=\"ui-kanban-column\" data-motion=\"0\" data-column-id=\"m\" role=\"region\" aria-labelledby=\"kanban-header-_R_0_\"><div class=\"ui-kanban-column__header\"><span class=\"ui-kanban-column__title\" id=\"kanban-header-_R_0_\">M</span><span class=\"ui-kanban-column__count\">0</span></div><div class=\"ui-kanban-column__cards\"></div></div>"
+      }
+    },
     "Kbd": {
       "defaults": {
         "props": {

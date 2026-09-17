@@ -9537,6 +9537,272 @@
   }
 /* end json-viewer */
 
+/* kanban-column */
+@layer components {
+    @scope (.ui-kanban-column) {
+      :scope {
+        display: flex;
+        flex-direction: column;
+        min-inline-size: 17rem;
+        max-inline-size: 22rem;
+        background: var(--bg-surface, oklch(18% 0.01 270));
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-lg, 0.75rem);
+        overflow: hidden;
+      }
+
+      :scope[data-collapsed] {
+        min-inline-size: 3rem;
+        max-inline-size: 3rem;
+        align-items: center;
+      }
+
+      /* ── Header ──────────────────────────────────────── */
+
+      .ui-kanban-column__header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border-block-end: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        user-select: none;
+      }
+
+      :scope[data-collapsed] .ui-kanban-column__header {
+        flex-direction: column;
+        padding-inline: var(--space-xs, 0.25rem);
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        border-block-end: none;
+      }
+
+      .ui-kanban-column__title {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 600;
+        color: var(--text-primary, oklch(90% 0 0));
+        flex: 1;
+        min-inline-size: 0;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .ui-kanban-column__count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: 1.5rem;
+        block-size: 1.5rem;
+        padding-inline: 0.25rem;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        font-size: var(--text-xs, 0.75rem);
+        font-weight: 600;
+        color: var(--text-secondary, oklch(70% 0 0));
+        flex-shrink: 0;
+      }
+
+      /* WIP exceeded state */
+      [data-wip-exceeded] .ui-kanban-column__count {
+        background: oklch(65% 0.2 30 / 0.15);
+        color: oklch(75% 0.15 30);
+      }
+
+      .ui-kanban-column__collapse-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        border: none;
+        background: transparent;
+        color: var(--text-tertiary, oklch(60% 0 0));
+        cursor: pointer;
+        border-radius: var(--radius-sm, 0.25rem);
+        flex-shrink: 0;
+        padding: 0;
+      }
+
+      .ui-kanban-column__collapse-btn:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      /* ── Card list ───────────────────────────────────── */
+
+      .ui-kanban-column__cards {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+        padding: var(--space-sm, 0.5rem);
+        overflow-y: auto;
+        flex: 1;
+        min-block-size: 3rem;
+      }
+
+      /* ── Card ────────────────────────────────────────── */
+
+      .ui-kanban-column__card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xs, 0.125rem);
+        padding: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-subtle, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-md, 0.5rem);
+        background: var(--bg-elevated, oklch(22% 0.01 270));
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        transition: background 0.1s, box-shadow 0.1s;
+      }
+
+      .ui-kanban-column__card:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.04));
+        box-shadow: var(--shadow-sm, 0 2px 6px oklch(0% 0 0 / 0.15));
+      }
+
+      .ui-kanban-column__card:focus-visible {
+        box-shadow: 0 0 0 2px var(--brand, oklch(65% 0.2 270));
+      }
+
+      /* Priority left border */
+      .ui-kanban-column__card[data-priority="low"] {
+        border-inline-start: 3px solid oklch(70% 0.1 200);
+      }
+      .ui-kanban-column__card[data-priority="medium"] {
+        border-inline-start: 3px solid oklch(75% 0.15 80);
+      }
+      .ui-kanban-column__card[data-priority="high"] {
+        border-inline-start: 3px solid oklch(70% 0.2 40);
+      }
+      .ui-kanban-column__card[data-priority="critical"] {
+        border-inline-start: 3px solid oklch(65% 0.25 25);
+      }
+
+      /* ── Card title ──────────────────────────────────── */
+
+      .ui-kanban-column__card-title {
+        font-size: var(--text-sm, 0.875rem);
+        font-weight: 500;
+        color: var(--text-primary, oklch(90% 0 0));
+        line-height: 1.4;
+      }
+
+      /* ── Card description ────────────────────────────── */
+
+      .ui-kanban-column__card-desc {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* ── Card footer (tags + assignee) ───────────────── */
+
+      .ui-kanban-column__card-footer {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        margin-block-start: var(--space-2xs, 0.125rem);
+        flex-wrap: wrap;
+      }
+
+      .ui-kanban-column__tag {
+        display: inline-flex;
+        align-items: center;
+        padding-block: 0.0625rem;
+        padding-inline: 0.375rem;
+        border-radius: var(--radius-full, 9999px);
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        font-size: var(--text-2xs, 0.625rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        line-height: 1.6;
+      }
+
+      .ui-kanban-column__assignee {
+        margin-inline-start: auto;
+        flex-shrink: 0;
+      }
+
+      /* ── Drag and drop states ─────────────────────────── */
+
+      .ui-kanban-column__card--dragging {
+        opacity: 0.5;
+        box-shadow: 0 0 0 2px var(--brand, oklch(65% 0.2 270));
+      }
+
+      .ui-kanban__drop-indicator {
+        block-size: 2px;
+        background: var(--brand, oklch(65% 0.2 270));
+        border-radius: 1px;
+        box-shadow: 0 0 6px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.4);
+        margin-block: -1px;
+        pointer-events: none;
+      }
+
+      .ui-kanban-column__cards[data-drag-over] {
+        box-shadow: inset 0 0 0 1px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15);
+        border-radius: var(--radius-md, 0.5rem);
+      }
+
+      /* ── Reduced motion ──────────────────────────────── */
+
+      @media (prefers-reduced-motion: reduce) {
+        .ui-kanban-column__card {
+          transition: none;
+        }
+      }
+
+      /* ── Touch targets ───────────────────────────────── */
+
+      @media (pointer: coarse) {
+        .ui-kanban-column__card {
+          min-block-size: 44px;
+        }
+        .ui-kanban-column__collapse-btn {
+          min-inline-size: 44px;
+          min-block-size: 44px;
+        }
+      }
+
+      /* ── Forced colors ───────────────────────────────── */
+
+      @media (forced-colors: active) {
+        :scope {
+          border: 1px solid ButtonText;
+        }
+        .ui-kanban-column__card {
+          border: 1px solid ButtonText;
+        }
+        .ui-kanban-column__card:focus-visible {
+          outline: 2px solid Highlight;
+        }
+        .ui-kanban-column__card[data-priority] {
+          border-inline-start: 3px solid Highlight;
+        }
+        .ui-kanban-column__tag {
+          border: 1px solid ButtonText;
+        }
+      }
+
+      /* ── Print ───────────────────────────────────────── */
+
+      @media print {
+        :scope {
+          break-inside: avoid;
+        }
+        .ui-kanban-column__collapse-btn {
+          display: none;
+        }
+      }
+    }
+  }
+/* end kanban-column */
+
 /* kbd */
 @layer components {
     @scope (.ui-kbd) {

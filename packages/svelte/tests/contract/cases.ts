@@ -935,6 +935,24 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'step out of range renders nothing': { open: true, currentStep: 5, steps: [{ target: 'body', title: 'One', description: 'a' }] },
     'motion 0': { open: true, motion: 0, steps: [{ target: 'body', title: 'One', description: 'a' }] },
   },
+  KanbanColumn: {
+    'cards with every part': {
+      columnId: 'todo', title: 'To do',
+      cards: [
+        { id: 'c1', title: 'Write docs', description: { $el: 'README' }, tags: ['docs', 'p1'], assignee: 'Ana', priority: 'high' },
+        { id: 'c2', title: { $el: 'Fix bug' }, assignee: { $el: 'Raj' } },
+        { id: 'c3', title: 'No footer' },
+      ],
+    },
+    // `tags.length || assignee` is undefined here (0 || undefined), so no footer and no stray "0".
+    'empty tags array renders no footer': { columnId: 'x', title: 'X', cards: [{ id: 'c', title: 'T', tags: [] }] },
+    'interactive: wip exceeded, click and move handlers, collapse button, caller attrs': {
+      columnId: 'doing', title: { $el: 'Doing' }, wipLimit: 1, onCardClick: { $fn: true }, onCardMove: { $fn: true }, onCollapse: { $fn: true },
+      className: 'mine', id: 'kc', cards: [{ id: 'a', title: 'A' }],
+    },
+    collapsed: { columnId: 'done', title: 'Done', collapsed: true, onCollapse: { $fn: true }, cards: [{ id: 'a', title: 'A' }] },
+    'motion 0': { columnId: 'm', title: 'M', motion: 0, cards: [] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
