@@ -930,6 +930,69 @@
         "html": "<div class=\"ui-connection-test-panel\" data-size=\"md\" data-motion=\"0\" role=\"region\" aria-label=\"Connection Test\"><div class=\"ui-connection-test-panel__header\"><span class=\"ui-connection-test-panel__title\">Connection Test</span><div class=\"ui-connection-test-panel__actions\"></div></div><ol class=\"ui-connection-test-panel__steps\" aria-label=\"Test steps\"></ol><div class=\"ui-connection-test-panel__footer\"><div class=\"ui-connection-test-panel__summary\"><span class=\"ui-connection-test-panel__count--passed\">0 passed</span></div><span>0 total</span></div></div>"
       }
     },
+    "CopyBlock": {
+      "plain text": {
+        "props": {
+          "code": "hello\n  world"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span>hello</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-copy-block__line-content\"><span>  world</span>\n</span></span></code></pre></div></div>"
+      },
+      "typescript": {
+        "props": {
+          "language": "typescript",
+          "title": "app.ts",
+          "highlight": [
+            2
+          ],
+          "code": "import { x } from 'y'\nconst n = 42 // answer\n/* block */ export default n"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__header\"><span class=\"ui-copy-block__title\">app.ts</span><span class=\"ui-copy-block__lang-badge\">typescript</span></div><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--keyword\">import</span><span> { </span><span>x</span><span> } </span><span class=\"ui-copy-block__token--keyword\">from</span><span> </span><span class=\"ui-copy-block__token--string\">&#x27;y&#x27;</span>\n</span></span><span class=\"ui-copy-block__line\" data-highlighted=\"\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--keyword\">const</span><span> </span><span>n</span><span> = </span><span class=\"ui-copy-block__token--number\">42</span><span> </span><span class=\"ui-copy-block__token--comment\">// answer</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">3</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--comment\">/* block */</span><span> </span><span class=\"ui-copy-block__token--keyword\">export</span><span> </span><span class=\"ui-copy-block__token--keyword\">default</span><span> </span><span>n</span>\n</span></span></code></pre></div></div>"
+      },
+      "json": {
+        "props": {
+          "language": "json",
+          "code": "{\n  \"a\": 1,\n  \"b\": [true, null, -2.5e3],\n  \"c\": \"s\"\n}"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span>{</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-copy-block__line-content\"><span>  </span><span class=\"ui-copy-block__token--keyword\">&quot;a&quot;</span><span>: </span><span class=\"ui-copy-block__token--number\">1</span><span>,</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">3</span><span class=\"ui-copy-block__line-content\"><span>  </span><span class=\"ui-copy-block__token--keyword\">&quot;b&quot;</span><span>: [</span><span class=\"ui-copy-block__token--keyword\">true</span><span>, </span><span class=\"ui-copy-block__token--keyword\">null</span><span>, </span><span class=\"ui-copy-block__token--number\">-2.5e3</span><span>],</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">4</span><span class=\"ui-copy-block__line-content\"><span>  </span><span class=\"ui-copy-block__token--keyword\">&quot;c&quot;</span><span>: </span><span class=\"ui-copy-block__token--string\">&quot;s&quot;</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">5</span><span class=\"ui-copy-block__line-content\"><span>}</span>\n</span></span></code></pre></div></div>"
+      },
+      "css": {
+        "props": {
+          "language": "css",
+          "showLineNumbers": false,
+          "code": ".x { color: red; width: 10px; } /* c */"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-content\"><span>.</span><span>x</span><span> { </span><span class=\"ui-copy-block__token--keyword\">color</span><span>: </span><span>red</span><span>; </span><span class=\"ui-copy-block__token--keyword\">width</span><span>: </span><span class=\"ui-copy-block__token--number\">10px</span><span>; } </span><span class=\"ui-copy-block__token--comment\">/* c */</span>\n</span></span></code></pre></div></div>"
+      },
+      "bash": {
+        "props": {
+          "language": "bash",
+          "code": "# install\nnpm install --save-dev \"pkg\" -D"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--comment\"># install</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-copy-block__line-content\"><span>npm</span><span> </span><span>install</span><span> </span><span class=\"ui-copy-block__token--keyword\">--save-dev</span><span> </span><span class=\"ui-copy-block__token--string\">&quot;pkg&quot;</span><span> </span><span class=\"ui-copy-block__token--keyword\">-D</span>\n</span></span></code></pre></div></div>"
+      },
+      "sql, python, yaml": {
+        "props": {
+          "language": "sql",
+          "maxHeight": "12rem",
+          "code": "SELECT id, COUNT(*) FROM t WHERE a = 'b' -- note"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\" style=\"max-height:12rem\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--keyword\">SELECT</span><span> </span><span>id</span><span>, </span><span class=\"ui-copy-block__token--keyword\">COUNT</span><span>(*) </span><span class=\"ui-copy-block__token--keyword\">FROM</span><span> </span><span>t</span><span> </span><span class=\"ui-copy-block__token--keyword\">WHERE</span><span> </span><span>a</span><span> = </span><span class=\"ui-copy-block__token--string\">&#x27;b&#x27;</span><span> </span><span class=\"ui-copy-block__token--comment\">-- note</span>\n</span></span></code></pre></div></div>"
+      },
+      "python": {
+        "props": {
+          "language": "python",
+          "code": "def f(x):\n    return x + 1  # inc"
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"3\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span class=\"ui-copy-block__token--keyword\">def</span><span> </span><span>f</span><span>(</span><span>x</span><span>):</span>\n</span></span><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">2</span><span class=\"ui-copy-block__line-content\"><span>    </span><span class=\"ui-copy-block__token--keyword\">return</span><span> </span><span>x</span><span> + </span><span class=\"ui-copy-block__token--number\">1</span><span>  </span><span class=\"ui-copy-block__token--comment\"># inc</span>\n</span></span></code></pre></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "code": "x",
+          "motion": 0
+        },
+        "html": "<div class=\"ui-copy-block\" data-motion=\"0\"><div class=\"ui-copy-block__body\"><button class=\"ui-copy-block__copy-btn\" aria-label=\"Copy code\">Copy</button><pre class=\"ui-copy-block__pre\"><code class=\"ui-copy-block__code\"><span class=\"ui-copy-block__line\"><span class=\"ui-copy-block__line-number\" aria-hidden=\"true\">1</span><span class=\"ui-copy-block__line-content\"><span>x</span>\n</span></span></code></pre></div></div>"
+      }
+    },
     "CoreChart": {
       "green-red auto columns": {
         "props": {

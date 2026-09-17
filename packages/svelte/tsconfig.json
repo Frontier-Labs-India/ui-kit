@@ -10,7 +10,8 @@
     "verbatimModuleSyntax": true,
     "types": [
       "svelte",
-      "vitest/globals"
+      "vitest/globals",
+      "node"
     ]
   },
   "include": [

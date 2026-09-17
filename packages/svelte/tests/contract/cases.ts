@@ -802,4 +802,14 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'empty array': { data: [] },
     'motion 0': { data: 1, motion: 0 },
   },
+  CopyBlock: {
+    'plain text': { code: 'hello\n  world' },
+    typescript: { language: 'typescript', title: 'app.ts', highlight: [2], code: "import { x } from 'y'\nconst n = 42 // answer\n/* block */ export default n" },
+    json: { language: 'json', code: '{\n  "a": 1,\n  "b": [true, null, -2.5e3],\n  "c": "s"\n}' },
+    css: { language: 'css', showLineNumbers: false, code: '.x { color: red; width: 10px; } /* c */' },
+    bash: { language: 'bash', code: '# install\nnpm install --save-dev "pkg" -D' },
+    'sql, python, yaml': { language: 'sql', maxHeight: '12rem', code: "SELECT id, COUNT(*) FROM t WHERE a = 'b' -- note" },
+    python: { language: 'python', code: 'def f(x):\n    return x + 1  # inc' },
+    'motion 0': { code: 'x', motion: 0 },
+  },
 }
