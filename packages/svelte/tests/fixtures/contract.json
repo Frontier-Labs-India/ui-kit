@@ -8164,6 +8164,105 @@
         "html": "<div class=\"ui-time-range-selector\" data-motion=\"0\" role=\"group\" aria-label=\"Time range\"><div class=\"ui-time-range-selector__presets\" role=\"group\" aria-label=\"Preset ranges\"></div></div>"
       }
     },
+    "TimeSeriesChart": {
+      "empty": {
+        "props": {
+          "series": []
+        },
+        "html": "<div class=\"ui-time-series-chart\" data-motion=\"3\"><svg width=\"400\" height=\"200\" viewBox=\"0 0 400 200\" aria-label=\"Time series chart\" role=\"img\"><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"172\" x2=\"384\" y2=\"172\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"132\" x2=\"384\" y2=\"132\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"92\" x2=\"384\" y2=\"92\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"52\" x2=\"384\" y2=\"52\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"12\" x2=\"384\" y2=\"12\"></line><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"172\" text-anchor=\"end\" dominant-baseline=\"central\">-5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"132\" text-anchor=\"end\" dominant-baseline=\"central\">22.5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"92\" text-anchor=\"end\" dominant-baseline=\"central\">50</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"52\" text-anchor=\"end\" dominant-baseline=\"central\">77.5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"12\" text-anchor=\"end\" dominant-baseline=\"central\">105</text><rect class=\"ui-time-series-chart__hit-area\" x=\"52\" y=\"12\" width=\"332\" height=\"160\"></rect></svg></div>"
+      },
+      "two series with legend and annotations": {
+        "props": {
+          "series": [
+            {
+              "id": "cpu",
+              "label": "CPU",
+              "data": [
+                {
+                  "timestamp": 1768478400000,
+                  "value": 20
+                },
+                {
+                  "timestamp": 1768478460000,
+                  "value": 1500
+                },
+                {
+                  "timestamp": 1768478520000,
+                  "value": 35.5
+                }
+              ]
+            },
+            {
+              "id": "mem",
+              "label": "Memory",
+              "color": "oklch(70% 0.1 100)",
+              "data": [
+                {
+                  "timestamp": 1768478400000,
+                  "value": 2000000
+                },
+                {
+                  "timestamp": 1768478520000,
+                  "value": 50
+                }
+              ]
+            }
+          ],
+          "annotations": [
+            {
+              "type": "horizontal",
+              "value": 1000,
+              "label": "Limit"
+            },
+            {
+              "type": "vertical",
+              "value": 1768478460000,
+              "color": "red",
+              "dashed": false
+            }
+          ],
+          "toggleableSeries": true,
+          "zoomable": true,
+          "brushable": true
+        },
+        "html": "<div class=\"ui-time-series-chart\" data-motion=\"3\"><svg width=\"400\" height=\"200\" viewBox=\"0 0 400 200\" aria-label=\"Time series chart\" role=\"img\"><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"172\" x2=\"384\" y2=\"172\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"132\" x2=\"384\" y2=\"132\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"92\" x2=\"384\" y2=\"92\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"52\" x2=\"384\" y2=\"52\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"12\" x2=\"384\" y2=\"12\"></line><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"172\" text-anchor=\"end\" dominant-baseline=\"central\">-100.0K</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"132\" text-anchor=\"end\" dominant-baseline=\"central\">450.0K</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"92\" text-anchor=\"end\" dominant-baseline=\"central\">1.0M</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"52\" text-anchor=\"end\" dominant-baseline=\"central\">1.6M</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"12\" text-anchor=\"end\" dominant-baseline=\"central\">2.1M</text><text class=\"ui-time-series-chart__axis-label\" x=\"52\" y=\"196\" text-anchor=\"middle\">12:00</text><text class=\"ui-time-series-chart__axis-label\" x=\"218\" y=\"196\" text-anchor=\"middle\">12:01</text><text class=\"ui-time-series-chart__axis-label\" x=\"384\" y=\"196\" text-anchor=\"middle\">12:02</text><path class=\"ui-time-series-chart__series-line\" d=\"M 52 164.72727272727272 Q 135 164.72727272727272, 218 164.61963528726196 Q 301 164.61963528726196, 384 164.72614544327263\" stroke=\"oklch(65% 0.2 270)\" style=\"--line-len:2000\"></path><path class=\"ui-time-series-chart__series-line\" d=\"M 52 19.272727272727252 Q 218 19.272727272727252, 384 164.7250908872725\" stroke=\"oklch(70% 0.1 100)\" style=\"--line-len:2000\"></path><g class=\"ui-time-series-chart__annotation\"><line x1=\"52\" y1=\"164.6559992872656\" x2=\"384\" y2=\"164.6559992872656\" stroke=\"oklch(70% 0 0)\" stroke-width=\"1.5\" stroke-dasharray=\"6 4\"></line><text class=\"ui-time-series-chart__annotation-label\" x=\"380\" y=\"160.6559992872656\" text-anchor=\"end\" fill=\"oklch(70% 0 0)\">Limit</text></g><g class=\"ui-time-series-chart__annotation\"><line x1=\"218\" y1=\"12\" x2=\"218\" y2=\"172\" stroke=\"red\" stroke-width=\"1.5\"></line></g><rect class=\"ui-time-series-chart__hit-area\" x=\"52\" y=\"12\" width=\"332\" height=\"160\"></rect></svg><div class=\"ui-time-series-chart__legend\"><div class=\"ui-time-series-chart__legend-item\"><input type=\"checkbox\" class=\"ui-time-series-chart__legend-checkbox\" aria-label=\"Toggle CPU\" style=\"--cb-color:oklch(65% 0.2 270)\" checked=\"\"/><span class=\"ui-time-series-chart__legend-swatch\" style=\"background:oklch(65% 0.2 270)\"></span><span>CPU</span></div><div class=\"ui-time-series-chart__legend-item\"><input type=\"checkbox\" class=\"ui-time-series-chart__legend-checkbox\" aria-label=\"Toggle Memory\" style=\"--cb-color:oklch(70% 0.1 100)\" checked=\"\"/><span class=\"ui-time-series-chart__legend-swatch\" style=\"background:oklch(70% 0.1 100)\"></span><span>Memory</span></div></div></div>"
+      },
+      "single point, fixed y range, no axes/grid/legend, height, caller style": {
+        "props": {
+          "series": [
+            {
+              "id": "a",
+              "label": "A",
+              "data": [
+                {
+                  "timestamp": 1768478400000,
+                  "value": 5
+                }
+              ]
+            }
+          ],
+          "yMin": 0,
+          "yMax": 10,
+          "showXAxis": false,
+          "showYAxis": false,
+          "showGrid": false,
+          "showLegend": false,
+          "height": 120,
+          "style": {
+            "maxWidth": 600
+          },
+          "className": "mine"
+        },
+        "html": "<div class=\"ui-time-series-chart mine\" data-motion=\"3\" style=\"max-width:600px\"><svg width=\"400\" height=\"120\" viewBox=\"0 0 400 120\" aria-label=\"Time series chart\" role=\"img\"><rect class=\"ui-time-series-chart__hit-area\" x=\"52\" y=\"12\" width=\"332\" height=\"80\"></rect></svg></div>"
+      },
+      "motion 0": {
+        "props": {
+          "series": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-time-series-chart\" data-motion=\"0\"><svg width=\"400\" height=\"200\" viewBox=\"0 0 400 200\" aria-label=\"Time series chart\" role=\"img\"><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"172\" x2=\"384\" y2=\"172\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"132\" x2=\"384\" y2=\"132\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"92\" x2=\"384\" y2=\"92\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"52\" x2=\"384\" y2=\"52\"></line><line class=\"ui-time-series-chart__grid-line\" x1=\"52\" y1=\"12\" x2=\"384\" y2=\"12\"></line><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"172\" text-anchor=\"end\" dominant-baseline=\"central\">-5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"132\" text-anchor=\"end\" dominant-baseline=\"central\">22.5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"92\" text-anchor=\"end\" dominant-baseline=\"central\">50</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"52\" text-anchor=\"end\" dominant-baseline=\"central\">77.5</text><text class=\"ui-time-series-chart__axis-label\" x=\"46\" y=\"12\" text-anchor=\"end\" dominant-baseline=\"central\">105</text><rect class=\"ui-time-series-chart__hit-area\" x=\"52\" y=\"12\" width=\"332\" height=\"160\"></rect></svg></div>"
+      }
+    },
     "Timeline": {
       "items": {
         "props": {

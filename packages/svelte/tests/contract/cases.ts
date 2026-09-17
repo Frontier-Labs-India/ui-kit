@@ -1012,6 +1012,22 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'readOnly and disabled': { readOnly: true, disabled: true, toolbar: ['bold'] },
     'motion 0': { motion: 0, toolbar: [] },
   },
+  TimeSeriesChart: {
+    empty: { series: [] },
+    'two series with legend and annotations': {
+      series: [
+        { id: 'cpu', label: 'CPU', data: [{ timestamp: 1768478400000, value: 20 }, { timestamp: 1768478460000, value: 1500 }, { timestamp: 1768478520000, value: 35.5 }] },
+        { id: 'mem', label: 'Memory', color: 'oklch(70% 0.1 100)', data: [{ timestamp: 1768478400000, value: 2e6 }, { timestamp: 1768478520000, value: 50 }] },
+      ],
+      annotations: [{ type: 'horizontal', value: 1000, label: 'Limit' }, { type: 'vertical', value: 1768478460000, color: 'red', dashed: false }],
+      toggleableSeries: true, zoomable: true, brushable: true,
+    },
+    'single point, fixed y range, no axes/grid/legend, height, caller style': {
+      series: [{ id: 'a', label: 'A', data: [{ timestamp: 1768478400000, value: 5 }] }], yMin: 0, yMax: 10,
+      showXAxis: false, showYAxis: false, showGrid: false, showLegend: false, height: 120, style: { maxWidth: 600 }, className: 'mine',
+    },
+    'motion 0': { series: [], motion: 0 },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },
