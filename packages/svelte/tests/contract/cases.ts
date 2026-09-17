@@ -921,6 +921,20 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     disabled: { name: 'f', disabled: true },
     'motion 0': { name: 'f', motion: 0 },
   },
+  Tour: {
+    closed: { steps: [{ target: 'body', title: 'Hi', description: 'x' }] },
+    // `body` always exists, so the target is found on both sides.
+    'first of three, progress and skip': {
+      open: true, steps: [{ target: 'body', title: 'Welcome', description: 'Start here' }, { target: 'body', title: 'Two', description: { $el: 'More' } }, { target: 'body', title: 'Three', description: 'End' }],
+    },
+    'controlled middle step without progress or skip': {
+      open: true, currentStep: 1, showProgress: false, showSkip: false,
+      steps: [{ target: 'body', title: 'One', description: 'a' }, { target: 'body', title: 'Two', description: 'b' }, { target: 'body', title: 'Three', description: 'c' }],
+    },
+    'last step finishes': { open: true, currentStep: 1, steps: [{ target: 'body', title: 'One', description: 'a' }, { target: 'body', title: 'Last', description: 'b' }] },
+    'step out of range renders nothing': { open: true, currentStep: 5, steps: [{ target: 'body', title: 'One', description: 'a' }] },
+    'motion 0': { open: true, motion: 0, steps: [{ target: 'body', title: 'One', description: 'a' }] },
+  },
   ActionIcon: {
     defaults: { 'aria-label': 'Edit', children: { $el: 'pencil' } },
     'filled danger xl full loading': { 'aria-label': 'Delete', variant: 'filled', color: 'danger', size: 'xl', radius: 'full', loading: true },

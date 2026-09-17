@@ -8202,6 +8202,118 @@
         "html": "<div class=\"ui-topology-graph\" data-motion=\"0\" role=\"figure\" aria-label=\"Network topology graph\" style=\"height:500px\"><div class=\"ui-topology-graph__controls\" role=\"toolbar\" aria-label=\"Graph controls\"><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom in\" data-testid=\"topology-zoom-in\">+</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Zoom out\" data-testid=\"topology-zoom-out\">−</button><button type=\"button\" class=\"ui-topology-graph__control-btn\" aria-label=\"Fit to view\" data-testid=\"topology-fit\">⤢</button></div><svg width=\"800\" height=\"500\" viewBox=\"0 0 800 500\" class=\"ui-topology-graph__svg\" style=\"cursor:grab\" data-testid=\"topology-svg\"><defs><marker id=\"ui-topo-arrow\" viewBox=\"0 0 10 6\" refX=\"10\" refY=\"3\" markerWidth=\"8\" markerHeight=\"6\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,3 L0,6 Z\" fill=\"oklch(55% 0 0)\"></path></marker></defs><g transform=\"translate(0,0) scale(1)\"><g class=\"ui-topology-graph__edge\"><path d=\"M434.29,215.31 Q394.0852514919011,244.0862316757689 365.71,284.69\" fill=\"none\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\" stroke-opacity=\"0.7\" marker-end=\"url(#ui-topo-arrow)\"></path></g><g class=\"ui-topology-graph__node\" transform=\"translate(434.29,215.31)\" data-status=\"unknown\" data-testid=\"topology-node-a\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">A</text></g><g class=\"ui-topology-graph__node\" transform=\"translate(365.71,284.69)\" data-status=\"unknown\" data-testid=\"topology-node-b\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"6\" fill=\"oklch(20% 0.01 270)\" stroke=\"oklch(55% 0 0)\" stroke-width=\"1.5\"></rect><g style=\"color:oklch(55% 0 0)\" transform=\"translate(0, -2)\"><circle cx=\"0\" cy=\"0\" r=\"4.8999999999999995\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle></g><text y=\"27\" text-anchor=\"middle\" font-size=\"10\" fill=\"oklch(75% 0 0)\" class=\"ui-topology-graph__node-label\">B</text></g></g></svg></div>"
       }
     },
+    "Tour": {
+      "closed": {
+        "props": {
+          "steps": [
+            {
+              "target": "body",
+              "title": "Hi",
+              "description": "x"
+            }
+          ]
+        },
+        "html": ""
+      },
+      "first of three, progress and skip": {
+        "props": {
+          "open": true,
+          "steps": [
+            {
+              "target": "body",
+              "title": "Welcome",
+              "description": "Start here"
+            },
+            {
+              "target": "body",
+              "title": "Two",
+              "description": {
+                "$el": "More"
+              }
+            },
+            {
+              "target": "body",
+              "title": "Three",
+              "description": "End"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tour\" data-motion=\"3\" data-open=\"\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Tour step 1 of 3: Welcome\"><svg class=\"ui-tour__overlay\" aria-hidden=\"true\"><defs><mask id=\"ui-tour-mask\"><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" fill=\"white\"></rect></mask></defs><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" class=\"ui-tour__overlay-bg\" mask=\"url(#ui-tour-mask)\"></rect></svg><div class=\"ui-tour__tooltip\" style=\"top:0;left:0\" role=\"status\"><h3 class=\"ui-tour__title\">Welcome</h3><div class=\"ui-tour__description\">Start here</div><div class=\"ui-tour__footer\"><span class=\"ui-tour__progress\">Step 1 of 3</span><div class=\"ui-tour__dots\" aria-hidden=\"true\"><span class=\"ui-tour__dot\" data-active=\"\"></span><span class=\"ui-tour__dot\"></span><span class=\"ui-tour__dot\"></span></div><div class=\"ui-tour__actions\"><button class=\"ui-tour__btn\" data-skip=\"\" type=\"button\">Skip</button><button class=\"ui-tour__btn\" data-primary=\"\" type=\"button\">Next</button></div></div></div></div>"
+      },
+      "controlled middle step without progress or skip": {
+        "props": {
+          "open": true,
+          "currentStep": 1,
+          "showProgress": false,
+          "showSkip": false,
+          "steps": [
+            {
+              "target": "body",
+              "title": "One",
+              "description": "a"
+            },
+            {
+              "target": "body",
+              "title": "Two",
+              "description": "b"
+            },
+            {
+              "target": "body",
+              "title": "Three",
+              "description": "c"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tour\" data-motion=\"3\" data-open=\"\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Tour step 2 of 3: Two\"><svg class=\"ui-tour__overlay\" aria-hidden=\"true\"><defs><mask id=\"ui-tour-mask\"><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" fill=\"white\"></rect></mask></defs><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" class=\"ui-tour__overlay-bg\" mask=\"url(#ui-tour-mask)\"></rect></svg><div class=\"ui-tour__tooltip\" style=\"top:0;left:0\" role=\"status\"><h3 class=\"ui-tour__title\">Two</h3><div class=\"ui-tour__description\">b</div><div class=\"ui-tour__footer\"><div class=\"ui-tour__dots\" aria-hidden=\"true\"><span class=\"ui-tour__dot\" data-completed=\"\"></span><span class=\"ui-tour__dot\" data-active=\"\"></span><span class=\"ui-tour__dot\"></span></div><div class=\"ui-tour__actions\"><button class=\"ui-tour__btn\" type=\"button\">Previous</button><button class=\"ui-tour__btn\" data-primary=\"\" type=\"button\">Next</button></div></div></div></div>"
+      },
+      "last step finishes": {
+        "props": {
+          "open": true,
+          "currentStep": 1,
+          "steps": [
+            {
+              "target": "body",
+              "title": "One",
+              "description": "a"
+            },
+            {
+              "target": "body",
+              "title": "Last",
+              "description": "b"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tour\" data-motion=\"3\" data-open=\"\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Tour step 2 of 2: Last\"><svg class=\"ui-tour__overlay\" aria-hidden=\"true\"><defs><mask id=\"ui-tour-mask\"><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" fill=\"white\"></rect></mask></defs><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" class=\"ui-tour__overlay-bg\" mask=\"url(#ui-tour-mask)\"></rect></svg><div class=\"ui-tour__tooltip\" style=\"top:0;left:0\" role=\"status\"><h3 class=\"ui-tour__title\">Last</h3><div class=\"ui-tour__description\">b</div><div class=\"ui-tour__footer\"><span class=\"ui-tour__progress\">Step 2 of 2</span><div class=\"ui-tour__dots\" aria-hidden=\"true\"><span class=\"ui-tour__dot\" data-completed=\"\"></span><span class=\"ui-tour__dot\" data-active=\"\"></span></div><div class=\"ui-tour__actions\"><button class=\"ui-tour__btn\" type=\"button\">Previous</button><button class=\"ui-tour__btn\" data-primary=\"\" type=\"button\">Finish</button></div></div></div></div>"
+      },
+      "step out of range renders nothing": {
+        "props": {
+          "open": true,
+          "currentStep": 5,
+          "steps": [
+            {
+              "target": "body",
+              "title": "One",
+              "description": "a"
+            }
+          ]
+        },
+        "html": ""
+      },
+      "motion 0": {
+        "props": {
+          "open": true,
+          "motion": 0,
+          "steps": [
+            {
+              "target": "body",
+              "title": "One",
+              "description": "a"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-tour\" data-motion=\"0\" data-open=\"\" role=\"dialog\" aria-modal=\"true\" aria-label=\"Tour step 1 of 1: One\"><svg class=\"ui-tour__overlay\" aria-hidden=\"true\"><defs><mask id=\"ui-tour-mask\"><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" fill=\"white\"></rect></mask></defs><rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" class=\"ui-tour__overlay-bg\" mask=\"url(#ui-tour-mask)\"></rect></svg><div class=\"ui-tour__tooltip\" style=\"top:0;left:0\" role=\"status\"><h3 class=\"ui-tour__title\">One</h3><div class=\"ui-tour__description\">a</div><div class=\"ui-tour__footer\"><span class=\"ui-tour__progress\">Step 1 of 1</span><div class=\"ui-tour__dots\" aria-hidden=\"true\"><span class=\"ui-tour__dot\" data-active=\"\"></span></div><div class=\"ui-tour__actions\"><button class=\"ui-tour__btn\" data-primary=\"\" type=\"button\">Finish</button></div></div></div></div>"
+      }
+    },
     "TracingBeam": {
       "children": {
         "props": {

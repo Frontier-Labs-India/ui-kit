@@ -47,6 +47,13 @@ export const DIVERGENCES: Record<string, Divergence[]> = {
  * elements are removed, from both trees, before the CSP check and the
  * comparison — any other inline style still fails both. */
 export const EFFECT_STYLES: Record<string, { selector: string; properties: string[]; reason: string }[]> = {
+  Tour: [
+    {
+      selector: '.ui-tour__tooltip',
+      properties: ['top', 'left'],
+      reason: 'The tooltip is placed beside the measured target in an effect; the server HTML has 0,0 (tour.test.ts).',
+    },
+  ],
   TableOfContents: [
     {
       selector: '.ui-toc__indicator',
@@ -121,6 +128,18 @@ export const EFFECT_ATTRS: Record<string, { selector: string; attributes: string
       selector: '.ui-text-reveal--char',
       attributes: ['data-revealed'],
       reason: 'Characters are revealed by effect timers, or all at once at motion 0 (text-reveal.test.ts).',
+    },
+  ],
+}
+
+/* Elements an effect adds after mount, from a measurement a server render
+ * never makes. Matching elements are removed from both trees before
+ * comparison; a behaviour test named in `reason` asserts them. */
+export const EFFECT_NODES: Record<string, { selector: string; reason: string }[]> = {
+  Tour: [
+    {
+      selector: '.ui-tour__spotlight',
+      reason: 'The spotlight cut-out is measured from the target in an effect (tour.test.ts).',
     },
   ],
 }
