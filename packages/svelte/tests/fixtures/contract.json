@@ -2312,6 +2312,60 @@
         "html": "<div class=\"ui-property-list\" data-motion=\"0\" data-size=\"md\" data-columns=\"1\" role=\"list\" aria-label=\"Properties\"></div>"
       }
     },
+    "RackDiagram": {
+      "front view": {
+        "props": {
+          "units": 6,
+          "devices": [
+            {
+              "startU": 1,
+              "heightU": 2,
+              "label": "server",
+              "status": "ok"
+            },
+            {
+              "startU": 5,
+              "heightU": 1,
+              "label": "switch",
+              "status": "critical"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-rack-diagram\" data-size=\"md\" data-motion=\"3\" role=\"img\" aria-label=\"Rack diagram: 6U, 2 devices\"><div class=\"ui-rack-diagram__numbers\"><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">6</div><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">5</div><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">4</div><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">3</div><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">2</div><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">1</div></div><div class=\"ui-rack-diagram__frame\" style=\"block-size:96px\"><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__device\" data-status=\"ok\" style=\"top:65px;block-size:30px\">server</div><div class=\"ui-rack-diagram__device\" data-status=\"critical\" style=\"top:17px;block-size:14px\">switch</div></div></div>"
+      },
+      "rear view lg no numbers": {
+        "props": {
+          "units": 4,
+          "orientation": "rear",
+          "size": "lg",
+          "showUnitNumbers": false,
+          "devices": [
+            {
+              "startU": 2,
+              "heightU": 1,
+              "label": "pdu"
+            }
+          ]
+        },
+        "html": "<div class=\"ui-rack-diagram\" data-size=\"lg\" data-motion=\"3\" role=\"img\" aria-label=\"Rack diagram: 4U, 1 devices\"><div class=\"ui-rack-diagram__frame\" style=\"block-size:88px\"><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__device\" data-status=\"ok\" style=\"top:23px;block-size:20px\">pdu</div></div></div>"
+      },
+      "empty rack sm": {
+        "props": {
+          "units": 3,
+          "devices": [],
+          "size": "sm"
+        },
+        "html": "<div class=\"ui-rack-diagram\" data-size=\"sm\" data-motion=\"3\" role=\"img\" aria-label=\"Rack diagram: 3U, 0 devices\"><div class=\"ui-rack-diagram__numbers\"><div class=\"ui-rack-diagram__number\" style=\"block-size:10px\">3</div><div class=\"ui-rack-diagram__number\" style=\"block-size:10px\">2</div><div class=\"ui-rack-diagram__number\" style=\"block-size:10px\">1</div></div><div class=\"ui-rack-diagram__frame\" style=\"block-size:30px\"><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div><div class=\"ui-rack-diagram__slot\"></div></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "units": 1,
+          "devices": [],
+          "motion": 0
+        },
+        "html": "<div class=\"ui-rack-diagram\" data-size=\"md\" data-motion=\"0\" role=\"img\" aria-label=\"Rack diagram: 1U, 0 devices\"><div class=\"ui-rack-diagram__numbers\"><div class=\"ui-rack-diagram__number\" style=\"block-size:16px\">1</div></div><div class=\"ui-rack-diagram__frame\" style=\"block-size:16px\"><div class=\"ui-rack-diagram__slot\"></div></div></div>"
+      }
+    },
     "ResponsiveCard": {
       "title only": {
         "props": {
@@ -2419,6 +2473,38 @@
           "motion": 0
         },
         "html": "<div class=\"ui-ring-chart\" data-size=\"md\" data-motion=\"0\" role=\"meter\" aria-valuenow=\"1\" aria-valuemin=\"0\" aria-valuemax=\"100\" aria-label=\"Ring chart\" style=\"width:64px;height:64px\"><svg class=\"ui-ring-chart__svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><circle class=\"ui-ring-chart__track\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\"></circle><circle class=\"ui-ring-chart__fill\" cx=\"32\" cy=\"32\" r=\"29\" stroke-width=\"6\" stroke=\"oklch(65% 0.2 270)\" stroke-dasharray=\"182.212373908208\" stroke-dashoffset=\"180.39025016912592\"></circle></svg></div>"
+      }
+    },
+    "Ripple": {
+      "defaults": {
+        "props": {
+          "children": {
+            "$el": "Press"
+          }
+        },
+        "html": "<div class=\"ui-ripple\" data-motion=\"3\" style=\"--ripple-effect-duration:600ms\"><div class=\"ui-ripple--content\"><b>Press</b></div></div>"
+      },
+      "color, duration, caller style": {
+        "props": {
+          "color": "white",
+          "duration": 900,
+          "style": {
+            "borderRadius": 8
+          },
+          "children": {
+            "$el": "Press"
+          }
+        },
+        "html": "<div class=\"ui-ripple\" data-motion=\"3\" style=\"border-radius:8px;--ripple-effect-duration:900ms;--ripple-effect-color:white\"><div class=\"ui-ripple--content\"><b>Press</b></div></div>"
+      },
+      "motion 0": {
+        "props": {
+          "motion": 0,
+          "children": {
+            "$el": "x"
+          }
+        },
+        "html": "<div class=\"ui-ripple\" data-motion=\"0\" style=\"--ripple-effect-duration:600ms\"><div class=\"ui-ripple--content\"><b>x</b></div></div>"
       }
     },
     "SectionHeader": {
@@ -3256,6 +3342,30 @@
           "sticky": false
         },
         "html": "<div role=\"toolbar\" class=\"ui-toolbar\" data-gap=\"md\" data-justify=\"start\"></div>"
+      }
+    },
+    "TruncatedText": {
+      "defaults": {
+        "props": {
+          "text": "A long description"
+        },
+        "html": "<span class=\"ui-truncated-text\" data-lines=\"1\" title=\"A long description\"><span class=\"ui-truncated-text__content\" style=\"--lines:1\">A long description</span></span>"
+      },
+      "three lines expandable": {
+        "props": {
+          "text": "A long description",
+          "lines": 3,
+          "expandable": true
+        },
+        "html": "<span class=\"ui-truncated-text\" data-lines=\"3\" title=\"A long description\"><span class=\"ui-truncated-text__content\" style=\"--lines:3\">A long description</span><button class=\"ui-truncated-text__toggle\" aria-expanded=\"false\">Show more</button></span>"
+      },
+      "no tooltip": {
+        "props": {
+          "text": "x",
+          "showTooltip": false,
+          "id": "t1"
+        },
+        "html": "<span class=\"ui-truncated-text\" data-lines=\"1\" id=\"t1\"><span class=\"ui-truncated-text__content\" style=\"--lines:1\">x</span></span>"
       }
     },
     "TypingIndicator": {

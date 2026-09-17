@@ -600,4 +600,20 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     'element title': { title: { $el: 'uplink' }, traffic: { inbound: 1, outbound: 1 } },
     'motion 0': { title: 'x', traffic: { inbound: 1, outbound: 1 }, motion: 0 },
   },
+  RackDiagram: {
+    'front view': { units: 6, devices: [{ startU: 1, heightU: 2, label: 'server', status: 'ok' }, { startU: 5, heightU: 1, label: 'switch', status: 'critical' }] },
+    'rear view lg no numbers': { units: 4, orientation: 'rear', size: 'lg', showUnitNumbers: false, devices: [{ startU: 2, heightU: 1, label: 'pdu' }] },
+    'empty rack sm': { units: 3, devices: [], size: 'sm' },
+    'motion 0': { units: 1, devices: [], motion: 0 },
+  },
+  Ripple: {
+    defaults: { children: { $el: 'Press' } },
+    'color, duration, caller style': { color: 'white', duration: 900, style: { borderRadius: 8 }, children: { $el: 'Press' } },
+    'motion 0': { motion: 0, children: { $el: 'x' } },
+  },
+  TruncatedText: {
+    defaults: { text: 'A long description' },
+    'three lines expandable': { text: 'A long description', lines: 3, expandable: true },
+    'no tooltip': { text: 'x', showTooltip: false, id: 't1' },
+  },
 }
