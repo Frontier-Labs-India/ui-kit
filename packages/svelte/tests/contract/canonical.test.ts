@@ -51,6 +51,17 @@ describe('canonical — style values', () => {
    * carries it either: only its server HTML does. It is the one name removed
    * from both trees; that Svelte still sets it is a behaviour test
    * (upstream-dashboard.test.ts). */
+  /* jsdom's CSSOM rejects `flex: 1 1 0` (a unitless zero flex-basis), which
+   * every browser accepts; DataTable's toolbar spacer uses it. That one exact
+   * declaration is removed from both trees; Svelte setting it is a behaviour
+   * test (data-table.test.ts). Anything else jsdom drops is still refused. */
+  it('removes only the exact `flex: 1 1 0` declaration jsdom cannot parse', () => {
+    expect(c('<i style="flex:1 1 0;color:red"></i>')).toBe(c('<i style="color:red"></i>'))
+    expect(c('<i style="flex: 1  1  0"></i>')).toBe(c('<i></i>'))
+    expect(c('<i style="flex:1"></i>')).toContain('flex')
+    expect(() => c('<i style="flex:2 1 0"></i>')).toThrow(/CSSOM dropped "flex:2 1 0"/)
+  })
+
   it('removes only -webkit-overflow-scrolling, the property no test engine implements', () => {
     expect(c('<i style="overflow-x:auto;-webkit-overflow-scrolling:touch"></i>')).toBe(c('<i style="overflow-x:auto"></i>'))
     expect(c('<i style="-webkit-overflow-scrolling:touch"></i>')).toBe(c('<i></i>'))
@@ -85,6 +96,33 @@ describe('canonical — ordering and text', () => {
   it('merges text across comment separators but keeps text content', () => {
     expect(c('<b>a<!-- -->b</b>')).toBe(c('<b>ab</b>'))
     expect(c('<b>a</b>')).not.toBe(c('<b>b</b>'))
+  })
+})
+
+describe('canonical — select value', () => {
+  /* Server HTML marks the chosen option with `selected`; a client render sets
+   * select.value and writes no attribute. Read the option's selectedness from
+   * either, as for a checkbox's checked state. */
+  it('equates a server `selected` option with a client-set select value, and tells values apart', () => {
+    const client = (value: string) => {
+      const root = document.createElement('div')
+      root.innerHTML = '<select><option value="a">A</option><option value="b">B</option></select>'
+      root.querySelector('select')!.value = value
+      return canonical(root)
+    }
+    const server = c('<select><option value="a">A</option><option selected value="b">B</option></select>')
+    expect(client('b')).toBe(server)
+    expect(client('a')).not.toBe(server)
+  })
+
+  /* Server HTML with no `selected` option (React's value matched none) is
+   * parsed into an inert document, where the first option still reads as
+   * selected by default. React's client, like Svelte's, selects nothing. */
+  it('a value matching no option selects nothing on either side, whatever the parser defaults to', () => {
+    const root = document.createElement('div')
+    root.innerHTML = '<select><option value="a">A</option><option value="b">B</option></select>'
+    root.querySelector('select')!.value = 'z'
+    expect(canonical(root)).toBe(c('<select><option value="a">A</option><option value="b">B</option></select>'))
   })
 })
 

@@ -12,6 +12,11 @@
  *   { $date: '2026-01-20T00:00' }  a Date — `new Date(string)` on both sides. Omit
  *                    the zone: both run with TZ=UTC, so it is the local midnight
  *                    a caller's date picker would produce
+ *   { $render: 'C' } a render function — React `(...args) => <b>C:arg:…</b>`, Svelte a
+ *                    snippet taking the same parameters (DataTable's `cell(value,
+ *                    row, rowIndex)`, a function `header`). renderText() spells the
+ *                    arguments, so the markup shows exactly what the function received
+ *   { $set: [0, 2] } a Set — `new Set(array)` on both sides
  *
  * Choose cases that change the MARKUP: every variant/size value that is an
  * attribute, every boolean that adds or removes an element, and the edge values
@@ -19,6 +24,13 @@
  * nothing. */
 
 export type CaseProps = Record<string, unknown>
+
+/* The text a `{ $render }` function renders: its label, then each argument —
+ * objects (a row) as JSON, everything else through String(). Shared by both
+ * hydrators so they cannot spell it differently. */
+export function renderText(label: string, args: unknown[]): string {
+  return [label, ...args.map(a => (a !== null && typeof a === 'object' ? JSON.stringify(a) : String(a)))].join(':')
+}
 
 /* The clock every contract render sees. Components that format time relative
  * to now (NotificationStack's "5 minutes ago") would otherwise produce a fixture
@@ -62,6 +74,24 @@ const UD_LINKS = [
   { id: 'c', vendor: 'Arista', location: 'DC2', inbound: 2000, outbound: 100, status: 'critical' },
   { id: 'd', vendor: 'Cisco', location: 'DC1', inbound: 9e7, outbound: 9e7, capacity: 2e8, status: 'unknown', trend: [5] },
 ]
+
+
+/* DataTable rows and columns: text, numbers, a missing value (sorts first
+ * ascending), duplicates for grouping. */
+const DT_ROWS = [
+  { id: 1, name: 'Ada', team: 'Core', score: 91, city: 'London' },
+  { id: 2, name: 'Grace', team: 'Infra', score: 78, city: 'Arlington' },
+  { id: 3, name: 'Linus', team: 'Core', score: 85 },
+  { id: 4, name: 'Barbara', team: 'Infra', score: 99, city: 'Boston' },
+  { id: 5, name: 'Edsger', team: 'Core', score: 62, city: 'Austin' },
+]
+const DT_COLS = [
+  { id: 'name', header: 'Name', accessor: 'name' },
+  { id: 'team', header: 'Team', accessor: 'team' },
+  { id: 'score', header: 'Score', accessor: 'score', align: 'right' },
+  { id: 'city', header: 'City', accessor: 'city' },
+]
+const DT_MANY = Array.from({ length: 95 }, (_, i) => ({ id: i, name: `Row ${i}`, team: i % 2 ? 'Odd' : 'Even', score: i }))
 
 export const CASES: Record<string, Record<string, CaseProps>> = {
   Accordion: {
@@ -1733,6 +1763,79 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
   },
   // Toasts exist only after toast() calls (toast.test.ts); the server renders the container.
+  DataTable: {
+    defaults: { data: DT_ROWS, columns: DT_COLS },
+    'every toolbar and appearance flag, caller attributes, motion 0': {
+      data: DT_ROWS, columns: DT_COLS, searchable: true, paginated: true, pageSize: 2, pageSizes: [2, 5],
+      selectable: true, resizable: true, reorderable: true, exportable: true, striped: true, compact: true,
+      bordered: true, responsiveMode: 'card', stickyHeader: false, filterable: true, toolbar: { $el: 'Custom' },
+      motion: 0, className: 'mine', id: 'dt1',
+    },
+    'controlled multi-sort, not sortable table, one sortable column': {
+      data: DT_ROWS, sortable: false, sortBy: [{ column: 'team', direction: 'desc' }, { column: 'score', direction: 'asc' }],
+      columns: [{ ...DT_COLS[0], sortable: true }, DT_COLS[1], { ...DT_COLS[2], sortable: true }, DT_COLS[3]],
+    },
+    'single sort descending, missing values': { data: DT_ROWS, columns: DT_COLS, sortBy: [{ column: 'city', direction: 'asc' }] },
+    'controlled selection, some rows': { data: DT_ROWS, columns: DT_COLS, selectable: true, selectedRows: { $set: [0, 3] } },
+    'controlled selection, every row': { data: DT_ROWS.slice(0, 2), columns: DT_COLS, selectable: true, selectedRows: { $set: [0, 1] } },
+    'controlled filters, active and inactive, per-column filterable': {
+      data: DT_ROWS, filterable: true,
+      filters: { team: { value: 'core', operator: 'equals' }, score: { value: '', operator: 'gt' }, city: { value: '', operator: 'isNotEmpty' } },
+      columns: [{ ...DT_COLS[0], filterable: false }, { ...DT_COLS[1], filterType: 'select', filterOptions: ['Core', 'Infra'] }, { ...DT_COLS[2], filterType: 'number' }, DT_COLS[3]],
+    },
+    'column filterable without the table flag': { data: DT_ROWS.slice(0, 1), columns: [{ ...DT_COLS[0], filterable: true }, DT_COLS[1]] },
+    'grouped, one group expanded, aggregations, selectable': {
+      data: DT_ROWS, columns: DT_COLS, groupBy: 'team', expandedGroups: { $set: ['Infra'] }, selectable: true,
+      selectedRows: { $set: [1] }, aggregations: { score: 'sum', name: 'count' },
+    },
+    'grouped by an unknown column renders flat': { data: DT_ROWS.slice(0, 2), columns: DT_COLS, groupBy: 'nope' },
+    'every aggregation': {
+      data: DT_ROWS, groupBy: 'team', expandedGroups: { $set: [] },
+      aggregations: { name: 'count', score: 'avg', city: 'min', team: 'max' }, columns: DT_COLS,
+    },
+    'min and max aggregation': { data: DT_ROWS, groupBy: 'team', aggregations: { score: 'min', name: 'max' }, columns: DT_COLS },
+    'loading, paginated skeleton, selectable': { data: DT_ROWS, columns: DT_COLS, loading: true, paginated: true, pageSize: 3, selectable: true },
+    'loading, default skeleton': { data: DT_ROWS, columns: DT_COLS.slice(0, 2), loading: true },
+    'empty, custom element': { data: [], columns: DT_COLS, empty: { $el: 'Nothing here' }, selectable: true },
+    'empty, default text, paginated': { data: [], columns: DT_COLS, paginated: true },
+    'error element with retry': { data: DT_ROWS, columns: DT_COLS, error: { $el: 'Failed' }, onRetry: { $fn: true }, paginated: true },
+    'error string without retry': { data: DT_ROWS, columns: DT_COLS, error: 'Boom' },
+    'virtual scroll, row height': { data: DT_MANY, columns: DT_COLS.slice(0, 2), virtualScroll: true, rowHeight: 30 },
+    'virtual scroll ignored when paginated': { data: DT_MANY, columns: DT_COLS.slice(0, 1), virtualScroll: true, paginated: true },
+    'pinned, widths, hidden, alignment, sortable off per column': {
+      data: DT_ROWS.slice(0, 2),
+      columns: [
+        { id: 'name', header: 'Name', accessor: 'name', pinned: 'left', width: 120 },
+        { id: 'team', header: 'Team', accessor: 'team', pinned: 'left', width: '8rem' },
+        { id: 'score', header: 'Score', accessor: 'score', align: 'center', sortable: false, minWidth: 40 },
+        { id: 'id', header: 'Id', accessor: 'id', hidden: true },
+        { id: 'city', header: 'City', accessor: 'city', pinned: 'right', width: 90 },
+        { id: 'other', header: 'Other', accessor: 'team', pinned: 'right' },
+      ],
+    },
+    'cell renderers and function headers': {
+      data: DT_ROWS.slice(0, 2), filterable: true,
+      columns: [
+        { id: 'name', header: { $render: 'H' }, accessor: 'name', cell: { $render: 'C' } },
+        { id: 'score', header: { $el: 'Score' }, accessor: 'score' },
+      ],
+    },
+    'many pages, ellipsis': { data: DT_MANY, columns: DT_COLS.slice(0, 1), paginated: true },
+    'seven pages, no ellipsis': { data: DT_MANY.slice(0, 70), columns: DT_COLS.slice(0, 1), paginated: true },
+    'server side: not sliced, total rows': {
+      data: DT_MANY.slice(0, 10), columns: DT_COLS.slice(0, 1), paginated: true, serverSide: true, totalRows: 95,
+      groupBy: 'team', sortBy: [{ column: 'name', direction: 'desc' }],
+    },
+    'suggestions shown': { data: DT_MANY, columns: DT_COLS.slice(0, 3), showSuggestions: true },
+  },
+  SmartTable: {
+    defaults: { data: DT_ROWS, columns: DT_COLS },
+    'filterable is search; paginated; placeholder and column toggle ignored; class on the wrapper': {
+      data: DT_ROWS, columns: DT_COLS, filterable: true, paginated: true, pageSize: 2, columnToggle: true,
+      searchPlaceholder: 'Find', className: 'mine', id: 'st1', striped: true,
+    },
+    'sortable off, searchable, exportable': { data: DT_ROWS.slice(0, 2), columns: DT_COLS, sortable: false, searchable: true, exportable: true },
+  },
   UpstreamDashboard: {
     'legacy grid': { links: UD_LINKS },
     'legacy grouped by vendor, clickable': { links: UD_LINKS, groupBy: 'vendor', onLinkClick: { $fn: true }, onGroupClick: { $fn: true } },

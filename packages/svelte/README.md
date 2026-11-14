@@ -90,6 +90,13 @@ declared in the contract tests rather than hidden.
   tell a bound prop from a one-way one, and reproducing it would make `bind:`
   impossible. One consequence: FormInput's counter and clear button follow
   typing even without a `value`, where React's only read the `value` prop.
+  DataTable follows the same rule for `sortBy`, `selectedRows`, `filters` and
+  `expandedGroups`: bind them or leave them to the table, and `onSort`,
+  `onSelectionChange`, `onFilterChange` and `onGroupToggle` still fire. React
+  instead hands a change to the callback alone when one is passed, so there a
+  callback without its value leaves the sort (or selection, filters, open
+  groups) unchanged; here it changes. As in React, `selectedRows` holds indices
+  into the sorted, filtered, unpaginated rows. SmartTable forwards all four.
 - **`style` accepts a CSS string or a React-style object**, and is applied
   through `setProperty` — so a caller's own style is CSP-safe too. Objects
   follow React's rules, including `px` on numbers except unitless properties.
@@ -124,6 +131,10 @@ declared in the contract tests rather than hidden.
   receives the size, CopyButton's `children` receives `{ copied, copy }`, a
   PluginDashboard custom widget's `render` receives the data, and a
   DashboardTemplate section's `content` snippet receives its section.
+  A DataTable column's `cell` is a snippet receiving React's
+  `(value, row, rowIndex)`, and its `header` a string or a snippet (React's
+  function and element headers alike; both name the column by its `id` in
+  `data-label`, the filter button and exports, as React does).
 - **Form context** — fields read the nearest form through
   `setFormContext(form)` / `getFormContext()`, with React's `FormState` shape.
   React's form engine itself (`createForm`, `useForm`, `Form`, `FieldArray`)
@@ -147,6 +158,10 @@ declared in the contract tests rather than hidden.
   with a reason (`tests/contract/divergences.ts`) and asserted by behaviour
   tests. States reached only by interaction (an open dropdown, a dragged
   crop) are covered by behaviour tests, not yet compared with React.
+  Inline styles are compared through jsdom's CSSOM; the two declarations it
+  cannot represent (`-webkit-overflow-scrolling`, and `flex: 1 1 0`) are
+  removed from both trees and their use is behaviour-tested instead
+  (`tests/contract/canonical.ts`).
 - That comparison collapses whitespace, because jsdom has no layout to say
   whether a space between two elements shows. `npm run check:svelte-whitespace`
   lays every case out in Chromium under the shipped stylesheet and fails on

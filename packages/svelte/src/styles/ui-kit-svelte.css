@@ -7293,6 +7293,1074 @@
   }
 /* end dashboard-template */
 
+/* data-table */
+@layer components {
+    @scope (.ui-data-table) {
+      :scope {
+        position: relative;
+        min-inline-size: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm, 0.5rem);
+        container-type: inline-size;
+        container-name: data-table;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-family: inherit;
+      }
+
+      /* ── Toolbar ─────────────────────────────────────── */
+      .ui-data-table__toolbar {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        flex-wrap: wrap;
+        padding: var(--space-sm, 0.5rem);
+        background: var(--bg-surface, oklch(22% 0.02 270));
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        border-radius: var(--radius-lg, 0.75rem);
+      }
+
+      /* ── Search ──────────────────────────────────────── */
+      .ui-data-table__search-wrapper {
+        position: relative;
+        flex: 1 1 200px;
+        min-inline-size: 0;
+      }
+
+      .ui-data-table__search {
+        inline-size: 100%;
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-md, 0.75rem);
+        padding-inline-end: 2.25rem;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.5rem);
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-sm, 0.875rem);
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.15s var(--ease-out, ease-out),
+                    box-shadow 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-data-table__search:focus {
+        border-color: var(--brand, oklch(65% 0.2 270));
+        box-shadow: 0 0 0 3px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.15),
+                    0 0 20px oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.08);
+      }
+
+      .ui-data-table__search::placeholder {
+        color: var(--text-tertiary, oklch(55% 0 0));
+      }
+
+      .ui-data-table__search-clear {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-end: var(--space-xs, 0.25rem);
+        transform: translateY(-50%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 24px;
+        block-size: 24px;
+        border: none;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-size: 1rem;
+        cursor: pointer;
+        transition: color 0.15s, background 0.15s;
+      }
+
+      .ui-data-table__search-clear:hover {
+        color: var(--text-primary, oklch(90% 0 0));
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+      }
+
+      .ui-data-table__result-count {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(55% 0 0));
+        white-space: nowrap;
+        padding-inline: var(--space-xs, 0.25rem);
+      }
+
+      .ui-data-table__search-highlight {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.25);
+        border-radius: 2px;
+        color: inherit;
+      }
+
+      /* ── Toolbar buttons (shared) ────────────────────── */
+      .ui-data-table__toolbar-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.5rem);
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.15s var(--ease-out, ease-out);
+        white-space: nowrap;
+      }
+
+      .ui-data-table__toolbar-btn:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      /* ── Column selector dropdown ────────────────────── */
+      .ui-data-table__col-toggle {
+        position: relative;
+      }
+
+      .ui-data-table__col-dropdown {
+        position: absolute;
+        inset-block-start: 100%;
+        inset-inline-end: 0;
+        margin-block-start: var(--space-xs, 0.25rem);
+        min-inline-size: 180px;
+        max-block-size: 300px;
+        overflow-y: auto;
+        padding: var(--space-xs, 0.25rem);
+        background: var(--bg-elevated, oklch(22% 0.02 270));
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.5rem);
+        box-shadow: var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3));
+        z-index: 20;
+      }
+
+      .ui-data-table__col-dropdown-actions {
+        display: flex;
+        gap: var(--space-xs, 0.25rem);
+        padding: var(--space-xs, 0.25rem);
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        margin-block-end: var(--space-xs, 0.25rem);
+      }
+
+      .ui-data-table__col-dropdown-actions button {
+        flex: 1;
+        padding-block: 2px;
+        padding-inline: var(--space-xs, 0.25rem);
+        border: none;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .ui-data-table__col-dropdown-actions button:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-data-table__col-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border-radius: var(--radius-sm, 0.25rem);
+        font-size: var(--text-sm, 0.875rem);
+        cursor: pointer;
+        user-select: none;
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-data-table__col-item:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+      }
+
+      .ui-data-table__col-checkbox {
+        accent-color: var(--brand, oklch(65% 0.2 270));
+      }
+
+      /* ── Export dropdown ─────────────────────────────── */
+      .ui-data-table__export-wrapper {
+        position: relative;
+      }
+
+      .ui-data-table__export-dropdown {
+        position: absolute;
+        inset-block-start: 100%;
+        inset-inline-end: 0;
+        margin-block-start: var(--space-xs, 0.25rem);
+        min-inline-size: 120px;
+        padding: var(--space-xs, 0.25rem);
+        background: var(--bg-elevated, oklch(22% 0.02 270));
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.5rem);
+        box-shadow: var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3));
+        z-index: 20;
+      }
+
+      .ui-data-table__export-item {
+        display: block;
+        inline-size: 100%;
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border: none;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-sm, 0.875rem);
+        font-family: inherit;
+        cursor: pointer;
+        text-align: start;
+      }
+
+      .ui-data-table__export-item:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+      }
+
+      /* ── Scroll wrapper ──────────────────────────────── */
+      .ui-data-table__scroll {
+        overflow-x: auto;
+        overflow-y: visible;
+        border-radius: var(--radius-lg, 0.75rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+      }
+
+      :scope[data-bordered] .ui-data-table__scroll {
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.15));
+      }
+
+      /* Virtual scroll container */
+      .ui-data-table__virtual-scroll {
+        overflow-y: auto;
+        position: relative;
+        border-radius: var(--radius-lg, 0.75rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+      }
+
+      .ui-data-table__virtual-spacer {
+        position: relative;
+      }
+
+      /* ── Table ───────────────────────────────────────── */
+      .ui-data-table__table {
+        inline-size: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: var(--text-sm, 0.875rem);
+        table-layout: fixed;
+      }
+
+      /* ── Header ──────────────────────────────────────── */
+      .ui-data-table__thead {
+        background: var(--bg-surface, oklch(22% 0.02 270));
+      }
+
+      :scope[data-sticky-header] .ui-data-table__thead {
+        position: sticky;
+        inset-block-start: 0;
+        z-index: 3;
+      }
+
+      :scope[data-sticky-header] .ui-data-table__thead::after {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        block-size: 4px;
+        inset-block-end: -4px;
+        background: linear-gradient(to bottom, oklch(0% 0 0 / 0.15), transparent);
+        pointer-events: none;
+      }
+
+      /* ── Header cells ────────────────────────────────── */
+      .ui-data-table__th {
+        position: relative;
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        text-align: start;
+        font-weight: 600;
+        font-size: var(--text-xs, 0.75rem);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary, oklch(70% 0 0));
+        white-space: nowrap;
+        user-select: none;
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        /* NO overflow:hidden — it clips filter popovers */
+        overflow: visible;
+      }
+
+      /* Header text truncation via inner span, not th overflow */
+      .ui-data-table__header-content {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        max-inline-size: 100%;
+      }
+
+      .ui-data-table__header-content > span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      :scope[data-compact] .ui-data-table__th {
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        font-size: 0.6875rem;
+      }
+
+      .ui-data-table__th[data-sortable] {
+        cursor: pointer;
+        transition: color 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-data-table__th[data-sortable]:hover {
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-data-table__th[data-align="center"] { text-align: center; }
+      .ui-data-table__th[data-align="right"] { text-align: end; }
+
+      .ui-data-table__th[data-reorderable] {
+        cursor: grab;
+      }
+
+      .ui-data-table__th[data-reorderable]:active {
+        cursor: grabbing;
+      }
+
+      .ui-data-table__th[data-dragging] {
+        opacity: 0.5;
+      }
+
+      .ui-data-table__th[data-drag-over="left"]::before {
+        content: '';
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: -1px;
+        inline-size: 3px;
+        background: var(--brand, oklch(65% 0.2 270));
+        z-index: 2;
+      }
+
+      .ui-data-table__th[data-drag-over="right"]::after {
+        content: '';
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: -1px;
+        inline-size: 3px;
+        background: var(--brand, oklch(65% 0.2 270));
+        z-index: 2;
+      }
+
+      /* Pinned columns */
+      .ui-data-table__th[data-pinned="left"],
+      .ui-data-table__td[data-pinned="left"] {
+        position: sticky;
+        inset-inline-start: 0;
+        z-index: 1;
+        background: inherit;
+      }
+
+      .ui-data-table__th[data-pinned="right"],
+      .ui-data-table__td[data-pinned="right"] {
+        position: sticky;
+        inset-inline-end: 0;
+        z-index: 1;
+        background: inherit;
+      }
+
+      /* ── Sort indicator ──────────────────────────────── */
+      .ui-data-table__sort-icon {
+        display: inline-flex;
+        margin-inline-start: var(--space-xs, 0.25rem);
+        opacity: 0.3;
+        vertical-align: middle;
+        transition: opacity 0.15s, transform 0.2s var(--ease-out, ease-out),
+                    color 0.15s;
+      }
+
+      .ui-data-table__th[aria-sort="ascending"] .ui-data-table__sort-icon,
+      .ui-data-table__th[aria-sort="descending"] .ui-data-table__sort-icon {
+        opacity: 1;
+        color: var(--brand, oklch(65% 0.2 270));
+      }
+
+      .ui-data-table__th[aria-sort="descending"] .ui-data-table__sort-icon {
+        transform: rotate(180deg);
+      }
+
+      .ui-data-table__sort-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: 14px;
+        block-size: 14px;
+        border-radius: 7px;
+        background: var(--brand, oklch(65% 0.2 270));
+        color: var(--bg-base, oklch(15% 0 0));
+        font-size: 0.5625rem;
+        font-weight: 700;
+        margin-inline-start: 2px;
+      }
+
+      /* Header content wrapper — defined above in th section */
+
+      /* ── Resize handle ───────────────────────────────── */
+      .ui-data-table__resize-handle {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-end: 0;
+        inline-size: 6px;
+        cursor: col-resize;
+        user-select: none;
+        touch-action: none;
+        background: transparent;
+        transition: background 0.15s;
+        z-index: 2;
+      }
+
+      .ui-data-table__resize-handle:hover,
+      .ui-data-table__resize-handle[data-resizing] {
+        background: var(--brand, oklch(65% 0.2 270));
+      }
+
+      /* ── Data rows ───────────────────────────────────── */
+      .ui-data-table__tr {
+        transition: background 0.1s var(--ease-out, ease-out);
+      }
+
+      .ui-data-table__tr:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.03));
+      }
+
+      :scope[data-striped] .ui-data-table__tr:nth-child(even) {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.02));
+      }
+
+      :scope[data-striped] .ui-data-table__tr:nth-child(even):hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.05));
+      }
+
+      .ui-data-table__tr[data-selected] {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.08);
+      }
+
+      .ui-data-table__tr[data-selected]:hover {
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.12);
+      }
+
+      /* ── Data cells ──────────────────────────────────── */
+      .ui-data-table__td {
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.05));
+        vertical-align: middle;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      :scope[data-compact] .ui-data-table__td {
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        font-size: var(--text-xs, 0.75rem);
+      }
+
+      .ui-data-table__td[data-align="center"] { text-align: center; }
+      .ui-data-table__td[data-align="right"] { text-align: end; }
+
+      /* ── Checkbox cell ───────────────────────────────── */
+      .ui-data-table__checkbox-cell {
+        inline-size: 44px;
+        min-inline-size: 44px;
+        max-inline-size: 44px;
+        text-align: center;
+      }
+
+      .ui-data-table__checkbox {
+        cursor: pointer;
+        accent-color: var(--brand, oklch(65% 0.2 270));
+        inline-size: 16px;
+        block-size: 16px;
+      }
+
+      /* ── Empty state ─────────────────────────────────── */
+      .ui-data-table__empty {
+        padding: var(--space-2xl, 3rem);
+        text-align: center;
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-size: var(--text-sm, 0.875rem);
+      }
+
+      /* ── Error state ─────────────────────────────────── */
+      .ui-data-table__error {
+        padding: var(--space-xl, 1.5rem);
+        text-align: center;
+        color: var(--status-critical, oklch(65% 0.25 25));
+        font-size: var(--text-sm, 0.875rem);
+        background: oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.05);
+        border-radius: var(--radius-md, 0.5rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+      }
+
+      .ui-data-table__retry-btn {
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border: 1px solid var(--status-critical, oklch(65% 0.25 25));
+        border-radius: var(--radius-md, 0.5rem);
+        background: transparent;
+        color: var(--status-critical, oklch(65% 0.25 25));
+        font-size: var(--text-sm, 0.875rem);
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+
+      .ui-data-table__retry-btn:hover {
+        background: oklch(from var(--status-critical, oklch(65% 0.25 25)) l c h / 0.1);
+      }
+
+      /* ── Skeleton rows ───────────────────────────────── */
+      .ui-data-table__skeleton-row {
+        display: table-row;
+      }
+
+      .ui-data-table__skeleton-cell {
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.05));
+      }
+
+      .ui-data-table__skeleton-bar {
+        display: block;
+        block-size: 0.875rem;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: var(--bg-surface, oklch(25% 0.02 270));
+        animation: ui-data-table-shimmer 1.8s var(--ease-in-out, ease-in-out) infinite;
+      }
+
+      /* ── Pagination ──────────────────────────────────── */
+      .ui-data-table__pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-sm, 0.5rem);
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-xs, 0.25rem);
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        flex-wrap: wrap;
+      }
+
+      .ui-data-table__page-info {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(55% 0 0));
+        white-space: nowrap;
+      }
+
+      .ui-data-table__page-controls {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+      }
+
+      .ui-data-table__page-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-inline-size: 32px;
+        min-block-size: 32px;
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        font-size: var(--text-sm, 0.875rem);
+        font-family: inherit;
+        cursor: pointer;
+        transition: all 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-data-table__page-btn:hover:not(:disabled) {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+        color: var(--text-primary, oklch(90% 0 0));
+      }
+
+      .ui-data-table__page-btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      .ui-data-table__page-btn[data-active] {
+        background: var(--brand, oklch(65% 0.2 270));
+        color: var(--bg-base, oklch(15% 0 0));
+        border-color: var(--brand, oklch(65% 0.2 270));
+        font-weight: 600;
+      }
+
+      .ui-data-table__page-size-select {
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      /* ── Card mode (responsive) ──────────────────────── */
+      @container data-table (max-width: 600px) {
+        :scope[data-responsive="card"] .ui-data-table__scroll {
+          overflow-x: visible;
+          border: none;
+          background: none;
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__table {
+          display: block;
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__thead {
+          display: none;
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__tbody {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-sm, 0.5rem);
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__tr {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+          border-radius: var(--radius-md, 0.5rem);
+          padding: var(--space-md, 0.75rem);
+          background: var(--bg-surface, oklch(22% 0.02 270));
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__td {
+          display: flex;
+          justify-content: space-between;
+          border: none;
+          padding-block: var(--space-xs, 0.25rem);
+          padding-inline: 0;
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__td::before {
+          content: attr(data-label);
+          font-weight: 600;
+          color: var(--text-secondary, oklch(70% 0 0));
+          margin-inline-end: var(--space-md, 0.75rem);
+          flex-shrink: 0;
+        }
+
+        :scope[data-responsive="card"] .ui-data-table__checkbox-cell {
+          display: none;
+        }
+      }
+
+      /* ── Filter popover ──────────────────────────────── */
+      .ui-data-table__filter-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        inline-size: 24px;
+        block-size: 24px;
+        border: none;
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-tertiary, oklch(55% 0 0));
+        cursor: pointer;
+        padding: 0;
+        margin-inline-start: 2px;
+        transition: color 0.15s, background 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+      }
+
+      /* Expanded touch target on mobile */
+      @media (pointer: coarse) {
+        .ui-data-table__filter-btn::before {
+          content: '';
+          position: absolute;
+          inset: -8px;
+        }
+      }
+
+      .ui-data-table__filter-btn:hover,
+      .ui-data-table__filter-btn[data-active] {
+        color: var(--brand, oklch(65% 0.2 270));
+        background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.1);
+      }
+
+      /* Filter popover — portaled to document.body, positioned via inline style */
+      .ui-data-table__filter-popover {
+        position: fixed;
+        min-inline-size: 220px;
+        max-inline-size: 300px;
+        padding: var(--space-sm, 0.5rem);
+        background: var(--bg-elevated, oklch(22% 0.02 270));
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-md, 0.5rem);
+        box-shadow: var(--shadow-lg, 0 8px 24px oklch(0% 0 0 / 0.3));
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs, 0.25rem);
+      }
+
+      /* When filter popover is open, prevent table from clipping it */
+      :scope[data-filter-open] .ui-data-table__table-wrapper {
+        overflow: visible;
+      }
+
+      /* Transparent backdrop to catch clicks outside filter popover — rendered via portal */
+      .ui-data-table__filter-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        background: transparent;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Filter popover — rendered via portal to document.body */
+      /* On mobile: always bottom sheet */
+      @media (max-width: 640px) {
+        .ui-data-table__filter-popover {
+          position: fixed;
+          inset-block-end: 0;
+          inset-block-start: auto;
+          inset-inline: 0;
+          margin: 0;
+          min-inline-size: auto;
+          max-inline-size: 100%;
+          border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+          padding: 1.25rem;
+          z-index: 9999;
+          box-shadow: 0 -8px 32px oklch(0% 0 0 / 0.4);
+        }
+      }
+
+      .ui-data-table__filter-popover select,
+      .ui-data-table__filter-popover input {
+        inline-size: 100%;
+        padding-block: var(--space-xs, 0.25rem);
+        padding-inline: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: var(--bg-surface, oklch(20% 0.02 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+      }
+
+      .ui-data-table__filter-actions {
+        display: flex;
+        gap: var(--space-xs, 0.25rem);
+        justify-content: flex-end;
+      }
+
+      .ui-data-table__filter-actions button {
+        padding-block: 2px;
+        padding-inline: var(--space-sm, 0.5rem);
+        border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+        border-radius: var(--radius-sm, 0.25rem);
+        background: transparent;
+        color: var(--text-secondary, oklch(70% 0 0));
+        font-size: var(--text-xs, 0.75rem);
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .ui-data-table__filter-actions button:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+      }
+
+      .ui-data-table__filter-select-list {
+        max-block-size: 150px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .ui-data-table__filter-select-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs, 0.25rem);
+        padding: 2px var(--space-xs, 0.25rem);
+        font-size: var(--text-xs, 0.75rem);
+        cursor: pointer;
+        border-radius: 2px;
+      }
+
+      .ui-data-table__filter-select-item:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.06));
+      }
+
+      /* ── Cell editing ──────────────────────────────────── */
+      .ui-data-table__td[data-editing] {
+        padding: 0;
+      }
+
+      .ui-data-table__edit-input {
+        inline-size: 100%;
+        block-size: 100%;
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border: 2px solid var(--brand, oklch(65% 0.2 270));
+        border-radius: 0;
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+        color: var(--text-primary, oklch(90% 0 0));
+        font-size: inherit;
+        font-family: inherit;
+        outline: none;
+      }
+
+      @keyframes ui-data-table-cell-flash {
+        0% { background: oklch(from var(--brand, oklch(65% 0.2 270)) l c h / 0.2); }
+        100% { background: transparent; }
+      }
+
+      .ui-data-table__td[data-just-edited] {
+        animation: ui-data-table-cell-flash 0.6s var(--ease-out, ease-out);
+      }
+
+      /* ── Group rows ────────────────────────────────────── */
+      .ui-data-table__group-row {
+        background: var(--bg-surface, oklch(22% 0.02 270));
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .ui-data-table__group-row:hover {
+        background: var(--border-subtle, oklch(100% 0 0 / 0.05));
+      }
+
+      .ui-data-table__group-cell {
+        padding-block: var(--space-sm, 0.5rem);
+        padding-inline: var(--space-md, 0.75rem);
+        border-block-end: 1px solid var(--border-default, oklch(100% 0 0 / 0.08));
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm, 0.5rem);
+      }
+
+      .ui-data-table__group-chevron {
+        display: inline-flex;
+        transition: transform 0.15s var(--ease-out, ease-out);
+      }
+
+      .ui-data-table__group-chevron[data-expanded] {
+        transform: rotate(90deg);
+      }
+
+      .ui-data-table__group-count {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-tertiary, oklch(55% 0 0));
+        font-weight: 400;
+      }
+
+      .ui-data-table__group-agg {
+        font-size: var(--text-xs, 0.75rem);
+        color: var(--text-secondary, oklch(70% 0 0));
+        font-weight: 400;
+        margin-inline-start: var(--space-sm, 0.5rem);
+      }
+
+      /* ── Improved pinned columns ───────────────────────── */
+      .ui-data-table__th[data-pinned="left"],
+      .ui-data-table__td[data-pinned="left"] {
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+      }
+
+      .ui-data-table__th[data-pinned="right"],
+      .ui-data-table__td[data-pinned="right"] {
+        background: var(--bg-elevated, oklch(20% 0.02 270));
+      }
+
+      .ui-data-table__th[data-pinned-shadow="left"],
+      .ui-data-table__td[data-pinned-shadow="left"] {
+        box-shadow: 4px 0 8px oklch(0% 0 0 / 0.15);
+      }
+
+      .ui-data-table__th[data-pinned-shadow="right"],
+      .ui-data-table__td[data-pinned-shadow="right"] {
+        box-shadow: -4px 0 8px oklch(0% 0 0 / 0.15);
+      }
+
+      /* ── Forced colors ───────────────────────────────── */
+      @media (forced-colors: active) {
+        .ui-data-table__scroll,
+        .ui-data-table__virtual-scroll {
+          border: 2px solid ButtonText;
+        }
+        .ui-data-table__th {
+          border-block-end: 2px solid ButtonText;
+        }
+        .ui-data-table__td {
+          border-block-end: 1px solid ButtonText;
+        }
+        .ui-data-table__tr[data-selected] {
+          outline: 2px solid Highlight;
+        }
+        .ui-data-table__resize-handle:hover,
+        .ui-data-table__resize-handle[data-resizing] {
+          background: Highlight;
+        }
+        .ui-data-table__search {
+          border: 2px solid ButtonText;
+        }
+        .ui-data-table__toolbar {
+          border: 2px solid ButtonText;
+        }
+      }
+
+      /* ── Print ───────────────────────────────────────── */
+      @media print {
+        .ui-data-table__toolbar,
+        .ui-data-table__pagination,
+        .ui-data-table__resize-handle,
+        .ui-data-table__checkbox-cell {
+          display: none;
+        }
+        .ui-data-table__scroll {
+          overflow: visible;
+        }
+      }
+    }
+
+    @keyframes ui-data-table-shimmer {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+  }
+
+/* Filter backdrop — full screen overlay */
+  .ui-data-table__filter-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Filter popover — positioned via inline style */
+  .ui-data-table__filter-popover {
+    position: fixed;
+    z-index: 9999;
+    min-inline-size: 220px;
+    max-inline-size: 300px;
+    padding: 0.75rem;
+    background: var(--bg-elevated, oklch(22% 0.02 270));
+    border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+    border-radius: var(--radius-md, 0.5rem);
+    box-shadow: 0 8px 24px oklch(0% 0 0 / 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.8125rem;
+    color: var(--text-primary, oklch(90% 0 0));
+  }
+
+  .ui-data-table__filter-popover select,
+  .ui-data-table__filter-popover input {
+    inline-size: 100%;
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+    border-radius: var(--radius-sm, 0.25rem);
+    background: var(--bg-base, oklch(15% 0 0));
+    color: var(--text-primary, oklch(90% 0 0));
+    font-size: 0.8125rem;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .ui-data-table__filter-popover select:focus,
+  .ui-data-table__filter-popover input:focus {
+    border-color: var(--brand, oklch(65% 0.2 270));
+  }
+
+  .ui-data-table__filter-actions {
+    display: flex;
+    gap: 0.375rem;
+    margin-block-start: 0.25rem;
+  }
+
+  .ui-data-table__filter-actions button {
+    flex: 1;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--border-default, oklch(100% 0 0 / 0.12));
+    border-radius: var(--radius-sm, 0.25rem);
+    background: transparent;
+    color: var(--text-secondary, oklch(70% 0 0));
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .ui-data-table__filter-actions button:last-child {
+    background: var(--brand, oklch(65% 0.2 270));
+    color: var(--text-on-brand);
+    border-color: var(--brand, oklch(65% 0.2 270));
+  }
+
+  .ui-data-table__filter-select-list {
+    max-block-size: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ui-data-table__filter-select-list label,
+  .ui-data-table__filter-select-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    text-align: start;
+  }
+
+  .ui-data-table__filter-select-item input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--brand, oklch(65% 0.2 270));
+  }
+
+  /* Mobile: bottom sheet */
+  @media (max-width: 640px) {
+    .ui-data-table__filter-popover {
+      position: fixed !important;
+      top: auto !important;
+      left: 0 !important;
+      right: 0;
+      bottom: 0;
+      min-inline-size: auto;
+      max-inline-size: 100%;
+      border-radius: 0.75rem 0.75rem 0 0;
+      padding: 1.25rem;
+      box-shadow: 0 -8px 32px oklch(0% 0 0 / 0.4);
+    }
+
+    .ui-data-table__filter-backdrop {
+      background: oklch(0% 0 0 / 0.3);
+    }
+  }
+/* end data-table */
+
 /* data-table-suggestions */
 @layer components {
     @scope (.ui-data-table-suggestions) {
@@ -20574,6 +21642,17 @@
     }
   }
 /* end slider */
+
+/* smart-table */
+@layer components {
+    @scope (.ui-smart-table) {
+      :scope {
+        display: contents;
+        min-inline-size: 320px;
+      }
+    }
+  }
+/* end smart-table */
 
 /* sortable-list */
 @layer components {

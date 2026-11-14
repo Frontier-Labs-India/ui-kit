@@ -1,6 +1,7 @@
 import { createRawSnippet, type Component } from 'svelte'
 import Compose from './Compose.svelte'
 import { PROP_RENAMES, UNIVERSAL_RENAMES } from './divergences.js'
+import { renderText } from './cases.js'
 
 /* The one Svelte-side reading of the case encoding in cases.ts (React's side is
  * the fixture generators). Kept in one place: every suite rendering cases must
@@ -20,6 +21,8 @@ export function hydrate(value: unknown): unknown {
     const v = value as Record<string, unknown>
     if ('$el' in v) return element(String(v.$el))
     if ('$fn' in v) return () => {}
+    if ('$render' in v) return render(String(v.$render))
+    if ('$set' in v) return new Set(v.$set as unknown[])
     if ('$date' in v) return new Date(String(v.$date))
     return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, hydrate(x)]))
   }
@@ -27,6 +30,14 @@ export function hydrate(value: unknown): unknown {
 }
 
 type SpreadProps = Record<string | symbol, unknown>
+
+/* `{ $render: 'C' }`: a snippet rendering `<b>C:arg:…</b>` from the arguments it
+ * is called with, as React's generator renders the same function. */
+function render(label: string) {
+  return createRawSnippet((...args: (() => unknown)[]) => ({
+    render: () => `<b>${renderText(label, args.map(a => a())).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]!)}</b>`,
+  }))
+}
 
 /* `{ $el: 'x' }` is `<b>x</b>`, as React's generator renders it. A component
  * following COMPONENT-API.md rule 1 calls the snippet with the props React's

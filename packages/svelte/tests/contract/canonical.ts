@@ -12,6 +12,9 @@
  *   - how a checkbox's checked state is carried: server HTML has a `checked`
  *     attribute, a client render sets the `.checked` property and no attribute.
  *     Both mean the same, so an input's checked state is read from either.
+ *   - likewise a select's chosen option: server HTML has `selected` on it, a
+ *     client render sets select.value. Each option's selectedness is read
+ *     from the property or the attribute.
  *   - likewise a text-like input's value: server HTML has `value="…"` (even
  *     `value=""`), a client render sets .value. Read from the property, and an
  *     empty value is the same as none. Checkbox and radio keep the attribute —
@@ -24,7 +27,8 @@
  *     normalise identically. Strictness holds: a value the CSSOM rejects on
  *     one side (a bare `width: 50`) is missing there and still fails.
  *     The one property no test engine implements (-webkit-overflow-scrolling)
- *     is removed from both trees; see UNIMPLEMENTED.
+ *     is removed from both trees; see UNIMPLEMENTED. So is the one exact
+ *     declaration jsdom cannot parse (UNPARSED_BY_JSDOM).
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -67,10 +71,21 @@ const UNIMPLEMENTED = new Set([
   '-webkit-overflow-scrolling', // iOS Safari only, retired in iOS 13 (UpstreamDashboard)
 ])
 
+/* Exact declarations jsdom's CSSOM rejects although every browser accepts
+ * them, spelled `name:value` with whitespace collapsed. Removed from both
+ * trees; that Svelte still sets each is behaviour-tested where it is used. */
+const UNPARSED_BY_JSDOM = new Set([
+  'flex:1 1 0', // a unitless zero flex-basis (DataTable's toolbar spacer)
+])
+
 function styleText(raw: string): string {
   const decls = declarations(raw)
     .map(decl => ({ decl, i: decl.indexOf(':') }))
-    .filter(({ decl, i }) => !(i > 0 && UNIMPLEMENTED.has(decl.slice(0, i).trim().toLowerCase())))
+    .filter(({ decl, i }) => {
+      if (i < 1) return true
+      const name = decl.slice(0, i).trim().toLowerCase()
+      return !UNIMPLEMENTED.has(name) && !UNPARSED_BY_JSDOM.has(`${name}:${decl.slice(i + 1).trim().replace(/\s+/g, ' ')}`)
+    })
   const probe = document.createElement('div')
   probe.setAttribute('style', decls.map(d => d.decl).join(';'))
   const missing = () => decls.some(({ decl, i }) => i > 0 && probe.style.getPropertyValue(decl.slice(0, i).trim().toLowerCase()) === '')
@@ -139,8 +154,11 @@ export function canonical(root: ParentNode): string {
       const el = child as Element
       const raw = Array.from(el.attributes)
         .map(a => [a.name.toLowerCase(), a.value] as const)
-        .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement))
+        .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement) && !(n === 'selected' && el instanceof HTMLOptionElement))
       if (el instanceof HTMLInputElement && (el.checked || el.hasAttribute('checked'))) raw.push(['checked', ''])
+      // Parsed server HTML lives in an inert template document, where the first
+      // option reads as selected by default; there only the attribute counts.
+      if (el instanceof HTMLOptionElement && (el.hasAttribute('selected') || (el.ownerDocument === document && el.selected))) raw.push(['selected', ''])
       if (el instanceof HTMLInputElement && !['checkbox', 'radio'].includes(el.type)) {
         const i = raw.findIndex(([n]) => n === 'value')
         if (i >= 0) raw.splice(i, 1)

@@ -1057,6 +1057,138 @@
    "nth": 0
   }
  },
+ "DataTable": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "every toolbar and appearance flag, caller attributes, motion 0": {
+   "tag": "div",
+   "classes": "mine ui-data-table",
+   "nth": 0
+  },
+  "controlled multi-sort, not sortable table, one sortable column": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "single sort descending, missing values": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "controlled selection, some rows": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "controlled selection, every row": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "controlled filters, active and inactive, per-column filterable": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "column filterable without the table flag": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "grouped, one group expanded, aggregations, selectable": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "grouped by an unknown column renders flat": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "every aggregation": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "min and max aggregation": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "loading, paginated skeleton, selectable": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "loading, default skeleton": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "empty, custom element": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "empty, default text, paginated": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "error element with retry": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "error string without retry": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "virtual scroll, row height": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "virtual scroll ignored when paginated": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "pinned, widths, hidden, alignment, sortable off per column": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "cell renderers and function headers": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "many pages, ellipsis": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "seven pages, no ellipsis": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "server side: not sliced, total rows": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "suggestions shown": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  }
+ },
  "DataTableSuggestions": {
   "basic": null,
   "no apply handler hides Apply": null,
@@ -3136,6 +3268,23 @@
   "motion 0": {
    "tag": "div",
    "classes": "ui-slider",
+   "nth": 0
+  }
+ },
+ "SmartTable": {
+  "defaults": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "filterable is search; paginated; placeholder and column toggle ignored; class on the wrapper": {
+   "tag": "div",
+   "classes": "ui-data-table",
+   "nth": 0
+  },
+  "sortable off, searchable, exportable": {
+   "tag": "div",
+   "classes": "ui-data-table",
    "nth": 0
   }
  },

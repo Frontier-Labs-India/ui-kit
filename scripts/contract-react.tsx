@@ -11,7 +11,7 @@ import React from 'react'
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { SOURCES } from '../packages/svelte/tests/contract/cases'
+import { SOURCES, renderText } from '../packages/svelte/tests/contract/cases'
 
 const ROOT = resolve(import.meta.dirname, '..')
 const meta = JSON.parse(readFileSync(resolve(ROOT, 'dist/component-meta.json'), 'utf8'))
@@ -61,6 +61,8 @@ export function hydrate(value: unknown, parts: Record<string, React.ComponentTyp
     if ('$el' in v) return React.createElement('b', null, String(v.$el))
     if ('$date' in v) return new Date(String(v.$date))
     if ('$fn' in v) return () => {}
+    if ('$render' in v) return (...args: unknown[]) => React.createElement('b', null, renderText(String(v.$render), args))
+    if ('$set' in v) return new Set(v.$set as unknown[])
     if ('$part' in v) {
       const { children, ...props } = (v.props ?? {}) as Record<string, unknown>
       const kids = children === undefined ? [] : Array.isArray(children) ? children : [children]
