@@ -4,11 +4,13 @@ Svelte 5 components for the [`@frontier-labs/ui-kit`](https://www.npmjs.com/pack
 design system — the same tokens, the same stylesheet, and the same class and
 `data-*` contract as the React package, rendered with runes.
 
-**Not every React component is ported yet.** The ones still to come are listed
-in [`NOT_PORTED.json`](./NOT_PORTED.json); the build fails if a component is
-missing from both that list and the package, so that file is the real backlog
-and this README does not repeat a count that would go stale. Everything
-exported from the package is ported and contract-tested against React.
+**Every component of the React package is ported**, and CI keeps it that way:
+`npm run test:svelte-parity` fails if a React component has no Svelte
+counterpart, and [`NOT_PORTED.json`](./NOT_PORTED.json) must stay empty. Every
+component is contract-tested against React. (This README names no count; the
+gate prints the current one.) React's form engine and its other React-coupled
+core modules have Svelte equivalents only where a component needs one (see
+"Form context" below).
 
 ## Install
 

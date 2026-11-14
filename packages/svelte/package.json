@@ -1,6 +1,6 @@
 {
   "name": "@frontier-labs/ui-kit-svelte",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Svelte 5 components sharing the @frontier-labs/ui-kit design system",
   "keywords": [
     "svelte",

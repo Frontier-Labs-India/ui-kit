@@ -59,6 +59,12 @@ for (const n of expected) {
 for (const n of notPorted) if (!expected.includes(n)) fail(`${n} is in NOT_PORTED.json but is not a React component`)
 if (new Set(notPorted).size !== notPorted.length) fail('NOT_PORTED.json contains duplicates')
 
+/* Since @frontier-labs/ui-kit-svelte 1.0.0 every React component is ported, so
+ * the list is no longer a backlog: an entry is itself a failure. Together with
+ * the check above (a component in neither place fails), a new React component
+ * cannot ship without its Svelte port. */
+if (notPorted.length > 0) fail(`NOT_PORTED.json lists ${notPorted.join(', ')}: every component must be ported since 1.0.0, so this list must stay empty`)
+
 /* Public names must mean the same component in both packages. React's barrels
  * (src/components/index.ts, src/domain/index.ts) say which source file each
  * public name comes from, renames included (`Highlight as TextHighlight`). Every
