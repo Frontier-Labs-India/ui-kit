@@ -1298,7 +1298,7 @@ export default function NotificationStackPage() {
               import {'{'} NotificationStack {'}'} from '@frontier-labs/ui-kit/lite'
             </div>
             <div className="notification-stack-page__tier-preview">
-              <LiteNotificationStack notifications={notifications.slice(0, 2)} />
+              <LiteNotificationStack notifications={makeSampleNotifications().slice(0, 2)} />
             </div>
             <div className="notification-stack-page__size-breakdown">
               <div className="notification-stack-page__size-row">
@@ -1360,7 +1360,7 @@ export default function NotificationStackPage() {
               import {'{'} NotificationStack {'}'} from '@frontier-labs/ui-kit/premium'
             </div>
             <div className="notification-stack-page__tier-preview">
-              <PremiumNotificationStack notifications={notifications.slice(0, 2)} />
+              <PremiumNotificationStack notifications={makeSampleNotifications().slice(0, 2)} />
             </div>
             <div className="notification-stack-page__size-breakdown">
               <div className="notification-stack-page__size-row">

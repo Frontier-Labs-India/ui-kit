@@ -765,6 +765,7 @@ function DemoCard({ title, value, desc }: { title: string; value: string; desc: 
 // ─── Code Generation ──────────────────────────────────────────────────────────
 
 function generateReactCode(
+  tier: Tier,
   columns: Columns,
   gap: Gap,
   useGroups: boolean,
@@ -776,7 +777,7 @@ function generateReactCode(
     if (gap !== 'md') props.push(`  gap="${gap}"`)
     if (motion !== 3) props.push(`  motion={${motion}}`)
 
-    return `${IMPORT_STRING}\nimport type { DashboardGroup } from '@frontier-labs/ui-kit'\n\nconst groups: DashboardGroup[] = [\n  {\n    id: 'traffic',\n    title: 'Traffic',\n    summary: <span>1.2M total</span>,\n    items: [\n      <MetricCard title="Page Views" value="845K" />,\n      <MetricCard title="Visitors" value="312K" />,\n    ],\n  },\n  {\n    id: 'revenue',\n    title: 'Revenue',\n    items: [\n      <MetricCard title="MRR" value="$42.5K" />,\n      <MetricCard title="ARR" value="$510K" />,\n    ],\n  },\n]\n\n<DashboardGrid\n${props.join('\n')}\n/>`
+    return `${IMPORT_STRINGS[tier]}\nimport type { DashboardGroup } from '@frontier-labs/ui-kit'\n\nconst groups: DashboardGroup[] = [\n  {\n    id: 'traffic',\n    title: 'Traffic',\n    summary: <span>1.2M total</span>,\n    items: [\n      <MetricCard title="Page Views" value="845K" />,\n      <MetricCard title="Visitors" value="312K" />,\n    ],\n  },\n  {\n    id: 'revenue',\n    title: 'Revenue',\n    items: [\n      <MetricCard title="MRR" value="$42.5K" />,\n      <MetricCard title="ARR" value="$510K" />,\n    ],\n  },\n]\n\n<DashboardGrid\n${props.join('\n')}\n/>`
   }
 
   const props: string[] = []
@@ -785,7 +786,7 @@ function generateReactCode(
   if (motion !== 3) props.push(`  motion={${motion}}`)
 
   const propsStr = props.length > 0 ? `\n${props.join('\n')}\n` : ''
-  return `${IMPORT_STRING}\n\n<DashboardGrid${propsStr}>\n  <MetricCard title="Users" value="1,234" />\n  <MetricCard title="Revenue" value="$42.5K" />\n  <MetricCard title="Orders" value="567" />\n  <MetricCard title="Conversion" value="3.2%" />\n</DashboardGrid>`
+  return `${IMPORT_STRINGS[tier]}\n\n<DashboardGrid${propsStr}>\n  <MetricCard title="Users" value="1,234" />\n  <MetricCard title="Revenue" value="$42.5K" />\n  <MetricCard title="Orders" value="567" />\n  <MetricCard title="Conversion" value="3.2%" />\n</DashboardGrid>`
 }
 
 function generateHtmlCode(columns: Columns, gap: Gap): string {
@@ -821,6 +822,7 @@ function generateSvelteCode(columns: Columns, gap: Gap): string {
 // ─── Playground Section ───────────────────────────────────────────────────────
 
 function PlaygroundSection() {
+  const { tier } = useTier()
   const [columns, setColumns] = useState<Columns>('auto')
   const [gap, setGap] = useState<Gap>('md')
   const [useGroups, setUseGroups] = useState(true)
@@ -861,7 +863,7 @@ function PlaygroundSection() {
     },
   ], [])
 
-  const reactCode = useMemo(() => generateReactCode(columns, gap, useGroups, motion), [columns, gap, useGroups, motion])
+  const reactCode = useMemo(() => generateReactCode(tier, columns, gap, useGroups, motion), [tier, columns, gap, useGroups, motion])
   const htmlCode = useMemo(() => generateHtmlCode(columns, gap), [columns, gap])
   const vueCode = useMemo(() => generateVueCode(columns, gap), [columns, gap])
   const angularCode = useMemo(() => generateAngularCode(columns, gap), [columns, gap])

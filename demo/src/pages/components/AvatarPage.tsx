@@ -887,7 +887,7 @@ export default function AvatarPage() {
             </div>
             {tier !== 'lite' && (
               <div className="avatar-page__labeled-item">
-                <Avatar size="lg" src="https://invalid-url.example.com/broken.jpg" name="Fallback User" alt="Broken image fallback" />
+                <Avatar size="lg" src={`${import.meta.env.BASE_URL}avatars/missing.jpg`} name="Fallback User" alt="Broken image fallback" />
                 <span className="avatar-page__item-label">error fallback</span>
               </div>
             )}

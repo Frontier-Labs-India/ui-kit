@@ -870,7 +870,6 @@ function PlaygroundSection({ tier: tierProp }: { tier: Tier }) {
   const svelteCode = useMemo(() => generateSvelteCode(tier, value, size, color, showValue), [tier, value, size, color, showValue])
 
   const [activeCodeTab, setActiveCodeTab] = useState('react')
-  const [brandColor, setBrandColor] = useState('#6366f1')
   const codeTabs = [
     { id: 'react', label: 'React' },
     { id: 'html', label: 'HTML+CSS' },
@@ -1008,6 +1007,7 @@ export default function RingChartPage() {
 
   const { tier, setTier } = useTier()
   const ChartComponent = tier === 'lite' ? LiteRingChart : tier === 'premium' ? PremiumRingChart : RingChart
+  const [brandColor, setBrandColor] = useState('#6366f1')
 
   // Scroll reveal JS fallback
   useEffect(() => {
