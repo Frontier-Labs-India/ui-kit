@@ -23,6 +23,8 @@
  *     `oklch(65% 0.150 155)` vs `oklch(0.65 0.15 155)`, and spacing all
  *     normalise identically. Strictness holds: a value the CSSOM rejects on
  *     one side (a bare `width: 50`) is missing there and still fails.
+ *     The one property no test engine implements (-webkit-overflow-scrolling)
+ *     is removed from both trees; see UNIMPLEMENTED.
  *
  * Kept (differences that matter):
  *   - every tag, attribute name and value, text, and the tree's shape
@@ -56,15 +58,40 @@ function declarations(style: string): string[] {
 /* Reads declarations back through a CSSOM so both trees normalise the same
  * way. A fresh element of the page's document is used — template content
  * lives in an inert document, but parsing is identical either way. */
+/* Properties no engine the tests run in implements: jsdom and Chromium both
+ * drop them, so React's client DOM never carries them either — only its server
+ * HTML does. Removed from both trees; that Svelte still sets each one is
+ * behaviour-tested where it is used. Keep this list to names that are unknown
+ * everywhere we test, never ones a test merely finds inconvenient. */
+const UNIMPLEMENTED = new Set([
+  '-webkit-overflow-scrolling', // iOS Safari only, retired in iOS 13 (UpstreamDashboard)
+])
+
 function styleText(raw: string): string {
+  const decls = declarations(raw)
+    .map(decl => ({ decl, i: decl.indexOf(':') }))
+    .filter(({ decl, i }) => !(i > 0 && UNIMPLEMENTED.has(decl.slice(0, i).trim().toLowerCase())))
   const probe = document.createElement('div')
-  probe.setAttribute('style', raw)
+  probe.setAttribute('style', decls.map(d => d.decl).join(';'))
+  const missing = () => decls.some(({ decl, i }) => i > 0 && probe.style.getPropertyValue(decl.slice(0, i).trim().toLowerCase()) === '')
+  /* jsdom's attribute parser empties a whole block when a `background`
+   * shorthand and a `transition` appear together, though setProperty keeps
+   * each one. Read such a block declaration by declaration, in order, so later
+   * ones still override earlier ones as they do in the attribute. */
+  if (missing()) {
+    probe.removeAttribute('style')
+    for (const { decl, i } of decls) {
+      if (i < 1) continue
+      const value = decl.slice(i + 1).trim()
+      const important = /!\s*important$/i.test(value)
+      probe.style.setProperty(decl.slice(0, i).trim(), important ? value.replace(/!\s*important$/i, '').trim() : value, important ? 'important' : '')
+    }
+  }
   /* Denominator: a declaration the CSSOM drops cannot be compared — it would be
    * missing from BOTH trees and pass unverified. Refuse loudly instead. (A
    * Svelte-side bug such as a bare `width: 50` never reaches this: setProperty
    * rejects it before it is written, so it is absent and fails the comparison.) */
-  for (const decl of declarations(raw)) {
-    const i = decl.indexOf(':')
+  for (const { decl, i } of decls) {
     if (i < 1) continue
     const name = decl.slice(0, i).trim().toLowerCase()
     if (name && probe.style.getPropertyValue(name) === '') {

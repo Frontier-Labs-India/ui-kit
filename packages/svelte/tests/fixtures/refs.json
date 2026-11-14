@@ -4054,6 +4054,88 @@
    "nth": 0
   }
  },
+ "UpstreamDashboard": {
+  "legacy grid": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "legacy grouped by vendor, clickable": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "empty, string title": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero, summary with every status and an old timestamp": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero grouped by location, meter, burst, every callback": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero grouped by vendor, ambient tint at every level": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero, ambient over 90 percent overall": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero without capacity, capacity and utilization hidden": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "hero, zero capacity with a burst renders React's stray 0": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "compact, every utilization colour, clickable": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "compact via the legacy prop, grouped by location": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "compact mode wins over the legacy prop, no data-compact": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "table grouped by location, burst, Date timestamp, clickable rows": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "table without capacity or utilization columns": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "summary with an invalid Date renders React's NaN": {
+   "tag": "div",
+   "classes": "ui-upstream-dashboard",
+   "nth": 0
+  },
+  "element title, caller attributes, motion 0": {
+   "tag": "div",
+   "classes": "mine ui-upstream-dashboard",
+   "nth": 0
+  }
+ },
  "UptimeTracker": {
   "basic": {
    "tag": "div",

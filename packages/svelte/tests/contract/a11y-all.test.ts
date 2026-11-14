@@ -63,6 +63,9 @@ const PART_ALONE =
   'panel that the enclosing DropdownMenu supplies (the composed case checks them together)'
 
 const INHERITED: Record<string, string> = {
+  'UpstreamDashboard/element title, caller attributes, motion 0/heading-order':
+    'DEFECT in both packages: the legacy grid\'s link cards title each vendor with an <h4> directly under the ' +
+    'dashboard\'s <h2> title, skipping h3. Fix together (h3, or no heading) or the contract breaks',
   'Tabs/array, every tab option, pills lg vertical, motion 0/nested-interactive':
     'DEFECT in both packages: a closeable tab puts its close <button> inside the tab <button>. Fix together ' +
     '(move the close button beside the tab) or the contract breaks',

@@ -53,6 +53,16 @@ export const SOURCES: Record<string, string> = {
   SidebarItem: 'src/components/sidebar.tsx',
 }
 
+
+/* UpstreamDashboard links: every status, every bit-rate unit, trends of unequal
+ * length (the hero aggregate pads the shorter one), and links without capacity. */
+const UD_LINKS = [
+  { id: 'a', vendor: 'Arista', location: 'DC1', inbound: 1.25e8, outbound: 2.5e7, capacity: 2.5e8, burstCapacity: 5e8, status: 'ok', trend: [1, 4, 2, 9] },
+  { id: 'b', vendor: 'Juniper', location: 'DC2', inbound: 2e11, outbound: 1.5e6, capacity: 2.6e11, status: 'warning', trend: [3, 3] },
+  { id: 'c', vendor: 'Arista', location: 'DC2', inbound: 2000, outbound: 100, status: 'critical' },
+  { id: 'd', vendor: 'Cisco', location: 'DC1', inbound: 9e7, outbound: 9e7, capacity: 2e8, status: 'unknown', trend: [5] },
+]
+
 export const CASES: Record<string, Record<string, CaseProps>> = {
   Accordion: {
     empty: { items: [] },
@@ -1723,6 +1733,57 @@ export const CASES: Record<string, Record<string, CaseProps>> = {
     },
   },
   // Toasts exist only after toast() calls (toast.test.ts); the server renders the container.
+  UpstreamDashboard: {
+    'legacy grid': { links: UD_LINKS },
+    'legacy grouped by vendor, clickable': { links: UD_LINKS, groupBy: 'vendor', onLinkClick: { $fn: true }, onGroupClick: { $fn: true } },
+    'empty, string title': { links: [], title: 'Uplinks', showSummary: true },
+    'hero, summary with every status and an old timestamp': {
+      links: UD_LINKS, mode: 'hero', title: 'Uplinks', showSummary: true, lastUpdated: Date.UTC(2026, 0, 12, 9, 0, 0),
+    },
+    'hero grouped by location, meter, burst, every callback': {
+      links: UD_LINKS, mode: 'hero', groupBy: 'location', utilizationDisplay: 'meter', showBurstCapacity: true,
+      onLinkClick: { $fn: true }, onGroupClick: { $fn: true }, onSummaryClick: { $fn: true },
+    },
+    'hero grouped by vendor, ambient tint at every level': {
+      mode: 'hero', groupBy: 'vendor', utilizationDisplay: 'ambient',
+      links: [
+        { id: 'p', vendor: 'A', location: 'L1', inbound: 50, outbound: 0, capacity: 100, status: 'ok' },
+        { id: 'q', vendor: 'A', location: 'L2', inbound: 80, outbound: 0, capacity: 100, status: 'ok' },
+        { id: 'r', vendor: 'B', location: 'L1', inbound: 95, outbound: 0, capacity: 100, status: 'ok' },
+        { id: 's', vendor: 'B', location: 'L3', inbound: 10, outbound: 0, capacity: 100, status: 'ok' },
+      ],
+    },
+    'hero, ambient over 90 percent overall': {
+      mode: 'hero', utilizationDisplay: 'ambient', links: [{ id: 'z', vendor: 'A', location: 'L', inbound: 95, outbound: 0, capacity: 100, status: 'critical' }],
+    },
+    'hero without capacity, capacity and utilization hidden': {
+      mode: 'hero', showCapacity: false, showUtilization: false,
+      links: [{ id: 'n', vendor: 'A', location: 'L', inbound: 10, outbound: 20, status: 'ok', trend: [1, 2, 3] }],
+    },
+    'hero, zero capacity with a burst renders React\'s stray 0': {
+      mode: 'hero', links: [{ id: 'k', vendor: 'A', location: 'L', inbound: 10, outbound: 0, capacity: 0, burstCapacity: 5, status: 'ok' }],
+    },
+    'compact, every utilization colour, clickable': {
+      mode: 'compact', onLinkClick: { $fn: true }, onSummaryClick: { $fn: true },
+      links: [
+        { id: 'u1', vendor: 'A', location: 'L1', inbound: 50, outbound: 0, capacity: 100, status: 'ok', trend: [1, 3, 2] },
+        { id: 'u2', vendor: 'B', location: 'L2', inbound: 70, outbound: 0, capacity: 100, status: 'warning' },
+        { id: 'u3', vendor: 'C', location: 'L3', inbound: 90, outbound: 30, capacity: 100, status: 'critical' },
+        { id: 'u4', vendor: 'D', location: 'L4', inbound: 1, outbound: 1, status: 'unknown' },
+      ],
+    },
+    'compact via the legacy prop, grouped by location': { links: UD_LINKS, compact: true, groupBy: 'location', onGroupClick: { $fn: true } },
+    'compact mode wins over the legacy prop, no data-compact': { links: UD_LINKS.slice(0, 1), mode: 'compact', compact: true },
+    'table grouped by location, burst, Date timestamp, clickable rows': {
+      links: UD_LINKS, mode: 'table', groupBy: 'location', showBurstCapacity: true, showSummary: true,
+      lastUpdated: { $date: '2026-01-15T11:59:30' }, onLinkClick: { $fn: true }, onSummaryClick: { $fn: true },
+    },
+    'table without capacity or utilization columns': { links: UD_LINKS, mode: 'table', showCapacity: false, showUtilization: false },
+    'summary with an invalid Date renders React\'s NaN': { links: UD_LINKS.slice(2), showSummary: true, lastUpdated: { $date: 'invalid' } },
+    'element title, caller attributes, motion 0': {
+      links: UD_LINKS.slice(0, 1), title: { $el: 'Edge' }, className: 'mine', id: 'ud1', 'aria-label': 'Caller label', motion: 0,
+    },
+  },
   ToastProvider: {
     defaults: { children: { $el: 'app' } },
     'bottom-center, max 2, motion 0': { children: 'app', position: 'bottom-center', maxVisible: 2, motion: 0 },

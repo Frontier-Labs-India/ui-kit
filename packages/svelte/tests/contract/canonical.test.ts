@@ -29,6 +29,33 @@ describe('canonical — style values', () => {
     expect(() => c('<i style="background-image:url(data:image/png;base64,AA)"></i>')).not.toThrow()
     expect(c('<i style="--x:1"></i>')).not.toBe(c('<i style="--x:2"></i>'))
   })
+
+  /* jsdom's style-attribute parser empties the whole declaration block when a
+   * `background` shorthand and a `transition` appear together, though each
+   * declaration applied with setProperty is kept (UpstreamDashboard's split
+   * bars, in React and Svelte alike). The block is then read declaration by
+   * declaration, in order, so it is compared rather than refused. */
+  it('reads a block the attribute parser empties one declaration at a time, keeping order and strictness', () => {
+    const both = 'height:100%;background:oklch(72% 0.19 155);transition:width 0.3s'
+    expect(c(`<i style="${both}"></i>`)).toContain('height:100%')
+    expect(c(`<i style="${both}"></i>`)).toContain('transition')
+    expect(c(`<i style="${both}"></i>`)).not.toBe(c('<i style="height:50%;background:oklch(72% 0.19 155);transition:width 0.3s"></i>'))
+    // A later declaration still overrides an earlier one, as in the attribute.
+    expect(c(`<i style="${both};height:10px"></i>`)).toBe(c('<i style="background:oklch(72% 0.19 155);transition:width 0.3s;height:10px"></i>'))
+    // And a declaration setProperty rejects is still refused.
+    expect(() => c(`<i style="${both};width:50"></i>`)).toThrow(/CSSOM dropped "width:50"/)
+  })
+
+  /* Neither jsdom nor Chromium implements -webkit-overflow-scrolling (an iOS
+   * Safari property, retired there in iOS 13), so React's client DOM never
+   * carries it either: only its server HTML does. It is the one name removed
+   * from both trees; that Svelte still sets it is a behaviour test
+   * (upstream-dashboard.test.ts). */
+  it('removes only -webkit-overflow-scrolling, the property no test engine implements', () => {
+    expect(c('<i style="overflow-x:auto;-webkit-overflow-scrolling:touch"></i>')).toBe(c('<i style="overflow-x:auto"></i>'))
+    expect(c('<i style="-webkit-overflow-scrolling:touch"></i>')).toBe(c('<i></i>'))
+    expect(() => c('<i style="-webkit-unknown-thing:touch"></i>')).toThrow(/CSSOM dropped/)
+  })
 })
 
 describe('canonical — ids', () => {
