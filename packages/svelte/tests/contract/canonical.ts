@@ -14,7 +14,9 @@
  *     Both mean the same, so an input's checked state is read from either.
  *   - likewise a select's chosen option: server HTML has `selected` on it, a
  *     client render sets select.value. Each option's selectedness is read
- *     from the property or the attribute.
+ *     from the property or the attribute, with browser semantics on both
+ *     sides: server HTML whose value matched no option shows the first, as
+ *     React's client does, so a blank select still differs.
  *   - likewise a text-like input's value: server HTML has `value="…"` (even
  *     `value=""`), a client render sets .value. Read from the property, and an
  *     empty value is the same as none. Checkbox and radio keep the attribute —
@@ -156,9 +158,9 @@ export function canonical(root: ParentNode): string {
         .map(a => [a.name.toLowerCase(), a.value] as const)
         .filter(([n]) => !(n === 'checked' && el instanceof HTMLInputElement) && !(n === 'selected' && el instanceof HTMLOptionElement))
       if (el instanceof HTMLInputElement && (el.checked || el.hasAttribute('checked'))) raw.push(['checked', ''])
-      // Parsed server HTML lives in an inert template document, where the first
-      // option reads as selected by default; there only the attribute counts.
-      if (el instanceof HTMLOptionElement && (el.hasAttribute('selected') || (el.ownerDocument === document && el.selected))) raw.push(['selected', ''])
+      // Read with browser semantics on both sides: parsed server HTML with no
+      // `selected` option shows its first option, as React's client does.
+      if (el instanceof HTMLOptionElement && (el.selected || el.hasAttribute('selected'))) raw.push(['selected', ''])
       if (el instanceof HTMLInputElement && !['checkbox', 'radio'].includes(el.type)) {
         const i = raw.findIndex(([n]) => n === 'value')
         if (i >= 0) raw.splice(i, 1)

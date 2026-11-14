@@ -4,6 +4,7 @@
   import { makeCls, cn } from '../lib/cls.js'
   import { cssProps } from '../actions/css-props.js'
   import { portal } from '../actions/portal.js'
+  import { reactSelectFallback } from '../actions/react-select.js'
   import { mergeStyles, reactStyle, type StyleInput, type StyleObject } from '../lib/react-style.js'
   import Content from '../lib/Content.svelte'
   import DataTableSuggestions from './DataTableSuggestions.svelte'
@@ -349,13 +350,18 @@
   // svelte-ignore state_referenced_locally
   let pageSize = $state(pageSizeProp)
   let showAllPages = $state(false)
+  /* React's dependency arrays compare these by value. A derived does too, so a
+   * new array of the same length (or a parent re-spreading its props) does not
+   * re-run the effects below; reading the props directly would. */
+  const dataLength = $derived(data.length)
+  const pageSizeValue = $derived(pageSizeProp)
   $effect(() => {
     void debouncedSearch
-    void data.length
+    void dataLength
     untrack(() => { page = 0 })
   })
   $effect(() => {
-    const size = pageSizeProp
+    const size = pageSizeValue
     untrack(() => { pageSize = size })
   })
   const dataCount = $derived(serverSide ? (totalRows ?? data.length) : sortedData.length)
@@ -546,7 +552,7 @@
   {#if col.filterType === 'select'}
     {@const selected = (filters[col.id]?.value ?? '').split(',').map(v => v.trim().toLowerCase())}
     <div class="ui-data-table__filter-select-list">
-      {#each col.filterOptions ?? [...new Set(data.map(r => String(getCellValue(r, col.accessor) ?? '')))] as opt (opt)}
+      {#each col.filterOptions ?? [...new Set(data.map(r => String(getCellValue(r, col.accessor) ?? '')))] as opt}
         {@const isChecked = selected.includes(opt.toLowerCase())}
         <label class="ui-data-table__filter-select-item">
           <input
@@ -566,10 +572,11 @@
   {:else}
     <select
       value={filters[col.id]?.operator ?? operators[0].value}
+      use:reactSelectFallback={[filters[col.id]?.operator, operators]}
       onchange={e => setFilters({ ...filters, [col.id]: { value: filters[col.id]?.value ?? '', operator: e.currentTarget.value } })}
       data-testid={`filter-operator-${col.id}`}
     >
-      {#each operators as op (op.value)}<option value={op.value}>{op.label}</option>{/each}
+      {#each operators as op}<option value={op.value}>{op.label}</option>{/each}
     </select>
     <input
       type={col.filterType === 'number' ? 'number' : col.filterType === 'date' ? 'date' : 'text'}
@@ -599,7 +606,7 @@
         <input type="checkbox" class="ui-data-table__checkbox" checked={isSelected} onchange={() => handleRowSelect(globalIdx)} aria-label={`Select row ${globalIdx + 1}`} />
       </td>
     {/if}
-    {#each visibleColumns as col (col.id)}
+    {#each visibleColumns as col}
       {@const value = getCellValue(row, col.accessor)}
       {@const isEditing = editingCell?.row === globalIdx && editingCell?.col === col.id}
       {@const isColEditable = editable && col.editable !== false}
@@ -645,7 +652,7 @@
             <input bind:this={selectAllEl} type="checkbox" class="ui-data-table__checkbox" checked={allSelected} onchange={handleSelectAll} aria-label="Select all rows" />
           </th>
         {/if}
-        {#each visibleColumns as col (col.id)}
+        {#each visibleColumns as col}
           {@const isColSortable = col.sortable ?? sortable}
           {@const isColFilterable = (filterable || col.filterable) && col.filterable !== false}
           {@const sortIndex = sortBy.findIndex(s => s.column === col.id)}
@@ -731,7 +738,7 @@
             {#if selectable}
               <td class="ui-data-table__skeleton-cell ui-data-table__checkbox-cell" role="gridcell"><span class="ui-data-table__skeleton-bar" use:cssProps={{ 'inline-size': '16px', margin: '0 auto' }}></span></td>
             {/if}
-            {#each visibleColumns as col (col.id)}
+            {#each visibleColumns as col}
               <td class="ui-data-table__skeleton-cell" role="gridcell"><span class="ui-data-table__skeleton-bar" use:cssProps={{ 'inline-size': `${50 + ((ri * 17 + col.id.length * 13) % 40)}%` }}></span></td>
             {/each}
           </tr>
@@ -744,7 +751,7 @@
           {@const isExpanded = expandedGroups.has(groupKey)}
           <!-- svelte-ignore a11y_no_redundant_roles (as React: explicit grid roles) -->
           <tr class="ui-data-table__group-row" role="row" onclick={() => toggleGroup(groupKey)} data-testid={`group-row-${groupKey}`}>
-            <td class="ui-data-table__group-cell" role="gridcell" {colspan}><span class="ui-data-table__group-chevron" data-expanded={isExpanded ? '' : undefined} aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 1L7 5L3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg></span>{groupKey}<span class="ui-data-table__group-count">({group.rows.length})</span>{#if aggregations}{#each visibleColumns as col (col.id)}{#if aggregations[col.id]}<span class="ui-data-table__group-agg" data-testid={`group-agg-${groupKey}-${col.id}`}>{getHeaderText(col.header, col.id)}: {computeAggregation(group.rows.map(r => getCellValue(r, col.accessor)), aggregations[col.id])}</span>{/if}{/each}{/if}</td>
+            <td class="ui-data-table__group-cell" role="gridcell" {colspan}><span class="ui-data-table__group-chevron" data-expanded={isExpanded ? '' : undefined} aria-hidden="true"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 1L7 5L3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg></span>{groupKey}<span class="ui-data-table__group-count">({group.rows.length})</span>{#if aggregations}{#each visibleColumns as col}{#if aggregations[col.id]}<span class="ui-data-table__group-agg" data-testid={`group-agg-${groupKey}-${col.id}`}>{getHeaderText(col.header, col.id)}: {computeAggregation(group.rows.map(r => getCellValue(r, col.accessor)), aggregations[col.id])}</span>{/if}{/each}{/if}</td>
           </tr>
           {#if isExpanded}
             {#each group.rows as row}
@@ -799,7 +806,7 @@
             <button type="button" onclick={() => { hiddenColumns = new Set() }}>Show all</button>
             <button type="button" onclick={() => { hiddenColumns = new Set(columns.map(c => c.id)) }}>Hide all</button>
           </div>
-          {#each columns as col (col.id)}
+          {#each columns as col}
             <label class="ui-data-table__col-item"><input type="checkbox" class="ui-data-table__col-checkbox" checked={!hiddenColumns.has(col.id)} onchange={() => toggleColumn(col.id)} />{getHeaderText(col.header, col.id)}</label>
           {/each}
         </div>
@@ -846,8 +853,8 @@
           {/if}
         {/each}
         <button type="button" class="ui-data-table__page-btn" disabled={page >= totalPages - 1} onclick={() => handlePageChange(page + 1)} aria-label="Next page">&#x276F;</button>
-        <select class="ui-data-table__page-size-select" value={showAllPages ? 'all' : pageSize} onchange={handlePageSizeChange} aria-label="Page size">
-          {#each pageSizes as size (size)}<option value={size}>{size} / page</option>{/each}
+        <select class="ui-data-table__page-size-select" value={showAllPages ? 'all' : pageSize} use:reactSelectFallback={[showAllPages, pageSize, pageSizes]} onchange={handlePageSizeChange} aria-label="Page size">
+          {#each pageSizes as size}<option value={size}>{size} / page</option>{/each}
           <option value="all">All</option>
         </select>
       </div>

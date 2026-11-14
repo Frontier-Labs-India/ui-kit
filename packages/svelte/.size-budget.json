@@ -349,6 +349,7 @@
   "lib:UpstreamGroup": 870,
   "module:actions/css-props": 725,
   "module:actions/portal": 458,
+  "module:actions/react-select": 460,
   "module:lib/avatar-group-context": 291,
   "module:lib/cls": 499,
   "module:lib/code-editor-tokenize": 1714,

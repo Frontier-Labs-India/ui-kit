@@ -115,14 +115,21 @@ describe('canonical — select value', () => {
     expect(client('a')).not.toBe(server)
   })
 
-  /* Server HTML with no `selected` option (React's value matched none) is
-   * parsed into an inert document, where the first option still reads as
-   * selected by default. React's client, like Svelte's, selects nothing. */
-  it('a value matching no option selects nothing on either side, whatever the parser defaults to', () => {
-    const root = document.createElement('div')
-    root.innerHTML = '<select><option value="a">A</option><option value="b">B</option></select>'
-    root.querySelector('select')!.value = 'z'
-    expect(canonical(root)).toBe(c('<select><option value="a">A</option><option value="b">B</option></select>'))
+  /* A value matching no option: React's client falls back to the first
+   * enabled option (react-dom updateOptions), as a browser parsing React's
+   * server HTML does; Svelte's own select binding instead selects nothing
+   * (selectedIndex -1), which shows a blank select. The harness must tell
+   * those apart, so parsed server HTML is read with browser semantics too. */
+  it('React\'s first-option fallback compares equal; a blank select does not', () => {
+    const client = (fn: (s: HTMLSelectElement) => void) => {
+      const root = document.createElement('div')
+      root.innerHTML = '<select><option value="a">A</option><option value="b">B</option></select>'
+      fn(root.querySelector('select')!)
+      return canonical(root)
+    }
+    const server = c('<select><option value="a">A</option><option value="b">B</option></select>')
+    expect(client(s => { s.value = 'z'; if (s.selectedIndex === -1) s.options[0].selected = true })).toBe(server)
+    expect(client(s => { s.selectedIndex = -1 })).not.toBe(server)
   })
 })
 

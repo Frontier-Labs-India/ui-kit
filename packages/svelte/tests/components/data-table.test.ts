@@ -191,6 +191,103 @@ describe('DataTable — pagination', () => {
   })
 })
 
+describe('DataTable — props changing after mount', () => {
+  it('keeps the page when data is replaced by a new array of the same length', async () => {
+    const { container, rerender } = render(Table, { props: { data: MANY, columns: COLS, paginated: true } })
+    await fireEvent.click(container.querySelector<HTMLElement>('[aria-label="Page 2"]')!)
+    await rerender({ data: MANY.map(r => ({ ...r })) })
+    expect(container.querySelector('[aria-current="page"]')!.textContent).toBe('2')
+  })
+
+  it('server side: replacing the rows after a page change does not refetch page 1', async () => {
+    const onFetchData = vi.fn()
+    const { container, rerender } = render(Table, { props: { data: MANY.slice(0, 10), columns: COLS, paginated: true, serverSide: true, totalRows: 95, onFetchData } })
+    flushSync()
+    await fireEvent.click(container.querySelector<HTMLElement>('[aria-label="Next page"]')!)
+    await rerender({ data: MANY.slice(10, 20) })
+    expect(onFetchData).toHaveBeenLastCalledWith(expect.objectContaining({ page: 1 }))
+    expect(container.querySelector('[aria-current="page"]')!.textContent).toBe('2')
+  })
+
+  it('keeps a chosen page size when a parent spreading its props re-renders', async () => {
+    const { container, rerender } = render(Probe, { props: { data: MANY, columns: COLS, paginated: true } })
+    await fireEvent.change(container.querySelector('[aria-label="Page size"]')!, { target: { value: '50' } })
+    expect(names(container)).toHaveLength(50)
+    await rerender({ data: MANY, columns: COLS, paginated: true, striped: true })
+    expect(names(container)).toHaveLength(50)
+  })
+
+  it('follows a new pageSize prop', async () => {
+    const { container, rerender } = render(Table, { props: { data: MANY, columns: COLS, paginated: true } })
+    await rerender({ pageSize: 25 })
+    expect(names(container)).toHaveLength(25)
+  })
+
+  it('keeps the known columns\' order when columns change and appends new ones', async () => {
+    const { container, rerender } = render(Table, { props: { data: ROWS, columns: COLS } })
+    await rerender({ columns: [COLS[2], COLS[0], { id: 'id', header: 'Id', accessor: 'id' }] })
+    expect(q(container, 'th.ui-data-table__th').map(h => h.textContent?.trim())).toEqual(['Name', 'Score', 'Id'])
+  })
+
+  it('duplicate column ids, page sizes and filter options render as React renders them, without throwing', async () => {
+    const { container } = render(Table, {
+      props: { data: ROWS, paginated: true, pageSizes: [10, 10], filterable: true, columns: [COLS[0], { ...COLS[0], header: 'Again', filterType: 'select', filterOptions: ['x', 'x'] }] },
+    })
+    expect(q(container, 'th.ui-data-table__th').map(h => h.textContent?.trim())).toEqual(['Again', 'Again'])
+    expect(q(container, '[aria-label="Page size"] option').map(o => o.textContent)).toEqual(['10 / page', '10 / page', 'All'])
+    await fireEvent.click(container.querySelector<HTMLElement>('[aria-label="Toggle columns"]')!)
+    expect(q(container, '.ui-data-table__col-item').map(l => l.textContent)).toEqual(['Name', 'Again'])
+    await fireEvent.click(q(container, '.ui-data-table__filter-btn')[0])
+    // Both columns carry the id 'name', so both match the open filter and each opens its popover, as in React.
+    expect(q(document.body, '.ui-data-table__filter-popover')).toHaveLength(2)
+    expect(q(document.body, '.ui-data-table__filter-select-item').map(l => l.textContent)).toEqual(['x', 'x', 'x', 'x'])
+  })
+})
+
+describe('DataTable — selects fall back to their first option, as React\'s do', () => {
+  it('a page size missing from pageSizes shows the first size, not a blank select', () => {
+    const { container } = render(Table, { props: { data: MANY, columns: COLS, paginated: true, pageSize: 2 } })
+    const select = container.querySelector<HTMLSelectElement>('[aria-label="Page size"]')!
+    expect(select.selectedIndex).toBe(0)
+    expect(select.value).toBe('10')
+  })
+
+  it('an operator the column type does not offer shows the first operator', async () => {
+    const { container } = render(Table, { props: { data: ROWS, columns: COLS, filterable: true, filters: { name: { value: 'a', operator: 'gt' } } } })
+    await fireEvent.click(th(container, 'Name').querySelector('.ui-data-table__filter-btn')!)
+    const op = document.querySelector<HTMLSelectElement>('[data-testid="filter-operator-name"]')!
+    expect(op.selectedIndex).toBe(0)
+    expect(op.value).toBe('contains')
+  })
+})
+
+describe('DataTable — listeners are released', () => {
+  it('removes the open menus\' document listeners and the virtual scroller\'s listeners on unmount', async () => {
+    const disconnect = vi.fn()
+    const RO = globalThis.ResizeObserver
+    globalThis.ResizeObserver = class { observe() {} unobserve() {} disconnect() { disconnect() } } as never
+    try {
+      const { container, unmount } = render(Table, { props: { data: MANY, columns: COLS, exportable: true, virtualScroll: true } })
+      // After mount: Svelte's own mount registers delegated listeners on document.
+      const add = vi.spyOn(document, 'addEventListener')
+      const remove = vi.spyOn(document, 'removeEventListener')
+      const scroller = container.querySelector<HTMLElement>('[data-testid="virtual-scroll-container"]')!
+      const scrollRemove = vi.spyOn(scroller, 'removeEventListener')
+      await fireEvent.click(container.querySelector<HTMLElement>('[aria-label="Toggle columns"]')!)
+      await fireEvent.click(container.querySelector<HTMLElement>('[aria-label="Export"]')!)
+      const added = add.mock.calls.filter(c => c[0] === 'mousedown').map(c => c[1])
+      expect(added).toHaveLength(2)
+      unmount()
+      const removed = remove.mock.calls.filter(c => c[0] === 'mousedown').map(c => c[1])
+      for (const h of added) expect(removed).toContain(h)
+      expect(scrollRemove).toHaveBeenCalledWith('scroll', expect.any(Function))
+      expect(disconnect).toHaveBeenCalled()
+    } finally {
+      globalThis.ResizeObserver = RO
+    }
+  })
+})
+
 describe('DataTable — column visibility', () => {
   it('toggles columns, shows and hides all, and closes on an outside mousedown only', async () => {
     const { container } = render(Table, { props: { data: ROWS, columns: [...COLS, { id: 'id', header: 'Id', accessor: 'id' as const, hidden: true }] } })
