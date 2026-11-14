@@ -17,6 +17,7 @@ import { useTheme } from '@ui/core/tokens/theme-context'
 import { ColorInput } from '@ui/components/color-input'
 import { PropsTable, type PropDef } from '../../components/PropsTable'
 import { useTier, type Tier } from '../../App'
+import { sampleAvatar } from '../../sample-avatar'
 
 // ─── Page Styles ──────────────────────────────────────────────────────────────
 
@@ -540,7 +541,7 @@ const COLOR_PRESETS = [
   { hex: '#64748b', name: 'Slate' },
 ]
 
-const SAMPLE_IMAGE = 'https://i.pravatar.cc/150?u=demo'
+const SAMPLE_IMAGE = sampleAvatar('demo')
 
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false)
@@ -841,9 +842,9 @@ export default function AvatarPage() {
             {SIZES.map(s => (
               <div key={s} className="avatar-page__labeled-item">
                 {tier === 'lite' ? (
-                  <LiteAvatar size={s} src={`https://i.pravatar.cc/150?u=${s}`} alt={s} />
+                  <LiteAvatar size={s} src={sampleAvatar(s)} alt={s} />
                 ) : (
-                  <Avatar size={s} src={`https://i.pravatar.cc/150?u=${s}`} alt={s} />
+                  <Avatar size={s} src={sampleAvatar(s)} alt={s} />
                 )}
                 <span className="avatar-page__item-label">{s}</span>
               </div>
@@ -862,9 +863,9 @@ export default function AvatarPage() {
           <div className="avatar-page__labeled-row">
             <div className="avatar-page__labeled-item">
               {tier === 'lite' ? (
-                <LiteAvatar size="lg" src="https://i.pravatar.cc/150?u=img" alt="Image" />
+                <LiteAvatar size="lg" src={sampleAvatar('img')} alt="Image" />
               ) : (
-                <Avatar size="lg" src="https://i.pravatar.cc/150?u=img" alt="Image" />
+                <Avatar size="lg" src={sampleAvatar('img')} alt="Image" />
               )}
               <span className="avatar-page__item-label">image</span>
             </div>
@@ -904,9 +905,9 @@ export default function AvatarPage() {
           {tier === 'lite' ? (
             <>
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <LiteAvatar size="lg" src="https://i.pravatar.cc/150?u=a" alt="User A" />
+                <LiteAvatar size="lg" src={sampleAvatar('a')} alt="User A" />
                 <LiteAvatar size="lg" fallback="AB" />
-                <LiteAvatar size="lg" src="https://i.pravatar.cc/150?u=c" alt="User C" />
+                <LiteAvatar size="lg" src={sampleAvatar('c')} alt="User C" />
               </div>
             </>
           ) : (
@@ -924,12 +925,12 @@ export default function AvatarPage() {
                   <strong>AvatarGroup</strong> — stacks avatars with overlap and shows overflow count.
                 </p>
                 <AvatarGroup max={4} size="md">
-                  <Avatar src="https://i.pravatar.cc/150?u=g1" alt="User 1" />
-                  <Avatar src="https://i.pravatar.cc/150?u=g2" alt="User 2" />
-                  <Avatar src="https://i.pravatar.cc/150?u=g3" alt="User 3" />
-                  <Avatar src="https://i.pravatar.cc/150?u=g4" alt="User 4" />
-                  <Avatar src="https://i.pravatar.cc/150?u=g5" alt="User 5" />
-                  <Avatar src="https://i.pravatar.cc/150?u=g6" alt="User 6" />
+                  <Avatar src={sampleAvatar('g1')} alt="User 1" />
+                  <Avatar src={sampleAvatar('g2')} alt="User 2" />
+                  <Avatar src={sampleAvatar('g3')} alt="User 3" />
+                  <Avatar src={sampleAvatar('g4')} alt="User 4" />
+                  <Avatar src={sampleAvatar('g5')} alt="User 5" />
+                  <Avatar src={sampleAvatar('g6')} alt="User 6" />
                 </AvatarGroup>
               </div>
               <div>
@@ -971,7 +972,7 @@ export default function AvatarPage() {
             </p>
             <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@frontier-labs/ui-kit/lite'</div>
             <div className="avatar-page__tier-preview">
-              <LiteAvatar size="lg" src="https://i.pravatar.cc/150?u=lite-tier" alt="Lite" />
+              <LiteAvatar size="lg" src={sampleAvatar('lite-tier')} alt="Lite" />
             </div>
           </div>
 
@@ -991,7 +992,7 @@ export default function AvatarPage() {
             </p>
             <div className="avatar-page__tier-import">import {'{'} Avatar {'}'} from '@frontier-labs/ui-kit'</div>
             <div className="avatar-page__tier-preview">
-              <Avatar size="lg" src="https://i.pravatar.cc/150?u=std-tier" alt="Standard" status="online" />
+              <Avatar size="lg" src={sampleAvatar('std-tier')} alt="Standard" status="online" />
             </div>
           </div>
 

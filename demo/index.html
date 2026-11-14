@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/ui-kit/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@frontier-labs/ui-kit</title>
 
@@ -10,7 +10,7 @@
     <meta property="og:title" content="@frontier-labs/ui-kit - Zero-Dependency React Component Library" />
     <meta property="og:description" content="147 components, physics-based animations, OKLCH color system, and Aurora Fluid design. 3 weight tiers: Lite, Standard, Premium." />
     <meta property="og:image" content="https://frontier-labs-india.github.io/ui-kit/og-image.png" />
-    <meta property="og:url" content="https://frontier-labs-india.github.io/ui-kit/" />
+    <meta property="og:url" content="https://ui.frontier-labs.in/" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card -->
@@ -18,17 +18,9 @@
     <meta name="twitter:title" content="@frontier-labs/ui-kit" />
     <meta name="twitter:description" content="147 zero-dependency React components with physics animations and OKLCH theming." />
     <meta name="twitter:image" content="https://frontier-labs-india.github.io/ui-kit/og-image.png" />
-    <!-- GitHub Pages SPA redirect handler (works with 404.html) -->
-    <script>
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-        }
-      }(window.location))
-    </script>
+    <!-- GitHub Pages SPA redirect handler (works with 404.html). A file, not an
+         inline script, so the page runs under a CSP without 'unsafe-inline'. -->
+    <script src="%BASE_URL%spa-redirect.js"></script>
   </head>
   <body>
     <div id="root"></div>

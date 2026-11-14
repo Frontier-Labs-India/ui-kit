@@ -17,6 +17,7 @@ import { useTheme } from '@ui/core/tokens/theme-context'
 import { ColorInput } from '@ui/components/color-input'
 import { PropsTable, type PropDef } from '../../components/PropsTable'
 import { useTier, type Tier } from '../../App'
+import { sampleAvatar } from '../../sample-avatar'
 
 // ─── Page Styles ──────────────────────────────────────────────────────────────
 
@@ -944,7 +945,7 @@ export default function AvatarUploadPage() {
               <span className="avatar-upload-page__item-label">empty</span>
             </div>
             <div className="avatar-upload-page__labeled-item">
-              {renderUpload({ value: 'https://i.pravatar.cc/150?u=disabled', onChange: () => {}, disabled: true })}
+              {renderUpload({ value: sampleAvatar('disabled'), onChange: () => {}, disabled: true })}
               <span className="avatar-upload-page__item-label">with image</span>
             </div>
           </div>

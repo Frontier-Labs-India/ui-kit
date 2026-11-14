@@ -190,7 +190,8 @@ const ListLayoutPage = lazy(() => import('./pages/components/ListLayoutPage'))
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/ui-kit">
+    {/* The router follows Vite's base (DEMO_BASE): '/ui-kit/' on GitHub Pages, '/' when self-hosted. */}
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <ToastProvider position="bottom-right">
         <Routes>
           <Route element={<App />}>
